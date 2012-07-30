@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from flask import Flask, render_template
-from sources.preprocessing import preprocess
+import sys, sources.preprocessing
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,10 +14,13 @@ def index():
 # 	}
 
 if __name__ == '__main__':
-	app.config.from_pyfile("settings.cfg")
-	preprocess(app) # render ccss, coffeescript and shpaml
-	# run application
-	app.run()
+	if len(sys.argv) > 1 and sys.argv[1] == "collectstatic":
+		sources.preprocessing._collect_static(app)
+	else:
+		app.config.from_pyfile("settings.cfg")
+		sources.preprocessing.preprocess(app) # render ccss, coffeescript and shpaml
+		# run application
+		app.run()
 
 
 
