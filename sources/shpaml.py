@@ -1,4 +1,3 @@
-
 import re
 
 __version__ = '1.00b'
