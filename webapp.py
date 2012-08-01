@@ -12,6 +12,7 @@
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template
+from flaskext.babel import Babel
 import sys, sources.preprocessing as preprocessing
 
 app = Flask(__name__)
@@ -25,6 +26,7 @@ if __name__ == '__main__':
 		preprocessing._collect_static(app)
 	else:
 		app.config.from_pyfile("settings.cfg")
+		babel = Babel(app) # i18n
 		preprocessing.preprocess(app) # render ccss, coffeescript and shpaml
 		# run application
 		app.run()

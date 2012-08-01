@@ -3,4 +3,5 @@
 {% block content %}
 	h1 | Yeah
 	p  | {{config.STATIC_DIR}}
+	p  | {{ gettext("hello world")}}
 {% endblock %}
