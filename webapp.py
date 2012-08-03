@@ -12,6 +12,7 @@
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template
+from flaskext.babel import Babel
 import os, sys, sources.preprocessing as preprocessing
 
 app = Flask(__name__)
@@ -33,6 +34,7 @@ if __name__ == '__main__':
 		app.config['CSS_DIR'] 		= os.path.join(app.config['STATIC_DIR'], 'css')
 		app.config['IMAGES_DIR'] 	= os.path.join(app.config['STATIC_DIR'], 'images')		
 		app.config['TEMPLATE_DIR'] 	= os.path.join(app.root_path, app.template_folder)
+		babel = Babel(app) # i18n
 
 		preprocessing.preprocess(app) # render ccss, coffeescript and shpaml
 		# run application
