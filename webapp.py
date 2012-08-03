@@ -12,7 +12,7 @@
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template
-import sys, sources.preprocessing as preprocessing
+import os, sys, sources.preprocessing as preprocessing
 
 app = Flask(__name__)
 
@@ -21,11 +21,21 @@ def index():
 	return render_template('home.html')
 
 if __name__ == '__main__':
+	#os.path.join(app.root_path, 'lib')
+	app.config['STATIC_DIR'] 	= os.path.join(app.root_path, 'static')
+	app.config['LIB_DIR'] 		= os.path.join(app.root_path, 'lib')
+
 	if len(sys.argv) > 1 and sys.argv[1] == "collectstatic":
 		preprocessing._collect_static(app)
 	else:
-		app.config.from_pyfile("settings.cfg")
+		app.config.from_pyfile("settings.cfg")		
+		app.config['JS_DIR'] 		= os.path.join(app.config['STATIC_DIR'], 'js')
+		app.config['CSS_DIR'] 		= os.path.join(app.config['STATIC_DIR'], 'css')
+		app.config['IMAGES_DIR'] 	= os.path.join(app.config['STATIC_DIR'], 'images')		
+		app.config['TEMPLATE_DIR'] 	= os.path.join(app.root_path, app.template_folder)
+
 		preprocessing.preprocess(app) # render ccss, coffeescript and shpaml
 		# run application
 		app.run()
 # EOF
+

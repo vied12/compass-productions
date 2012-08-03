@@ -26,13 +26,23 @@ def _scan(folder, dest, action, extension, new_extension=None):
 			os.path.join(path, f)
 			for f in filenames if os.path.splitext(f)[1] == extension
 		])
+
 	for path in paths:
-		directories   = path.split('/')
-		index_lib     = directories.index('lib')
-		relative_path = "/".join(directories[0:index_lib+2])
+		folder_char = '/'
+		if os.name =='nt':
+			folder_char='\\'
+		directories   = path.split(folder_char)
+		if 'lib' in directories:
+			index_lib = directories.index('lib')
+		else:
+			index_lib = 0
+		relative_path = folder_char.join(directories[0:index_lib+2])
+
 		out = os.path.join(dest, os.path.splitext(os.path.relpath(path, relative_path))[0])
+
 		if new_extension:
 			out = "%s%s" % (out, new_extension)
+		
 		if not os.path.isfile(dest):
 			dest_mtime = -1
 		else:
@@ -41,38 +51,40 @@ def _scan(folder, dest, action, extension, new_extension=None):
 		if f_mtime >= dest_mtime:
 			action(path, out) 
 
-def _render_coffee(app):
-	static_dir = app.root_path + app.static_url_path
-	coffee_dir = app.root_path + '/lib/coffee'
+def _render_coffee(app):	
+	coffee_dir = os.path.join(app.config['LIB_DIR'], 'coffee')
 	def action(source, dest):
-		subprocess.call(['coffee', '-o', os.path.dirname(dest), '-c', source], shell=False)
-	_scan(coffee_dir, static_dir + '/js', action, extension='.coffee')
+		cmd = 'coffee'
+		if os.name == 'nt':
+			cmd = 'coffee.cmd'
+		subprocess.call([cmd, '-c' , '-o' ,  os.path.normcase(dest), source], shell=False)
+	_scan(coffee_dir, app.config['JS_DIR'], action, extension='.coffee')
 
 def _render_shpaml(app):
-	templates_dir = os.path.join(app.root_path, app.template_folder)
-	shpaml_dir    = os.path.join(app.root_path, 'lib/shpaml')
+	shpaml_dir = os.path.join(app.config['LIB_DIR'], 'shpaml')
 	def action(source, dest):
 		with open(source, 'r') as s:
 			if not os.path.exists(os.path.dirname(dest)):
 				os.makedirs(os.path.dirname(dest))
 			with open(dest, 'w') as d:
 				d.write(shpaml.convert_text(s.read()))
-	_scan(shpaml_dir, templates_dir, action, extension='.shpaml')
+	_scan(shpaml_dir, app.config['TEMPLATE_DIR'], action, extension='.shpaml')
 
 def _render_coverCSS(app):
-	dest_dir = os.path.join(app.root_path, app.static_folder, 'css')
+	ccss_dir = os.path.join(app.config['LIB_DIR'], 'ccss')
+	dest_dir = app.config['CSS_DIR']
 	def action(source, dest):
 		with open(source, 'r') as s:
 			with open(dest, 'w') as d:
 				d.write(clevercss.convert(s.read()))
-	_scan(app.root_path + '/lib/ccss', dest_dir, action, extension='.ccss', new_extension='.css')
+	_scan(ccss_dir, dest_dir, action, extension='.ccss', new_extension='.css')
 
 def _collect_static(app):
-	static_dir = app.root_path + app.static_url_path
-	lib_dir    = app.root_path + '/lib'
+	static_dir = app.config['STATIC_DIR']
+	LIB_DIR    = app.config['LIB_DIR']
 	dir_to_collect = ['css', 'images', 'js']
 	for d in dir_to_collect:
-		for path, subdirs, filenames in os.walk(os.path.join(lib_dir, d)):
+		for path, subdirs, filenames in os.walk(os.path.join(LIB_DIR, d)):
 			for f in [os.path.join(path, filename) for filename in filenames]:
 				if os.path.isfile(f):
 					dst = os.path.join(static_dir, os.path.relpath(path, 'lib/'), os.path.basename(f))

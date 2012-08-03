@@ -2,5 +2,5 @@
 
 {% block content %}
 	h1 | Yeah
-	p  | {{config.STATIC_DIR}}
+	p  | {{config.STATIC_URL}}
 {% endblock %}
