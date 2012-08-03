@@ -3,5 +3,5 @@
 {% block content %}
 	h1 | Yeah
 	p  | {{config.STATIC_URL}}
-	p  | {{ gettext("hello world")}
+	p  | {{ gettext("hello world")}}
 {% endblock %}
