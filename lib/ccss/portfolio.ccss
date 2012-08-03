@@ -1,2 +1,49 @@
+TEXT_COLOR  = #C8C8C8
+TILE_WIDTH  = 150px
+TILE_HEIGHT = 150px
+TILE_COLOR  = "rgba(20,20,20,0.5)"
+BASE_PADDING= 10px
+
 body:
-	background-color:orange
+	background-color : green
+
+.tile:
+	width              : $TILE_WIDTH
+	height             : $TILE_HEIGHT
+	margin             : 3px
+	float              : left
+	background-color   : $TILE_COLOR
+	//-moz-transform     :"rotate(10deg)"
+	//-webkit-transform  :"rotate(10deg)"
+	//-o-transform       :"rotate(10deg)"
+	//-ms-transform      :"rotate(10deg)"
+
+
+
+	> .wrapper:
+		padding : 10px
+	&.new-line:
+		clear: both
+
+.Index:
+	color           : $TEXT_COLOR
+	padding         : $BASE_PADDING * 2
+	.tiles:
+		position    : relative
+		float: left
+
+.FooterPanel:
+	position         : absolute
+	bottom           : 0
+	right            : 0
+	left             : $BASE_PADDING * 2
+	height           : $BASE_PADDING * 4
+	background-color: $TILE_COLOR
+	> .wrapper:
+		padding: $BASE_PADDING
+
+.Langage:
+	position         : absolute
+	bottom           : 10px
+	right            : 0
+	left             : 40px

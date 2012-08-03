@@ -27,7 +27,8 @@ if __name__ == '__main__':
 	else:
 		app.config.from_pyfile("settings.cfg")
 		babel = Babel(app) # i18n
-		preprocessing.preprocess(app) # render ccss, coffeescript and shpaml
+		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
+		preprocessing.preprocess(app) 
 		# run application
 		app.run()
 # EOF

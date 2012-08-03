@@ -2,10 +2,11 @@
 html lang="en"
 	head
 		title | Portfolio
-		> link type="text/css" rel="stylesheet" href="/{{config.STATIC_DIR}}/css/bootstrap.min.css" media="all"
+		{#> link type="text/css" rel="stylesheet" href="/{{config.STATIC_DIR}}/css/bootstrap.min.css" media="all" #}
+		> link type="text/css" rel="stylesheet" href="/{{config.STATIC_DIR}}/css/base.css" media="all"
 		> link type="text/css" rel="stylesheet" href="/{{config.STATIC_DIR}}/css/portfolio.css" media="all"
 	body
 		{% block content %}{% endblock %}
 		script type="text/javascript" src="/{{config.STATIC_DIR}}/js/jquery172.js"     | {# #}
-		script type="text/javascript" src="/{{config.STATIC_DIR}}/js/bootstrap.min.js" | {# #}
+		{#script type="text/javascript" src="/{{config.STATIC_DIR}}/js/bootstrap.min.js" |  #}
 		script type="text/javascript" src="/{{config.STATIC_DIR}}/js/scripts.js"       | {# #}
