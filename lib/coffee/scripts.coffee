@@ -18,4 +18,3 @@ class TileManager extends Widget
 
 
 new TileManager().bindUI($(".tiles"))
-

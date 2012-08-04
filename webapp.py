@@ -13,7 +13,7 @@
 
 from flask import Flask, render_template
 from flaskext.babel import Babel
-import sys, sources.preprocessing as preprocessing
+import os, sys, sources.preprocessing as preprocessing
 
 app = Flask(__name__)
 
@@ -22,13 +22,22 @@ def index():
 	return render_template('home.html')
 
 if __name__ == '__main__':
+	#os.path.join(app.root_path, 'lib')
+	app.config['STATIC_DIR'] 	= os.path.join(app.root_path, 'static')
+	app.config['LIB_DIR'] 		= os.path.join(app.root_path, 'lib')
+
 	if len(sys.argv) > 1 and sys.argv[1] == "collectstatic":
 		preprocessing._collect_static(app)
 	else:
-		app.config.from_pyfile("settings.cfg")
+		app.config.from_pyfile("settings.cfg")		
+		app.config['JS_DIR'] 		= os.path.join(app.config['STATIC_DIR'], 'js')
+		app.config['CSS_DIR'] 		= os.path.join(app.config['STATIC_DIR'], 'css')
+		app.config['IMAGES_DIR'] 	= os.path.join(app.config['STATIC_DIR'], 'images')		
+		app.config['TEMPLATE_DIR'] 	= os.path.join(app.root_path, app.template_folder)
 		babel = Babel(app) # i18n
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
 		preprocessing.preprocess(app) 
 		# run application
 		app.run()
 # EOF
+
