@@ -2,11 +2,11 @@
 html lang="en"
 	head
 		title | Portfolio
-		{#> link type="text/css" rel="stylesheet" href="/{{config.STATIC_URL}}/css/bootstrap.min.css" media="all" #}
-		> link type="text/css" rel="stylesheet" href="/{{config.STATIC_URL}}/css/base.css" media="all"
-		> link type="text/css" rel="stylesheet" href="/{{config.STATIC_URL}}/css/portfolio.css" media="all"
+		{#> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}" media="all" #}
+		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}" media="all"
+		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" media="all"
 	body
 		{% block content %}{% endblock %}
-		script type="text/javascript" src="/{{config.STATIC_URL}}/js/jquery172.js"     | {# #}
-		{#script type="text/javascript" src="/{{config.STATIC_URL}}/js/bootstrap.min.js" |  #}
-		script type="text/javascript" src="/{{config.STATIC_URL}}/js/scripts.js"       | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"     | {# #}
+		{#script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}" |  #}
+		script type="text/javascript" src="{{url_for('static', filename='js/scripts.js')}}"       | {# #}
