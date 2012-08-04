@@ -3,7 +3,8 @@
 # -----------------------------------------------------------------------------
 # Project : a Serious Project
 # -----------------------------------------------------------------------------
-# Author : Edouard Richard <edou4rd@gmail.com>
+# Author : Edouard Richard                                  <edou4rd@gmail.com>
+# Author : Olivier Chardin                                <jegrandis@gmail.com>
 # -----------------------------------------------------------------------------
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------

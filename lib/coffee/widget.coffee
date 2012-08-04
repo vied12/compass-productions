@@ -2,7 +2,6 @@
 # Project : a Serious Project
 # -----------------------------------------------------------------------------
 # Author : Edouard Richard                                  <edou4rd@gmail.com>
-# Author : Olivier Chardin                                <jegrandis@gmail.com>
 # -----------------------------------------------------------------------------
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
@@ -10,30 +9,14 @@
 # Last mod : 04-Aug-2012
 # -----------------------------------------------------------------------------
 
-# import
-Widget = window.serious.Widget
-
-class TileManager extends Widget
-
-	constructor: ->
-		@UIS = {
-			tilesList : ".tiles .tile", 
-			tiles     : ".tiles"
-		}
-
+class Widget
 	bindUI: (ui) ->
-		super
-		@uis.tilesList.click (e) => this.tileSelected(e.target)
+		@ui = $(ui)
+		@uis = {}
+		$.each @UIS, (key, value) =>
+			@uis[key] = $(value)
 
-	tileSelected: (tile_selected) ->
-		console.log @uis.tilesList[tile]
-		for tile in @uis.tilesList when tile isnt tile_selected
-			do =>
-				tile = $(tile)
-				console.log "aa", tile
-				tile.addClass "closed"
-				setTimeout(=> tile.addClass "hidden", 500)
-
-
-new TileManager().bindUI(".tiles")
+window.serious = []
+# register classes to a global variable
+window.serious.Widget = Widget
 # EOF

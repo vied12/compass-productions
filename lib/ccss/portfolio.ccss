@@ -13,10 +13,17 @@ body:
 	margin             : 3px
 	float              : left
 	background-color   : $TILE_COLOR
+	overflow           : hidden
 	//-moz-transform     :"rotate(10deg)"
 	//-webkit-transform  :"rotate(10deg)"
 	//-o-transform       :"rotate(10deg)"
 	//-ms-transform      :"rotate(10deg)"
+	&.closed:
+		-webkit-transition-property : "width,height"
+		-webkit-transition-duration : "0.50s"
+		width : 0
+		height: 0
+		white-space: nowrap
 
 
 
