@@ -11,7 +11,7 @@
 # Last mod : 30-Jun-2012
 # -----------------------------------------------------------------------------
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flaskext.babel import Babel
 import os, sys, sources.preprocessing as preprocessing
 
@@ -28,7 +28,7 @@ if __name__ == '__main__':
 	else:
 		babel = Babel(app) # i18n
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
-		preprocessing.preprocess(app) 
+		preprocessing.preprocess(app, request) 
 		# run application
 		app.run()
 # EOF

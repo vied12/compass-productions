@@ -13,12 +13,13 @@
 # -----------------------------------------------------------------------------
 import os, sys, subprocess, shpaml, clevercss, shutil
 
-def preprocess(app):
+def preprocess(app, request):
 	@app.before_request
 	def render():
-		_render_shpaml(app)
-		_render_coffee(app)
-		_render_coverCSS(app)
+		if request.base_url.endswith('/'):
+			_render_shpaml(app)
+			_render_coffee(app)
+			_render_coverCSS(app)
 
 def _scan(folder, dest, action, extension, new_extension=None):
 	paths = []
