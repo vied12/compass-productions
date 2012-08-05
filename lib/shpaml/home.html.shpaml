@@ -2,7 +2,7 @@
 
 {% block content %}
 	.video-background | {##} 
-	.Index.page
+	.Index.page.use-base
 		{% include "widgets/navigation.html" %}
 		.Langage
 			a href="#ln=fr" | Fr

@@ -22,16 +22,64 @@ class Navigation extends Widget
 
 	constructor: ->
 		@UIS = {
-			tilesList : ".tiles .tile", 
-			tiles     : ".tiles"
+			tilesList        : ".Main .tile, .Works .tile",
+			brandTile        : ".brand.tile",
+			main             : ".Main",
+			works            : ".Works",
 		}
 
-	bindUI: (ui) ->
-		super
-		@uis.tilesList.click (e) => this.tileSelected(e.target)
+		@cache = {
+			data          : null
+			currentLevel  : null
+			currentTarget : null
+		}
 
-	tileSelected: (tile_selected) ->
-		$(tile).addClass "closed" for tile in @uis.tilesList when tile isnt tile_selected
+	# setData: (data) =>
+	# 	@cache.data = data
+	# 	this.relayout()
+
+	bindUI: (ui) =>
+		super
+		# $.ajax("/api/data.json", {dataType: 'json', success : this.setData})
+		@uis.tilesList.live("click", (e) => this.tileSelected(e.target)) 
+		@uis.brandTile.live("click", (e) => this.back())
+		this.showMenu("main")
+
+	# relayout: =>
+	# 	console.log , tile for tile in @cache.data.works
+
+	tileSelected: (tile_selected) =>
+		tile_selected = $(tile_selected)
+		if tile_selected.hasClass "tile"
+			target = tile_selected.attr "data-target"
+			if target == "works"
+				this.worksSelected()
+			if target == "news"
+				this.newsSelected()
+			if target == "contact"
+				this.contactSelected()
+
+	worksSelected: =>
+		this.showMenu("works")
+
+	newsSelected: =>
+		@uis.main.addClass "hidden"
+
+	contactSelected: =>
+		@uis.main.addClass "hidden"
+
+	showMenu: (name) =>
+		menu = @ui.find "[data-name="+name+"]"
+		if not menu.length > 0
+			return false
+		menu.removeClass "hidden"
+		if @cache.currentTarget != null and @cache.currentTarget != name
+			@ui.find("[data-name="+@cache.currentTarget+"]").addClass "hidden"
+		@cache.currentTarget = name
+		@cache.currentLevel  = parseInt(menu.attr("data-level"))
+
+	back: =>
+		this.showMenu("main")
 
 # -----------------------------------------------------------------------------
 #
@@ -61,7 +109,7 @@ class VideoBackground extends Widget
 #
 # -----------------------------------------------------------------------------	
 
-new Navigation().bindUI(".tiles")
-new VideoBackground().bindUI(".video-background")
+new Navigation().bindUI(".Navigation")
+# new VideoBackground().bindUI(".video-background")
 
 # EOF
