@@ -2,21 +2,22 @@
 
 {% block content %}
 	.video-background | {##} 
-	.Index.page			
-		.Brand.tile
-			.wrapper | {##} 
-		.tiles
-			.tile
-				.wrapper | Parting words
-			.tile
-				.wrapper | Baghdad twist
-			.tile.new-line
-				.wrapper | The devil in the holy water
-			.tile
-				.wrapper | Joy
-			.tile.new-line
-				.wrapper | Nana, goerge & me
-		.clear | {##}
+	.Index.page
+		.Navigation			
+			.brand.tile
+				.wrapper | COMPASS PRODUCTION
+			.tiles
+				.tile
+					.wrapper | Parting words
+				.tile
+					.wrapper | Baghdad twist
+				.tile.new-line
+					.wrapper | The devil in the holy water
+				.tile
+					.wrapper | Joy
+				.tile.new-line
+					.wrapper | Nana, goerge & me
+			.clear | {##}
 		.Langage
 			a href="#ln=fr" | Fr
 		.FooterPanel
