@@ -9,7 +9,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 30-Jun-2012
+# Last mod : 05-Aug-2012
 # -----------------------------------------------------------------------------
 import os, sys, subprocess, shpaml, clevercss, shutil
 
@@ -69,7 +69,10 @@ def _render_shpaml(app):
 	if not os.path.exists(dest):
 		os.makedirs(dest)
 	def action(source, dest):
+		print source, dest
 		with open(source, 'r') as s:
+			if not os.path.exists(os.path.dirname(dest)):
+				os.makedirs(os.path.dirname(dest))
 			with open(dest, 'w') as d:
 				d.write(shpaml.convert_text(s.read()))
 	_scan(shpaml_dir, dest, action, extension='.shpaml')
