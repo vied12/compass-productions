@@ -9,14 +9,14 @@
 		.tile data-target="contact"
 			.wrapper | Contact
 	.Works.menu.hidden data-name="works" data-level=1
-		.tile
+		.tile data-target="parting"
 			.wrapper | Parting words
-		.tile
+		.tile data-target="baghdad"
 			.wrapper | Baghdad twist
-		.tile.new-line
+		.tile.new-line data-target="devil"
 			.wrapper | The devil in the holy water
-		.tile
+		.tile data-target="joy"
 			.wrapper | Joy
-		.tile.new-line
+		.tile.new-line data-target="nana"
 			.wrapper | Nana, goerge & me
 	.clear | {##}

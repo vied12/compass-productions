@@ -54,10 +54,12 @@ class Navigation extends Widget
 			target = tile_selected.attr "data-target"
 			if target == "works"
 				this.worksSelected()
-			if target == "news"
+			else if target == "news"
 				this.newsSelected()
-			if target == "contact"
+			else if target == "contact"
 				this.contactSelected()
+			else if @cache.currentTarget == "works"
+				this.projectSelected(target)
 
 	worksSelected: =>
 		this.showMenu("works")
@@ -67,6 +69,10 @@ class Navigation extends Widget
 
 	contactSelected: =>
 		@uis.main.addClass "hidden"
+
+	projectSelected: (projet) =>
+		console.log "projectSelected", projet
+		$("body").trigger("projectSelected", projet)
 
 	showMenu: (name) =>
 		menu = @ui.find "[data-name="+name+"]"
@@ -101,6 +107,7 @@ class VideoBackground extends Widget
 			loop: true
 			poster: 'http://serious-works.org/static/img/logo2.png'
 		@uis.background.prepend "<div class='video-fx'></div>"
+
 		# @uis['fx'] = $('.video-fx')
 
 # -----------------------------------------------------------------------------
