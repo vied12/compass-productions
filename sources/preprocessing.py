@@ -69,7 +69,6 @@ def _render_shpaml(app):
 	if not os.path.exists(dest):
 		os.makedirs(dest)
 	def action(source, dest):
-		print source, dest
 		with open(source, 'r') as s:
 			if not os.path.exists(os.path.dirname(dest)):
 				os.makedirs(os.path.dirname(dest))
