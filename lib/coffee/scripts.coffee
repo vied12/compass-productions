@@ -7,13 +7,18 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 04-Aug-2012
+# Last mod : 05-Aug-2012
 # -----------------------------------------------------------------------------
 
-# import
 Widget = window.serious.Widget
 
-class TileManager extends Widget
+# -----------------------------------------------------------------------------
+#
+# Navigation
+#
+# -----------------------------------------------------------------------------
+
+class Navigation extends Widget
 
 	constructor: ->
 		@UIS = {
@@ -26,24 +31,19 @@ class TileManager extends Widget
 		@uis.tilesList.click (e) => this.tileSelected(e.target)
 
 	tileSelected: (tile_selected) ->
-		console.log @uis.tilesList[tile]
-		for tile in @uis.tilesList when tile isnt tile_selected
-			do =>
-				tile = $(tile)
-				console.log "aa", tile
-				tile.addClass "closed"
-				setTimeout(=> tile.addClass "hidden", 500)
+		$(tile).addClass "closed" for tile in @uis.tilesList when tile isnt tile_selected
 
-new TileManager().bindUI(".tiles")
-
-
+# -----------------------------------------------------------------------------
+#
+# VideoBackground
+#
+# -----------------------------------------------------------------------------
 
 class VideoBackground extends Widget
 
 	constructor: ->
 		@UIS = {
 			background : ".video-background"
-			#body : "body"
 		}		
 
 	bindUI: (ui) ->
@@ -53,8 +53,15 @@ class VideoBackground extends Widget
 			loop: true
 			poster: 'http://serious-works.org/static/img/logo2.png'
 		@uis.background.prepend "<div class='video-fx'></div>"
-		#@uis['fx'] = $('.video-fx')
+		# @uis['fx'] = $('.video-fx')
 
+# -----------------------------------------------------------------------------
+#
+# Main
+#
+# -----------------------------------------------------------------------------	
+
+new Navigation().bindUI(".tiles")
 new VideoBackground().bindUI(".video-background")
 
 # EOF

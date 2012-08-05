@@ -23,10 +23,11 @@ body:
 	&.closed:
 		-webkit-transition-property : "width,height"
 		-webkit-transition-duration : "0.50s"
-		width : 0
-		height: 0
-		white-space: nowrap
-
+		width       : 0
+		height      : 0
+		padding     : 0
+		margin      : 0
+		white-space : nowrap
 	> .wrapper:
 		padding : 10px
 	&.new-line:
@@ -35,12 +36,12 @@ body:
 .Index:
 	color           : $TEXT_COLOR
 	padding         : 20px 0 0 20px
-	.tiles:
-		position    : relative
-		float: left
-
-.Brand.tile:
-	background 		: $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
+	.Navigation:
+		.tiles:
+			position    : relative
+			float: left
+		.brand.tile:
+			background 		: $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
 
 .FooterPanel:
 	position         : absolute
@@ -57,8 +58,6 @@ body:
 	bottom           : 10px
 	right            : 0
 	left             : 40px
-
-
 
 // VIDEO
 
@@ -78,7 +77,6 @@ body:
 .video-background video: 
 	min-height			: 100% 
 	min-width			: 100%
-
 
 .ui-video-background: 
 	position			: absolute
