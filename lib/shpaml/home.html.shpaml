@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	.Index.page
+	.video-background | {##} 
+	.Index.page			
 		.Brand.tile
-			.wrapper | COMPASS PRODUCTION
+			.wrapper | {##} 
 		.tiles
 			.tile
 				.wrapper | Parting words

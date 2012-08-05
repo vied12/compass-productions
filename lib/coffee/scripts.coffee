@@ -34,6 +34,27 @@ class TileManager extends Widget
 				tile.addClass "closed"
 				setTimeout(=> tile.addClass "hidden", 500)
 
-
 new TileManager().bindUI(".tiles")
+
+
+
+class VideoBackground extends Widget
+
+	constructor: ->
+		@UIS = {
+			background : ".video-background"
+			#body : "body"
+		}		
+
+	bindUI: (ui) ->
+		super		
+		@uis.background.videobackground
+			videoSource: ['http://video.lesdebiles.com/05841.mp4']
+			loop: true
+			poster: 'http://serious-works.org/static/img/logo2.png'
+		@uis.background.prepend "<div class='video-fx'></div>"
+		#@uis['fx'] = $('.video-fx')
+
+new VideoBackground().bindUI(".video-background")
+
 # EOF
