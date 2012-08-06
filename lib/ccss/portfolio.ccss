@@ -1,4 +1,5 @@
 TEXT_COLOR  = #C8C8C8
+TEXT_COLOR_LIGHT  = #fff
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR  = "rgba(20,20,20,0.7)"
@@ -51,20 +52,38 @@ body:
 	height           : $BASE_PADDING * 4
 	background-color: $TILE_COLOR
 	> .wrapper:
-		padding: $BASE_PADDING
+		padding: $BASE_PADDING  $BASE_PADDING *2
+
+	.tabs:
+		padding		: $BASE_PADDING * 2
+		font-size	: 1.1em;
+
+	 	li:
+			display		: inline-block
+			padding		: 0 $BASE_PADDING
+
+		li.active:
+			display		: inline-block
+
+	.content:
+		font-size		: 1.4em
+		color 			: $TEXT_COLOR_LIGHT
+
+	.close:
+		position		: absolute
+		right 			: 30px
+		top 			: 20px
 
 .FooterPanel.minimize:
-	bottom           : 0
-	height           : $BASE_PADDING * 4
+		bottom          : 0
+		height          : $BASE_PADDING * 4
 	
 .FooterPanel.minimize > .wrapper:
-	display			: none
+		display			: none
 
-.slideUp:
-	//top:200px
+.FooterPanel.slideUp:
 	bottom	: 0!important
 	transition-property:bottom
-
 	-webkit-transition-duration: 0.5s
 
 
