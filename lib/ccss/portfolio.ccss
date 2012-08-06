@@ -53,13 +53,29 @@ body:
 	> .wrapper:
 		padding: $BASE_PADDING
 
+.FooterPanel.minimize:
+	bottom           : 0
+	height           : $BASE_PADDING * 4
+	
+.FooterPanel.minimize > .wrapper:
+	display			: none
+
+.slideUp:
+	//top:200px
+	bottom	: 0!important
+	transition-property:bottom
+
+	-webkit-transition-duration: 0.5s
+
+
 .Langage:
 	position         : absolute
 	bottom           : 10px
 	right            : 0
 	left             : 40px
 
-// VIDEO
+
+//-------------------------- VIDEO --------------------------------
 
 .video-background, .video-fx:
 	position		: absolute
@@ -89,6 +105,7 @@ body:
 	margin				: 0
 	padding 			: 0 10px
 	list-style 			: none
+	display				: none
 
 .ui-video-background-controls li:
 	float 				: left

@@ -6,8 +6,5 @@
 		{% include "widgets/navigation.html" %}
 		.Langage
 			a href="#ln=fr" | Fr
-		.FooterPanel
-			.wrapper
-				{##}
-
+		{% include "widgets/panel.html" %}	
 {% endblock %}

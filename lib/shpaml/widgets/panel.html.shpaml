@@ -1,0 +1,9 @@
+.FooterPanel
+	.wrapper						
+		ul.tabs
+			li.synopsis | Synopsis
+			li.gallery | Gallery
+			li.screenings | Screenings
+			li.credits | Credits	
+		.content | {##}
+		.close | x		

@@ -26,6 +26,7 @@ class Navigation extends Widget
 			brandTile        : ".brand.tile",
 			main             : ".Main",
 			works            : ".Works",
+			worksTiles       : ".Works .tile"
 		}
 
 		@cache = {
@@ -33,6 +34,7 @@ class Navigation extends Widget
 			currentLevel  : null
 			currentTarget : null
 		}
+		@panel = new Panel().bindUI(".FooterPanel")
 
 	# setData: (data) =>
 	# 	@cache.data = data
@@ -43,6 +45,8 @@ class Navigation extends Widget
 		# $.ajax("/api/data.json", {dataType: 'json', success : this.setData})
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.target)) 
 		@uis.brandTile.live("click", (e) => this.back())
+		$('body').bind 'backToHome', (e, projet) => 
+			this.back()
 		this.showMenu("main")
 
 	# relayout: =>
@@ -61,9 +65,12 @@ class Navigation extends Widget
 			else if @cache.currentTarget == "works"
 				this.projectSelected(target)
 
-	worksSelected: =>
-		this.showMenu("works")
 
+	worksSelected: =>
+		#console.log "WORKS!"		
+		this.showMenu("works")
+		@uis.worksTiles.removeClass "hidden"
+			
 	newsSelected: =>
 		@uis.main.addClass "hidden"
 
@@ -72,7 +79,16 @@ class Navigation extends Widget
 
 	projectSelected: (projet) =>
 		console.log "projectSelected", projet
-		$("body").trigger("projectSelected", projet)
+		if @uis.works.hasClass "focused"
+			this.worksSelected()
+			@uis.works.removeClass "focused"
+			$("body").trigger("projectUnselected")
+		else
+			@uis.works.addClass "focused"
+			@uis.worksTiles.addClass "hidden"		
+			@uis.works.find("[data-target="+projet+"]").removeClass "hidden"		
+			$("body").trigger("projectSelected", projet)
+
 
 	showMenu: (name) =>
 		menu = @ui.find "[data-name="+name+"]"
@@ -86,6 +102,8 @@ class Navigation extends Widget
 
 	back: =>
 		this.showMenu("main")
+
+
 
 # -----------------------------------------------------------------------------
 #
@@ -106,9 +124,71 @@ class VideoBackground extends Widget
 			videoSource: ['http://video.lesdebiles.com/05841.mp4']
 			loop: true
 			poster: 'http://serious-works.org/static/img/logo2.png'
+		@uis.background.videobackground('mute')			
 		@uis.background.prepend "<div class='video-fx'></div>"
 
-		# @uis['fx'] = $('.video-fx')
+
+
+
+# -----------------------------------------------------------------------------
+#
+# Panel
+#
+# -----------------------------------------------------------------------------
+
+
+class Panel extends Widget
+
+	constructor: (projet) ->
+		@UIS = {
+			panel : ".FooterPanel"
+			tabs : ".FooterPanel .tabs"
+			content : ".Footerpanel .content"
+			close : ".FooterPanel .close"
+		}				
+		#@.buildMTabs()
+
+	@cache = {
+			synopsis : null
+			gallery  : null
+			screenings : null
+			credits : null
+		}
+
+	bindUI: (ui) =>
+		super			
+		$('body').bind 'projectSelected', (e, projet) => 
+			@.load(projet) 
+		$('body').bind 'projectUnselected', (e) =>	
+			@.hide()
+		@uis.close.click => 
+			@.hide()	
+			$('body').trigger "backToHome"
+
+		@.hide()
+
+	hide: =>
+		@uis.panel.height("40px")
+		@uis.panel.addClass "minimize"
+
+	open: =>
+		@uis.panel.removeClass "minimize"		
+		panelTop = $(window).height()-200
+		@uis.panel.css "bottom", -panelTop
+		@uis.panel.height(panelTop)
+		@uis.panel.addClass "slideUp"
+		#@uis.menus.live("click", (e) => @.menuSelected(e.target))		
+
+	load: (projet) ->		
+		this.open()
+
+###
+	tabSelected: (tab_selected) =>
+		tab_selected = $(tab_selected)
+###
+	
+
+
 
 # -----------------------------------------------------------------------------
 #
@@ -117,6 +197,6 @@ class VideoBackground extends Widget
 # -----------------------------------------------------------------------------	
 
 new Navigation().bindUI(".Navigation")
-# new VideoBackground().bindUI(".video-background")
+new VideoBackground().bindUI(".video-background")
 
 # EOF
