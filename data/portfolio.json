@@ -1,16 +1,16 @@
 {
     "works": [
-        {"key": "nana", "name": "Nana, goerge & me"},
-        {"key": "joy", "name": "Joy"},
-        {"key": "devil", "name": "The devil in the holy water"},
+        {"key": "nana", "title": "Nana, goerge & me"},
+        {"key": "joy", "title": "Joy"},
+        {"key": "devil", "title": "The devil in the holy water"},
         {
             "key": "Baghdad",
-        	"name": "Baghdad twist",
+        	"title": "Baghdad twist",
 			"synopsys":"Baghdad twist synopsys...",
 			"credits":"Baghdad twist credits..."	
         },
         {   "key": "parting", 
-        	"name": "Parting words",
+        	"title": "Parting words",
         	"synopsys": "Parting Words",
 			"credits": "coucou"
 		}

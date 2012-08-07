@@ -101,7 +101,7 @@ class Navigation extends Widget
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works
-			if project.name == name
+			if project.key == name
 				return project
 
 # -----------------------------------------------------------------------------
@@ -177,8 +177,9 @@ class Panel extends Widget
 		@cache.isOpened = true
 		this.relayout()
 
-	# Feed through the 
-	setProject: (projet) =>
+	setProject: (project) =>
+		# by exemple
+		# @uis.title.html(projet.title)
 		this.open()
 
 # -----------------------------------------------------------------------------
