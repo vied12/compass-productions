@@ -36,22 +36,18 @@ class Navigation extends Widget
 		}
 		
 		@panel = new Panel().bindUI(".FooterPanel")
-		# new VideoBackground().bindUI(".video-background")
+		@background = new VideoBackground().bindUI(".video-background")
 
-	# setData: (data) =>
-	# 	@cache.data = data
-	# 	this.relayout()
+	setData: (data) =>
+		@cache.data = data
 
 	bindUI: (ui) =>
 		super
-		# $.ajax("/api/data.json", {dataType: 'json', success : this.setData})
+		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement)) 
 		@uis.brandTile.live("click", this.back)
 		$('body').bind('backToHome', this.back)
 		this.showMenu("main")
-
-	# relayout: =>
-	# 	console.log , tile for tile in @cache.data.works
 
 	tileSelected: (tile_selected) =>
 		tile_selected = $(tile_selected)
@@ -83,9 +79,10 @@ class Navigation extends Widget
 			$("body").trigger("projectUnselected")
 		else
 			@uis.works.addClass "focused"
-			@uis.worksTiles.addClass "hidden"		
-			@uis.works.find("[data-target="+projet+"]").removeClass "hidden"		
-			$("body").trigger("projectSelected", projet)
+			@uis.worksTiles.addClass "hidden"	
+			@uis.works.find("[data-target="+projet+"]").removeClass "hidden"
+			project_obj = this.getProjectByName(projet)
+			$("body").trigger("projectSelected", project_obj)
 
 	# show the given menu, hide the previous opened menu
 	showMenu: (name) =>
@@ -99,7 +96,13 @@ class Navigation extends Widget
 		@cache.currentLevel  = parseInt(menu.attr("data-level"))
 
 	back: =>
+		$("body").trigger("projectUnselected")
 		this.showMenu("main")
+
+	getProjectByName: (name) =>
+		for project in @cache.data.works
+			if project.name == name
+				return project
 
 # -----------------------------------------------------------------------------
 #
@@ -109,19 +112,14 @@ class Navigation extends Widget
 
 class VideoBackground extends Widget
 
-	constructor: ->
-		@UIS = {
-			background : ".video-background"
-		}		
-
 	bindUI: (ui) ->
 		super		
-		@uis.background.videobackground
+		@ui.videobackground
 			videoSource: ['http://video.lesdebiles.com/05841.mp4']
 			loop: true
 			poster: 'http://serious-works.org/static/img/logo2.png'
-		@uis.background.videobackground('mute')			
-		@uis.background.prepend "<div class='video-fx'></div>"
+		@ui.videobackground('mute')			
+		@ui.prepend "<div class='video-fx'></div>"
 
 # -----------------------------------------------------------------------------
 #
@@ -132,43 +130,55 @@ class VideoBackground extends Widget
 class Panel extends Widget
 
 	constructor: (projet) ->
-		@UIS = {
-			panel   : ".FooterPanel"
-			tabs    : ".FooterPanel .tabs"
-			content : ".Footerpanel .content"
-			close   : ".FooterPanel .close"
-		}
-		#@.buildMTabs()
 
-	@cache = {
-			synopsis   : null
-			gallery    : null
-			screenings : null
-			credits    : null
+		@CONFIG = {
+			panelHeightClosed : 40
+		}
+
+		@UIS = {
+			wrapper : ".wrapper:first"
+			tabs    : ".tabs"
+			content : ".content"
+			close   : ".close"
+		}
+
+		@cache = {
+			isOpened : false
 		}
 
 	bindUI: (ui) =>
 		super
-		$('body').bind 'projectSelected', (e, projet) => 
-			this.load(projet)
+		$('body').bind 'projectSelected', (e, projet) => this.setProject(projet)
 		$('body').bind('projectUnselected', this.hide)
 		@uis.close.click =>
 			this.hide()
 			$('body').trigger "backToHome"
+		$(window).resize(this.relayout)
+		this.relayout()
+
+	relayout: =>
+		if @cache.isOpened
+			window_height = $(window).height()
+			navigation_ui = $(".Navigation")
+			# just under the navigation
+			top_offset = navigation_ui.offset().top + navigation_ui.height()
+			@ui.css({top:top_offset, minHeight:window_height - top_offset})
+		else
+			top_offset = $(window).height() - @CONFIG.panelHeightClosed
+			@ui.css({top : top_offset})
 
 	hide: =>
-		@uis.panel.height("40px")
-		@uis.panel.addClass "minimize"
+		@cache.isOpened = false
+		this.relayout()
+		setTimeout((=> @uis.wrapper.addClass "hidden"), 250)
 
 	open: =>
-		@uis.panel.removeClass "minimize"
-		panelTop = $(window).height()-200
-		@uis.panel.css "bottom", -panelTop
-		@uis.panel.height(panelTop)
-		@uis.panel.addClass "slideUp"
-		#@uis.menus.live("click", (e) => @.menuSelected(e.target))
+		@uis.wrapper.removeClass "hidden"
+		@cache.isOpened = true
+		this.relayout()
 
-	load: (projet) ->
+	# Feed through the 
+	setProject: (projet) =>
 		this.open()
 
 # -----------------------------------------------------------------------------

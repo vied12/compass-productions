@@ -1,5 +1,5 @@
 .FooterPanel
-	.wrapper						
+	.wrapper.hidden					
 		ul.tabs
 			li.synopsis | Synopsis
 			li.gallery | Gallery

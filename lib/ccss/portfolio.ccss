@@ -15,8 +15,8 @@ body:
 	float              : left
 	background-color   : $TILE_COLOR
 	overflow           : hidden
-	z-index				: 2
-	position			: relative
+	z-index            : 2
+	position           : relative
 	//-moz-transform     :"rotate(10deg)"
 	//-webkit-transform  :"rotate(10deg)"
 	//-o-transform       :"rotate(10deg)"
@@ -32,67 +32,49 @@ body:
 	> .wrapper:
 		padding : 10px
 	&.new-line:
-		clear: both
+		clear : both
 
 .Index:
-	color           : $TEXT_COLOR
-	padding         : 20px 0 0 20px
+	color   : $TEXT_COLOR
+	padding : 20px 0 0 20px
 	.Navigation:
 		.menu:
-			position    : relative
-			float: left
+			position : relative
+			float    : left
 		.brand.tile:
-			background 		: $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
+			background : $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
 
 .FooterPanel:
-	position         : absolute
-	bottom           : 0
-	right            : 0
-	left             : $BASE_PADDING * 2
-	height           : $BASE_PADDING * 4
-	background-color: $TILE_COLOR
+	position            : absolute
+	right               : 0
+	left                : $BASE_PADDING * 2
+	min-height          : 100px
+	background-color    : $TILE_COLOR
+	-webkit-transition-property : top
+	-webkit-transition-duration: 0.25s
 	> .wrapper:
 		padding: $BASE_PADDING  $BASE_PADDING *2
-
-	.tabs:
-		padding		: $BASE_PADDING * 2
-		font-size	: 1.1em;
-
-	 	li:
-			display		: inline-block
-			padding		: 0 $BASE_PADDING
-
-		li.active:
-			display		: inline-block
-
-	.content:
-		font-size		: 1.4em
-		color 			: $TEXT_COLOR_LIGHT
-
-	.close:
-		position		: absolute
-		right 			: 30px
-		top 			: 20px
-
-.FooterPanel.minimize:
-		bottom          : 0
-		height          : $BASE_PADDING * 4
-	
-.FooterPanel.minimize > .wrapper:
-		display			: none
-
-.FooterPanel.slideUp:
-	bottom	: 0!important
-	transition-property:bottom
-	-webkit-transition-duration: 0.5s
-
+		.tabs:
+			padding   : $BASE_PADDING * 2
+			font-size : 1.1em
+		 	li:
+				display	: inline-block
+				padding : 0 $BASE_PADDING
+				&.active:
+					display : inline-block
+		.content:
+			font-size : 1.4em
+			color     : $TEXT_COLOR_LIGHT
+		.close:
+			position : absolute
+			right    : 30px
+			top      : 20px
 
 .Langage:
 	position         : absolute
 	bottom           : 10px
 	right            : 0
 	left             : 40px
-
 
 //-------------------------- VIDEO --------------------------------
 
