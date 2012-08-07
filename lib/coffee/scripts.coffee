@@ -218,6 +218,7 @@ class FlickrGallery extends Widget
 
 	bindUI: (ui) =>
 		super
+		@ui.empty()
 		ApiFlickr.interrogation(
 		    'flickr.photos.search'
 		        'api_key': '9f9b2bab6a28a524511619e703560d62'
