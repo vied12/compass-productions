@@ -1,12 +1,15 @@
-TEXT_COLOR  = #C8C8C8
+
+TEXT_COLOR  = #FFF
 TEXT_COLOR_LIGHT  = #fff
+TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR  = "rgba(20,20,20,0.7)"
 BASE_PADDING= 10px
 
 body:
-	background-color : green
+	background-color 	: green
+	font-weight			: bold	
 
 .tile:
 	width              : $TILE_WIDTH
@@ -55,16 +58,32 @@ body:
 	> .wrapper:
 		padding: $BASE_PADDING  $BASE_PADDING *2
 		.tabs:
-			padding   : $BASE_PADDING * 2
-			font-size : 1.1em
+			padding   		: $BASE_PADDING * 2 0
+			font-size 	: 1.1em
+			color 		: $TEXT_COLOR_DARK
 		 	li:
 				display	: inline-block
 				padding : 0 $BASE_PADDING
 				&.active:
-					display : inline-block
+					color 	: $TEXT_COLOR_LIGHT
 		.content:
-			font-size : 1.4em
-			color     : $TEXT_COLOR_LIGHT
+			font-size 	: 1.6em
+			color     	: $TEXT_COLOR_LIGHT
+			padding 	: $BASE_PADDING * 2
+
+		.tabContent:
+			position : absolute			
+			-webkit-transition: all linear 0.2s
+			-webkit-transform: "translateX(300px)"
+			opacity		: 0	
+			&.active: 
+				opacity:1			
+				-webkit-transform: "translateX(0px)"
+				
+			.gallery li:
+				display		: inline-block
+				margin		: 5px
+
 		.close:
 			position : absolute
 			right    : 30px

@@ -1,9 +1,14 @@
 .FooterPanel
 	.wrapper.hidden					
-		ul.tabs
-			li.synopsis | Synopsis
-			li.gallery | Gallery
-			li.screenings | Screenings
-			li.credits | Credits	
-		.content | {##}
+		article.tabs
+			li data-target="synopsis" | Synopsis
+			li data-target="gallery" | Gallery
+			li data-target="screenings" | Screenings
+			li data-target="credits" | Credits	
+		.content
+			.tabContent data-name="synopsis" | {##}
+			.tabContent data-name="gallery" 
+				ul.gallery | {##}
+			.tabContent data-name="screenings" | {##}
+			.tabContent data-name="credits" | {##}
 		.close | x		

@@ -46,8 +46,10 @@ class Navigation extends Widget
 		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement)) 
 		@uis.brandTile.live("click", this.back)
-		$('body').bind('backToHome', this.back)
+		$('body').bind('backToHome', this.back)		
+		$('body').bind  'cacheGallery', (e, project, gallery) => @.cacheProjectGallery(project, gallery)
 		this.showMenu("main")
+
 
 	tileSelected: (tile_selected) =>
 		tile_selected = $(tile_selected)
@@ -72,7 +74,7 @@ class Navigation extends Widget
 	contactSelected: =>
 		@uis.main.addClass "hidden"
 
-	projectSelected: (projet) =>
+	projectSelected: (project) =>
 		if @uis.works.hasClass "focused"
 			this.worksSelected()
 			@uis.works.removeClass "focused"
@@ -80,8 +82,8 @@ class Navigation extends Widget
 		else
 			@uis.works.addClass "focused"
 			@uis.worksTiles.addClass "hidden"	
-			@uis.works.find("[data-target="+projet+"]").removeClass "hidden"
-			project_obj = this.getProjectByName(projet)
+			@uis.works.find("[data-target="+project+"]").removeClass "hidden"
+			project_obj = this.getProjectByName(project)
 			$("body").trigger("projectSelected", project_obj)
 
 	# show the given menu, hide the previous opened menu
@@ -102,7 +104,15 @@ class Navigation extends Widget
 	getProjectByName: (name) =>
 		for project in @cache.data.works
 			if project.key == name
+				console.log "project", project
 				return project
+
+	cacheProjectGallery: (project, gallery) =>
+		for cached_project in @cache.data.works
+			if cached_project.key == project.key
+				cached_project["gallery"] =  gallery
+
+
 
 # -----------------------------------------------------------------------------
 #
@@ -137,13 +147,15 @@ class Panel extends Widget
 
 		@UIS = {
 			wrapper : ".wrapper:first"
-			tabs    : ".tabs"
+			tabs    : ".tabs li"
+			tabContents : ".tabContent"
 			content : ".content"
 			close   : ".close"
 		}
 
 		@cache = {
 			isOpened : false
+			currentTab : null
 		}
 
 	bindUI: (ui) =>
@@ -153,6 +165,8 @@ class Panel extends Widget
 		@uis.close.click =>
 			this.hide()
 			$('body').trigger "backToHome"
+			
+		@uis.tabs.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 		$(window).resize(this.relayout)
 		this.relayout()
 
@@ -175,12 +189,52 @@ class Panel extends Widget
 	open: =>
 		@uis.wrapper.removeClass "hidden"
 		@cache.isOpened = true
+		@.tabSelected(@uis.wrapper.find('.tabs li:first'))
 		this.relayout()
 
 	setProject: (project) =>
-		# by exemple
-		# @uis.title.html(projet.title)
+		@uis.content.find("[data-name=gallery]").html(new FlickrGallery("PROJECT_FLICKR_URL").bindUI(".gallery"))
+		@uis.content.find("[data-name=synopsis]").html(project.synopsis)
+		@uis.content.find("[data-name=screenings]").html(project.screenings)
+		@uis.content.find("[data-name=credits]").html(project.credits)
 		this.open()
+
+	tabSelected: (tab_selected) =>		
+		tab_selected = $(tab_selected)	
+		target = tab_selected.attr "data-target"
+		tabContent = @uis.content.find("[data-name="+target+"]")
+		@uis.tabs.removeClass "active"
+		tab_selected.addClass "active"
+		@uis.content.find('.tabContent').removeClass "active"		
+		tabContent.addClass "active"
+
+
+class FlickrGallery extends Widget
+
+	constructor: (url) ->
+		@UIS = {
+			showMore    : ".more"
+		}
+
+	bindUI: (ui) =>
+		super
+		ApiFlickr.interrogation(
+		    'flickr.photos.search'
+		        'api_key': '9f9b2bab6a28a524511619e703560d62'
+		        'text': 'wombat animal'
+		        'per_page': 20
+		    (d) =>		        
+		        $.each d.photos.photo, (i,e) =>
+		        	li = $('<li></li>')
+		        	image = $('<img />').attr('src', ApiFlickr.url_photo( e, 'q' ))
+		        	link = $('<a></a>').attr('target', '_blank').attr('href', ApiFlickr.url_page( e ))     	
+		        	link.append image
+		        	li.append link
+		        	@ui.append li	        	
+		)
+
+	showMore: =>
+		log.console "more"
 
 # -----------------------------------------------------------------------------
 #

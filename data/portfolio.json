@@ -4,14 +4,14 @@
         {"key": "joy", "title": "Joy"},
         {"key": "devil", "title": "The devil in the holy water"},
         {
-            "key": "Baghdad",
+            "key": "baghdad",
         	"title": "Baghdad twist",
-			"synopsys":"Baghdad twist synopsys...",
+			"synopsis":"Baghdad twist synopsys...",
 			"credits":"Baghdad twist credits..."	
         },
         {   "key": "parting", 
         	"title": "Parting words",
-        	"synopsys": "Parting Words",
+        	"synopsis": "Parting Words",
 			"credits": "coucou"
 		}
     ]
