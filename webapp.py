@@ -14,7 +14,9 @@
 
 from flask import Flask, render_template, request
 from flaskext.babel import Babel
-import os, sys, sources.preprocessing as preprocessing, json
+import sources.preprocessing as preprocessing
+import sources.flickr as flickr
+import os, sys, json
 
 app = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
@@ -27,9 +29,15 @@ app.config.from_pyfile("settings.cfg")
 
 @app.route('/api/data.json')
 def data():
-	# FIXME: set cache
+	# FIXME: set cache, set language
 	with open(os.path.join(app.root_path, "data", "portfolio.json")) as f:
 		return f.read()
+
+@app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>/data.json')
+def getFlickrSetPhotos(set_id, qualities):
+	qualities = qualities.split(",")
+	api = flickr.Flickr()
+	return json.dumps(api.getSetPhotos(set_id=set_id, qualities=qualities, page=1, per_page=500))
 
 # -----------------------------------------------------------------------------
 #

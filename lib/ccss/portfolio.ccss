@@ -53,6 +53,7 @@ body:
 	left                : $BASE_PADDING * 2
 	min-height          : 100px
 	background-color    : $TILE_COLOR
+	overflow            : hidden
 	-webkit-transition-property : top
 	-webkit-transition-duration: 0.25s
 	> .wrapper:
@@ -70,7 +71,6 @@ body:
 			font-size 	: 1.6em
 			color     	: $TEXT_COLOR_LIGHT
 			padding 	: $BASE_PADDING * 2
-
 		.tabContent:
 			position : absolute			
 			-webkit-transition: all linear 0.2s
@@ -79,11 +79,9 @@ body:
 			&.active: 
 				opacity:1			
 				-webkit-transform: "translateX(0px)"
-				
 			.gallery li:
 				display		: inline-block
 				margin		: 5px
-
 		.close:
 			position : absolute
 			right    : 30px

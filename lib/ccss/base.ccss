@@ -27,8 +27,8 @@ PAD_UNIT=10px
 
 .no-animation:
 	&, *, .animated:
-		transition-property: "none" !important
-		transition-duration: "0.0s" !important
+		-webkit-transition-property: "none" !important
+		-webkit-transition-duration: "0.0s" !important
 
 .use-base:
 	color:       $BASIC_COLOR

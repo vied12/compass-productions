@@ -36,7 +36,7 @@ class Navigation extends Widget
 		}
 		
 		@panel = new Panel().bindUI(".FooterPanel")
-		@background = new VideoBackground().bindUI(".video-background")
+		# @background = new VideoBackground().bindUI(".video-background")
 
 	setData: (data) =>
 		@cache.data = data
@@ -104,7 +104,6 @@ class Navigation extends Widget
 	getProjectByName: (name) =>
 		for project in @cache.data.works
 			if project.key == name
-				console.log "project", project
 				return project
 
 	cacheProjectGallery: (project, gallery) =>
@@ -141,7 +140,7 @@ class Panel extends Widget
 
 	constructor: (projet) ->
 
-		@CONFIG = {
+		@OPTIONS = {
 			panelHeightClosed : 40
 		}
 
@@ -160,6 +159,7 @@ class Panel extends Widget
 
 	bindUI: (ui) =>
 		super
+		@flickrGallery = new FlickrGallery("PROJECT_FLICKR_URL").bindUI(@ui.find ".gallery")
 		$('body').bind 'projectSelected', (e, projet) => this.setProject(projet)
 		$('body').bind('projectUnselected', this.hide)
 		@uis.close.click =>
@@ -178,7 +178,7 @@ class Panel extends Widget
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
 			@ui.css({top:top_offset, minHeight:window_height - top_offset})
 		else
-			top_offset = $(window).height() - @CONFIG.panelHeightClosed
+			top_offset = $(window).height() - @OPTIONS.panelHeightClosed
 			@ui.css({top : top_offset})
 
 	hide: =>
@@ -193,7 +193,7 @@ class Panel extends Widget
 		this.relayout()
 
 	setProject: (project) =>
-		@uis.content.find("[data-name=gallery]").html(new FlickrGallery("PROJECT_FLICKR_URL").bindUI(".gallery"))
+		@flickrGallery.setPhotoSet("72157621752440028")
 		@uis.content.find("[data-name=synopsis]").html(project.synopsis)
 		@uis.content.find("[data-name=screenings]").html(project.screenings)
 		@uis.content.find("[data-name=credits]").html(project.credits)
@@ -212,27 +212,28 @@ class Panel extends Widget
 class FlickrGallery extends Widget
 
 	constructor: (url) ->
+		@OPTIONS = {
+
+		}
+
 		@UIS = {
 			showMore    : ".more"
 		}
 
 	bindUI: (ui) =>
 		super
-		@ui.empty()
-		ApiFlickr.interrogation(
-		    'flickr.photos.search'
-		        'api_key': '9f9b2bab6a28a524511619e703560d62'
-		        'text': 'wombat animal'
-		        'per_page': 20
-		    (d) =>		        
-		        $.each d.photos.photo, (i,e) =>
-		        	li = $('<li></li>')
-		        	image = $('<img />').attr('src', ApiFlickr.url_photo( e, 'q' ))
-		        	link = $('<a></a>').attr('target', '_blank').attr('href', ApiFlickr.url_page( e ))     	
-		        	link.append image
-		        	li.append link
-		        	@ui.append li	        	
-		)
+		return this
+		
+	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z/data.json", {dataType: 'json', success : this.setData})
+
+	setData: (data) =>
+		for photos in data
+			li = $('<li></li>')
+			image = $('<img />').attr('src', photos.q)
+			link = $('<a></a>').attr('target', '_blank').attr('href', photos.z)     	
+			link.append image
+			li.append link
+			@ui.append(li)
 
 	showMore: =>
 		log.console "more"
