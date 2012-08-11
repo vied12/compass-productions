@@ -79,9 +79,11 @@ body:
 			&.active: 
 				opacity:1			
 				-webkit-transform: "translateX(0px)"
-			.gallery li:
-				display		: inline-block
-				margin		: 5px
+			.gallery:
+				overflow : auto
+				li:
+					display		: inline-block
+					margin		: 5px
 		.close:
 			position : absolute
 			right    : 30px

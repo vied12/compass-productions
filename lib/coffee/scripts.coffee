@@ -159,7 +159,7 @@ class Panel extends Widget
 
 	bindUI: (ui) =>
 		super
-		@flickrGallery = new FlickrGallery("PROJECT_FLICKR_URL").bindUI(@ui.find ".gallery")
+		@flickrGallery = new FlickrGallery().bindUI(@ui.find ".gallery")
 		$('body').bind 'projectSelected', (e, projet) => this.setProject(projet)
 		$('body').bind('projectUnselected', this.hide)
 		@uis.close.click =>
@@ -168,9 +168,10 @@ class Panel extends Widget
 			
 		@uis.tabs.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 		$(window).resize(this.relayout)
-		this.relayout()
+		this.relayout(false)
 
-	relayout: =>
+	relayout: (open=false) =>
+		@cache.isOpened = open
 		if @cache.isOpened
 			window_height = $(window).height()
 			navigation_ui = $(".Navigation")
@@ -183,14 +184,15 @@ class Panel extends Widget
 
 	hide: =>
 		@cache.isOpened = false
-		this.relayout()
+		this.relayout(false)
 		setTimeout((=> @uis.wrapper.addClass "hidden"), 250)
 
 	open: =>
 		@uis.wrapper.removeClass "hidden"
-		@cache.isOpened = true
 		@.tabSelected(@uis.wrapper.find('.tabs li:first'))
-		this.relayout()
+		this.relayout(true)
+		# relayout the flickr widget after the opening animation
+		setTimeout((=> @flickrGallery.relayout()), 500)
 
 	setProject: (project) =>
 		@flickrGallery.setPhotoSet("72157621752440028")
@@ -222,7 +224,14 @@ class FlickrGallery extends Widget
 
 	bindUI: (ui) =>
 		super
+		this.relayout()
+		$(window).resize(this.relayout)
 		return this
+
+	relayout: =>
+		# fix the height of the list, to show the scrollbar
+		height = $(window).height() - @ui.offset().top
+		@ui.css({height: height})
 		
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z/data.json", {dataType: 'json', success : this.setData})
 
