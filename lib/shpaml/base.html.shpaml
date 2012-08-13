@@ -10,4 +10,5 @@ html lang="en"
 		script type="text/javascript" src="{{url_for('static', filename='js/widget.js')   }}"  | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/api.flickr.js')  }}"  | {# #}		
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.videobackground.js')  }}"  | {# #}		
+		script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"  | {# #}		
 		script type="text/javascript" src="{{url_for('static', filename='js/scripts.js')  }}"  | {# #}

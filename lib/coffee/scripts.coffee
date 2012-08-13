@@ -7,10 +7,11 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 05-Aug-2012
+# Last mod : 12-Aug-2012
 # -----------------------------------------------------------------------------
 
 Widget = window.serious.Widget
+URL    = new window.serious.URL()
 
 # -----------------------------------------------------------------------------
 #
@@ -31,52 +32,62 @@ class Navigation extends Widget
 
 		@cache = {
 			data          : null
-			currentLevel  : null
 			currentTarget : null
 		}
 		
-		@panel = new Panel().bindUI(".FooterPanel")
 		# @background = new VideoBackground().bindUI(".video-background")
 
 	setData: (data) =>
 		@cache.data = data
+		@panel = new Panel().bindUI(".FooterPanel") # needs to be instanciate before selectTile call
+		# init
+		params = URL.get()
+		tile = params.m or "main"
+		this.selectTile(tile) # depends of @cache.data
 
 	bindUI: (ui) =>
 		super
 		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
+		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement)) 
 		@uis.brandTile.live("click", this.back)
 		$('body').bind('backToHome', this.back)		
 		$('body').bind  'cacheGallery', (e, project, gallery) => @.cacheProjectGallery(project, gallery)
-		this.showMenu("main")
 
+	# trigger the good action with the given selected tile name
+	selectTile: (tile) =>
+		URL.update({m:tile})
+		if tile == "main"
+			this.showMenu("main")
+		else if tile == "works"
+			this.selectWorks()
+		else if tile == "news"
+			this.selectNews()
+		else if tile == "contact"
+			this.selectContact()
+		else
+			this.selectWorks()
+			this.selectProjet(tile)
 
-	tileSelected: (tile_selected) =>
-		tile_selected = $(tile_selected)
-		if tile_selected.hasClass "tile"
-			target = tile_selected.attr "data-target"
-			if target == "works"
-				this.worksSelected()
-			else if target == "news"
-				this.newsSelected()
-			else if target == "contact"
-				this.contactSelected()
-			else if @cache.currentTarget == "works"
-				this.projectSelected(target)
+	tileSelected: (tile_selected_ui) =>
+		tile_selected_ui = $(tile_selected_ui)
+		if tile_selected_ui.hasClass "tile"
+			target = tile_selected_ui.attr "data-target"
+			this.selectTile(target)
 
-	worksSelected: =>
+	selectWorks: =>
 		this.showMenu("works")
 		@uis.worksTiles.removeClass "hidden"
 			
-	newsSelected: =>
+	selectNews: =>
 		@uis.main.addClass "hidden"
 
-	contactSelected: =>
+	selectContact: =>
 		@uis.main.addClass "hidden"
 
-	projectSelected: (project) =>
+	selectProjet: (project) =>
 		if @uis.works.hasClass "focused"
-			this.worksSelected()
+			this.selectTile "works"
 			@uis.works.removeClass "focused"
 			$("body").trigger("projectUnselected")
 		else
@@ -91,15 +102,13 @@ class Navigation extends Widget
 		menu = @ui.find "[data-name="+name+"]"
 		if not menu.length > 0
 			return false
+		@ui.find(".menu").addClass "hidden"
 		menu.removeClass "hidden"
-		if @cache.currentTarget != null and @cache.currentTarget != name
-			@ui.find("[data-name="+@cache.currentTarget+"]").addClass "hidden"
 		@cache.currentTarget = name
-		@cache.currentLevel  = parseInt(menu.attr("data-level"))
 
 	back: =>
 		$("body").trigger("projectUnselected")
-		this.showMenu("main")
+		this.selectTile("main")
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works
@@ -110,8 +119,6 @@ class Navigation extends Widget
 		for cached_project in @cache.data.works
 			if cached_project.key == project.key
 				cached_project["gallery"] =  gallery
-
-
 
 # -----------------------------------------------------------------------------
 #
@@ -165,10 +172,10 @@ class Panel extends Widget
 		@uis.close.click =>
 			this.hide()
 			$('body').trigger "backToHome"
-			
 		@uis.tabs.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 		$(window).resize(this.relayout)
 		this.relayout(false)
+		return this
 
 	relayout: (open=false) =>
 		@cache.isOpened = open
@@ -201,7 +208,7 @@ class Panel extends Widget
 		@uis.content.find("[data-name=credits]").html(project.credits)
 		this.open()
 
-	tabSelected: (tab_selected) =>		
+	tabSelected: (tab_selected) =>
 		tab_selected = $(tab_selected)	
 		target = tab_selected.attr "data-target"
 		tabContent = @uis.content.find("[data-name="+target+"]")
@@ -209,7 +216,6 @@ class Panel extends Widget
 		tab_selected.addClass "active"
 		@uis.content.find('.tabContent').removeClass "active"		
 		tabContent.addClass "active"
-
 
 class FlickrGallery extends Widget
 
@@ -229,7 +235,7 @@ class FlickrGallery extends Widget
 		return this
 
 	relayout: =>
-		# fix the height of the list, to show the scrollbar
+		# set the height of the list, to show the scrollbar
 		height = $(window).height() - @ui.offset().top
 		@ui.css({height: height})
 		
@@ -252,6 +258,5 @@ class FlickrGallery extends Widget
 # Main
 #
 # -----------------------------------------------------------------------------	
-
 new Navigation().bindUI(".Navigation")
 # EOF
