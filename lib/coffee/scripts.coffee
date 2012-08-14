@@ -51,8 +51,7 @@ class Navigation extends Widget
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement)) 
 		@uis.brandTile.live("click", this.back)
-		$('body').bind('backToHome', this.back)		
-		$('body').bind  'cacheGallery', (e, project, gallery) => @.cacheProjectGallery(project, gallery)
+		$('body').bind('backToHome', this.back)
 
 	# trigger the good action with the given selected tile name
 	selectTile: (tile) =>
@@ -114,11 +113,6 @@ class Navigation extends Widget
 		for project in @cache.data.works
 			if project.key == name
 				return project
-
-	cacheProjectGallery: (project, gallery) =>
-		for cached_project in @cache.data.works
-			if cached_project.key == project.key
-				cached_project["gallery"] =  gallery
 
 # -----------------------------------------------------------------------------
 #
@@ -202,7 +196,8 @@ class Panel extends Widget
 		setTimeout((=> @flickrGallery.relayout()), 500)
 
 	setProject: (project) =>
-		@flickrGallery.setPhotoSet("72157621752440028")
+		if project.gallery
+			@flickrGallery.setPhotoSet(project.gallery)
 		@uis.content.find("[data-name=synopsis]").html(project.synopsis)
 		@uis.content.find("[data-name=screenings]").html(project.screenings)
 		@uis.content.find("[data-name=credits]").html(project.credits)
@@ -216,6 +211,12 @@ class Panel extends Widget
 		tab_selected.addClass "active"
 		@uis.content.find('.tabContent').removeClass "active"		
 		tabContent.addClass "active"
+
+# -----------------------------------------------------------------------------
+#
+# Flickr Gallery
+#
+# -----------------------------------------------------------------------------
 
 class FlickrGallery extends Widget
 
