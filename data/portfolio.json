@@ -1,18 +1,616 @@
 {
     "works": [
-        {"key": "nana", "title": "Nana, goerge & me"},
-        {"key": "joy", "title": "Joy"},
-        {"key": "devil", "title": "The devil in the holy water"},
         {
-            "key": "baghdad",
-        	"title": "Baghdad twist",
-			"synopsis":"Baghdad twist synopsys...",
-			"credits":"Baghdad twist credits..."	
+            "key"       : "devil", 
+            "title"     : "The devil in the holy water",
+            "email"     : "edou4rd@gmail.com",
+            "synopsis"  : "The time - the outset of a new millennium.\n\nThe place - Rome, the eternal city, sacred and profane.\n\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.\n\nAre you ready?\n\nFilmmaker Joe Balass is there - The Devil in the Holy Water is his vibrant document of that moment.\n\nCritical and joyous, entertaining and thought-provoking, The Devil in the Holy Water goes to the epicentre of Catholic culture to get a reading on contemporary sexuality and morality.\n\nWhile the Vatican opposes World Pride, drawing upon its considerable influence to try to stop the event, Italians themselves send a more complex - and ultimately tolerant - message.\n\nThe opening of the monumental holy doors at Saint Peter's inaugurates the Jubilee, while debate rages through the ancient city. Vatican kingmaker, Cardinal Roger Etchegaray, finally concedes to an interview - while Imma Battaglia, a tempestuous Joan of Arc for our times, fearlessly spearheads the fight for gay visibility.\n\nThe music of Domenico Modugno sets the tone, and Balass takes to the streets, framing his interviews with astutely selected archival images - a gay priest speaking publicly at a 1982 demo, the first Italian gay marriage in 1992, and the Pope attacking homosexuals in 1994.\n\nAs the World Pride controversy heats up, the filmmaker encounters practical-minded grandmothers and rigid young neo-fascists, self-effacing nuns and ebullient drag queens. Pilgrims seeking absolution from sins, along with Emiliano and Pier Paolo, a couple of young guys who wander though the proceedings, just looking for a little fun.\n\nThe result is a candid, enlightening and often humorous, feature-length documentary. The Devil in the Holy Water captures two historic events as they intersect, highlighting a city and a culture in dynamic transition.\n\nFilmmaker’s biography\nProducer & director Joe Balass is an independent filmmaker working in both fiction and documentary. He currently resides in Montreal where he operates an independent production company, Compass Productions Inc. In addition, he also freelances as an editor, photographer and cameraman. He was born in Baghdad, Iraq in 1966 and after escaping with his family at the age of four, he eventually settled in Canada. His work has taken him all over Asia, Europe and North America. Balass has produced and directed a number of award-winning films and videos, including Nana, George & Me (1997). He expresses a very spontaneous blend of seriousness and humour in his approach to filmmaking.\nAt present, Joe Balass is working on his first feature-length fiction film as well as a number of documentary projects.",
+            "galery"    : "72157621752440028",
+            "videos"    : ["http://vimeo.com/6437816", "http://vimeo.com/43038579"],
+            "screenings": [
+                {
+                    "title" : "photo of dress Brussels Lesbian & Gay Film Festival",
+                    "date"  : "January 19-20, 2002"
+                },
+                {
+                    "title" : "Victoria Independent Film & Video Festival",
+                    "date"  : "Monday, February 4, 2002 7:15 PM Capital 6 Cinema 1"
+                },
+                {
+                    "title" : "Rendez-vous du cinéma québécois",
+                    "date"  : "Wednesday, February 20, 2002, 7:15 PM Cinémathèque québécoise"
+                },
+                {
+                    "title" : "Montréal Theatrical Run",
+                    "body"  : "Version française :\nCinémathèque Québécoise\ndu 29 au 31 mars à 19h\n355, boul. de Maisonneuve Est"
+                },
+                {
+                    "title" : "English version :",
+                    "body"  : "NFB Cinéma ONF\nMarch 19 at 9pm\nMarch 20-21 at 7pm & 9pm\n1564, rue Saint-Denis"
+                },
+                {
+                    "title" : "Milano - Cinema Anteo",
+                    "date"  : "2 Aprile, ore 21.00"
+                },
+                {
+                    "title" : "Roma - Cinema Nuovo Olimpia",
+                    "date"  : "4 Aprile, ore 21.00"
+                },
+                {
+                    "title" : "London Lesbian & Gay Film Festival",
+                    "date"  : "Sunday, April 7\n20.30 NFT 3"
+                },
+                {
+                    "title" : "CinemaArte Venice Pride Film Festival",
+                    "date"  : "Venerdì 10 maggio",
+                    "body"  : "Videoteca Pasinetti di Venezia\nPalazzo Carminati\nWinner of the Audience Award for Best Documentary"
+                },
+                {
+                    "title" : "Milan Lesbian & Gay Film Festival",
+                    "date"  : "Lunedì 3 Giugno ore 14.00",
+                    "body"  : "Cinema Pasquirolo\nWinner of the Audience Award for Best Documentary"
+                },
+                {
+                    "title" : "Seattle International Film Festival",
+                    "date"  : "Sunday June 9th at 6:30PM\nFriday June 14th at 4:30PM",
+                    "body"  : "Broadway Performance Hall\nFinalist - Alpha Cine Award"
+                },
+                {
+                    "title" : "San Francisco Lesbian & Gay Film Festival",
+                    "date"  : "Friday June 21st at 3:30PM Castro Theatre"
+                },
+                {
+                    "title" : "Outfest: Los Angeles Lesbian & Gay Film Festival",
+                    "date"  : "Sun Jul 14, 3:00pm DGA Video Room\nFri Jul 19, 3:00pm Village Cinema"
+                },
+                {
+                    "title" : "Out on Screen, Vancouver Lesbian & Gay Film Festival",
+                    "date"  : "August 14 at 7:00PM Cinemark Tinseltown"
+                },
+                {
+                    "title" : "QueerDOC Festival, Sydney",
+                    "date"  : "Sunday, September 8 at 1:00pm Chauvel Cinemas"
+                },
+                {
+                    "title" : "Lisbon Lesbian & Gay Film Festival",
+                    "date"  : "September 21 at 7:00pm FNAC-Chiado"
+                },
+                {
+                    "title" : "Image + Nation Montréal International Queer Film & Video Festival",
+                    "date"  : "September 22 Cinéma Parisien"
+                },
+                {
+                    "title" : "Docupolis International Documentary Film Festival, Barcelona",
+                    "date"  : "October 16-20, 2002"
+                },
+                {
+                    "title" : "Madrid Lesbian & Gay Film & Video Festival",
+                    "date"  : "November 1-10, 2002"
+                },
+                {
+                    "title" : "Fort Lauderdale International Film Festival",
+                    "date"  : "November 2, 4, 7, 2002"
+                },
+                {
+                    "title" : "Ajijic International Film Festival",
+                    "date"  : "November 22 at 8:20pm"
+                },
+                {
+                    "title" : "Festival MIX BRASIL",
+                    "date"  : "November 15 at 12:30PM CCBB\nNovember 23 at 6:30 PM CCBB\nNovember 24 at 6:00 PM MAM"
+                },
+                {
+                    "title" : "Boston Lesbian & Gay Film & Video Festival",
+                    "date"  : "May 1-19, 2003"
+                },
+                {
+                    "title" : "Festival internazionale di cinema e video gay di Firenze",
+                    "date"  : "May 10, 2003"
+                },
+                {
+                    "title" : "Festival international de cinéma gai et lesbien de Montpellier",
+                    "date"  : "May 29, 2003 at 18h00"
+                },
+                {
+                    "title" : "Planete - Italian TV Premiere",
+                    "date"  : "Friday June 6, 2003 at 9pm"
+                },
+                {
+                    "title" : "Identities Queer Film Festival, Vienna",
+                    "date"  : "June 5-12, 2003"
+                },
+                {
+                    "title" : "Toronto Italian Film Festival",
+                    "date"  : "June 14, 2003"
+                },
+                {
+                    "title" : "Sundance Channel - US TV Premiere",
+                    "date"  : "Monday June 16, 2003 at 9pm\nTuesday June 24, 2003 at 12pm\nSaturday June 28, 2003 at 3pm"
+                }
+            ],
+            "press"     : [
+                {
+                    "article" : "Balass' film is an intriguing and enlightening look at a city trying to reconcile religious identity and bravado with tolerant, unified attitudes. The Devil in the Holy Water is a film to be celebrated and embraced as its themes and nuances address issues relevant to many.",
+                    "title"   : "Sarah Petrescu, Nexus The Victoria Scene, February 12 2002"
+                },
+                {
+                    "article" : "Joe Balass avait marqué le festival Image + Nation de 1998 avec Nana, George et moi mettant en vedette Nana, la grand-mère juive irakienne du réalisateur et un homosexuel anglais âgé, également d'origine juive irakienne, dans une savoureuse et tendre confrontation. De ce regard porté par Joe Balass sur ses propres origines émergeait la curiosité du cinéaste pour les frontières religieuses, sociales, nationales, linguistiques et culturelles. Avec Le diable dans l'eau bénite, Joe Balass a planté sa caméra au cœur de deux événements qui ont soulevé les passions italiennes en l'an 2000…Ni pamphlet anti-catholique ni manifeste pro-gai, Le diable dans l'eau bénite joue de miroir entre les deux événements à travers plusieurs témoignages. Sans forcer le trait, Joe Balass nous laisse entrevoir que la ligne de fracture entre l'Eglise et l'homosexualité n'est pas une ligne droite, bien au contraire.",
+                    "title"   : "Denis-Daniel Boullé, Fugues, mars 2002"
+                },
+                {
+                    "article" : "Ripensandoci, fare il WorldPride Roma durante l'anno santo è stato geniale. Ce lo ricorda ora il film di Joe Balass, riproponendo la ressadi giornalisti, fotografi e telecamere che si spintonava all'inaugurazione ufficiale, con Maria Grazia Cucinotta che taglia un nastro colorato contornata da Vladimir Luxuria e Imma Battaglia. È stato come l'uovo di Colombo pubblicitario del movimento gay italiano, che in pochi mesi, grazie la formidabile traino dell'indignazione vaticana, è riuscito a guadagnare più punti che in tanti anni di onesta militanza.\nGiubileo cattolico e Worldpride sono i fili conduttori paralleli del raconto di Balass, narrati attraverso le imprese di due filmaker-giornalisti (lo stesso Balass e il suo compagno Giampaolo Marzi) che decidono di girare un documentario su quanto sta succedendo a Roma in quello strano 2000. Si appostano quindi in Piazza San Pietro e dintorni e cominciano a filmare le adunate dei fedeli, il papa che parla con la voce tremolante dal balcone, le porte sante che riaprono il Giubileo. Intanto, poco distante da lì, gli omosessuali tramano per guastare la sacra festa. Tappa dopo tappa, Il diavolo nell'acqua santa ripercorre gli eventi che hanno prodotto il miracolo del Worldpride nella Roma giubilare, dedicando molto spazio allo scontro che oppose la Chiesa agli omosessuali… Ben scelta, ai fini della resa emotiva, anche la colonna sonora, che spazia da Domenico Modugno alla Petite Messe Solennelle di Rossini.",
+                    "title"   : "Gianni Rossi Barilli, Pride, marzo 2002"
+                },
+                {
+                    "article" : "Premier long métrage de Joe Balass, le passionant documentaire The Devil in the Holy Water relate avec originalité les faits et suit pas à pas les gais, les lesbiennes et les organisateurs du World Pride qui, quelques mois avant la tenue de l'événement jusqu'à sa réalisation, brandissent à qui veut entendre \" Diversité ! Respect ! Liberté ! \".",
+                    "title"   : "Pierre Ranger, Séquences mars/avril 2002"
+                },
+                {
+                    "article" : "Holy finocchio! Italian gays and conservative Catholics face off in Joe Balass's doc The Devil in the Holy Water \"Open signs of gay affection between men or women is not rare, and people aren't anxious about it there. When driving, people run through red lights all the time. There's a different attitude about life.\"",
+                    "title"   : "Matthew Hays, Montreal Mirror, March 14 2002"
+                },
+                {
+                    "article" : "Le Diable dans l'eau bénite ressemble à son réalisateur: poli et têtu, diplomate et persévérant, louvoyant pour arriver à ses fins. Il faut le voir interviewer monseigneur Etchegaray, organisateur du Jubilé, et porte-parole à la langue de bois; ou filmer l'organisatrice en chef du World Pride, avec sa blonde, sur le bord de la rupture. Jamais voyeur, il aborde les choses en douceur, mais de front, sans jamais porter de jugement à l'emporte-pièce, laissant le président d'une association étudiante catholique, inquisiteur à peine pubère, se couler lui-même, mais filmant une religieuse qui l'aide spontanément à regonfler le pneu crevé de son vélo.",
+                    "title"   : "Eric Fourlanty, Voir, 14 mars 2002"
+                },
+                {
+                    "article" : "Le film de Balass est très dynamique, tant les contrastes y sont nombreux. Un couple d'homosexuels se promène avec un sourire en coin, des groupes néofascistes dénoncent le défilé gay, des Italiens, qui en ont vu d'autres, haussent les épaules de leur côté… C'est le point de vue rétrograde de l'Eglise qui se dessine en creux, avec un refus d'ouverture à tout ce qui n'est pas la famille traditionnelle. Le film est une vraie rencontre entre le passé et la modernité.",
+                    "title"   : "Odile Tremblay, Le Devoir, 16 mars 2002"
+                },
+                {
+                    "article" : "Il viaggio nell'Italia giubilare approda in Piazza San Pietro. Orde di accoliti festeggiano, pacificati con se stessi e con le alte sfere ecclesiatiche, il giubileo dei bambini, dei motociclisti, dei panettieri e fors'anche dei carcerati, tutti insieme in un ecumenismo quanto meno sospetto. E i gay? Provocatori, inopportuni, indecenti, osceni e volgari, costretti a sfogliare l'intera Costituzione italiana per rivendicare il diritto a manifestare. La telecamera li fotografa nella loro realtà, come decin e di servizi giornalistici non sono riusciti a fare, intenti solo e soltanto a mostrare la faccia baraccona e sguaiata dell'infinita fiumana. Chi quel giorno ha camminato, ballato, urlato e pianto per le strade della capitale sa che e' compito ingrato immortalare nei fotogrammi quell'autentico stato di grazia. Joe Balass ha consegnato un documento che ci appartiene e che parla non solo al nostro cuore, ma anche alla testa, perché nessuno dimentichi cos'ha significato per i gay italiani l'estate del 2000.",
+                    "title"   : "Tony Aventino, Guidemagazine, marzo 2002"
+                },
+                {
+                    "article" : "Joe Balass réussit avec Le diable dans l'eau bénite à donner la parole tant aux activistes et membres de la communauté gaie qu'aux ecclésiastiques, religieuses, et catholiques intégristes. Pourtant tout les oppose : d'un côté, l'humour et l'enthousiasme de tous les participants de la World Gay Pride, un rassemblement festif et coloré; de l'autre, la froideur toute vaticane, le refus de s'exprimer sur la question des homosexuels, et le côté majestueux, voire pompeux, des cérémonies religieuses à St-Pierre de Rome.",
+                    "title"   : "Véronique Bouvier, La Presse, 16 mars 2002"
+                },
+                {
+                    "article" : "Good-natured docu -- sure to get good positioning at gay fests and wherever first-person nonfiction is favored -- narrows question of Catholic acceptance of homosexuality down to two \"competing\" events: a World Gay Pride Day being held in Rome and the Vatican's Jubilee. As the simultaneous occasions approach, Montreal-based helmer Joe Balass roams Rome's streets, asking tourists, clerics and interested parties for their opinions… as insightful for depiction of Vatican protocol and rituals -- including public weeping when the Pope utters his scripted pronouncements -- as for what anyone says. With the nuns and priests Balass stops on the street or interviews in their offices, an elaborately polite \"love the sinner, hate the sin\" stonewalling prevails, although there is some vituperation from a few killer-fruit types the helmer hones in on. Most direct are the Pride Day participants, including articulate lesbian activist Imma Battaglia, who demands her place in heaven alongside all the other Catholics.",
+                    "title"   : "Ken Eisner, Variety, May 21, 2002"
+                }
+            ],
+            "links"     : [
+                {
+                    "link"        : "http://www.worldpride2000.com/",
+                    "description" : "World Pride 2000 official website"
+                },
+                {
+                    "link"        : "http://www.eccehomo.nu/eng/indexeng.html",
+                    "description" : "Elisabeth Ohlson’s photographs"
+                },
+                {
+                    "link"        : "http://www.digayproject.org/",
+                    "description" : "Imma Battaglia’s new association"
+                },
+                {
+                    "link"        : "http://www.compassproductions.ca/nana1.html",
+                    "description" : "Nana, George & Me"
+                }
+            ],
+            "credits"   : [
+                {
+                    "title" : "Writer, Producer, Director:",
+                    "body"  : "Joe Balass"
+                },
+                {
+                    "title" : "Creative Consultant:",
+                    "body"  : "Giampaolo Marzi"
+                },
+                {
+                    "title" : "Camera:",
+                    "body"  : "Joe Balass\nAndrei Khabad\nMarjo Ferwerda\nGiampaolo Marzi"
+                },
+                {
+                    "title" : "Sound:",
+                    "body"  : "David Ballard\nMarjo Ferwerda"
+                },
+                {
+                    "title" : "Editor:",
+                    "body"  : "Joe Balass"
+                },
+                {
+                    "title" : "Editing Consultant:",
+                    "body"  : "Rolland Pollack"
+                },
+                {
+                    "title" : "Additional Editing & Online:",
+                    "body"  : "Dennis Day"
+                },
+                {
+                    "title" : "Sound Editor:",
+                    "body"  : "Martin Hurtubise"
+                },
+                {
+                    "title" : "Assistant Director/Interpretor:",
+                    "body"  : "Giampaolo Marzi"
+                },
+                {
+                    "title" : "With the generous participation of:"
+                },
+                {
+                    "title" : "Imma Battaglia",
+                    "body"  : "Alberto Corteggiani\nGiovanni Dall'Orto\nGianni Delle Foglie\nIvan Dragoni\nCardinal Roger Etchegaray\nBishop Jacques Gaillot\nVladimir Luxuria\nSonia Mangello\nSilvano Moffa\nElisabeth Ohlson\nEmiliano Placchi\nFather Gino Rigoldi\nPier Paolo Torri"
+                },
+                {
+                    "title" : "A special thanks to Katia Bellillo, Ivan Cattaneo, Maria Grazia Cuccinotta, Mauro Malinverno, Mario D'Onofrio, Eleonora Dall'Ovo, Andrea Ferrari, Sister Roberta Giudici, Giovanni Mappelli, Andrea Marnoni, Claudia Mauti, Massimo Mazzotta, Leone Passerman, Daniele Del Pozzo, Pecoraro Scanio, Monica\nStambrini, Claudia Torresan, Patrizia Zappa Mulas and to the many other people who agreed to be interviewed for this film."
+                },
+                {
+                    "title" : "Images & music from the exhibition Ecce Homo, held in Forte Prenestino - Roma, used with the generous permission of Elisabeth Ohlson."
+                },
+                {
+                    "title" : "Original Music by Simon Carpentier"
+                },
+                {
+                    "title" : "Additional Music:",
+                    "body"  : "Pasqualino Maragia and Tu si' na cosa grande\nPerformed by Domenico Modugno\nPublisher: Italcanto Canada Ltd./ Intermède Media Inc.\nRecording: \nCourtesy of WEA International Inc.\nPetite Messe Solennelle - Cum Sancto Spiritu\nArtists: Bulgarian Television & Radio Mixed Choir with Mihail Milkov\nWriter: Gioachino Rossini\nPublisher: Intermède Media Inc.\nRecording: Courtesy of Forlane/Intermède Media Inc."
+                },
+                {
+                    "title" : "Graphic Concept:",
+                    "body"  : "Yudi Sewraj"
+                },
+                {
+                    "title" : "Web design:",
+                    "body"  : "Etherworks"
+                },
+                {
+                    "title" : "Avid Consultants:",
+                    "body"  : "Paola Freddi\nMarlene Millar"
+                },
+                {
+                    "title" : "Additional Camera:",
+                    "body"  : "Monica Stambrini\nMarco Tani\nEmanuele"
+                },
+                {
+                    "title" : "Thanks to the actors and musicians in the performance of Laudes grido a tutta gente under the direction of Gigi Dall'aglio."
+                },
+                {
+                    "title" : "Thanks to the actors and musicians in the performance of Laudes grido a tutta gente under the direction of Gigi Dall’aglio."
+                },
+                {
+                    "title" : "Production Accountant:",
+                    "body"  : "Rickie Rosenbaum"
+                },
+                {
+                    "title" : "Production Assistants:",
+                    "body"  : "Valere Poulin, Andrea Marnoni, Nilton Dos Santos Almeida, Maria Michails, Stephane Drolet"
+                },
+                {
+                    "title" : "Additional Thanks to:",
+                    "body"  : "Roberta Angellili, Celine Bissonnette, Normand Boucher, Aldo Cassano, Memmo Caporilli, Danielle Charlebois, Giorgio Codibue, Massimo Cortesi, Francesca Davello, Ettorina, Lubomir Fabcin, Adrian Gonzalez, Ingo, Grant Innes, Daniele Iucolano, Yves Lafontaine, Bertrand Lachance, Denis Langlois, Antonello Lauriola, Philip Lewis, Marco Lupi, Pascal Maeder, Luigi Manconi, Monica Margrande, Raffaella Marzi, Marlene Millar, Christina Nati, Ludovico Pace, Allesandra di Pietro, Marie Potvin, Ramona Ramlochand, Rinaldo Rocco, Nicola Russo, Vivian Sallei, Rob Wilson Smith, Roberto Spagnol, Monica Stambrini, Yudi Sewraj, Carla Traversi, Tom Waugh, Margaret Wong; the staff and press office of the Baci factory; Elena Solari and the staff of the Canadian Embassy in Rome; Marcella Damiani, Roberto Bernardi and the staff of the Canadian Embassy in Vatican City; Claude Forget, Michel Gelinas and the staff of Cinéma Libre; Angèle Cyr, Youssef El Jai, Sylvain Cossette and Line Bodiguel at PRIM; the staff of the Forte Prenestino; the organisers & staff of the Romei e giubillei exhibit at the Palazzo Venezia; Christina Spina and the staff of the the Teatri Stabili dell'Umbria in Perugia; Marjorie Weeke and the staff of the Vatican Press Office, the Mario Mieli Association staff and organisers of WorldPride 2000, and everybody else who helped make this project happen."
+                },
+                {
+                    "title" : "News and archival footage provided by arrangement with RAITrade."
+                },
+                {
+                    "title" : "This film was made possible through the generous financial participation of :"
+                },
+                {
+                    "title" : "The Canada Council for the Arts",
+                    "body"  : "The Millennium Fund\nMedia Arts Program"
+                },
+                {
+                    "title" : "SODEC - Programme d'aide aux jeunes créateurs"
+                },
+                {
+                    "title" : "Programme du crédit d'impot du Gouvernement du Québec"
+                },
+                {
+                    "title" : "Conseil des arts et des lettres du Québec"
+                },
+                {
+                    "title" : "The Canadian Independent Film & Video Fund"
+                },
+                {
+                    "title" : "The Canadian Government Film or Video Tax Credit Program"
+                },
+                {
+                    "title" : "Additional support for this film provided by:",
+                    "body"  : "PRIM\nCentre d'art médiatiques"
+                },
+                {
+                    "title" : "The National Film Board - Filmmakers' Assistance Program"
+                },
+                {
+                    "title" : "Cinéma Libre Distribution"
+                }
+            ],
+            "news"      : ""
+
         },
-        {   "key": "parting", 
-        	"title": "Parting words",
-        	"synopsis": "Parting Words",
-			"credits": "coucou"
-		}
+        {
+            "key"       : "nana", 
+            "title"     : "Nana, Goerge and me",
+            "email"     : "edou4rd@gmail.com",
+            "synopsis"  : "Synopsis manquant",
+            "credits"   : [
+                {
+                    "title" : "Writer, Producer, Director:",
+                    "body"  : "Joe Balass"
+                }
+            ]
+        },
+        {
+            "key"     : "baghdad",
+            "title"   : "Baghdad twist",
+            "synopsis": "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists.",
+            "credits"   : [
+                {
+                    "title" : "Writer, Producer, Director:",
+                    "body"  : "Joe Balass"
+                }
+            ]
+        },
+        {
+            "key"       : "parting",
+            "title"     : "Parting Words",
+            "synopsis"  : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye.",
+            "credits"   : [
+                {
+                    "title" : "Writer, Producer, Director:",
+                    "body"  : "Joe Balass"
+                }
+            ],
+            "screenings": [
+                                {
+                    "title" : "Released in 20 commercial theatres across Québec",
+                    "date"  : "winter 2007"
+                },
+                {
+                    "title" : "Broadcast on CBC, Canada, summer",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Image + Nation Film Festival",
+                    "date"  : "Montréal, 2007"
+                },
+                {
+                    "title" : "Inside Out Film Festival",
+                    "date"  : "Toronto, 2007"
+                },
+                {
+                    "title" : "Rendez-vous du cinéma québécois - Montréal",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Festival di cinemagaylesbico, Milan",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Tokyo Lesbian & Gay Film Festival",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Outfest - Los Angeles",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Fairy Tales Film Festival - Calgary",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Reel Affirmations Film Festival - Washington DC",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Mix Brasil Film Festival - Sao Paolo, Rio de janeiro",
+                    "date"  : "2007"
+                },
+                {
+                    "title" : "Queersicht Film Festival - Bern",
+                    "date"  : "2008"
+                },
+                {
+                    "title" : "Verzaubert Film Festival - Munich, Frankfut, Cologne, Berlin",
+                    "date"  : "2008"
+                },
+                {
+                    "title" : "Vues d’en face - Grenoble",
+                    "date"  : "2008"
+                },
+                {
+                    "title" : "Warsaw Lesbian & Gay Film Festival",
+                    "date"  : "2008"
+                },
+                {
+                    "title" : "NewFest, New York",
+                    "date"  : "2008"
+                }
+            ],
+            "extra"     : "",
+            "library"   : "",
+            "credits"   : [
+                {
+                    "title" : "a film by / un film de",
+                    "body"  : "Joe Balass"
+                },
+                {
+                    "title" : "with / avec",
+                    "body"  : "Ariel Ifergan\nBenoit St-Hilaire\nGeneviève Alarie\nYann Vallières\nAnka Rouleau\nFred-Eric Salvail"
+                },
+                {
+                    "title" : "Directrice photo",
+                    "body"  : "Claudine Sauvé"
+                },
+                {
+                    "title" : "Directrice artistique",
+                    "body"  : "Mélanie Truchon"
+                },
+                {
+                    "title" : "Costumes",
+                    "body"  : "Lou Beauchesne"
+                },
+                {
+                    "title" : "Montage",
+                    "body"  : "Marlene Millar\nJoe Balass"
+                },
+                {
+                    "title" : "Conception sonore",
+                    "body"  : "Martin Hurtubise"
+                },
+                {
+                    "title" : "Producteur délégué",
+                    "body"  : "Nicolas Comeau"
+                },
+                {
+                    "title" : "Scénariste/réalisateur/producteur",
+                    "body"  : "Joe Balass"
+                },
+                {
+                    "title" : "produit avec la participation ",
+                    "body"  : "financière de\nSODEC\n\nSociété de développement des entreprises culturelles – Québec\n\nQUÉBEC\n\nCrédit d’impôt cinéma et télévision – Gestion SODEC"
+                },
+                {
+                    "title" : "avec l'aide de",
+                    "body"  : "Aide à la production indépendante (ACIC) – Office national du film du Canada (ONF-NFB)\n\nCrédit d'impôt pour production cinématographique ou magnétoscopique canadienne\n\nCANADA"
+                },
+                {
+                    "title" : "Consultant créatif",
+                    "body"  : "Giampaolo Marzi"
+                },
+                {
+                    "title" : "1er Assistant réalisateurs",
+                    "body"  : "Sébastien Pelland\n\nRobert Morais"
+                },
+                {
+                    "title" : "3e Assistant réalisateur",
+                    "body"  : "Ariane Côté-Chénier"
+                },
+                {
+                    "title" : "Scripte",
+                    "body"  : "Fanny Bellavance"
+                },
+                {
+                    "title" : "1er Assistant Caméra",
+                    "body"  : "Eric Bensoussan"
+                },
+                {
+                    "title" : "Photographe de plateau",
+                    "body"  : "Jules de Niverville"
+                },
+                {
+                    "title" : "Régisseur",
+                    "body"  : "Michel Pelletier"
+                },
+                {
+                    "title" : "Assistants de production",
+                    "body"  : "Maxime Bélanger-Rhéaume\nMartin Bouchard"
+                },
+                {
+                    "title" : "Chauffeur",
+                    "body"  : "Jonathan Giroux"
+                },
+                {
+                    "title" : "Décoratrice",
+                    "body"  : "Ina Lopez"
+                },
+                {
+                    "title" : "Maquilleuses",
+                    "body"  : "Marie-Claude Langevin\nMarie-Eve F.Fleurant"
+                },
+                {
+                    "title" : "Coiffeur",
+                    "body"  : "Philippe Athlan"
+                },
+                {
+                    "title" : "Best boy électriciens",
+                    "body"  : "Yves Arseneau\nChristophe Taets"
+                },
+                {
+                    "title" : "Électricien",
+                    "body"  : "Dany Bourque"
+                },
+                {
+                    "title" : "Chef machiniste",
+                    "body"  : "Patrice Dagenais"
+                },
+                {
+                    "title" : "Best boy machiniste",
+                    "body"  : "Jocelyn Beaulac"
+                },
+                {
+                    "title" : "Preneur de son",
+                    "body"  : "Juan Gutierra"
+                },
+                {
+                    "title" : "Perchiste",
+                    "body"  : "Philippe Lavigne"
+                },
+                {
+                    "title" : "Cantinier",
+                    "body"  : "Victoire Bessette"
+                },
+                {
+                    "title" : "Traductions",
+                    "body"  : "Normand Boucher"
+                },
+                {
+                    "title" : "Merci spécial à:",
+                    "body"  : "Marie-Alexandre Kérouac\nPaul Gillot\nVéronique Duquette\nColin Lavigne\nDaniel Vachon\nDavid Hatin\nGuillaume Couture"
+                },
+                {
+                    "title" : "Générique",
+                    "body"  : "Vincent Scotti"
+                },
+                {
+                    "title" : "Online",
+                    "body"  : "Denis Gathelier"
+                },
+                {
+                    "title" : "Mixeur",
+                    "body"  : "Shelley Craig"
+                },
+                {
+                    "title" : "Anwar: Ariel Ifergan"
+                },
+                {
+                    "title" : "Marc: Benoit St-Hilaire"
+                },
+                {
+                    "title" : "Paula: Geneviève Alarie"
+                },
+                {
+                    "title" : "Ambulancier: Yann Vallières"
+                },
+                {
+                    "title" : "Docteure:  Anka Rouleau"
+                },
+                {
+                    "title" : "2e Ambulancier:  Fred-Eric Salvail"
+                },
+                {
+                    "title" : "Infirmières: Cora  Lebuis"
+                },
+                {
+                    "title" : "Geneviève Sabourin"
+                },
+                {
+                    "title" : "Patients, visiteurs et préposes:",
+                    "body"  : "Hazgary Colin, Dominic Lorange, Jason Van Asten, Isabelle D. Thompson, Holden Wong, Sylvain Lavoie, Yan Galarneau, Gisèle Poirier, Robert Robitaille, Denis Martel, Sophie Bergeron, Catherine Servedio, Martin Beausoleil, Julie Bergamin, Mario Geoffrey,\nDuy Tan Vo Van, Garry S. Mailloux, Céline Jacques, Réal Martin, Lina Champagne"
+                },
+                {
+                    "title" : "Consultants médical",
+                    "body"  : "Erick Hovington\nSerge Veilleux"
+                },
+                {
+                    "title" : "Un grand merci à:",
+                    "body"  : "Céline Sénéchal, Laurent Gagliardi, Pierre Lapointe, Marie-Christine Guite,\nClaude Chevalier, Pascal Maeder, Denis Langlois, Bertrand Lachance, Rodrigue Jean,\nMartin Landry, Etienne Desrosiers, Carl Trahan, Joe Antaki, Ramona Ramlochand,\nFrancois Delisle, Marc Gadoury, Jeffrey Hall, Micheal Weiss, Christine Falco,\nMathieu Bourguet, Isabelle Côté, Benoit Gauthier, 1976 productions,\nAgence François Legault, Agence Laurence Ross,\nAgence Jean-Jacques Desjardins, Agence artistique Marie-Hélène Bibeau,\nCast of Thousands, Agence  Ginette Achim Inc., Adam St-Coeur agent d'artistes,\nAgence Chaplin, Agence Scoop, La fabrique d’image, Centre du Sud de Lanaudière, Ambulances 0911 INC.. Atelier Alain Cadieux, Boscus, Cinépool, Kodak, PRIM, ATOPIA"
+                },
+                {
+                    "title" : "Musique",
+                    "body"  : "Starlite Walk\nde Christopher Goze\nIntermède Pik Musik"
+                },
+                {
+                    "title" : "AQTISMembre de l’APFTQUnion des Artistes"
+                },
+                {
+                    "title" : "DOLBY\nDIGITAL",
+                    "body"  : "Dans certaines salles"
+                },
+                {
+                    "body" : "Tous les personnages, noms et événements de ce film sont fictifs.\nToute ressemblance avec des événements et / ou des personnes réels\nne serait que pure coïncidence ou l’effet du hasard.\n\n© Les productions Compass inc. 2006\n\nTous droits réservés/All rights reserved."
+                }
+            ]
+        }
     ]
 }
