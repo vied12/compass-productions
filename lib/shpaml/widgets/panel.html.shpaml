@@ -3,15 +3,8 @@
 		ul.tabs | {##}
 
 		.content
-			.tabContent data-name="synopsis" | {##}
 			.tabContent data-name="gallery" 
-				.gallery.jScrollbar
-					.jScrollbar_mask			
-						ul.photos | {##}
-					.jScrollbar_draggable
-						<a href="#" class="draggable"></a>						
-					.clr | {##}
-
-			.tabContent data-name="screenings" | {##}
-			.tabContent data-name="credits" | {##}
+				.gallery				
+					ul.photos | {##}
+				
 		.close | x		
