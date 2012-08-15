@@ -75,11 +75,12 @@ body:
 			padding 	: $BASE_PADDING * 2
 			line-height	: 1.4em
 
-		.tabContent:					
+		.tabContent:
+			position : absolute			
 			-webkit-transition: all linear 0.2s
 			-webkit-transform: "translateX(300px)"
 			opacity		: 0	
-			display		: none
+			
 			&.active: 
 				display : block
 				opacity:1			
