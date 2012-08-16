@@ -27,35 +27,63 @@ class Navigation extends Widget
 			brandTile        : ".brand.tile",
 			main             : ".Main",
 			works            : ".Works",
+			menus            : ".menu",
 			worksTiles       : ".Works .tile"
+			mainTiles        : ".Main .tile"
+		}
+
+		@CONFIG = {
+			tileMargin : 4
 		}
 
 		@cache = {
 			data          : null
 			currentTarget : null
+			tileWidth     : null
 		}
-		
-		# @background = new VideoBackground().bindUI(".video-background")
-
-	setData: (data) =>
-		@cache.data = data
-		@panel = new Panel().bindUI(".FooterPanel") # needs to be instanciate before selectTile call
-		# init
-		params = URL.get()
-		tile = params.m or "main"
-		this.selectTile(tile) # depends of @cache.data
 
 	bindUI: (ui) =>
 		super
+		@background       = new VideoBackground().bindUI(".video-background")
+		@cache.tileWidth  = parseInt(@uis.tilesList.css("width"))
 		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement)) 
 		@uis.brandTile.live("click", this.back)
 		$('body').bind('backToHome', this.back)
 
+	# set an absolute position for each tile. Usefull for animation
+	relayout: (menu, template) =>
+		
+		offset_left = @cache.tileWidth + @CONFIG.tileMargin # 'cause of the first brand tile
+		# Main Menu (layout horizontal)
+		for tile, i in @uis.mainTiles
+			left = offset_left + i * (@cache.tileWidth + @CONFIG.tileMargin)
+			$(tile).css({left:left})
+		# Works Menu (layout vertical, 3 tiles by column)
+		x_iterator = 0
+		for tile, i in @uis.worksTiles
+			y_iterator = i%3
+			top  = y_iterator * (@cache.tileWidth + @CONFIG.tileMargin)
+			left = offset_left + x_iterator * (@cache.tileWidth + @CONFIG.tileMargin)
+			$(tile).css({top:top, left:left})
+			if i == 3 - 1
+				x_iterator += 1
+		# Navigation
+		@ui.css("height", @cache.tileWidth)
+
+	setData: (data) =>
+		@cache.data = data
+		@panel      = new Panel().bindUI(".FooterPanel") # needs to be instanciate before selectTile call
+		# init
+		params = URL.get()
+		tile   = params.m or "main"
+		this.selectTile(tile) # depends of @cache.data
+
 	# trigger the good action with the given selected tile name
 	selectTile: (tile) =>
 		URL.update({m:tile})
+		@uis.tilesList.removeClass "show"
 		if tile == "main"
 			this.showMenu("main")
 		else if tile == "works"
@@ -66,6 +94,7 @@ class Navigation extends Widget
 			this.selectContact()
 		else
 			this.selectWorks()
+			# FIXEME: check if given tile exists in data as a work
 			this.selectProjet(tile)
 
 	tileSelected: (tile_selected_ui) =>
@@ -76,7 +105,7 @@ class Navigation extends Widget
 
 	selectWorks: =>
 		this.showMenu("works")
-		@uis.worksTiles.removeClass "hidden"
+		@uis.worksTiles.removeClass("hidden")
 			
 	selectNews: =>
 		@uis.main.addClass "hidden"
@@ -85,25 +114,37 @@ class Navigation extends Widget
 		@uis.main.addClass "hidden"
 
 	selectProjet: (project) =>
-		if @uis.works.hasClass "focused"
-			this.selectTile "works"
-			@uis.works.removeClass "focused"
-			$("body").trigger("projectUnselected")
-		else
-			@uis.works.addClass "focused"
-			@uis.worksTiles.addClass "hidden"	
-			@uis.works.find("[data-target="+project+"]").removeClass "hidden"
-			project_obj = this.getProjectByName(project)
-			$("body").trigger("projectSelected", project_obj)
+		tile_selected = @uis.works.find("[data-target="+project+"]")
+		# Hide all tiles, show selected tile
+		@uis.worksTiles.addClass "hidden"
+		tile_selected.removeClass "hidden"
+		# Animation: set to first position
+		tile_selected.css({
+			top  : 0
+			left : @cache.tileWidth + @CONFIG.tileMargin
+		})
+		# Get project's object and send it to panel
+		project_obj = this.getProjectByName(project)
+		$("body").trigger("projectSelected", project_obj)
 
 	# show the given menu, hide the previous opened menu
 	showMenu: (name) =>
+		this.relayout()
 		menu = @ui.find "[data-name="+name+"]"
 		if not menu.length > 0
 			return false
 		@ui.find(".menu").addClass "hidden"
 		menu.removeClass "hidden"
 		@cache.currentTarget = name
+		# Animation, one by one, fadding effect
+		i     = 0
+		tiles = menu.find(".tile")
+		interval = setInterval(=>
+			$(tiles[i]).addClass("show")
+			i += 1
+			if i == tiles.length
+				clearInterval(interval)
+		, 25) # time between each iteration
 
 	back: =>
 		$("body").trigger("projectUnselected")

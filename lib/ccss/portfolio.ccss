@@ -19,14 +19,23 @@ body:
 	background-color   : $TILE_COLOR
 	overflow           : hidden
 	z-index            : 2
-	position           : relative
+	position           : absolute
+	opacity            : 0
+	//-webkit-transform  :"rotate(10deg)"
 	//-moz-transform     :"rotate(10deg)"
 	//-webkit-transform  :"rotate(10deg)"
+	//-moz-transform     :"rotate(10deg)"
 	//-o-transform       :"rotate(10deg)"
 	//-ms-transform      :"rotate(10deg)"
+	-webkit-transition-property : "opacity,left,top"
+	-moz-transition-property    : "opacity,left,top"
+	-webkit-transition-duration : "0.50s"
+	-moz-transition-duration    : "0.50s"
 	&.closed:
 		-webkit-transition-property : "width,height"
+		-moz-transition-property    : "width,height"
 		-webkit-transition-duration : "0.50s"
+		-moz-transition-duration    : "0.50s"
 		width       : 0
 		height      : 0
 		padding     : 0
@@ -36,6 +45,8 @@ body:
 		padding : 10px
 	&.new-line:
 		clear : both
+	&.show:
+		opacity : 1
 
 .Index:
 	color   : $TEXT_COLOR
@@ -54,8 +65,11 @@ body:
 	min-height          : 100px
 	background-color    : $TILE_COLOR
 	overflow            : hidden
+	margin-top          : 8px 
 	-webkit-transition-property : top
-	-webkit-transition-duration: 0.25s
+	-moz-transition-property    : top
+	-webkit-transition-duration : 0.25s
+	-moz-transition-duration    : 0.25s
 	> .wrapper:
 		padding: $BASE_PADDING  $BASE_PADDING *2
 		.tabs:
@@ -73,12 +87,15 @@ body:
 			padding 	: $BASE_PADDING * 2
 		.tabContent:
 			position : absolute			
-			-webkit-transition: all linear 0.2s
-			-webkit-transform: "translateX(300px)"
+			-webkit-transition : all linear 0.2s
+			-moz-transition    : all linear 0.2s
+			-webkit-transform  : "translateX(300px)"
+			-moz-transform     : "translateX(300px)"
 			opacity		: 0	
 			&.active: 
 				opacity:1			
-				-webkit-transform: "translateX(0px)"
+				-webkit-transform : "translateX(0px)"
+				-moz-transform    : "translateX(0px)"
 			.gallery:
 				overflow : auto
 				li:

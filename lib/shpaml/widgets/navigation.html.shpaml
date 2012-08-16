@@ -1,6 +1,6 @@
 {# TODO: generate tile dynamicaly through the json #}
 .Navigation
-	.brand.tile
+	.brand.tile.show
 		.wrapper | {##}
 	.Main.menu data-name="main"
 		.tile data-target="works"
@@ -14,10 +14,10 @@
 			.wrapper | Parting words
 		.tile data-target="baghdad"
 			.wrapper | Baghdad twist
-		.tile.new-line data-target="devil"
+		.tile data-target="devil"
 			.wrapper | The devil in the holy water
 		.tile data-target="joy"
 			.wrapper | Joy
-		.tile.new-line data-target="nana"
+		.tile data-target="nana"
 			.wrapper | Nana, goerge & me
 	.clear | {##}
