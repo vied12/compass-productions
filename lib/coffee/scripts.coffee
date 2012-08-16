@@ -188,7 +188,8 @@ class Panel extends Widget
 
 		@UIS = {
 			wrapper : ".wrapper:first"
-			tabs    : ".tabs li"
+			tabs    : ".tabs"
+			tabItems : ".tabs li"
 			tabContents : ".tabContent"
 			content : ".content"
 			close   : ".close"
@@ -207,7 +208,7 @@ class Panel extends Widget
 		@uis.close.click =>
 			this.hide()
 			$('body').trigger "backToHome"
-		@uis.tabs.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
+		@uis.tabItems.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 		$(window).resize(this.relayout)
 		this.relayout(false)
 		return this
@@ -219,7 +220,7 @@ class Panel extends Widget
 			navigation_ui = $(".Navigation")
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
-			@ui.css({top:top_offset, minHeight:window_height - top_offset})
+			@ui.css({top:top_offset, minHeight:window_height - top_offset})			
 		else
 			top_offset = $(window).height() - @OPTIONS.panelHeightClosed
 			@ui.css({top : top_offset})
@@ -237,18 +238,62 @@ class Panel extends Widget
 		setTimeout((=> @flickrGallery.relayout()), 500)
 
 	setProject: (project) =>
+		@uis.tabs.not('.gallery').empty()
+		@ui.find('.tabContent').not("[data-name=gallery]").remove()		
+		
+		tabsStr = ""
+		system_keys = ["key", "title", "email"]
+
+		for k, v of project 
+			if k not in system_keys							
+				tabsStr += "<li data-target=\"#{k}\">#{k}</li>"												
+				contentElements = ""								
+				switch k
+					when "synopsis"	
+						contentElements = v
+					when "videos"					
+						for video in v
+							contentElements += """
+								<div class=\"content-item\">
+									<iframe src="http://player.vimeo.com/video/#{video}" 
+									width="500" 
+									height="281" 
+									frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+							"""
+					else
+						if typeof v == "string" 										
+							contentElements = v
+						else	
+							for own content_k, contentElementValue of v
+								contentItem=""
+								contentElement=""
+								if typeof contentElementValue == "object"	
+									for own kk, vv of contentElementValue							
+										switch kk
+											when "article" then contentElement += "<article>#{vv}</article>"
+											when "title" then contentElement += "<h2>#{vv}</h2>"
+											when "body" then contentElement += "<p class=\"contentBody\">#{vv}</p>"
+											when "date" then contentElement += "<p class=\"contentDate\">#{vv}</p>"
+											when "link" then contentElement += "<a href=\"#{vv}\">#{contentElementValue["description"]}</a>"									
+								contentItem = "<div class=\"content-item\">#{contentElement}</div>" 			
+								contentElements += contentItem
+
+				tabContent = "<div data-name=\"#{k}\" class=\"tabContent\">#{contentElements}</div>"				
+
+				if k != "gallery"
+					@uis.content.append tabContent
+
+		@uis.tabs.append(tabsStr)
 		if project.gallery
 			@flickrGallery.setPhotoSet(project.gallery)
-		@uis.content.find("[data-name=synopsis]").html(project.synopsis)
-		@uis.content.find("[data-name=screenings]").html(project.screenings)
-		@uis.content.find("[data-name=credits]").html(project.credits)
 		this.open()
 
 	tabSelected: (tab_selected) =>
-		tab_selected = $(tab_selected)	
+		tab_selected = $(tab_selected)
 		target = tab_selected.attr "data-target"
 		tabContent = @uis.content.find("[data-name="+target+"]")
-		@uis.tabs.removeClass "active"
+		@uis.tabs.find('li').removeClass "active"
 		tab_selected.addClass "active"
 		@uis.content.find('.tabContent').removeClass "active"		
 		tabContent.addClass "active"
@@ -263,37 +308,69 @@ class FlickrGallery extends Widget
 
 	constructor: (url) ->
 		@OPTIONS = {
-
+			initial_quantity : 10,
+			show_more_quantity : 10
+			show_more_text : "More"
 		}
 
 		@UIS = {
-			showMore    : ".more"
+			list :	".photos"
+			listItems : ".photos li"
+			showMore    : ".show_more"
+		}
+
+		@cache = {
+			data : null
+			photo_index : null
 		}
 
 	bindUI: (ui) =>
 		super
-		this.relayout()
+		this.relayout()		
 		$(window).resize(this.relayout)
 		return this
 
 	relayout: =>
 		# set the height of the list, to show the scrollbar
 		height = $(window).height() - @ui.offset().top
-		@ui.css({height: height})
+		@ui.css({height: height})		
 		
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z/data.json", {dataType: 'json', success : this.setData})
 
-	setData: (data) =>
-		for photos in data
-			li = $('<li></li>')
-			image = $('<img />').attr('src', photos.q)
-			link = $('<a></a>').attr('target', '_blank').attr('href', photos.z)     	
-			link.append image
-			li.append link
-			@ui.append(li)
+	_makePhotoTile: (photoData) =>	
+		li = $('<li></li>')
+		image = $('<img />').attr('src', photoData.q)
+		link = $('<a></a>').attr('target', '_blank').attr('href', photoData.z)     	
+		link.append image
+		li.append link
+		@uis.list.append li
+
+		#put show more tile at the end:
+		if @uis.list.find(".show_more")			
+			@uis.list.find(".show_more").appendTo @uis.list			
+
+	setData: (data) =>		
+		console.log "setDATA"
+		@uis.list.empty()
+		@cache.data = data		
+		for photo, index in data[0..@OPTIONS.initial_quantity]
+			@._makePhotoTile(photo)		
+
+		if data.length >= @OPTIONS.initial_quantity
+			show_more_tile = $("<li class=\"show_more\">"+@OPTIONS.show_more_text+"</li>")
+			@uis.list.append(show_more_tile)
+			show_more_tile.click => @.showMore()
+			@cache.photo_index = @OPTIONS.initial_quantity
 
 	showMore: =>
-		log.console "more"
+		next_index = @cache.photo_index+@OPTIONS.initial_quantity		
+		if next_index >= @cache.data.length
+			next_index = @cache.data.length	
+			@ui.find(".show_more").addClass "hidden"					
+		for photo,index in @cache.data[@cache.photo_index+1..next_index]
+			@._makePhotoTile(photo)
+		@cache.photo_index = next_index		
+
 
 # -----------------------------------------------------------------------------
 #

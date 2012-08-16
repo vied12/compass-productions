@@ -72,6 +72,8 @@ body:
 	-moz-transition-duration    : 0.25s
 	> .wrapper:
 		padding: $BASE_PADDING  $BASE_PADDING *2
+		a : 
+			color 	: $TEXT_COLOR_LIGHT
 		.tabs:
 			padding   		: $BASE_PADDING * 2 0
 			font-size 	: 1.1em
@@ -85,6 +87,8 @@ body:
 			font-size 	: 1.6em
 			color     	: $TEXT_COLOR_LIGHT
 			padding 	: $BASE_PADDING * 2
+			line-height	: 1.4em
+
 		.tabContent:
 			position : absolute			
 			-webkit-transition : all linear 0.2s
@@ -92,7 +96,9 @@ body:
 			-webkit-transform  : "translateX(300px)"
 			-moz-transform     : "translateX(300px)"
 			opacity		: 0	
+			
 			&.active: 
+				display : block
 				opacity:1			
 				-webkit-transform : "translateX(0px)"
 				-moz-transform    : "translateX(0px)"
@@ -101,6 +107,18 @@ body:
 				li:
 					display		: inline-block
 					margin		: 5px
+				.show_more:
+					background 		: "rgba(10,10,10,0.7)"
+					vertical-align 	: top
+					width 			: 130px 
+					height 			: 130px 					
+					padding 		: $BASE_PADDING	
+					font-size 		: 0.8em
+			h2:
+				font-size : 1.2em
+			//.contentBody
+			//.contentDate
+			//article
 		.close:
 			position : absolute
 			right    : 30px
@@ -148,5 +166,10 @@ body:
 	float 				: left
 	padding 			: 10px
 	background 			: #fff
+
+
+
+
+
 
 
