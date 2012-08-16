@@ -37,9 +37,10 @@ class Navigation extends Widget
 		}
 
 		@cache = {
-			data          : null
-			currentTarget : null
-			tileWidth     : null
+			data           : null
+			currentMenu    : null
+			currentProject : null
+			tileWidth      : null
 		}
 
 	bindUI: (ui) =>
@@ -54,7 +55,6 @@ class Navigation extends Widget
 
 	# set an absolute position for each tile. Usefull for animation
 	relayout: (menu, template) =>
-		
 		offset_left = @cache.tileWidth + @CONFIG.tileMargin # 'cause of the first brand tile
 		# Main Menu (layout horizontal)
 		for tile, i in @uis.mainTiles
@@ -83,10 +83,18 @@ class Navigation extends Widget
 	# trigger the good action with the given selected tile name
 	selectTile: (tile) =>
 		URL.update({m:tile})
-		@uis.tilesList.removeClass "show"
+		# reset tile for fadding animation
+		if tile in ["main", "news", "contact"]
+			@uis.tilesList.removeClass "show"
+		# reset @cache.currentProject variable
+		if @cache.currentProject and tile in ["main", "works", "news", "contact"]
+			@cache.currentProject = null
+		# Dispatch
 		if tile == "main"
 			this.showMenu("main")
 		else if tile == "works"
+			if not @cache.currentProject
+				@uis.tilesList.removeClass "show"
 			this.selectWorks()
 		else if tile == "news"
 			this.selectNews()
@@ -114,6 +122,8 @@ class Navigation extends Widget
 		@uis.main.addClass "hidden"
 
 	selectProjet: (project) =>
+		if @cache.currentProject
+			return this.back()
 		tile_selected = @uis.works.find("[data-target="+project+"]")
 		# Hide all tiles, show selected tile
 		@uis.worksTiles.addClass "hidden"
@@ -126,6 +136,7 @@ class Navigation extends Widget
 		# Get project's object and send it to panel
 		project_obj = this.getProjectByName(project)
 		$("body").trigger("projectSelected", project_obj)
+		@cache.currentProject = project
 
 	# show the given menu, hide the previous opened menu
 	showMenu: (name) =>
@@ -135,7 +146,7 @@ class Navigation extends Widget
 			return false
 		@ui.find(".menu").addClass "hidden"
 		menu.removeClass "hidden"
-		@cache.currentTarget = name
+		@cache.currentMenu = name
 		# Animation, one by one, fadding effect
 		i     = 0
 		tiles = menu.find(".tile")
@@ -144,11 +155,14 @@ class Navigation extends Widget
 			i += 1
 			if i == tiles.length
 				clearInterval(interval)
-		, 25) # time between each iteration
+		, 250) # time between each iteration
 
 	back: =>
 		$("body").trigger("projectUnselected")
-		this.selectTile("main")
+		if @cache.currentProject
+			this.selectTile("works")
+		else
+			this.selectTile("main")
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works

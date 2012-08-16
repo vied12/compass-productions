@@ -21,32 +21,28 @@ body:
 	z-index            : 2
 	position           : absolute
 	opacity            : 0
-	//-webkit-transform  :"rotate(10deg)"
-	//-moz-transform     :"rotate(10deg)"
-	//-webkit-transform  :"rotate(10deg)"
-	//-moz-transform     :"rotate(10deg)"
-	//-o-transform       :"rotate(10deg)"
-	//-ms-transform      :"rotate(10deg)"
-	-webkit-transition-property : "opacity,left,top"
-	-moz-transition-property    : "opacity,left,top"
-	-webkit-transition-duration : "0.50s"
-	-moz-transition-duration    : "0.50s"
-	&.closed:
-		-webkit-transition-property : "width,height"
-		-moz-transition-property    : "width,height"
-		-webkit-transition-duration : "0.50s"
-		-moz-transition-duration    : "0.50s"
-		width       : 0
-		height      : 0
-		padding     : 0
-		margin      : 0
-		white-space : nowrap
+	-webkit-transition-property : "opacity,left,top,-moz-transform"
+	-moz-transition-property    : "opacity,left,top,-moz-transform"
+	-webkit-transition-duration : "1s"
+	-moz-transition-duration    : "1s"
+	//-webkit-transform  :"rotate(15deg)"
+	//-moz-transform     :"rotate(15deg)"
+	//-webkit-transform  :"rotate(15deg)"
+	//-moz-transform     :"rotate(15deg)"
+	//-o-transform       :"rotate(15deg)"
+	//-ms-transform      :"rotate(15deg)"
 	> .wrapper:
 		padding : 10px
 	&.new-line:
 		clear : both
 	&.show:
 		opacity : 1
+		//-webkit-transform  :"rotate(0deg)"
+		//-moz-transform     :"rotate(0deg)"
+		//-webkit-transform  :"rotate(0deg)"
+		//-moz-transform     :"rotate(0deg)"
+		//-o-transform       :"rotate(0deg)"
+		//-ms-transform      :"rotate(0deg)"
 
 .Index:
 	color   : $TEXT_COLOR
