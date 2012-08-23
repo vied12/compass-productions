@@ -1,5 +1,8 @@
-# import sys, os
-# sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
-activate_this = os.path.dirname(os.path.realpath(__file__))
+import sys
+# virtualenv
+activate_this = "/home/django-projects/portfolio/bin/activate_this.py"
 execfile(activate_this, dict(__file__=activate_this))
-import webapp as application
+
+sys.path.insert(0, "/home/django-projects/portfolio/portfolio")
+
+from webapp import app as application
