@@ -99,4 +99,7 @@ def _collect_static(app):
 					if not os.path.exists(os.path.dirname(dst)):
 						os.makedirs(os.path.dirname(dst))
 					shutil.copyfile(f, dst)
+	_render_shpaml(app)
+	_render_coffee(app)
+	_render_coverCSS(app)
 # EOF
