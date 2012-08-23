@@ -1,10 +1,11 @@
-.FooterPanel
+.FooterBar
+	.language
+		a href="#ln=fr" | Fr
+.FooterPanel.hidden
 	.wrapper.hidden					
 		ul.tabs | {##}
-
 		.content
 			.tabContent data-name="gallery" 
 				.gallery				
 					ul.photos | {##}
-				
 		.close | x		

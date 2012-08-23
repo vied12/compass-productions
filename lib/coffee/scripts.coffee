@@ -155,7 +155,7 @@ class Navigation extends Widget
 			i += 1
 			if i == tiles.length
 				clearInterval(interval)
-		, 250) # time between each iteration
+		, 50) # time between each iteration
 
 	back: =>
 		$("body").trigger("projectUnselected")
@@ -180,7 +180,7 @@ class VideoBackground extends Widget
 	bindUI: (ui) ->
 		super		
 		@ui.videobackground
-			videoSource: ['http://video.lesdebiles.com/05841.mp4']
+			videoSource: ['http://vimeo.com/47569645/download?t=1345691328&v=112586909&s=d8b40a6ec2be36301c497849929dc443']
 			loop: true
 			poster: 'http://serious-works.org/static/img/logo2.png'
 		@ui.videobackground('mute')			
@@ -204,7 +204,7 @@ class Panel extends Widget
 			wrapper     : ".wrapper:first"
 			tabs        : ".tabs"
 			tabItems    : ".tabs li"
-			tabContents : ".tabContent"
+			tabContent  : ".tabContent"
 			content     : ".content"
 			close       : ".close"
 		}
@@ -223,26 +223,32 @@ class Panel extends Widget
 			this.hide()
 			$('body').trigger "backToHome"
 		@uis.tabItems.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
-		$(window).resize(this.relayout)
+		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		this.relayout(false)
 		return this
 
-	relayout: (open=false) =>
+	relayout: (open) =>
 		@cache.isOpened = open
 		if @cache.isOpened
 			window_height = $(window).height()
 			navigation_ui = $(".Navigation")
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
-			@ui.css({top:top_offset, minHeight:window_height - top_offset})			
+			# 48 is the FooterBar height
+			panel_height = window_height - top_offset - 48
+			@ui.css({top:top_offset, height:panel_height})
+			setTimeout((=> 
+				@uis.content.css({height: window_height - @uis.content.offset().top - 80})
+				), 500)
+			# @uis.content.jScrollPane({autoReinitialise:true})
 		else
-			top_offset = $(window).height() - @OPTIONS.panelHeightClosed
+			top_offset = $(window).height()
 			@ui.css({top : top_offset})
 
 	hide: =>
 		@cache.isOpened = false
 		this.relayout(false)
-		setTimeout((=> @uis.wrapper.addClass "hidden"), 250)
+		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)
 
 	open: =>
 		@uis.wrapper.removeClass "hidden"
@@ -253,6 +259,7 @@ class Panel extends Widget
 
 	setProject: (project) =>
 		@uis.tabs.not('.gallery').empty()
+		@ui.removeClass "hidden"
 		@ui.find('.tabContent').not("[data-name=gallery]").remove()
 		tabsStr = ""
 		system_keys = ["key", "title", "email"]
@@ -290,22 +297,25 @@ class Panel extends Widget
 											when "link"    then contentElement += "<a href=\"#{vv}\">#{contentElementValue["description"]}</a>"
 								contentItem = "<div class=\"content-item\">#{contentElement}</div>"
 								contentElements += contentItem
-				tabContent = "<div data-name=\"#{k}\" class=\"tabContent\">#{contentElements}</div>"
+				tabContent = "<div data-name=\"#{k}\" class=\"tabContent hidden\">#{contentElements}</div>"
 				if k != "gallery"
 					@uis.content.append tabContent
 		@uis.tabs.append(tabsStr)
 		if project.gallery
 			@flickrGallery.setPhotoSet(project.gallery)
 		this.open()
+		@uis.tabContent = @ui.find(@UIS.tabContent)
 
 	tabSelected: (tab_selected) =>
+		# content
 		tab_selected = $(tab_selected)
 		target       = tab_selected.attr "data-target"
 		tab_content  = @uis.content.find("[data-name="+target+"]")
+		@uis.tabContent.addClass "hidden"
+		tab_content.removeClass "hidden"
+		# tab
 		@uis.tabs.find('li').removeClass "active"
 		tab_selected.addClass "active"
-		@uis.content.find('.tabContent').removeClass "active"
-		tab_content.addClass "active"
 
 # -----------------------------------------------------------------------------
 #
@@ -341,8 +351,8 @@ class FlickrGallery extends Widget
 
 	relayout: =>
 		# set the height of the list, to show the scrollbar
-		height = $(window).height() - @ui.offset().top
-		@ui.css({height: height})
+		# height = $(window).height() - @ui.offset().top
+		# @ui.css({height: height})
 		
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z/data.json", {dataType: 'json', success : this.setData})
 

@@ -2,6 +2,7 @@
 html lang="en"
 	head
 		title | Portfolio
+		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jquery.jscrollpane.css')}}" media="all"	
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css')     }}" media="all"
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" media="all"	
 
@@ -12,4 +13,5 @@ html lang="en"
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.videobackground.js')  }}"  | {# #}		
 		script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"  | {# #}		
 		script type="text/javascript" src="{{url_for('static', filename='js/scripts.js')  }}"  | {# #}
-
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery.jscrollpane.min.js')  }}"  | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery.mousewheel.js')  }}"  | {# #}

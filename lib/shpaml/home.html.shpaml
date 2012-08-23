@@ -4,7 +4,5 @@
 	.video-background | {##} 
 	.Index.page.use-base
 		{% include "widgets/navigation.html" %}
-		.Langage
-			a href="#ln=fr" | Fr
 		{% include "widgets/panel.html" %}	
 {% endblock %}
