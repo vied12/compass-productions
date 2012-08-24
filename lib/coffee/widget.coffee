@@ -6,7 +6,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 12-Aug-2012
+# Last mod : 23-Aug-2012
 # -----------------------------------------------------------------------------
 
 class Widget
@@ -15,7 +15,10 @@ class Widget
 		@uis = {}
 		if (typeof(@UIS) != "undefined")
 			for key, value of @UIS
-				@uis[key] = @ui.find(value)
+				nui = @ui.find(value)
+				if nui.length < 1
+					console.error("uis", key, "not found in", ui)
+				@uis[key] = nui
 
 class URL
 	constructor: ->
@@ -60,6 +63,10 @@ class URL
 		location.hash = ""
 		for key, value of @hash
 			location.hash += "&" + key + "=" + value
+
+jQuery.fn.cloneTemplate = ->
+	nui = $(this[0]).clone()
+	return nui.removeClass("template hidden").addClass("actual")
 
 window.serious = []
 # register classes to a global variable
