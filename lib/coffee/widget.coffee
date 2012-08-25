@@ -64,9 +64,13 @@ class URL
 		for key, value of @hash
 			location.hash += "&" + key + "=" + value
 
-jQuery.fn.cloneTemplate = ->
+jQuery.fn.cloneTemplate = (dict) ->
 	nui = $(this[0]).clone()
-	return nui.removeClass("template hidden").addClass("actual")
+	nui = nui.removeClass("template hidden").addClass("actual")
+	if typeof(dict) == "objet"
+		for klass, value of dict
+			nui.find("."+klass).html(value)s
+	return nui
 
 window.serious = []
 # register classes to a global variable

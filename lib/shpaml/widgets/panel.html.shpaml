@@ -2,10 +2,15 @@
 	.language
 		a href="#ln=fr" | Fr
 .FooterPanel.hidden
-	.wrapper.hidden					
+	.wrapper.hidden
 		ul.tabs | {##}
+			li.template
+				a | {##}
 		.content
-			.tabContent data-name="gallery" 
-				.gallery				
+			.tabContent.hidden data-name="synopsis" | {##}
+			.tabContent.hidden data-name="screenings" | {##}
+			.tabContent.hidden data-name="credits" | {##}
+			.tabContent.hidden data-name="gallery"
+				.gallery
 					ul.photos | {##}
-		.close | x		
+		.close | x

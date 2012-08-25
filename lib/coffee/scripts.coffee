@@ -200,6 +200,7 @@ class Panel extends Widget
 			panelHeightClosed : 40
 		}
 
+		@CATEGORIES = ["synospsis", "screening", "extra", "credits", "gallery"]
 		@UIS = {
 			wrapper     : ".wrapper:first"
 			tabs        : ".tabs"
@@ -207,6 +208,7 @@ class Panel extends Widget
 			tabContent  : ".tabContent"
 			content     : ".content"
 			close       : ".close"
+			tabTmpl     : ".tabs > li.template"
 		}
 
 		@cache = {
@@ -226,6 +228,67 @@ class Panel extends Widget
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		this.relayout(false)
 		return this
+
+	setProject: (project) =>
+		console.log(project)
+		@ui.removeClass "hidden"
+		this.open()
+		for category, value of project
+			# Tab
+			if category in @CATEGORIES
+				nui = @uis.tabTmpl.cloneTemplate()
+				nui.find("a").text(category).attr("href", "#cat="+category)
+				@uis.tabs.append(nui)
+			# Content
+			if category == ""
+			nui = @uis.tabContent.find("[data-name="+category+"]")
+			
+		# @uis.tabs.not('.gallery').empty()
+		# @ui.find('.tabContent').not("[data-name=gallery]").remove()
+		# tabsStr = ""
+		# system_keys = ["key", "title", "email"]
+		# for k, v of project 
+		# 	if k not in system_keys
+		# 		tabsStr += "<li data-target=\"#{k}\">#{k}</li>"
+		# 		contentElements = ""
+		# 		switch k
+		# 			when "synopsis"	
+		# 				contentElements = v
+		# 			when "videos"
+		# 				for video in v
+		# 					contentElements += """
+		# 						<div class=\"content-item\">
+		# 							<iframe src="http://player.vimeo.com/video/#{video}" 
+		# 							width="500" 
+		# 							height="281" 
+		# 							frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+		# 						</div>
+		# 					"""
+		# 			else
+		# 				if typeof v == "string"
+		# 					contentElements = v
+		# 				else	
+		# 					for own content_k, contentElementValue of v
+		# 						contentItem=""
+		# 						contentElement=""
+		# 						if typeof contentElementValue == "object"
+		# 							for own kk, vv of contentElementValue
+		# 								switch kk
+		# 									when "article" then contentElement += "<article>#{vv}</article>"
+		# 									when "title"   then contentElement += "<h2>#{vv}</h2>"
+		# 									when "body"    then contentElement += "<p class=\"contentBody\">#{vv}</p>"
+		# 									when "date"    then contentElement += "<p class=\"contentDate\">#{vv}</p>"
+		# 									when "link"    then contentElement += "<a href=\"#{vv}\">#{contentElementValue["description"]}</a>"
+		# 						contentItem = "<div class=\"content-item\">#{contentElement}</div>"
+		# 						contentElements += contentItem
+		# 		tabContent = "<div data-name=\"#{k}\" class=\"tabContent hidden\">#{contentElements}</div>"
+		# 		if k != "gallery"
+		# 			@uis.content.append tabContent
+		# @uis.tabs.append(tabsStr)
+		# if project.gallery
+		# 	@flickrGallery.setPhotoSet(project.gallery)
+		# this.open()
+		# @uis.tabContent = @ui.find(@UIS.tabContent)
 
 	relayout: (open) =>
 		@cache.isOpened = open
@@ -256,55 +319,6 @@ class Panel extends Widget
 		this.relayout(true)
 		# relayout the flickr widget after the opening animation
 		setTimeout((=> @flickrGallery.relayout()), 500)
-
-	setProject: (project) =>
-		@uis.tabs.not('.gallery').empty()
-		@ui.removeClass "hidden"
-		@ui.find('.tabContent').not("[data-name=gallery]").remove()
-		tabsStr = ""
-		system_keys = ["key", "title", "email"]
-		for k, v of project 
-			if k not in system_keys
-				tabsStr += "<li data-target=\"#{k}\">#{k}</li>"
-				contentElements = ""
-				switch k
-					when "synopsis"	
-						contentElements = v
-					when "videos"
-						for video in v
-							contentElements += """
-								<div class=\"content-item\">
-									<iframe src="http://player.vimeo.com/video/#{video}" 
-									width="500" 
-									height="281" 
-									frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-								</div>
-							"""
-					else
-						if typeof v == "string"
-							contentElements = v
-						else	
-							for own content_k, contentElementValue of v
-								contentItem=""
-								contentElement=""
-								if typeof contentElementValue == "object"
-									for own kk, vv of contentElementValue
-										switch kk
-											when "article" then contentElement += "<article>#{vv}</article>"
-											when "title"   then contentElement += "<h2>#{vv}</h2>"
-											when "body"    then contentElement += "<p class=\"contentBody\">#{vv}</p>"
-											when "date"    then contentElement += "<p class=\"contentDate\">#{vv}</p>"
-											when "link"    then contentElement += "<a href=\"#{vv}\">#{contentElementValue["description"]}</a>"
-								contentItem = "<div class=\"content-item\">#{contentElement}</div>"
-								contentElements += contentItem
-				tabContent = "<div data-name=\"#{k}\" class=\"tabContent hidden\">#{contentElements}</div>"
-				if k != "gallery"
-					@uis.content.append tabContent
-		@uis.tabs.append(tabsStr)
-		if project.gallery
-			@flickrGallery.setPhotoSet(project.gallery)
-		this.open()
-		@uis.tabContent = @ui.find(@UIS.tabContent)
 
 	tabSelected: (tab_selected) =>
 		# content
