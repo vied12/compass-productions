@@ -9,7 +9,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 05-Aug-2012
+# Last mod : 28-Aug-2012
 # -----------------------------------------------------------------------------
 import os, sys, subprocess, shpaml, clevercss, shutil
 
@@ -55,6 +55,13 @@ def _scan(folder, dest, action, extension, new_extension=None):
 def _render_coffee(app):	
 	coffee_dir = os.path.join(app.config['LIB_DIR'], 'coffee')
 	dest       = os.path.join(app.static_folder, "js")
+	# delete previous file
+	for path, subdirs, filenames in os.walk(coffee_dir):
+		for coffee_file in filenames:
+			coffee_name = os.path.splitext(coffee_file)[0]
+			js_file     = os.path.join(dest, coffee_name+".js")
+			if os.path.exists(js_file):
+				os.remove(js_file)
 	def action(source, dest):
 		dest = os.path.dirname(dest)
 		cmd  = 'coffee'
