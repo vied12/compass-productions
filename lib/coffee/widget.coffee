@@ -6,7 +6,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 23-Aug-2012
+# Last mod : 28-Aug-2012
 # -----------------------------------------------------------------------------
 
 class Widget
@@ -17,16 +17,19 @@ class Widget
 			for key, value of @UIS
 				nui = @ui.find(value)
 				if nui.length < 1
-					console.error("uis", key, "not found in", ui)
+					console.warn("uis", key, "not found in", ui)
 				@uis[key] = nui
 
 class URL
 	constructor: ->
 		@hash = []
 
-	get: (fields) =>
-		# TODO: permit the specify some fields
-		return this.updateHash()
+	get: (field=null) =>
+		this.updateHash()
+		if field
+			return @hash[field]
+		else
+			return @hash
 
 	update: (fields) =>
 		this.updateHash()
@@ -69,7 +72,7 @@ jQuery.fn.cloneTemplate = (dict) ->
 	nui = nui.removeClass("template hidden").addClass("actual")
 	if typeof(dict) == "objet"
 		for klass, value of dict
-			nui.find("."+klass).html(value)s
+			nui.find("."+klass).html(value)
 	return nui
 
 window.serious = []
