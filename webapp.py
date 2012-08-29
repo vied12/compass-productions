@@ -27,17 +27,37 @@ app.config.from_pyfile("settings.cfg")
 #
 # -----------------------------------------------------------------------------
 
-@app.route('/api/data.json')
+@app.route('/api/data')
 def data():
 	# FIXME: set cache, set language
 	with open(os.path.join(app.root_path, "data", "portfolio.json")) as f:
 		return f.read()
 
-@app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>/data.json')
+@app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>')
 def getFlickrSetPhotos(set_id, qualities):
 	qualities = qualities.split(",")
 	api = flickr.Flickr()
 	return json.dumps(api.getSetPhotos(set_id=set_id, qualities=qualities, page=1, per_page=500))
+
+@app.route('/api/news')
+def getNews():
+	fake = [
+		{
+			"date"    : 1256953732,
+			"title"   : "Titre de la news 1",
+			"content" : "Contenu de la news\nComment vont les affaires Johnny?"
+		},
+		{
+			"date"    : 1256953532,
+			"title"   : "Titre de la news 2",
+			"content" : "Contenu de la news\nComment vont les affaires Johnny?"
+		}
+	]
+	return json.dumps(fake)
+
+@app.route('/api/contact', method='POST')
+def contact():
+	print request
 
 # -----------------------------------------------------------------------------
 #

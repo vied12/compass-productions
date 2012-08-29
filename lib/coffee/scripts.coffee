@@ -48,7 +48,7 @@ class Navigation extends Widget
 		super
 		@background       = new VideoBackground().bindUI(".video-background")
 		@cache.tileWidth  = parseInt(@uis.tilesList.css("width"))
-		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
+		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement)) 
 		@uis.brandTile.live("click", this.back)
@@ -326,58 +326,46 @@ class Panel extends Widget
 				nui.find("a").text(category).attr("href", "#cat="+category).attr("data-target", category)
 				nui.find("a").click => this.tabSelected(category)
 				@uis.tabs.append(nui)
-
 				# Content
 				this.tabcontent(category, value, project)
-		#if category == ""
 
 	tabcontent: (tabKey, tabData, project) =>
 		#Fill Data for a specific tabContent
-
 		#tabcontent element
 		tabContent = @uis.content.find('.tabContent.' + tabKey)
-
 		#refresh rendered div
 		tabContent.find('.render').remove()
-		tabContent.append('<div class="render"></div>')
-		target = tabContent.find('.render')
-
+		render = $("<div>", {class: "render"})
+		tabContent.append(render)
 		switch tabKey
 			when "synopsis"
 				nui=@uis.content.find('.synopsis .template').cloneTemplate()
 				nui.find('p').html(tabData)
-				this.addContentElement(nui, target)			
-
+				this.addContentElement(nui, render)			
 			when "videos"
 				nui=@uis.content.find('.videos .template').cloneTemplate()
 				for  value in tabData
 					nui.find('iframe').attr("src", "http://player.vimeo.com/video/"+value)
-					this.addContentElement(nui, target)
-
+					this.addContentElement(nui, render)
 			when "gallery"
 				@flickrGallery.setPhotoSet(project.gallery)
-
 			when "press" 
 				for  value, key in tabData 
 					nui=@uis.content.find('.press .template').cloneTemplate(value)
-					this.addContentElement(nui, target)
-
+					this.addContentElement(nui, render)
 			when "credits" 
 				for  value, key in tabData 
 					nui=@uis.content.find('.credits .template').cloneTemplate(value)
-					this.addContentElement(nui, target)
-
+					this.addContentElement(nui, render)
 			when "links" 
 				nui = @uis.content.find('.links .template').cloneTemplate()
 				for  value in tabData 
 					nui.find('a').attr("href", value['link'])
 					nui.find('a').text(value["description"])
-					this.addContentElement(nui, target)
-			
+					this.addContentElement(nui, render)
 			when "extra" 
 				nui = @uis.content.find('.extra .template').cloneTemplate()
 
-	
 	addContentElement: (ui, target) =>
 		# Prepare and copy content element to render target
 		nui_container = @ui.find('.tabContentElement.template').cloneTemplate()
@@ -455,7 +443,7 @@ class FlickrGallery extends Widget
 		# height = $(window).height() - @ui.offset().top
 		# @ui.css({height: height})
 		
-	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z/data.json", {dataType: 'json', success : this.setData})
+	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z", {dataType: 'json', success : this.setData})
 
 	_makePhotoTile: (photoData) =>
 		nui = @uis.list.find('.photos.template').cloneTemplate
