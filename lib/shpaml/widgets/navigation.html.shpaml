@@ -21,3 +21,14 @@
 		.tile data-target="nana"
 			.wrapper | Nana, goerge & me
 	.clear | {##}
+
+	.Page.links
+		ul
+			li.menuRoot
+				a href=#&m=main | Menu
+			li.movies
+				a href=#&m=works | Movies					
+			li.news
+				a href=#&m=news | News
+			li.contact
+				a href=#&m=contact | Contact

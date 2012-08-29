@@ -23,13 +23,14 @@ class Navigation extends Widget
 
 	constructor: ->
 		@UIS = {
-			tilesList        : ".Main .tile, .Works .tile",
-			brandTile        : ".brand.tile",
-			main             : ".Main",
-			works            : ".Works",
-			menus            : ".menu",
+			tilesList        : ".Main .tile, .Works .tile"
+			brandTile        : ".brand.tile"
+			main             : ".Main"
+			works            : ".Works"
+			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
+			pageLinks 		 : ".Page.links"
 		}
 
 		@CONFIG = {
@@ -84,11 +85,13 @@ class Navigation extends Widget
 	selectTile: (tile) =>
 		URL.update({m:tile})
 		# reset tile for fadding animation
-		if tile in ["main", "news", "contact"]
+		if tile in ["main", "news", "contact"]	
 			@uis.tilesList.removeClass "show"
 		# reset @cache.currentProject variable
 		if @cache.currentProject and tile in ["main", "works", "news", "contact"]
 			@cache.currentProject = null
+
+		this.selectPageLink tile
 		# Dispatch
 		if tile == "main"
 			this.showMenu("main")
@@ -111,15 +114,34 @@ class Navigation extends Widget
 			target = tile_selected_ui.attr "data-target"
 			this.selectTile(target)
 
+	selectPageLink: (tile) =>
+		console.log "selectPageLink",  tile
+		if tile == "main" 
+			@uis.pageLinks.addClass "hide"
+		else
+			@uis.pageLinks.removeClass "hide"
+			@uis.pageLinks.find("li").removeClass "active"
+			@uis.pageLinks.find("."+tile).addClass "active"
+			if tile in ["news","contact"]
+				@uis.pageLinks.find('.menuRoot').addClass "hidden"
+			else
+				@uis.pageLinks.find('.menuRoot').removeClass "hidden"
+				if tile != "works"
+					@uis.pageLinks.find('.menuRoot').addClass "active"		
+
 	selectWorks: =>
 		this.showMenu("works")
 		@uis.worksTiles.removeClass("hidden")
 			
 	selectNews: =>
 		@uis.main.addClass "hidden"
+		@uis.main.find('[data-target=news]').removeClass "hidden"
+		$("body").trigger("setPanelPage", "news")
 
 	selectContact: =>
-		@uis.main.addClass "hidden"
+		#@uis.main.addClass "hidden"
+		#@uis.main.find('.tile:not([data-target=contact])').addClass "hidden"
+		$("body").trigger("setPanelPage", "contact")
 
 	selectProjet: (project) =>
 		if @cache.currentProject
@@ -199,96 +221,168 @@ class Panel extends Widget
 		@OPTIONS = {
 			panelHeightClosed : 40
 		}
-
-		@CATEGORIES = ["synospsis", "screening", "extra", "credits", "gallery"]
+		@PAGES = ["project", "contact", "news"]	
+		@CATEGORIES = ["synopsis", "screening", "videos", "extra", "credits", "gallery", "press", "links"]	
 		@UIS = {
 			wrapper     : ".wrapper:first"
 			tabs        : ".tabs"
 			tabItems    : ".tabs li"
 			tabContent  : ".tabContent"
-			content     : ".content"
+			content     : ".tabContents"
 			close       : ".close"
 			tabTmpl     : ".tabs > li.template"
+			tabContentTmpl  : ".tabContent"
+			pages 		: ".pages"
+			#currentTabContent: ".current"
 		}
 
 		@cache = {
 			isOpened   : false
 			currentTab : null
+			currentPage : null
 		}
 
 	bindUI: (ui) =>
 		super
 		@flickrGallery = new FlickrGallery().bindUI(@ui.find ".gallery")
-		$('body').bind 'projectSelected', (e, projet) => this.setProject(projet)
+		$('body').bind 'setPanelPage', (e, page) => this.setPage(page)
+		$('body').bind 'projectSelected', (e, projet) => this.setPage("project", projet)
 		$('body').bind('projectUnselected', this.hide)
 		@uis.close.click =>
 			this.hide()
 			$('body').trigger "backToHome"
 		@uis.tabItems.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
+
+		this.goto("project")
 		this.relayout(false)
 		return this
 
-	setProject: (project) =>
-		console.log(project)
-		@ui.removeClass "hidden"
+	setPage: (page, pageData) =>
+		switch page
+			when "contact" then this.pageContact()
+			when "news"	then this.pageNews()
+			when "project"	then this.pageProject(pageData)
+		#this.goto(page)
 		this.open()
+
+	goto: (page) =>
+		#refresh ui style
+		for _page in @PAGES
+			@ui.removeClass _page
+		@ui.addClass page
+		#close all pages
+		@uis.wrapper.find('.page').removeClass "show"
+		#show the one
+		@uis.wrapper.find('.'+page).addClass "show"
+		#open this panel
+		this.open()
+		#cache
+		@cache.currentPage = page
+
+	pageProject: (project) =>
+		#create tabs with data project
+		this.tabs(project)
+		this.goto "project"
+
+	pageContact: =>
+		# TODO manage form
+		page = @ui.find('.contact')
+		page.find('.button').click =>
+			page.find('.home').addClass "hidden"
+			page.find('.form').removeClass "hidden"
+
+		this.goto "contact"
+
+	pageNews: =>
+		# TODO load data news
+		console.log "news"
+		this.goto "news"
+		
+
+	tabSelected: (tab_selected) =>
+		#console.log "select tab" , tab_selected
+		# content
+		tab_selected = $(tab_selected)
+		console.log tab_selected.attr "data-target"
+		target       = tab_selected.find('a').attr "data-target"
+		tab_content  = @uis.content.find("[data-name="+target+"]")
+		@uis.tabContent.addClass "hidden"
+		tab_content.removeClass "hidden"
+		# tab
+		@uis.tabs.find('li').removeClass "active"
+		tab_selected.addClass "active"
+
+	tabs: (project) =>
+		#this.clean_tabs()
+		@uis.tabs.not('.gallery').empty()
+		system_keys = ["key", "email", "title"]
 		for category, value of project
+			# console.log "cat=", category
 			# Tab
 			if category in @CATEGORIES
+				#console.log " make category=", category
 				nui = @uis.tabTmpl.cloneTemplate()
-				nui.find("a").text(category).attr("href", "#cat="+category)
+				nui.find("a").text(category).attr("href", "#cat="+category).attr("data-target", category)
+				nui.find("a").click => this.tabSelected(category)
 				@uis.tabs.append(nui)
-			# Content
-			if category == ""
-			nui = @uis.tabContent.find("[data-name="+category+"]")
+
+				# Content
+				this.tabcontent(category, value, project)
+		#if category == ""
+
+	tabcontent: (tabKey, tabData, project) =>
+		#Fill Data for a specific tabContent
+
+		#tabcontent element
+		tabContent = @uis.content.find('.tabContent.' + tabKey)
+
+		#refresh rendered div
+		tabContent.find('.render').remove()
+		tabContent.append('<div class="render"></div>')
+		target = tabContent.find('.render')
+
+		switch tabKey
+			when "synopsis"
+				nui=@uis.content.find('.synopsis .template').cloneTemplate()
+				nui.find('p').html(tabData)
+				this.addContentElement(nui, target)			
+
+			when "videos"
+				nui=@uis.content.find('.videos .template').cloneTemplate()
+				for  value in tabData
+					nui.find('iframe').attr("src", "http://player.vimeo.com/video/"+value)
+					this.addContentElement(nui, target)
+
+			when "gallery"
+				@flickrGallery.setPhotoSet(project.gallery)
+
+			when "press" 
+				for  value, key in tabData 
+					nui=@uis.content.find('.press .template').cloneTemplate(value)
+					this.addContentElement(nui, target)
+
+			when "credits" 
+				for  value, key in tabData 
+					nui=@uis.content.find('.credits .template').cloneTemplate(value)
+					this.addContentElement(nui, target)
+
+			when "links" 
+				nui = @uis.content.find('.links .template').cloneTemplate()
+				for  value in tabData 
+					nui.find('a').attr("href", value['link'])
+					nui.find('a').text(value["description"])
+					this.addContentElement(nui, target)
 			
-		# @uis.tabs.not('.gallery').empty()
-		# @ui.find('.tabContent').not("[data-name=gallery]").remove()
-		# tabsStr = ""
-		# system_keys = ["key", "title", "email"]
-		# for k, v of project 
-		# 	if k not in system_keys
-		# 		tabsStr += "<li data-target=\"#{k}\">#{k}</li>"
-		# 		contentElements = ""
-		# 		switch k
-		# 			when "synopsis"	
-		# 				contentElements = v
-		# 			when "videos"
-		# 				for video in v
-		# 					contentElements += """
-		# 						<div class=\"content-item\">
-		# 							<iframe src="http://player.vimeo.com/video/#{video}" 
-		# 							width="500" 
-		# 							height="281" 
-		# 							frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-		# 						</div>
-		# 					"""
-		# 			else
-		# 				if typeof v == "string"
-		# 					contentElements = v
-		# 				else	
-		# 					for own content_k, contentElementValue of v
-		# 						contentItem=""
-		# 						contentElement=""
-		# 						if typeof contentElementValue == "object"
-		# 							for own kk, vv of contentElementValue
-		# 								switch kk
-		# 									when "article" then contentElement += "<article>#{vv}</article>"
-		# 									when "title"   then contentElement += "<h2>#{vv}</h2>"
-		# 									when "body"    then contentElement += "<p class=\"contentBody\">#{vv}</p>"
-		# 									when "date"    then contentElement += "<p class=\"contentDate\">#{vv}</p>"
-		# 									when "link"    then contentElement += "<a href=\"#{vv}\">#{contentElementValue["description"]}</a>"
-		# 						contentItem = "<div class=\"content-item\">#{contentElement}</div>"
-		# 						contentElements += contentItem
-		# 		tabContent = "<div data-name=\"#{k}\" class=\"tabContent hidden\">#{contentElements}</div>"
-		# 		if k != "gallery"
-		# 			@uis.content.append tabContent
-		# @uis.tabs.append(tabsStr)
-		# if project.gallery
-		# 	@flickrGallery.setPhotoSet(project.gallery)
-		# this.open()
-		# @uis.tabContent = @ui.find(@UIS.tabContent)
+			when "extra" 
+				nui = @uis.content.find('.extra .template').cloneTemplate()
+
+	
+	addContentElement: (ui, target) =>
+		# Prepare and copy content element to render target
+		nui_container = @ui.find('.tabContentElement.template').cloneTemplate()
+		nui_container.append ui.html()
+		target.append nui_container
 
 	relayout: (open) =>
 		@cache.isOpened = open
@@ -303,7 +397,7 @@ class Panel extends Widget
 			setTimeout((=> 
 				@uis.content.css({height: window_height - @uis.content.offset().top - 80})
 				), 500)
-			# @uis.content.jScrollPane({autoReinitialise:true})
+			@uis.content.jScrollPane({autoReinitialise:true})
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
@@ -314,22 +408,15 @@ class Panel extends Widget
 		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)
 
 	open: =>
+		@ui.removeClass "hidden"
 		@uis.wrapper.removeClass "hidden"
 		@.tabSelected(@uis.wrapper.find('.tabs li:first'))
 		this.relayout(true)
 		# relayout the flickr widget after the opening animation
 		setTimeout((=> @flickrGallery.relayout()), 500)
 
-	tabSelected: (tab_selected) =>
-		# content
-		tab_selected = $(tab_selected)
-		target       = tab_selected.attr "data-target"
-		tab_content  = @uis.content.find("[data-name="+target+"]")
-		@uis.tabContent.addClass "hidden"
-		tab_content.removeClass "hidden"
-		# tab
-		@uis.tabs.find('li').removeClass "active"
-		tab_selected.addClass "active"
+
+
 
 # -----------------------------------------------------------------------------
 #
@@ -349,7 +436,7 @@ class FlickrGallery extends Widget
 		@UIS = {
 			list :	".photos"
 			listItems : ".photos li"
-			showMore    : ".show_more"
+			showMore    : ".show_more.template"
 		}
 
 		@cache = {
@@ -371,6 +458,7 @@ class FlickrGallery extends Widget
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z/data.json", {dataType: 'json', success : this.setData})
 
 	_makePhotoTile: (photoData) =>
+		nui = @uis.list.find('.photos.template').cloneTemplate
 		li = $('<li></li>')
 		image = $('<img />').attr('src', photoData.q)
 		link = $('<a></a>').attr('target', '_blank').attr('href', photoData.z)
@@ -378,18 +466,33 @@ class FlickrGallery extends Widget
 		li.append link
 		@uis.list.append li
 		#put show more tile at the end:
+		# TODO flickr
 		if @uis.list.find(".show_more")
 			@uis.list.find(".show_more").appendTo @uis.list
 
 	setData: (data) =>
-		@uis.list.empty()
+		#console.log "gallery .setData", data
+		nui = @uis.list
+		#clean old_gallery
+		@uis.list.find('li:not(.template)').remove()
+		#update	cache data	
 		@cache.data = data
+		#make the first tiles 
 		for photo, index in data[0..@OPTIONS.initial_quantity]
-			@._makePhotoTile(photo)
+			this._makePhotoTile(photo)
+		#show_more tile when more tile to show
+		console.log "data length", data.length
 		if data.length >= @OPTIONS.initial_quantity
-			show_more_tile = $("<li class=\"show_more\">"+@OPTIONS.show_more_text+"</li>")
-			@uis.list.append(show_more_tile)
-			show_more_tile.click => @.showMore()
+			#create a dom element.
+			showMoreTile = @ui.find(".show_more.template").cloneTemplate()	
+			console.log "!!!!!", showMoreTile
+			#show_more_tile.append @OPTIONS.show_more_text
+			showMoreTile.append "ok"
+			nui.append(showMoreTile)
+			#an event for click show_more 
+			showMoreTile.click => this.showMore()
+
+			#update cache index
 			@cache.photo_index = @OPTIONS.initial_quantity
 
 	showMore: =>
@@ -398,7 +501,7 @@ class FlickrGallery extends Widget
 			next_index = @cache.data.length	
 			@ui.find(".show_more").addClass "hidden"
 		for photo,index in @cache.data[@cache.photo_index+1..next_index]
-			@._makePhotoTile(photo)
+			this._makePhotoTile(photo)
 		@cache.photo_index = next_index
 
 # -----------------------------------------------------------------------------

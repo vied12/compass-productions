@@ -65,11 +65,16 @@ class URL
 			location.hash += "&" + key + "=" + value
 
 jQuery.fn.cloneTemplate = (dict) ->
+	#console.log "cloneTemplate!!", dict
 	nui = $(this[0]).clone()
 	nui = nui.removeClass("template hidden").addClass("actual")
 	if typeof(dict) == "objet"
 		for klass, value of dict
-			nui.find("."+klass).html(value)s
+			if value != null
+				nui.find("."+klass).html(value)
+			else 
+				nui.find("."+klass).remove()	
+
 	return nui
 
 window.serious = []

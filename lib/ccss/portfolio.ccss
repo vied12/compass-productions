@@ -5,6 +5,7 @@ TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR  = "rgba(20,20,20,0.7)"
+PANEL_COLOR	= "rgba(20,20,80,0.7)"
 BASE_PADDING= 10px
 
 body:
@@ -89,7 +90,7 @@ a:
 	right               : 30px
 	left                : 30px
 	min-height          : 100px
-	background-color    : $TILE_COLOR
+	background-color    : $PANEL_COLOR
 	overflow            : hidden
 	margin-top          : 8px 
 	-webkit-transition-property : top
@@ -98,23 +99,24 @@ a:
 	-moz-transition-duration    : 0.25s
 	> .wrapper:
 		padding: $BASE_PADDING  $BASE_PADDING *2
+
+		.page:
+			opacity : 0
+			display : none
+			&.show:
+				display : block
+				opacity: 1
 		.tabs:
 			padding   		: $BASE_PADDING * 2 0
 			font-size 	: 1.1em
 			color 		: $TEXT_COLOR_DARK
-		 	li:
-		 		cursor  : pointer
+			li:
+				cursor  : pointer
 				display	: inline-block
 				padding : 0 $BASE_PADDING
 				&.active:
 					color 	: $TEXT_COLOR_LIGHT
-		.content:
-			font-size 	: 1.6em
-			color     	: $TEXT_COLOR_LIGHT
-			padding 	: $BASE_PADDING * 2
-			line-height	: 1.4em
-			overflow    : auto
-
+					
 		.tabContent:
 			position : relative		
 			//-webkit-transition : all linear 0.2s
@@ -124,13 +126,70 @@ a:
 			//opacity		: 0	
 			h2:
 				font-size : 1.2em
-			//.contentBody
-			//.contentDate
-			//article
+
+				//.synopsis:
+				//.video:
+				//.gallery:
+				//.credits:
+				//.article:
+				//.links:
+				//.screenings:
+				//.press:
+
 		.close:
 			position : absolute
 			right    : 30px
 			top      : 20px
+
+	&.project:
+		background-color : $TILE_COLOR
+	&.contact:
+		background-color : $PANEL_COLOR
+
+	textarea:
+		width 	: 98%
+		height 	: 400px
+		padding : $BASE_PADDING
+		background-color : transparent
+		border-width : 1px
+		border-color : #fff 
+		color : #fff
+
+.Page.links:
+	opacity 		: 1
+	position        : absolute
+	bottom 			: 0
+	z-index 		: 10
+
+	ul:
+		position         : absolute
+		bottom           : 10px
+		left            : 40px
+		padding 		: 0
+		width 			: 400px	
+
+	li:
+		display 	: inline-block
+		margin 		: $BASE_PADDING
+		padding 	: 0
+
+		&.active a:
+			color 	: $TEXT_COLOR_DARK 
+	a:
+		color 		: $TEXT_COLOR_LIGHT
+		text-decoration 	: none
+
+	&.show:
+		opacity 	: 1
+	&.hide:
+		opacity 	: 0
+
+.Langage:
+	position         : absolute
+	bottom           : 10px
+	right             : 40px
+
+
 
 //-------------------------- VIDEO --------------------------------
 
