@@ -9,6 +9,7 @@
 # Last mod : 28-Aug-2012
 # -----------------------------------------------------------------------------
 
+
 class Widget
 	bindUI: (ui) ->
 		@ui = $(ui)
@@ -48,7 +49,14 @@ class URL
 			delete @hash[key]
 
 	hasChanged: (key) =>
-		console.error "not implemented"
+		old_hash = clone(@hash)
+		this.updateHash()
+		if isDefined(@hash[key])
+			if isDefined(old_hash[key])
+				return @hash[key] != old_hash[key]
+			else
+				return true
+		return false
 
 	hasBeenAdded: (key) =>
 		console.error "not implemented"
@@ -72,6 +80,9 @@ class URL
 		for key, value of @hash
 			location.hash += "&" + key + "=" + value
 
+isDefined = (obj) ->
+	return typeof(obj) != 'undefined'
+
 jQuery.fn.cloneTemplate = (dict) ->
 	nui = $(this[0]).clone()
 	nui = nui.removeClass("template hidden").addClass("actual")
@@ -84,6 +95,23 @@ jQuery.fn.cloneTemplate = (dict) ->
 			else
 				nui.find("."+klass).remove()
 	return nui
+
+clone = (obj) ->
+	if not obj? or typeof obj isnt 'object'
+		return obj
+	if obj instanceof Date
+		return new Date(obj.getTime()) 
+	if obj instanceof RegExp
+		flags = ''
+		flags += 'g' if obj.global?
+		flags += 'i' if obj.ignoreCase?
+		flags += 'm' if obj.multiline?
+		flags += 'y' if obj.sticky?
+		return new RegExp(obj.source, flags) 
+	newInstance = new obj.constructor()
+	for key of obj
+		newInstance[key] = clone obj[key]
+	return newInstance
 
 window.serious = []
 # register classes to a global variable

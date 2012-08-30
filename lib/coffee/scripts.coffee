@@ -253,7 +253,16 @@ class Panel extends Widget
 			$('body').trigger "backToHome"
 		@uis.tabItems.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
-
+		# bind url change
+		$(window).hashchange( =>
+			if URL.hasChanged("m")
+				page = URL.get("m")
+				switch page
+					when "contact" then this.setPage(page)
+					when "news"    then this.setPage(page)
+					when "project" then this.setPage(page)
+					else this.setPage("project", page)
+		)
 		this.goto("project")
 		this.relayout(false)
 		return this
