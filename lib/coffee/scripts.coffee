@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# Project : a Serious Project
+# Project : Portfolio - Compass Productions
 # -----------------------------------------------------------------------------
 # Author : Edouard Richard                                  <edou4rd@gmail.com>
 # Author : Olivier Chardin                                <jegrandis@gmail.com>
@@ -7,7 +7,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 12-Aug-2012
+# Last mod : 29-Aug-2012
 # -----------------------------------------------------------------------------
 
 Widget = window.serious.Widget
@@ -90,7 +90,6 @@ class Navigation extends Widget
 		# reset @cache.currentProject variable
 		if @cache.currentProject and tile in ["main", "works", "news", "contact"]
 			@cache.currentProject = null
-
 		this.selectPageLink tile
 		# Dispatch
 		if tile == "main"
@@ -139,8 +138,6 @@ class Navigation extends Widget
 		$("body").trigger("setPanelPage", "news")
 
 	selectContact: =>
-		#@uis.main.addClass "hidden"
-		#@uis.main.find('.tile:not([data-target=contact])').addClass "hidden"
 		$("body").trigger("Contact.new")
 		$("body").trigger("setPanelPage", "contact")
 
@@ -290,7 +287,6 @@ class Panel extends Widget
 		#cache
 		@cache.currentPage = page
 
-
 	tabSelected: (tab_selected) =>
 		#console.log "select tab" , tab_selected
 		# content
@@ -392,9 +388,6 @@ class Panel extends Widget
 		setTimeout((=> @flickrGallery.relayout()), 500)
 
 
-
-
-
 # -----------------------------------------------------------------------------
 #
 # Flickr Gallery
@@ -465,7 +458,6 @@ class FlickrGallery extends Widget
 			nui.append(showMoreTile)
 			#an event for click show_more 
 			showMoreTile.click => this.showMore()
-
 			#update cache index
 			@cache.photo_index = @OPTIONS.initial_quantity
 
@@ -511,7 +503,6 @@ class News extends Widget
 				date  : news.date
 			})
 			@uis.newsContainer.append(nui)
-
 
 # -----------------------------------------------------------------------------
 #
