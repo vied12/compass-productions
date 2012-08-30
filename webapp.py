@@ -40,7 +40,7 @@ def getFlickrSetPhotos(set_id, qualities):
 	return json.dumps(api.getSetPhotos(set_id=set_id, qualities=qualities, page=1, per_page=500))
 
 @app.route('/api/news')
-def getNews():
+def news():
 	fake = [
 		{
 			"date"    : 1256953732,
@@ -55,9 +55,14 @@ def getNews():
 	]
 	return json.dumps(fake)
 
-@app.route('/api/contact', method='POST')
+@app.route('/api/contact', methods=['POST'])
 def contact():
-	print request
+	try:
+		message = request.form['message']
+
+	except:
+		return "false"
+	return "true"
 
 # -----------------------------------------------------------------------------
 #

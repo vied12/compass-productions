@@ -54,11 +54,12 @@
 
 					.tabContent data-name="default" | {##}
 	
-			.news.page | {##}
-				.template
-					.title | {##}
-					.date | {##}
-					.body | {##}
+			.News.page | {##}
+				ul
+					li.template
+						.title | {##}
+						.date  | {##}
+						.body  | {##}
 
 			.contact.page
 				.home.getintouch

@@ -494,8 +494,44 @@ class FlickrGallery extends Widget
 
 # -----------------------------------------------------------------------------
 #
+# News
+#
+# -----------------------------------------------------------------------------	
+
+class News extends Widget
+
+	constructor: (url) ->
+
+		@UIS = {
+			newsTmpl      : ".template"
+			newsContainer : "ul"
+		}
+
+		@cache = {
+			data : null
+		}
+
+	bindUI: (ui) =>
+		super
+		$.ajax("/api/news", {dataType: 'json', success : this.setData})
+		return this
+
+	setData: (data) =>
+		@cache.data = data
+		for news in data
+			nui = @uis.newsTmpl.cloneTemplate({
+				title : news.title
+				body  : news.content
+				date  : news.date
+			})
+			@uis.newsContainer.append(nui)
+
+
+# -----------------------------------------------------------------------------
+#
 # Main
 #
 # -----------------------------------------------------------------------------	
 new Navigation().bindUI(".Navigation")
+new News().bindUI(".News")
 # EOF
