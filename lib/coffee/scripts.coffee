@@ -156,6 +156,7 @@ class Navigation extends Widget
 		# Get project's object and send it to panel
 		project_obj = this.getProjectByName(project)
 		$("body").trigger("projectSelected", project_obj)
+		$("body").trigger("setPanelPage", "project")
 		@cache.currentProject = project
 
 	# show the given menu, hide the previous opened menu
@@ -301,7 +302,7 @@ class Panel extends Widget
 		@uis.wrapper.removeClass "hidden"
 		this.relayout(true)
 		# relayout the flickr widget after the opening animation
-		setTimeout((=> @flickrGallery.relayout()), 500)
+		# setTimeout((=> @flickrGallery.relayout()), 500)
 
 
 # -----------------------------------------------------------------------------
@@ -529,6 +530,7 @@ class Project extends Widget
 		@uis.tabs.find('li').live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 
 	tabs: (project) =>
+		@uis.tabs.find('li:not(.template)').remove()
 		system_keys = ["key", "email", "title"]
 		for category, value of project
 			# Tab
