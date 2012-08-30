@@ -8,10 +8,34 @@ TILE_COLOR  = "rgba(20,20,20,0.7)"
 PANEL_COLOR	= "rgba(20,20,80,0.7)"
 BASE_PADDING= 10px
 
+@font-face:
+	font-family: "Livory"
+	font-style: normal
+	font-weight: normal
+	src: url("Livory-Regular.otf")
+@font-face:
+	font-family: "Livory"
+	font-style: normal
+	font-weight: bold
+	src: url("Livory-Bold.otf")
+@font-face:
+	font-family: "Livory"
+	font-style: italic
+	font-weight: normal
+	src: url("Livory-RegularItalic.otf")
+@font-face:
+	font-family: "Livory"
+	font-style: italic
+	font-weight: bold
+	src: url("Livory-BoldItalic.otf")
+
 body:
 	background-color 	: green
 	font-weight			: bold
 	overflow            : hidden
+
+.page:
+	font-family: "Livory", Verdana, sans-serif	
 
 a: 
 	color 	: $TEXT_COLOR_LIGHT
