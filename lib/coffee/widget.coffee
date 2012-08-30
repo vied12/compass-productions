@@ -20,6 +20,11 @@ class Widget
 					console.warn("uis", key, "not found in", ui)
 				@uis[key] = nui
 
+	set: (field, value) =>
+		#TODO: use an instance variable to declare the fields list
+		# to make selections operations at the begining
+		@ui.find(".out[data-field="+field+"]").html(value)
+
 class URL
 	constructor: ->
 		@hash = []
@@ -68,16 +73,17 @@ class URL
 			location.hash += "&" + key + "=" + value
 
 jQuery.fn.cloneTemplate = (dict) ->
-	#console.log "cloneTemplate!!", dict
 	nui = $(this[0]).clone()
 	nui = nui.removeClass("template hidden").addClass("actual")
-	if typeof(dict) == "objet"
+	if typeof(dict) == "object"
 		for klass, value of dict
 			if value != null
 				nui.find("."+klass).html(value)
-			else 
-				nui.find("."+klass).remove()	
-
+			#NOTE: removing useless tag could be a problem in some case 
+			# if we need to complete the template after the clone operation
+			else
+				nui.find("."+klass).remove()
+	return nui
 
 window.serious = []
 # register classes to a global variable
