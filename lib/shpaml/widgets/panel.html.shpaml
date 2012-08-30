@@ -5,7 +5,7 @@
 .FooterPanel.hidden
 	.wrapper.hidden
 		.pages	
-			.project.page
+			.Project.page
 				ul.tabs
 					li.template
 						a | {##}
