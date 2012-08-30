@@ -118,7 +118,7 @@ a:
 					color 	: $TEXT_COLOR_LIGHT
 					
 		.tabContent:
-			position : relative		
+			position : relative
 			//-webkit-transition : all linear 0.2s
 			//-moz-transition    : all linear 0.2s
 			//-webkit-transform  : "translateX(300px)"
@@ -145,15 +145,28 @@ a:
 		background-color : $TILE_COLOR
 	&.contact:
 		background-color : $PANEL_COLOR
-
+		.slide:
+			display : none
+		.show:
+			display : block
 	textarea:
 		width 	: 98%
-		height 	: 400px
-		padding : $BASE_PADDING
+	.in:
+		margin 	: 5px 0
+		display : block
+
+	.in, .button:
 		background-color : transparent
 		border-width : 1px
 		border-color : #fff 
 		color : #fff
+		padding : $BASE_PADDING
+
+	.button:
+		text-transform : uppercase
+		font-size : 0.8em
+		text-decoration : none
+
 
 .Page.links:
 	opacity 		: 1

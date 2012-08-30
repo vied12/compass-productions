@@ -141,6 +141,7 @@ class Navigation extends Widget
 	selectContact: =>
 		#@uis.main.addClass "hidden"
 		#@uis.main.find('.tile:not([data-target=contact])').addClass "hidden"
+		$("body").trigger("Contact.new")
 		$("body").trigger("setPanelPage", "contact")
 
 	selectProjet: (project) =>
@@ -214,6 +215,7 @@ class VideoBackground extends Widget
 #
 # -----------------------------------------------------------------------------
 
+    	
 class Panel extends Widget
 
 	constructor: (projet) ->
@@ -221,7 +223,7 @@ class Panel extends Widget
 		@OPTIONS = {
 			panelHeightClosed : 40
 		}
-		@PAGES = ["project", "contact", "news"]	
+		@PAGES = ["Project", "Contact", "News"]	
 		@CATEGORIES = ["synopsis", "screening", "videos", "extra", "credits", "gallery", "press", "links"]	
 		@UIS = {
 			wrapper     : ".wrapper:first"
@@ -231,9 +233,7 @@ class Panel extends Widget
 			content     : ".tabContents"
 			close       : ".close"
 			tabTmpl     : ".tabs > li.template"
-			tabContentTmpl  : ".tabContent"
 			pages 		: ".pages"
-			#currentTabContent: ".current"
 		}
 
 		@cache = {
@@ -253,27 +253,28 @@ class Panel extends Widget
 			$('body').trigger "backToHome"
 		@uis.tabItems.live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
+
 		# bind url change
 		$(window).hashchange( =>
 			if URL.hasChanged("m")
 				page = URL.get("m")
-				switch page
-					when "contact" then this.setPage(page)
-					when "news"    then this.setPage(page)
-					when "project" then this.setPage(page)
-					else this.setPage("project", page)
+				this.setPage(page)
 		)
 		this.goto("project")
 		this.relayout(false)
 		return this
-
+	
 	setPage: (page, pageData) =>
-		switch page
-			when "contact" then this.pageContact()
-			when "news"	then this.pageNews()
-			when "project"	then this.pageProject(pageData)
-		#this.goto(page)
+		tabbedPage=['project']
+		if page in tabbedPage 
+			this.tabs(pageData)
+		this.goto page
 		this.open()
+
+	capitalize: (str) ->
+	    str.replace(/\w\S*/g, (txt) ->
+	    	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+	    	)
 
 	goto: (page) =>
 		#refresh ui style
@@ -283,31 +284,12 @@ class Panel extends Widget
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
-		@uis.wrapper.find('.'+page).addClass "show"
+		@uis.wrapper.find('.'+this.capitalize(page)).addClass "show"
 		#open this panel
 		this.open()
 		#cache
 		@cache.currentPage = page
 
-	pageProject: (project) =>
-		#create tabs with data project
-		this.tabs(project)
-		this.goto "project"
-
-	pageContact: =>
-		# TODO manage form
-		page = @ui.find('.contact')
-		page.find('.button').click =>
-			page.find('.home').addClass "hidden"
-			page.find('.form').removeClass "hidden"
-
-		this.goto "contact"
-
-	pageNews: =>
-		# TODO load data news
-		console.log "news"
-		this.goto "news"
-		
 
 	tabSelected: (tab_selected) =>
 		#console.log "select tab" , tab_selected
@@ -323,14 +305,11 @@ class Panel extends Widget
 		tab_selected.addClass "active"
 
 	tabs: (project) =>
-		#this.clean_tabs()
-		@uis.tabs.not('.gallery').empty()
 		system_keys = ["key", "email", "title"]
 		for category, value of project
-			# console.log "cat=", category
+
 			# Tab
 			if category in @CATEGORIES
-				#console.log " make category=", category
 				nui = @uis.tabTmpl.cloneTemplate()
 				nui.find("a").text(category).attr("href", "#cat="+category).attr("data-target", category)
 				nui.find("a").click => this.tabSelected(category)
@@ -415,6 +394,7 @@ class Panel extends Widget
 
 
 
+
 # -----------------------------------------------------------------------------
 #
 # Flickr Gallery
@@ -468,7 +448,6 @@ class FlickrGallery extends Widget
 			@uis.list.find(".show_more").appendTo @uis.list
 
 	setData: (data) =>
-		#console.log "gallery .setData", data
 		nui = @uis.list
 		#clean old_gallery
 		@uis.list.find('li:not(.template)').remove()
@@ -478,11 +457,9 @@ class FlickrGallery extends Widget
 		for photo, index in data[0..@OPTIONS.initial_quantity]
 			this._makePhotoTile(photo)
 		#show_more tile when more tile to show
-		console.log "data length", data.length
 		if data.length >= @OPTIONS.initial_quantity
 			#create a dom element.
 			showMoreTile = @ui.find(".show_more.template").cloneTemplate()	
-			console.log "!!!!!", showMoreTile
 			#show_more_tile.append @OPTIONS.show_more_text
 			showMoreTile.append "ok"
 			nui.append(showMoreTile)
@@ -538,9 +515,67 @@ class News extends Widget
 
 # -----------------------------------------------------------------------------
 #
+# Contact
+#
+# -----------------------------------------------------------------------------	 
+
+class Contact extends Widget
+	constructor: (url) ->
+		@OPTIONS = {
+			textSuccess : "Thank You ! U got an answer ASAP"
+			textFail 	: "Sorry"
+		}
+		@UIS = {
+			slides : ".slide"
+			home :	".home"
+			form : "form"
+			result : ".result"
+			toFormLink : ".contactForm"
+			button_send  : "button"
+		}
+
+	bindUI: (ui) =>
+		super
+		this.relayout()
+		$(window).resize(this.relayout)
+		$('body').bind 'Contact.new', (e) => this.newContact()
+		this.newContact()
+		return this
+
+	relayout: =>
+		#adapt form fields dimension
+		console.log "relayout", @uis.form.find('textarea').height(), @ui.height() - 200
+		#@uis.form.find('textarea').width( @ui.width() )	
+
+	gotoSlide: (slide) =>
+		@uis.slides.removeClass "show"
+		slide.addClass "show"
+
+	newContact: =>
+		this.gotoSlide @uis.home
+		@uis.slides.removeClass "show"
+		@uis.home.addClass "show"
+		@uis.toFormLink.click => this.gotoSlide @uis.form
+		@uis.form.submit =>
+			$.ajax("/api/contact", {type:'POST', dataType: 'json', success : this.sendMessage})
+
+	sendMessage: (success) =>
+		this.gotoSlide @uis.result
+		answer = @uis.result.find('p')
+		if success
+			answer.text @OPTIONS.textSuccess
+		else
+ 			answer.text @OPTIONS.textFail
+			 
+		
+
+
+# -----------------------------------------------------------------------------
+#
 # Main
 #
 # -----------------------------------------------------------------------------	
 new Navigation().bindUI(".Navigation")
 new News().bindUI(".News")
+new Contact().bindUI(".Contact")
 # EOF

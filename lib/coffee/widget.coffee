@@ -113,6 +113,10 @@ clone = (obj) ->
 		newInstance[key] = clone obj[key]
 	return newInstance
 
+
+
+
+
 window.serious = []
 # register classes to a global variable
 window.serious.Widget = Widget

@@ -59,7 +59,7 @@ def news():
 def contact():
 	try:
 		message = request.form['message']
-
+		print message
 	except:
 		return "false"
 	return "true"
