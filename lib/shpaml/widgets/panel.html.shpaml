@@ -9,7 +9,7 @@
 				ul.tabs
 					li.template
 						a | {##}
-				.tabContents	
+				.tabContents.scrollable	
 					
 					::comment
 						TODO.maybe fill classname with data-name dynamically
@@ -18,7 +18,7 @@
 
 					.tabContent.synopsis  data-name="synopsis"
 						.template
-							p | {##}	
+							p.fat | {##}	
 
 					.tabContent.gallery data-name="gallery"
 						ul.photos
@@ -28,60 +28,66 @@
 					.tabContent.videos data-name="videos"
 						.template
 							iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}		
-
-					.tabContent.screenings data-name="screenings" | {##}
+					.tabContent.screenings.condensed data-name="screenings" | {##}
 						.template
-							h2.title | {##}
+							p.title | {##}
 							p.date | {##}
 							p.body | {##}					
 
-					.tabContent.credits data-name="credits"
+					.tabContent.credits.condensed data-name="credits"
 						.template
-							h2.title | {##}	
+							p.title | {##}	
 							p.body | {##}	
 							p.article | {##}
 
 					.tabContent.press data-name="press" 
 						.template
-							h2.title | {##}	
+							p.title | {##}	
 							p.article | {##}	
 
 					.tabContent.links data-name="links"
 						.template
-							a href="#" title=links | {#description#}
+							a.button href="#" title=links target="_blank" | {#description#}
 
 					.tabContent.extra data-name="extra" | {##}
 
 					.tabContent data-name="default" | {##}
 	
 			.News.page
-				ul
+				ul.scrollable
 					li.template
-						.title | {##}
-						.date  | {##}
-						.body  | {##}
+						p.date  | {##}
+						h2.title | {##}
+						p.body  | {##}
 
 			.Contact.page
 				.home.slide.show
-					p
-						Hello there,
-						Would you like to get in touch with Compass Productions?
-						You may e reach us at:
-						info@compassproduction.com
-
-					a.button.contactForm href="#contactForm" | or use our contact form
-
-				form.slide
-					p
+					p.fat
 						Hello there,
 						> br
-						Would you like to get in touch with Compass Productions
+						Would you like to get in touch with Compass Productions?
+						> br
+						You may e reach us at:
+						> br 
+						> br
+						> br
+						info@compassproduction.com
+					a.button.contactForm href="#contactForm" | or use our contact form
 
-					input.email.in type="text" placeholder="Email" | {##} 	
+				::comment
+					POST was not working, temporary, I use GET			
+				form.slide method="GET"
+					p.fat
+						Hello there,
+						> br
+						Would you like to get in touch with Compass
+						Productions
 
-					textarea.body.in placeholder="Write us a few lines..." | {##}
+					input.email.in name="email" type="text" placeholder="Email" | {##} 	
 
-					button.submit.button.in  | Send	
+					textarea.message.in name="message" placeholder="Write us a few lines..." | {##}
+
+					button.submit.button.in.onRight | Send	
 
 				.result.slide
 					p | {##}

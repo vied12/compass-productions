@@ -245,21 +245,23 @@ class Panel extends Widget
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		# bind url change
 		$(window).hashchange( =>
+			console.log "change !"
+			console.log URL
 			if URL.hasChanged("m")
 				page = URL.get("m")
 				this.goto(page)
-		)		
+		)
 		return this
 
 	capitalize: (str) ->
-	    str.replace(/\w\S*/g, (txt) ->
+	 	str.replace(/\w\S*/g, (txt) ->
 	    	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-	    	)
+	    )
 
 	goto: (page) =>
 		#refresh ui style
 		for _page in @PAGES
-			@ui.removeClass _page
+			@ui.removeClass _page.toLowerCase()
 		@ui.addClass page
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
@@ -269,8 +271,6 @@ class Panel extends Widget
 		this.open()
 		#cache
 		@cache.currentPage = page
-
-
 
 	relayout: (open) =>
 		@cache.isOpened = open
@@ -287,7 +287,8 @@ class Panel extends Widget
 			setTimeout((=> 
 				@uis.content.css({height: window_height - @uis.content.offset().top - 80})
 				), 500)
-			@uis.content.jScrollPane({autoReinitialise:true})
+			#@uis.pages.find('.render').jScrollPane({autoReinitialise:true, hideFocus:true})
+			#@uis.pages.find('.page').jScrollPane({autoReinitialise:true, hideFocus:true})
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
@@ -361,11 +362,9 @@ class FlickrGallery extends Widget
 		@uis.list.find('li:not(.template)').remove()
 		#update	cache data	
 		@cache.data = data
-
 		#make the first tiles 
 		for photo, index in data[0..@OPTIONS.initial_quantity]
 			this._makePhotoTile(photo)
-
 		#show_more tile when more tile to show
 		if data.length >= @OPTIONS.initial_quantity
 			showMoreTile = @ui.find(".show_more.template").cloneTemplate()	
@@ -405,7 +404,7 @@ class News extends Widget
 
 	bindUI: (ui) =>
 		super
-		$.ajax("/api/news", {dataType: 'json', success : this.setData})
+		$.ajax("/api/news", {dataType: 'json', success : this.setData})	
 		return this
 
 	setData: (data) =>
@@ -439,7 +438,7 @@ class Contact extends Widget
 			form 			: "form"
 			result 			: ".result"
 			toFormLink 		: ".contactForm"
-			button_send  	: "button"
+			buttonSend  	: ".submit"
 		}
 
 	bindUI: (ui) =>
@@ -461,17 +460,32 @@ class Contact extends Widget
 
 	newContact: =>
 		this.gotoSlide @uis.home
-		@uis.toFormLink.click => this.gotoSlide @uis.form
-		@uis.form.submit =>
-			$.ajax("/api/contact", {type:'POST', dataType: 'json', success : this.sendMessage})
+		@uis.toFormLink.click =>
+			this.gotoSlide @uis.form
 
-	sendMessage: (success) =>
+		@uis.buttonSend.click (e) =>
+			e.preventDefault()
+			dataString = 'email='+ @uis.form.find('[name=email]').value + '&message=' + @uis.form.find('[name=message]').value
+			$.ajax("/api/contact", 
+				{
+				data: {
+					email:		@uis.form.find('[name=email]').val(),
+					message: 	@uis.form.find('[name=message]').val()
+				},  
+				dataType: 'json', 
+				success : this.sentMessage})
+
+			return false
+
+	sentMessage: (success) =>
+		console.log "MESSAGE SENT", success
 		this.gotoSlide @uis.result
 		answer = @uis.result.find('p')
 		if success
 			answer.text @OPTIONS.textSuccess
 		else
  			answer.text @OPTIONS.textFail
+
 			 
 		
 # -----------------------------------------------------------------------------
@@ -491,36 +505,43 @@ class Project extends Widget
 			tabTmpl     : ".tabs > li.template"		
 		}
 
-		@CATEGORIES = ["synopsis", "screening", "videos", "extra", "credits", "gallery", "press", "links"]	
+		@CATEGORIES = ["synopsis", "screenings", "videos", "extra", "credits", "gallery", "press", "links"]	
 
 	bindUI: (ui) =>
 		super
-		#TODO :
+		#TG :
 		#this.relayout()
 		#$(window).resize(this.relayout)
-
 		@flickrGallery = new FlickrGallery().bindUI(@ui.find ".gallery")
-
 		$('body').bind 'projectSelected', (e, project) => 
 			this.tabs(project)
 			# after the template			
-			this.tabSelected(@ui.find('.tabs li')[1])
-			#$('body').trigger "open"
+			firstTab = @ui.find('.tabs li')[1]
+			this.tabSelected(firstTab)
+			#URL.update {cat:firstTab.find('a').attr "data-target"}
 		# bind url change
+			
 		$(window).hashchange =>
-			if URL.hasChanged("m")
-				project = URL.get("m")
-				this.tabSelected(@ui.tabs.find("[data-target="+project+"]"))
+			if URL.hasChanged("cat")
+				cat = URL.get("cat")
+				URL.update({cat:cat})
+				this.tabSelected(@ui.tabs.find("[data-target="+cat+"]"))
 
 		return this	
 
-	#relayout: =>
-		#TODO
+	relayout: =>
+		top_offset = tabs.offset().top + tabs.height()
+		#console.log  navigation_ui.offset().top , navigation_ui.height()
+		console.log "top", top_offset
+		# 48 is the FooterBar height
+		tabContentHeight = window_height - top_offset - 48
+		content.find('.render').each =>
+			this.css({top:top_offset, height:tabContentHeight})		
+			this.jScrollPane({autoReinitialise:true, hideFocus:true})
 
 	tabSelected: (tabSelected) =>
 		tab_selected = $(tabSelected)
 		target       = tab_selected.find('a').attr "data-target"
-		console.log "targert",  target
 		tab_content  = @uis.content.find("[data-name="+target+"]")
 		@uis.tabContent.addClass "hidden"
 		tab_content.removeClass "hidden"
@@ -528,6 +549,7 @@ class Project extends Widget
 		@uis.tabs.find('li').removeClass "active"
 		tab_selected.addClass "active"
 		@uis.tabs.find('li').live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
+		#this.relayout()
 
 	tabs: (project) =>
 		@uis.tabs.find('li:not(.template)').remove()
@@ -541,6 +563,7 @@ class Project extends Widget
 				@uis.tabs.append(nui)
 				# Content
 				this.tabcontent(category, value, project)
+		#this.relayout()
 
 	tabcontent: (tabKey, tabData, project) =>
 		#Fill Data for a specific tabContent
@@ -570,6 +593,10 @@ class Project extends Widget
 				for  value, key in tabData 
 					nui=@uis.content.find('.credits .template').cloneTemplate(value)
 					this.addContentElement(nui, render)
+			when "screenings" 
+				for  value in tabData 
+					nui = @uis.content.find('.screenings .template').cloneTemplate(value)
+					this.addContentElement(nui, render)					
 			when "links" 
 				nui = @uis.content.find('.links .template').cloneTemplate()
 				for  value in tabData 

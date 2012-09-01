@@ -14,12 +14,15 @@
 
 from flask import Flask, render_template, request
 from flaskext.babel import Babel
+from flask_mail import Mail, Message
 import sources.preprocessing as preprocessing
 import sources.flickr as flickr
 import os, sys, json
 
 app = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
+mail = Mail(app)
+print app.config.get('MAIL_FAIL_SILENTLY')
 
 # -----------------------------------------------------------------------------
 #
@@ -55,11 +58,18 @@ def news():
 	]
 	return json.dumps(fake)
 
-@app.route('/api/contact', methods=['POST'])
+@app.route('/api/contact', 	methods=['POST','GET'])
 def contact():
 	try:
-		message = request.form['message']
-		print message
+		print "contact"
+		message = request.args['message']
+		print "message", message
+		msg = Message(	message,
+						sender="jegrandis@gmail.com",
+						recipients=["jegrandis@gmail.com"])
+		print "toSend", msg
+		mail.send(msg)
+		print "sent"
 	except:
 		return "false"
 	return "true"

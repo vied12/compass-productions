@@ -6,7 +6,12 @@ TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR  = "rgba(20,20,20,0.7)"
 PANEL_COLOR	= "rgba(20,20,80,0.7)"
-BASE_PADDING= 10px
+BASE_PADDING = 10px
+BIG_LINE_HEIGHT = 1.5em
+SMALL_LINE_HEIGHT = 1.5em
+BIG_FONT_SIZE = 2em
+SMALL_FONT_SIZE = 1.2em
+
 
 @font-face:
 	font-family: "Livory"
@@ -28,6 +33,9 @@ BASE_PADDING= 10px
 	font-style: italic
 	font-weight: bold
 	src: url("Livory-BoldItalic.otf")
+p:
+	-moz-font-feature-setting : "liga=1,clig=1,dlig=1,hlig=1,rlig=1";
+	-webkit-font-feature-setting : "liga=1,clig=1,dlig=1,hlig=1,rlig=1";
 
 body:
 	background-color 	: green
@@ -35,7 +43,7 @@ body:
 
 .page:
 	font-family: "Livory", Verdana, sans-serif	
-	line-height: 2.5em
+	line-height: $SMALL_LINE_HEIGHT
 
 a: 
 	color 	: $TEXT_COLOR_LIGHT
@@ -51,6 +59,7 @@ a:
 	z-index            : 2
 	position           : absolute
 	opacity            : 0
+	font-size 			: 1.2em
 	-webkit-transition-property : "opacity,left,top,-moz-transform"
 	-moz-transition-property    : "opacity,left,top,-moz-transform"
 	-webkit-transition-duration : "1s"
@@ -86,6 +95,7 @@ a:
 		height 			: 130px 					
 		padding 		: $BASE_PADDING	
 		font-size 		: 0.8em
+		
 .Index:
 	color   : $TEXT_COLOR
 	padding : 20px 0 0 20px
@@ -94,6 +104,7 @@ a:
 			position : relative
 			float    : left
 		.brand.tile:
+			margin : 3px 3px 3px 2px 
 			background : $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
 
 .FooterBar:
@@ -106,7 +117,10 @@ a:
 	z-index          : 2
 	.language:
 		padding          : $BASE_PADDING
-		float: right
+		position       : absolute
+		bottom    : 0px
+		right     : 32px
+
 
 .FooterPanel:
 	z-index             : 1
@@ -125,27 +139,27 @@ a:
 		padding: $BASE_PADDING  $BASE_PADDING *2
 
 		.page:
-			opacity : 0
 			display : none
 			&.show:
 				display : block
-				opacity: 1
 		.tabs:
 			padding   		: $BASE_PADDING * 2 0
-			font-size 	: 1.1em
+			font-size 	: $SMALL_FONT_SIZE
 			color 		: $TEXT_COLOR_DARK
 			li:
 				cursor  : pointer
-				display	: inline-block
+				display : inline-block
 				padding : 0 $BASE_PADDING
-				&.active:
-					color 	: $TEXT_COLOR_LIGHT
 				a:
 					text-decoration : none
-					
+					color   : $TEXT_COLOR_DARK
+				&.active a:
+					color   : $TEXT_COLOR_LIGHT
+
 		.tabContent:
 			position : relative
-			font-size : 1.4em
+			font-size : $SMALL_FONT_SIZE
+			line-height : $SMALL_LINE_HEIGHT
 			//-webkit-transition : all linear 0.2s
 			//-moz-transition    : all linear 0.2s
 			//-webkit-transform  : "translateX(300px)"
@@ -153,15 +167,13 @@ a:
 			//opacity		: 0	
 			h2:
 				font-size : 1.2em
+			.tabContentElement:
+				margin-bottom : 38px 				
 
-				//.synopsis:
-				//.video:
-				//.gallery:
-				//.credits:
-				//.article:
-				//.links:
-				//.screenings:
-				//.press:
+			&.links:
+				a:
+					font-size : 1.2em
+
 
 		.close:
 			position : absolute
@@ -171,28 +183,23 @@ a:
 	&.project:
 		background-color : $TILE_COLOR
 	&.contact:
-		background-color : $PANEL_COLOR
+		padding-top : 30px
 		.slide:
 			display : none
 		.show:
 			display : block
-	textarea:
-		width 	: 98%
-	.in:
-		margin 	: 5px 0
-		display : block
-
-	.in, .button:
-		background-color : transparent
-		border-width : 1px
-		border-color : #fff 
-		color : #fff
-		padding : $BASE_PADDING
-
-	.button:
-		text-transform : uppercase
-		font-size : 0.8em
-		text-decoration : none
+		form:			
+			textarea:
+				width 	: 98%			
+	&.news:
+		//background-color : $PANEL_COLOR
+		.title, .date:
+			font-size	: $SMALL_FONT_SIZE
+			font-weight : normal
+			line-height : $SMALL_LINE_HEIGHT
+			margin 		: 0
+		.body:
+			font-size : $BIG_FONT_SIZE
 
 
 .Page.links, .language:
@@ -203,9 +210,9 @@ a:
 .Page.links:
 	opacity 		: 1
 	position        : absolute
-	bottom 			: 0
+	bottom 			: 8px
+	left 			: 16px
 	z-index 		: 10
-
 	ul:
 		position         : absolute
 		bottom           : 3px
@@ -217,8 +224,6 @@ a:
 		display 	: inline-block
 		margin 		: 0 10px
 		padding 	: 0
-
-		
 	a:
 		color 		: $TEXT_COLOR_LIGHT
 		text-decoration 	: none
@@ -229,13 +234,38 @@ a:
 	&.hide:
 		opacity 	: 0
 
-.Langage:
-	position         : absolute
-	bottom           : 10px
-	right             : 40px
 
 
+.in:
+	margin 	: 5px 0
+	display : block
+	padding : $BASE_PADDING
+.button:
+	text-transform : uppercase
+	font-size : 0.8em
+	text-decoration : none
+	padding : 4px $BASE_PADDING + 2
+.in, .button:
+	background-color : transparent
+	border-width : 1px
+	border-style : solid
+	border-color : #fff 
+	color : #fff
 
+textarea::-webkit-input-placeholder:
+	color:	#fff
+-moz-placeholder:
+	color:	#fff
+-ms-input-placeholder:
+	color:	#fff
+
+.condensed:
+	line-height : 0.4em		
+.fat:
+	font-size : $BIG_FONT_SIZE
+	line-height : $BIG_LINE_HEIGHT
+.onRight:
+	float: right
 //-------------------------- VIDEO --------------------------------
 
 .video-background, .video-fx:
@@ -272,8 +302,6 @@ a:
 	float 				: left
 	padding 			: 10px
 	background 			: #fff
-
-
 
 
 
