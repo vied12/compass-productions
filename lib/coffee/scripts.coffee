@@ -230,8 +230,8 @@ class Panel extends Widget
 		}
 
 		@cache = {
-			isOpened   : false
-			currentTab : null
+			isOpened    : false
+			currentTab  : null
 			currentPage : null
 		}
 
@@ -244,12 +244,9 @@ class Panel extends Widget
 			$('body').trigger "backToHome"
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		# bind url change
-		$(window).hashchange( =>
-			console.log "change !"
-			console.log URL
+		URL.onStateChanged( =>
 			if URL.hasChanged("m")
-				page = URL.get("m")
-				this.goto(page)
+				this.goto(URL.get("m"))
 		)
 		return this
 
@@ -279,16 +276,13 @@ class Panel extends Widget
 			navigation_ui = $(".Navigation")
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
-			#console.log  navigation_ui.offset().top , navigation_ui.height()
-			console.log "top", top_offset
 			# 48 is the FooterBar height
 			panel_height = window_height - top_offset - 48
 			@ui.css({top:top_offset, height:panel_height})
 			setTimeout((=> 
 				@uis.content.css({height: window_height - @uis.content.offset().top - 80})
 				), 500)
-			#@uis.pages.find('.render').jScrollPane({autoReinitialise:true, hideFocus:true})
-			#@uis.pages.find('.page').jScrollPane({autoReinitialise:true, hideFocus:true})
+			@uis.pages.find('.page').jScrollPane({autoReinitialise:true, hideFocus:true})
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
@@ -451,7 +445,6 @@ class Contact extends Widget
 
 	relayout: =>
 		#adapt form fields dimension
-		console.log "relayout", @uis.form.find('textarea').height(), @ui.height() - 200
 		#@uis.form.find('textarea').width( @ui.width() )	
 
 	gotoSlide: (slide) =>
@@ -520,18 +513,16 @@ class Project extends Widget
 			this.tabSelected(firstTab)
 			#URL.update {cat:firstTab.find('a').attr "data-target"}
 		# bind url change
-			
-		$(window).hashchange =>
+		URL.onStateChanged(=>
 			if URL.hasChanged("cat")
 				cat = URL.get("cat")
 				URL.update({cat:cat})
 				this.tabSelected(@ui.tabs.find("[data-target="+cat+"]"))
-
+		)			
 		return this	
 
 	relayout: =>
 		top_offset = tabs.offset().top + tabs.height()
-		#console.log  navigation_ui.offset().top , navigation_ui.height()
 		console.log "top", top_offset
 		# 48 is the FooterBar height
 		tabContentHeight = window_height - top_offset - 48
