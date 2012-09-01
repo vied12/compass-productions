@@ -106,6 +106,7 @@ class Navigation extends Widget
 			this.selectWorks()
 			# FIXEME: check if given tile exists in data as a work
 			this.selectProjet(tile)
+			URL.update({project:tile, m:"works"})
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
@@ -282,7 +283,8 @@ class Panel extends Widget
 			setTimeout((=> 
 				@uis.content.css({height: window_height - @uis.content.offset().top - 80})
 				), 500)
-			@uis.pages.find('.page').jScrollPane({autoReinitialise:true, hideFocus:true})
+			#marche pas
+			#@uis.pages.find('.page').jScrollPane({autoReinitialise:true, hideFocus:true})
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
@@ -506,20 +508,22 @@ class Project extends Widget
 		#this.relayout()
 		#$(window).resize(this.relayout)
 		@flickrGallery = new FlickrGallery().bindUI(@ui.find ".gallery")
-		$('body').bind 'projectSelected', (e, project) => 
-			this.tabs(project)
-			# after the template			
-			firstTab = @ui.find('.tabs li')[1]
-			this.tabSelected(firstTab)
-			#URL.update {cat:firstTab.find('a').attr "data-target"}
+		$('body').bind 'projectSelected', (e, project) => this.setProject(project)
 		# bind url change
 		URL.onStateChanged(=>
+			if URL.hasChanged("project")
+				this.setProject(project)
 			if URL.hasChanged("cat")
 				cat = URL.get("cat")
-				URL.update({cat:cat})
 				this.tabSelected(@ui.tabs.find("[data-target="+cat+"]"))
 		)			
 		return this	
+
+	setProject: (project) =>
+		this.tabs(project)			
+		firstTab = @ui.find('.tabs li')[1]
+		this.tabSelected(firstTab)
+		#URL.update {cat:firstTab.find('a').attr "data-target"}
 
 	relayout: =>
 		top_offset = tabs.offset().top + tabs.height()
@@ -549,7 +553,7 @@ class Project extends Widget
 			# Tab
 			if category in @CATEGORIES
 				nui = @uis.tabTmpl.cloneTemplate()
-				nui.find("a").text(category).attr("href", "#cat="+category).attr("data-target", category)
+				nui.find("a").text(category).attr("href", "#project="+project.key+"&cat="+category).attr("data-target", category)
 				nui.find("a").click => this.tabSelected(category)
 				@uis.tabs.append(nui)
 				# Content
