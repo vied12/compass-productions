@@ -27,33 +27,41 @@ class Widget
 		@ui.find(".out[data-field="+field+"]").html(value)
 
 class URL
+
 	constructor: ->
-		@hash = []
+		@previousHash = []
+		@hash         = []
+		@handlers     = []
+		$(window).hashchange( =>
+			@previousHash = clone(@hash)
+			this.updateHash()
+			for handler in @handlers
+				handler()
+		)
 
 	get: (field=null) =>
-		this.updateHash()
 		if field
 			return @hash[field]
 		else
 			return @hash
 
+	onStateChanged: (handler) =>
+		@handlers.push(handler)
+
 	update: (fields) =>
-		this.updateHash()
 		for key, value of fields
 			@hash[key] = value
 		this.updateUrl()
 
 	remove: (key) =>
-		this.updateHash()
 		if @hash.key
 			delete @hash[key]
+		this.updateUrl()
 
 	hasChanged: (key) =>
-		old_hash = clone(@hash)
-		this.updateHash()
 		if isDefined(@hash[key])
-			if isDefined(old_hash[key])
-				return @hash[key] != old_hash[key]
+			if isDefined(@previousHash[key])
+				return @hash[key] != @previousHash[key]
 			else
 				return true
 		return false
@@ -112,10 +120,6 @@ clone = (obj) ->
 	for key of obj
 		newInstance[key] = clone obj[key]
 	return newInstance
-
-
-
-
 
 window.serious = []
 # register classes to a global variable
