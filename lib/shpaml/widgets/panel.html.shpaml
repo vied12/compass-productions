@@ -9,56 +9,42 @@
 				ul.tabs
 					li.template
 						a | {##}
-				.tabContents.scrollable	
-					
+				.tabContents
 					::comment
 						TODO.maybe fill classname with data-name dynamically
-
-					.tabContentElement.template | {##}
-
 					.tabContent.synopsis  data-name="synopsis"
-						.template
-							p.fat | {##}	
-
+							p.fat | {##}
 					.tabContent.gallery data-name="gallery"
 						ul.photos
-							li.photo.template | {##}
-							li.show_more.template | {##}
-							
+							li.photo     | {##}
+							li.show_more | {##}	
 					.tabContent.videos data-name="videos"
-						.template
-							iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}		
+						.video.template
+						iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 					.tabContent.screenings.condensed data-name="screenings" | {##}
-						.template
+						.screening.template
 							p.title | {##}
 							p.date | {##}
-							p.body | {##}					
-
 					.tabContent.credits.condensed data-name="credits"
 						.template
-							p.title | {##}	
-							p.body | {##}	
+							p.title   | {##}
+							p.body    | {##}
 							p.article | {##}
-
-					.tabContent.press data-name="press" 
-						.template
-							p.title | {##}	
-							p.article | {##}	
-
+					.tabContent.press data-name="press"
+						.press.template
+							p.title | {##}
+							p.article | {##}
 					.tabContent.links data-name="links"
-						.template
+						.link.template
 							a.button href="#" title=links target="_blank" | {#description#}
-
 					.tabContent.extra data-name="extra" | {##}
 
-					.tabContent data-name="default" | {##}
-	
 			.News.page
 				ul.scrollable
 					li.template
-						p.date  | {##}
+						p.date   | {##}
 						h2.title | {##}
-						p.body  | {##}
+						p.body   | {##}
 
 			.Contact.page
 				.home.slide.show

@@ -8,10 +8,11 @@ html lang="en"
 
 	body
 		{% block content %}{% endblock %}
-		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"  | {# #}	
-		script type="text/javascript" src="{{url_for('static', filename='js/widget.js')   }}"  | {# #}
-		script type="text/javascript" src="{{url_for('static', filename='js/jquery.videobackground.js')  }}"  | {# #}		
-		script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"  | {# #}		
-		script type="text/javascript" src="{{url_for('static', filename='js/scripts.js')  }}"  | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"                 | {# #}	
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.jscrollpane.min.js')  }}"  | {# #}
-		script type="text/javascript" src="{{url_for('static', filename='js/jquery.mousewheel.js')  }}"  | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery.mousewheel.js')  }}"       | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"              | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery.videobackground.js')  }}"  | {# #}		
+		script type="text/javascript" src="{{url_for('static', filename='js/widget.js')   }}"                 | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/formatting.js')  }}"              | {# #}
+		script type="text/javascript" src="{{url_for('static', filename='js/scripts.js')  }}"                 | {# #}

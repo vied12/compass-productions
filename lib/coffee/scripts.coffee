@@ -7,11 +7,12 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 29-Aug-2012
+# Last mod : 01-Sep-2012
 # -----------------------------------------------------------------------------
 
 Widget = window.serious.Widget
 URL    = new window.serious.URL()
+Format = window.serious.Format
 
 # -----------------------------------------------------------------------------
 #
@@ -50,7 +51,7 @@ class Navigation extends Widget
 		@cache.tileWidth  = parseInt(@uis.tilesList.css("width"))
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# binds events
-		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement)) 
+		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", this.back)
 		$('body').bind('backToHome', this.back)
 
@@ -76,9 +77,12 @@ class Navigation extends Widget
 	setData: (data) =>
 		@cache.data = data
 		@panel      = new Panel().bindUI(".FooterPanel") # needs to be instanciate before selectTile call
-		# init
+		# init from url
 		params = URL.get()
-		tile   = params.m or "main"
+		if params.project
+			tile = params.project
+		else
+			tile = params.m or "main"
 		this.selectTile(tile) # depends of @cache.data
 
 	# trigger the good action with the given selected tile name
@@ -115,7 +119,6 @@ class Navigation extends Widget
 			this.selectTile(target)
 
 	selectPageLink: (tile) =>
-		console.log "selectPageLink",  tile
 		if tile == "main" 
 			@uis.pageLinks.addClass "hide"
 		else
@@ -143,8 +146,6 @@ class Navigation extends Widget
 		$("body").trigger("setPanelPage", "contact")
 
 	selectProjet: (project) =>
-		#if @cache.currentProject
-		#	return this.back()
 		tile_selected = @uis.works.find("[data-target="+project+"]")
 		# Hide all tiles, show selected tile
 		@uis.worksTiles.addClass "hidden"
@@ -251,11 +252,6 @@ class Panel extends Widget
 		)
 		return this
 
-	capitalize: (str) ->
-	 	str.replace(/\w\S*/g, (txt) ->
-	    	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-	    )
-
 	goto: (page) =>
 		#refresh ui style
 		for _page in @PAGES
@@ -264,7 +260,7 @@ class Panel extends Widget
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
-		@uis.wrapper.find('.'+this.capitalize(page)).addClass "show"
+		@uis.wrapper.find('.'+Format.Capitalize(page)).addClass "show"
 		#open this panel
 		this.open()
 		#cache
@@ -283,8 +279,6 @@ class Panel extends Widget
 			setTimeout((=> 
 				@uis.content.css({height: window_height - @uis.content.offset().top - 80})
 				), 500)
-			#marche pas
-			#@uis.pages.find('.page').jScrollPane({autoReinitialise:true, hideFocus:true})
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
@@ -298,9 +292,6 @@ class Panel extends Widget
 		@ui.removeClass "hidden"
 		@uis.wrapper.removeClass "hidden"
 		this.relayout(true)
-		# relayout the flickr widget after the opening animation
-		# setTimeout((=> @flickrGallery.relayout()), 500)
-
 
 # -----------------------------------------------------------------------------
 #
@@ -312,40 +303,32 @@ class FlickrGallery extends Widget
 
 	constructor: (url) ->
 		@OPTIONS = {
-			initial_quantity : 10,
+			initial_quantity   : 10
 			show_more_quantity : 10
-			show_more_text : "More"
+			show_more_text     : "More"
 		}
 
 		@UIS = {
-			list :	".photos"
-			listItems : ".photos li"
+			list        : ".photos"
+			listItems   : ".photos li"
 			showMore    : ".show_more.template"
 		}
 
 		@cache = {
-			data : null
+			data        : null
 			photo_index : null
 		}
 
 	bindUI: (ui) =>
 		super
-		this.relayout()
-		$(window).resize(this.relayout)
 		return this
-
-	relayout: =>
-		# set the height of the list, to show the scrollbar
-		# height = $(window).height() - @ui.offset().top
-		# @ui.css({height: height})
 		
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z", {dataType: 'json', success : this.setData})
 
 	_makePhotoTile: (photoData) =>
-		nui = @uis.list.find('.photos.template').cloneTemplate
-		li = $('<li></li>')
+		li    = $('<li></li>')
 		image = $('<img />').attr('src', photoData.q)
-		link = $('<a></a>').attr('target', '_blank').attr('href', photoData.z)
+		link  = $('<a></a>').attr('target', '_blank').attr('href', photoData.z)
 		link.append image
 		li.append link
 		@uis.list.append li
@@ -439,15 +422,10 @@ class Contact extends Widget
 
 	bindUI: (ui) =>
 		super
-		this.relayout()
 		$(window).resize(this.relayout)
 		$('body').bind 'Contact.new', (e) => this.newContact()
 		this.newContact()
 		return this
-
-	relayout: =>
-		#adapt form fields dimension
-		#@uis.form.find('textarea').width( @ui.width() )	
 
 	gotoSlide: (slide) =>
 		@uis.slides.removeClass "show"
@@ -473,15 +451,12 @@ class Contact extends Widget
 			return false
 
 	sentMessage: (success) =>
-		console.log "MESSAGE SENT", success
 		this.gotoSlide @uis.result
 		answer = @uis.result.find('p')
 		if success
 			answer.text @OPTIONS.textSuccess
 		else
  			answer.text @OPTIONS.textFail
-
-			 
 		
 # -----------------------------------------------------------------------------
 #
@@ -496,116 +471,102 @@ class Project extends Widget
 		@UIS = {
 			tabs        : ".tabs"
 			tabContent  : ".tabContent"
-			content     : ".tabContents"
+			tabContents : ".tabContents"
 			tabTmpl     : ".tabs > li.template"		
 		}
-
-		@CATEGORIES = ["synopsis", "screenings", "videos", "extra", "credits", "gallery", "press", "links"]	
+		@cache = {
+			footerBarHeight : 0
+		}
+		@CATEGORIES    = ["synopsis", "screenings", "videos", "extra", "credits", "gallery", "press", "links"]	
+		@flickrGallery = null
 
 	bindUI: (ui) =>
 		super
-		#TG :
-		#this.relayout()
-		#$(window).resize(this.relayout)
-		@flickrGallery = new FlickrGallery().bindUI(@ui.find ".gallery")
-		$('body').bind 'projectSelected', (e, project) => this.setProject(project)
+		@flickrGallery = new FlickrGallery().bindUI($(".tabContent.gallery"))
+		# init from url
+		params = URL.get()
+		if params.project
+			this.setProject(params.project)
+		if params.cat
+			this.selectTab(params.cat)
+		# bind events
+		$('body').bind 'projectSelected', (e, project) => 
+			this.setProject(project)
+			setTimeout((=>
+				this.selectTab(URL.get("cat") or "synopsis")
+			), 500) # fix before we find why @uis.tabContents.offset().top in relayout() is null
 		# bind url change
 		URL.onStateChanged(=>
 			if URL.hasChanged("project")
-				this.setProject(project)
+				this.setProject(URL.get("project"))
 			if URL.hasChanged("cat")
-				cat = URL.get("cat")
-				this.tabSelected(@ui.tabs.find("[data-target="+cat+"]"))
-		)			
-		return this	
-
-	setProject: (project) =>
-		this.tabs(project)			
-		firstTab = @ui.find('.tabs li')[1]
-		this.tabSelected(firstTab)
-		#URL.update {cat:firstTab.find('a').attr "data-target"}
+				this.selectTab(URL.get("cat"))
+		)
+		return this
 
 	relayout: =>
-		top_offset = tabs.offset().top + tabs.height()
-		console.log "top", top_offset
-		# 48 is the FooterBar height
-		tabContentHeight = window_height - top_offset - 48
-		content.find('.render').each =>
-			this.css({top:top_offset, height:tabContentHeight})		
-			this.jScrollPane({autoReinitialise:true, hideFocus:true})
+		if @cache.footerBarHeight == 0
+			@cache.footerBarHeight = $(".FooterBar").height()
+		window_height    = $(window).height()
+		offset_top       = @uis.tabContents.offset().top 
+		if offset_top > 0
+			container_height = window_height - offset_top - @cache.footerBarHeight
+			@uis.tabContents.css("height", container_height)
+			@uis.tabContents.jScrollPane({hideFocus:true})
 
-	tabSelected: (tabSelected) =>
-		tab_selected = $(tabSelected)
-		target       = tab_selected.find('a').attr "data-target"
-		tab_content  = @uis.content.find("[data-name="+target+"]")
-		@uis.tabContent.addClass "hidden"
-		tab_content.removeClass "hidden"
-		# tab
-		@uis.tabs.find('li').removeClass "active"
-		tab_selected.addClass "active"
-		@uis.tabs.find('li').live("click", (e) => this.tabSelected(e.currentTarget or e.srcElement)) 
-		#this.relayout()
+	setProject: (project) =>
+		this.setMenu(project)
+		this.setContent(project)
 
-	tabs: (project) =>
+	setMenu: (project) =>
 		@uis.tabs.find('li:not(.template)').remove()
 		system_keys = ["key", "email", "title"]
 		for category, value of project
-			# Tab
 			if category in @CATEGORIES
 				nui = @uis.tabTmpl.cloneTemplate()
 				nui.find("a").text(category).attr("href", "#project="+project.key+"&cat="+category).attr("data-target", category)
-				nui.find("a").click => this.tabSelected(category)
+				nui.attr("data-name", category)
 				@uis.tabs.append(nui)
-				# Content
-				this.tabcontent(category, value, project)
-		#this.relayout()
 
-	tabcontent: (tabKey, tabData, project) =>
-		#Fill Data for a specific tabContent
-		#tabcontent element
-		tabContent = @uis.content.find('.tabContent.' + tabKey)
-		#refresh rendered div
-		tabContent.find('.render').remove()
-		render = $("<div>", {class: "render"})
-		tabContent.append(render)
-		switch tabKey
-			when "synopsis"
-				nui=@uis.content.find('.synopsis .template').cloneTemplate()
-				nui.find('p').html(tabData)
-				this.addContentElement(nui, render)			
-			when "videos"
-				nui=@uis.content.find('.videos .template').cloneTemplate()
-				for  value in tabData
-					nui.find('iframe').attr("src", "http://player.vimeo.com/video/"+value)
-					this.addContentElement(nui, render)
-			when "gallery"
-				@flickrGallery.setPhotoSet(project.gallery)
-			when "press" 
-				for  value, key in tabData 
-					nui=@uis.content.find('.press .template').cloneTemplate(value)
-					this.addContentElement(nui, render)
-			when "credits" 
-				for  value, key in tabData 
-					nui=@uis.content.find('.credits .template').cloneTemplate(value)
-					this.addContentElement(nui, render)
-			when "screenings" 
-				for  value in tabData 
-					nui = @uis.content.find('.screenings .template').cloneTemplate(value)
-					this.addContentElement(nui, render)					
-			when "links" 
-				nui = @uis.content.find('.links .template').cloneTemplate()
-				for  value in tabData 
-					nui.find('a').attr("href", value['link'])
-					nui.find('a').text(value["description"])
-					this.addContentElement(nui, render)
-			when "extra" 
-				nui = @uis.content.find('.extra .template').cloneTemplate()
+	setContent: (project) =>
+		for category, value of project
+			if category in @CATEGORIES
+				nui = @uis.tabContents.find("[data-name="+category+"]")
+				switch category
+					when "synopsis"
+						nui.find('p').html(value)
+					when "videos"
+						for video in value
+							video_nui = nui.find(".template").cloneTemplate()
+							video_nui.find('ifram').attr("src", "http://player.vimeo.com/video/"+video)
+							nui.append(video_nui)
+					when "gallery"
+						@flickrGallery.setPhotoSet(project.gallery)
+					when "press"
+						for press in value
+							press_nui = nui.find('.template').cloneTemplate(press)
+							nui.append(press_nui)
+					when "credits"
+						for credit in value
+							credit_nui = nui.find('.template').cloneTemplate(credit)
+							nui.append(credit_nui)
+					when "screenings" 
+						for screening in value
+							screening_nui = nui.find('.template').cloneTemplate(screening)
+							nui.append(screening_nui)
+					when "links"
+						for link in value
+							link_nui = nui.find(".template").cloneTemplate(link)
+							nui.append(link_nui)
 
-	addContentElement: (ui, target) =>
-		# Prepare and copy content element to render target
-		nui_container = @ui.find('.tabContentElement.template').cloneTemplate()
-		nui_container.append ui.html()
-		target.append nui_container
+	selectTab: (category) =>
+		tab_nui = @uis.tabContents.find("[data-name="+category+"]")
+		@uis.tabContent.addClass "hidden"
+		tab_nui.removeClass "hidden"
+		tabs_nui = @uis.tabs.find("li").removeClass "active"
+		@uis.tabs.find("[data-name="+category+"]").addClass "active"
+		this.relayout()
+
 # -----------------------------------------------------------------------------
 #
 # Main

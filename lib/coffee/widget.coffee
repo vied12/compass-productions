@@ -32,6 +32,7 @@ class URL
 		@previousHash = []
 		@hash         = []
 		@handlers     = []
+		this.updateHash()
 		$(window).hashchange( =>
 			@previousHash = clone(@hash)
 			this.updateHash()
