@@ -56,6 +56,7 @@ class Navigation extends Widget
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", this.back)
 		$('body').bind('backToHome', this.back)
+		# bind url change
 		return this
 
 	# set an absolute position for each tile. Usefull for animation
@@ -149,6 +150,7 @@ class Navigation extends Widget
 		@uis.main.find('[data-target=news]').removeClass "hidden"
 		$("body").trigger("setPanelPage", "news")
 
+
 	selectContact: =>
 		$("body").trigger("Contact.new")
 		$("body").trigger("setPanelPage", "contact")
@@ -236,14 +238,19 @@ class Background extends Widget
 			videoFormat : null 
 		}
 
+	endLoop: =>
+		
 	bindUI: (ui) ->
 		super	
 		$(window).resize(=>(this.relayout()))
 		@uis.video.prop('muted', true)
+		#@uis.video.prop('loop', 'loop')
+		#Force Loop
+		#@uis.video.bind("ended", => this.play())
 		return this	
 
 	relayout: =>
-		this.resize(@uis.image, "full")
+		this.resize(@uis.image, "auto")
 		this.resize(@uis.video, "auto")
 		this.resize(@uis.mask, "full")
 
@@ -294,7 +301,8 @@ class Background extends Widget
 	
 	image: (filename) =>
 		@uis.backgrounds.addClass "hidden"
-		@uis.image.css("background-image", "url(/static/images/#{filename})")
+		@uis.image.attr("src", "static/images/#{filename}")
+		#@uis.image.css("background-image", "url(/static/images/#{filename})")
 		@uis.image.removeClass "hidden"
 		this.relayout(@uis.image)
 
