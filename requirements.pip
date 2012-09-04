@@ -1,0 +1,6 @@
+flask
+pymongo==2.2.1
+mongokit
+clevercss
+flask-mail
+flask-babel
