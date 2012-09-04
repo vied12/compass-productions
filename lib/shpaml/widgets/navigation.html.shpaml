@@ -1,5 +1,5 @@
 {# TODO: generate tile dynamicaly through the json #}
-.Navigation
+.Navigation.disableTextSelection
 	.brand.tile.show
 		.wrapper | {##}
 	.Main.menu data-name="main"

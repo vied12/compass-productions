@@ -20,7 +20,7 @@
 							li.show_more | {##}	
 					.tabContent.videos data-name="videos"
 						.video.template
-						iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
+							iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 					.tabContent.screenings.condensed data-name="screenings" | {##}
 						.screening.template
 							p.title | {##}

@@ -47,13 +47,16 @@ class Navigation extends Widget
 
 	bindUI: (ui) =>
 		super
-		@background       = new VideoBackground().bindUI(".video-background")
+		@background = new Background().bindUI('.Background')
+		@background.image("bg1.jpg")
+		@background.video(["bg.mp4"])		
 		@cache.tileWidth  = parseInt(@uis.tilesList.css("width"))
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", this.back)
 		$('body').bind('backToHome', this.back)
+		return this
 
 	# set an absolute position for each tile. Usefull for animation
 	relayout: (menu, template) =>
@@ -88,6 +91,8 @@ class Navigation extends Widget
 	# trigger the good action with the given selected tile name
 	selectTile: (tile) =>
 		URL.update({m:tile})
+		URL.remove("project")
+		URL.remove("cat")
 		# reset tile for fadding animation
 		if tile in ["main", "news", "contact"]	
 			@uis.tilesList.removeClass "show"
@@ -97,8 +102,10 @@ class Navigation extends Widget
 		this.selectPageLink tile
 		# Dispatch
 		if tile == "main"
+			console.log "main"
 			this.showMenu("main")
 		else if tile == "works"
+			console.log "works"
 			if not @cache.currentProject
 				@uis.tilesList.removeClass "show"
 			this.selectWorks()
@@ -107,6 +114,7 @@ class Navigation extends Widget
 		else if tile == "contact"
 			this.selectContact()
 		else
+			console.log "tile>>project"
 			this.selectWorks()
 			# FIXEME: check if given tile exists in data as a work
 			this.selectProjet(tile)
@@ -159,6 +167,11 @@ class Navigation extends Widget
 		project_obj = this.getProjectByName(project)
 		$("body").trigger("projectSelected", project_obj)
 		$("body").trigger("setPanelPage", "project")
+		if(project_obj.backgroundImage)
+			@background.image(project_obj.backgroundImage)		
+		if(project_obj.backgroundVideos)
+			console.log "sendDATA", project_obj.backgroundVideos
+			@background.video(project_obj.backgroundVideos)
 		@cache.currentProject = project
 
 	# show the given menu, hide the previous opened menu
@@ -194,20 +207,98 @@ class Navigation extends Widget
 
 # -----------------------------------------------------------------------------
 #
-# VideoBackground
+# Background
 #
 # -----------------------------------------------------------------------------
 
-class VideoBackground extends Widget
+class Background extends Widget
+
+	constructor: () ->
+		@UIS = {
+			backgrounds: "> :not(.mask)"
+			image : "img"
+			video : "video"
+			mask: ".mask"
+		}
+
+		@CONFIG = {		
+			imageUrl : "/static/images/"
+			videoUrl : "/static/videos/"
+			formats : {
+				"mp4" : "avc1.4D401E, mp4a.40.2"
+				"ogg" : "theora, vorbis"
+				"webm" : "vp8.0, vorbis"
+			}
+
+		}
+
+		@CACHE = {
+			videoFormat : null 
+		}
 
 	bindUI: (ui) ->
-		super		
-		@ui.videobackground
-			videoSource: ['http://vimeo.com/47569645/download?t=1345691328&v=112586909&s=d8b40a6ec2be36301c497849929dc443']
-			loop: true
-			poster: 'http://serious-works.org/static/img/logo2.png'
-		@ui.videobackground('mute')			
-		@ui.prepend "<div class='video-fx'></div>"
+		super	
+		$(window).resize(=>(this.relayout()))
+		@uis.video.prop('muted', true)
+		return this	
+
+	relayout: =>
+		this.resize(@uis.image, "full")
+		this.resize(@uis.video, "auto")
+		this.resize(@uis.mask, "full")
+
+	resize: (that, flexibleSize) =>
+		if flexibleSize == "full"
+			flexibleSize="100%"
+		#ratio compliant
+		view = "landscape" 
+		if $(window).height() > $(window).width()
+			view = "portrait"
+		switch view
+			when "landscape" 
+				that.height(flexibleSize)
+				that.width($(window).width())
+			when "portrait"
+				that.height($(window).height())
+				that.width(flexibleSize)
+		
+	video: (data) =>
+		@uis.backgrounds.addClass "hidden"
+		#swap on image if playing video is not supported for format, 
+		#use image's widget give better control on relayouting than poster attribute of <video>		
+		canPlayFormat = this.getCompatibleVideoFormat()
+		if canPlayFormat
+			#look for the best file in config for this browser
+			for file in data
+				extension = file.split('.').pop()
+				if extension == canPlayFormat
+					#set source
+					@uis.video.attr("src", @CONFIG.videoUrl+file)					
+					@uis.video.removeClass "hidden"
+					this.relayout(@uis.video)
+					break
+			if @uis.video.hasClass("hidden") == true
+				@uis.image.removeClass "hidden"
+		else
+			@uis.image.removeClass "hidden"
+				
+	getCompatibleVideoFormat: () =>
+		if @CACHE.videoFormat != null
+			return @CACHE.videoFormat
+		for format, codecs of @CONFIG.formats		
+			source = 'video/'+format+'; codecs="'+codecs+'"'
+			if @uis.video[0].canPlayType(source) 
+				@CACHE.videoFormat = format
+				return format
+		return false
+	
+	image: (filename) =>
+		@uis.backgrounds.addClass "hidden"
+		@uis.image.css("background-image", "url(/static/images/#{filename})")
+		@uis.image.removeClass "hidden"
+		this.relayout(@uis.image)
+
+
 
 # -----------------------------------------------------------------------------
 #
@@ -248,7 +339,8 @@ class Panel extends Widget
 		# bind url change
 		URL.onStateChanged( =>
 			if URL.hasChanged("m")
-				this.goto(URL.get("m"))
+				if m in @PAGES
+					this.goto(URL.get("m"))
 		)
 		return this
 
@@ -538,7 +630,7 @@ class Project extends Widget
 					when "videos"
 						for video in value
 							video_nui = nui.find(".template").cloneTemplate()
-							video_nui.find('ifram').attr("src", "http://player.vimeo.com/video/"+video)
+							video_nui.find('iframe').attr("src", "http://player.vimeo.com/video/"+video)
 							nui.append(video_nui)
 					when "gallery"
 						@flickrGallery.setPhotoSet(project.gallery)
