@@ -38,12 +38,9 @@ def _scan(folder, dest, action, extension, new_extension=None):
 		else:
 			index_lib = 0
 		relative_path = folder_char.join(directories[0:index_lib+2])
-
 		out = os.path.join(dest, os.path.splitext(os.path.relpath(path, relative_path))[0])
-
 		if new_extension:
 			out = "%s%s" % (out, new_extension)
-		
 		if not os.path.isfile(dest):
 			dest_mtime = -1
 		else:
