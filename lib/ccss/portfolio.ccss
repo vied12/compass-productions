@@ -70,24 +70,10 @@ a:
 	-moz-transition-property    : "opacity"
 	-webkit-transition-duration : "1s"
 	-moz-transition-duration    : "1s"
-	//-webkit-transform  :"rotate(15deg)"
-	//-moz-transform     :"rotate(15deg)"
-	//-webkit-transform  :"rotate(15deg)"
-	//-moz-transform     :"rotate(15deg)"
-	//-o-transform       :"rotate(15deg)"
-	//-ms-transform      :"rotate(15deg)"
 	> .wrapper:
 		padding : 10px
-	&.new-line:
-		clear : both
 	&.show:
 		opacity : 1
-		//-webkit-transform  :"rotate(0deg)"
-		//-moz-transform     :"rotate(0deg)"
-		//-webkit-transform  :"rotate(0deg)"
-		//-moz-transform     :"rotate(0deg)"
-		//-o-transform       :"rotate(0deg)"
-		//-ms-transform      :"rotate(0deg)"
 
 .gallery:
 	overflow : auto
@@ -101,14 +87,18 @@ a:
 		height 			: 130px 					
 		padding 		: $BASE_PADDING	
 		font-size 		: 0.8em
-		
+
 .Index:
 	color   : $TEXT_COLOR
 	padding : 20px 0 0 20px
 	.Navigation:
 		.menu:
-			position : relative
+			position : absolute
 			float    : left
+			left     : 183px
+			&.column-template:
+				// two columns = 320px
+				width : 320px
 		.brand.tile:
 			margin : 3px 3px 3px 2px 
 			background : $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
@@ -172,13 +162,11 @@ a:
 			//opacity		: 0	
 			h2:
 				font-size : 1.2em
-			.tabContentElement:
-				margin-bottom : 38px 				
-
+			> div:
+				margin : 24px 0 				
 			&.links:
 				a:
 					font-size : 1.2em
-
 
 		.close:
 			position : absolute
@@ -289,9 +277,12 @@ textarea::-webkit-input-placeholder:
 	height 			: 100%
 	z-index			: -1
 	video: 
+		position		: absolute
 		min-height			: 100% 
 		min-width			: 100%
-	img: 
+		width 			: auto
+		height 			: auto
+	.image: 
 		background-size: cover
 		background-repeat : no-repeat
 		background-position : top left

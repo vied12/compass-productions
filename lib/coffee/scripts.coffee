@@ -51,6 +51,8 @@ class Navigation extends Widget
 		super
 		@panelWidget   = new Panel().bindUI(".FooterPanel")
 		@projectWidget = new Project().bindUI(".Project")
+		@background = new Background().bindUI('.Background')
+		@background.image("bg1.jpg")
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -102,7 +104,7 @@ class Navigation extends Widget
 	showPage: (page) =>
 		# set page menu (single tile)
 		#FIXME: if not a project ?
-		page_tile = @ui.find("[data-target="+URL.get("project")+"]:first")
+		page_tile = @ui.find("[data-target="+(URL.get("project") or page)+"]:first")
 		@uis.page.html(page_tile.clone())
 		this.showMenu("page")
 		$("body").trigger("setPanelPage",page)
@@ -113,13 +115,14 @@ class Navigation extends Widget
 			target = tile_selected_ui.attr "data-target"
 			# check if there is a menu for the current target
 			if @ui.find("[data-menu="+target+"]").length > 0
-				URL.update({menu:target, page:null, project:null})
+				# FIXME: should not be here, cat and project are not on this widget
+				URL.update({menu:target, page:null, project:null, cat:null})
 			else # the target is a page
 				if not (target in @CONFIG.pages)
 					# project selected
-					URL.update({page:"project", project:target, menu:null})
+					URL.update({page:"project", project:target, menu:null, cat:null})
 				else
-					URL.update({page:target, menu:null, project:null})
+					URL.update({page:target, menu:null, project:null, cat:null})
 
 # -----------------------------------------------------------------------------
 #
@@ -132,8 +135,9 @@ class Background extends Widget
 	constructor: () ->
 		@UIS = {
 			backgrounds: "> :not(.mask)"
-			image : "img"
-			video : "video"
+			image : ".image"
+			video : "video.video"
+			videobuffer : ".video-buffer"
 			mask: ".mask"
 		}
 
@@ -151,42 +155,44 @@ class Background extends Widget
 		@CACHE = {
 			videoFormat : null 
 		}
-
-	endLoop: =>
 		
 	bindUI: (ui) ->
 		super	
 		$(window).resize(=>(this.relayout()))
 		@uis.video.prop('muted', true)
-		@uis.video.prop('loop', 'loop')
-		#Force Loop
-		##@uis.video.bind("ended", => this.play())
 		return this	
 
 	relayout: =>
-		this.resize(@uis.image, "auto")
-		this.resize(@uis.video, "full")
+		this.resize(@uis.image, "1000px")
+		this.resize(@uis.video, "auto")
 		this.resize(@uis.mask, "full")
 
-	resize: (that, flexibleSize) =>
+	resize: (that, flexibleSize) =>	
 		if flexibleSize == "full"
-			flexibleSize="100%"
+		 	flexibleSize="100%"
+		aspectRatio = that.height() / that.width()
 		#ratio compliant
-		view = "landscape" 
-		if $(window).height() > $(window).width()
-			view = "portrait"
-		switch view
-			when "landscape" 
-				that.height(flexibleSize)
-				that.width($(window).width())
-			when "portrait"
-				that.height($(window).height())
-				that.width(flexibleSize)
+		windowRatio = $(window).height() / $(window).width()
+		if windowRatio > aspectRatio
+			that.height($(window).height())
+			that.width(flexibleSize)
+		else
+			that.height(flexibleSize)
+			that.width($(window).width())		
 		
+	loadNextVideo: (file) =>
+		console.log "loading..."
+		#@uis.backgrounds.filter('video').addClass "hidden"
+		@uis.video.attr("src", file)
+		$(".video")[0].play()
+		@uis.video.removeClass "hidden"			
+		console.log "paused", $(".video").get(0).pause, $(".video").get(0).played
+
 	video: (data) =>
-		@uis.backgrounds.addClass "hidden"
-		#swap on image if playing video is not supported for format, 
-		#use image's widget give better control on relayouting than poster attribute of <video>		
+				#swap on image if playing video is not supported for format, 
+		#use image's widget give better control on relayoupropting than poster attribute of <video>		
+		console.log "video"
+		
 		canPlayFormat = this.getCompatibleVideoFormat()
 		if canPlayFormat
 			#look for the best file in config for this browser
@@ -194,15 +200,24 @@ class Background extends Widget
 				extension = file.split('.').pop()
 				if extension == canPlayFormat
 					#set source
-					@uis.video.attr("src", @CONFIG.videoUrl+file)					
-					@uis.video.removeClass "hidden"
+					console.log @uis.video.attr("class")
+					@uis.video.attr("src", @CONFIG.videoUrl+file)
+					@uis.video.removeClass "hidden"	
 					this.relayout(@uis.video)
 					break
 			if @uis.video.hasClass("hidden") == true
 				@uis.image.removeClass "hidden"
 		else
 			@uis.image.removeClass "hidden"
-				
+
+
+		#@uis.videobuffer.attr("src", @CONFIG.videoUrl+file)
+		#@uis.videobuffer.on("loadedmetadata", this.loadNextVideo(@CONFIG.videoUrl+file))
+		#this.loadNextVideo(@CONFIG.videoUrl+file)
+
+	stopVideo: ()=>
+		@uis.video.get(0).stop()
+
 	getCompatibleVideoFormat: () =>
 		if @CACHE.videoFormat != null
 			return @CACHE.videoFormat
@@ -216,7 +231,7 @@ class Background extends Widget
 	image: (filename) =>
 		@uis.backgrounds.addClass "hidden"
 		@uis.image.attr("src", "static/images/#{filename}")
-		#@uis.image.css("background-image", "url(/static/images/#{filename})")
+		@uis.image.css("background-image", "url(/static/images/#{filename})")
 		@uis.image.removeClass "hidden"
 		this.relayout(@uis.image)
 
@@ -499,6 +514,7 @@ class Project extends Widget
 			if URL.hasChanged("cat")
 				this.selectTab(URL.get("cat"))
 		)
+		$(window).resize(this.relayout)
 		return this
 
 	init: =>
@@ -506,8 +522,7 @@ class Project extends Widget
 		params = URL.get()
 		if params.project
 			this.setProject(params.project)
-		if params.cat
-			this.selectTab(params.cat)
+			this.selectTab(URL.get("cat") or "synopsis")
 
 	setData: (data) =>
 		@cache.data = data
@@ -539,7 +554,7 @@ class Project extends Widget
 		for category, value of project
 			if category in @CATEGORIES
 				nui = @uis.tabTmpl.cloneTemplate()
-				nui.find("a").text(category).attr("href", "#project="+project.key+"&cat="+category).attr("data-target", category)
+				nui.find("a").text(category).attr("href", "#page=project&project="+project.key+"&cat="+category).attr("data-target", category)
 				nui.attr("data-name", category)
 				@uis.tabs.append(nui)
 
@@ -572,6 +587,7 @@ class Project extends Widget
 					when "links"
 						for link in value
 							link_nui = nui.find(".template").cloneTemplate(link)
+							link_nui.find('a').append(link.description)
 							nui.append(link_nui)
 
 	selectTab: (category) =>

@@ -9,7 +9,7 @@
 			.wrapper | News
 		.tile data-target="contact"
 			.wrapper | Contact
-	.Works.menu.hidden data-menu="works"
+	.Works.menu.column-template.hidden data-menu="works"
 		.tile data-target="parting"
 			.wrapper | Parting words
 		.tile data-target="baghdad"

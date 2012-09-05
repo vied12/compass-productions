@@ -17,7 +17,7 @@
 					.tabContent.gallery data-name="gallery"
 						ul.photos
 							li.photo     | {##}
-							li.show_more | {##}	
+							li.show_more.template | {##}	
 					.tabContent.videos data-name="videos"
 						.video.template
 							iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
