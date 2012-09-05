@@ -42,8 +42,9 @@
 			.News.page
 				ul
 					li.template
-						p.date   | {##}
-						h2.title | {##}
+						h2.title
+							le
+							span.date | {##}
 						p.body   | {##}
 
 			.Contact.page

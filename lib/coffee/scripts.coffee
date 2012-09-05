@@ -274,10 +274,6 @@ class Panel extends Widget
 		return this
 
 	goto: (page) =>
-		#refresh ui style
-		for _page in @PAGES
-			@ui.removeClass _page
-		@ui.addClass page
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
@@ -410,11 +406,12 @@ class News extends Widget
 	setData: (data) =>
 		@cache.data = data
 		for news in data
+			date = new Date(news.date_creation)
 			nui = @uis.newsTmpl.cloneTemplate({
-				title : news.title
-				body  : news.content
-				date  : news.date
+				body:news.content
+				date:date.toDateString()
 			})
+			nui.find(".title").prepend(news.title)
 			@uis.newsContainer.append(nui)
 
 # -----------------------------------------------------------------------------
