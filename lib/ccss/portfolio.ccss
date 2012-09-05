@@ -169,23 +169,25 @@ a:
 					font-size : 1.2em
 
 		.close:
+			font-family: Arial
 			position : absolute
-			right    : 30px
+			right    : 19px
 			top      : 20px
+			cursor   : pointer
 
 	&.project:
 		background-color : $TILE_COLOR
 	&.contact:
 		padding-top : 30px
-		.slide:
-			display : none
-		.show:
-			display : block
-		form:			
+		form:
+			input, textarea, button:
+				margin  : 10px 0
+			input, textarea:
+				padding : 5px 0px 5px 5px
+				width   : 100%
 			textarea:
-				width 	: 98%			
+				height  : 90px
 	&.news:
-		//background-color : $PANEL_COLOR
 		.title, .date:
 			font-size	: $SMALL_FONT_SIZE
 			font-weight : normal
@@ -230,7 +232,6 @@ a:
 
 
 .in:
-	margin 	: 5px 0
 	display : block
 	padding : $BASE_PADDING
 .button:

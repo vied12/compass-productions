@@ -12,7 +12,7 @@
 # Last mod : 05-Aug-2012
 # -----------------------------------------------------------------------------
 
-from flask import Flask, render_template, request, send_file, Response
+from flask import Flask, render_template, request, send_file, Response, abort
 from flaskext.babel import Babel
 import sources.preprocessing as preprocessing
 import sources.flickr as flickr
@@ -79,7 +79,7 @@ def contact():
 		msg     = flask_mail.Message(message, sender="jegrandis@gmail.com", recipients=["jegrandis@gmail.com"])
 		mail.send(msg)
 	except:
-		return "false"
+		abort(500)
 	return "true"
 
 @app.route('/static/videos/<video>', methods=['GET'])
