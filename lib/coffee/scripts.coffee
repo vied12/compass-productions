@@ -244,14 +244,14 @@ class Background extends Widget
 		super	
 		$(window).resize(=>(this.relayout()))
 		@uis.video.prop('muted', true)
-		#@uis.video.prop('loop', 'loop')
+		@uis.video.prop('loop', 'loop')
 		#Force Loop
-		#@uis.video.bind("ended", => this.play())
+		##@uis.video.bind("ended", => this.play())
 		return this	
 
 	relayout: =>
 		this.resize(@uis.image, "auto")
-		this.resize(@uis.video, "auto")
+		this.resize(@uis.video, "full")
 		this.resize(@uis.mask, "full")
 
 	resize: (that, flexibleSize) =>
@@ -347,7 +347,7 @@ class Panel extends Widget
 		# bind url change
 		URL.onStateChanged( =>
 			if URL.hasChanged("m")
-				if m in @PAGES
+				if Format.Capitalize(URL.get("m")) in @PAGES
 					this.goto(URL.get("m"))
 		)
 		return this
