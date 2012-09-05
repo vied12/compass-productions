@@ -49,7 +49,7 @@ class Navigation extends Widget
 		super
 		@background = new Background().bindUI('.Background')
 		@background.image("bg1.jpg")
-		@background.video(["bg.mp4"])		
+		#@background.video(["bg.mp4"])		
 		@cache.tileWidth  = parseInt(@uis.tilesList.css("width"))
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# binds events
@@ -218,8 +218,9 @@ class Background extends Widget
 	constructor: () ->
 		@UIS = {
 			backgrounds: "> :not(.mask)"
-			image : "img"
-			video : "video"
+			image : ".image"
+			video : "video.video"
+			videobuffer : ".video-buffer"
 			mask: ".mask"
 		}
 
@@ -237,42 +238,44 @@ class Background extends Widget
 		@CACHE = {
 			videoFormat : null 
 		}
-
-	endLoop: =>
 		
 	bindUI: (ui) ->
 		super	
 		$(window).resize(=>(this.relayout()))
 		@uis.video.prop('muted', true)
-		@uis.video.prop('loop', 'loop')
-		#Force Loop
-		##@uis.video.bind("ended", => this.play())
 		return this	
 
 	relayout: =>
-		this.resize(@uis.image, "auto")
-		this.resize(@uis.video, "full")
+		this.resize(@uis.image, "1000px")
+		this.resize(@uis.video, "auto")
 		this.resize(@uis.mask, "full")
 
-	resize: (that, flexibleSize) =>
+	resize: (that, flexibleSize) =>	
 		if flexibleSize == "full"
-			flexibleSize="100%"
+		 	flexibleSize="100%"
+		aspectRatio = that.height() / that.width()
 		#ratio compliant
-		view = "landscape" 
-		if $(window).height() > $(window).width()
-			view = "portrait"
-		switch view
-			when "landscape" 
-				that.height(flexibleSize)
-				that.width($(window).width())
-			when "portrait"
-				that.height($(window).height())
-				that.width(flexibleSize)
+		windowRatio = $(window).height() / $(window).width()
+		if windowRatio > aspectRatio
+			that.height($(window).height())
+			that.width(flexibleSize)
+		else
+			that.height(flexibleSize)
+			that.width($(window).width())		
 		
+	loadNextVideo: (file) =>
+		console.log "loading..."
+		#@uis.backgrounds.filter('video').addClass "hidden"
+		@uis.video.attr("src", file)
+		$(".video")[0].play()
+		@uis.video.removeClass "hidden"			
+		console.log "paused", $(".video").get(0).pause, $(".video").get(0).played
+
 	video: (data) =>
-		@uis.backgrounds.addClass "hidden"
-		#swap on image if playing video is not supported for format, 
-		#use image's widget give better control on relayouting than poster attribute of <video>		
+				#swap on image if playing video is not supported for format, 
+		#use image's widget give better control on relayoupropting than poster attribute of <video>		
+		console.log "video"
+		
 		canPlayFormat = this.getCompatibleVideoFormat()
 		if canPlayFormat
 			#look for the best file in config for this browser
@@ -280,15 +283,24 @@ class Background extends Widget
 				extension = file.split('.').pop()
 				if extension == canPlayFormat
 					#set source
-					@uis.video.attr("src", @CONFIG.videoUrl+file)					
-					@uis.video.removeClass "hidden"
+					console.log @uis.video.attr("class")
+					@uis.video.attr("src", @CONFIG.videoUrl+file)
+					@uis.video.removeClass "hidden"	
 					this.relayout(@uis.video)
 					break
 			if @uis.video.hasClass("hidden") == true
 				@uis.image.removeClass "hidden"
 		else
 			@uis.image.removeClass "hidden"
-				
+
+
+		#@uis.videobuffer.attr("src", @CONFIG.videoUrl+file)
+		#@uis.videobuffer.on("loadedmetadata", this.loadNextVideo(@CONFIG.videoUrl+file))
+		#this.loadNextVideo(@CONFIG.videoUrl+file)
+
+	stopVideo: ()=>
+		@uis.video.get(0).stop()
+
 	getCompatibleVideoFormat: () =>
 		if @CACHE.videoFormat != null
 			return @CACHE.videoFormat
@@ -302,7 +314,7 @@ class Background extends Widget
 	image: (filename) =>
 		@uis.backgrounds.addClass "hidden"
 		@uis.image.attr("src", "static/images/#{filename}")
-		#@uis.image.css("background-image", "url(/static/images/#{filename})")
+		@uis.image.css("background-image", "url(/static/images/#{filename})")
 		@uis.image.removeClass "hidden"
 		this.relayout(@uis.image)
 
@@ -483,7 +495,7 @@ class News extends Widget
 
 	bindUI: (ui) =>
 		super
-		$.ajax("/api/news", {dataType: 'json', success : this.setData})	
+		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})	
 		return this
 
 	setData: (data) =>
@@ -602,6 +614,7 @@ class Project extends Widget
 			if URL.hasChanged("cat")
 				this.selectTab(URL.get("cat"))
 		)
+		$(window).resize(this.relayout)
 		return this
 
 	relayout: =>
@@ -612,7 +625,7 @@ class Project extends Widget
 		if offset_top > 0
 			container_height = window_height - offset_top - @cache.footerBarHeight
 			@uis.tabContents.css("height", container_height)
-			@uis.tabContents.jScrollPane({hideFocus:true})
+			@uis.tabContents.jScrollPane({hideFocus:true,dragMinHeight:50,dragMaxHeight:150})
 
 	setProject: (project) =>
 		this.setMenu(project)
@@ -657,6 +670,7 @@ class Project extends Widget
 					when "links"
 						for link in value
 							link_nui = nui.find(".template").cloneTemplate(link)
+							link_nui.find('a').append(link.description)
 							nui.append(link_nui)
 
 	selectTab: (category) =>

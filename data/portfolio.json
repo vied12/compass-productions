@@ -4,8 +4,7 @@
             "key"       : "devil", 
             "title"     : "The devil in the holy water",
             "email"     : "edou4rd@gmail.com",
-            "backgroundImage" : "bg1.jpg",
-            "backgroundVideos" : ["onSodomRoad.mp4"],
+            "backgroundImage" : "devil.jpg",
             "synopsis"  : "The time - the outset of a new millennium.\n\nThe place - Rome, the eternal city, sacred and profane.\n\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.\n\nAre you ready?\n\nFilmmaker Joe Balass is there - The Devil in the Holy Water is his vibrant document of that moment.\n\nCritical and joyous, entertaining and thought-provoking, The Devil in the Holy Water goes to the epicentre of Catholic culture to get a reading on contemporary sexuality and morality.\n\nWhile the Vatican opposes World Pride, drawing upon its considerable influence to try to stop the event, Italians themselves send a more complex - and ultimately tolerant - message.\n\nThe opening of the monumental holy doors at Saint Peter's inaugurates the Jubilee, while debate rages through the ancient city. Vatican kingmaker, Cardinal Roger Etchegaray, finally concedes to an interview - while Imma Battaglia, a tempestuous Joan of Arc for our times, fearlessly spearheads the fight for gay visibility.\n\nThe music of Domenico Modugno sets the tone, and Balass takes to the streets, framing his interviews with astutely selected archival images - a gay priest speaking publicly at a 1982 demo, the first Italian gay marriage in 1992, and the Pope attacking homosexuals in 1994.\n\nAs the World Pride controversy heats up, the filmmaker encounters practical-minded grandmothers and rigid young neo-fascists, self-effacing nuns and ebullient drag queens. Pilgrims seeking absolution from sins, along with Emiliano and Pier Paolo, a couple of young guys who wander though the proceedings, just looking for a little fun.\n\nThe result is a candid, enlightening and often humorous, feature-length documentary. The Devil in the Holy Water captures two historic events as they intersect, highlighting a city and a culture in dynamic transition.\n\nFilmmaker’s biography\nProducer & director Joe Balass is an independent filmmaker working in both fiction and documentary. He currently resides in Montreal where he operates an independent production company, Compass Productions Inc. In addition, he also freelances as an editor, photographer and cameraman. He was born in Baghdad, Iraq in 1966 and after escaping with his family at the age of four, he eventually settled in Canada. His work has taken him all over Asia, Europe and North America. Balass has produced and directed a number of award-winning films and videos, including Nana, George & Me (1997). He expresses a very spontaneous blend of seriousness and humour in his approach to filmmaking.\nAt present, Joe Balass is working on his first feature-length fiction film as well as a number of documentary projects.",
             "gallery"   : "72157621752440028",
             "videos"    : ["6437816", "43038579"],
@@ -324,8 +323,7 @@
             "key"       : "nana", 
             "title"     : "Nana, Goerge and me",
             "email"     : "edou4rd@gmail.com",
-            "backgroundImage" : "bg2.jpg",
-            "backgroundVideos" : ["bg2.mp4"],
+            "backgroundImage" : "nana.jpg",
             "synopsis"  : "Synopsis manquant",
             "credits"   : [
                 {
@@ -339,7 +337,7 @@
             "title"     : "Joy",
             "email"     : "edou4rd@gmail.com",
             "backgroundImage" : "bg1.jpg",
-            "backgroundVideos" : ["bg.mp4"],
+            "backgroundVideos" : ["onSodomRoad.mp4"],
             "synopsis"  : "Synopsis manquant",
             "credits"   : [
                 {
@@ -352,7 +350,7 @@
             "key"     : "baghdad",
             "title"   : "Baghdad twist",
             "backgroundImage" : "bg1.jpg",
-            "backgroundVideos" : ["bg.mp4"],            
+            "backgroundVideos" : ["bg2.mp4"],            
             "synopsis": "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists.",
             "credits"   : [
                 {

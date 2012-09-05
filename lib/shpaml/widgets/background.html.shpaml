@@ -1,5 +1,6 @@
 .Background
-	img.image.hidden | {##}
+	.image.hidden | {##}
 	video.video.hidden preload=none autoplay="autoplay" loop="loop" | {##}
+	video.video-buffer.hidden preload=none autoplay="autoplay" loop="loop" | {##}
 	.video-mute.hidden | {##}
 	.mask | {##}

@@ -174,8 +174,8 @@ a:
 			//opacity		: 0	
 			h2:
 				font-size : 1.2em
-			.tabContentElement:
-				margin-bottom : 38px 				
+			> div:
+				margin : 24px 0 				
 
 			&.links:
 				a:
@@ -291,9 +291,12 @@ textarea::-webkit-input-placeholder:
 	height 			: 100%
 	z-index			: 0
 	video: 
+		position		: absolute
 		min-height			: 100% 
 		min-width			: 100%
-	img: 
+		width 			: auto
+		height 			: auto
+	.image: 
 		background-size: cover
 		background-repeat : no-repeat
 		background-position : top left
