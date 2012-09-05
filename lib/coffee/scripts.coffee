@@ -28,7 +28,7 @@ class Navigation extends Widget
 			brandTile        : ".brand.tile"
 			main             : ".Main"
 			works            : ".Works"
-			page            :  ".PageMenu"
+			page             :  ".PageMenu"
 			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
@@ -137,11 +137,10 @@ class Background extends Widget
 			backgrounds: "> :not(.mask)"
 			image : ".image"
 			video : "video.video"
-			videobuffer : ".video-buffer"
 			mask: ".mask"
 		}
 
-		@CONFIG = {		
+		@CONFIG = {
 			imageUrl : "/static/images/"
 			videoUrl : "/static/videos/"
 			formats : {
@@ -154,12 +153,16 @@ class Background extends Widget
 
 		@CACHE = {
 			videoFormat : null 
+			image : null
 		}
 		
 	bindUI: (ui) ->
 		super	
 		$(window).resize(=>(this.relayout()))
 		@uis.video.prop('muted', true)
+		$('body').bind "setVideos", (e, data) =>
+			this.video(data.split(","))
+		$('body').bind("setImage", (e, filename) => this.image(filename))
 		return this	
 
 	relayout: =>
@@ -178,60 +181,26 @@ class Background extends Widget
 			that.width(flexibleSize)
 		else
 			that.height(flexibleSize)
-			that.width($(window).width())		
-		
-	loadNextVideo: (file) =>
-		console.log "loading..."
-		#@uis.backgrounds.filter('video').addClass "hidden"
-		@uis.video.attr("src", file)
-		$(".video")[0].play()
-		@uis.video.removeClass "hidden"			
-		console.log "paused", $(".video").get(0).pause, $(".video").get(0).played
+			that.width($(window).width())
 
 	video: (data) =>
-				#swap on image if playing video is not supported for format, 
+		#swap on image if playing video is not supported for format, 
 		#use image's widget give better control on relayoupropting than poster attribute of <video>		
-		console.log "video"
-		
-		canPlayFormat = this.getCompatibleVideoFormat()
-		if canPlayFormat
-			#look for the best file in config for this browser
-			for file in data
-				extension = file.split('.').pop()
-				if extension == canPlayFormat
-					#set source
-					console.log @uis.video.attr("class")
-					@uis.video.attr("src", @CONFIG.videoUrl+file)
-					@uis.video.removeClass "hidden"	
-					this.relayout(@uis.video)
-					break
-			if @uis.video.hasClass("hidden") == true
-				@uis.image.removeClass "hidden"
-		else
-			@uis.image.removeClass "hidden"
+		@ui.find('.actual').remove()
+		newVideo = @uis.video.cloneTemplate()
+		for file in data
+			extension = file.split('.').pop()
+			source=$('<source />').attr("src", @CONFIG.videoUrl+file)
+			source.attr("type", "video/#{extension}")
+			newVideo.append(source)
+		# if @cache.image != null
+		# 	newVideo.attr("poster", imageUrl+@cache.image)
+		@uis.video.after(newVideo)
 
-
-		#@uis.videobuffer.attr("src", @CONFIG.videoUrl+file)
-		#@uis.videobuffer.on("loadedmetadata", this.loadNextVideo(@CONFIG.videoUrl+file))
-		#this.loadNextVideo(@CONFIG.videoUrl+file)
-
-	stopVideo: ()=>
-		@uis.video.get(0).stop()
-
-	getCompatibleVideoFormat: () =>
-		if @CACHE.videoFormat != null
-			return @CACHE.videoFormat
-		for format, codecs of @CONFIG.formats		
-			source = 'video/'+format+'; codecs="'+codecs+'"'
-			if @uis.video[0].canPlayType(source) 
-				@CACHE.videoFormat = format
-				return format
-		return false
-	
 	image: (filename) =>
-		@uis.backgrounds.addClass "hidden"
+		@ui.find('video.actual').addClass "hidden"
 		@uis.image.attr("src", "static/images/#{filename}")
-		@uis.image.css("background-image", "url(/static/images/#{filename})")
+		@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
 		@uis.image.removeClass "hidden"
 		this.relayout(@uis.image)
 
@@ -252,15 +221,16 @@ class Panel extends Widget
 		@PAGES = ["project", "contact", "news"]
 		@UIS = {
 			wrapper     : ".wrapper:first"	
-			content 	: ".pages"
-			close       : ".close"
 			pages 		: ".pages"
+			close       : ".close"
+			contents 	: ".content"
 		}
 
 		@cache = {
 			isOpened    : false
 			currentTab  : null
 			currentPage : null
+			footerBarHeight : 0
 		}
 
 	bindUI: (ui) =>
@@ -287,6 +257,7 @@ class Panel extends Widget
 		#cache
 		@cache.currentPage = page
 
+
 	relayout: (open) =>
 		@cache.isOpened = open
 		if @cache.isOpened
@@ -298,8 +269,16 @@ class Panel extends Widget
 			panel_height = window_height - top_offset - 48
 			@ui.css({top:top_offset, height:panel_height})
 			setTimeout((=> 
-				@uis.content.css({height: window_height - @uis.content.offset().top - 80})
+				@uis.pages.css({height: window_height - @uis.pages.offset().top - 80})
 				), 500)
+
+			#content size
+			if @cache.footerBarHeight == 0
+			 	@cache.footerBarHeight = $(".FooterBar").height()
+			content_offset_top       = @uis.pages.offset().top	
+			content_height = window_height - content_offset_top - @cache.footerBarHeight - 100
+			@uis.contents.each (index, el) =>
+				$(el).height(content_height)
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
@@ -405,7 +384,12 @@ class News extends Widget
 	bindUI: (ui) =>
 		super
 		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})	
+		this.relayout()
+		$(window).resize(this.relayout)
 		return this
+
+	relayout: =>
+		@ui.jScrollPane({hideFocus:true})
 
 	setData: (data) =>
 		@cache.data = data
@@ -491,8 +475,8 @@ class Project extends Widget
 
 		@UIS = {
 			tabs        : ".tabs"
-			tabContent  : ".tabContent"
-			tabContents : ".tabContents"
+			tabContent  : ".content"
+			tabContents : ".contents"
 			tabTmpl     : ".tabs > li.template"		
 		}
 		@cache = {
@@ -533,20 +517,14 @@ class Project extends Widget
 			if project.key == name
 				return project
 
-	relayout: =>
-		if @cache.footerBarHeight == 0
-			@cache.footerBarHeight = $(".FooterBar").height()
-		window_height    = $(window).height()
-		offset_top       = @uis.tabContents.offset().top 
-		if offset_top > 0
-			container_height = window_height - offset_top - @cache.footerBarHeight
-			@uis.tabContents.css("height", container_height)
-			@uis.tabContents.jScrollPane({hideFocus:true})
-
 	setProject: (project) =>
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
+		if project_obj.backgroundImage
+			$('body').trigger("setImage", project_obj.backgroundImage)
+		if  project_obj.backgroundVideos	
+			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
 
 	setMenu: (project) =>
 		@uis.tabs.find('li:not(.template)').remove()
@@ -596,8 +574,9 @@ class Project extends Widget
 		tab_nui.removeClass "hidden"
 		tabs_nui = @uis.tabs.find("li").removeClass "active"
 		@uis.tabs.find("[data-name="+category+"]").addClass "active"
-		this.relayout()
 
+	relayout: () =>
+		@uis.tabContent.jScrollPane({hideFocus:true})
 # -----------------------------------------------------------------------------
 #
 # Main
