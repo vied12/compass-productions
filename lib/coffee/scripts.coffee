@@ -199,7 +199,6 @@ class Background extends Widget
 
 	image: (filename) =>
 		@ui.find('video.actual').addClass "hidden"
-		@uis.image.attr("src", "static/images/#{filename}")
 		@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
 		@uis.image.removeClass "hidden"
 		this.relayout(@uis.image)
