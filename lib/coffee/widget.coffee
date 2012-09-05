@@ -6,7 +6,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 28-Aug-2012
+# Last mod : 05-Sep-2012
 # -----------------------------------------------------------------------------
 
 
@@ -55,7 +55,7 @@ class URL
 		this.updateUrl()
 
 	remove: (key) =>
-		if @hash.key
+		if @hash[key]
 			delete @hash[key]
 		this.updateUrl()
 
@@ -88,6 +88,7 @@ class URL
 		location.hash = ""
 		for key, value of @hash
 			location.hash += "&" + key + "=" + value
+		this.updateHash()
 
 isDefined = (obj) ->
 	return typeof(obj) != 'undefined'
