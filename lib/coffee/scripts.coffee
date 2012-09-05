@@ -87,12 +87,12 @@ class Navigation extends Widget
 		menu = @ui.find "[data-menu="+menu+"]"
 		if not menu.length > 0
 			return false
-		@ui.find(".menu").addClass "hidden"
+		@uis.menus.addClass "hidden"
+		tiles = menu.find(".tile")
+		tiles.addClass("no-animation").removeClass("show")
 		menu.removeClass "hidden"
 		# Animation, one by one, fadding effect
 		i     = 0
-		tiles = menu.find(".tile")
-		tiles.addClass("no-animation").removeClass("show")
 		interval = setInterval(=>
 			$(tiles[i]).removeClass("no-animation").addClass("show")
 			i += 1
@@ -181,17 +181,13 @@ class Background extends Widget
 			that.width($(window).width())		
 		
 	loadNextVideo: (file) =>
-		console.log "loading..."
-		#@uis.backgrounds.filter('video').addClass "hidden"
 		@uis.video.attr("src", file)
 		$(".video")[0].play()
 		@uis.video.removeClass "hidden"			
-		console.log "paused", $(".video").get(0).pause, $(".video").get(0).played
 
 	video: (data) =>
 				#swap on image if playing video is not supported for format, 
 		#use image's widget give better control on relayoupropting than poster attribute of <video>		
-		console.log "video"
 		
 		canPlayFormat = this.getCompatibleVideoFormat()
 		if canPlayFormat
@@ -200,7 +196,6 @@ class Background extends Widget
 				extension = file.split('.').pop()
 				if extension == canPlayFormat
 					#set source
-					console.log @uis.video.attr("class")
 					@uis.video.attr("src", @CONFIG.videoUrl+file)
 					@uis.video.removeClass "hidden"	
 					this.relayout(@uis.video)
@@ -209,11 +204,6 @@ class Background extends Widget
 				@uis.image.removeClass "hidden"
 		else
 			@uis.image.removeClass "hidden"
-
-
-		#@uis.videobuffer.attr("src", @CONFIG.videoUrl+file)
-		#@uis.videobuffer.on("loadedmetadata", this.loadNextVideo(@CONFIG.videoUrl+file))
-		#this.loadNextVideo(@CONFIG.videoUrl+file)
 
 	stopVideo: ()=>
 		@uis.video.get(0).stop()
@@ -240,7 +230,6 @@ class Background extends Widget
 # Panel
 #
 # -----------------------------------------------------------------------------
-
     	
 class Panel extends Widget
 
