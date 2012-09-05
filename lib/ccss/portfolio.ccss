@@ -63,12 +63,11 @@ a:
 	background-color   : $TILE_COLOR
 	overflow           : hidden
 	z-index            : 2
-	position           : absolute
 	opacity            : 0
 	font-size 			: 1.2em
 	cursor  			: pointer
-	-webkit-transition-property : "opacity,left,top,-moz-transform"
-	-moz-transition-property    : "opacity,left,top,-moz-transform"
+	-webkit-transition-property : "opacity"
+	-moz-transition-property    : "opacity"
 	-webkit-transition-duration : "1s"
 	-moz-transition-duration    : "1s"
 	//-webkit-transform  :"rotate(15deg)"
@@ -127,7 +126,6 @@ a:
 		position       : absolute
 		bottom    : 0px
 		right     : 32px
-
 
 .FooterPanel:
 	z-index             : 1
@@ -289,7 +287,7 @@ textarea::-webkit-input-placeholder:
 	overflow		: hidden
 	width 			: 100%
 	height 			: 100%
-	z-index			: 0
+	z-index			: -1
 	video: 
 		min-height			: 100% 
 		min-width			: 100%

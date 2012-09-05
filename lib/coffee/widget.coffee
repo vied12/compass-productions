@@ -49,15 +49,20 @@ class URL
 	onStateChanged: (handler) =>
 		@handlers.push(handler)
 
-	update: (fields) =>
+	update: (fields, silent=false) =>
+		hash = if silent then @hash else clone(@hash)
 		for key, value of fields
-			@hash[key] = value
-		this.updateUrl()
+			if isDefined(value)
+				hash[key] = value
+			else
+				delete hash[key]
+		this.updateUrl(hash)
 
-	remove: (key) =>
-		if @hash[key]
-			delete @hash[key]
-		this.updateUrl()
+	remove: (key, silent=false) =>
+		hash = if silent then @hash else clone(@hash)
+		if hash[key]
+			delete hash[key]
+		this.updateUrl(hash)
 
 	hasChanged: (key) =>
 		if isDefined(@hash[key])
@@ -74,6 +79,7 @@ class URL
 	updateHash: (x) =>
 		current_hash = location.hash
 		current_hash = current_hash.split("&")
+		@hash = []
 		for hash in current_hash
 			key_value = hash.split("=")
 			# TODO: handle case length = 1
@@ -84,14 +90,15 @@ class URL
 		return @hash
 
 	# update the hash of url with the @hash variable content
-	updateUrl: =>
-		location.hash = ""
-		for key, value of @hash
-			location.hash += "&" + key + "=" + value
-		this.updateHash()
+	updateUrl: (hash=null) =>
+		hash = hash or @hash
+		new_hash = ""
+		for key, value of hash
+			new_hash += "&" + key + "=" + value
+		location.hash = new_hash
 
 isDefined = (obj) ->
-	return typeof(obj) != 'undefined'
+	return typeof(obj) != 'undefined' and obj != null
 
 jQuery.fn.cloneTemplate = (dict) ->
 	nui = $(this[0]).clone()

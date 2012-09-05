@@ -28,6 +28,7 @@ class Navigation extends Widget
 			brandTile        : ".brand.tile"
 			main             : ".Main"
 			works            : ".Works"
+			page            :  ".PageMenu"
 			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
@@ -36,176 +37,89 @@ class Navigation extends Widget
 
 		@CONFIG = {
 			tileMargin : 4
+			pages      : ["project", "contact", "news"]
 		}
 
 		@cache = {
-			data           : null
 			currentMenu    : null
-			currentProject : null
-			tileWidth      : null
+			currentPage    : null
 		}
+		@panelWidget = null
+		@projectWidget = null
 
 	bindUI: (ui) =>
 		super
-		@background = new Background().bindUI('.Background')
-		@background.image("bg1.jpg")
-		@background.video(["bg.mp4"])		
-		@cache.tileWidth  = parseInt(@uis.tilesList.css("width"))
-		$.ajax("/api/data", {dataType: 'json', success : this.setData})
+		@panelWidget   = new Panel().bindUI(".FooterPanel")
+		@projectWidget = new Project().bindUI(".Project")
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
-		@uis.brandTile.live("click", this.back)
+		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		$('body').bind('backToHome', this.back)
 		# bind url change
-		return this
-
-	# set an absolute position for each tile. Usefull for animation
-	relayout: (menu, template) =>
-		offset_left = @cache.tileWidth + @CONFIG.tileMargin # 'cause of the first brand tile
-		# Main Menu (layout horizontal)
-		for tile, i in @uis.mainTiles
-			left = offset_left + i * (@cache.tileWidth + @CONFIG.tileMargin)
-			$(tile).css({left:left})
-		# Works Menu (layout vertical, 3 tiles by column)
-		x_iterator = 0
-		for tile, i in @uis.worksTiles
-			y_iterator = i%3
-			top  = y_iterator * (@cache.tileWidth + @CONFIG.tileMargin)
-			left = offset_left + x_iterator * (@cache.tileWidth + @CONFIG.tileMargin)
-			$(tile).css({top:top, left:left})
-			if i == 3 - 1
-				x_iterator += 1
-		# Navigation
-		@ui.css("height", @cache.tileWidth)
-
-	setData: (data) =>
-		@cache.data = data
-		@panel      = new Panel().bindUI(".FooterPanel") # needs to be instanciate before selectTile call
+		URL.onStateChanged(=>
+			if URL.hasChanged("menu")
+				menu = URL.get("menu")
+				if menu
+					this.showMenu(menu)
+			if URL.hasChanged("page")
+				page = URL.get("page")
+				if page
+					this.showPage(page)
+		)
 		# init from url
 		params = URL.get()
-		if params.project
-			tile = params.project
+		if params.menu
+			this.showMenu(params.menu)
+		else if params.page
+			this.showPage(params.page)
 		else
-			tile = params.m or "main"
-		this.selectTile(tile) # depends of @cache.data
-
-	# trigger the good action with the given selected tile name
-	selectTile: (tile) =>
-		URL.update({m:tile})
-		URL.remove("project")
-		URL.remove("cat")
-		# reset tile for fadding animation
-		if tile in ["main", "news", "contact"]	
-			@uis.tilesList.removeClass "show"
-		# reset @cache.currentProject variable
-		if @cache.currentProject and tile in ["main", "works", "news", "contact"]
-			@cache.currentProject = null
-		this.selectPageLink tile
-		# Dispatch
-		if tile == "main"
-			console.log "main"
 			this.showMenu("main")
-		else if tile == "works"
-			console.log "works"
-			if not @cache.currentProject
-				@uis.tilesList.removeClass "show"
-			this.selectWorks()
-		else if tile == "news"
-			this.selectNews()
-		else if tile == "contact"
-			this.selectContact()
-		else
-			console.log "tile>>project"
-			this.selectWorks()
-			# FIXEME: check if given tile exists in data as a work
-			this.selectProjet(tile)
-			URL.update({project:tile, m:"works"})
+		return this
+
+	# show the given menu, hide the previous opened menu
+	showMenu: (menu) =>
+		# hide panel if menu is not a page (i.e: work and main)
+		if not (menu == "page")
+			$("body").trigger("hidePanel")
+		# show menu
+		menu = @ui.find "[data-menu="+menu+"]"
+		if not menu.length > 0
+			return false
+		@ui.find(".menu").addClass "hidden"
+		menu.removeClass "hidden"
+		# Animation, one by one, fadding effect
+		i     = 0
+		tiles = menu.find(".tile")
+		tiles.addClass("no-animation").removeClass("show")
+		interval = setInterval(=>
+			$(tiles[i]).removeClass("no-animation").addClass("show")
+			i += 1
+			if i == tiles.length
+				clearInterval(interval)
+		, 50) # time between each iteration
+		@cache.currentMenu = menu
+
+	showPage: (page) =>
+		# set page menu (single tile)
+		#FIXME: if not a project ?
+		page_tile = @ui.find("[data-target="+URL.get("project")+"]:first")
+		@uis.page.html(page_tile.clone())
+		this.showMenu("page")
+		$("body").trigger("setPanelPage",page)
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
 		if tile_selected_ui.hasClass "tile"
 			target = tile_selected_ui.attr "data-target"
-			this.selectTile(target)
-
-	selectPageLink: (tile) =>
-		if tile == "main" 
-			@uis.pageLinks.addClass "hide"
-		else
-			@uis.pageLinks.removeClass "hide"
-			@uis.pageLinks.find("li").removeClass "active"
-			@uis.pageLinks.find("."+tile).addClass "active"
-			if tile in ["news","contact"]
-				@uis.pageLinks.find('.menuRoot').addClass "hidden"
-			else
-				@uis.pageLinks.find('.menuRoot').removeClass "hidden"
-				if tile != "works"
-					@uis.pageLinks.find('.menuRoot').addClass "active"		
-
-	selectWorks: =>
-		this.showMenu("works")
-		@uis.worksTiles.removeClass("hidden")
-			
-	selectNews: =>
-		@uis.main.addClass "hidden"
-		@uis.main.find('[data-target=news]').removeClass "hidden"
-		$("body").trigger("setPanelPage", "news")
-
-
-	selectContact: =>
-		$("body").trigger("Contact.new")
-		$("body").trigger("setPanelPage", "contact")
-
-	selectProjet: (project) =>
-		tile_selected = @uis.works.find("[data-target="+project+"]")
-		# Hide all tiles, show selected tile
-		@uis.worksTiles.addClass "hidden"
-		tile_selected.removeClass "hidden"
-		# Animation: set to first position
-		tile_selected.css({
-			top  : 0
-			left : @cache.tileWidth + @CONFIG.tileMargin
-		})
-		# Get project's object and send it to panel
-		project_obj = this.getProjectByName(project)
-		$("body").trigger("projectSelected", project_obj)
-		$("body").trigger("setPanelPage", "project")
-		if(project_obj.backgroundImage)
-			@background.image(project_obj.backgroundImage)		
-		if(project_obj.backgroundVideos)
-			console.log "sendDATA", project_obj.backgroundVideos
-			@background.video(project_obj.backgroundVideos)
-		@cache.currentProject = project
-
-	# show the given menu, hide the previous opened menu
-	showMenu: (name) =>
-		this.relayout()
-		menu = @ui.find "[data-name="+name+"]"
-		if not menu.length > 0
-			return false
-		@ui.find(".menu").addClass "hidden"
-		menu.removeClass "hidden"
-		@cache.currentMenu = name
-		# Animation, one by one, fadding effect
-		i     = 0
-		tiles = menu.find(".tile")
-		interval = setInterval(=>
-			$(tiles[i]).addClass("show")
-			i += 1
-			if i == tiles.length
-				clearInterval(interval)
-		, 50) # time between each iteration
-
-	back: =>
-		$("body").trigger("projectUnselected")
-		if @cache.currentProject
-			this.selectTile("works")
-		else
-			this.selectTile("main")
-
-	getProjectByName: (name) =>
-		for project in @cache.data.works
-			if project.key == name
-				return project
+			# check if there is a menu for the current target
+			if @ui.find("[data-menu="+target+"]").length > 0
+				URL.update({menu:target, page:null, project:null})
+			else # the target is a page
+				if not (target in @CONFIG.pages)
+					# project selected
+					URL.update({page:"project", project:target, menu:null})
+				else
+					URL.update({page:target, menu:null, project:null})
 
 # -----------------------------------------------------------------------------
 #
@@ -306,8 +220,6 @@ class Background extends Widget
 		@uis.image.removeClass "hidden"
 		this.relayout(@uis.image)
 
-
-
 # -----------------------------------------------------------------------------
 #
 # Panel
@@ -322,7 +234,7 @@ class Panel extends Widget
 		@OPTIONS = {
 			panelHeightClosed : 40
 		}
-		@PAGES = ["Project", "Contact", "News"]	
+		@PAGES = ["project", "contact", "news"]
 		@UIS = {
 			wrapper     : ".wrapper:first"	
 			content 	: ".pages"
@@ -339,23 +251,17 @@ class Panel extends Widget
 	bindUI: (ui) =>
 		super
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
-		$('body').bind('projectUnselected', this.hide)
+		$('body').bind('hidePanel', this.hide)
 		@uis.close.click =>
 			this.hide()
 			$('body').trigger "backToHome"
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
-		# bind url change
-		URL.onStateChanged( =>
-			if URL.hasChanged("m")
-				if Format.Capitalize(URL.get("m")) in @PAGES
-					this.goto(URL.get("m"))
-		)
 		return this
 
 	goto: (page) =>
 		#refresh ui style
 		for _page in @PAGES
-			@ui.removeClass _page.toLowerCase()
+			@ui.removeClass _page
 		@ui.addClass page
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
@@ -483,7 +389,7 @@ class News extends Widget
 
 	bindUI: (ui) =>
 		super
-		$.ajax("/api/news", {dataType: 'json', success : this.setData})	
+		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})	
 		return this
 
 	setData: (data) =>
@@ -576,6 +482,7 @@ class Project extends Widget
 		}
 		@cache = {
 			footerBarHeight : 0
+			data            : null
 		}
 		@CATEGORIES    = ["synopsis", "screenings", "videos", "extra", "credits", "gallery", "press", "links"]	
 		@flickrGallery = null
@@ -583,26 +490,33 @@ class Project extends Widget
 	bindUI: (ui) =>
 		super
 		@flickrGallery = new FlickrGallery().bindUI($(".tabContent.gallery"))
+		$.ajax("/api/data", {dataType: 'json', success : this.setData})
+		# bind url change
+		URL.onStateChanged(=>
+			if URL.hasChanged("project")
+				this.setProject(URL.get("project"))
+				this.selectTab(URL.get("cat") or "synopsis")
+			if URL.hasChanged("cat")
+				this.selectTab(URL.get("cat"))
+		)
+		return this
+
+	init: =>
 		# init from url
 		params = URL.get()
 		if params.project
 			this.setProject(params.project)
 		if params.cat
 			this.selectTab(params.cat)
-		# bind events
-		$('body').bind 'projectSelected', (e, project) => 
-			this.setProject(project)
-			setTimeout((=>
-				this.selectTab(URL.get("cat") or "synopsis")
-			), 500) # fix before we find why @uis.tabContents.offset().top in relayout() is null
-		# bind url change
-		URL.onStateChanged(=>
-			if URL.hasChanged("project")
-				this.setProject(URL.get("project"))
-			if URL.hasChanged("cat")
-				this.selectTab(URL.get("cat"))
-		)
-		return this
+
+	setData: (data) =>
+		@cache.data = data
+		this.init()
+
+	getProjectByName: (name) =>
+		for project in @cache.data.works
+			if project.key == name
+				return project
 
 	relayout: =>
 		if @cache.footerBarHeight == 0
@@ -615,8 +529,9 @@ class Project extends Widget
 			@uis.tabContents.jScrollPane({hideFocus:true})
 
 	setProject: (project) =>
-		this.setMenu(project)
-		this.setContent(project)
+		project_obj = this.getProjectByName(project)
+		this.setMenu(project_obj)
+		this.setContent(project_obj)
 
 	setMenu: (project) =>
 		@uis.tabs.find('li:not(.template)').remove()
@@ -675,5 +590,4 @@ class Project extends Widget
 new Navigation().bindUI(".Navigation")
 new News().bindUI(".News")
 new Contact().bindUI(".Contact")
-new Project().bindUI(".Project")
 # EOF

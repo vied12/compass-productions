@@ -1,15 +1,15 @@
 {# TODO: generate tile dynamicaly through the json #}
 .Navigation.disableTextSelection
-	.brand.tile.show
+	.brand.tile.show data-target="main"
 		.wrapper | {##}
-	.Main.menu data-name="main"
+	.Main.menu data-menu="main"
 		.tile data-target="works"
 			.wrapper | Works
 		.tile data-target="news"
 			.wrapper | News
 		.tile data-target="contact"
 			.wrapper | Contact
-	.Works.menu.hidden data-name="works"
+	.Works.menu.hidden data-menu="works"
 		.tile data-target="parting"
 			.wrapper | Parting words
 		.tile data-target="baghdad"
@@ -20,15 +20,16 @@
 			.wrapper | Joy
 		.tile data-target="nana"
 			.wrapper | Nana, goerge & me
+	.PageMenu.menu.hidden data-menu="page" | {##}
 	.clear | {##}
 
 	.Page.links
 		ul
 			li.menuRoot
-				a href=#&m=main | Menu
+				a href=#&menu=main | Menu
 			li.movies
-				a href=#&m=works | Movies					
+				a href=#&menu=works | Movies					
 			li.news
-				a href=#&m=news | News
+				a href=#&page=news | News
 			li.contact
-				a href=#&m=contact | Contact
+				a href=#&page=contact | Contact

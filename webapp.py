@@ -19,7 +19,7 @@ import sources.flickr as flickr
 import sources.model as model
 import os, json, flask_mail, mimetypes, re
 
-app = Flask(__name__)
+app  = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail = flask_mail.Mail(app)
 db   = model.Interface.GetConnection()
