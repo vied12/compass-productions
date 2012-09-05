@@ -169,31 +169,31 @@ a:
 					font-size : 1.2em
 
 		.close:
+			font-family: Arial
 			position : absolute
-			right    : 30px
+			right    : 19px
 			top      : 20px
+			cursor   : pointer
 
-	&.project:
-		background-color : $TILE_COLOR
-	&.contact:
-		padding-top : 30px
-		.slide:
-			display : none
-		.show:
-			display : block
-		form:			
-			textarea:
-				width 	: 98%			
-	&.news:
-		//background-color : $PANEL_COLOR
-		.title, .date:
-			font-size	: $SMALL_FONT_SIZE
-			font-weight : normal
-			line-height : $SMALL_LINE_HEIGHT
-			margin 		: 0
-		.body:
-			font-size : $BIG_FONT_SIZE
+.Contact:
+	padding-top : 30px
+	form:
+		input, textarea, button:
+			margin  : 10px 0
+		input, textarea:
+			padding : 5px 0px 5px 5px
+			width   : 100%
+		textarea:
+			height  : 90px
 
+.News:
+	.title, .date:
+		font-size	: $SMALL_FONT_SIZE
+		font-weight : normal
+		line-height : $SMALL_LINE_HEIGHT
+		margin 		: 0
+	.body:
+		font-size : $BIG_FONT_SIZE
 
 .Page.links, .language:
 	a:
@@ -230,7 +230,6 @@ a:
 
 
 .in:
-	margin 	: 5px 0
 	display : block
 	padding : $BASE_PADDING
 .button:

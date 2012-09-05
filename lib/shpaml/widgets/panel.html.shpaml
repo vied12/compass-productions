@@ -41,42 +41,34 @@
 
 			.News.page
 				.content
-					ul.scrollable
+					ul
 						li.template
-							p.date   | {##}
-							h2.title | {##}
+							h2.title
+								le
+								span.date | {##}
 							p.body   | {##}
 
 			.Contact.page
 				.content
-					.home.slide.show
+					.main
 						p.fat
 							Hello there,
 							> br
 							Would you like to get in touch with Compass Productions?
 							> br
 							You may e reach us at:
-							> br 
-							> br
-							> br
-							info@compassproduction.com
-						a.button.contactForm href="#contactForm" | or use our contact form
-
-					::comment
-						POST was not working, temporary, I use GET			
-					form.slide method="GET"
+							.email.fat | info@compassproduction.com
+						a.button.toContactForm href="#" | or use our contact 
+					.contactForm.hidden
 						p.fat
 							Hello there,
 							> br
 							Would you like to get in touch with Compass
 							Productions
-
-						input.email.in name="email" type="text" placeholder="Email" | {##} 	
-
-						textarea.message.in name="message" placeholder="Write us a few lines..." | {##}
-
-						button.submit.button.in.onRight | Send	
-
-				.result.slide
-					p | {##}
+						form method="post" action="/api/contact" name="contact"
+							input.email.in name="email" type="text" placeholder="Email" | {##} 	
+							textarea.message.in name="message" placeholder="Write us a few lines..." | {##}
+							button.submit.button.in.onRight | Send
+						.result.success.hidden | Thank you
+						.result.error.hidden   | Es gibt ein Problem
 		.close | x

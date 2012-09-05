@@ -56,7 +56,7 @@ class Navigation extends Widget
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
-		$('body').bind('backToHome', this.back)
+		$('body').bind('backToHome', (e) => this.showMenu("main"))
 		# bind url change
 		URL.onStateChanged(=>
 			if URL.hasChanged("menu")
@@ -244,10 +244,6 @@ class Panel extends Widget
 		return this
 
 	goto: (page) =>
-		#refresh ui style
-		for _page in @PAGES
-			@ui.removeClass _page
-		@ui.addClass page
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
@@ -394,11 +390,12 @@ class News extends Widget
 	setData: (data) =>
 		@cache.data = data
 		for news in data
+			date = new Date(news.date_creation)
 			nui = @uis.newsTmpl.cloneTemplate({
-				title : news.title
-				body  : news.content
-				date  : news.date
+				body:news.content
+				date:date.toDateString()
 			})
+			nui.find(".title").prepend(news.title)
 			@uis.newsContainer.append(nui)
 
 # -----------------------------------------------------------------------------
@@ -411,57 +408,50 @@ class Contact extends Widget
 
 	constructor: (url) ->
 
-		@OPTIONS = {
-			textSuccess : "Thank You ! U got an answer ASAP"
-			textFail 	: "Sorry"
-		}
-
 		@UIS = {
-			slides 			: ".slide"
-			home 			: ".home"
-			form 			: "form"
-			result 			: ".result"
-			toFormLink 		: ".contactForm"
-			buttonSend  	: ".submit"
+			main        : ".main"
+			form        : ".contactForm"
+			results     : ".result"
+			toFormLink  : ".toContactForm"
+			buttonSend  : ".submit"
+			errorMsg    : ".result.error"
+			successMsg  : ".result.success"
 		}
 
 	bindUI: (ui) =>
 		super
-		$(window).resize(this.relayout)
-		$('body').bind 'Contact.new', (e) => this.newContact()
-		this.newContact()
+		@uis.toFormLink.click((e) =>
+			this.showForm()
+			e.preventDefault()
+		)
+		@uis.buttonSend.click((e) =>
+			e.preventDefault()
+			this.sendMessage()
+		)
 		return this
 
-	gotoSlide: (slide) =>
-		@uis.slides.removeClass "show"
-		slide.addClass "show"
+	showForm: =>
+		@uis.form.removeClass "hidden"
+		@uis.main.addClass "hidden"
+		@uis.results.addClass "hidden"
 
-	newContact: =>
-		this.gotoSlide @uis.home
-		@uis.toFormLink.click =>
-			this.gotoSlide @uis.form
-
-		@uis.buttonSend.click (e) =>
-			e.preventDefault()
-			dataString = 'email='+ @uis.form.find('[name=email]').value + '&message=' + @uis.form.find('[name=message]').value
-			$.ajax("/api/contact", 
-				{
-				data: {
-					email:		@uis.form.find('[name=email]').val(),
-					message: 	@uis.form.find('[name=message]').val()
-				},  
-				dataType: 'json', 
-				success : this.sentMessage})
-
-			return false
-
-	sentMessage: (success) =>
-		this.gotoSlide @uis.result
-		answer = @uis.result.find('p')
-		if success
-			answer.text @OPTIONS.textSuccess
-		else
- 			answer.text @OPTIONS.textFail
+	sendMessage: =>
+		@uis.results.addClass "hidden"
+		email   = @uis.form.find('[name=email]').val()
+		message = @uis.form.find('[name=message]').val()
+		$.ajax("/api/contact",
+			{
+				type: "POST"
+				dataType: 'json'
+				data: {email:email, message:message}
+				success : ((msg)=>
+					@uis.successMsg.removeClass "hidden"
+				)
+				error : ((msg)=>
+					@uis.errorMsg.removeClass "hidden"
+				)
+			}
+		)
 		
 # -----------------------------------------------------------------------------
 #
