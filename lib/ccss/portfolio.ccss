@@ -5,12 +5,14 @@ TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR  = "rgba(20,20,20,0.7)"
-PANEL_COLOR	= "rgba(20,20,80,0.7)"
+PANEL_COLOR	= "rgba(51,51,77,0.7)"
 BASE_PADDING = 10px
 BIG_LINE_HEIGHT = 1.5em
 SMALL_LINE_HEIGHT = 1.5em
 BIG_FONT_SIZE = 2em
 SMALL_FONT_SIZE = 1.2em
+
+
 
 
 @font-face:
@@ -128,6 +130,8 @@ a:
 	min-height          : 100px
 	background-color    : $PANEL_COLOR
 	overflow            : hidden
+	margin-top          : 8px 
+	min-width 			: 700px
 	-webkit-transition-property : top
 	-moz-transition-property    : top
 	-webkit-transition-duration : 0.25s

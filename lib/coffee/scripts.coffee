@@ -158,16 +158,15 @@ class Background extends Widget
 		
 	bindUI: (ui) ->
 		super	
-		$(window).resize(=>(this.relayout()))
-		@uis.video.prop('muted', true)
+		$(window).resize(=>(this.relayout()))		
 		$('body').bind "setVideos", (e, data) =>
 			this.video(data.split(","))
 		$('body').bind("setImage", (e, filename) => this.image(filename))
 		return this	
 
 	relayout: =>
-		this.resize(@uis.image, "1000px")
-		this.resize(@uis.video, "auto")
+		this.resize(@uis.image, "full")
+		#this.resize(@ui.find("video.actual"), "auto")
 		this.resize(@uis.mask, "full")
 
 	resize: (that, flexibleSize) =>	
@@ -183,11 +182,20 @@ class Background extends Widget
 			that.height(flexibleSize)
 			that.width($(window).width())
 
+		# if $(window).height() > $(window).width()
+		# 	that.height($(window).height())
+		# 	that.width(flexibleSize)
+		# else
+		# 	that.height(flexibleSize)
+			# that.width($(window).width())
+
+
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
 		#use image's widget give better control on relayoupropting than poster attribute of <video>		
 		@ui.find('.actual').remove()
 		newVideo = @uis.video.cloneTemplate()
+		newVideo.prop('muted', true)
 		for file in data
 			extension = file.split('.').pop()
 			source=$('<source />').attr("src", @CONFIG.videoUrl+file)
