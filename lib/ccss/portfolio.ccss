@@ -288,6 +288,7 @@ textarea::-webkit-input-placeholder:
 		min-width			: 100%
 		width 			: auto
 		height 			: auto
+		z-index 		: -1
 	.image: 
 		background-size: cover
 		background-repeat : no-repeat
