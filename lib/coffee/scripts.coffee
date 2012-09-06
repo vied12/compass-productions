@@ -158,7 +158,7 @@ class Background extends Widget
 		
 	bindUI: (ui) ->
 		super	
-		# $(window).resize(=>(this.relayout()))		
+		$(window).resize(=>(this.relayout()))		
 		$('body').bind "setVideos", (e, data) =>
 			this.video(data.split(","))
 		$('body').bind("setImage", (e, filename) => this.image(filename))
@@ -166,7 +166,7 @@ class Background extends Widget
 
 	relayout: =>
 		this.resize(@uis.image, "full")
-		this.resize(@ui.find("video.actual"), "auto")
+		#this.resize(@ui.find("video.actual"), "auto")
 		this.resize(@uis.mask, "full")
 
 	resize: (that, flexibleSize) =>	
@@ -175,7 +175,7 @@ class Background extends Widget
 		aspectRatio = that.height() / that.width()
 		#ratio compliant
 		windowRatio = $(window).height() / $(window).width()
-		if windowRatio < aspectRatio
+		if windowRatio > aspectRatio
 			that.height($(window).height())
 			that.width(flexibleSize)
 		else
