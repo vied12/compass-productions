@@ -51,7 +51,7 @@ class Navigation extends Widget
 		super
 		@panelWidget   = new Panel().bindUI(".FooterPanel")
 		@projectWidget = new Project().bindUI(".Project")
-		@background = new Background().bindUI('.Background')
+		@background    = new Background().bindUI('.Background')
 		@background.image("bg1.jpg")
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -91,12 +91,12 @@ class Navigation extends Widget
 		menu = @ui.find "[data-menu="+menu+"]"
 		if not menu.length > 0
 			return false
-		@ui.find(".menu").addClass "hidden"
+		@uis.menus.addClass "hidden"
+		tiles = menu.find(".tile")
+		tiles.addClass("no-animation").removeClass("show")
 		menu.removeClass "hidden"
 		# Animation, one by one, fadding effect
 		i     = 0
-		tiles = menu.find(".tile")
-		tiles.addClass("no-animation").removeClass("show")
 		interval = setInterval(=>
 			$(tiles[i]).removeClass("no-animation").addClass("show")
 			i += 1
@@ -230,7 +230,6 @@ class Background extends Widget
 # Panel
 #
 # -----------------------------------------------------------------------------
-
     	
 class Panel extends Widget
 
@@ -281,23 +280,12 @@ class Panel extends Widget
 			navigation_ui = $(".Navigation")
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
-			# 48 is the FooterBar height
-			panel_height = window_height - top_offset - 48
-			@ui.css({top:top_offset, height:panel_height})
-			setTimeout((=> 
-				@uis.pages.css({height: window_height - @uis.pages.offset().top - 80})
-				), 500)
-
-			#content size
-			if @cache.footerBarHeight == 0
-			 	@cache.footerBarHeight = $(".FooterBar").height()
-			content_offset_top       = @uis.pages.offset().top	
-			content_height = window_height - content_offset_top - @cache.footerBarHeight - 100
-			@uis.contents.each (index, el) =>
-				$(el).height(content_height)
+			top_offset += 4 # margin-top
+			@ui.css({top : top_offset})
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
+		setTimeout((=>$('body').trigger("relayoutContent")), 1000)
 
 	hide: =>
 		@cache.isOpened = false
@@ -391,6 +379,7 @@ class News extends Widget
 		@UIS = {
 			newsTmpl      : ".template"
 			newsContainer : "ul"
+			content       : ".content"
 		}
 
 		@cache = {
@@ -399,13 +388,13 @@ class News extends Widget
 
 	bindUI: (ui) =>
 		super
-		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})	
-		this.relayout()
-		$(window).resize(this.relayout)
+		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})
+		$("body").bind("relayoutContent", this.relayout)
 		return this
 
 	relayout: =>
-		@ui.jScrollPane({hideFocus:true})
+		top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top)
+		@ui.find(".content").css({height: top_offset})
 
 	setData: (data) =>
 		@cache.data = data
@@ -448,7 +437,12 @@ class Contact extends Widget
 			e.preventDefault()
 			this.sendMessage()
 		)
+		$('body').bind('relayoutContent', this.relayout)
 		return this
+
+	relayout: =>
+		top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top)
+		@ui.find(".content").css({height: top_offset})
 
 	showForm: =>
 		@uis.form.removeClass "hidden"
@@ -498,7 +492,7 @@ class Project extends Widget
 
 	bindUI: (ui) =>
 		super
-		@flickrGallery = new FlickrGallery().bindUI($(".tabContent.gallery"))
+		@flickrGallery = new FlickrGallery().bindUI($(".content.gallery"))
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# bind url change
 		URL.onStateChanged(=>
@@ -508,7 +502,7 @@ class Project extends Widget
 			if URL.hasChanged("cat")
 				this.selectTab(URL.get("cat"))
 		)
-		$(window).resize(this.relayout)
+		$("body").bind("relayoutContent", this.relayout)
 		return this
 
 	init: =>
@@ -517,6 +511,10 @@ class Project extends Widget
 		if params.project
 			this.setProject(params.project)
 			this.selectTab(URL.get("cat") or "synopsis")
+
+	relayout: =>
+		top_offset = $(".FooterPanel").height() - 89
+		@ui.find(".content").css({height: top_offset})
 
 	setData: (data) =>
 		@cache.data = data
@@ -585,8 +583,6 @@ class Project extends Widget
 		tabs_nui = @uis.tabs.find("li").removeClass "active"
 		@uis.tabs.find("[data-name="+category+"]").addClass "active"
 
-	relayout: () =>
-		@uis.tabContent.jScrollPane({hideFocus:true})
 # -----------------------------------------------------------------------------
 #
 # Main
