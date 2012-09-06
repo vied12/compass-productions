@@ -169,8 +169,6 @@ a:
 			overflow : auto
 			h2:
 				font-size : 1.2em
-			> div:
-				margin : 24px 0 				
 			&.links:
 				a:
 					font-size : 1.2em
@@ -178,7 +176,7 @@ a:
 		.close:
 			font-family: Arial
 			position : absolute
-			right    : 24px
+			right    : 19px
 			top      : 20px
 			cursor   : pointer
 
@@ -194,6 +192,7 @@ a:
 			height  : 90px
 
 .News:
+	padding-top : 30px
 	.title, .date:
 		font-size	: $SMALL_FONT_SIZE
 		font-weight : normal

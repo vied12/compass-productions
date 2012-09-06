@@ -51,13 +51,14 @@
 			.Contact.page
 				.content
 					.main
-						p.fat
+						div.fat
 							Hello there,
 							> br
 							Would you like to get in touch with Compass Productions?
 							> br
 							You may e reach us at:
-							.email.fat | info@compassproduction.com
+							.email
+								info@compassproduction.com
 						a.button.toContactForm href="#" | or use our contact 
 					.contactForm.hidden
 						p.fat
