@@ -182,7 +182,8 @@ class Background extends Widget
 		super	
 		$(window).resize(=>(this.relayout()))		
 		$('body').bind "setVideos", (e, data) =>
-			this.video(data.split(","))
+				this.video(data.split(","))	
+		$('body').bind("setNoVideo", => this.removeVideo())
 		$('body').bind("setImage", (e, filename) => this.image(filename))
 		return this	
 
@@ -530,9 +531,11 @@ class Project extends Widget
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
 		if project_obj.backgroundImage
-			$('body').trigger("setImage", project_obj.backgroundImage)
-		if  project_obj.backgroundVideos	
+			$('body').trigger("setImage", project_obj.backgroundImage)	
+		if project_obj.backgroundVideos
 			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
+		else
+			$('body').trigger("setNoVideo")
 
 	setMenu: (project) =>
 		@uis.tabs.find('li:not(.template)').remove()
