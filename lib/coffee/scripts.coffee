@@ -281,7 +281,6 @@ class Panel extends Widget
 			navigation_ui = $(".Navigation")
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
-			top_offset += 4 # margin-top
 			@ui.css({top : top_offset})
 		else
 			top_offset = $(window).height()
@@ -395,7 +394,7 @@ class News extends Widget
 
 	relayout: =>
 		top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top)
-		@ui.find(".content").css({height: top_offset})
+		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
 
 	setData: (data) =>
 		@cache.data = data
@@ -442,8 +441,9 @@ class Contact extends Widget
 		return this
 
 	relayout: =>
-		top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top)
-		@ui.find(".content").css({height: top_offset})
+		top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top) - 20
+		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
+
 
 	showForm: =>
 		@uis.form.removeClass "hidden"
