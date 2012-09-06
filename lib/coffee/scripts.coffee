@@ -478,7 +478,7 @@ class Project extends Widget
 
 	bindUI: (ui) =>
 		super
-		@flickrGallery = new FlickrGallery().bindUI($(".tabContent.gallery"))
+		@flickrGallery = new FlickrGallery().bindUI($(".content.gallery"))
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# bind url change
 		URL.onStateChanged(=>
