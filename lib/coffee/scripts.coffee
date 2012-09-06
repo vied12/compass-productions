@@ -204,6 +204,9 @@ class Background extends Widget
 		else
 			that.height(flexibleSize)
 			that.width($(window).width())
+			
+	removeVideo: =>
+		@ui.find('.actual').remove()
 
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
