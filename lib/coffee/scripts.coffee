@@ -501,7 +501,6 @@ class Project extends Widget
 	relayout: =>
 		top_offset = $(".FooterPanel").height() - 89
 		@ui.find(".content").css({height: top_offset})
-		console.log("=============", $(".FooterPanel").offset().top)
 
 	setData: (data) =>
 		@cache.data = data
