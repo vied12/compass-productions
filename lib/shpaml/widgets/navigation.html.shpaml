@@ -27,7 +27,7 @@
 		ul
 			li.menuRoot
 				a href=#&menu=main | Menu
-			li.movies
+			li.works
 				a href=#&menu=works | Movies					
 			li.news
 				a href=#&page=news | News

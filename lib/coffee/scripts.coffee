@@ -70,19 +70,23 @@ class Navigation extends Widget
 		)
 		# init from url
 		params = URL.get()
-		if params.menu
+		if params.page
+			this.showPage(params.page)		
+		else if params.menu
 			this.showMenu(params.menu)
-		else if params.page
-			this.showPage(params.page)
 		else
 			this.showMenu("main")
 		return this
 
 	# show the given menu, hide the previous opened menu
-	showMenu: (menu) =>
+	showMenu: (menu) =>		
 		# hide panel if menu is not a page (i.e: work and main)
+		console.log "menu", menu
 		if not (menu == "page")
-			$("body").trigger("hidePanel")
+			$("body").trigger("hidePanel")			
+			this.selectPageLink(menu)
+		else
+			this.selectPageLink(@cache.currentPage)
 		# show menu
 		menu = @ui.find "[data-menu="+menu+"]"
 		if not menu.length > 0
@@ -98,16 +102,33 @@ class Navigation extends Widget
 			i += 1
 			if i == tiles.length
 				clearInterval(interval)
-		, 50) # time between each iteration
+		, 50) # time between each iteration		
 		@cache.currentMenu = menu
+
+	selectPageLink: (tile) =>
+		if tile == "main" 
+			@uis.pageLinks.addClass "hidden"
+		else
+			@uis.pageLinks.removeClass "hidden"
+			@uis.pageLinks.find("li").removeClass "active"
+			@uis.pageLinks.find(".#{tile}").addClass "active"
+			menuRoot=@uis.pageLinks.find('.menuRoot')
+			if tile in ["news","contact", "works"]
+				menuRoot.addClass "hidden"
+			else
+				menuRoot.removeClass "hidden"
+				if tile != "works"
+					menuRoot.addClass "active"		
 
 	showPage: (page) =>
 		# set page menu (single tile)
 		#FIXME: if not a project ?
 		page_tile = @ui.find("[data-target="+(URL.get("project") or page)+"]:first")
 		@uis.page.html(page_tile.clone())
+		@cache.currentPage = page
 		this.showMenu("page")
 		$("body").trigger("setPanelPage",page)
+		
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
@@ -123,6 +144,7 @@ class Navigation extends Widget
 					URL.update({page:"project", project:target, menu:null, cat:null})
 				else
 					URL.update({page:target, menu:null, project:null, cat:null})
+			
 
 # -----------------------------------------------------------------------------
 #
@@ -181,14 +203,6 @@ class Background extends Widget
 		else
 			that.height(flexibleSize)
 			that.width($(window).width())
-
-		# if $(window).height() > $(window).width()
-		# 	that.height($(window).height())
-		# 	that.width(flexibleSize)
-		# else
-		# 	that.height(flexibleSize)
-			# that.width($(window).width())
-
 
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
@@ -259,7 +273,6 @@ class Panel extends Widget
 		this.open()
 		#cache
 		@cache.currentPage = page
-
 
 	relayout: (open) =>
 		@cache.isOpened = open
