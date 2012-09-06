@@ -128,6 +128,7 @@ a:
 	background-color    : $PANEL_COLOR
 	overflow            : hidden
 	margin-top          : 8px 
+	min-width 			: 700px
 	-webkit-transition-property : top
 	-moz-transition-property    : top
 	-webkit-transition-duration : 0.25s
