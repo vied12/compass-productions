@@ -9,46 +9,47 @@
 				ul.tabs
 					li.template
 						a | {##}
-				.tabContents
+				.contents
 					::comment
 						TODO.maybe fill classname with data-name dynamically
-					.tabContent.synopsis  data-name="synopsis"
+					.content.synopsis  data-name="synopsis"
 							p.fat | {##}
-					.tabContent.gallery data-name="gallery"
+					.content.gallery data-name="gallery"
 						ul.photos
 							li.photo     | {##}
 							li.show_more.template | {##}	
-					.tabContent.videos data-name="videos"
+					.content.videos data-name="videos"
 						.video.template
 							iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
-					.tabContent.screenings.condensed data-name="screenings" | {##}
+					.content.screenings.condensed data-name="screenings" | {##}
 						.screening.template
 							p.title | {##}
 							p.date | {##}
-					.tabContent.credits.condensed data-name="credits"
+					.content.credits.condensed data-name="credits"
 						.template
 							p.title   | {##}
 							p.body    | {##}
 							p.article | {##}
-					.tabContent.press data-name="press"
+					.content.press data-name="press"
 						.press.template
 							p.title | {##}
 							p.article | {##}
-					.tabContent.links data-name="links"
+					.content.links data-name="links"
 						.link.template
 							a.button href="#" title=links target="_blank" | {#description#}
-					.tabContent.extra data-name="extra" | {##}
+					.content.extra data-name="extra" | {##}
 
 			.News.page
-				ul
-					li.template
-						h2.title
-							le
-							span.date | {##}
-						p.body   | {##}
+				.content
+					ul
+						li.template
+							h2.title
+								le
+								span.date | {##}
+							p.body   | {##}
 
 			.Contact.page
-				.body
+				.content
 					.main
 						p.fat
 							Hello there,
