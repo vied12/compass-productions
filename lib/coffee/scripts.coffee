@@ -554,8 +554,9 @@ class Project extends Widget
 						nui.find('p').html(value)
 					when "videos"
 						for video in value
+							console.log(video)
 							video_nui = nui.find(".template").cloneTemplate()
-							video_nui.find('iframe').attr("src", "http://player.vimeo.com/video/"+video)
+							video_nui.find('img').attr("src", video.thumbnail_small)
 							nui.append(video_nui)
 					when "gallery"
 						@flickrGallery.setPhotoSet(project.gallery)

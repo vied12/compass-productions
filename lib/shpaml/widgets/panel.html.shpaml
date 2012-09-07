@@ -22,8 +22,9 @@
 								li.show_more.template | {##}	
 					.content.videos data-name="videos"
 						.maxWidth
-							.video.template
-								iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
+							ul
+								li.video.template
+									> img.videoThumb
 					.content.screenings.condensed data-name="screenings" | {##}
 						.maxWidth
 							.screening.template
