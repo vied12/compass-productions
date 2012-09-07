@@ -396,7 +396,6 @@ class News extends Widget
 		return this
 
 	relayout: =>
-		#top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top)
 		top_offset = $('.FooterPanel').height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
 
