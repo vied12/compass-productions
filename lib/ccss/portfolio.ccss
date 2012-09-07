@@ -190,6 +190,7 @@ body:
 			&.links:
 				a:
 					font-size : 1.2em	
+					margin-bottom: 15px
 			&.gallery:
 				overflow : auto
 				li:
@@ -211,7 +212,7 @@ body:
 			&.show:
 				display : block
 		.tabs:
-			padding   	: $BASE_PADDING * 2 0
+			padding   	: $BASE_PADDING * 3 0
 			font-size 	: $SMALL_FONT_SIZE
 			color 		: $TEXT_COLOR_DARK
 			margin-top 	: -28px
@@ -233,32 +234,32 @@ body:
 			top      : 20px
 			cursor   : pointer
 
-	.Contact:
-		padding-top : 30px
-		form:
-			.formElement:
-				position : relative
-				max-width : 100%
-				width 	: 100%		
-			input, textarea, button:
-				margin  : 10px 0
-			input, textarea:
-				padding : 5px 0px 5px 5px
-				width   : 100%
-			textarea:
-				height  : 90px			
-			.onRight:
-				float 	: right
-				// Weirdly, negative value is not well compiled
-				// This margin compense fields padding
-				margin 	: 10px "-7px" 0 0
-	.News:
-		padding-top : 30px
-		.titleweight: 
-			line-height : $SMALL_LINE_HEIGHT
-			margin 		: 0
-		.body:
-			font-size : $BIG_FONT_SIZE
+		.Contact:
+			padding-top : 30px
+			form:
+				.formElement:
+					position : relative
+					max-width : 100%
+					width 	: 100%		
+				input, textarea, button:
+					margin  : 10px 0
+				input, textarea:
+					padding : 5px 0px 5px 5px
+					width   : 100%
+				textarea:
+					height  : 90px			
+				.onRight:
+					float 	: right
+					// Weirdly, negative value is not well compiled
+					// This margin compense fields padding
+					margin 	: 10px "-7px" 0 0
+		.News:
+			padding-top : 30px
+			.titleweight: 
+				line-height : $SMALL_LINE_HEIGHT
+				margin 		: 0
+			.body:
+				font-size : $BIG_FONT_SIZE
 
 
 
@@ -278,7 +279,6 @@ body:
 		border-style : solid
 		border-color : #fff 
 		color : #fff
-
 	textarea::-webkit-input-placeholder:
 		color:	#fff
 	-moz-placeholder:
@@ -318,25 +318,20 @@ body:
 		background-position : top left
 	.hidden:
 		display 		: none
-
 	.mask:
 		background 		: url('/static/images/Pixel_Pattern.gif') repeat
 		z-index			: 1
-
-
 	.ui-video-background: 
 		position			: absolute
 		top 				: 95px
 		z-index				: 3
 		right				: 0px
-
 	.ui-video-background-controls:
 		right				: 0px
 		margin				: 0
 		padding 			: 0 10px
 		list-style 			: none
 		display				: none
-
 	.ui-video-background-controls li:
 		float 				: left
 		padding 			: 10px

@@ -368,6 +368,7 @@ class FlickrGallery extends Widget
 		for photo,index in @cache.data[@cache.photo_index+1..next_index]
 			this._makePhotoTile(photo)
 		@cache.photo_index = next_index
+		$('body').trigger "relayoutContent"
 
 # -----------------------------------------------------------------------------
 #
@@ -398,7 +399,7 @@ class News extends Widget
 	relayout: =>
 		top_offset = $('.FooterPanel').height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
-
+		
 	setData: (data) =>
 		@cache.data = data
 		for news in data
