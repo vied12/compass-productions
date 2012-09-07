@@ -186,6 +186,7 @@ a:
 	-moz-transition-duration    : 1.25s
 	top : 100%
 	> .wrapper:
+		height : 100%
 		position : 	relative
 		margin : 8px auto auto
 		max-width 			: $MAX_WIDTH
