@@ -393,7 +393,7 @@ class News extends Widget
 	bindUI: (ui) =>
 		super
 		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})
-		# $("body").bind("relayoutContent", this.relayout)
+		$("body").bind("relayoutContent", this.relayout)
 		return this
 
 	relayout: =>
