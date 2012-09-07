@@ -5,6 +5,7 @@ TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR  = "rgba(20,20,20,0.7)"
+TILE_HIGHLIGHTED_COLOR  = "rgba(120,60,50,0.7)"
 PANEL_COLOR	= "rgba(51,51,77,0.7)"
 BASE_PADDING = 10px
 BIG_LINE_HEIGHT = 1.5em
@@ -48,7 +49,6 @@ body:
 	-o-background-size: cover
 	overflow 			: hidden
 
-
 .page:
 	font-family: "Livory", Verdana, sans-serif	
 	line-height: $SMALL_LINE_HEIGHT
@@ -56,12 +56,10 @@ body:
 a: 
 	color 	: $TEXT_COLOR_LIGHT
 
-
 .tile:
 	width              : $TILE_WIDTH
 	height             : $TILE_HEIGHT
 	margin             : 3px
-	float              : left
 	background-color   : $TILE_COLOR
 	overflow           : hidden
 	z-index            : 2
@@ -74,10 +72,17 @@ a:
 	-moz-transition-duration    : "0.5s"
 	-moz-transition-timing-function     : linear
 	-webkit-transition-timing-function  : linear
+	float              : left
 	> .wrapper:
 		padding : 10px
 	&.show:
 		opacity : 1
+	&.highlighted:
+		clear: both
+		background-color   : $TILE_HIGHLIGHTED_COLOR
+		width              : $TILE_WIDTH * 3 + 10
+
+
 
 .gallery:
 	overflow : auto
@@ -176,8 +181,8 @@ a:
 	height : auto
 	-webkit-transition-property : top
 	-moz-transition-property    : top
-	-webkit-transition-duration : 0.25s
-	-moz-transition-duration    : 0.25s
+	-webkit-transition-duration : 1.25s
+	-moz-transition-duration    : 1.25s
 	> .wrapper:
 		position : 	relative
 		margin : 8px auto auto
@@ -205,6 +210,7 @@ a:
 					color   : $TEXT_COLOR_LIGHT		
 
 		.close:
+			text-decoration: none
 			font-family: Arial
 			position : absolute
 			right    : 19px
@@ -214,11 +220,6 @@ a:
 	position : relative
 	font-size : $SMALL_FONT_SIZE
 	line-height : $SMALL_LINE_HEIGHT
-	//-webkit-transition : all linear 0.2s
-	//-moz-transition    : all linear 0.2s
-	//-webkit-transform  : "translateX(300px)"
-	//-moz-transform     : "translateX(300px)"
-	//opacity		: 0
 	overflow : auto
 	.maxWidth :	 
 		width : 85%
@@ -227,7 +228,6 @@ a:
 	&.links:
 		a:
 			font-size : 1.2em
-
 
 .Contact:
 	padding-top : 30px

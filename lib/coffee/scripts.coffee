@@ -79,7 +79,7 @@ class Navigation extends Widget
 		return this
 
 	# show the given menu, hide the previous opened menu
-	showMenu: (menu) =>		
+	showMenu: (menu) =>	
 		# hide panel if menu is not a page (i.e: work and main)
 		console.log "menu", menu
 		if not (menu == "page")
@@ -122,13 +122,11 @@ class Navigation extends Widget
 
 	showPage: (page) =>
 		# set page menu (single tile)
-		#FIXME: if not a project ?
-		page_tile = @ui.find("[data-target="+(URL.get("project") or page)+"]:first")
+		page_tile = @ui.find(".nav[data-target="+(URL.get("project") or page)+"]:first")
 		@uis.page.html(page_tile.clone())
 		@cache.currentPage = page
 		this.showMenu("page")
 		$("body").trigger("setPanelPage",page)
-		
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
@@ -261,9 +259,6 @@ class Panel extends Widget
 		super
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
 		$('body').bind('hidePanel', this.hide)
-		@uis.close.click =>
-			this.hide()
-			$('body').trigger "backToHome"
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		$("body").bind("relayoutPanel", => this.relayout(true))
 		return this
@@ -401,7 +396,7 @@ class News extends Widget
 	bindUI: (ui) =>
 		super
 		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})
-		$("body").bind("relayoutContent", this.relayout)
+		# $("body").bind("relayoutContent", this.relayout)
 		return this
 
 	relayout: =>

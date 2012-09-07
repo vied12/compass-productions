@@ -80,4 +80,4 @@
 									button.submit.button.in.onRight | Send
 							.result.success.hidden | Thank you
 							.result.error.hidden   | Es gibt ein Problem
-		.close | x
+		a.close href="#menu=main" | x

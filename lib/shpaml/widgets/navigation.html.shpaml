@@ -4,22 +4,26 @@
 		.brand.tile.show data-target="main"
 			.wrapper | {##}
 		.Main.menu data-menu="main"
-			.tile data-target="works"
+			.tile.nav data-target="works"
 				.wrapper | Works
-			.tile data-target="news"
+			.tile.nav data-target="news"
 				.wrapper | News
-			.tile data-target="contact"
+			.tile.nav data-target="contact"
 				.wrapper | Contact
+			.tile.highlighted data-target="joy"
+				.wrapper 
+					h2 | Joy
+					this is our last movie, get a look!
 		.Works.menu.column-template.hidden data-menu="works"
-			.tile data-target="parting"
+			.tile.nav data-target="parting"
 				.wrapper | Parting words
-			.tile data-target="baghdad"
+			.tile.nav data-target="baghdad"
 				.wrapper | Baghdad twist
-			.tile data-target="devil"
+			.tile.nav data-target="devil"
 				.wrapper | The devil in the holy water
-			.tile data-target="joy"
+			.tile.nav data-target="joy"
 				.wrapper | Joy
-			.tile data-target="nana"
+			.tile.nav data-target="nana"
 				.wrapper | Nana, goerge & me
 		.PageMenu.menu.hidden data-menu="page" | {##}
 		.clear | {##}
