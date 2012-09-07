@@ -265,6 +265,7 @@ class Panel extends Widget
 			this.hide()
 			$('body').trigger "backToHome"
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
+		$("body").bind("relayoutPanel", => this.relayout(true))
 		return this
 
 	goto: (page) =>
@@ -285,6 +286,14 @@ class Panel extends Widget
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
 			@ui.css({top : top_offset})
+
+			height = $(window).height() - $('.tiles').height() - $(".FooterBar").height() - 28
+			console.log $(window).height(), $('.tiles').height(), $(".FooterBar").height(), height
+			console.log @ui.height()
+			#height = @ui.height()
+			if height > 0
+				@ui.css({height : height})
+
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
@@ -497,7 +506,7 @@ class Project extends Widget
 	bindUI: (ui) =>
 		super
 		@flickrGallery = new FlickrGallery().bindUI($(".content.gallery"))
-		$.ajax("/api/data", {dataType: 'json', success : this.setData})
+		$.ajax("/api/data", {dataType: 'json', success : this.setData})		
 		# bind url change
 		URL.onStateChanged(=>
 			if URL.hasChanged("project")
@@ -517,8 +526,10 @@ class Project extends Widget
 			this.selectTab(URL.get("cat") or "synopsis")
 
 	relayout: =>
-		top_offset = $(".FooterPanel").height() - 89
-		@ui.find(".content").css({height: top_offset})
+		#$('body').trigger "relayoutPanel"
+		top_offset = $('.FooterPanel').height() - 90
+		console.log "relayout project ", top_offset
+		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
 
 	setData: (data) =>
 		@cache.data = data
@@ -553,7 +564,7 @@ class Project extends Widget
 	setContent: (project) =>
 		for category, value of project
 			if category in @CATEGORIES
-				nui = @uis.tabContents.find("[data-name="+category+"]")
+				nui = @uis.tabContents.find("[data-name="+category+"] .wrapper")
 				switch category
 					when "synopsis"
 						nui.find('p').html(value)
@@ -588,7 +599,8 @@ class Project extends Widget
 		tab_nui.removeClass "hidden"
 		tabs_nui = @uis.tabs.find("li").removeClass "active"
 		@uis.tabs.find("[data-name="+category+"]").addClass "active"
-
+		this.relayout()
+	
 # -----------------------------------------------------------------------------
 #
 # Main

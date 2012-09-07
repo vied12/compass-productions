@@ -4,6 +4,10 @@
 .wrap
 	{% include "widgets/background.html" %}
 	.Index.page.use-base		
+		.FooterBar
+			.wrapper 
+				.language
+					a href="#ln=fr" | Fr
 		{% include "widgets/navigation.html" %}
 		{% include "widgets/panel.html" %}	
 {% endblock %}

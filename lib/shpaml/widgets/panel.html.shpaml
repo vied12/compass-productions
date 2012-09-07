@@ -1,47 +1,42 @@
-.FooterBar
-	.language
-		a href="#ln=fr" | Fr
 
 .FooterPanel.hidden
 	.wrapper.hidden
 		.pages	
 			.Project.page
-				ul.tabs
+				ul.tabs.disableTextSelection
 					li.template
 						a | {##}
 				.contents
-					::comment
-						TODO.maybe fill classname with data-name dynamically
 					.content.synopsis  data-name="synopsis"
-						.maxWidth
+						.wrapper.maxWidth
 							p.fat | {##}
 					.content.gallery data-name="gallery"
-						.maxWidth
+						.wrapper
 							ul.photos
 								li.photo     | {##}
 								li.show_more.template | {##}	
 					.content.videos data-name="videos"
-						.maxWidth
+						.wrapper.maxWidth
 							.video.template
 								iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 					.content.screenings.condensed data-name="screenings" | {##}
-						.maxWidth
+						.wrapper.maxWidth
 							.screening.template
 								p.title | {##}
 								p.date | {##}
 					.content.credits.condensed data-name="credits"
-						.maxWidth
+						.wrapper.maxWidth
 							.template
 								p.title   | {##}
 								p.body    | {##}
 								p.article | {##}
 					.content.press data-name="press"
-						.maxWidth
+						.wrapper.maxWidth
 							.press.template
 								p.title | {##}
 								p.article | {##}
 					.content.links data-name="links"
-						.maxWidth
+						.wrapper.maxWidth
 							.link.template
 								a.button href="#" title=links target="_blank" | {#description#}
 					.content.extra data-name="extra" 

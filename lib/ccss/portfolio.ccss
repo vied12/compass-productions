@@ -94,28 +94,72 @@ a:
 
 .Index:
 	color   : $TEXT_COLOR
-	padding : 20px 0 0 20px
+	padding : 20px 0 0 0px
 	.Navigation:
-		max-width : $MAX_WIDTH
+		max-width 	: $MAX_WIDTH
+		margin 		: 0 auto
+		.tiles:
+			position : relative
+			margin-left : 4px
 		.menu:
 			position : absolute
 			float    : left
-			left     : 183px
+			left     : 153px
 			&.column-template:
 				// two columns = 320px
 				width : 320px
 		.brand.tile:
-			margin : 3px 3px 3px 2px 
+			margin : 3px 3px 3px 3px 
 			background : $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
+
+		.Page.links:
+			opacity 		: 1
+			position        : absolute		
+			bottom 			: 8px
+			z-index 		: 10
+			.wrapper:
+				max-width : $MAX_WIDTH
+				left 			: 16px
+				z-index 		: 10			
+			ul:
+				position         : absolute
+				bottom           : 3px
+				left            : 40px
+				padding 		: 0
+				width 			: 400px	
+
+			li:
+				display 	: inline-block
+				margin 		: 0 10px
+				padding 	: 0
+			a:
+				color 		: $TEXT_COLOR_LIGHT
+				text-decoration 	: none
+			.active a:
+					color 	: $TEXT_COLOR_DARK 
+			&.show:
+				opacity 	: 1
+			&.hide:
+				opacity 	: 0
+
 
 .FooterBar:
 	position         : absolute
-	right            : 30px
-	left             : 30px
+	//right            : 10%
+	//left             : 10%
 	bottom           : 0
 	height           : 40px
-	background-color : "rgba(20,20,20,0.8)"
+	width 			: 100%
+	//margin : auto
 	z-index          : 2
+	
+	.wrapper:
+		background-color : "rgba(20,20,20,0.8)"	
+		width 	: $MAX_WIDTH
+		max-width 	: $MAX_WIDTH
+		margin 		: 0 auto	
+		position 	: relative
+		height      : 40px
 	.language:
 		padding          : $BASE_PADDING
 		position       : absolute
@@ -125,30 +169,31 @@ a:
 .FooterPanel:
 	z-index             : 1
 	position            : absolute
-	right               : 30px
-	bottom              : 40px
-	left                : 30px
-	min-height          : 100px
-	background-color    : $PANEL_COLOR
+	min-height          : 100px	
 	overflow            : hidden
-	margin-top          : 8px 
 	min-width 			: 600px
-	max-width 			: $MAX_WIDTH
+	width 			: 100%	
+	height : auto
 	-webkit-transition-property : top
 	-moz-transition-property    : top
 	-webkit-transition-duration : 0.25s
 	-moz-transition-duration    : 0.25s
 	> .wrapper:
-		padding: $BASE_PADDING  $BASE_PADDING *2
-
+		position : 	relative
+		margin : 8px auto auto
+		max-width 			: $MAX_WIDTH
+		background-color    : $PANEL_COLOR
+		height : 100%
 		.page:
 			display : none
+			padding: $BASE_PADDING * 4  $BASE_PADDING *2	
 			&.show:
 				display : block
 		.tabs:
-			padding   		: $BASE_PADDING * 2 0
+			padding   	: $BASE_PADDING * 2 0
 			font-size 	: $SMALL_FONT_SIZE
 			color 		: $TEXT_COLOR_DARK
+			margin-top 	: -28px
 			li:
 				cursor  : pointer
 				display : inline-block
@@ -157,8 +202,7 @@ a:
 					text-decoration : none
 					color   : $TEXT_COLOR_DARK
 				&.active a:
-					color   : $TEXT_COLOR_LIGHT
-
+					color   : $TEXT_COLOR_LIGHT		
 
 		.close:
 			font-family: Arial
@@ -177,7 +221,7 @@ a:
 	//opacity		: 0
 	overflow : auto
 	.maxWidth :	 
-		width : 84%
+		width : 85%
 	h2:
 		font-size : 1.2em
 	&.links:
@@ -191,7 +235,7 @@ a:
 		.formElement:
 			position : relative
 			max-width : 100%
-			width 	: 100%			
+			width 	: 100%		
 		input, textarea, button:
 			margin  : 10px 0
 		input, textarea:
@@ -207,9 +251,7 @@ a:
 
 .News:
 	padding-top : 30px
-	.title, .date:
-		font-size	: $SMALL_FONT_SIZE
-		font-weight : normal
+	.titleweight: 
 		line-height : $SMALL_LINE_HEIGHT
 		margin 		: 0
 	.body:
@@ -220,32 +262,6 @@ a:
 		color 		: $TEXT_COLOR_LIGHT
 		text-decoration 	: none
 
-.Page.links:
-	opacity 		: 1
-	position        : absolute
-	bottom 			: 8px
-	left 			: 16px
-	z-index 		: 10
-	ul:
-		position         : absolute
-		bottom           : 3px
-		left            : 40px
-		padding 		: 0
-		width 			: 400px	
-
-	li:
-		display 	: inline-block
-		margin 		: 0 10px
-		padding 	: 0
-	a:
-		color 		: $TEXT_COLOR_LIGHT
-		text-decoration 	: none
-	.active a:
-			color 	: $TEXT_COLOR_DARK 
-	&.show:
-		opacity 	: 1
-	&.hide:
-		opacity 	: 0
 
 
 
