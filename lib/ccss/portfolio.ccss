@@ -141,8 +141,8 @@ a:
 	max-width 			: $MAX_WIDTH
 	-webkit-transition-property : top
 	-moz-transition-property    : top
-	-webkit-transition-duration : 0.25s
-	-moz-transition-duration    : 0.25s
+	-webkit-transition-duration : 1.25s
+	-moz-transition-duration    : 1.25s
 	> .wrapper:
 		padding: $BASE_PADDING  $BASE_PADDING *2
 

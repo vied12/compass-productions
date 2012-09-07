@@ -79,7 +79,7 @@ class Navigation extends Widget
 		return this
 
 	# show the given menu, hide the previous opened menu
-	showMenu: (menu) =>		
+	showMenu: (menu) =>	
 		# hide panel if menu is not a page (i.e: work and main)
 		console.log "menu", menu
 		if not (menu == "page")
@@ -259,9 +259,6 @@ class Panel extends Widget
 		super
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
 		$('body').bind('hidePanel', this.hide)
-		@uis.close.click =>
-			this.hide()
-			$('body').trigger "backToHome"
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		return this
 
