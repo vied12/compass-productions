@@ -177,18 +177,20 @@ a:
 	min-height          : 100px	
 	overflow            : hidden
 	min-width 			: 600px
-	width 			: 100%	
+	width 			: 100%		
 	height : auto
+	bottom : 40px
 	-webkit-transition-property : top
 	-moz-transition-property    : top
 	-webkit-transition-duration : 1.25s
 	-moz-transition-duration    : 1.25s
+	top : 100%
 	> .wrapper:
 		position : 	relative
 		margin : 8px auto auto
 		max-width 			: $MAX_WIDTH
 		background-color    : $PANEL_COLOR
-		height : 100%
+
 		.page:
 			display : none
 			padding: $BASE_PADDING * 4  $BASE_PADDING *2	
@@ -221,7 +223,7 @@ a:
 	font-size : $SMALL_FONT_SIZE
 	line-height : $SMALL_LINE_HEIGHT
 	overflow : auto
-	.maxWidth :	 
+	.maxWidth :
 		width : 85%
 	h2:
 		font-size : 1.2em
@@ -265,6 +267,8 @@ a:
 
 
 
+
+//--------------------------FORM class ------------------	
 .in:
 	display : block
 	padding : $BASE_PADDING
@@ -288,6 +292,9 @@ textarea::-webkit-input-placeholder:
 -ms-input-placeholder:
 	color:	#fff
 
+
+
+//--------------------------Text class ------------------	
 .condensed:
 	line-height : 0.4em		
 .fat:

@@ -253,6 +253,7 @@ class Panel extends Widget
 			currentTab  : null
 			currentPage : null
 			footerBarHeight : 0
+			tilesHeight : null
 		}
 
 	bindUI: (ui) =>
@@ -281,17 +282,13 @@ class Panel extends Widget
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height()
 			@ui.css({top : top_offset})
-
-			height = $(window).height() - $('.tiles').height() - $(".FooterBar").height() - 28
-			console.log $(window).height(), $('.tiles').height(), $(".FooterBar").height(), height
-			console.log @ui.height()
-			#height = @ui.height()
+			height = $(window).height() - 224
 			if height > 0
 				@ui.css({height : height})
-
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
+
 		setTimeout((=>$('body').trigger("relayoutContent")), 1000)
 
 	hide: =>
