@@ -1,31 +1,32 @@
 {# TODO: generate tile dynamicaly through the json #}
 .Navigation.disableTextSelection
-	.brand.tile.show data-target="main"
-		.wrapper | {##}
-	.Main.menu data-menu="main"
-		.tile.nav data-target="works"
-			.wrapper | Works
-		.tile.nav data-target="news"
-			.wrapper | News
-		.tile.nav data-target="contact"
-			.wrapper | Contact
-		.tile.highlighted data-target="joy"
-			.wrapper 
-				h2 | Joy
-				this is our last movie, get a look!
-	.Works.menu.column-template.hidden data-menu="works"
-		.tile.nav data-target="parting"
-			.wrapper | Parting words
-		.tile.nav data-target="baghdad"
-			.wrapper | Baghdad twist
-		.tile.nav data-target="devil"
-			.wrapper | The devil in the holy water
-		.tile.nav data-target="joy"
-			.wrapper | Joy
-		.tile.nav data-target="nana"
-			.wrapper | Nana, goerge & me
-	.PageMenu.menu.hidden data-menu="page" | {##}
-	.clear | {##}
+	.tiles
+		.brand.tile.show data-target="main"
+			.wrapper | {##}
+		.Main.menu data-menu="main"
+			.tile.nav data-target="works"
+				.wrapper | Works
+			.tile.nav data-target="news"
+				.wrapper | News
+			.tile.nav data-target="contact"
+				.wrapper | Contact
+			.tile.highlighted data-target="joy"
+				.wrapper 
+					h2 | Joy
+					this is our last movie, get a look!
+		.Works.menu.column-template.hidden data-menu="works"
+			.tile.nav data-target="parting"
+				.wrapper | Parting words
+			.tile.nav data-target="baghdad"
+				.wrapper | Baghdad twist
+			.tile.nav data-target="devil"
+				.wrapper | The devil in the holy water
+			.tile.nav data-target="joy"
+				.wrapper | Joy
+			.tile.nav data-target="nana"
+				.wrapper | Nana, goerge & me
+		.PageMenu.menu.hidden data-menu="page" | {##}
+		.clear | {##}
 
 	.Page.links
 		ul
