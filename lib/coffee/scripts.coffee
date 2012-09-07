@@ -122,13 +122,11 @@ class Navigation extends Widget
 
 	showPage: (page) =>
 		# set page menu (single tile)
-		#FIXME: if not a project ?
-		page_tile = @ui.find("[data-target="+(URL.get("project") or page)+"]:first")
+		page_tile = @ui.find(".nav[data-target="+(URL.get("project") or page)+"]:first")
 		@uis.page.html(page_tile.clone())
 		@cache.currentPage = page
 		this.showMenu("page")
 		$("body").trigger("setPanelPage",page)
-		
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
