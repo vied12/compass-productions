@@ -166,6 +166,7 @@ a:
 
 
 		.close:
+			text-decoration: none
 			font-family: Arial
 			position : absolute
 			right    : 19px
