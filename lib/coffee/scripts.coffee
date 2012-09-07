@@ -81,7 +81,6 @@ class Navigation extends Widget
 	# show the given menu, hide the previous opened menu
 	showMenu: (menu) =>	
 		# hide panel if menu is not a page (i.e: work and main)
-		console.log "menu", menu
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
 			this.selectPageLink(menu)
@@ -518,9 +517,7 @@ class Project extends Widget
 			this.selectTab(URL.get("cat") or "synopsis")
 
 	relayout: =>
-		#$('body').trigger "relayoutPanel"
 		top_offset = $('.FooterPanel').height() - 90
-		console.log "relayout project ", top_offset
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
 
 	setData: (data) =>
