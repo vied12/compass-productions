@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+.wrap
 	{% include "widgets/background.html" %}
 	.Index.page.use-base		
 		{% include "widgets/navigation.html" %}

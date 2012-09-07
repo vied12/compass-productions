@@ -13,63 +13,76 @@
 					::comment
 						TODO.maybe fill classname with data-name dynamically
 					.content.synopsis  data-name="synopsis"
+						.maxWidth
 							p.fat | {##}
 					.content.gallery data-name="gallery"
-						ul.photos
-							li.photo     | {##}
-							li.show_more.template | {##}	
+						.maxWidth
+							ul.photos
+								li.photo     | {##}
+								li.show_more.template | {##}	
 					.content.videos data-name="videos"
-						.video.template
-							iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
+						.maxWidth
+							.video.template
+								iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 					.content.screenings.condensed data-name="screenings" | {##}
-						.screening.template
-							p.title | {##}
-							p.date | {##}
+						.maxWidth
+							.screening.template
+								p.title | {##}
+								p.date | {##}
 					.content.credits.condensed data-name="credits"
-						.template
-							p.title   | {##}
-							p.body    | {##}
-							p.article | {##}
+						.maxWidth
+							.template
+								p.title   | {##}
+								p.body    | {##}
+								p.article | {##}
 					.content.press data-name="press"
-						.press.template
-							p.title | {##}
-							p.article | {##}
+						.maxWidth
+							.press.template
+								p.title | {##}
+								p.article | {##}
 					.content.links data-name="links"
-						.link.template
-							a.button href="#" title=links target="_blank" | {#description#}
-					.content.extra data-name="extra" | {##}
+						.maxWidth
+							.link.template
+								a.button href="#" title=links target="_blank" | {#description#}
+					.content.extra data-name="extra" 
+						.maxWidth | {##}
 
 			.News.page
 				.content
-					ul
-						li.template
-							h2.title
-								le
-								span.date | {##}
-							p.body   | {##}
+					.maxWidth
+						ul
+							li.template
+								h2.title
+									le
+									span.date | {##}
+								p.body   | {##}
 
 			.Contact.page
 				.content
-					.main
-						div.fat
-							Hello there,
-							> br
-							Would you like to get in touch with Compass Productions?
-							> br
-							You may e reach us at:
-							.email
-								info@compassproduction.com
-						a.button.toContactForm href="#" | or use our contact 
-					.contactForm.hidden
-						p.fat
-							Hello there,
-							> br
-							Would you like to get in touch with Compass
-							Productions
-						form method="post" action="/api/contact" name="contact"
-							input.email.in name="email" type="text" placeholder="Email" | {##} 	
-							textarea.message.in name="message" placeholder="Write us a few lines..." | {##}
-							button.submit.button.in.onRight | Send
-						.result.success.hidden | Thank you
-						.result.error.hidden   | Es gibt ein Problem
+					.maxWidth
+						.main
+							div.fat
+								Hello there,
+								> br
+								Would you like to get in touch with Compass Productions?
+								> br
+								You may e reach us at:
+								.email
+									info@compassproduction.com
+							a.button.toContactForm href="#" | or use our contact 
+						.contactForm.hidden
+							p.fat
+								Hello there,
+								> br
+								Would you like to get in touch with Compass
+								Productions
+							form method="post" action="/api/contact" name="contact"
+								.formElement
+									input.email.in name="email" type="text" placeholder="Email" | {##} 	
+								.formElement	
+									textarea.message.in name="message" placeholder="Write us a few lines..." | {##}
+								.formElement
+									button.submit.button.in.onRight | Send
+							.result.success.hidden | Thank you
+							.result.error.hidden   | Es gibt ein Problem
 		.close | x
