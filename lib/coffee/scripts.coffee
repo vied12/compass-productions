@@ -261,7 +261,7 @@ class Panel extends Widget
 		$('body').bind('hidePanel', this.hide)
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		$("body").bind("relayoutPanel", => this.relayout(true))
-		return this
+		return this	
 
 	goto: (page) =>
 		#close all pages
@@ -408,7 +408,7 @@ class News extends Widget
 				body:news.content
 				date:date.toDateString()
 			})
-			nui.find(".title").prepend(news.title)
+			nui.find(".title").append(news.title)
 			@uis.newsContainer.append(nui)
 
 # -----------------------------------------------------------------------------
@@ -445,7 +445,7 @@ class Contact extends Widget
 		return this
 
 	relayout: =>
-		top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top) - 20
+		top_offset = $(".FooterPanel").height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
 
 

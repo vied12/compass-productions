@@ -47,14 +47,13 @@
 					.maxWidth
 						ul
 							li.template
-								h2.title
-									le
+								h2.title									
 									span.date | {##}
 								p.body   | {##}
 
 			.Contact.page
 				.content
-					.maxWidth
+					.wrapper.maxWidth
 						.main
 							div.fat
 								Hello there,
