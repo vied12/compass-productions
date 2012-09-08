@@ -168,8 +168,8 @@ body:
 	bottom : 40px
 	-webkit-transition-property : top
 	-moz-transition-property    : top
-	-webkit-transition-duration : 1.25s
-	-moz-transition-duration    : 1.25s
+	-webkit-transition-duration : 0.50s
+	-moz-transition-duration    : 0.50s
 	top : 100%
 	> .wrapper:
 		height : 100%

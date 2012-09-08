@@ -260,7 +260,6 @@ class portfolio.Panel extends Widget
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
 		$('body').bind('hidePanel', this.hide)
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
-		$("body").bind("relayoutPanel", => this.relayout(true))
 		return this	
 
 	goto: (page) =>
