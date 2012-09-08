@@ -9,5 +9,6 @@
 				.language
 					a href="#ln=fr" | Fr
 		{% include "widgets/navigation.html" %}
-		{% include "widgets/panel.html" %}	
+		{% include "widgets/mediaPlayer.html" %}
+		{% include "widgets/panel.html" %}
 {% endblock %}

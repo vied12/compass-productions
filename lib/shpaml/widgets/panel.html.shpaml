@@ -5,7 +5,7 @@
 			.Project.page.widget data-widget=portfolio.Project
 				ul.tabs.disableTextSelection
 					li.template
-						a | {##}
+						a.internal | {##}
 				.contents
 					.content.synopsis  data-name="synopsis"
 						.wrapper.maxWidth
@@ -19,7 +19,7 @@
 						.wrapper.maxWidth
 							ul
 								li.video.template
-									a href="#"
+									a.internal href="#"
 										> img.videoThumb
 					.content.screenings.condensed data-name="screenings" | {##}
 						.wrapper.maxWidth

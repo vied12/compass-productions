@@ -151,7 +151,7 @@ class portfolio.Navigation extends Widget
 
 class portfolio.Background extends Widget
 
-	constructor: () ->
+	constructor: ->
 		@UIS = {
 			backgrounds: "> :not(.mask)"
 			image : ".image"
@@ -234,7 +234,7 @@ class portfolio.Background extends Widget
     	
 class portfolio.Panel extends Widget
 
-	constructor: (projet) ->
+	constructor: ->
 
 		@OPTIONS = {
 			panelHeightClosed : 40
@@ -307,7 +307,7 @@ class portfolio.Panel extends Widget
 
 class portfolio.FlickrGallery extends Widget
 
-	constructor: (url) ->
+	constructor: ->
 		@OPTIONS = {
 			initial_quantity   : 10
 			show_more_quantity : 10
@@ -377,7 +377,7 @@ class portfolio.FlickrGallery extends Widget
 
 class portfolio.News extends Widget
 
-	constructor: (url) ->
+	constructor: ->
 
 		@UIS = {
 			newsTmpl      : ".template"
@@ -418,7 +418,7 @@ class portfolio.News extends Widget
 
 class portfolio.Contact extends Widget
 
-	constructor: (url) ->
+	constructor: ->
 
 		@UIS = {
 			main        : ".main"
@@ -479,7 +479,7 @@ class portfolio.Contact extends Widget
 
 class portfolio.Project extends Widget
 
-	constructor: (project) ->
+	constructor: ->
 
 		@UIS = {
 			tabs        : ".tabs"
@@ -493,11 +493,15 @@ class portfolio.Project extends Widget
 		}
 		@CATEGORIES    = ["synopsis", "screenings", "videos", "extra", "credits", "gallery", "press", "links"]	
 		@flickrGallery = null
+		@mediaPlayer   = null
 
 	bindUI: (ui) =>
 		super
 		@flickrGallery = Widget.ensureWidget(".content.gallery")
+		@mediaPlayer   = Widget.ensureWidget(".MediaPlayer")
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
+		# enable dynamic links (#+cat=...)
+		URL.enableLinks(@ui)
 		# bind url change
 		URL.onStateChanged(=>
 			if URL.hasChanged("project")
@@ -546,9 +550,11 @@ class portfolio.Project extends Widget
 		for category, value of project
 			if category in @CATEGORIES
 				nui = @uis.tabTmpl.cloneTemplate()
-				nui.find("a").text(category).attr("href", "#page=project&project="+project.key+"&cat="+category).attr("data-target", category)
+				nui.find("a").text(category).attr("href", "#+cat="+category).attr("data-target", category)
 				nui.attr("data-name", category)
 				@uis.tabs.append(nui)
+		# update dynamic links
+		URL.enableLinks(@uis.tabs)
 
 	setContent: (project) =>
 		for category, value of project
@@ -558,14 +564,17 @@ class portfolio.Project extends Widget
 					when "synopsis"
 						nui.find('p').html(value)
 					when "videos"
+						@mediaPlayer.setVideoData(value)
 						list = nui.find("ul")
-						list.find("li:not(.template)").remove()
 						# resets
+						list.find("li:not(.template)").remove()
 						for video, i in value
 							video_nui = nui.find(".template").cloneTemplate()
 							video_nui.find('img').attr("src", video.thumbnail_small)
-							video_nui.find('a').attr("href", "#video="+i+"&page=project&project="+project.key+"&cat="+category)
+							video_nui.find('a').attr("href", "#+video="+i)
 							list.append(video_nui)
+						# update dynamic links
+						URL.enableLinks(list)
 					when "gallery"
 						@flickrGallery.setPhotoSet(project.gallery)
 					when "press"
@@ -575,7 +584,6 @@ class portfolio.Project extends Widget
 					when "credits"
 						for credit in value
 							credit_nui = nui.find('.template').cloneTemplate(credit,true)
-							
 							nui.append(credit_nui)
 					when "screenings" 
 						for screening in value
@@ -594,7 +602,48 @@ class portfolio.Project extends Widget
 		tabs_nui = @uis.tabs.find("li").removeClass "active"
 		@uis.tabs.find("[data-name="+category+"]").addClass "active"
 		this.relayout()
-	
+
+# -----------------------------------------------------------------------------
+#
+# MEDIA PLAYER
+#
+# -----------------------------------------------------------------------------	
+
+class portfolio.MediaPlayer extends Widget
+
+	constructor: ->
+		@UIS = {
+			player         : ".player"
+			videoPlayer    : ".player .videoPlayer iframe"
+			imagePlayer    : ".player .imagePlayer img"
+			panel          : ".mediaPanel"
+			mediaContainer : ".mediaPanel ul.mediaContainer"
+			mediaTmpl      : ".mediaPanel .media.template"
+		}
+
+		@cache = {
+			data : null
+		}
+
+	bindUI: (ui) =>
+		super
+
+	setVideoData: (videos) =>
+		@cache.data = videos
+		this.fillContent()
+
+	setImageData: (images) =>
+
+
+	fillContent: =>
+		if @cache.data?
+			@uis.mediaContainer.find("li.actual").remove()
+			for video in @cache.data
+				nui = @uis.mediaTmpl.cloneTemplate()
+				nui.find("a").attr("href", video.thumbnail_small)
+				nui.find("img").attr("src", video.thumbnail_small)
+				@uis.mediaContainer.append(nui)
+
 # -----------------------------------------------------------------------------
 #
 # Main
