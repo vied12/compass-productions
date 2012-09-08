@@ -279,9 +279,9 @@ class portfolio.Panel extends Widget
 			window_height = $(window).height()
 			navigation_ui = $(".Navigation")
 			# just under the navigation
-			top_offset = navigation_ui.offset().top + navigation_ui.height()
+			top_offset = navigation_ui.offset().top + navigation_ui.height() - 6
 			@ui.css({top : top_offset})
-			height = $(window).height() - 224
+			height = $(window).height() - 218
 			if height > 0
 				@ui.css({height : height})
 		else
@@ -368,6 +368,7 @@ class portfolio.FlickrGallery extends Widget
 		for photo,index in @cache.data[@cache.photo_index+1..next_index]
 			this._makePhotoTile(photo)
 		@cache.photo_index = next_index
+		$('body').trigger "relayoutContent"
 
 # -----------------------------------------------------------------------------
 #
@@ -396,10 +397,9 @@ class portfolio.News extends Widget
 		return this
 
 	relayout: =>
-		#top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top)
 		top_offset = $('.FooterPanel').height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
-
+		
 	setData: (data) =>
 		@cache.data = data
 		for news in data
@@ -575,11 +575,12 @@ class portfolio.Project extends Widget
 							nui.append(press_nui)
 					when "credits"
 						for credit in value
-							credit_nui = nui.find('.template').cloneTemplate(credit)
+							credit_nui = nui.find('.template').cloneTemplate(credit,["title", "body", "article"])
+							
 							nui.append(credit_nui)
 					when "screenings" 
 						for screening in value
-							screening_nui = nui.find('.template').cloneTemplate(screening)
+							screening_nui = nui.find('.template').cloneTemplate(screening, ["title", "date", "body"])
 							nui.append(screening_nui)
 					when "links"
 						for link in value

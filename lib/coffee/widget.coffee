@@ -120,18 +120,27 @@ class URL
 isDefined = (obj) ->
 	return typeof(obj) != 'undefined' and obj != null
 
-jQuery.fn.cloneTemplate = (dict) ->
-	nui = $(this[0]).clone()
+jQuery.fn.cloneTemplate = (dict, fields) ->
+	# fields is an optional parameter 
+	# 	Only values from this list of fields are filled
+	# 	If field don't match value in dict, associated template is removed
+	#	Maybe a quicker option to remove all empty fields than select aposteriori all empty elements
+	nui = $(this[0]).clone() 
 	nui = nui.removeClass("template hidden").addClass("actual")
 	if typeof(dict) == "object"
-		for klass, value of dict
-			if value != null
-				nui.find("."+klass).html(value)
-			#NOTE: removing useless tag could be a problem in some case 
-			# if we need to complete the template after the clone operation
-			else
-				nui.find("."+klass).remove()
+		if field?
+			for klass in fields
+				if dict[klass]?
+					nui.find("."+klass).html(dict[klass])
+				else
+					nui.find("."+klass).remove() 
+		else
+			for klass, value of dict
+				console.log "value", value
+				if value != null
+					nui.find("."+klass).html(value)
 	return nui
+
 
 clone = (obj) ->
 	if not obj? or typeof obj isnt 'object'
