@@ -452,11 +452,9 @@ class portfolio.Contact extends Widget
 	relayout: =>
 		top_offset = $(".FooterPanel").height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
-		#messageHeight = @ui.height() - @uis.message.offset().top - @ui.offset().top
 		messageHeight = $(window).height() - @uis.message.offset().top - 190
 		if messageHeight < @CONFIG.minMessageHeight
 			messageHeight = @CONFIG.minMessageHeight
-		console.log "top",  $(window).height(),@uis.message.offset().top , $('FooterBar').height()
 		@uis.message.css({height:messageHeight})
 
 
