@@ -287,7 +287,7 @@ class portfolio.Panel extends Widget
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
 
-		setTimeout((=>$('body').trigger("relayoutContent")), 1000)
+		setTimeout((=>$('body').trigger("relayoutContent")), 100)
 
 	hide: =>
 		@cache.isOpened = false
@@ -423,11 +423,17 @@ class portfolio.Contact extends Widget
 		@UIS = {
 			main        : ".main"
 			form        : ".contactForm"
+			email       : ".title"
+			message     : ".message"
 			results     : ".result"
 			toFormLink  : ".toContactForm"
 			buttonSend  : ".submit"
 			errorMsg    : ".result.error"
 			successMsg  : ".result.success"
+		}
+
+		@CONFIG = {
+			minMessageHeight : 200
 		}
 
 	bindUI: (ui) =>
@@ -446,12 +452,17 @@ class portfolio.Contact extends Widget
 	relayout: =>
 		top_offset = $(".FooterPanel").height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
+		messageHeight = $(window).height() - @uis.message.offset().top - 190
+		if messageHeight < @CONFIG.minMessageHeight
+			messageHeight = @CONFIG.minMessageHeight
+		@uis.message.css({height:messageHeight})
 
 
 	showForm: =>
 		@uis.form.removeClass "hidden"
 		@uis.main.addClass "hidden"
 		@uis.results.addClass "hidden"
+		this.relayout()
 
 	sendMessage: =>
 		@uis.results.addClass "hidden"
