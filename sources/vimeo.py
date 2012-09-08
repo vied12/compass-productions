@@ -21,7 +21,9 @@ class Vimeo:
 		try:
 			filehandle = urllib.urlopen("%s/%s.json" % (Vimeo.URL, id))
 			return json.load(filehandle)[0]
-		except:
+		except e:
+			# FIXME: implement a log tracking system
+			print e
 			return None
 
 if __name__ == "__main__":
