@@ -128,14 +128,13 @@ jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
 	nui = $(this[0]).clone()
 	nui = nui.removeClass("template hidden").addClass("actual")
 	if typeof(dict) == "object"
-		for klass, value in dict
+		for klass, value of dict
 			if value != null
 				nui.find(".out."+klass).html(value)
 		if removeUnusedField
-			nui.find(".out").each(->
+			nui.find(".out").each ->
 				if $(this).html() == ""
 					$(this).remove()
-			)
 	return nui
 
 clone = (obj) ->
