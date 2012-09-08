@@ -9,6 +9,11 @@
 # Last mod : 07-Sep-2012
 # -----------------------------------------------------------------------------
 
+# -----------------------------------------------------------------------------
+#
+# WIDGET
+#
+# -----------------------------------------------------------------------------	
 
 class Widget
 	@widgets = {}
@@ -25,7 +30,9 @@ class Widget
 			return ui[0]._widget
 		else
 			widget_class = Widget.getWidgetClass(ui)
-			return new widget_class().bindUI(ui)
+			widget = new widget_class()
+			widget.bindUI(ui)
+			return widget
 
 	@getWidgetClass = (ui) ->
 		return eval("(" + $(ui).attr("data-widget") + ")")
@@ -46,16 +53,21 @@ class Widget
 		# to make selections operations at the begining
 		@ui.find(".out[data-field="+field+"]").html(value)
 
+# -----------------------------------------------------------------------------
+#
+# URL
+#
+# -----------------------------------------------------------------------------	
+
 class URL
 
 	constructor: ->
 		@previousHash = []
-		@hash         = []
 		@handlers     = []
-		this.updateHash()
+		@hash         = this.fromString(location.hash)
 		$(window).hashchange( =>
 			@previousHash = clone(@hash)
-			this.updateHash()
+			@hash         = this.fromString(location.hash)
 			for handler in @handlers
 				handler()
 		)
@@ -68,6 +80,14 @@ class URL
 
 	onStateChanged: (handler) =>
 		@handlers.push(handler)
+
+	set: (fields, silent=false) =>
+		hash = if silent then @hash else clone(@hash)
+		hash = []
+		for key, value of fields
+			if isDefined(value)
+				hash[key] = value
+		this.updateUrl(hash)
 
 	update: (fields, silent=false) =>
 		hash = if silent then @hash else clone(@hash)
@@ -95,27 +115,50 @@ class URL
 	hasBeenAdded: (key) =>
 		console.error "not implemented"
 
-	# update the @hash variable
-	updateHash: (x) =>
-		current_hash = location.hash
-		current_hash = current_hash.split("&")
-		@hash = []
-		for hash in current_hash
-			key_value = hash.split("=")
-			# TODO: handle case length = 1
-			if key_value.length == 2
-				key   = key_value[0].replace("#", "")
-				value = key_value[1].replace("#", "")
-				@hash[key] = value
-		return @hash
-
 	# update the hash of url with the @hash variable content
 	updateUrl: (hash=null) =>
-		hash = hash or @hash
+		location.hash = this.toString(hash)
+
+	enableLinks: (context=null) =>
+		$("a.internal[href]",context).click (e) =>
+			link = $(e.currentTarget)
+			href = link.attr("data-href") or link.attr("href")
+			if href[0] == "#"
+				if href.length > 1 and href[1] == "+"
+					this.update(this.fromString(href[2..]))
+				# FIXME: doesn't work, remove() doesn't take a list as parameter
+				else if href.length > 1 and href[1] == "-"
+					this.remove(this.fromString(href[2..]))
+				else
+					this.set(this.fromString(href[1..]))
+			return false
+
+	fromString: (value) =>
+		value = value or location.hash
+		hash  = []
+		value = value.split("&")
+		for item in value
+			if item?
+				key_value = item.split("=")
+				# TODO: handle case length = 1
+				if key_value.length == 2
+					key   = key_value[0].replace("#", "")
+					val = key_value[1].replace("#", "")
+					hash[key] = val
+		return hash
+
+	toString: (hash_list=null) =>
+		hash_list = hash_list or @hash
 		new_hash = ""
-		for key, value of hash
+		for key, value of hash_list
 			new_hash += "&" + key + "=" + value
-		location.hash = new_hash
+		return new_hash
+
+# -----------------------------------------------------------------------------
+#
+# UTILS
+#
+# -----------------------------------------------------------------------------	
 
 isDefined = (obj) ->
 	return typeof(obj) != 'undefined' and obj != null
