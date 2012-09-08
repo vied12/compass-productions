@@ -216,6 +216,7 @@ body:
 
 		.close:
 			text-decoration: none
+<<<<<<< Updated upstream
 			font-family : Arial
 			position    : absolute
 			right       : 19px
@@ -233,6 +234,46 @@ body:
 				margin-bottom: 15px
 		&.gallery:
 			overflow : auto
+=======
+			font-family: Arial
+			position : absolute
+			right    : 19px
+			top      : 20px
+			cursor   : pointer
+
+		.Contact:
+			padding-top : 40px			
+				
+			form:
+				.formElement:
+					position : relative
+					max-width : 100%
+					width 	: 100%		
+				input, textarea, button:
+					margin  : 10px 0
+				input, textarea:
+					color 	: $TEXT_COLOR_LIGHT
+					padding : 10px 0px 10px 10px
+					width   : 100%
+					font-family: "Livory", Verdana, sans-serif	
+					font-size  : 1.2em		
+				textarea:
+					height  : 90px			
+				.onRight:
+					float 	: right
+					// Weirdly, negative value is not well compiled
+					// This margin compense fields padding
+					margin 	: 10px "-11px" 0 0
+		.News:
+			padding-top : 40px
+			.title: 
+				font-weight : normal
+				margin 		: 0
+			.date:	
+				display 	: block
+			.body:
+				font-size : $BIG_FONT_SIZE
+>>>>>>> Stashed changes
 			li:
 				display		: inline-block
 				margin		: 5px
