@@ -287,7 +287,7 @@ class portfolio.Panel extends Widget
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
 
-		setTimeout((=>$('body').trigger("relayoutContent")), 1000)
+		setTimeout((=>$('body').trigger("relayoutContent")), 100)
 
 	hide: =>
 		@cache.isOpened = false
