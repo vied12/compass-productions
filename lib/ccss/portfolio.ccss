@@ -192,6 +192,7 @@ body:
 			.fat:
 				font-size : $BIG_FONT_SIZE
 				line-height : $BIG_LINE_HEIGHT	
+				margin-top : -10px
 			&.links:
 				a:
 					font-size : 1.2em	
@@ -255,7 +256,8 @@ body:
 			cursor   : pointer
 
 		.Contact:
-			padding-top : 40px
+			padding-top : 40px			
+				
 			form:
 				.formElement:
 					position : relative
