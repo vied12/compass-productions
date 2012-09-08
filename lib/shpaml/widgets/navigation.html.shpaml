@@ -1,5 +1,5 @@
 {# TODO: generate tile dynamicaly through the json #}
-.Navigation.disableTextSelection
+.Navigation.disableTextSelection.widget data-widget=portfolio.Navigation
 	.tiles
 		.brand.tile.show data-target="main"
 			.wrapper | {##}

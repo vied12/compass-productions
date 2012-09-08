@@ -1,8 +1,8 @@
 
-.FooterPanel.hidden
+.FooterPanel.hidden.widget data-widget=portfolio.Panel
 	.wrapper.hidden
 		.pages	
-			.Project.page
+			.Project.page.widget data-widget=portfolio.Project
 				ul.tabs.disableTextSelection
 					li.template
 						a | {##}
@@ -10,15 +10,17 @@
 					.content.synopsis  data-name="synopsis"
 						.wrapper.maxWidth
 							p.fat | {##}
-					.content.gallery data-name="gallery"
+					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
 							ul.photos
 								li.photo     | {##}
 								li.show_more.template | {##}	
 					.content.videos data-name="videos"
 						.wrapper.maxWidth
-							.video.template
-								iframe width="500" 	height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
+							ul
+								li.video.template
+									a href="#"
+										> img.videoThumb
 					.content.screenings.condensed data-name="screenings" | {##}
 						.wrapper.maxWidth
 							.screening.template
@@ -42,7 +44,7 @@
 					.content.extra data-name="extra" 
 						.maxWidth | {##}
 
-			.News.page
+			.News.page.widget data-widget=portfolio.News
 				.content
 					.maxWidth
 						ul
@@ -51,7 +53,7 @@
 									span.date | {##}
 								p.body   | {##}
 
-			.Contact.page
+			.Contact.page.widget data-widget=portfolio.Contact
 				.content
 					.wrapper.maxWidth
 						.main
