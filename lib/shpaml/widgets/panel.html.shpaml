@@ -26,7 +26,7 @@
 								p.date | {##}
 					.content.credits.condensed data-name="credits"
 						.wrapper.maxWidth
-							.template
+							.credit.template
 								p.title   | {##}
 								p.body    | {##}
 								p.article | {##}

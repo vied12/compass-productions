@@ -266,9 +266,6 @@
                     "title" : "Thanks to the actors and musicians in the performance of Laudes grido a tutta gente under the direction of Gigi Dall'aglio."
                 },
                 {
-                    "title" : "Thanks to the actors and musicians in the performance of Laudes grido a tutta gente under the direction of Gigi Dall’aglio."
-                },
-                {
                     "title" : "Production Accountant:",
                     "body"  : "Rickie Rosenbaum"
                 },
@@ -284,36 +281,12 @@
                     "title" : "News and archival footage provided by arrangement with RAITrade."
                 },
                 {
-                    "title" : "This film was made possible through the generous financial participation of :"
-                },
-                {
-                    "title" : "The Canada Council for the Arts",
-                    "body"  : "The Millennium Fund\nMedia Arts Program"
-                },
-                {
-                    "title" : "SODEC - Programme d'aide aux jeunes créateurs"
-                },
-                {
-                    "title" : "Programme du crédit d'impot du Gouvernement du Québec"
-                },
-                {
-                    "title" : "Conseil des arts et des lettres du Québec"
-                },
-                {
-                    "title" : "The Canadian Independent Film & Video Fund"
-                },
-                {
-                    "title" : "The Canadian Government Film or Video Tax Credit Program"
+                    "title" : "This film was made possible through the generous financial participation of :",
+                    "body" : "The Canada Council for the Arts / The Millennium Fund Media Arts Program\nSODEC - Programme d'aide aux jeunes créateurs\nProgramme du crédit d'impot du Gouvernement du Québec\nConseil des arts et des lettres du Québec\nThe Canadian Independent Film & Video Fund\nThe Canadian Government Film or Video Tax Credit Program"
                 },
                 {
                     "title" : "Additional support for this film provided by:",
-                    "body"  : "PRIM\nCentre d'art médiatiques"
-                },
-                {
-                    "title" : "The National Film Board - Filmmakers' Assistance Program"
-                },
-                {
-                    "title" : "Cinéma Libre Distribution"
+                    "body"  : "PRIM / Centre d'art médiatiques\nThe National Film Board - Filmmakers' Assistance Program\nCinéma Libre Distribution"
                 }
             ],
             "news"      : ""
