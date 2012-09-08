@@ -9,7 +9,7 @@
 				.contents
 					.content.synopsis  data-name="synopsis"
 						.wrapper.maxWidth
-							p.fat | {##}
+							p.fat.out | {##}
 					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
 							ul.photos
@@ -24,22 +24,22 @@
 					.content.screenings.condensed data-name="screenings" | {##}
 						.wrapper.maxWidth
 							.screening.template
-								p.title | {##}
-								p.date | {##}
+								p.title.out | {##}
+								p.date.out | {##}
 					.content.credits.condensed data-name="credits"
 						.wrapper.maxWidth
 							.credit.template
-								p.title   | {##}
-								p.body    | {##}
-								p.article | {##}
+								p.title.out   | {##}
+								p.body.out    | {##}
+								p.article.out | {##}
 					.content.press data-name="press"
 						.wrapper.maxWidth
 							.press.template
-								p.title | {##}
-								p.article | {##}
+								p.title.out | {##}
+								p.article.out | {##}
 					.content.links data-name="links"
 						.wrapper.maxWidth
-							.link.template
+							.link.template.out
 								a.button href="#" title=links target="_blank" | {#description#}
 					.content.extra data-name="extra" 
 						.maxWidth | {##}
@@ -49,14 +49,13 @@
 					.maxWidth
 						ul
 							li.template
-								h2.title
-									le
+								h2.title									
 									span.date | {##}
 								p.body   | {##}
 
 			.Contact.page.widget data-widget=portfolio.Contact
 				.content
-					.maxWidth
+					.wrapper.maxWidth
 						.main
 							div.fat
 								Hello there,

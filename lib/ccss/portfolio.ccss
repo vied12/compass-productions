@@ -10,7 +10,7 @@ PANEL_COLOR	= "rgba(51,51,77,0.7)"
 BASE_PADDING = 10px
 BIG_LINE_HEIGHT = 1.5em
 SMALL_LINE_HEIGHT = 1.5em
-BIG_FONT_SIZE = 2em
+BIG_FONT_SIZE = 1.8em
 SMALL_FONT_SIZE = 1.2em
 MAX_WIDTH = 1024px
 
@@ -187,6 +187,7 @@ body:
 				width : 88%			
 			h2:
 				font-size : 1.2em
+				margin-top: 0
 			//&.condensed:
 			//	line-height : 0.8em		
 			.fat:
@@ -202,6 +203,7 @@ body:
 				li:
 					display		: inline-block
 					margin		: 5px
+					cursor  			: pointer
 				.show_more:
 					background 		: "rgba(10,10,10,0.7)"
 					vertical-align 	: top
@@ -277,11 +279,15 @@ body:
 					margin 	: 10px "-7px" 0 0
 		.News:
 			padding-top : 40px
-			.titleweight: 
-				line-height : $SMALL_LINE_HEIGHT
+			.title: 
+				font-weight : normal
 				margin 		: 0
+			.date:	
+				display 	: block
 			.body:
 				font-size : $BIG_FONT_SIZE
+			li:
+				margin-bottom : 50px	
 
 
 

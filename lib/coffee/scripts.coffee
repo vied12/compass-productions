@@ -261,7 +261,7 @@ class portfolio.Panel extends Widget
 		$('body').bind('hidePanel', this.hide)
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		$("body").bind("relayoutPanel", => this.relayout(true))
-		return this
+		return this	
 
 	goto: (page) =>
 		#close all pages
@@ -408,7 +408,7 @@ class portfolio.News extends Widget
 				body:news.content
 				date:date.toDateString()
 			})
-			nui.find(".title").prepend(news.title)
+			nui.find(".title").append(news.title)
 			@uis.newsContainer.append(nui)
 
 # -----------------------------------------------------------------------------
@@ -445,7 +445,7 @@ class portfolio.Contact extends Widget
 		return this
 
 	relayout: =>
-		top_offset = $(".FooterPanel").height() - (@ui.find(".content").offset().top - $(".FooterPanel").offset().top) - 20
+		top_offset = $(".FooterPanel").height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
 
 
@@ -575,12 +575,12 @@ class portfolio.Project extends Widget
 							nui.append(press_nui)
 					when "credits"
 						for credit in value
-							credit_nui = nui.find('.template').cloneTemplate(credit,["title", "body", "article"])
+							credit_nui = nui.find('.template').cloneTemplate(credit,true)
 							
 							nui.append(credit_nui)
 					when "screenings" 
 						for screening in value
-							screening_nui = nui.find('.template').cloneTemplate(screening, ["title", "date", "body"])
+							screening_nui = nui.find('.template').cloneTemplate(screening, true)
 							nui.append(screening_nui)
 					when "links"
 						for link in value

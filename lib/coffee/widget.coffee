@@ -120,7 +120,7 @@ class URL
 isDefined = (obj) ->
 	return typeof(obj) != 'undefined' and obj != null
 
-jQuery.fn.cloneTemplate = (dict, fields) ->
+jQuery.fn.cloneTemplate = (dict, removeUnusedfields) ->
 	# fields is an optional parameter 
 	# 	Only values from this list of fields are filled
 	# 	If field don't match value in dict, associated template is removed
@@ -136,7 +136,6 @@ jQuery.fn.cloneTemplate = (dict, fields) ->
 					nui.find("."+klass).remove() 
 		else
 			for klass, value of dict
-				console.log "value", value
 				if value != null
 					nui.find("."+klass).html(value)
 	return nui
