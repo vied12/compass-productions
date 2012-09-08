@@ -6,13 +6,33 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 05-Sep-2012
+# Last mod : 07-Sep-2012
 # -----------------------------------------------------------------------------
 
 
 class Widget
+	@widgets = {}
+
+	@bindAll = ->
+		$(".widget").each(->
+			Widget.ensureWidget($(this))
+		)
+
+	# return the Widget instance for the given selector
+	@ensureWidget  = (ui) ->
+		ui = $(ui)
+		if Widget.widgets[identifySelector(ui)]?
+			return Widget.widgets[identifySelector(ui)]
+		else
+			widget_class = Widget.getWidgetClass(ui)
+			return new widget_class().bindUI(ui)
+
+	@getWidgetClass = (ui) ->
+		return eval("(" + $(ui).attr("data-widget") + ")")
+
 	bindUI: (ui) ->
 		@ui = $(ui)
+		Widget.widgets[identifySelector(@ui)] = this
 		@uis = {}
 		if (typeof(@UIS) != "undefined")
 			for key, value of @UIS
@@ -129,6 +149,10 @@ clone = (obj) ->
 	for key of obj
 		newInstance[key] = clone obj[key]
 	return newInstance
+
+identifySelector = (ui) ->
+	classes = $(ui).attr("class")
+	return classes
 
 window.serious = []
 # register classes to a global variable

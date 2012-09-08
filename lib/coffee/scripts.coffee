@@ -9,6 +9,7 @@
 # Creation : 04-Aug-2012
 # Last mod : 01-Sep-2012
 # -----------------------------------------------------------------------------
+window.portfolio = {}
 
 Widget = window.serious.Widget
 URL    = new window.serious.URL()
@@ -19,8 +20,7 @@ Format = window.serious.Format
 # Navigation
 #
 # -----------------------------------------------------------------------------
-
-class Navigation extends Widget
+class portfolio.Navigation extends Widget
 
 	constructor: ->
 		@UIS = {
@@ -44,14 +44,15 @@ class Navigation extends Widget
 			currentMenu    : null
 			currentPage    : null
 		}
-		@panelWidget = null
+		@panelWidget   = null
 		@projectWidget = null
+		background     = null
 
 	bindUI: (ui) =>
 		super
-		@panelWidget   = new Panel().bindUI(".FooterPanel")
-		@projectWidget = new Project().bindUI(".Project")
-		@background    = new Background().bindUI('.Background')
+		@panelWidget   = Widget.ensureWidget(".FooterPanel")
+		@projectWidget = Widget.ensureWidget(".Project")
+		@background    = Widget.ensureWidget(".Background")
 		@background.image("bg1.jpg")
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -140,8 +141,7 @@ class Navigation extends Widget
 					# project selected
 					URL.update({page:"project", project:target, menu:null, cat:null})
 				else
-					URL.update({page:target, menu:null, project:null, cat:null})
-			
+					URL.update({page:target, menu:null, project:null, cat:null})			
 
 # -----------------------------------------------------------------------------
 #
@@ -149,7 +149,7 @@ class Navigation extends Widget
 #
 # -----------------------------------------------------------------------------
 
-class Background extends Widget
+class portfolio.Background extends Widget
 
 	constructor: () ->
 		@UIS = {
@@ -232,7 +232,7 @@ class Background extends Widget
 #
 # -----------------------------------------------------------------------------
     	
-class Panel extends Widget
+class portfolio.Panel extends Widget
 
 	constructor: (projet) ->
 
@@ -306,7 +306,7 @@ class Panel extends Widget
 #
 # -----------------------------------------------------------------------------
 
-class FlickrGallery extends Widget
+class portfolio.FlickrGallery extends Widget
 
 	constructor: (url) ->
 		@OPTIONS = {
@@ -375,7 +375,7 @@ class FlickrGallery extends Widget
 #
 # -----------------------------------------------------------------------------	
 
-class News extends Widget
+class portfolio.News extends Widget
 
 	constructor: (url) ->
 
@@ -417,7 +417,7 @@ class News extends Widget
 #
 # -----------------------------------------------------------------------------
 
-class Contact extends Widget
+class portfolio.Contact extends Widget
 
 	constructor: (url) ->
 
@@ -471,14 +471,14 @@ class Contact extends Widget
 				)
 			}
 		)
-		
+
 # -----------------------------------------------------------------------------
 #
 # Project
 #
 # -----------------------------------------------------------------------------	 
 
-class Project extends Widget
+class portfolio.Project extends Widget
 
 	constructor: (project) ->
 
@@ -497,8 +497,8 @@ class Project extends Widget
 
 	bindUI: (ui) =>
 		super
-		@flickrGallery = new FlickrGallery().bindUI($(".content.gallery"))
-		$.ajax("/api/data", {dataType: 'json', success : this.setData})		
+		@flickrGallery = Widget.ensureWidget(".content.gallery")
+		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# bind url change
 		URL.onStateChanged(=>
 			if URL.hasChanged("project")
@@ -559,11 +559,14 @@ class Project extends Widget
 					when "synopsis"
 						nui.find('p').html(value)
 					when "videos"
-						for video in value
-							console.log(video)
+						list = nui.find("ul")
+						list.find("li:not(.template)").remove()
+						# resets
+						for video, i in value
 							video_nui = nui.find(".template").cloneTemplate()
 							video_nui.find('img').attr("src", video.thumbnail_small)
-							nui.append(video_nui)
+							video_nui.find('a').attr("href", "#video="+i+"&page=project&project="+project.key+"&cat="+category)
+							list.append(video_nui)
 					when "gallery"
 						@flickrGallery.setPhotoSet(project.gallery)
 					when "press"
@@ -597,7 +600,6 @@ class Project extends Widget
 # Main
 #
 # -----------------------------------------------------------------------------	
-new Navigation().bindUI(".Navigation")
-new News().bindUI(".News")
-new Contact().bindUI(".Contact")
+Widget.bindAll()
+
 # EOF
