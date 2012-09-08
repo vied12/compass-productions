@@ -423,6 +423,7 @@ class portfolio.Contact extends Widget
 		@UIS = {
 			main        : ".main"
 			form        : ".contactForm"
+			message        : ".message"
 			results     : ".result"
 			toFormLink  : ".toContactForm"
 			buttonSend  : ".submit"
@@ -446,6 +447,8 @@ class portfolio.Contact extends Widget
 	relayout: =>
 		top_offset = $(".FooterPanel").height() - 60
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
+		messageHeight = $(window).height() - @uis.message.offset().top - @uis.buttonSend.offset().top
+		@uis.message.css({height:messageHeight})
 
 
 	showForm: =>

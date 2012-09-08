@@ -38,10 +38,10 @@ def data():
 		data = json.load(f, object_pairs_hook=collections.OrderedDict)
 		print data.keys()
 		# add some infos for videos
-		for work_index, work in enumerate(data.get("works", tuple())):
-			for video_index, video in enumerate(work.get("videos", tuple())):
-				info = vimeo.Vimeo.getInfo(video)
-				data["works"][work_index]["videos"][video_index] = info
+		# for work_index, work in enumerate(data.get("works", tuple())):
+		# 	for video_index, video in enumerate(work.get("videos", tuple())):
+		# 		info = vimeo.Vimeo.getInfo(video)
+		# 		data["works"][work_index]["videos"][video_index] = info
 		return json.dumps(data)
 
 @app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>')
