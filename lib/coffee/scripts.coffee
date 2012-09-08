@@ -575,12 +575,12 @@ class portfolio.Project extends Widget
 							nui.append(press_nui)
 					when "credits"
 						for credit in value
-							credit_nui = nui.find('.template').cloneTemplate(credit,["title", "body", "article"])
+							credit_nui = nui.find('.template').cloneTemplate(credit,true)
 							
 							nui.append(credit_nui)
 					when "screenings" 
 						for screening in value
-							screening_nui = nui.find('.template').cloneTemplate(screening, ["title", "date", "body"])
+							screening_nui = nui.find('.template').cloneTemplate(screening, true)
 							nui.append(screening_nui)
 					when "links"
 						for link in value
