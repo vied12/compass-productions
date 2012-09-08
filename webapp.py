@@ -18,7 +18,7 @@ import sources.preprocessing as preprocessing
 import sources.flickr as flickr
 import sources.model as model
 import sources.vimeo as vimeo
-import os, json, flask_mail, mimetypes, re
+import os, json, flask_mail, mimetypes, re, collections
 
 app  = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
@@ -35,7 +35,7 @@ db   = model.Interface.GetConnection()
 def data():
 	# FIXME: set cache, set language
 	with open(os.path.join(app.root_path, "data", "portfolio.json")) as f:
-		data = json.load(f)
+		data = json.load(f, object_pairs_hook=collections.OrderedDict)
 		print data.keys()
 		# add some infos for videos
 		for work_index, work in enumerate(data.get("works", tuple())):
