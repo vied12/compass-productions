@@ -21,8 +21,8 @@ class Widget
 	# return the Widget instance for the given selector
 	@ensureWidget  = (ui) ->
 		ui = $(ui)
-		if Widget.widgets[identifySelector(ui)]?
-			return Widget.widgets[identifySelector(ui)]
+		if ui[0]._widget?
+			return ui[0]._widget
 		else
 			widget_class = Widget.getWidgetClass(ui)
 			return new widget_class().bindUI(ui)
@@ -32,7 +32,7 @@ class Widget
 
 	bindUI: (ui) ->
 		@ui = $(ui)
-		Widget.widgets[identifySelector(@ui)] = this
+		@ui[0]._widget = this # set widget in selector for ensureWidget
 		@uis = {}
 		if (typeof(@UIS) != "undefined")
 			for key, value of @UIS
@@ -120,26 +120,23 @@ class URL
 isDefined = (obj) ->
 	return typeof(obj) != 'undefined' and obj != null
 
-jQuery.fn.cloneTemplate = (dict, removeUnusedfields) ->
+jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
 	# fields is an optional parameter 
 	# 	Only values from this list of fields are filled
 	# 	If field don't match value in dict, associated template is removed
 	#	Maybe a quicker option to remove all empty fields than select aposteriori all empty elements
-	nui = $(this[0]).clone() 
+	nui = $(this[0]).clone()
 	nui = nui.removeClass("template hidden").addClass("actual")
 	if typeof(dict) == "object"
-		if field?
-			for klass in fields
-				if dict[klass]?
-					nui.find("."+klass).html(dict[klass])
-				else
-					nui.find("."+klass).remove() 
-		else
-			for klass, value of dict
-				if value != null
-					nui.find("."+klass).html(value)
+		for klass, value in dict
+			if value != null
+				nui.find(".out."+klass).html(value)
+		if removeUnusedField
+			nui.find(".out").each(->
+				if $(this).html() == ""
+					$(this).remove()
+			)
 	return nui
-
 
 clone = (obj) ->
 	if not obj? or typeof obj isnt 'object'
@@ -157,10 +154,6 @@ clone = (obj) ->
 	for key of obj
 		newInstance[key] = clone obj[key]
 	return newInstance
-
-identifySelector = (ui) ->
-	classes = $(ui).attr("class")
-	return classes
 
 window.serious = []
 # register classes to a global variable
