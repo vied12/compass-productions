@@ -36,12 +36,11 @@ def data():
 	# FIXME: set cache, set language
 	with open(os.path.join(app.root_path, "data", "portfolio.json")) as f:
 		data = json.load(f, object_pairs_hook=collections.OrderedDict)
-		print data.keys()
 		# add some infos for videos
-		# for work_index, work in enumerate(data.get("works", tuple())):
-		# 	for video_index, video in enumerate(work.get("videos", tuple())):
-		# 		info = vimeo.Vimeo.getInfo(video)
-		# 		data["works"][work_index]["videos"][video_index] = info
+		for work_index, work in enumerate(data.get("works", tuple())):
+			for video_index, video in enumerate(work.get("videos", tuple())):
+				info = vimeo.Vimeo.getInfo(video)
+				data["works"][work_index]["videos"][video_index] = info
 		return json.dumps(data)
 
 @app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>')
@@ -160,9 +159,14 @@ def send_file_partial(path):
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
-	import sys
+	import sys, fabfile
+	from fabric.main import execute
 	if len(sys.argv) > 1 and sys.argv[1] == "collectstatic":
 		preprocessing._collect_static(app)
+	elif len(sys.argv) > 1 and sys.argv[1] == "release":
+		execute(fabfile.deploy)
+	elif len(sys.argv) > 1 and sys.argv[1] == "demo":
+		execute(fabfile.deploy_test)
 	else:
 		babel = Babel(app) # i18n
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
