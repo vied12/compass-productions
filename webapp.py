@@ -159,13 +159,16 @@ def send_file_partial(path):
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
-	import sys, fabfile
-	from fabric.main import execute
+	import sys
 	if len(sys.argv) > 1 and sys.argv[1] == "collectstatic":
 		preprocessing._collect_static(app)
 	elif len(sys.argv) > 1 and sys.argv[1] == "release":
+		import fabfile
+		from fabric.main import execute
 		execute(fabfile.deploy)
 	elif len(sys.argv) > 1 and sys.argv[1] == "demo":
+		import fabfile
+		from fabric.main import execute
 		execute(fabfile.deploy_test)
 	else:
 		babel = Babel(app) # i18n
