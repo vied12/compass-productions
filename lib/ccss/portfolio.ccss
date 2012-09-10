@@ -196,11 +196,11 @@ body:
 				margin-top : -10px
 		.page:
 			display : none
-			padding: $BASE_PADDING * 2  $BASE_PADDING *2	
+			padding: $BASE_PADDING * 5  $BASE_PADDING *2	
 			&.show:
 				display : block
 		.tabs:
-			padding   	: $BASE_PADDING * 3 0
+			padding   	: $BASE_PADDING * 3 0 
 			font-size 	: $SMALL_FONT_SIZE
 			color 		: $TEXT_COLOR_DARK
 			margin-top 	: -28px
@@ -218,8 +218,15 @@ body:
 			text-decoration: none
 			font-family : Arial
 			position    : absolute
-			right       : 19px
-			top         : 20px
+			right       : 30px
+			top         : 30px
+			background-image    : url('/static/images/close.png')
+			background-color    : transparent
+			background-repeat   : no-repeat
+			background-position : top left
+			background-size : 10px 10px
+			width   : 13px
+			height  : 13px
 			cursor      : pointer
 
 		//-------------------------- PANEL FORM class ------------------	
@@ -245,80 +252,82 @@ body:
 		-ms-input-placeholder:
 			color:	#fff		
 
-.Project:
-	.content:
-		&.videos:
-			li.video.actual:
-				padding-left : 5px
-				float        : left
-		&.links:
-			a:
+	.Project:
+		&.page:
+			padding-top:20px
+		.content:
+			&.videos:
+				li.video.actual:
+					padding-left : 5px
+					float        : left
+			&.links:
+				a:
+					font-size : 1.2em
+					margin-bottom: 15px
+			&.gallery:
+				overflow : auto
+				li:
+					display		: inline-block
+					margin		: 5px
+					cursor      : pointer
+				.show_more:
+					background 		: "rgba(10,10,10,0.7)"
+					vertical-align  : top
+					width 			: 130px 
+					height          : 130px 
+					padding 		: $BASE_PADDING
+					font-size       : 0.8em
+			$.screening, $.credit:
+				clear : both
+				p:
+					display: inline-block
+					vertical-align : top
+					&.title:
+						width : auto
+					&.body:
+						margin-left : 10px
+						width : 70%
+						float : right
+					&.date:
+						float : left
+						width : 30%
+						margin-right : 10px
+
+	.Contact:
+		.toContactForm,.email:
+			margin-top : 30px
+		form:
+			.formElement:
+				position : relative
+				max-width : 100%
+				width 	: 100%		
+			input, textarea, button:
+				margin  : 10px 0
+			input, textarea:
+				font-family: "Livory", Verdana, sans-serif	
+				line-height: $SMALL_LINE_HEIGHT
 				font-size : 1.2em
-				margin-bottom: 15px
-		&.gallery:
-			overflow : auto
-			li:
-				display		: inline-block
-				margin		: 5px
-				cursor      : pointer
-			.show_more:
-				background 		: "rgba(10,10,10,0.7)"
-				vertical-align  : top
-				width 			: 130px 
-				height          : 130px 
-				padding 		: $BASE_PADDING
-				font-size       : 0.8em
-		$.screening, $.credit:
-			clear : both
-			p:
-				display: inline-block
-				vertical-align : top
-				&.title:
-					width : auto
-				&.body:
-					margin-left : 10px
-					width : 70%
-					float : right
-				&.date:
-					float : left
-					width : 30%
-					margin-right : 10px
-
-.Contact:
-	padding-top : 40px
-	form:
-		.formElement:
-			position : relative
-			max-width : 100%
-			width 	: 100%		
-		input, textarea, button:
-			margin  : 10px 0
-		input, textarea:
-			font-family: "Livory", Verdana, sans-serif	
-			line-height: $SMALL_LINE_HEIGHT
-			font-size : 1.2em
-			padding : 8px 0px 10px 10px
-			width   : 100%
-		textarea:
-			height  : 90px			
-		.onRight:
-			float 	: right
-			// Weirdly, negative value is not well compiled
-			// This margin compense fields padding
-			margin 	: 10px "-21px" 0 0
+				padding : 8px 0px 10px 10px
+				width   : 100%
+			textarea:
+				height  : 90px			
+			.onRight:
+				float 	: right
+				// Weirdly, negative value is not well compiled
+				// This margin compense fields padding
+				margin 	: 10px "-21px" 0 0
 
 
-.News:
-	padding-top : 40px
-	.title: 
-		font-weight : normal
-		margin 		: 0
-	.date:
-		display 	: block
-	.body:
-		font-size : $BIG_FONT_SIZE
-	li:
-		margin-bottom : 50px
+	.News:
+		.title: 
+			font-weight : normal
+			margin 		: 0
+		.date:
+			display 	: block
+		.body:
+			font-size : $BIG_FONT_SIZE
+		li:
+			margin-bottom : 50px
 
 .MediaPlayer:
 	position        : absolute
@@ -379,6 +388,7 @@ body:
 	width 			: 100%
 	height 			: 100%
 	z-index			: -1
+	background-color : transparent
 	video: 
 		position		: absolute
 		min-height		: 100% 
