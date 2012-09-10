@@ -7,7 +7,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 01-Sep-2012
+# Last mod : 10-Sep-2012
 # -----------------------------------------------------------------------------
 window.portfolio = {}
 
@@ -513,23 +513,8 @@ class portfolio.Project extends Widget
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# enable dynamic links (#+cat=...)
 		URL.enableLinks(@ui)
-		# bind url change
-		URL.onStateChanged(=>
-			if URL.hasChanged("project")
-				this.setProject(URL.get("project"))
-				this.selectTab(URL.get("cat") or "synopsis")
-			if URL.hasChanged("cat")
-				this.selectTab(URL.get("cat"))
-		)
 		$("body").bind("relayoutContent", this.relayout)
 		return this
-
-	init: =>
-		# init from url
-		params = URL.get()
-		if params.project
-			this.setProject(params.project)
-			this.selectTab(URL.get("cat") or "synopsis")
 
 	relayout: =>
 		top_offset = $('.FooterPanel').height() - 90
@@ -537,7 +522,21 @@ class portfolio.Project extends Widget
 
 	setData: (data) =>
 		@cache.data = data
-		this.init()
+		# init from url
+		params = URL.get()
+		if params.project
+			this.setProject(params.project)
+			this.selectTab(URL.get("cat") or "synopsis")
+		# bind url change
+		URL.onStateChanged(=>
+			if URL.hasChanged("project")
+				if URL.get("project")?
+					this.setProject(URL.get("project"))
+					this.selectTab(URL.get("cat") or "synopsis")
+			if URL.hasChanged("cat")
+				if URL.get("cat")?
+					this.selectTab(URL.get("cat"))
+		)
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works
@@ -630,6 +629,7 @@ class portfolio.MediaPlayer extends Widget
 			panel          : ".mediaPanel"
 			mediaContainer : ".mediaPanel ul.mediaContainer"
 			mediaTmpl      : ".mediaPanel .media.template"
+			close          : ".close"
 		}
 
 		@cache = {
@@ -638,22 +638,47 @@ class portfolio.MediaPlayer extends Widget
 
 	bindUI: (ui) =>
 		super
+		URL.onStateChanged =>
+			if URL.hasChanged("video")
+				if URL.get("video")
+					this.show()
+					this.setVideo(URL.get("video"))
+				else
+					this.hide()
+		@uis.close.click =>
+			this.hide()
 
 	setVideoData: (videos) =>
 		@cache.data = videos
 		this.fillContent()
+		params = URL.get()
+		if params.video?
+			this.show()
+			this.setVideo(params.video)
 
 	setImageData: (images) =>
-
 
 	fillContent: =>
 		if @cache.data?
 			@uis.mediaContainer.find("li.actual").remove()
-			for video in @cache.data
+			for video, index in @cache.data
 				nui = @uis.mediaTmpl.cloneTemplate()
-				nui.find("a").attr("href", video.thumbnail_small)
+				nui.find("a").attr("href", "#+video="+index)
 				nui.find("img").attr("src", video.thumbnail_small)
 				@uis.mediaContainer.append(nui)
+			URL.enableLinks(@uis.mediaContainer)
+
+	setVideo: (index) =>
+		@uis.videoPlayer.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].id+"?portrait=0&title=0&byline=0")
+
+	show: =>
+		super
+		$("body").trigger("hidePanel")
+
+	hide: =>
+		super
+		URL.remove("video", true)
+		$("body").trigger("setPanelPage",URL.get("page"))
 
 # -----------------------------------------------------------------------------
 #

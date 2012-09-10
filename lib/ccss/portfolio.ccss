@@ -320,12 +320,54 @@ body:
 	li:
 		margin-bottom : 50px
 
-
-
-
-
-
-
+.MediaPlayer:
+	position        : absolute
+	left            : 0
+	right           : 0
+	top             : 0
+	bottom          : 0
+	z-index         : 2
+	.player, .mediaPanel, .overlay:
+		position  : absolute
+		left      : 0
+		right     : 0
+	.overlay:
+		background-color : "rgba(20,20,20,0.7)"
+		bottom : 0
+		top    : 0
+	.player:
+		margin    : 0 auto
+		top       : 190px
+		width     : 500px
+	.mediaPanel:
+		margin    : 0 auto
+		border    : 1px solid white
+		bottom    : 40px
+		text-align: center
+		overflow  : hidden
+		width     : 1024px
+		height    : 80px
+		> .wrapper:
+			padding: 5px
+			ul.mediaContainer:
+				li.media.actual:
+					display: inline-block
+					> .wrapper:
+						margin : 0 2px
+						img:
+							height : 70px
+			.next, .previous:
+				position  : absolute
+				font-size : 3em
+				top       : 26px
+			.previous:
+				left : 0
+			.next:
+				right: 0
+			.close :
+				position : absolute
+				top      : 0
+				right    : 10px
 
 //-------------------------- VIDEO --------------------------------
 

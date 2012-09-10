@@ -12,7 +12,7 @@
 							p.fat.out | {##}
 					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
-							ul.photos
+							ul.photos.mediaGallery
 								li.photo     | {##}
 								li.show_more.template | {##}	
 					.content.videos data-name="videos"

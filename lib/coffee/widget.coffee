@@ -6,7 +6,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 07-Sep-2012
+# Last mod : 10-Sep-2012
 # -----------------------------------------------------------------------------
 
 # -----------------------------------------------------------------------------
@@ -52,6 +52,12 @@ class Widget
 		#TODO: use an instance variable to declare the fields list
 		# to make selections operations at the begining
 		@ui.find(".out[data-field="+field+"]").html(value)
+
+	hide: =>
+		@ui.addClass "hidden"
+
+	show: =>
+		@ui.removeClass "hidden"
 
 # -----------------------------------------------------------------------------
 #
@@ -105,10 +111,13 @@ class URL
 		this.updateUrl(hash)
 
 	hasChanged: (key) =>
-		if isDefined(@hash[key])
-			if isDefined(@previousHash[key])
+		if @hash[key]?
+			if @previousHash[key]?
 				return @hash[key] != @previousHash[key]
 			else
+				return true
+		else
+			if @previousHash[key]?
 				return true
 		return false
 

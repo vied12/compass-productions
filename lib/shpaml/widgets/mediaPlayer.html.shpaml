@@ -1,13 +1,19 @@
 .MediaPlayer.hidden.widget data-widget=portfolio.MediaPlayer
+	.overlay.close | {##}
 	.player
 		.wrapper
 			.videoPlayer
-				iframe src="" width="400" height="250" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
+				iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 			.imagePlayer
 				> img
 	.mediaPanel
 		.wrapper
+			.close
+				a href=# | X
+			.previous | &lt;
 			ul.mediaContainer
 				li.media.template
-					a
-						> img
+					.wrapper
+						a.internal
+							> img src=""
+			.next | &gt;
