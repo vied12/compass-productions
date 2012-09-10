@@ -396,7 +396,7 @@ class portfolio.News extends Widget
 		return this
 
 	relayout: =>
-		top_offset = $('.FooterPanel').height() - 60
+		top_offset = $('.FooterPanel').height() - 80
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
 		
 	setData: (data) =>
@@ -450,7 +450,7 @@ class portfolio.Contact extends Widget
 		return this
 
 	relayout: =>
-		top_offset = $(".FooterPanel").height() - 60
+		top_offset = $(".FooterPanel").height() - 80
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
 		messageHeight = $(window).height() - @uis.message.offset().top - 190
 		if messageHeight < @CONFIG.minMessageHeight
@@ -532,7 +532,7 @@ class portfolio.Project extends Widget
 			this.selectTab(URL.get("cat") or "synopsis")
 
 	relayout: =>
-		top_offset = $('.FooterPanel').height() - 90
+		top_offset = $('.FooterPanel').height() - 100
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
 
 	setData: (data) =>
