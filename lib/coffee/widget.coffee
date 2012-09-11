@@ -210,4 +210,25 @@ window.serious = []
 # register classes to a global variable
 window.serious.Widget = Widget
 window.serious.URL    = URL
+
+isMobile = 
+    Android: => 
+        return navigator.userAgent.match(/Android/i) ? true : false
+    ,
+    BlackBerry: =>
+        return navigator.userAgent.match(/BlackBerry/i) ? true : false
+    ,
+    iOS: =>
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false
+    ,
+    Windows: =>
+        return navigator.userAgent.match(/IEMobile/i) ? true : false
+    ,
+    any: =>
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows())
+    
+;
+window.serious.isMobile = isMobile
 # EOF
+
+

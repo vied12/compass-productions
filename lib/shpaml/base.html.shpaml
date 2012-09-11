@@ -4,11 +4,11 @@ html lang="en"
 		title | Portfolio
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jquery.jscrollpane.css')}}" media="all"	
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css')     }}" media="all"
-		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" media="all"	
+		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" media="all"
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"                 | {# #}		
 
 	body
 		{% block content %}{% endblock %}
-		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"                 | {# #}	
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.jscrollpane.min.js')  }}"  | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.mousewheel.js')  }}"       | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"              | {# #}

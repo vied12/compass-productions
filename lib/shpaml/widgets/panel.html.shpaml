@@ -51,7 +51,7 @@
 							li.template
 								h2.title									
 									span.date | {##}
-								p.body   | {##}
+								p.body | {##}
 
 			.Contact.page.widget data-widget=portfolio.Contact
 				.content

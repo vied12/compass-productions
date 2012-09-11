@@ -55,6 +55,9 @@
 {
 	background: #444;
 	position: relative;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .jspDrag
