@@ -695,7 +695,7 @@ class portfolio.MediaPlayer extends Widget
 				i += 1
 				if i == tiles.length
 					tiles.remove()
-					this.fillVideos(start)s
+					this.fillVideos(start)
 					clearInterval(interval)
 			, 50) # time between each iteration
 		else
