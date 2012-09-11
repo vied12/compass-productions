@@ -678,8 +678,12 @@ class portfolio.MediaPlayer extends Widget
 			this.previous()
 
 	relayout: =>
+		player_width_max  = $(window).width() - 100
 		player_height = @uis.panel.offset().top - 50
 		player_width  = player_height * (16/9)
+		if player_width > player_width_max
+			player_width = player_width_max
+			player_height = player_width / (16/9)
 		@uis.videoPlayer.attr({height:player_height, width:player_width})
 		@uis.player.css("width", player_width) # permit margin auto on player
 
