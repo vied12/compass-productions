@@ -49,9 +49,9 @@
 					.maxWidth
 						ul
 							li.template
-								h2.title									
-									span.date | {##}
-								p.body | {##}
+								h2.title.out									
+									span.date.out | {##}
+								p.body.out | {##}
 
 			.Contact.page.widget data-widget=portfolio.Contact
 				.content
