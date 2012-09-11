@@ -597,18 +597,22 @@ class portfolio.Project extends Widget
 					when "gallery"
 						@flickrGallery.setPhotoSet(project.gallery)
 					when "press"
+						nui.find(".actual").remove()
 						for press in value
 							press_nui = nui.find('.template').cloneTemplate(press)
 							nui.append(press_nui)
 					when "credits"
+						nui.find(".actual").remove()
 						for credit in value
 							credit_nui = nui.find('.template').cloneTemplate(credit,true)
 							nui.append(credit_nui)
 					when "screenings" 
+						nui.find(".actual").remove()
 						for screening in value
 							screening_nui = nui.find('.template').cloneTemplate(screening, true)
 							nui.append(screening_nui)
 					when "links"
+						nui.find(".actual").remove()
 						for link in value
 							link_nui = nui.find(".template").cloneTemplate(link)
 							link_nui.find('a').append(link.description)
