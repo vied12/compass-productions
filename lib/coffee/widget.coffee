@@ -206,11 +206,6 @@ clone = (obj) ->
 		newInstance[key] = clone obj[key]
 	return newInstance
 
-window.serious = []
-# register classes to a global variable
-window.serious.Widget = Widget
-window.serious.URL    = URL
-
 isMobile = 
     Android: => 
         return navigator.userAgent.match(/Android/i) ? true : false
@@ -228,6 +223,11 @@ isMobile =
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows())
     
 ;
+
+window.serious = []
+# register classes to a global variable
+window.serious.Widget = Widget
+window.serious.URL    = URL
 window.serious.isMobile = isMobile
 # EOF
 
