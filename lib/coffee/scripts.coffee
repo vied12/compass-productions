@@ -55,7 +55,7 @@ class portfolio.Navigation extends Widget
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("bg1.jpg")
 		#Add Mobile Class if necessary
-		if isMobile.any()
+		if not isMobile.any()
 			$('body').addClass "mobile"
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
