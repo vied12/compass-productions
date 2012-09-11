@@ -14,7 +14,7 @@ window.portfolio = {}
 Widget = window.serious.Widget
 URL    = new window.serious.URL()
 Format = window.serious.Format
-
+isMobile = window.serious.isMobile
 # -----------------------------------------------------------------------------
 #
 # Navigation
@@ -54,6 +54,9 @@ class portfolio.Navigation extends Widget
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("bg1.jpg")
+		#Add Mobile Class if necessary
+		if isMobile.any()
+			$('body').addClass "mobile"
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -186,6 +189,7 @@ class portfolio.Background extends Widget
 
 	relayout: =>
 		this.resize(@uis.image, "full")
+		#crazy, video resizing seems to work properly without any help !
 		#this.resize(@ui.find("video.actual"), "auto")
 		this.resize(@uis.mask, "full")
 
@@ -209,15 +213,16 @@ class portfolio.Background extends Widget
 		#swap on image if playing video is not supported for format, 
 		#use image's widget give better control on relayoupropting than poster attribute of <video>		
 		@ui.find('.actual').remove()
-		newVideo = @uis.video.cloneTemplate()
+		newVideo = @uis.video.cloneTemplate().addClass "hidden"
 		newVideo.prop('muted', true)
 		for file in data
 			extension = file.split('.').pop()
 			source=$('<source />').attr("src", @CONFIG.videoUrl+file)
 			source.attr("type", "video/#{extension}")
 			newVideo.append(source)
-		# if @cache.image != null
-		# 	newVideo.attr("poster", imageUrl+@cache.image)
+		if @CACHE.image != null
+		 	newVideo.attr("poster", imageUrl+@CACHE.image)
+		newVideo.on("canplaythrough", => newVideo.removeClass "hidden")
 		@uis.video.after(newVideo)
 
 	image: (filename) =>
@@ -402,6 +407,8 @@ class portfolio.News extends Widget
 	setData: (data) =>
 		@cache.data = data
 		for news in data
+			console.log "news", news
+			console.log "content", news.content
 			date = new Date(news.date_creation)
 			nui = @uis.newsTmpl.cloneTemplate({
 				body:news.content
@@ -423,7 +430,7 @@ class portfolio.Contact extends Widget
 		@UIS = {
 			main        : ".main"
 			form        : ".contactForm"
-			email       : ".title"
+			email       : ".email"
 			message     : ".message"
 			results     : ".result"
 			toFormLink  : ".toContactForm"
@@ -541,6 +548,8 @@ class portfolio.Project extends Widget
 	getProjectByName: (name) =>
 		for project in @cache.data.works
 			if project.key == name
+
+				
 				return project
 
 	setProject: (project) =>

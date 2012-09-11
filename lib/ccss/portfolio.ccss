@@ -391,6 +391,7 @@ body:
 	background-color : transparent
 	video: 
 		position		: absolute
+		//top 			: 0
 		min-height		: 100% 
 		min-width		: 100%
 		width 			: auto
@@ -420,3 +421,12 @@ body:
 		float 				: left
 		padding 			: 10px
 		background 			: #fff
+
+
+.mobile:
+	.wrapper:
+		.tabs: 
+			font-size : 2em
+			padding : 80px 0
+			li:
+				margin : 0px 5px
