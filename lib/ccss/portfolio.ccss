@@ -346,7 +346,7 @@ body:
 		top    : 0
 	.player:
 		margin    : 0 auto
-		top       : 190px
+		top       : 31px
 		width     : 500px
 	.mediaPanel:
 		margin    : 0 auto
@@ -354,21 +354,34 @@ body:
 		bottom    : 40px
 		text-align: center
 		overflow  : hidden
-		width     : 1024px
-		height    : 80px
+		width     : 555px // 4 tiles
+		height    : 110px
 		> .wrapper:
 			padding: 5px
-			ul.mediaContainer:
+			white-space : nowrap
+			ul:
 				li.media.actual:
+					opacity: 0
 					display: inline-block
+					-webkit-transition-property : "opacity"
+					-moz-transition-property    : "opacity"
+					-webkit-transition-duration : "0.5s"
+					-moz-transition-duration    : "0.5s"
+					-moz-transition-timing-function     : linear
+					-webkit-transition-timing-function  : linear
 					> .wrapper:
-						margin : 0 2px
-						img:
-							height : 70px
+						margin : 0 18px
+						div.image:
+							height : 100px
+							width  : 100px
+							background-size : cover
+					&.show:
+						opacity: 1
 			.next, .previous:
 				position  : absolute
 				font-size : 3em
-				top       : 26px
+				top       : 42px
+				cursor    : pointer
 			.previous:
 				left : 0
 			.next:

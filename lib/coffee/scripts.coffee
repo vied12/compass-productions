@@ -627,13 +627,21 @@ class portfolio.MediaPlayer extends Widget
 			videoPlayer    : ".player .videoPlayer iframe"
 			imagePlayer    : ".player .imagePlayer img"
 			panel          : ".mediaPanel"
-			mediaContainer : ".mediaPanel ul.mediaContainer"
+			mediaContainer : ".mediaPanel .mediaContainer"
+			mediaList      : ".mediaPanel .mediaContainer ul"
 			mediaTmpl      : ".mediaPanel .media.template"
 			close          : ".close"
+			next           : ".next"
+			previous       : ".previous"
+		}
+
+		@OPTIONS = {
+			nbTiles : 4
 		}
 
 		@cache = {
 			data : null
+			lastItem : 0
 		}
 
 	bindUI: (ui) =>
@@ -643,41 +651,96 @@ class portfolio.MediaPlayer extends Widget
 				if URL.get("video")
 					this.show()
 					this.setVideo(URL.get("video"))
+					this.fillVideos(URL.get("video"))
 				else
 					this.hide()
+		$(window).resize(this.relayout)
 		@uis.close.click =>
 			this.hide()
+		@uis.next.click =>
+			this.next()
+		@uis.previous.click =>
+			this.previous()
+
+	relayout: =>
+		player_height = @uis.panel.offset().top - 50
+		player_width  = player_height * (16/9)
+		@uis.videoPlayer.attr({height:player_height, width:player_width})
+		@uis.player.css("width", player_width) # permit margin auto on player
 
 	setVideoData: (videos) =>
 		@cache.data = videos
-		this.fillContent()
 		params = URL.get()
 		if params.video?
 			this.show()
 			this.setVideo(params.video)
+			this.removeAndFillVideos(params.video)
 
-	setImageData: (images) =>
+	removeAndFillVideos: (start=0) =>
+		# Animation, one by one, fadding effect
+		i = 0
+		tiles = @uis.mediaContainer.find("li.actual")
+		if tiles? and tiles.length > 0
+			interval = setInterval(=>
+				$(tiles[i]).removeClass("show")
+				i += 1
+				if i == tiles.length
+					tiles.remove()
+					this.fillVideos(start)s
+					clearInterval(interval)
+			, 50) # time between each iteration
+		else
+			this.fillVideos(start)
 
-	fillContent: =>
+	fillVideos: (start=0) =>s
 		if @cache.data?
-			@uis.mediaContainer.find("li.actual").remove()
-			for video, index in @cache.data
-				nui = @uis.mediaTmpl.cloneTemplate()
-				nui.find("a").attr("href", "#+video="+index)
-				nui.find("img").attr("src", video.thumbnail_small)
-				@uis.mediaContainer.append(nui)
-			URL.enableLinks(@uis.mediaContainer)
+			videos = @cache.data[start..]
+			if videos? and videos.length > 0
+				for video, i in videos
+					index = i + parseInt(start)
+					nui = @uis.mediaTmpl.cloneTemplate()
+					nui.find("a").attr("href", "#+video="+index)
+					nui.find(".image").css({"background-image" : "url("+video.thumbnail_small+")"})
+					@uis.mediaList.append(nui)
+					@cache.lastItem = index
+					if i >= @OPTIONS.nbTiles - 1
+						break
+				# Animation, one by one, fadding effect
+				i = 0
+				tiles = @uis.mediaContainer.find("li.actual")
+				interval = setInterval(=>
+					$(tiles[i]).addClass("show")
+					i += 1
+					if i == tiles.length
+						clearInterval(interval)
+				, 50) # time between each iteration	
+				URL.enableLinks(@uis.mediaList)
+		this.relayout()
 
 	setVideo: (index) =>
 		@uis.videoPlayer.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].id+"?portrait=0&title=0&byline=0")
 
+	next: =>
+		this.removeAndFillVideos(@cache.lastItem+1)
+
+	previous: =>
+		new_index = @cache.lastItem - (@OPTIONS.nbTiles * 2) + 1
+		if new_index < 0
+			this.removeAndFillVideos(0)
+		else
+			this.removeAndFillVideos(new_index)
+
 	show: =>
 		super
+		# move the tile under the brand tile
+		@saveTileLeft =  $(".PageMenu").css("left")
+		$(".PageMenu").css({left:0, top:@saveTileLeft})
 		$("body").trigger("hidePanel")
 
 	hide: =>
 		super
 		URL.remove("video", true)
+		$(".PageMenu").css({left:@saveTileLeft, top:0})
 		$("body").trigger("setPanelPage",URL.get("page"))
 
 # -----------------------------------------------------------------------------
