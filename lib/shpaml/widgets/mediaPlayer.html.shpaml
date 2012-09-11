@@ -11,9 +11,10 @@
 			.close
 				a href=# | X
 			.previous | &lt;
-			ul.mediaContainer
-				li.media.template
-					.wrapper
-						a.internal
-							> img src=""
+			.mediaContainer
+				ul
+					li.media.template
+						.wrapper
+							a.internal
+								div.image | {##}
 			.next | &gt;

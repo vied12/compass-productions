@@ -39,7 +39,6 @@ def data():
 		# add some infos for videos
 		for work_index, work in enumerate(data.get("works", tuple())):
 			for video_index, video in enumerate(work.get("videos", tuple())):
-				print "video_index", video_index
 				info = vimeo.Vimeo.getInfo(video)
 				data["works"][work_index]["videos"][video_index] = info
 		return json.dumps(data)
