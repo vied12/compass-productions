@@ -5,7 +5,7 @@
 			.wrapper | {##}
 		.Main.menu data-menu="main"
 			.tile.nav data-target="works"
-				.wrapper | Works
+				.wrapper | Films
 			.tile.nav data-target="news"
 				.wrapper | News
 			.tile.nav data-target="contact"
@@ -33,7 +33,7 @@
 			li.menuRoot
 				a href=#&menu=main | Menu
 			li.works
-				a href=#&menu=works | Movies					
+				a href=#&menu=works | Films					
 			li.news
 				a href=#&page=news | News
 			li.contact

@@ -649,7 +649,7 @@ class portfolio.MediaPlayer extends Widget
 		}
 
 		@OPTIONS = {
-			nbTiles : 4
+			nbTiles : 5
 		}
 
 		@cache = {

@@ -4,9 +4,10 @@ TEXT_COLOR_LIGHT  = #fff
 TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
-TILE_COLOR  = "rgba(20,20,20,0.7)"
+TILE_COLOR              = "rgba(20,20,20,0.7)"
 TILE_HIGHLIGHTED_COLOR  = "rgba(120,60,50,0.7)"
-PANEL_COLOR	= "rgba(51,51,77,0.7)"
+PANEL_COLOR_DARK        = "rgba(0,0,0,0.7)"
+PANEL_COLOR_BLUE	    = "rgba(51,51,77,0.7)"
 BASE_PADDING = 10px
 BIG_LINE_HEIGHT = 1.5em
 SMALL_LINE_HEIGHT = 1.5em
@@ -144,7 +145,7 @@ body:
 	width 			: 100%
 	z-index          : 2	
 	.wrapper:
-		background-color : "rgba(20,20,20,0.8)"	
+		background-color : $PANEL_COLOR_DARK
 		width 	: $MAX_WIDTH
 		max-width 	: $MAX_WIDTH
 		margin 		: 0 auto	
@@ -178,7 +179,7 @@ body:
 		position : 	relative
 		margin : 8px auto auto
 		max-width           : $MAX_WIDTH
-		background-color    : $PANEL_COLOR
+		background-color    : $PANEL_COLOR_BLUE
 		.content:
 			position : relative
 			font-size : $SMALL_FONT_SIZE
@@ -341,7 +342,7 @@ body:
 		left      : 0
 		right     : 0
 	.overlay:
-		background-color : "rgba(20,20,20,0.7)"
+		background-color : $TILE_COLOR
 		bottom : 0
 		top    : 0
 	.player:
@@ -350,14 +351,13 @@ body:
 		width     : 500px
 	.mediaPanel:
 		margin    : 0 auto
-		border    : 1px solid white
 		bottom    : 40px
 		text-align: center
 		overflow  : hidden
-		width     : 555px // 4 tiles
+		width     : 694px // 5 tiles
 		height    : 110px
+		//background-color : $PANEL_COLOR_DARK
 		> .wrapper:
-			padding: 5px
 			white-space : nowrap
 			ul:
 				li.media.actual:
@@ -369,12 +369,16 @@ body:
 					-moz-transition-duration    : "0.5s"
 					-moz-transition-timing-function     : linear
 					-webkit-transition-timing-function  : linear
+					&.central:
+						background-color : $PANEL_COLOR_DARK
 					> .wrapper:
-						margin : 0 18px
+						margin : 4px 18px
 						div.image:
 							height : 100px
 							width  : 100px
 							background-size : cover
+							-moz-box-shadow: 1px 1px 12px #555
+							-webkit-box-shadow: 1px 1px 12px #555
 					&.show:
 						opacity: 1
 			.next, .previous:
