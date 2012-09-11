@@ -655,6 +655,7 @@ class portfolio.MediaPlayer extends Widget
 		@cache = {
 			data : null
 			lastItem : 0
+			currentPage : null
 		}
 
 	bindUI: (ui) =>
@@ -664,7 +665,8 @@ class portfolio.MediaPlayer extends Widget
 				if URL.get("video")
 					this.show()
 					this.setVideo(URL.get("video"))
-					this.fillVideos(URL.get("video"))
+					page = Math.ceil((URL.get("video")/@OPTIONS.nbTiles)+0.1) - 1
+					this.setPage(page)
 				else
 					this.hide()
 		$(window).resize(this.relayout)
@@ -687,23 +689,36 @@ class portfolio.MediaPlayer extends Widget
 		if params.video?
 			this.show()
 			this.setVideo(params.video)
-			this.removeAndFillVideos(params.video)
+			page = Math.ceil(((params.video)/@OPTIONS.nbTiles)+0.1) - 1
+			this.setPage(page)
 
-	removeAndFillVideos: (start=0) =>
-		# Animation, one by one, fadding effect
-		i = 0
-		tiles = @uis.mediaContainer.find("li.actual")
-		if tiles? and tiles.length > 0
-			interval = setInterval(=>
-				$(tiles[i]).removeClass("show")
-				i += 1
-				if i == tiles.length
-					tiles.remove()
-					this.fillVideos(start)
-					clearInterval(interval)
-			, 50) # time between each iteration
-		else
-			this.fillVideos(start)
+
+	setPage: (page) =>
+		page  = parseInt(page)
+		if (not @cache.currentPage?) or (page != @cache.currentPage)
+			start = @OPTIONS.nbTiles * page
+			tiles = @uis.mediaContainer.find("li.actual")
+			# hide/show navigation "< >"
+			@uis.previous.removeClass "hidden"
+			@uis.next.removeClass     "hidden"
+			if page == 0
+				@uis.previous.addClass "hidden"
+			if page >= Math.ceil(@cache.data.length / @OPTIONS.nbTiles) - 1
+				@uis.next.addClass "hidden"
+			# removing Animation, one by one, fadding effect
+			i = 0
+			if tiles? and tiles.length > 0
+				interval = setInterval(=>
+					$(tiles[i]).removeClass("show")
+					i += 1
+					if i == tiles.length
+						tiles.remove()
+						this.fillVideos(start)
+						clearInterval(interval)
+				, 50) # time between each iteration
+			else
+				this.fillVideos(start)
+			@cache.currentPage = page
 
 	fillVideos: (start=0) =>
 		if @cache.data?
@@ -715,7 +730,6 @@ class portfolio.MediaPlayer extends Widget
 					nui.find("a").attr("href", "#+video="+index)
 					nui.find(".image").css({"background-image" : "url("+video.thumbnail_small+")"})
 					@uis.mediaList.append(nui)
-					@cache.lastItem = index
 					if i >= @OPTIONS.nbTiles - 1
 						break
 				# Animation, one by one, fadding effect
@@ -734,14 +748,14 @@ class portfolio.MediaPlayer extends Widget
 		@uis.videoPlayer.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].id+"?portrait=0&title=0&byline=0")
 
 	next: =>
-		this.removeAndFillVideos(@cache.lastItem+1)
+		this.setPage(@cache.currentPage + 1)
 
 	previous: =>
-		new_index = @cache.lastItem - (@OPTIONS.nbTiles * 2) + 1
-		if new_index < 0
-			this.removeAndFillVideos(0)
+		new_page = @cache.currentPage - 1
+		if new_page < 0
+			this.setPage(0)
 		else
-			this.removeAndFillVideos(new_index)
+			this.setPage(new_page)
 
 	show: =>
 		super

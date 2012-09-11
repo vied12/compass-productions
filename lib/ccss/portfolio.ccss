@@ -352,35 +352,35 @@ body:
 	.mediaPanel:
 		margin    : 0 auto
 		bottom    : 40px
-		text-align: center
 		overflow  : hidden
 		width     : 694px // 5 tiles
 		height    : 110px
-		//background-color : $PANEL_COLOR_DARK
 		> .wrapper:
 			white-space : nowrap
-			ul:
-				li.media.actual:
-					opacity: 0
-					display: inline-block
-					-webkit-transition-property : "opacity"
-					-moz-transition-property    : "opacity"
-					-webkit-transition-duration : "0.5s"
-					-moz-transition-duration    : "0.5s"
-					-moz-transition-timing-function     : linear
-					-webkit-transition-timing-function  : linear
-					&.central:
-						background-color : $PANEL_COLOR_DARK
-					> .wrapper:
-						margin : 4px 18px
-						div.image:
-							height : 100px
-							width  : 100px
-							background-size : cover
-							-moz-box-shadow: 1px 1px 12px #555
-							-webkit-box-shadow: 1px 1px 12px #555
-					&.show:
-						opacity: 1
+			.mediaContainer:
+				margin : 0px 5px
+				ul:
+					li.media.actual:
+						opacity: 0
+						display: inline-block
+						-webkit-transition-property : "opacity"
+						-moz-transition-property    : "opacity"
+						-webkit-transition-duration : "0.5s"
+						-moz-transition-duration    : "0.5s"
+						-moz-transition-timing-function     : linear
+						-webkit-transition-timing-function  : linear
+						&.central:
+							background-color : $PANEL_COLOR_DARK
+						> .wrapper:
+							margin : 4px 18px
+							div.image:
+								height : 100px
+								width  : 100px
+								background-size : cover
+								-moz-box-shadow: 1px 1px 12px #555
+								-webkit-box-shadow: 1px 1px 12px #555
+						&.show:
+							opacity: 1
 			.next, .previous:
 				position  : absolute
 				font-size : 3em

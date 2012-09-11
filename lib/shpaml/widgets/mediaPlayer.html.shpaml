@@ -8,7 +8,7 @@
 				> img
 	.mediaPanel
 		.wrapper
-			.close
+			.close.hidden
 				a href=# | X
 			.previous | &lt;
 			.mediaContainer
