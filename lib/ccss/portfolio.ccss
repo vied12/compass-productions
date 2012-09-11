@@ -327,6 +327,7 @@ body:
 			display 	: block
 		.body:
 			font-size : $BIG_FONT_SIZE
+			line-height : $BIG_LINE_HEIGHT
 		li:
 			margin-bottom : 50px
 
