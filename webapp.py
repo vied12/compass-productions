@@ -19,11 +19,13 @@ import sources.flickr as flickr
 import sources.model as model
 import sources.vimeo as vimeo
 import os, json, flask_mail, mimetypes, re, collections
+from werkzeug.contrib.cache import SimpleCache
 
-app  = Flask(__name__)
+app   = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
-mail = flask_mail.Mail(app)
-db   = model.Interface.GetConnection()
+mail  = flask_mail.Mail(app)
+db    = model.Interface.GetConnection()
+cache = SimpleCache()
 
 # -----------------------------------------------------------------------------
 #
@@ -34,14 +36,19 @@ db   = model.Interface.GetConnection()
 @app.route('/api/data')
 def data():
 	# FIXME: set cache, set language
-	with open(os.path.join(app.root_path, "data", "portfolio.json")) as f:
-		data = json.load(f, object_pairs_hook=collections.OrderedDict)
-		# add some infos for videos
-		for work_index, work in enumerate(data.get("works", tuple())):
-			for video_index, video in enumerate(work.get("videos", tuple())):
-				info = vimeo.Vimeo.getInfo(video)
-				data["works"][work_index]["videos"][video_index] = info
-		return json.dumps(data)
+	res = cache.get('data')
+	if res is None:
+		with open(os.path.join(app.root_path, "data", "portfolio.json")) as f:
+			data = json.load(f, object_pairs_hook=collections.OrderedDict)
+			# add some infos for videos
+			for work_index, work in enumerate(data.get("works", tuple())):
+				for video_index, video in enumerate(work.get("videos", tuple())):
+					info = vimeo.Vimeo.getInfo(video)
+					data["works"][work_index]["videos"][video_index] = info
+			res = json.dumps(data)
+			cache.set('data', res, timeout=60 * 60 * 24)
+	return res
+
 
 @app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>')
 def getFlickrSetPhotos(set_id, qualities):
