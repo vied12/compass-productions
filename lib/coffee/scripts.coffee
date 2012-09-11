@@ -407,8 +407,6 @@ class portfolio.News extends Widget
 	setData: (data) =>
 		@cache.data = data
 		for news in data
-			console.log "news", news
-			console.log "content", news.content
 			date = new Date(news.date_creation)
 			nui = @uis.newsTmpl.cloneTemplate({
 				body:news.content
@@ -701,7 +699,7 @@ class portfolio.MediaPlayer extends Widget
 		else
 			this.fillVideos(start)
 
-	fillVideos: (start=0) =>s
+	fillVideos: (start=0) =>
 		if @cache.data?
 			videos = @cache.data[start..]
 			if videos? and videos.length > 0
