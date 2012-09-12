@@ -123,7 +123,19 @@ class portfolio.Navigation extends Widget
 			else
 				menuRoot.removeClass "hidden"
 				if tile != "works"
-					menuRoot.addClass "active"		
+					menuRoot.addClass "active"	
+					menuRoot.click (e) =>	
+						e.preventDefault()				
+						this.updatePanelMenu()						
+	
+	updatePanelMenu: =>
+		menuRoot=@uis.pageLinks.find('.menuRoot')
+		if not @panelWidget.isOpened() 
+				@panelWidget.open()
+				menuRoot.addClass "active"	
+			else
+				menuRoot.removeClass "active"
+				@panelWidget.hide()
 
 	showPage: (page) =>
 		# set page menu (single tile)
@@ -288,6 +300,10 @@ class portfolio.Panel extends Widget
 		$('body').bind('hidePanel', this.hide)
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		@background    = Widget.ensureWidget(".Background")
+		@uis.close.click (e)=>
+			e.preventDefault()
+			Widget.ensureWidget(".Navigation").updatePanelMenu()
+			this.hide()
 		return this	
 
 	goto: (page) =>
@@ -328,6 +344,9 @@ class portfolio.Panel extends Widget
 		@uis.wrapper.removeClass "hidden"
 		this.relayout(true)
 		@background.darkness(0.6)
+
+	isOpened: =>
+		@cache.isOpened
 
 # -----------------------------------------------------------------------------
 #
@@ -695,7 +714,6 @@ class portfolio.MediaPlayer extends Widget
 			this.hide()
 		@uis.close.mouseenter =>
 			$('body').bind('mousemove', => 
-				console.log "mousemove"
 				$('.overlay').addClass "cursor")
 		@uis.close.mouseleave =>
 			$('body').unbind('mousemove')
