@@ -16,7 +16,6 @@ SMALL_FONT_SIZE = 1.2em
 MAX_WIDTH = 1024px
 
 
-
 @font-face:
 	font-family: "Livory"
 	font-style: normal
@@ -447,6 +446,7 @@ body:
 	.darkness:
 		background-color : black
 		opacity : 0
+		z-index : 1
 	.mousemask:	
 		opacity : 1	
 		//background-image : url('/static/images/mousemask'.png)
