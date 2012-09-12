@@ -118,24 +118,23 @@ class portfolio.Navigation extends Widget
 			@uis.pageLinks.find("li").removeClass "active"
 			@uis.pageLinks.find(".#{tile}").addClass "active"
 			menuRoot=@uis.pageLinks.find('.menuRoot')
-			if tile in ["news","contact", "works"]
-				menuRoot.addClass "hidden"
-			else
-				menuRoot.removeClass "hidden"
-				if tile != "works"
-					menuRoot.addClass "active"	
-					menuRoot.click (e) =>	
-						e.preventDefault()				
-						this.updatePanelMenu()						
+			menuRoot.removeClass "hidden"
+			if tile != "works"
+				menuRoot.addClass "active"	
+				menuRoot.click (e) =>	
+					e.preventDefault()				
+					this.updatePanelMenu()						
 	
 	updatePanelMenu: =>
 		menuRoot=@uis.pageLinks.find('.menuRoot')
 		if not @panelWidget.isOpened() 
+				console.log "close"				
 				@panelWidget.open()
 				menuRoot.addClass "active"	
 			else
-				menuRoot.removeClass "active"
+				console.log "open"
 				@panelWidget.hide()
+				menuRoot.removeClass "active"				
 
 	showPage: (page) =>
 		# set page menu (single tile)
@@ -296,10 +295,11 @@ class portfolio.Panel extends Widget
 
 	bindUI: (ui) =>
 		super
+		@background    = Widget.ensureWidget(".Background")
+		#bind events
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
 		$('body').bind('hidePanel', this.hide)
-		$(window).resize(=>(this.relayout(@cache.isOpened)))
-		@background    = Widget.ensureWidget(".Background")
+		$(window).resize(=>(this.relayout(@cache.isOpened)))		
 		@uis.close.click (e)=>
 			e.preventDefault()
 			Widget.ensureWidget(".Navigation").updatePanelMenu()
@@ -340,6 +340,7 @@ class portfolio.Panel extends Widget
 		@background.darkness(0)
 
 	open: =>
+		@cache.isOpened = true
 		@ui.removeClass "hidden"
 		@uis.wrapper.removeClass "hidden"
 		this.relayout(true)
