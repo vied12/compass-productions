@@ -2,3 +2,5 @@
 	.image.hidden | {##}
 	video.video.template.hidden preload=none autoplay="autoplay" loop="loop" | {##}
 	.mask | {##}
+	.darkness | {##}
+	.mousemask | {##}

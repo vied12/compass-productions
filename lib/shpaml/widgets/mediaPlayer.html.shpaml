@@ -1,4 +1,5 @@
 .MediaPlayer.hidden.widget data-widget=portfolio.MediaPlayer
+	.cursor | {##}
 	.overlay.close | {##}
 	.player
 		.wrapper

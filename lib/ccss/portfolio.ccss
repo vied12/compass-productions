@@ -4,7 +4,7 @@ TEXT_COLOR_LIGHT  = #fff
 TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
-TILE_COLOR              = "rgba(20,20,20,0.7)"
+TILE_COLOR              = "rgba(0,0,0,0.7)"
 TILE_HIGHLIGHTED_COLOR  = "rgba(120,60,50,0.7)"
 PANEL_COLOR_DARK        = "rgba(0,0,0,0.7)"
 PANEL_COLOR_BLUE	    = "rgba(51,51,77,0.7)"
@@ -179,7 +179,7 @@ body:
 		position : 	relative
 		margin : 8px auto auto
 		max-width           : $MAX_WIDTH
-		background-color    : $PANEL_COLOR_BLUE
+		background-color    : $PANEL_COLOR_DARK
 		.content:
 			position : relative
 			font-size : $SMALL_FONT_SIZE
@@ -212,6 +212,7 @@ body:
 				a:
 					text-decoration : none
 					color   : $TEXT_COLOR_DARK
+					text-transform : capitalize
 				&.active a:
 					color   : $TEXT_COLOR_LIGHT		
 
@@ -350,6 +351,18 @@ body:
 		margin    : 0 auto
 		top       : 31px
 		width     : 500px
+	.cursor:
+		position : absolute
+		height : 10px
+		width : 10px
+		background ->
+			image    : url('/static/images/close.png')
+			color    : transparent
+			repeat   : no-repeat
+			position : top left
+			size : 10px 10px
+		z-index : 3
+
 	.mediaPanel:
 		margin    : 0 auto
 		bottom    : 40px
@@ -396,6 +409,8 @@ body:
 				top      : 0
 				right    : 10px
 
+
+
 //-------------------------- VIDEO --------------------------------
 
 .Background, .Background > div:
@@ -424,7 +439,24 @@ body:
 	.mask:
 		background 		: url('/static/images/Pixel_Pattern.gif') repeat
 		z-index			: 1
-	.ui-video-background: 
+	.darkness:
+		background-color : black
+		opacity : 0
+	.mousemask:	
+		opacity : 1	
+		//background-image : url('/static/images/mousemask'.png)
+		//background-image : `-moz-linear-gradient(left center, transparent, white)`		
+		//background-image : `-webkit-linear-gradient(left center, transparent, white)`
+		//background 	->
+			//image : url('/static/images/Pixel_Pattern.gif')
+			//-webkit-mask-image: `-webkit-gradient(radial, 50% 50%, 30, 50% 50%, 90, from(#fff), to(rgba(0,0,0,0)))` 
+			//image : `-webkit-linear-gradient(left center, transparent, white)`
+			//repeat : no-repeat 
+			//position : center center
+			//size : 100px 100px
+			//color: #F00FFF
+
+ 	.ui-video-background: 
 		position			: absolute
 		top 				: 95px
 		z-index				: 3

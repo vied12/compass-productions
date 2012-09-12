@@ -53,7 +53,7 @@
 
 .jspTrack
 {
-	background: #444;
+	background: rgba(0, 0, 0, 0.2);
 	position: relative;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;

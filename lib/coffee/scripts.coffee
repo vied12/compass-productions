@@ -54,6 +54,8 @@ class portfolio.Navigation extends Widget
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("bg1.jpg")
+		@background.darkness(0)
+		@background.followMouse()
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
 		#if isMobile.any()
@@ -162,6 +164,8 @@ class portfolio.Background extends Widget
 			image : ".image"
 			video : "video.video"
 			mask: ".mask"
+			darkness : ".darkness"
+			mousemask : ".mousemask"
 		}
 
 		@CONFIG = {
@@ -233,6 +237,28 @@ class portfolio.Background extends Widget
 		@uis.image.removeClass "hidden"
 		this.relayout(@uis.image)
 
+	darkness : (darklevel)=>
+		@uis.darkness.css("opacity", darklevel)
+
+
+	followMouse : (activate=true) =>	
+		if(activate)
+			$('body').bind('mousemove', (e) =>
+				#backgroundPosition = bgx+"px "+bgy+"px" 
+				bgx = e.pageX - 50
+				bgy = e.pageY - 50
+				maskImage = "-webkit-gradient(radial, #{bgx}px #{bgy}px, 30,  #{bgx}px #{bgy}px, 90, from(#000), to(rgba(0,0,0,0)))"
+				#backgroundPosition =  bgx+"px "+ bgy+"px"
+				#console.log "backgroundPosition", maskImage
+				@uis.mousemask.css({
+			    	#backgroundPosition: backgroundPosition, 
+			    	background : maskImage
+			    })
+			)
+		else
+			$('body').unbind 'mousemove'
+
+
 # -----------------------------------------------------------------------------
 #
 # Panel
@@ -267,6 +293,7 @@ class portfolio.Panel extends Widget
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
 		$('body').bind('hidePanel', this.hide)
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
+		@background    = Widget.ensureWidget(".Background")
 		return this	
 
 	goto: (page) =>
@@ -299,12 +326,14 @@ class portfolio.Panel extends Widget
 	hide: =>
 		@cache.isOpened = false
 		this.relayout(false)
-		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)
+		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)		
+		@background.darkness(0)
 
 	open: =>
 		@ui.removeClass "hidden"
 		@uis.wrapper.removeClass "hidden"
 		this.relayout(true)
+		@background.darkness(0.6)
 
 # -----------------------------------------------------------------------------
 #
@@ -646,6 +675,7 @@ class portfolio.MediaPlayer extends Widget
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
+			cursor         : ".cursor"
 		}
 
 		@OPTIONS = {
@@ -672,6 +702,12 @@ class portfolio.MediaPlayer extends Widget
 		$(window).resize(this.relayout)
 		@uis.close.click =>
 			this.hide()
+		@uis.close.mouseenter =>
+			$('body').bind('mousemove', this.followMouse
+			)
+		@uis.close.mouseleave =>
+			$('body').unbind('mousemove')
+			@uis.cursor.addClass "hidden"
 		@uis.next.click =>
 			this.next()
 		@uis.previous.click =>
@@ -773,6 +809,12 @@ class portfolio.MediaPlayer extends Widget
 		URL.remove("video", true)
 		$(".PageMenu").css({left:@saveTileLeft, top:0})
 		$("body").trigger("setPanelPage",URL.get("page"))
+
+	followMouse:(e) =>
+		@uis.cursor.removeClass "hidden"		
+		bgx = e.pageX - 10
+		bgy = e.pageY - 10
+		@uis.cursor.css({top: bgy, left : bgx  })
 
 # -----------------------------------------------------------------------------
 #
