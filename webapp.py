@@ -49,7 +49,6 @@ def data():
 			cache.set('data', res, timeout=60 * 60 * 24)
 	return res
 
-
 @app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>')
 def getFlickrSetPhotos(set_id, qualities):
 	qualities = qualities.split(",")
