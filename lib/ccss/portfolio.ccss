@@ -319,7 +319,6 @@ body:
 				// This margin compense fields padding
 				margin 	: 10px "-21px" 0 0
 
-
 	.News:
 		.title: 
 			font-weight : normal
