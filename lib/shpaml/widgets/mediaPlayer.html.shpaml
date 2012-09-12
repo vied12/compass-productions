@@ -1,11 +1,9 @@
-.MediaPlayer.hidden.widget data-widget=portfolio.MediaPlayer
+
+.ImagePlayer.hidden.widget data-widget=portfolio.ImagePlayer
 	.cursor | {##}
 	.overlay.close | {##}
-	.player
-		.wrapper
-			.videoPlayer
-				iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
-			.imagePlayer
+		.imagePlayer.player.hidden
+			.wrapper
 				> img
 	.mediaPanel
 		.wrapper
@@ -18,4 +16,24 @@
 						.wrapper
 							a.internal
 								div.image | {##}
+			.next | &gt;
+
+.VideoPlayer.hidden.widget data-widget=portfolio.VideoPlayer
+	.cursor | {##}
+	.overlay.close | {##}
+		.videoPlayer.player.hidden
+			.wrapper
+				iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
+	.mediaPanel
+		.wrapper
+			.close.hidden
+				a href=# | X
+			.previous | &lt;
+			.mediaContainer
+				ul
+					li.media.template
+						.wrapper
+							a.internal
+								.image
+									.overlay | {##}
 			.next | &gt;
