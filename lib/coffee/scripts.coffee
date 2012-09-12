@@ -680,19 +680,6 @@ class portfolio.Project extends Widget
 class portfolio.MediaPlayer extends Widget
 
 	constructor: ->
-		@UIS = {
-			player         : ".player"
-			videoPlayer    : ".player .videoPlayer iframe"
-			imagePlayer    : ".player .imagePlayer img"
-			panel          : ".mediaPanel"
-			mediaContainer : ".mediaPanel .mediaContainer"
-			mediaList      : ".mediaPanel .mediaContainer ul"
-			mediaTmpl      : ".mediaPanel .media.template"
-			close          : ".close"
-			next           : ".next"
-			previous       : ".previous"
-			cursor         : ".cursor"
-		}
 
 		@OPTIONS = {
 			nbTiles : 5
@@ -858,6 +845,7 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
+			cursor         : ".cursor"
 		}
 
 		@OPTIONS = {
@@ -894,6 +882,7 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
+			cursor         : ".cursor"
 		}
 
 		@OPTIONS = {
