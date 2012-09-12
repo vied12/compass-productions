@@ -345,22 +345,14 @@ body:
 		background-color : $TILE_COLOR
 		bottom : 0
 		top    : 0
+		&.cursor:hover:
+			cursor : url('/static/images/close.png'), pointer
+
 	.player:
 		margin    : 0 auto
 		top       : 31px
 		width     : 500px
-	.cursor:
-		position : absolute
-		height : 10px
-		width : 10px
-		background ->
-			image    : url('/static/images/close.png')
-			color    : transparent
-			repeat   : no-repeat
-			position : top left
-			size : 10px 10px
-		z-index : 3
-
+	
 	.mediaPanel:
 		margin    : 0 auto
 		bottom    : 40px

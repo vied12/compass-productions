@@ -1,6 +1,5 @@
 
 .ImagePlayer.hidden.widget data-widget=portfolio.ImagePlayer
-	.cursor | {##}
 	.overlay.close | {##}
 		.imagePlayer.player.hidden
 			.wrapper
@@ -19,7 +18,6 @@
 			.next | &gt;
 
 .VideoPlayer.hidden.widget data-widget=portfolio.VideoPlayer
-	.cursor | {##}
 	.overlay.close | {##}
 		.videoPlayer.player.hidden
 			.wrapper

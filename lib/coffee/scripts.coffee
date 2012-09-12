@@ -55,7 +55,6 @@ class portfolio.Navigation extends Widget
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("bg1.jpg")
 		@background.darkness(0)
-		@background.followMouse()
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
 		#if isMobile.any()
@@ -695,11 +694,12 @@ class portfolio.MediaPlayer extends Widget
 		@uis.close.click =>
 			this.hide()
 		@uis.close.mouseenter =>
-			$('body').bind('mousemove', this.followMouse
-			)
+			$('body').bind('mousemove', => 
+				console.log "mousemove"
+				$('.overlay').addClass "cursor")
 		@uis.close.mouseleave =>
 			$('body').unbind('mousemove')
-			@uis.cursor.addClass "hidden"
+			$('.overlay').removeClass "cursor"
 		@uis.next.click =>
 			this.next()
 		@uis.previous.click =>
@@ -815,11 +815,6 @@ class portfolio.MediaPlayer extends Widget
 		# $(".PageMenu").css({left:@saveTileLeft, top:0})
 		$("body").trigger("setPanelPage",URL.get("page"))
 
-	followMouse:(e) =>
-		@uis.cursor.removeClass "hidden"		
-		bgx = e.pageX - 10
-		bgy = e.pageY - 10
-		@uis.cursor.css({top: bgy, left : bgx  })
 
 # -----------------------------------------------------------------------------
 #
