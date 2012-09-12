@@ -243,14 +243,10 @@ class portfolio.Background extends Widget
 	followMouse : (activate=true) =>	
 		if(activate)
 			$('body').bind('mousemove', (e) =>
-				#backgroundPosition = bgx+"px "+bgy+"px" 
 				bgx = e.pageX - 50
 				bgy = e.pageY - 50
 				maskImage = "-webkit-gradient(radial, #{bgx}px #{bgy}px, 30,  #{bgx}px #{bgy}px, 90, from(#000), to(rgba(0,0,0,0)))"
-				#backgroundPosition =  bgx+"px "+ bgy+"px"
-				#console.log "backgroundPosition", maskImage
 				@uis.mousemask.css({
-			    	#backgroundPosition: backgroundPosition, 
 			    	background : maskImage
 			    })
 			)
@@ -687,9 +683,9 @@ class portfolio.MediaPlayer extends Widget
 
 		@cache = {
 			data        : null
-			lastItem    : 0
 			currentPage : null
 			isShown     : false
+			currentItem : null
 		}
 
 	bindUI: (ui) =>
@@ -721,18 +717,19 @@ class portfolio.MediaPlayer extends Widget
 
 	onURLStateCHanged: =>
 		if (@cache.isShown)
-			console.log("url listener", this)
 			if URL.hasChanged("item")
 					if URL.get("item")
-						# this.show()
 						this.setMedia(URL.get("item"))
 						page = Math.ceil((URL.get("item")/@OPTIONS.nbTiles)+0.1) - 1
 						this.setPage(page)
 					else
 						this.hide()
 
+	setMedia: (index) =>
+		@cache.currentItem = index
+		this.relayout()
+
 	setData: (data) =>
-		# @cache.data = data
 		params = URL.get()
 		if params.item?
 			this.show()
@@ -802,7 +799,6 @@ class portfolio.MediaPlayer extends Widget
 
 	show: =>
 		super
-		console.log(this, "show")
 		@uis.playerContainer.removeClass "hidden"
 		@cache.isShown = true
 		# move the tile under the brand tile
@@ -852,14 +848,26 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 			nbTiles : 5
 		}
 
+	relayout: =>
+		ratio = @cache.data[@cache.currentItem].ratio
+		player_width_max  = $(window).width() - 100
+		player_height = @uis.panel.offset().top - 50
+		player_width  = player_height * ratio
+		if player_width > player_width_max
+			player_width = player_width_max
+			player_height = player_width / ratio
+		@uis.player.attr({height:player_height, width:player_width})
+		@uis.playerContainer.css("width", player_width) # permit margin auto on player
+
 	setData: (data) =>
 		# super
 		new_data = for d in data
-			{thumbnail:d.thumbnail_small, media:d.id}
+			{thumbnail:d.thumbnail_small, media:d.id, ratio:d.width/d.height}
 		@cache.data = new_data
 		super()
 
 	setMedia: (index) =>
+		super
 		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0")
 
 # -----------------------------------------------------------------------------
