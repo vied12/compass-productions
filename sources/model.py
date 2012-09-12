@@ -24,10 +24,8 @@ class Interface:
 		if id and id != "all":
 			return Interface.GetConnection().news.News.one({"_id":mongokit.ObjectId(id)})
 		else:
-			if sort:
-				return Interface.GetConnection().news.News.find().sort(sort, 1)
-			else:
-				return Interface.GetConnection().news.News.find()
+			sort = sort or "_id"
+			return Interface.GetConnection().news.News.find().sort(sort, -1)
 
 class MongoDBModel(mongokit.Document):
 	pass
