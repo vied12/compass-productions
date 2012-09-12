@@ -243,14 +243,10 @@ class portfolio.Background extends Widget
 	followMouse : (activate=true) =>	
 		if(activate)
 			$('body').bind('mousemove', (e) =>
-				#backgroundPosition = bgx+"px "+bgy+"px" 
 				bgx = e.pageX - 50
 				bgy = e.pageY - 50
 				maskImage = "-webkit-gradient(radial, #{bgx}px #{bgy}px, 30,  #{bgx}px #{bgy}px, 90, from(#000), to(rgba(0,0,0,0)))"
-				#backgroundPosition =  bgx+"px "+ bgy+"px"
-				#console.log "backgroundPosition", maskImage
 				@uis.mousemask.css({
-			    	#backgroundPosition: backgroundPosition, 
 			    	background : maskImage
 			    })
 			)
@@ -734,7 +730,6 @@ class portfolio.MediaPlayer extends Widget
 		this.relayout()
 
 	setData: (data) =>
-		# @cache.data = data
 		params = URL.get()
 		if params.item?
 			this.show()
