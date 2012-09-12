@@ -331,7 +331,7 @@ body:
 		li:
 			margin-bottom : 50px
 
-.MediaPlayer:
+.VideoPlayer, .ImagePlayer:
 	position        : absolute
 	left            : 0
 	right           : 0
@@ -342,7 +342,7 @@ body:
 		position  : absolute
 		left      : 0
 		right     : 0
-	.overlay:
+	> .overlay:
 		background-color : $TILE_COLOR
 		bottom : 0
 		top    : 0
@@ -380,6 +380,11 @@ body:
 								background-size : cover
 								-moz-box-shadow: 1px 1px 12px #555
 								-webkit-box-shadow: 1px 1px 12px #555
+								&.current .overlay:
+									border : 1px solid black
+									height: 100px
+									position : relative
+									background-color : $TILE_COLOR
 						&.show:
 							opacity: 1
 			.next, .previous:

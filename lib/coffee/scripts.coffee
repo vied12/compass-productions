@@ -58,7 +58,6 @@ class portfolio.Navigation extends Widget
 		#Commented because bugged, isMobile is imported from widget.coffee
 		#if isMobile.any()
 		#	$('body').addClass "mobile"
-
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -76,9 +75,9 @@ class portfolio.Navigation extends Widget
 		)
 		# init from url
 		params = URL.get()
-		if params.page
+		if params.page?
 			this.showPage(params.page)		
-		else if params.menu
+		else if params.menu?
 			this.showMenu(params.menu)
 		else
 			this.showMenu("main")
@@ -332,16 +331,20 @@ class portfolio.FlickrGallery extends Widget
 			photo_index : null
 		}
 
+		@imagePlayer = null
+
 	bindUI: (ui) =>
 		super
+		@imagePlayer = Widget.ensureWidget(".ImagePlayer")
 		return this
 		
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z", {dataType: 'json', success : this.setData})
+	getPhotoSet: => return @cache.data
 
-	_makePhotoTile: (photoData) =>
+	_makePhotoTile: (photoData, index) =>
 		li    = $('<li></li>')
 		image = $('<img />').attr('src', photoData.q)
-		link  = $('<a></a>').attr('target', '_blank').attr('href', photoData.z)
+		link  = $('<a></a>').attr({href:"#+item="+index, class:"internal"})
 		link.append image
 		li.append link
 		@uis.list.append li
@@ -356,7 +359,8 @@ class portfolio.FlickrGallery extends Widget
 		@cache.data = data
 		#make the first tiles 
 		for photo, index in data[0..@OPTIONS.initial_quantity]
-			this._makePhotoTile(photo)
+			this._makePhotoTile(photo, index)
+		URL.enableLinks(@uis.list)
 		#show_more tile when more tile to show
 		if data.length >= @OPTIONS.initial_quantity
 			showMoreTile = @ui.find(".show_more.template").cloneTemplate()	
@@ -365,6 +369,14 @@ class portfolio.FlickrGallery extends Widget
 			showMoreTile.click => this.showMore()
 			#update cache index
 			@cache.photo_index = @OPTIONS.initial_quantity
+		params = URL.get()
+		# show media player if item params exists in URL hash
+		if params.item and URL.get("cat") == "gallery"
+			@imagePlayer.setData(this.getPhotoSet())
+		URL.onStateChanged =>
+			if URL.get("item")
+				if URL.get("cat")? and URL.get("cat") == "gallery"
+					@imagePlayer.setData(this.getPhotoSet())
 
 	showMore: =>
 		next_index = @cache.photo_index+@OPTIONS.initial_quantity
@@ -372,7 +384,8 @@ class portfolio.FlickrGallery extends Widget
 			next_index = @cache.data.length	
 			@ui.find(".show_more").addClass "hidden"
 		for photo,index in @cache.data[@cache.photo_index+1..next_index]
-			this._makePhotoTile(photo)
+			this._makePhotoTile(photo, index)
+		URL.enableLinks(@uis.list)
 		@cache.photo_index = next_index
 		$('body').trigger "relayoutContent"
 
@@ -511,17 +524,16 @@ class portfolio.Project extends Widget
 		}
 		@CATEGORIES    = ["synopsis", "screenings", "videos", "extra", "credits", "gallery", "press", "links"]	
 		@flickrGallery = null
-		@mediaPlayer   = null
+		@videoPlayer   = null
 
 	bindUI: (ui) =>
 		super
 		@flickrGallery = Widget.ensureWidget(".content.gallery")
-		@mediaPlayer   = Widget.ensureWidget(".MediaPlayer")
+		@videoPlayer   = Widget.ensureWidget(".VideoPlayer")
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# enable dynamic links (#+cat=...)
 		URL.enableLinks(@ui)
 		$("body").bind("relayoutContent", this.relayout)
-		return this
 
 	relayout: =>
 		top_offset = $('.FooterPanel').height() - 100
@@ -534,8 +546,13 @@ class portfolio.Project extends Widget
 		if params.project
 			this.setProject(params.project)
 			this.selectTab(URL.get("cat") or "synopsis")
+		# init videoPlayer if needed
+		if params.item
+			if (URL.get("cat")? and URL.get("cat") == "videos")
+				@videoPlayer.setData(this.getProjectByName(URL.get("project")).videos)
+			# see flickr widget for images's MediaPlayer
 		# bind url change
-		URL.onStateChanged(=>
+		URL.onStateChanged =>
 			if URL.hasChanged("project")
 				if URL.get("project")?
 					this.setProject(URL.get("project"))
@@ -543,13 +560,13 @@ class portfolio.Project extends Widget
 			if URL.hasChanged("cat")
 				if URL.get("cat")?
 					this.selectTab(URL.get("cat"))
-		)
+			if URL.get("item")?
+				if (URL.get("cat")? and URL.get("cat") == "videos")
+					@videoPlayer.setData(this.getProjectByName(URL.get("project")).videos)
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works
 			if project.key == name
-
-				
 				return project
 
 	setProject: (project) =>
@@ -583,14 +600,13 @@ class portfolio.Project extends Widget
 					when "synopsis"
 						nui.find('p').html(value)
 					when "videos"
-						@mediaPlayer.setVideoData(value)
 						list = nui.find("ul")
 						# resets
 						list.find("li:not(.template)").remove()
 						for video, i in value
 							video_nui = nui.find(".template").cloneTemplate()
 							video_nui.find('img').attr("src", video.thumbnail_small)
-							video_nui.find('a').attr("href", "#+video="+i)
+							video_nui.find('a').attr("href", "#+item="+i)
 							list.append(video_nui)
 						# update dynamic links
 						URL.enableLinks(list)
@@ -635,40 +651,17 @@ class portfolio.Project extends Widget
 class portfolio.MediaPlayer extends Widget
 
 	constructor: ->
-		@UIS = {
-			player         : ".player"
-			videoPlayer    : ".player .videoPlayer iframe"
-			imagePlayer    : ".player .imagePlayer img"
-			panel          : ".mediaPanel"
-			mediaContainer : ".mediaPanel .mediaContainer"
-			mediaList      : ".mediaPanel .mediaContainer ul"
-			mediaTmpl      : ".mediaPanel .media.template"
-			close          : ".close"
-			next           : ".next"
-			previous       : ".previous"
-		}
-
-		@OPTIONS = {
-			nbTiles : 5
-		}
 
 		@cache = {
-			data : null
-			lastItem : 0
+			data        : null
+			lastItem    : 0
 			currentPage : null
+			isShown     : false
 		}
 
 	bindUI: (ui) =>
 		super
-		URL.onStateChanged =>
-			if URL.hasChanged("video")
-				if URL.get("video")
-					this.show()
-					this.setVideo(URL.get("video"))
-					page = Math.ceil((URL.get("video")/@OPTIONS.nbTiles)+0.1) - 1
-					this.setPage(page)
-				else
-					this.hide()
+		URL.onStateChanged(this.onURLStateCHanged)
 		$(window).resize(this.relayout)
 		@uis.close.click =>
 			this.hide()
@@ -684,18 +677,29 @@ class portfolio.MediaPlayer extends Widget
 		if player_width > player_width_max
 			player_width = player_width_max
 			player_height = player_width / (16/9)
-		@uis.videoPlayer.attr({height:player_height, width:player_width})
-		@uis.player.css("width", player_width) # permit margin auto on player
+		@uis.player.attr({height:player_height, width:player_width})
+		@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
-	setVideoData: (videos) =>
-		@cache.data = videos
+	onURLStateCHanged: =>
+		if (@cache.isShown)
+			console.log("url listener", this)
+			if URL.hasChanged("item")
+					if URL.get("item")
+						# this.show()
+						this.setMedia(URL.get("item"))
+						page = Math.ceil((URL.get("item")/@OPTIONS.nbTiles)+0.1) - 1
+						this.setPage(page)
+					else
+						this.hide()
+
+	setData: (data) =>
+		# @cache.data = data
 		params = URL.get()
-		if params.video?
+		if params.item?
 			this.show()
-			this.setVideo(params.video)
-			page = Math.ceil(((params.video)/@OPTIONS.nbTiles)+0.1) - 1
+			this.setMedia(params.item)
+			page = Math.ceil(((params.item)/@OPTIONS.nbTiles)+0.1) - 1
 			this.setPage(page)
-
 
 	setPage: (page) =>
 		page  = parseInt(page)
@@ -717,22 +721,22 @@ class portfolio.MediaPlayer extends Widget
 					i += 1
 					if i == tiles.length
 						tiles.remove()
-						this.fillVideos(start)
+						this.fillPanel(start)
 						clearInterval(interval)
 				, 50) # time between each iteration
 			else
-				this.fillVideos(start)
+				this.fillPanel(start)
 			@cache.currentPage = page
 
-	fillVideos: (start=0) =>
+	fillPanel: (start=0) =>
 		if @cache.data?
-			videos = @cache.data[start..]
-			if videos? and videos.length > 0
-				for video, i in videos
+			items = @cache.data[start..]
+			if items? and items.length > 0
+				for item, i in items
 					index = i + parseInt(start)
 					nui = @uis.mediaTmpl.cloneTemplate()
-					nui.find("a").attr("href", "#+video="+index)
-					nui.find(".image").css({"background-image" : "url("+video.thumbnail_small+")"})
+					nui.find("a").attr("href", "#+item="+index)
+					nui.find(".image").css({"background-image" : "url("+item.thumbnail+")"})
 					@uis.mediaList.append(nui)
 					if i >= @OPTIONS.nbTiles - 1
 						break
@@ -747,10 +751,6 @@ class portfolio.MediaPlayer extends Widget
 				, 50) # time between each iteration	
 				URL.enableLinks(@uis.mediaList)
 		this.relayout()
-
-	setVideo: (index) =>
-		@uis.videoPlayer.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].id+"?portrait=0&title=0&byline=0")
-
 	next: =>
 		this.setPage(@cache.currentPage + 1)
 
@@ -763,16 +763,93 @@ class portfolio.MediaPlayer extends Widget
 
 	show: =>
 		super
+		console.log(this, "show")
+		@uis.playerContainer.removeClass "hidden"
+		@cache.isShown = true
 		# move the tile under the brand tile
-		@saveTileLeft =  $(".PageMenu").css("left")
-		$(".PageMenu").css({left:0, top:@saveTileLeft})
+		# @saveTileLeft =  $(".PageMenu").css("left")
+		# $(".PageMenu").css({left:0, top:@saveTileLeft})
 		$("body").trigger("hidePanel")
 
 	hide: =>
 		super
-		URL.remove("video", true)
-		$(".PageMenu").css({left:@saveTileLeft, top:0})
+		@cache.isShown = false
+		@ui.find(".player").addClass "hidden"
+		@uis.playerContainer.addClass "hidden"
+		URL.remove("item", true)
+		# $(".PageMenu").css({left:@saveTileLeft, top:0})
 		$("body").trigger("setPanelPage",URL.get("page"))
+
+# -----------------------------------------------------------------------------
+#
+# VIDEO PLAYER
+#
+# -----------------------------------------------------------------------------	
+
+class portfolio.VideoPlayer extends portfolio.MediaPlayer
+
+	constructor: ->
+		super
+		@UIS = {
+			playerContainer: ".videoPlayer"
+			player         : ".videoPlayer iframe"
+			panel          : ".mediaPanel"
+			mediaContainer : ".mediaPanel .mediaContainer"
+			mediaList      : ".mediaPanel .mediaContainer ul"
+			mediaTmpl      : ".mediaPanel .media.template"
+			close          : ".close"
+			next           : ".next"
+			previous       : ".previous"
+		}
+
+		@OPTIONS = {
+			nbTiles : 5
+		}
+
+	setData: (data) =>
+		# super
+		new_data = for d in data
+			{thumbnail:d.thumbnail_small, media:d.id}
+		@cache.data = new_data
+		super()
+
+	setMedia: (index) =>
+		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0")
+
+# -----------------------------------------------------------------------------
+#
+# IMAGE PLAYER
+#
+# -----------------------------------------------------------------------------	
+
+class portfolio.ImagePlayer extends portfolio.MediaPlayer
+
+	constructor: ->
+		super
+		@UIS = {
+			playerContainer: ".imagePlayer"
+			player         : ".imagePlayer img"
+			panel          : ".mediaPanel"
+			mediaContainer : ".mediaPanel .mediaContainer"
+			mediaList      : ".mediaPanel .mediaContainer ul"
+			mediaTmpl      : ".mediaPanel .media.template"
+			close          : ".close"
+			next           : ".next"
+			previous       : ".previous"
+		}
+
+		@OPTIONS = {
+			nbTiles : 5
+		}
+
+	setData: (data) =>
+		new_data = for d in data
+			{thumbnail:d.q, media:d.z}
+		@cache.data = new_data
+		super()
+
+	setMedia: (index) =>
+		@uis.player.attr("src", @cache.data[index].media)
 
 # -----------------------------------------------------------------------------
 #

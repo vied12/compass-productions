@@ -16,7 +16,6 @@
 # -----------------------------------------------------------------------------	
 
 class Widget
-	@widgets = {}
 
 	@bindAll = ->
 		$(".widget").each(->
@@ -39,6 +38,8 @@ class Widget
 
 	bindUI: (ui) ->
 		@ui = $(ui)
+		if @ui[0]._widget
+			delete @ui[0]._widget
 		@ui[0]._widget = this # set widget in selector for ensureWidget
 		@uis = {}
 		if (typeof(@UIS) != "undefined")
