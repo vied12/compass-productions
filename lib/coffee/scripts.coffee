@@ -846,6 +846,7 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
+			cursor         : ".cursor"
 		}
 
 		@OPTIONS = {
@@ -894,6 +895,7 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
+			cursor         : ".cursor"
 		}
 
 		@OPTIONS = {
