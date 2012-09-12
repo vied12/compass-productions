@@ -94,7 +94,11 @@ body:
 				&.highlighted:
 					clear: both
 					background-color   : $TILE_HIGHLIGHTED_COLOR
-					width              : $TILE_WIDTH * 3 + 10
+					width              : $TILE_WIDTH * 2 + 5
+					height             : $TILE_WIDTH * 2 + 5
+					font-size          : $BIG_FONT_SIZE
+					line-height        : $BIG_LINE_HEIGHT
+					padding            : 10px
 				&.brand:
 					margin : 3px 5px 3px 3px 
 					background : $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
@@ -259,7 +263,8 @@ body:
 		.content:
 			&.videos:
 				li.video.actual:
-					padding-left : 5px
+					padding-left : 85px
+					padding-bottom : 24px
 					float        : left
 			&.links:
 				a:
@@ -375,6 +380,11 @@ body:
 						-webkit-transition-timing-function  : linear
 						&.central:
 							background-color : $PANEL_COLOR_DARK
+						&.current .overlay:
+							height: 75px
+							top: -80px
+							position : relative
+							background-color : $TILE_COLOR
 						> .wrapper:
 							margin : 4px 18px
 							div.image:
@@ -383,11 +393,6 @@ body:
 								background-size : cover
 								-moz-box-shadow: 1px 1px 12px #555
 								-webkit-box-shadow: 1px 1px 12px #555
-								&.current .overlay:
-									border : 1px solid black
-									height: 100px
-									position : relative
-									background-color : $TILE_COLOR
 						&.show:
 							opacity: 1
 			.next, .previous:

@@ -32,6 +32,6 @@
 					li.media.template
 						.wrapper
 							a.internal
-								.image
-									.overlay | {##}
+								> img.image
+								.overlay | {##}
 			.next | &gt;

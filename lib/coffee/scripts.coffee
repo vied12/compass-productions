@@ -738,9 +738,9 @@ class portfolio.MediaPlayer extends Widget
 		if (@cache.isShown)
 			if URL.hasChanged("item")
 					if URL.get("item")
-						this.setMedia(URL.get("item"))
 						page = Math.ceil((URL.get("item")/@OPTIONS.nbTiles)+0.1) - 1
 						this.setPage(page)
+						this.setMedia(URL.get("item"))
 					else
 						this.hide()
 
@@ -752,9 +752,9 @@ class portfolio.MediaPlayer extends Widget
 		params = URL.get()
 		if params.item?
 			this.show()
-			this.setMedia(params.item)
 			page = Math.ceil(((params.item)/@OPTIONS.nbTiles)+0.1) - 1
 			this.setPage(page)
+			this.setMedia(params.item)
 
 	setPage: (page) =>
 		page  = parseInt(page)
@@ -791,7 +791,8 @@ class portfolio.MediaPlayer extends Widget
 					index = i + parseInt(start)
 					nui = @uis.mediaTmpl.cloneTemplate()
 					nui.find("a").attr("href", "#+item="+index)
-					nui.find(".image").css({"background-image" : "url("+item.thumbnail+")"})
+					# nui.find(".image").css({"background-image" : "url("+item.thumbnail+")"})
+					nui.find(".image").attr("src", item.thumbnail)
 					@uis.mediaList.append(nui)
 					if i >= @OPTIONS.nbTiles - 1
 						break
@@ -805,7 +806,7 @@ class portfolio.MediaPlayer extends Widget
 						clearInterval(interval)
 				, 50) # time between each iteration	
 				URL.enableLinks(@uis.mediaList)
-		this.relayout()
+		# this.relayout()
 	next: =>
 		this.setPage(@cache.currentPage + 1)
 
@@ -834,7 +835,6 @@ class portfolio.MediaPlayer extends Widget
 		# $(".PageMenu").css({left:@saveTileLeft, top:0})
 		$("body").trigger("setPanelPage",URL.get("page"))
 
-
 # -----------------------------------------------------------------------------
 #
 # VIDEO PLAYER
@@ -855,34 +855,32 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
-			cursor         : ".cursor"
-		}
-
-		@OPTIONS = {
-			nbTiles : 5
 		}
 
 	relayout: =>
-		ratio = @cache.data[@cache.currentItem].ratio
-		player_width_max  = $(window).width() - 100
-		player_height = @uis.panel.offset().top - 50
-		player_width  = player_height * ratio
-		if player_width > player_width_max
-			player_width = player_width_max
-			player_height = player_width / ratio
-		@uis.player.attr({height:player_height, width:player_width})
-		@uis.playerContainer.css("width", player_width) # permit margin auto on player
+		if @cache.data? and @cache.isShown
+			ratio = @cache.data[@cache.currentItem].ratio
+			player_width_max  = $(window).width() - 100
+			player_height = @uis.panel.offset().top - 50
+			player_width  = player_height * ratio
+			if player_width > player_width_max
+				player_width = player_width_max
+				player_height = player_width / ratio
+			@uis.player.attr({height:player_height, width:player_width})
+			@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
 	setData: (data) =>
-		# super
 		new_data = for d in data
-			{thumbnail:d.thumbnail_small, media:d.id, ratio:d.width/d.height}
+			{thumbnail:d.thumbnail_small, media:d.id, ratio:d.width/d.height, duration:d.duration, title:d.title}
 		@cache.data = new_data
 		super()
 
 	setMedia: (index) =>
-		super
 		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0")
+		# select the good thumbnail
+		index_in_page = index % @OPTIONS.nbTiles
+		$(@uis.mediaList.find("li.actual").removeClass("current")[index_in_page]).addClass("current")
+		super
 
 # -----------------------------------------------------------------------------
 #
@@ -904,11 +902,6 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
-			cursor         : ".cursor"
-		}
-
-		@OPTIONS = {
-			nbTiles : 5
 		}
 
 	setData: (data) =>
