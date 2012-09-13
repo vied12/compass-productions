@@ -598,6 +598,10 @@ class portfolio.Project extends Widget
 
 	setData: (data) =>
 		@cache.data = data
+		# preload thumbnail
+		to_preload = for item in data
+			thumbnail
+		$.preload(to_preload)
 		# init from url
 		params = URL.get()
 		if params.project
@@ -782,7 +786,6 @@ class portfolio.MediaPlayer extends Widget
 						this.setMedia(URL.get("item"))
 					else
 						this.hide()
-
 
 	setMedia: (index) =>
 		@cache.currentItem = parseInt(index)

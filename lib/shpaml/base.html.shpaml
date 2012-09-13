@@ -13,6 +13,7 @@ html lang="en"
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.mousewheel.js')  }}"       | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"              | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.videobackground.js')  }}"  | {# #}		
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery.preload.js')  }}"          | {# #}		
 		script type="text/javascript" src="{{url_for('static', filename='js/widget.js')   }}"                 | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/formatting.js')  }}"              | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/scripts.js')  }}"                 | {# #}
