@@ -371,6 +371,7 @@ body:
 		background-color : $TILE_COLOR
 		bottom : 0
 		top    : 0
+		z-index   : 2
 		&:hover:
 			cursor : url('/static/images/close.png'), pointer
 
@@ -388,6 +389,7 @@ body:
 		overflow  : hidden
 		width     : 704px // 5 tiles
 		height    : 114px
+		z-index   : 11
 		> .wrapper:
 			white-space : nowrap
 			.mediaContainer:

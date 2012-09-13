@@ -91,6 +91,7 @@ class portfolio.Navigation extends Widget
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
 			this.selectPageLink(menu)
+
 		else
 			this.selectPageLink(@cache.currentPage)
 		# show menu
@@ -128,12 +129,12 @@ class portfolio.Navigation extends Widget
 	
 	updatePanelMenu: =>
 		menuRoot=@uis.pageLinks.find('.menuRoot')
-		if not @panelWidget.isOpened() 		
-				@panelWidget.open()
+		if not @panelWidget.isOpened() 						
 				menuRoot.addClass "active"	
+				setTimeout( (=> @panelWidget.open()), 100)
 			else
-				@panelWidget.hide()
-				menuRoot.removeClass "active"				
+				menuRoot.removeClass "active"
+				setTimeout( (=> @panelWidget.hide()), 100)							
 
 	showPage: (page) =>
 		# set page menu (single tile)
@@ -326,7 +327,7 @@ class portfolio.Panel extends Widget
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height() - 6
 			@ui.css({top : top_offset})
-			height = $(window).height() - 218
+			height = $(window).height() - 219
 			if height > 0
 				@ui.css({height : height})
 		else
@@ -658,16 +659,21 @@ class portfolio.Project extends Widget
 						readmoreLink = nui.find('.readmore')
 						body_nui=nui.find('.body')		
 						# if teaser is in json, teaser is displayed with readmore link,  
-						if value.teaser?									
+						if value.teaser?	
+							body_nui.css({
+								display:'none',	
+							})				
+							readmoreLink.removeClass "hidden"	
+							body_nui.removeClass "readmoreFx"							
 							readmoreLink.click (e) =>
 								e.preventDefault()			
 								body_nui.removeClass "hidden"							
 								body_nui.css({display:'block'})
-								readmoreLink.addClass "hidden"
+								readmoreLink.addClass "hidden"												
 								setTimeout((=> 
 									body_nui.addClass "readmoreFx"
 									this.relayout()
-									), 50)			
+									), 200)			
 						# else body is displayed alone		
 						else
 							readmoreLink.addClass "hidden"
@@ -767,6 +773,7 @@ class portfolio.MediaPlayer extends Widget
 				@uis.player.attr({height:player_height, width:player_width})
 				@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
+
 	onURLStateCHanged: =>
 		if (@cache.isShown)
 			if URL.hasChanged("item")
@@ -845,7 +852,6 @@ class portfolio.MediaPlayer extends Widget
 						setTimeout((=> this.toggleNavigation()), 250)
 						clearInterval(interval)
 				), 200 # time before each tile render
-		
 
 	next: =>
 		this.setPage(@cache.currentPage + 1)
@@ -866,7 +872,6 @@ class portfolio.MediaPlayer extends Widget
 		$('body').trigger("darkness", 0.7)
 		@uis.next.removeClass("hidden")
 		@uis.previous.removeClass("hidden")
-
 
 	hide: =>
 		super

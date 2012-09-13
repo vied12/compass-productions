@@ -4,7 +4,7 @@
 		.imagePlayer.player.hidden
 			.wrapper
 				> img
-	.mediaPanel
+	.mediaPanel.disableTextSelection
 		.wrapper
 			.close.hidden
 				a href=# | X
@@ -24,7 +24,7 @@
 		.videoPlayer.player.hidden
 			.wrapper
 				iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
-	.mediaPanel
+	.mediaPanel.disableTextSelection
 		.wrapper
 			.close.hidden
 				a href=# | X
