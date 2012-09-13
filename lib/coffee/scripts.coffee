@@ -53,7 +53,7 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		@background.image("bg1.jpg")
+		@background.image("devilmain.jpg")
 		@background.darkness(0)
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
@@ -157,7 +157,9 @@ class portfolio.Navigation extends Widget
 					# project selected
 					URL.update({page:"project", project:target, menu:null, cat:null})
 				else
-					URL.update({page:target, menu:null, project:null, cat:null})			
+					URL.update({page:target, menu:null, project:null, cat:null})	
+
+			
 
 # -----------------------------------------------------------------------------
 #
@@ -991,9 +993,233 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 
 # -----------------------------------------------------------------------------
 #
-# Main
+# SLIDER
 #
 # -----------------------------------------------------------------------------	
+
+# class portfolio.Slider extends portfolio.Widget
+
+# 	constructor: ->
+# 		super
+# 		# @cache = {
+# 		# 	data : null
+# 		# 	currentLevel : 0
+# 		# 	levels : []
+# 		# }
+
+# 	bindUI: (ui) =>
+# 		super
+# 		#$.ajax("/api/slider", {dataType: 'json', success : this.setData})
+
+# 	setData: (data) =>
+# 		console.log "setDATA!"
+# 		@cache.data = data
+# 		for level, contents in @cache.data
+# 			console.log "level", level, contents
+# # -----------------------------------------------------------------------------
+# #
+# # Main
+#
+# -----------------------------------------------------------------------------	
+
+
+
+
+# -----------------------------------------------------------------------------
+#
+# News
+#
+# -----------------------------------------------------------------------------	
+
+class portfolio.Slider extends Widget
+
+	constructor: ->
+
+		@UIS = {
+			wrapper   : ".wrapper"
+			imageTmpl : '.image'
+			videoTmpl : '.video'
+			levelTmpl : '.Level'
+		}
+		@config = {
+			levelCount : 5
+		}
+		@cache = {
+			
+			data : null
+			currentLevel : "level1"
+			currentSlide : null
+			onLeft : []
+			onRight : []
+			onTop : []
+			onBottom : []
+			levels : []
+			windowWidth : null
+			windowHeight : null
+		}
+
+	bindUI: (ui) =>
+		super
+		# $.ajax("/api/slider", {dataType: 'json', success : this.setData})		
+		#$('.Index,.Background').remove()
+		# @cache.windowWidth = $('window').width()
+		# @cache.windowHeight = $('window').height()
+		# this.bindKeys()
+		return this
+
+	relayout: =>
+		console.log "relayout"
+		# console.log  "@cache.onLeft", @cache.onLeft
+		# console.log  "@cache.onRight", @cache.onRight
+		# console.log  "@cache.onTop", @cache.onTop
+		# console.log  "@cache.onBottom", @cache.onBottom
+		# console.log "@cache.data.main", @cache.data.main
+		# @cache.onLeft = @cache.data[@cache.currentLevel].images
+		# this.setSlide("videos",this.html(@cache.onRight),"right")
+		# @cache.onRight = @cache.data[@cache.currentLevel].videos
+		# this.setSlide("videos",this.html(@cache.onRight),"right")
+		# @cache.onTop = @cache.data[this.nextLevel()].main
+		# topHTML = this.html(@cache.onTop )
+		# this.setSlide("main",topHTML,"top")
+		# @cache.onBottom = @cache.data[this.previousLevel()].main
+		# bottomHTML = this.html(@cache.onBottom)
+		# this.setSlide("main",bottomHTML,"bottom")
+		
+
+		for levelName, levelObj of @cache.data
+			console.log "level", levelName, levelObj
+			this.buildLevel(levelObj)
+
+	buildLevel: (level)=>
+		# console.log "level", level
+		levelnui = @ui.find('.Level').cloneTemplate()
+		level.mainDOM = this.makeMainSlide(level.main)
+		level.imagesDOM = this.makeImageList(level.images,direction="left")
+		level.videosDOM = this.makeVideoList(level.videos,direction="right")
+		# slides = levelnui.find('.slides')
+		# slides.append(level.mainDOM)
+		# for image in level.imagesDOM
+		# 	slides.append(image)
+		# for video in level.videosDOM
+		# 	slides.append(video)						
+		@ui.find('.wrapper').append(levelnui.html())
+
+	makeImage: (image, distance)=>
+		# console.log "makeImage", image
+		image = @uis.imageTmpl.cloneTemplate()
+		image.find('.image').css(
+				{
+					"left" : distance + "px",
+					"backgroundImage" : "url('/static/images/slider/joy/#{image}')",
+					"width" : @cache.windowWidth + "px",
+					"height" : @cache.windowHeight + "px"
+				}
+			)
+		# console.log "image", image.css("backgroundImage")
+		return image
+
+	makeImageList:(images,direction="right") =>
+		inverse = (direction == "left")
+		slides = []
+		for idx, image of images 
+			console.log "image", idx, image
+			distanceHorz = idx * @cache.windowWidth
+			distanceHorz = inverse * distanceHorz
+			nui = this.makeImage(image, distanceHorz)
+			# console.log "list", nui.html()
+			slides.push(nui)
+		return slides
+
+	makeVideo: (videoset, distance) =>
+		#videoset : set of videos, same video, different formats
+		nui = @uis.videoTmpl.cloneTemplate()
+		video = nui.find('video')
+		# console.log "makeVideo",videoset			
+		video.css("left", distance+ "px")			
+		video.prop('muted', true)
+		for file in videoset
+			extension = file.split('.').pop()
+			source=$('<source />').attr("src", "/static/videos/"+file)
+			source.attr("type", "video/#{extension}")
+			video.append(source)
+		# console.log "makeVideo",video.html()
+		video.on("canplaythrough", => video.removeClass "hidden")
+		return video
+
+
+
+	makeVideoList:(videos,direction="right") =>
+		inverse = (direction == "left")
+		slides = []
+		# console.log "makeVideoSlides videos", videos
+		nui = @uis.videoTmpl.cloneTemplate()
+		for idx, videoset of videos 
+			distanceHorz = idx *  @cache.windowWidth
+			distanceHorz = inverse * distanceHorz
+			nui = this.makeVideo(videoset, distanceHorz)
+			slides.push nui
+		return slides
+
+	makeMainSlide: (main) =>
+		console.log "makeMainSlides", main
+		if main.image?
+			return this.makeImage(main.Image, 0)
+		if main.video?
+			return this.makeVideo(main.video, 0)
+
+	setData: (data, e) =>	
+		# console.log "setDATA!", data
+		@cache.currentLevel="level1"
+		@cache.data = data
+		this.relayout()
+		# this.gotoStartingBlock()
+
+	gotoStartingBlock: =>
+		@currentLevel="level1"
+		#this.setSlide("main")
+
+	nextLevel: () =>
+		if @cache.currentLevel == @config.levelCount
+			return 0
+		else
+			return @cache.currentLevel + 1
+
+	previousLevel: ()=>
+		if @cache.currentLevel == 0
+			return @config.levelCount
+		else
+			return @cache.currentLevel - 1
+
+
+	bindKeys:=>
+		# for key, content of @cache.data.keys
+		# $('body').bind("key", (e, key) => 
+		# 	switch	
+		$(document.documentElement).keyup((event) => 
+			# handle cursor keys
+			if (event.keyCode == 37)
+				# go left
+				console.log "left" 
+				#$window.scrollTo				
+			else if (event.keyCode == 39)
+				# go right
+				console.log "right" 
+		)
+
+
+# class portfolio.Level extends Widget
+# 	constructor: ->
+
+# 		@UIS = {
+# 			tmpl      : ".template"
+# 		}
+
+# 		@cache = {
+# 			sequence : []
+# 			next     : null
+# 			previous : null
+# 		}
+
 Widget.bindAll()
 
 # EOF

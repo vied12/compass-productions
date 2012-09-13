@@ -252,7 +252,7 @@
             "key"       : "joy", 
             "title"     : "Joy",
             "email"     : "edou4rd@gmail.com",
-            "backgroundImage" : "bg1.jpg",
+            "backgroundImage" : "joy.png",
             "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogg"],
             "synopsis"  : {
                 "body" : "Synopsis manquant"
@@ -267,8 +267,7 @@
         {
             "key"     : "baghdad",
             "title"   : "Baghdad twist",
-            "backgroundImage" : "bg.jpg",
-            "backgroundVideos" : ["bg2.mp4"],            
+            "backgroundImage" : "nana.jpg", 
             "synopsis": {
                 "body" : "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists."
             },
@@ -282,7 +281,7 @@
         {
             "key"       : "parting",
             "title"     : "Parting Words",
-            "backgroundImage" : "bgchalet.jpg", 
+            "backgroundImage" : "nana.jpg", 
             "synopsis": {
                 "body" : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye."
             },

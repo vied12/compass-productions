@@ -463,7 +463,7 @@ body:
 
 
 
-//-------------------------- VIDEO --------------------------------
+//-------------------------- Background --------------------------------
 
 .Background, .Background > div:
 	position		: absolute
@@ -524,6 +524,36 @@ body:
 		float 				: left
 		padding 			: 10px
 		background 			: #fff
+
+.Bonus:
+	display : none
+
+	.Slider:
+		.wrapper:
+			position : absolute
+			width    : 100%
+			height   : 100%
+			top      : 0
+			left     : 0	
+			.Level,.image, video, .imageBackground :
+				position : absolute
+				width    : 100%
+				height   : 100%
+				top      : 0
+				left     : 0
+
+
+			.Level:
+				border : 20px solid #444
+
+			.top:
+				top      : -1000px
+				left     : 0  
+			.image :
+				background ->
+					repeat : no-repeat
+					image :  url('/static/images/logo.png')
+					position : top left		
 
 
 .mobile:

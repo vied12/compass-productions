@@ -1,0 +1,56 @@
+{  
+    "level1" : 
+        {   
+            "key"  : "level1",
+            "main" : 
+                { 
+                    "image":"slide1.png"
+                },                 
+            "images" : 
+                [
+                    "slide3.png",
+                    "slide4.png",
+                    "slide5.png",
+                    "slide6.png"],
+            "videos" : 
+                [
+                    ["onSodomRoad.mp4"]   
+                ],
+            "extra" : 
+                { 
+                    "image":"slide2.png"
+                },
+            "keys" :
+                {
+                    "left" :  "images", 
+                    "right" :  "videos",  
+                    "up" : "nextlevel"           
+                }
+        }, 
+    "level2" :
+        {   
+            "key"  : "level2",
+            "main" : 
+                { 
+                    "image":"slide19.png"
+                },               
+            "images" : 
+                [
+                    "slide7.png",
+                    "slide8.png",
+                    "slide9.png",
+                    "slide6.png"
+                ],
+            "videos" : 
+                [
+                    ["onSodomRoad.mp4"]   
+                ],  
+            "keys" :
+                {
+                    "left" :  "main,images,videos,nextlevel", 
+                    "right" :  "main,videos,extra,nextlevel",  
+                    "up" : "nextlevel"           
+                }
+        }      
+
+}
