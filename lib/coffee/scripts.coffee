@@ -689,7 +689,7 @@ class portfolio.Project extends Widget
 						list.find("li:not(.template)").remove()
 						for video, i in value
 							video_nui = nui.find(".template").cloneTemplate()
-							video_nui.find('img').attr("src", video.thumbnail_small)
+							video_nui.find('img').attr("src", video.thumbnail_large)
 							video_nui.find('a').attr("href", "#+item="+i)
 							list.append(video_nui)
 						# update dynamic links
