@@ -33,5 +33,5 @@
 						.wrapper
 							a.internal
 								> img.image
-								.overlay | {##}
+								.overlay | coucou
 			.next | &gt;

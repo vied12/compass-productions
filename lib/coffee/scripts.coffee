@@ -11,9 +11,9 @@
 # -----------------------------------------------------------------------------
 window.portfolio = {}
 
-Widget = window.serious.Widget
-URL    = new window.serious.URL()
-Format = window.serious.Format
+Widget   = window.serious.Widget
+URL      = new window.serious.URL()
+Format   = window.serious.format
 isMobile = window.serious.isMobile
 # -----------------------------------------------------------------------------
 #
@@ -128,12 +128,10 @@ class portfolio.Navigation extends Widget
 	
 	updatePanelMenu: =>
 		menuRoot=@uis.pageLinks.find('.menuRoot')
-		if not @panelWidget.isOpened() 
-				console.log "close"				
+		if not @panelWidget.isOpened() 		
 				@panelWidget.open()
 				menuRoot.addClass "active"	
 			else
-				console.log "open"
 				@panelWidget.hide()
 				menuRoot.removeClass "active"				
 
@@ -312,7 +310,7 @@ class portfolio.Panel extends Widget
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
-		@uis.wrapper.find('.'+Format.Capitalize(page)).addClass "show"
+		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)).addClass "show"
 		#open this panel
 		this.open()
 		#cache
@@ -722,7 +720,7 @@ class portfolio.MediaPlayer extends Widget
 		super
 		URL.onStateChanged(this.onURLStateCHanged)
 		$(window).resize(this.relayout)
-		@uis.close.click =>
+		@uis.close.click      =>
 			this.hide()
 		@uis.close.mouseenter =>
 			$('body').bind('mousemove', => 
@@ -730,17 +728,17 @@ class portfolio.MediaPlayer extends Widget
 		@uis.close.mouseleave =>
 			$('body').unbind('mousemove')
 			$('.overlay').removeClass "cursor"
-		@uis.next.click =>
+		@uis.next.click       =>
 			this.next()
-		@uis.previous.click =>
-			this.previous()		
+		@uis.previous.click   =>
+			this.previous()
 
 	relayout: =>
 		player_width_max  = $(window).width() - 100
 		player_height = @uis.panel.offset().top - 50
 		player_width  = player_height * (16/9)
 		if player_width > player_width_max
-			player_width = player_width_max
+			player_width  = player_width_max
 			player_height = player_width / (16/9)
 		@uis.player.attr({height:player_height, width:player_width})
 		@uis.playerContainer.css("width", player_width) # permit margin auto on player
@@ -749,8 +747,6 @@ class portfolio.MediaPlayer extends Widget
 		if (@cache.isShown)
 			if URL.hasChanged("item")
 					if URL.get("item")
-						page = Math.ceil((URL.get("item")/@OPTIONS.nbTiles)+0.1) - 1
-						this.setPage(page)
 						this.setMedia(URL.get("item"))
 					else
 						this.hide()
@@ -764,10 +760,9 @@ class portfolio.MediaPlayer extends Widget
 		if params.item?
 			this.show()
 			page = Math.ceil(((params.item)/@OPTIONS.nbTiles)+0.1) - 1
-			this.setPage(page)
-			this.setMedia(params.item)
+			this.setPage(page, => this.setMedia(params.item))
 
-	setPage: (page) =>
+	setPage: (page, callback) =>
 		page  = parseInt(page)
 		if (not @cache.currentPage?) or (page != @cache.currentPage)
 			start = @OPTIONS.nbTiles * page
@@ -793,6 +788,8 @@ class portfolio.MediaPlayer extends Widget
 			else
 				this.fillPanel(start)
 			@cache.currentPage = page
+			if callback?
+				callback()
 
 	fillPanel: (start=0) =>
 		if @cache.data?
@@ -802,7 +799,6 @@ class portfolio.MediaPlayer extends Widget
 					index = i + parseInt(start)
 					nui = @uis.mediaTmpl.cloneTemplate()
 					nui.find("a").attr("href", "#+item="+index)
-					# nui.find(".image").css({"background-image" : "url("+item.thumbnail+")"})
 					nui.find(".image").attr("src", item.thumbnail)
 					@uis.mediaList.append(nui)
 					if i >= @OPTIONS.nbTiles - 1
@@ -817,7 +813,7 @@ class portfolio.MediaPlayer extends Widget
 						clearInterval(interval)
 				, 50) # time between each iteration	
 				URL.enableLinks(@uis.mediaList)
-		# this.relayout()
+
 	next: =>
 		this.setPage(@cache.currentPage + 1)
 
@@ -842,10 +838,12 @@ class portfolio.MediaPlayer extends Widget
 
 	hide: =>
 		super
-		@cache.isShown = false
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"
 		URL.remove("item", true)
+		@cache.isShown     = false
+		@cache.currentPage = null
+		@cache.currentItem = null
 		# $(".PageMenu").css({left:@saveTileLeft, top:0})
 		$('body').trigger("darkness", 0.3)
 		$("body").trigger("setPanelPage",URL.get("page"))
@@ -891,11 +889,29 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 		super()
 
 	setMedia: (index) =>
-		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0")
-		# select the good thumbnail
-		index_in_page = index % @OPTIONS.nbTiles
-		$(@uis.mediaList.find("li.actual").removeClass("current")[index_in_page]).addClass("current")
 		super
+		# Autoplay
+		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
+		# select the good thumbnail
+		this.selectCurrentTile()
+
+	selectCurrentTile: =>
+		index = @cache.currentItem
+		page  = Math.ceil((index/@OPTIONS.nbTiles)+0.1) - 1
+		if page == @cache.currentPage
+			index_in_page = index % @OPTIONS.nbTiles
+			li = $(@uis.mediaList.find("li.actual").removeClass("current")[index_in_page])
+			li.addClass("current")
+			info = Format.NumberFormat.SecondToString(@cache.data[index].duration)+"<br/>"+@cache.data[index].title
+			li.find(".overlay").html(info)
+
+	fillPanel: (start=0) =>
+		super
+		this.selectCurrentTile()
+
+	hide: =>
+		super
+		@uis.player.attr("src", "")
 
 # -----------------------------------------------------------------------------
 #
