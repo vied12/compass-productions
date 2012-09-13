@@ -91,6 +91,7 @@ class portfolio.Navigation extends Widget
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
 			this.selectPageLink(menu)
+
 		else
 			this.selectPageLink(@cache.currentPage)
 		# show menu
@@ -326,7 +327,7 @@ class portfolio.Panel extends Widget
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height() - 6
 			@ui.css({top : top_offset})
-			height = $(window).height() - 218
+			height = $(window).height() - 219
 			if height > 0
 				@ui.css({height : height})
 		else
@@ -672,7 +673,7 @@ class portfolio.Project extends Widget
 								setTimeout((=> 
 									body_nui.addClass "readmoreFx"
 									this.relayout()
-									), 100)			
+									), 200)			
 						# else body is displayed alone		
 						else
 							readmoreLink.addClass "hidden"
@@ -775,6 +776,7 @@ class portfolio.MediaPlayer extends Widget
 				@uis.player.attr({height:player_height, width:player_width})
 				@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
+
 	onURLStateCHanged: =>
 		if (@cache.isShown)
 			if URL.hasChanged("item")
@@ -848,7 +850,7 @@ class portfolio.MediaPlayer extends Widget
 					if i == tiles.length
 						clearInterval(interval)
 				, 50) # time between each iteration	
-				URL.enableLinks(@uis.mediaList)
+				URL.enableLinks(@uis.mediaList)				
 
 	next: =>
 		this.setPage(@cache.currentPage + 1)
@@ -870,7 +872,11 @@ class portfolio.MediaPlayer extends Widget
 		console.log "media show"		
 		$("body").trigger("hidePanel")
 		$('body').trigger("darkness", 0.7)
-
+		@uis.playerContainer.find('img').click (e) => 
+			e.preventDefault()
+			console.log "CLICK IMAGE"			
+			this.next()
+			return false
 
 	hide: =>
 		super
