@@ -18,7 +18,7 @@ import sources.preprocessing as preprocessing
 import sources.flickr as flickr
 import sources.model as model
 import sources.vimeo as vimeo
-import os, json, flask_mail, mimetypes, re, collections
+import os, json, mimetypes, re, collections, flask_mail
 from werkzeug.contrib.cache import SimpleCache
 
 app   = Flask(__name__)
@@ -98,10 +98,12 @@ def news(id="all", sort=None):
 @app.route('/api/contact', methods=['POST'])
 def contact():
 	try:
-		message = request.args['message']
-		msg     = flask_mail.Message(message, sender="jegrandis@gmail.com", recipients=["jegrandis@gmail.com"])
+		message = request.form['message']
+		sender  = request.form['email']
+		msg     = flask_mail.Message("compass Production - contact page", body=message, sender=sender, recipients=["vied12@gmail.com"])
 		mail.send(msg)
-	except:
+	except Exception as e:
+		print e
 		abort(500)
 	return "true"
 

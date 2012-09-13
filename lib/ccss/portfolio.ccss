@@ -140,7 +140,6 @@ body:
 			&.hide:
 				opacity 	: 0
 
-
 .FooterBar:
 	position         : absolute
 	bottom           : 0
