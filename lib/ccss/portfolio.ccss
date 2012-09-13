@@ -94,8 +94,8 @@ body:
 				&.highlighted:
 					clear: both
 					background-color   : $TILE_HIGHLIGHTED_COLOR
-					width              : $TILE_WIDTH * 2 + 5
-					height             : $TILE_WIDTH * 2 + 5
+					width              : $TILE_WIDTH * 2 + 5 - 20 // padding: 20 + 2x5
+					height             : $TILE_WIDTH * 2 + 5 - 20
 					font-size          : $BIG_FONT_SIZE
 					line-height        : $BIG_LINE_HEIGHT
 					padding            : 10px
