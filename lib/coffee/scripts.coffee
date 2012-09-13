@@ -805,7 +805,7 @@ class portfolio.MediaPlayer extends Widget
 		if page >= Math.ceil((@cache.data.length / @OPTIONS.nbTiles)+0.1) - 1
 			@uis.next.opacity(0)
 
-	# show the given page, callback will be called after all the animations
+	# show the given page in navigation, callback will be called after all the animations
 	setPage: (page, callback=null) =>
 		# FIXME: check if page is realist
 		page  = parseInt(page)
@@ -827,7 +827,7 @@ class portfolio.MediaPlayer extends Widget
 						if (not nui? or nui.length < 1)
 							nui = @uis.mediaTmpl.cloneTemplate()
 							@uis.mediaList.append(nui)
-						nui.removeClass "show"
+						nui.removeClass "show hide"
 						nui.find("a").attr("href", "#+item="+index)
 						image = nui.find(".image")
 						setTimeout (=>
@@ -837,13 +837,11 @@ class portfolio.MediaPlayer extends Widget
 								image.css("background-image", "url("+item.thumbnail+")")
 							else if image.prop("tagName") == "IMG"
 								image.attr("src", item.thumbnail)
-							nui.opacity(1)
 							nui.addClass("show")
 						), 250 # fadeOut duration, time before we change the image and we fadeIn the tile
-					else # there is no more image to show, so we remove previous image with animation
+					else # there is no more image to show, so we hide previous image with animation
 						if nui?
-							nui.opacity(0)
-							setTimeout nui.remove, 250
+							nui.addClass "hide"
 					i += 1
 					if i >= @OPTIONS.nbTiles
 						URL.enableLinks(@uis.mediaList)
