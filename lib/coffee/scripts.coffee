@@ -745,12 +745,9 @@ class portfolio.MediaPlayer extends Widget
 		super
 		URL.onStateChanged(this.onURLStateCHanged)
 		$(window).resize(this.relayout)
-		@uis.close.click      =>
-			this.hide()
-		@uis.next.click       =>
-			this.next()
-		@uis.previous.click   =>
-			this.previous()
+		@uis.close.click(this.hide)
+		@uis.next.click(this.next)
+		@uis.previous.click(this.previous)
 
 	relayout: =>
 		if @cache.data? and @cache.isShown
@@ -780,6 +777,7 @@ class portfolio.MediaPlayer extends Widget
 
 	setMedia: (index) =>
 		@cache.currentItem = index
+		URL.update({item:index}, true)
 		this.relayout()		
 
 	setData: (data) =>
@@ -787,63 +785,67 @@ class portfolio.MediaPlayer extends Widget
 		if params.item?
 			this.show()
 			page = Math.ceil(((params.item)/@OPTIONS.nbTiles)+0.1) - 1
-			this.setPage(page, => this.setMedia(params.item))
+			this.setPage(page)
+			this.setMedia(params.item)
 
-	setPage: (page, callback) =>
+	toggleNavigation:  =>
+		page = @cache.currentPage
+		# hide/show navigation "< >"
+		@uis.previous.opacity(1)
+		@uis.next.opacity(1)
+		if page == 0
+			@uis.previous.opacity(0)
+		if page >= Math.ceil((@cache.data.length / @OPTIONS.nbTiles)+0.1) - 1
+			@uis.next.opacity(0)
+
+	# show the given page, callback will be called after all the animations
+	setPage: (page, callback=null) =>
+		# FIXME: check if page is realist
 		page  = parseInt(page)
 		if (not @cache.currentPage?) or (page != @cache.currentPage)
-			start = @OPTIONS.nbTiles * page
-			tiles = @uis.mediaContainer.find("li.actual")
-			# hide/show navigation "< >"
-			@uis.previous.opacity(1)
-			@uis.next.opacity(1)
-			if page == 0
-				@uis.previous.opacity(0)
-			if page >= Math.ceil((@cache.data.length / @OPTIONS.nbTiles)+0.1) - 1
-				@uis.next.opacity(0)
-			# removing Animation, one by one, fadding effect
-			i = 0
-			if tiles? and tiles.length > 0
-				interval = setInterval(=>
-					$(tiles[i]).removeClass("show")
-					i += 1
-					if i == tiles.length
-						tiles.remove()
-						this.fillPanel(start)
-						clearInterval(interval)
-				, 50) # time between each iteration
-			else
-				this.fillPanel(start)
+			start   = @OPTIONS.nbTiles * page
+			tiles   = @uis.mediaContainer.find("li.actual")
+			reverse = @cache.currentPage > page # -> effect for previous page clic
 			@cache.currentPage = page
-			if callback?
-				callback()
-
-	fillPanel: (start=0) =>
-		if @cache.data?
-			items = @cache.data[start..]
-			if items? and items.length > 0
-				for item, i in items
-					index = i + parseInt(start)
-					nui = @uis.mediaTmpl.cloneTemplate()
-					nui.find("a").attr("href", "#+item="+index)
-					image = nui.find(".image")
-					if image.prop("tagName") == "DIV"
-						image.css("background-image", "url("+item.thumbnail+")")
-					else if image.prop("tagName") == "IMG"
-						image.attr("src", item.thumbnail)
-					@uis.mediaList.append(nui)
-					if i >= @OPTIONS.nbTiles - 1
-						break
-				# Animation, one by one, fadding effect
+			# render
+			if @cache.data?
+				tiles = @uis.mediaList.find("li.actual")
 				i = 0
-				tiles = @uis.mediaContainer.find("li.actual")
-				interval = setInterval(=>
-					$(tiles[i]).addClass("show")
+				interval  = setInterval (=>
+					virtual_i = if reverse then @OPTIONS.nbTiles - 1 - i else i
+					index     = start + virtual_i
+					item      = @cache.data[index]
+					nui       = $(tiles[virtual_i])
+					if item?
+						if (not nui? or nui.length < 1)
+							nui = @uis.mediaTmpl.cloneTemplate()
+							@uis.mediaList.append(nui)
+						nui.removeClass "show"
+						nui.find("a").attr("href", "#+item="+index)
+						image = nui.find(".image")
+						setTimeout (=>
+							if this.setCurrentTileForVideo?
+								this.setCurrentTileForVideo(virtual_i, nui)
+							if image.prop("tagName") == "DIV"
+								image.css("background-image", "url("+item.thumbnail+")")
+							else if image.prop("tagName") == "IMG"
+								image.attr("src", item.thumbnail)
+							nui.opacity(1)
+							nui.addClass("show")
+						), 250 # fadeOut duration, time before we change the image and we fadeIn the tile
+					else # there is no more image to show, so we remove previous image with animation
+						if nui?
+							nui.opacity(0)
+							setTimeout nui.remove, 250
 					i += 1
-					if i == tiles.length
+					if i >= @OPTIONS.nbTiles
+						URL.enableLinks(@uis.mediaList)
+						if callback?
+							callback()
+						setTimeout((=> this.toggleNavigation()), 250)
 						clearInterval(interval)
-				, 50) # time between each iteration	
-				URL.enableLinks(@uis.mediaList)
+				), 200 # time before each tile render
+		
 
 	next: =>
 		this.setPage(@cache.currentPage + 1)
@@ -859,12 +861,11 @@ class portfolio.MediaPlayer extends Widget
 		super
 		@uis.playerContainer.removeClass "hidden"
 		@cache.isShown = true
-		# move the tile under the brand tile
-		# @saveTileLeft =  $(".PageMenu").css("left")
-		# $(".PageMenu").css({left:0, top:@saveTileLeft})
-		console.log "media show"		
+		$(".FooterPanel").addClass("hidden")
 		$("body").trigger("hidePanel")
 		$('body').trigger("darkness", 0.7)
+		@uis.next.removeClass("hidden")
+		@uis.previous.removeClass("hidden")
 
 
 	hide: =>
@@ -875,9 +876,12 @@ class portfolio.MediaPlayer extends Widget
 		@cache.isShown     = false
 		@cache.currentPage = null
 		@cache.currentItem = null
-		# $(".PageMenu").css({left:@saveTileLeft, top:0})
+		$(".Panel").show()
 		$('body').trigger("darkness", 0.3)
 		$("body").trigger("setPanelPage",URL.get("page"))
+		@uis.mediaList.find("li.actual").remove()
+		@uis.next.addClass("hidden")
+		@uis.previous.addClass("hidden")
 
 # -----------------------------------------------------------------------------
 #
@@ -912,9 +916,6 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 		# Autoplay
 		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
 		# select the good thumbnail
-		this.selectCurrentTile()
-
-	selectCurrentTile: =>
 		index = @cache.currentItem
 		page  = Math.ceil((index/@OPTIONS.nbTiles)+0.1) - 1
 		if page == @cache.currentPage
@@ -924,9 +925,17 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 			info = Format.NumberFormat.SecondToString(@cache.data[index].duration)+"<br/>"+@cache.data[index].title
 			li.find(".overlay").html(info)
 
-	fillPanel: (start=0) =>
-		super
-		this.selectCurrentTile()
+	# if index match with current page and the given nui, set the 'current' class to nui and fill the overlay
+	setCurrentTileForVideo: (index, nui) =>
+		nui.removeClass("current")
+		page_current_item  = Math.ceil((@cache.currentItem/@OPTIONS.nbTiles)+0.1) - 1
+		if @cache.currentPage == page_current_item
+			index_in_page = @cache.currentItem % @OPTIONS.nbTiles
+			if index_in_page == index
+				nui.addClass("current")
+				info = Format.NumberFormat.SecondToString(@cache.data[@cache.currentItem].duration)+"<br/>"+@cache.data[@cache.currentItem].title
+				nui.find(".overlay").html(info)
+
 
 	hide: =>
 		super
@@ -954,6 +963,13 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 			previous       : ".previous"
 		}
 
+	bindUI: (ui) =>
+		super
+		@uis.playerContainer.click =>
+			# FIXME: check if media index exist
+			this.setMedia(@cache.currentItem+1)
+			return false
+
 	setData: (data) =>
 		new_data = for d in data
 			{thumbnail:d.q, media:d.z}
@@ -963,6 +979,10 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 	setMedia: (index) =>
 		super
 		@uis.player.attr("src", @cache.data[index].media)
+
+	hide: =>
+		super
+		@uis.player.css("background-image", "")
 
 # -----------------------------------------------------------------------------
 #
