@@ -598,10 +598,6 @@ class portfolio.Project extends Widget
 
 	setData: (data) =>
 		@cache.data = data
-		# preload thumbnail
-		to_preload = for item in data
-			thumbnail
-		$.preload(to_preload)
 		# init from url
 		params = URL.get()
 		if params.project
@@ -820,8 +816,11 @@ class portfolio.MediaPlayer extends Widget
 			tiles   = @uis.mediaContainer.find("li.actual")
 			reverse = @cache.currentPage > page # -> effect for previous page clic
 			@cache.currentPage = page
-			# render
-			if @cache.data?
+			# preload thumbnail and render the page
+			thumbnail_to_preload = for _ in @cache.data[start..@OPTIONS.nbTiles - 1]
+				_.thumbnail
+			$.preload thumbnail_to_preload, =>
+				# render
 				tiles = @uis.mediaList.find("li.actual")
 				i = 0
 				interval  = setInterval (=>
@@ -835,15 +834,8 @@ class portfolio.MediaPlayer extends Widget
 							@uis.mediaList.append(nui)
 						nui.removeClass "show hide"
 						nui.find("a").attr("href", "#+item="+index)
-						image = nui.find(".image")
 						setTimeout (=>
-							if this.setCurrentTileForVideo?
-								this.setCurrentTileForVideo(virtual_i, nui)
-							if image.prop("tagName") == "DIV"
-								image.css("background-image", "url("+item.thumbnail+")")
-							else if image.prop("tagName") == "IMG"
-								image.attr("src", item.thumbnail)
-							nui.addClass("show")
+							this.setThumbnail(virtual_i, nui, item.thumbnail)
 						), 250 # fadeOut duration, time before we change the image and we fadeIn the tile
 					else # there is no more image to show, so we hide previous image with animation
 						if nui?
@@ -856,6 +848,16 @@ class portfolio.MediaPlayer extends Widget
 						setTimeout((=> this.toggleNavigation()), 250)
 						clearInterval(interval)
 				), 200 # time before each tile render
+	
+	setThumbnail: (index_in_page, nui, thumbnail_url) =>
+		image = nui.find(".image")
+		if this.setCurrentTileForVideo?
+			this.setCurrentTileForVideo(index_in_page, nui)
+		if image.prop("tagName") == "DIV"
+			image.css("background-image", "url("+thumbnail_url+")")
+		else if image.prop("tagName") == "IMG"
+			image.attr("src", thumbnail_url)
+		nui.addClass("show")
 
 	next: =>
 		this.setPage(@cache.currentPage + 1)
