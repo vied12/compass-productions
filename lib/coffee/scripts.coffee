@@ -662,7 +662,7 @@ class portfolio.Project extends Widget
 							body_nui.removeClass "hidden"							
 							body_nui.css({display:'block'})
 							readmoreLink.addClass "hidden"
-							setTimeout(=> body_nui.addClass "readmoreFx", 50)			
+							setTimeout((=> body_nui.addClass "readmoreFx"), 50)			
 					when "videos"
 						list = nui.find("ul")
 						# resets
@@ -706,7 +706,7 @@ class portfolio.Project extends Widget
 		tabs_nui.filter("[data-name="+category+"]").addClass "active"
 		tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
 		tab_nui.removeClass "hidden"		
-		setTimeout(=>tab_nui.addClass "active", 100)
+		setTimeout((=>tab_nui.addClass "active"), 100)
 		this.relayout()
 # -----------------------------------------------------------------------------
 #

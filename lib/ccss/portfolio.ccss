@@ -274,9 +274,12 @@ body:
 				.body:
 					display: none
 					opacity : 0
-					transition: opacity 1.2s ease-in-out
-					-moz-transition: opacity 1.2s ease-in-out
-					-webkit-transition: opacity 1.2s ease-in-out
+					-webkit-transition-property : "opacity"
+					-moz-transition-property    : "opacity"
+					-webkit-transition-duration : "1.6s"
+					-moz-transition-duration    : "1.6s"
+					-moz-transition-timing-function     : ease
+					-webkit-transition-timing-function  : ease	
 					&.readmoreFx:
 						opacity :1		
 			&.videos:
