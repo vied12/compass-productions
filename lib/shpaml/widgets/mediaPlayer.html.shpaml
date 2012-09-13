@@ -1,9 +1,9 @@
 
 .ImagePlayer.hidden.widget data-widget=portfolio.ImagePlayer
 	.overlay.close | {##}
-		.imagePlayer.player.hidden
-			.wrapper
-				> img
+	.imagePlayer.player.hidden
+		.wrapper
+			> img
 	.mediaPanel.disableTextSelection
 		.wrapper
 			.close.hidden
@@ -21,9 +21,9 @@
 
 .VideoPlayer.hidden.widget data-widget=portfolio.VideoPlayer
 	.overlay.close | {##}
-		.videoPlayer.player.hidden
-			.wrapper
-				iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
+	.videoPlayer.player.hidden
+		.wrapper
+			iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 	.mediaPanel.disableTextSelection
 		.wrapper
 			.close.hidden

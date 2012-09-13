@@ -751,7 +751,7 @@ class portfolio.MediaPlayer extends Widget
 
 	bindUI: (ui) =>
 		super
-		URL.onStateChanged(this.onURLStateCHanged)
+		URL.onStateChanged(this.onURLStateChanged)
 		$(window).resize(this.relayout)
 		@uis.close.click(this.hide)
 		@uis.next.click(this.next)
@@ -775,13 +775,14 @@ class portfolio.MediaPlayer extends Widget
 				@uis.player.attr({height:player_height, width:player_width})
 				@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
-	onURLStateCHanged: =>
+	onURLStateChanged: =>
 		if (@cache.isShown)
 			if URL.hasChanged("item")
 					if URL.get("item")
 						this.setMedia(URL.get("item"))
 					else
 						this.hide()
+
 
 	setMedia: (index) =>
 		@cache.currentItem = parseInt(index)
@@ -918,8 +919,11 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 
 	setMedia: (index) =>
 		super
-		# Autoplay
-		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
+		# set the right video url to the iframe
+		@uis.player.addClass("hidden").attr("src", "").attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
+		@uis.player.load =>
+			# TODO: set loading animation
+			@uis.player.removeClass("hidden")
 		# select the good thumbnail
 		index = @cache.currentItem
 		page  = Math.ceil((index/@OPTIONS.nbTiles)+0.1) - 1
@@ -986,7 +990,10 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 
 	setMedia: (index) =>
 		super
-		@uis.player.attr("src", @cache.data[index].media)
+		img = $("<img/>").attr("src", "").attr("src", @cache.data[index].media)
+		# TODO: loading animation
+		img.load =>
+			@uis.player.attr("src", @cache.data[index].media)
 
 	hide: =>
 		super
