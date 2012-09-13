@@ -371,13 +371,16 @@ body:
 		background-color : $TILE_COLOR
 		bottom : 0
 		top    : 0
-		&.cursor:hover:
+		&:hover:
 			cursor : url('/static/images/close.png'), pointer
 
 	.player:
 		margin    : 0 auto
 		top       : 31px
 		width     : 500px
+		z-index   : 10
+		&:hover:
+			cursor : pointer  
 	
 	.mediaPanel:
 		margin    : 0 auto

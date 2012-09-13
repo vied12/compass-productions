@@ -247,7 +247,6 @@ class portfolio.Background extends Widget
 		this.relayout(@uis.image)
 
 	darkness : (darklevel)=>
-		console.log "darkness",darklevel
 		@uis.darkness.css("opacity", darklevel)
 
 	followMouse : (activate=true) =>	
@@ -653,19 +652,29 @@ class portfolio.Project extends Widget
 				nui = @uis.tabContents.find("[data-name="+category+"] .wrapper")
 				switch category
 					when "synopsis"
-						synopsis_nui = nui.find('.template').cloneTemplate(value)
-						nui.append(synopsis_nui)												
-						readmoreLink = synopsis_nui.find('.readmore')
-						readmoreLink.click (e) =>
-							e.preventDefault()
-							body_nui=synopsis_nui.find('.body')
-							body_nui.removeClass "hidden"							
-							body_nui.css({display:'block'})
+						nui.find(".actual").remove()
+						synopsis_nui = nui.find('.template').cloneTemplate(value)						
+						nui.append(synopsis_nui)			
+						readmoreLink = nui.find('.readmore')
+						body_nui=nui.find('.body')		
+						# if teaser is in json, teaser is displayed with readmore link,  
+						if value.teaser?									
+							readmoreLink.click (e) =>
+								e.preventDefault()			
+								body_nui.removeClass "hidden"							
+								body_nui.css({display:'block'})
+								readmoreLink.addClass "hidden"
+								setTimeout((=> 
+									body_nui.addClass "readmoreFx"
+									this.relayout()
+									), 50)			
+						# else body is displayed alone		
+						else
 							readmoreLink.addClass "hidden"
-							setTimeout((=> 
-								body_nui.addClass "readmoreFx"
-								this.relayout()
-								), 50)			
+							body_nui.css({
+								display:'block',	
+								opacity:1
+							})
 					when "videos"
 						list = nui.find("ul")
 						# resets
@@ -738,12 +747,6 @@ class portfolio.MediaPlayer extends Widget
 		$(window).resize(this.relayout)
 		@uis.close.click      =>
 			this.hide()
-		@uis.close.mouseenter =>
-			$('body').bind('mousemove', => 
-				$('.overlay').addClass "cursor")
-		@uis.close.mouseleave =>
-			$('body').unbind('mousemove')
-			$('.overlay').removeClass "cursor"
 		@uis.next.click       =>
 			this.next()
 		@uis.previous.click   =>

@@ -240,7 +240,7 @@
             "title"     : "Nana, Goerge and me",
             "email"     : "edou4rd@gmail.com",
             "backgroundImage" : "nana.jpg",
-            "synopsis"  : "Synopsis manquant",
+            "synopsis"  : {"body" : "Synopsis manquant"},
             "credits"   : [
                 {
                     "title" : "Writer, Producer, Director",
@@ -254,7 +254,9 @@
             "email"     : "edou4rd@gmail.com",
             "backgroundImage" : "bg1.jpg",
             "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogg"],
-            "synopsis"  : "Synopsis manquant",
+            "synopsis"  : {
+                "body" : "Synopsis manquant"
+            },
             "credits"   : [
                 {
                     "title" : "Writer, Producer, Director",
@@ -267,7 +269,9 @@
             "title"   : "Baghdad twist",
             "backgroundImage" : "bg.jpg",
             "backgroundVideos" : ["bg2.mp4"],            
-            "synopsis": "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists.",
+            "synopsis": {
+                "body" : "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists."
+            },
             "credits"   : [
                 {
                     "title" : "Writer, Producer, Director",
@@ -279,7 +283,9 @@
             "key"       : "parting",
             "title"     : "Parting Words",
             "backgroundImage" : "bgchalet.jpg", 
-            "synopsis"  : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye.",
+            "synopsis": {
+                "body" : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye."
+            },
             "credits"   : [
                 {
                     "title" : "Writer, Producer, Director",
