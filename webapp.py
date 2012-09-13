@@ -34,11 +34,11 @@ cache = SimpleCache()
 # -----------------------------------------------------------------------------
 
 @app.route('/api/data')
-def data(jsonFile='portfolio.json'):
+def data():
 	# FIXME: set cache, set language
 	res = cache.get('data')
 	if res is None:
-		with open(os.path.join(app.root_path, "data", jsonFile)) as f:
+		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
 			data = json.load(f, object_pairs_hook=collections.OrderedDict)
 			# add some infos for videos
 			for work_index, work in enumerate(data.get("works", tuple())):
@@ -50,13 +50,13 @@ def data(jsonFile='portfolio.json'):
 	return res
 
 @app.route('/api/slider')
-def slider(jsonFile='slider.json'):
-	res = cache.get('data')
+def slider():
+	res = cache.get('slider')
 	if res is None:
-		with open(os.path.join(app.root_path, "data", jsonFile)) as f:
+		with open(os.path.join(app.root_path, "data", "slider.json")) as f:
 			data = json.load(f, object_pairs_hook=collections.OrderedDict)
 			res = json.dumps(data)
-			cache.set('data', res, timeout=60 * 60 * 24)
+			cache.set('slider', res, timeout=60 * 60 * 24)
 	return res
 
 @app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>')
