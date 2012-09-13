@@ -190,6 +190,9 @@ jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
 					$(this).remove()
 	return nui
 
+jQuery.fn.opacity = (int) ->
+	$(this).css({opacity:int})
+
 clone = (obj) ->
 	if not obj? or typeof obj isnt 'object'
 		return obj

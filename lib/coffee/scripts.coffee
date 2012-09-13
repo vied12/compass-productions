@@ -776,12 +776,12 @@ class portfolio.MediaPlayer extends Widget
 			start = @OPTIONS.nbTiles * page
 			tiles = @uis.mediaContainer.find("li.actual")
 			# hide/show navigation "< >"
-			@uis.previous.removeClass "hidden"
-			@uis.next.removeClass     "hidden"
+			@uis.previous.opacity(1)
+			@uis.next.opacity(1)
 			if page == 0
-				@uis.previous.addClass "hidden"
+				@uis.previous.opacity(0)
 			if page >= Math.ceil((@cache.data.length / @OPTIONS.nbTiles)+0.1) - 1
-				@uis.next.addClass "hidden"
+				@uis.next.opacity(0)
 			# removing Animation, one by one, fadding effect
 			i = 0
 			if tiles? and tiles.length > 0

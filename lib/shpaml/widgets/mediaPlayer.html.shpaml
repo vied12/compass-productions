@@ -8,14 +8,16 @@
 		.wrapper
 			.close.hidden
 				a href=# | X
-			.previous | &lt;
+			.previous
+				span | &lt;
 			.mediaContainer
 				ul
 					li.media.template
 						.wrapper
 							a.internal
 								div.image | {##}
-			.next | &gt;
+			.next
+				span | &gt;
 
 .VideoPlayer.hidden.widget data-widget=portfolio.VideoPlayer
 	.overlay.close | {##}
@@ -26,7 +28,8 @@
 		.wrapper
 			.close.hidden
 				a href=# | X
-			.previous | &lt;
+			.previous
+				span | &lt;
 			.mediaContainer
 				ul
 					li.media.template
@@ -34,4 +37,5 @@
 							a.internal
 								> img.image
 								.overlay | coucou
-			.next | &gt;
+			.next
+				span | &gt;
