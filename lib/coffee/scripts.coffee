@@ -128,12 +128,12 @@ class portfolio.Navigation extends Widget
 	
 	updatePanelMenu: =>
 		menuRoot=@uis.pageLinks.find('.menuRoot')
-		if not @panelWidget.isOpened() 		
-				@panelWidget.open()
+		if not @panelWidget.isOpened() 						
 				menuRoot.addClass "active"	
+				setTimeout( (=> @panelWidget.open()), 100)
 			else
-				@panelWidget.hide()
-				menuRoot.removeClass "active"				
+				menuRoot.removeClass "active"
+				setTimeout( (=> @panelWidget.hide()), 100)							
 
 	showPage: (page) =>
 		# set page menu (single tile)
