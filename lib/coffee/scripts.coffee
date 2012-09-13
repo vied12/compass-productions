@@ -715,7 +715,7 @@ class portfolio.Project extends Widget
 						nui.find(".actual").remove()
 						for link in value
 							link_nui = nui.find(".template").cloneTemplate(link)
-							link_nui.find('a').append(link.description)
+							link_nui.find('a').html(link.description).attr("href", link.link)
 							nui.append(link_nui)
 
 	selectTab: (category) =>
