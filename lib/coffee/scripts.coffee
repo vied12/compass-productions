@@ -658,16 +658,21 @@ class portfolio.Project extends Widget
 						readmoreLink = nui.find('.readmore')
 						body_nui=nui.find('.body')		
 						# if teaser is in json, teaser is displayed with readmore link,  
-						if value.teaser?									
+						if value.teaser?	
+							body_nui.css({
+								display:'none',	
+							})				
+							readmoreLink.removeClass "hidden"	
+							body_nui.removeClass "readmoreFx"							
 							readmoreLink.click (e) =>
 								e.preventDefault()			
 								body_nui.removeClass "hidden"							
 								body_nui.css({display:'block'})
-								readmoreLink.addClass "hidden"
+								readmoreLink.addClass "hidden"												
 								setTimeout((=> 
 									body_nui.addClass "readmoreFx"
 									this.relayout()
-									), 50)			
+									), 100)			
 						# else body is displayed alone		
 						else
 							readmoreLink.addClass "hidden"
