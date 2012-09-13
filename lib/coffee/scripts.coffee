@@ -662,7 +662,10 @@ class portfolio.Project extends Widget
 							body_nui.removeClass "hidden"							
 							body_nui.css({display:'block'})
 							readmoreLink.addClass "hidden"
-							setTimeout((=> body_nui.addClass "readmoreFx"), 50)			
+							setTimeout((=> 
+								body_nui.addClass "readmoreFx"
+								this.relayout()
+								), 50)			
 					when "videos"
 						list = nui.find("ul")
 						# resets
