@@ -433,7 +433,7 @@ class portfolio.FlickrGallery extends Widget
 			next_index = @cache.data.length	
 			@ui.find(".show_more").addClass "hidden"
 		for photo,index in @cache.data[@cache.photo_index+1..next_index]
-			this._makePhotoTile(photo, index)
+			this._makePhotoTile(photo, @cache.photo_index + 1 + index)
 		URL.enableLinks(@uis.list)
 		@cache.photo_index = next_index
 		$('body').trigger "relayoutContent"
