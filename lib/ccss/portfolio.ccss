@@ -189,6 +189,13 @@ body:
 			line-height : $SMALL_LINE_HEIGHT
 			margin-left: $BASE_PADDING	
 			overflow : auto
+			opacity : 0
+			-webkit-transition-property : "opacity"
+			-moz-transition-property    : "opacity"
+			-webkit-transition-duration : "0.8s"
+			-moz-transition-duration    : "0.8s"
+			-moz-transition-timing-function     : ease
+			-webkit-transition-timing-function  : ease		
 			.maxWidth :
 				width : 88%
 			h2:
@@ -198,6 +205,8 @@ body:
 				font-size : $BIG_FONT_SIZE
 				line-height : $BIG_LINE_HEIGHT	
 				margin-top : -10px
+			&.active,&.show:					
+				opacity : 1			
 		.page:
 			display : none
 			padding: $BASE_PADDING * 5  $BASE_PADDING *2	
@@ -261,6 +270,15 @@ body:
 		&.page:
 			padding-top:20px
 		.content:
+			&.synopsis:
+				.body:
+					display: none
+					opacity : 0
+					transition: opacity 1.2s ease-in-out
+					-moz-transition: opacity 1.2s ease-in-out
+					-webkit-transition: opacity 1.2s ease-in-out
+					&.readmoreFx:
+						opacity :1		
 			&.videos:
 				li.video.actual:
 					padding-left : 85px

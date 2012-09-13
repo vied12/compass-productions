@@ -9,7 +9,10 @@
 				.contents
 					.content.synopsis  data-name="synopsis"
 						.wrapper.maxWidth
-							p.fat.out | {##}
+							.synopsis.template
+								p.teaser.fat.out | {##}
+								a.readmore.button.out | Read more
+								p.body.out | {##}	
 					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
 							ul.photos.mediaGallery

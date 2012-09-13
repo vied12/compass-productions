@@ -306,15 +306,18 @@ class portfolio.Panel extends Widget
 			this.hide()
 		return this	
 
-	goto: (page) =>
+	goto: (page) =>		
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
 		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)).addClass "show"
+		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)+' .content').addClass "active"
 		#open this panel
 		this.open()
 		#cache
 		@cache.currentPage = page
+		
+		#@uis.wrapper.find('[data-name='+page+'] .content').addClass "active"
 
 	relayout: (open) =>
 		@cache.isOpened = open
@@ -650,8 +653,16 @@ class portfolio.Project extends Widget
 				nui = @uis.tabContents.find("[data-name="+category+"] .wrapper")
 				switch category
 					when "synopsis"
-						readmore_nui = nui.find(".readmore").cloneTemplate()
-						nui.find('p').html(value)						
+						synopsis_nui = nui.find('.template').cloneTemplate(value)
+						nui.append(synopsis_nui)												
+						readmoreLink = synopsis_nui.find('.readmore')
+						readmoreLink.click (e) =>
+							e.preventDefault()
+							body_nui=synopsis_nui.find('.body')
+							body_nui.removeClass "hidden"							
+							body_nui.css({display:'block'})
+							readmoreLink.addClass "hidden"
+							setTimeout(=> body_nui.addClass "readmoreFx", 50)			
 					when "videos"
 						list = nui.find("ul")
 						# resets
@@ -688,13 +699,15 @@ class portfolio.Project extends Widget
 							nui.append(link_nui)
 
 	selectTab: (category) =>
-		tab_nui = @uis.tabContents.find("[data-name="+category+"]")
+		@uis.tabContent.removeClass "active"
+		@uis.tabContent.removeClass "show"
 		@uis.tabContent.addClass "hidden"
-		tab_nui.removeClass "hidden"
 		tabs_nui = @uis.tabs.find("li").removeClass "active"
-		@uis.tabs.find("[data-name="+category+"]").addClass "active"
+		tabs_nui.filter("[data-name="+category+"]").addClass "active"
+		tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
+		tab_nui.removeClass "hidden"		
+		setTimeout(=>tab_nui.addClass "active", 100)
 		this.relayout()
-
 # -----------------------------------------------------------------------------
 #
 # MEDIA PLAYER
