@@ -329,7 +329,7 @@ class portfolio.Panel extends Widget
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height() - 6
 			@ui.css({top : top_offset})
-			height = $(window).height() - 219
+			height = $(window).height() - 218
 			if height > 0
 				@ui.css({height : height})
 		else
