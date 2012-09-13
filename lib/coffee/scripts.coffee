@@ -512,8 +512,9 @@ class portfolio.Contact extends Widget
 			e.preventDefault()
 		)
 		@uis.buttonSend.click((e) =>
-			e.preventDefault()
 			this.sendMessage()
+			e.preventDefault()
+			return false
 		)
 		$('body').bind('currentPage',(e,page) => 
 			if page=="contact"
