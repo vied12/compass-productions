@@ -382,7 +382,7 @@ body:
 							margin : 4px 18px
 							position : relative
 							.overlay:
-								visibility:hidden
+								visibility       : hidden
 								height           : 65px
 								top              : 0
 								position         : absolute

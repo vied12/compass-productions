@@ -723,14 +723,22 @@ class portfolio.MediaPlayer extends Widget
 			this.previous()
 
 	relayout: =>
-		player_width_max  = $(window).width() - 100
-		player_height = @uis.panel.offset().top - 50
-		player_width  = player_height * (16/9)
-		if player_width > player_width_max
-			player_width  = player_width_max
-			player_height = player_width / (16/9)
-		@uis.player.attr({height:player_height, width:player_width})
-		@uis.playerContainer.css("width", player_width) # permit margin auto on player
+		if @cache.data? and @cache.isShown
+			ratio = @cache.data[@cache.currentItem].ratio
+			if (not ratio?)
+				img = $("<img>").attr("src", @cache.data[@cache.currentItem].media)
+				img.load (e) =>
+					ratio = @cache.data[@cache.currentItem].ratio = e.currentTarget.width/e.currentTarget.height
+					return this.relayout()
+			else
+				player_width_max  = $(window).width() - 100
+				player_height = @uis.panel.offset().top - 50
+				player_width  = player_height * ratio
+				if player_width > player_width_max
+					player_width  = player_width_max
+					player_height = player_width / ratio
+				@uis.player.attr({height:player_height, width:player_width})
+				@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
 	onURLStateCHanged: =>
 		if (@cache.isShown)
@@ -761,7 +769,7 @@ class portfolio.MediaPlayer extends Widget
 			@uis.next.removeClass     "hidden"
 			if page == 0
 				@uis.previous.addClass "hidden"
-			if page >= Math.ceil(@cache.data.length / @OPTIONS.nbTiles) - 1
+			if page >= Math.ceil((@cache.data.length / @OPTIONS.nbTiles)+0.1) - 1
 				@uis.next.addClass "hidden"
 			# removing Animation, one by one, fadding effect
 			i = 0
@@ -788,7 +796,11 @@ class portfolio.MediaPlayer extends Widget
 					index = i + parseInt(start)
 					nui = @uis.mediaTmpl.cloneTemplate()
 					nui.find("a").attr("href", "#+item="+index)
-					nui.find(".image").attr("src", item.thumbnail)
+					image = nui.find(".image")
+					if image.prop("tagName") == "DIV"
+						image.css("background-image", "url("+item.thumbnail+")")
+					else if image.prop("tagName") == "IMG"
+						image.attr("src", item.thumbnail)
 					@uis.mediaList.append(nui)
 					if i >= @OPTIONS.nbTiles - 1
 						break
@@ -855,18 +867,6 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 			previous       : ".previous"
 		}
 
-	relayout: =>
-		if @cache.data? and @cache.isShown
-			ratio = @cache.data[@cache.currentItem].ratio
-			player_width_max  = $(window).width() - 100
-			player_height = @uis.panel.offset().top - 50
-			player_width  = player_height * ratio
-			if player_width > player_width_max
-				player_width = player_width_max
-				player_height = player_width / ratio
-			@uis.player.attr({height:player_height, width:player_width})
-			@uis.playerContainer.css("width", player_width) # permit margin auto on player
-
 	setData: (data) =>
 		new_data = for d in data
 			{thumbnail:d.thumbnail_small, media:d.id, ratio:d.width/d.height, duration:d.duration, title:d.title}
@@ -927,6 +927,7 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 		super()
 
 	setMedia: (index) =>
+		super
 		@uis.player.attr("src", @cache.data[index].media)
 
 # -----------------------------------------------------------------------------
