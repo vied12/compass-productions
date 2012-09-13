@@ -773,7 +773,6 @@ class portfolio.MediaPlayer extends Widget
 				@uis.player.attr({height:player_height, width:player_width})
 				@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
-
 	onURLStateCHanged: =>
 		if (@cache.isShown)
 			if URL.hasChanged("item")
@@ -783,7 +782,7 @@ class portfolio.MediaPlayer extends Widget
 						this.hide()
 
 	setMedia: (index) =>
-		@cache.currentItem = index
+		@cache.currentItem = parseInt(index)
 		URL.update({item:index}, true)
 		this.relayout()		
 
@@ -807,8 +806,9 @@ class portfolio.MediaPlayer extends Widget
 
 	# show the given page in navigation, callback will be called after all the animations
 	setPage: (page, callback=null) =>
-		# FIXME: check if page is realist
 		page  = parseInt(page)
+		if page > @cache.data.length/@OPTIONS.nbTiles or page < 0 # limit of page
+			return false
 		if (not @cache.currentPage?) or (page != @cache.currentPage)
 			start   = @OPTIONS.nbTiles * page
 			tiles   = @uis.mediaContainer.find("li.actual")
@@ -939,7 +939,6 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 				info = Format.NumberFormat.SecondToString(@cache.data[@cache.currentItem].duration)+"<br/>"+@cache.data[@cache.currentItem].title
 				nui.find(".overlay").html(info)
 
-
 	hide: =>
 		super
 		@uis.player.attr("src", "")
@@ -968,9 +967,13 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 
 	bindUI: (ui) =>
 		super
-		@uis.playerContainer.click =>
-			# FIXME: check if media index exist
-			this.setMedia(@cache.currentItem+1)
+		@uis.playerContainer.click (e) =>
+			new_item = @cache.currentItem+1
+			if new_item < @cache.data.length
+				this.setMedia(new_item)
+			else
+				this.hide()
+			e.preventDefault()
 			return false
 
 	setData: (data) =>
