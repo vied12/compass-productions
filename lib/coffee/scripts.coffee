@@ -69,10 +69,11 @@ class portfolio.Navigation extends Widget
 				menu = URL.get("menu")
 				if menu
 					this.showMenu(menu)
-			if URL.hasChanged("page")
-				page = URL.get("page")
+			if URL.hasChanged("page")				
+				page = URL.get("page")				
 				if page
 					this.showPage(page)
+					$('body').trigger("currentPage", page)
 		)
 		# init from url
 		params = URL.get()
@@ -198,6 +199,7 @@ class portfolio.Background extends Widget
 				this.video(data.split(","))	
 		$('body').bind("setNoVideo", => this.removeVideo())
 		$('body').bind("setImage", (e, filename) => this.image(filename))
+		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
 		return this	
 
 	relayout: =>
@@ -245,8 +247,8 @@ class portfolio.Background extends Widget
 		this.relayout(@uis.image)
 
 	darkness : (darklevel)=>
+		console.log "darkness",darklevel
 		@uis.darkness.css("opacity", darklevel)
-
 
 	followMouse : (activate=true) =>	
 		if(activate)
@@ -300,7 +302,7 @@ class portfolio.Panel extends Widget
 		$(window).resize(=>(this.relayout(@cache.isOpened)))		
 		@uis.close.click (e)=>
 			e.preventDefault()
-			Widget.ensureWidget(".Navigation").updatePanelMenu()
+			Widget.ensureWidget(".Navigation").updatePanelMenu()			
 			this.hide()
 		return this	
 
@@ -377,7 +379,7 @@ class portfolio.FlickrGallery extends Widget
 
 	bindUI: (ui) =>
 		super
-		@imagePlayer = Widget.ensureWidget(".ImagePlayer")
+		@imagePlayer = Widget.ensureWidget(".ImagePlayer")		
 		return this
 		
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z", {dataType: 'json', success : this.setData})
@@ -508,6 +510,10 @@ class portfolio.Contact extends Widget
 			e.preventDefault()
 			this.sendMessage()
 		)
+		$('body').bind('currentPage',(e,page) => 
+			if page=="contact"
+				this.showMain()
+		)
 		$('body').bind('relayoutContent', this.relayout)
 		return this
 
@@ -519,6 +525,10 @@ class portfolio.Contact extends Widget
 			messageHeight = @CONFIG.minMessageHeight
 		@uis.message.css({height:messageHeight})
 
+	showMain: =>
+		@uis.form.addClass "hidden"
+		@uis.main.removeClass "hidden"
+		this.relayout()
 
 	showForm: =>
 		@uis.form.removeClass "hidden"
@@ -640,7 +650,8 @@ class portfolio.Project extends Widget
 				nui = @uis.tabContents.find("[data-name="+category+"] .wrapper")
 				switch category
 					when "synopsis"
-						nui.find('p').html(value)
+						readmore_nui = nui.find(".readmore").cloneTemplate()
+						nui.find('p').html(value)						
 					when "videos"
 						list = nui.find("ul")
 						# resets
@@ -750,7 +761,7 @@ class portfolio.MediaPlayer extends Widget
 
 	setMedia: (index) =>
 		@cache.currentItem = index
-		this.relayout()
+		this.relayout()		
 
 	setData: (data) =>
 		params = URL.get()
@@ -832,7 +843,10 @@ class portfolio.MediaPlayer extends Widget
 		# move the tile under the brand tile
 		# @saveTileLeft =  $(".PageMenu").css("left")
 		# $(".PageMenu").css({left:0, top:@saveTileLeft})
+		console.log "media show"		
 		$("body").trigger("hidePanel")
+		$('body').trigger("darkness", 0.7)
+
 
 	hide: =>
 		super
@@ -843,6 +857,7 @@ class portfolio.MediaPlayer extends Widget
 		@cache.currentPage = null
 		@cache.currentItem = null
 		# $(".PageMenu").css({left:@saveTileLeft, top:0})
+		$('body').trigger("darkness", 0.3)
 		$("body").trigger("setPanelPage",URL.get("page"))
 
 # -----------------------------------------------------------------------------
