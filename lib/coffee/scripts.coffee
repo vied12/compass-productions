@@ -53,12 +53,12 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		@background.image("devilmain.jpg")
+		@background.image("bg1.jpg")
 		@background.darkness(0)
 
 		waiter = $('body').find(".waiter").cloneTemplate()
 		line = waiter.find('.line')
-		@ui.prepend waiter
+		#@ui.prepend waiter
 		setInterval( => 
 				line.addClass "spread"
 				setTimeout( (=> line.removeClass("spread")), 1000)
@@ -669,7 +669,6 @@ class portfolio.Project extends Widget
 						nui.find(".actual").remove()
 						synopsis_nui = nui.find('.template').cloneTemplate(value)						
 						nui.append(synopsis_nui)	
-						console.log "value", value, synopsis_nui.find('.body').html() 		
 						readmoreLink = nui.find('.readmore')
 						body_nui=nui.find('.actual .body')	
 						body_nui.html(body_nui.text().replace(/\n/g, "<br />"))					

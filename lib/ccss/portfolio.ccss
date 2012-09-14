@@ -330,8 +330,7 @@ body:
 			&.screenings,&.credits:
 			 	.screening, .credit :
 			 		clear : both			
-			 		margin :  0px 20px 0px 10px  
-			 		//border-bottom : 1px solid #222
+			 		margin :  0px 20px 0px 10px
 			 		padding : 0 0
 			 	.screening :
 			 	 	padding : $BASE_PADDING
@@ -350,6 +349,10 @@ body:
 						margin : 10px 20px 10px 10px
 						//border-right : 1px solid #fff<
 						padding: 4px 20px 4px 0
+
+	.Contact:
+		.toContactForm,.email:
+			margin-top : 30px
 		form:
 			.formElement:
 				position : relative
