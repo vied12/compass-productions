@@ -110,6 +110,8 @@ body:
 				float              : left
 				> .wrapper:
 					padding : 10px
+				h2:
+					font-size : 1.0em
 				&.show:
 					opacity : 1
 				&.highlighted:
