@@ -239,7 +239,7 @@ class portfolio.Background extends Widget
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
 		#use image's widget give better control on relayoupropting than poster attribute of <video>		
-		@ui.find('.actual').remove()
+		@ui.find('.actual').addClass('.oldsoon')
 		newVideo = @uis.video.cloneTemplate().addClass "hidden"
 		newVideo.prop('muted', true)
 		for file in data
@@ -249,7 +249,10 @@ class portfolio.Background extends Widget
 			newVideo.append(source)
 		if @CACHE.image != null
 		 	newVideo.attr("poster", imageUrl+@CACHE.image)
-		newVideo.on("canplaythrough", => newVideo.removeClass "hidden")
+		newVideo.on("canplaythrough", => 
+			@ui.find('.oldsoon').remove()
+			newVideo.removeClass "hidden"
+		)
 		@uis.video.after(newVideo)
 
 	image: (filename) =>
@@ -641,10 +644,11 @@ class portfolio.Project extends Widget
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
-		if project_obj.backgroundImage
-			$('body').trigger("setImage", project_obj.backgroundImage)	
+
 		if project_obj.backgroundVideos
 			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
+		else if project_obj.backgroundImage
+			$('body').trigger("setImage", project_obj.backgroundImage)				
 		else
 			$('body').trigger("setNoVideo")
 

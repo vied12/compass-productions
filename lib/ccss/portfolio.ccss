@@ -41,7 +41,7 @@ MAX_WIDTH = 1024px
 	font-family: "Livory", Verdana, sans-serif	
 	line-height: $SMALL_LINE_HEIGHT
 body:
-	background-color 	: grey
+	background-color 	: black
 	background-size 	: cover
 	background-repeat 	: no-repeat
 	-webkit-background-size: cover
