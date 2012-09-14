@@ -29,9 +29,13 @@ class Widget
 			return ui[0]._widget
 		else
 			widget_class = Widget.getWidgetClass(ui)
-			widget = new widget_class()
-			widget.bindUI(ui)
-			return widget
+			if widget_class?
+				widget = new widget_class()
+				widget.bindUI(ui)
+				return widget
+			else
+				console.warn("widget not found for", ui)
+				return null
 
 	@getWidgetClass = (ui) ->
 		return eval("(" + $(ui).attr("data-widget") + ")")
