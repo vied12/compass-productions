@@ -25,6 +25,8 @@
 				.wrapper | Joy
 			.tile.nav data-target="nana"
 				.wrapper | Nana, goerge & me
+			.tile.nav data-target="longueur"
+				.wrapper | The Length of the Alphabet		
 		.PageMenu.menu.hidden data-menu="page" | {##}
 		.clear | {##}
 
