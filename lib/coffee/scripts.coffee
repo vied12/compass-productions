@@ -1023,11 +1023,12 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 
 	setMedia: (index) =>
 		super
-		img = $("<img/>").attr("src", "").attr("src", @cache.data[index].media)
+		img = $("<img/>").attr("src", @cache.data[index].media)
+		@uis.player.addClass("hidden")
 		@uis.waiter.removeClass("hidden")
 		img.load =>
 			@uis.waiter.addClass("hidden")
-			@uis.player.attr("src", @cache.data[index].media)
+			@uis.player.attr("src", @cache.data[index].media).removeClass("hidden")
 
 	hide: =>
 		super
