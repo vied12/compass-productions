@@ -668,16 +668,22 @@ class portfolio.Project extends Widget
 					when "synopsis"
 						nui.find(".actual").remove()
 						synopsis_nui = nui.find('.template').cloneTemplate(value)						
-						nui.append(synopsis_nui)			
+						nui.append(synopsis_nui)	
+						console.log "value", value, synopsis_nui.find('.body').html() 		
 						readmoreLink = nui.find('.readmore')
-						body_nui=nui.find('.body')		
+						body_nui=nui.find('.actual .body')	
+						body_nui.html(body_nui.text().replace(/\n/g, "<br />"))					
 						# if teaser is in json, teaser is displayed with readmore link,  
 						if value.teaser?	
 							body_nui.css({
 								display:'none',	
 							})				
 							readmoreLink.removeClass "hidden"	
-							body_nui.removeClass "readmoreFx"							
+							body_nui.removeClass "readmoreFx"
+							$('body').bind('readmore.init', => 
+								body_nui.css("display":"none")
+								readmoreLink.removeClass "hidden"
+							)					
 							readmoreLink.click (e) =>
 								e.preventDefault()			
 								body_nui.removeClass "hidden"							
@@ -732,15 +738,15 @@ class portfolio.Project extends Widget
 	selectTab: (category) =>
 		@uis.tabContent.removeClass "active"
 		@uis.tabContent.removeClass "show"
-		@uis.tabContent.addClass "hidden"
+		@uis.tabContent.addClass "hidden"		
 		tabs_nui = @uis.tabs.find("li").removeClass "active"
 		tabs_nui.filter("[data-name="+category+"]").addClass "active"
 		tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
 		tab_nui.removeClass "hidden"		
 		setTimeout((=>tab_nui.addClass "active"), 100)
+		$('body').trigger "readmore.init"
 		this.relayout()
 # -----------------------------------------------------------------------------
-#
 # MEDIA PLAYER
 #
 # -----------------------------------------------------------------------------	
