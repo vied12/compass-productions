@@ -13,7 +13,7 @@
 			.tile.highlighted data-target="joy"
 				.wrapper 
 					h2 | Joy
-					this is our last movie, get a look!
+					A new movie
 		.Works.menu.column-template.hidden data-menu="works"
 			.tile.nav data-target="parting"
 				.wrapper | Parting words
