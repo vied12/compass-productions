@@ -5,7 +5,7 @@ TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR              = "rgba(0,0,0,0.7)"
-TILE_HIGHLIGHTED_COLOR  = "rgba(120,60,50,0.7)"
+TILE_HIGHLIGHTED_COLOR  = "rgba(51,51,77,0.7)"
 PANEL_COLOR_DARK        = "rgba(0,0,0,0.7)"
 PANEL_COLOR_BLUE	    = "rgba(51,51,77,0.7)"
 BASE_PADDING = 10px
@@ -117,8 +117,6 @@ body:
 					background-color   : $TILE_HIGHLIGHTED_COLOR
 					width              : $TILE_WIDTH * 2 + 5 - 20 // padding: 20 + 2x5
 					height             : $TILE_WIDTH * 2 + 5 - 20
-					font-size          : $BIG_FONT_SIZE
-					line-height        : $BIG_LINE_HEIGHT
 					padding            : 10px
 				&.brand:
 					margin : 3px 5px 3px 3px 
@@ -135,7 +133,7 @@ body:
 			opacity 		: 1
 			position        : absolute		
 			bottom 			: 8px
-			z-index 		: 10w
+			z-index 		: 3
 			.wrapper:
 				max-width : $MAX_WIDTH
 				left 			: 16px

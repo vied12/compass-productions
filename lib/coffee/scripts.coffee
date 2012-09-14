@@ -683,15 +683,16 @@ class portfolio.Project extends Widget
 								body_nui.css("display":"none")
 								readmoreLink.removeClass "hidden"
 							)					
-							readmoreLink.click (e) =>
+							readmoreLink.click((e) =>
 								e.preventDefault()			
 								body_nui.removeClass "hidden"							
-								body_nui.css({display:'block'})
-								readmoreLink.addClass "hidden"												
+								body_nui.css({display:'block'})											
+								readmoreLink.addClass "hidden"
 								setTimeout((=> 
 									body_nui.addClass "readmoreFx"
 									this.relayout()
-									), 200)			
+									), 200)	
+							)
 						# else body is displayed alone		
 						else
 							readmoreLink.addClass "hidden"
