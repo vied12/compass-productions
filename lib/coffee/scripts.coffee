@@ -55,6 +55,15 @@ class portfolio.Navigation extends Widget
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("devilmain.jpg")
 		@background.darkness(0)
+
+		waiter = $('body').find(".waiter").cloneTemplate()
+		line = waiter.find('.line')
+		@ui.prepend waiter
+		setInterval( => 
+				line.addClass "spread"
+				setTimeout( (=> line.removeClass("spread")), 1000)
+			, 2000)
+
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
 		#if isMobile.any()
@@ -337,6 +346,7 @@ class portfolio.Panel extends Widget
 			@ui.css({top : top_offset})
 
 		setTimeout((=>$('body').trigger("relayoutContent")), 100)
+
 
 	hide: =>
 		@cache.isOpened = false
@@ -1045,26 +1055,27 @@ class portfolio.Slider extends Widget
 		@config = {
 			levelCount : 5
 		}
-		@cache = {
-			
+		@cache = {			
 			data : null
 			currentLevel : "level1"
 			currentSlide : null
-			onLeft : []
-			onRight : []
-			onTop : []
-			onBottom : []
-			levels : []
+			# onLeft : []
+			# onRight : []
+			# onTop : []
+			# onBottom : []
+			# levels : []
 			windowWidth : null
 			windowHeight : null
 		}
 
 	bindUI: (ui) =>
 		super
-		# $.ajax("/api/slider", {dataType: 'json', success : this.setData})		
-		#$('.Index,.Background').remove()
+		# $('.Index,.Background').remove()
 		# @cache.windowWidth = $('window').width()
 		# @cache.windowHeight = $('window').height()
+		# console.log "CACHE"	
+		# console.log "CACHE height", @cache.windowHeight		
+		# $.ajax("/api/slider", {dataType: 'json', success : this.setData})		
 		# this.bindKeys()
 		return this
 
@@ -1085,8 +1096,6 @@ class portfolio.Slider extends Widget
 		# @cache.onBottom = @cache.data[this.previousLevel()].main
 		# bottomHTML = this.html(@cache.onBottom)
 		# this.setSlide("main",bottomHTML,"bottom")
-		
-
 		for levelName, levelObj of @cache.data
 			console.log "level", levelName, levelObj
 			this.buildLevel(levelObj)
@@ -1097,37 +1106,46 @@ class portfolio.Slider extends Widget
 		level.mainDOM = this.makeMainSlide(level.main)
 		level.imagesDOM = this.makeImageList(level.images,direction="left")
 		level.videosDOM = this.makeVideoList(level.videos,direction="right")
-		# slides = levelnui.find('.slides')
-		# slides.append(level.mainDOM)
-		# for image in level.imagesDOM
-		# 	slides.append(image)
-		# for video in level.videosDOM
-		# 	slides.append(video)						
+		slides = levelnui.find('.slides')
+		slides.append(level.mainDOM)
+		for image in level.imagesDOM
+			slides.append(image)
+		for video in level.videosDOM
+			slides.append(video)						
 		@ui.find('.wrapper').append(levelnui.html())
 
 	makeImage: (image, distance)=>
-		# console.log "makeImage", image
-		image = @uis.imageTmpl.cloneTemplate()
-		image.find('.image').css(
-				{
-					"left" : distance + "px",
-					"backgroundImage" : "url('/static/images/slider/joy/#{image}')",
-					"width" : @cache.windowWidth + "px",
-					"height" : @cache.windowHeight + "px"
-				}
-			)
-		# console.log "image", image.css("backgroundImage")
-		return image
+		console.log "makeImage distance", distance
+		if image?
+			console.log "makeImage", image, typeof(image)
+			nui = @uis.imageTmpl.cloneTemplate()
+			nui.find('.image').css(
+					{
+						"left" : distance + "px",
+						"backgroundImage" : "url('/static/images/slider/joy/#{image}')",
+						"width" : @cache.windowWidth + "px",
+						"height" : @cache.windowHeight + "px"
+					}
+				)
+			#console.log "image", nui.find('.image').css("backgroundImage")
+			return nui
 
 	makeImageList:(images,direction="right") =>
+		if not @cache.windowWidth?
+			@cache.windowWidth = $(window).width()
+		if not @cache.windowHeight?
+			@cache.windowWidth = $(window).width()			
 		inverse = (direction == "left")
 		slides = []
 		for idx, image of images 
-			console.log "image", idx, image
+			idx = parseInt(idx)
+			console.log "image", typeof(idx), image, 
 			distanceHorz = idx * @cache.windowWidth
+			console.log "distanceHorz1", distanceHorz
 			distanceHorz = inverse * distanceHorz
+			console.log "distanceHorz", distanceHorz
 			nui = this.makeImage(image, distanceHorz)
-			# console.log "list", nui.html()
+			console.log "list", nui.html()
 			slides.push(nui)
 		return slides
 

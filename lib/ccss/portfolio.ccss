@@ -61,6 +61,27 @@ body:
 		-ms-user-select 		: none      
 		user-select 			: none
 
+.waiter:
+	.line:
+		height : 2px
+		width : 0%
+		background-color : #fff
+		border-radius : 2px
+		max-width : 200px
+		-webkit-transition-property : width, height
+		-moz-transition-property    : width, height
+		-webkit-transition-duration : 8s
+		-moz-transition-duration    : 8s
+		-moz-transition-timing-function     : ease
+		-webkit-transition-timing-function  : ease
+		margin:auto
+		text-align : center
+		z-index : 12
+		&.spread:
+			height: 2px
+			width : 100%
+				
+
 .Index:
 	color   : $TEXT_COLOR
 	padding : 20px 0 0 0px
@@ -114,7 +135,7 @@ body:
 			opacity 		: 1
 			position        : absolute		
 			bottom 			: 8px
-			z-index 		: 10
+			z-index 		: 10w
 			.wrapper:
 				max-width : $MAX_WIDTH
 				left 			: 16px
@@ -304,8 +325,14 @@ body:
 					height          : 130px 
 					padding 		: $BASE_PADDING
 					font-size       : 0.8em
-			$.screening, $.credit:
-				clear : both
+			&.screenings,&.credits:
+			 	.screening, .credit :
+			 		clear : both			
+			 		margin :  0px 20px 0px 10px  
+			 		//border-bottom : 1px solid #222
+			 		padding : 0 0
+			 	.screening :
+			 	 	padding : $BASE_PADDING
 				p:
 					display: inline-block
 					vertical-align : top
@@ -318,11 +345,9 @@ body:
 					&.date:
 						float : left
 						width : 30%
-						margin-right : 10px
-
-	.Contact:
-		.toContactForm,.email:
-			margin-top : 30px
+						margin : 10px 20px 10px 10px
+						//border-right : 1px solid #fff<
+						padding: 4px 20px 4px 0
 		form:
 			.formElement:
 				position : relative

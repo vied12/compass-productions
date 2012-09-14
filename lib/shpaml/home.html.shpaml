@@ -2,7 +2,7 @@
 
 {% block content %}
 .wrap
-	{% include "widgets/background.html" %}
+	{% include "widgets/background.html" %}	
 	.Index.page.use-base		
 		.FooterBar
 			.wrapper 
@@ -11,6 +11,10 @@
 		{% include "widgets/navigation.html" %}
 		{% include "widgets/mediaPlayer.html" %}
 		{% include "widgets/panel.html" %}
+
 	.Bonus.page.use-base
 		{% include "widgets/slider.html" %}
+
+	.waiter.template.hidden
+		.line | {##}
 {% endblock %}
