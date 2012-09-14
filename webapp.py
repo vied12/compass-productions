@@ -12,7 +12,7 @@
 # Last mod : 05-Aug-2012
 # -----------------------------------------------------------------------------
 
-from flask import Flask, render_template, request, send_file, Response, abort
+from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
 from flaskext.babel import Babel
 import sources.preprocessing as preprocessing
 import sources.flickr as flickr
@@ -122,6 +122,26 @@ def video(video):
 @app.route('/')
 def index():
 	return render_template('home.html')
+
+@app.route('/admin', methods=['GET'])
+def admin():
+	if "authenticated" in session:
+		return render_template('admin.html')
+	else:
+		return redirect(url_for('authenticate'))
+
+
+@app.route('/authenticate', methods=['GET', 'POST'])
+def authenticate():
+	if request.method == 'POST' and request.form["password"] == app.config["ADMIN_PASSWORD"]:
+		session['authenticated'] = True
+		return redirect(url_for('admin'))
+	return render_template('auth.html')
+
+@app.route('/logout')
+def logout():
+	session.pop('authenticated', None)
+	return redirect(url_for('admin'))
 
 # -----------------------------------------------------------------------------
 #

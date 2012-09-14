@@ -182,6 +182,7 @@ jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
 	nui = nui.removeClass("template hidden").addClass("actual")
 	if typeof(dict) == "object"
 		for klass, value of dict
+			console.log(klass, value)
 			if value != null
 				nui.find(".out."+klass).html(value)
 		if removeUnusedField
