@@ -672,7 +672,7 @@ class portfolio.Project extends Widget
 					when "synopsis"
 						nui.find(".actual").remove()
 						synopsis_nui = nui.find('.template').cloneTemplate(value)						
-						nui.append(synopsis_nui)	
+						nui.append(synopsis_nui)
 						readmoreLink = nui.find('.readmore')
 						body_nui=nui.find('.actual .body')	
 						body_nui.html(body_nui.text().replace(/\n/g, "<br />"))					
@@ -709,7 +709,10 @@ class portfolio.Project extends Widget
 						# resets
 						list.find("li:not(.template)").remove()
 						for video, i in value
-							video_nui = nui.find(".template").cloneTemplate()
+							video_nui = nui.find(".template").cloneTemplate({
+								duration : Format.NumberFormat.SecondToString(video.duration)
+								title    : video.title
+							})
 							video_nui.find('img').attr("src", video.thumbnail_large)
 							video_nui.find('a').attr("href", "#+item="+i)
 							list.append(video_nui)

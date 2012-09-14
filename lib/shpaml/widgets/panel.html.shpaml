@@ -24,6 +24,8 @@
 								li.video.template
 									a.internal href="#"
 										> img.videoThumb
+									.title.out | {##}
+									.duration.out | {##}
 					.content.screenings.condensed data-name="screenings" | {##}
 						.wrapper.maxWidth
 							.screening.template

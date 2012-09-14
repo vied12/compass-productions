@@ -16,7 +16,7 @@ import os, sys, subprocess, shpaml, clevercss, shutil
 def preprocess(app, request):
 	@app.before_request
 	def render():
-		if request.base_url.endswith('/'):
+		if request.base_url.find("static") == -1:
 			_render_shpaml(app)
 			_render_coffee(app)
 			_render_coverCSS(app)
