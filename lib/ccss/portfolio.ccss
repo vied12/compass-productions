@@ -161,7 +161,6 @@ body:
 			&.hide:
 				opacity 	: 0
 
-
 .FooterBar:
 	position         : absolute
 	bottom           : 0
@@ -308,6 +307,9 @@ body:
 					padding-left : 85px
 					padding-bottom : 24px
 					float        : left
+					img:
+						height : 106px
+						width  : 190px
 			&.links:
 				a:
 					font-size : 1.2em

@@ -18,7 +18,7 @@ import sources.preprocessing as preprocessing
 import sources.flickr as flickr
 import sources.model as model
 import sources.vimeo as vimeo
-import os, json, flask_mail, mimetypes, re, collections
+import os, json, mimetypes, re, collections, flask_mail
 from werkzeug.contrib.cache import SimpleCache
 
 app   = Flask(__name__)
@@ -34,11 +34,11 @@ cache = SimpleCache()
 # -----------------------------------------------------------------------------
 
 @app.route('/api/data')
-def data(jsonFile='portfolio.json'):
+def data():
 	# FIXME: set cache, set language
 	res = cache.get('data')
 	if res is None:
-		with open(os.path.join(app.root_path, "data", jsonFile)) as f:
+		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
 			data = json.load(f, object_pairs_hook=collections.OrderedDict)
 			# add some infos for videos
 			for work_index, work in enumerate(data.get("works", tuple())):
@@ -51,10 +51,9 @@ def data(jsonFile='portfolio.json'):
 
 @app.route('/api/slider')
 def slider(jsonFile='slider.json'):
-	print "SLIDER"
 	res = cache.get('slider')
 	if res is None:
-		with open(os.path.join(app.root_path, "data", jsonFile)) as f:
+		with open(os.path.join(app.root_path, "data", "slider.json")) as f:
 			data = json.load(f, object_pairs_hook=collections.OrderedDict)
 			res = json.dumps(data)
 			cache.set('slider', res, timeout=60 * 60 * 24)
@@ -99,10 +98,12 @@ def news(id="all", sort=None):
 @app.route('/api/contact', methods=['POST'])
 def contact():
 	try:
-		message = request.args['message']
-		msg     = flask_mail.Message(message, sender="jegrandis@gmail.com", recipients=["jegrandis@gmail.com"])
+		message = request.form['message']
+		sender  = request.form['email']
+		msg     = flask_mail.Message("compass Production - contact page", body=message, sender=sender, reply_to=sender, recipients=["vied12@gmail.com"])
 		mail.send(msg)
-	except:
+	except Exception as e:
+		print e
 		abort(500)
 	return "true"
 

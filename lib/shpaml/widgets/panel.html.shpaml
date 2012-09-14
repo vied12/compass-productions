@@ -83,5 +83,5 @@
 								.formElement
 									button.submit.button.in.onRight | Send
 							.result.success.hidden | Thank you
-							.result.error.hidden   | Es gibt ein Problem
+							.result.error.hidden   | There is a problem, please check if your email is correct or retry in a few moment
 		a.close href="#menu=main" | &nbsp;

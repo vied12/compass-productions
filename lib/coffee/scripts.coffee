@@ -443,7 +443,7 @@ class portfolio.FlickrGallery extends Widget
 			next_index = @cache.data.length	
 			@ui.find(".show_more").addClass "hidden"
 		for photo,index in @cache.data[@cache.photo_index+1..next_index]
-			this._makePhotoTile(photo, index)
+			this._makePhotoTile(photo, @cache.photo_index + 1 + index)
 		URL.enableLinks(@uis.list)
 		@cache.photo_index = next_index
 		$('body').trigger "relayoutContent"
@@ -522,8 +522,9 @@ class portfolio.Contact extends Widget
 			e.preventDefault()
 		)
 		@uis.buttonSend.click((e) =>
-			e.preventDefault()
 			this.sendMessage()
+			e.preventDefault()
+			return false
 		)
 		$('body').bind('currentPage',(e,page) => 
 			if page=="contact"
@@ -699,7 +700,7 @@ class portfolio.Project extends Widget
 						list.find("li:not(.template)").remove()
 						for video, i in value
 							video_nui = nui.find(".template").cloneTemplate()
-							video_nui.find('img').attr("src", video.thumbnail_small)
+							video_nui.find('img').attr("src", video.thumbnail_large)
 							video_nui.find('a').attr("href", "#+item="+i)
 							list.append(video_nui)
 						# update dynamic links
@@ -725,7 +726,7 @@ class portfolio.Project extends Widget
 						nui.find(".actual").remove()
 						for link in value
 							link_nui = nui.find(".template").cloneTemplate(link)
-							link_nui.find('a').append(link.description)
+							link_nui.find('a').html(link.description).attr("href", link.link)
 							nui.append(link_nui)
 
 	selectTab: (category) =>
@@ -761,7 +762,7 @@ class portfolio.MediaPlayer extends Widget
 
 	bindUI: (ui) =>
 		super
-		URL.onStateChanged(this.onURLStateCHanged)
+		URL.onStateChanged(this.onURLStateChanged)
 		$(window).resize(this.relayout)
 		@uis.close.click(this.hide)
 		@uis.next.click(this.next)
@@ -785,7 +786,7 @@ class portfolio.MediaPlayer extends Widget
 				@uis.player.attr({height:player_height, width:player_width})
 				@uis.playerContainer.css("width", player_width) # permit margin auto on player
 
-	onURLStateCHanged: =>
+	onURLStateChanged: =>
 		if (@cache.isShown)
 			if URL.hasChanged("item")
 					if URL.get("item")
@@ -826,8 +827,11 @@ class portfolio.MediaPlayer extends Widget
 			tiles   = @uis.mediaContainer.find("li.actual")
 			reverse = @cache.currentPage > page # -> effect for previous page clic
 			@cache.currentPage = page
-			# render
-			if @cache.data?
+			# preload thumbnail and render the page
+			thumbnail_to_preload = for _ in @cache.data[start..@OPTIONS.nbTiles - 1]
+				_.thumbnail
+			$.preload thumbnail_to_preload, =>
+				# render
 				tiles = @uis.mediaList.find("li.actual")
 				i = 0
 				interval  = setInterval (=>
@@ -841,15 +845,8 @@ class portfolio.MediaPlayer extends Widget
 							@uis.mediaList.append(nui)
 						nui.removeClass "show hide"
 						nui.find("a").attr("href", "#+item="+index)
-						image = nui.find(".image")
 						setTimeout (=>
-							if this.setCurrentTileForVideo?
-								this.setCurrentTileForVideo(virtual_i, nui)
-							if image.prop("tagName") == "DIV"
-								image.css("background-image", "url("+item.thumbnail+")")
-							else if image.prop("tagName") == "IMG"
-								image.attr("src", item.thumbnail)
-							nui.addClass("show")
+							this.setThumbnail(virtual_i, nui, item.thumbnail)
 						), 250 # fadeOut duration, time before we change the image and we fadeIn the tile
 					else # there is no more image to show, so we hide previous image with animation
 						if nui?
@@ -862,6 +859,16 @@ class portfolio.MediaPlayer extends Widget
 						setTimeout((=> this.toggleNavigation()), 250)
 						clearInterval(interval)
 				), 200 # time before each tile render
+	
+	setThumbnail: (index_in_page, nui, thumbnail_url) =>
+		image = nui.find(".image")
+		if this.setCurrentTileForVideo?
+			this.setCurrentTileForVideo(index_in_page, nui)
+		if image.prop("tagName") == "DIV"
+			image.css("background-image", "url("+thumbnail_url+")")
+		else if image.prop("tagName") == "IMG"
+			image.attr("src", thumbnail_url)
+		nui.addClass("show")
 
 	next: =>
 		this.setPage(@cache.currentPage + 1)
@@ -928,8 +935,11 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 
 	setMedia: (index) =>
 		super
-		# Autoplay
-		@uis.player.attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
+		# set the right video url to the iframe
+		@uis.player.addClass("hidden").attr("src", "").attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
+		@uis.player.load =>
+			# TODO: set loading animation
+			@uis.player.removeClass("hidden")
 		# select the good thumbnail
 		index = @cache.currentItem
 		page  = Math.ceil((index/@OPTIONS.nbTiles)+0.1) - 1
@@ -996,7 +1006,10 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 
 	setMedia: (index) =>
 		super
-		@uis.player.attr("src", @cache.data[index].media)
+		img = $("<img/>").attr("src", "").attr("src", @cache.data[index].media)
+		# TODO: loading animation
+		img.load =>
+			@uis.player.attr("src", @cache.data[index].media)
 
 	hide: =>
 		super
