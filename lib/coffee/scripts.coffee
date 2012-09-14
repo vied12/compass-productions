@@ -481,9 +481,9 @@ class portfolio.News extends Widget
 	setData: (data) =>
 		@cache.data = data
 		for news in data
-			date = new Date(news.date_creation)
+			date = new Date(news.date_creation)			
 			nui = @uis.newsTmpl.cloneTemplate({
-				body:news.content
+				body:news.content.replace(/\n/g, "<br />")
 				date:date.toDateString()
 			})
 			nui.find(".title").append(news.title)
