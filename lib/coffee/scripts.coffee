@@ -944,8 +944,9 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 		# set the right video url to the iframe
 		@uis.player.addClass("hidden").attr("src", "").attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
 		# show the loading animation after a given time
-		setTimeout (=> @uis.waiter.removeClass("hidden")), 750
+		animation = setTimeout (=> @uis.waiter.removeClass("hidden")), 750
 		@uis.player.load =>
+			clearTimeout(animation)
 			@uis.player.removeClass("hidden")
 			@uis.waiter.addClass("hidden")
 		# select the good thumbnail
@@ -1017,8 +1018,9 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 		super
 		img = $("<img/>").attr("src", @cache.data[index].media)
 		@uis.player.addClass("hidden")
-		setTimeout (=> @uis.waiter.removeClass("hidden")), 750
+		animation = setTimeout (=> @uis.waiter.removeClass("hidden")), 750
 		img.load =>
+			clearTimeout(animation)
 			@uis.waiter.addClass("hidden")
 			@uis.player.attr("src", @cache.data[index].media).removeClass("hidden")
 
