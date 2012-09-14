@@ -55,15 +55,6 @@ class portfolio.Navigation extends Widget
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("bg1.jpg")
 		@background.darkness(0)
-
-		waiter = $('body').find(".waiter").cloneTemplate()
-		line = waiter.find('.line')
-		#@ui.prepend waiter
-		setInterval( => 
-				line.addClass "spread"
-				setTimeout( (=> line.removeClass("spread")), 1000)
-			, 2000)
-
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
 		#if isMobile.any()
@@ -276,7 +267,6 @@ class portfolio.Background extends Widget
 			)
 		else
 			$('body').unbind 'mousemove'
-
 
 # -----------------------------------------------------------------------------
 #
@@ -767,10 +757,11 @@ class portfolio.MediaPlayer extends Widget
 		}
 
 		@cache = {
-			data        : null
-			currentPage : null
-			isShown     : false
-			currentItem : null
+			data            : null
+			currentPage     : null
+			isShown         : false
+			currentItem     : null
+			waiterAnimation : null
 		}
 
 	bindUI: (ui) =>
@@ -780,6 +771,12 @@ class portfolio.MediaPlayer extends Widget
 		@uis.close.click(this.hide)
 		@uis.next.click(this.next)
 		@uis.previous.click(this.previous)
+		line = @uis.waiter.find(".line")
+		if line.length > 0
+			@cache.waiterAnimation = setInterval( =>
+				line.addClass "spread"
+				setTimeout( (=> line.removeClass("spread")), 1000)
+			, 2000)
 
 	relayout: =>
 		if @cache.data? and @cache.isShown
@@ -798,6 +795,8 @@ class portfolio.MediaPlayer extends Widget
 					player_height = player_width / ratio
 				@uis.player.attr({height:player_height, width:player_width})
 				@uis.playerContainer.css("width", player_width) # permit margin auto on player
+			# center waiter
+			@uis.waiter.css {top: $(window).height()/2}
 
 	onURLStateChanged: =>
 		if (@cache.isShown)
@@ -917,6 +916,8 @@ class portfolio.MediaPlayer extends Widget
 		@uis.mediaList.find("li.actual").remove()
 		@uis.next.addClass("hidden")
 		@uis.previous.addClass("hidden")
+		if @cache.waiterAnimation
+			clearInterval(@cache.waiterAnimation)
 
 # -----------------------------------------------------------------------------
 #
@@ -938,6 +939,7 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
+			waiter         : ".waiter"
 		}
 
 	setData: (data) =>
@@ -950,9 +952,10 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 		super
 		# set the right video url to the iframe
 		@uis.player.addClass("hidden").attr("src", "").attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
+		@uis.waiter.removeClass("hidden")
 		@uis.player.load =>
-			# TODO: set loading animation
 			@uis.player.removeClass("hidden")
+			@uis.waiter.addClass("hidden")
 		# select the good thumbnail
 		index = @cache.currentItem
 		page  = Math.ceil((index/@OPTIONS.nbTiles)+0.1) - 1
@@ -998,6 +1001,7 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 			close          : ".close"
 			next           : ".next"
 			previous       : ".previous"
+			waiter         : ".waiter"
 		}
 
 	bindUI: (ui) =>
@@ -1020,8 +1024,9 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 	setMedia: (index) =>
 		super
 		img = $("<img/>").attr("src", "").attr("src", @cache.data[index].media)
-		# TODO: loading animation
+		@uis.waiter.removeClass("hidden")
 		img.load =>
+			@uis.waiter.addClass("hidden")
 			@uis.player.attr("src", @cache.data[index].media)
 
 	hide: =>

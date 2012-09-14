@@ -14,7 +14,4 @@
 
 	.Bonus.page.use-base
 		{% include "widgets/slider.html" %}
-
-	.waiter.template.hidden
-		.line | {##}
 {% endblock %}

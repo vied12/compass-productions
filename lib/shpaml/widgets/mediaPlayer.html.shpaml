@@ -1,8 +1,9 @@
-
 .ImagePlayer.hidden.widget data-widget=portfolio.ImagePlayer
 	.overlay.close | {##}
 	.imagePlayer.player.hidden
 		.wrapper
+			.waiter
+				.line | {##}
 			> img
 	.mediaPanel.disableTextSelection
 		.wrapper
@@ -23,6 +24,8 @@
 	.overlay.close | {##}
 	.videoPlayer.player.hidden
 		.wrapper
+			.waiter
+				.line | {##}
 			iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 	.mediaPanel.disableTextSelection
 		.wrapper

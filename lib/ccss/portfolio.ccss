@@ -62,6 +62,7 @@ body:
 		user-select 			: none
 
 .waiter:
+	position: relative
 	.line:
 		height : 2px
 		width : 0%
