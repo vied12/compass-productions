@@ -25,6 +25,7 @@ class portfolio_admin.News extends Widget
 		@UIS = {
 			newsContainer : "ul"
 			newsTmpl      : ".news.template"
+			buttons       : ".actions button"
 		}
 
 		@cache = {
@@ -48,7 +49,18 @@ class portfolio_admin.News extends Widget
 				content : news.content
 				date    : date.toDateString()
 			})
-			nui.attr("data-id", news._id)
+			nui.attr("data-id", news._id.$oid)
 			@uis.newsContainer.append(nui)
+		@uis.buttons = @ui.find(@UIS.buttons)
+		@uis.buttons.click (e) =>
+			target = $(e.target)
+			action = target.attr("data-action")
+			id     = target.parents("li:first").attr("data-id")
+			switch action
+				when "remove"
+					this.removeNews(id)
+
+	removeNews: (id) =>
+		$.ajax("/api/news/"+id, {type: 'DELETE', dataType: 'json', success : this.setData})
 
 Widget.bindAll()

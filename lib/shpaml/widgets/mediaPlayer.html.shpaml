@@ -3,7 +3,7 @@
 	.imagePlayer.player.hidden
 		.wrapper
 			.waiter
-				.line | {##}
+				> img src="{{url_for('static', filename='images/waiter.gif')}}"
 			> img
 	.mediaPanel.disableTextSelection
 		.wrapper
@@ -25,7 +25,7 @@
 	.videoPlayer.player.hidden
 		.wrapper
 			.waiter
-				.line | {##}
+				> img src="{{url_for('static', filename='images/waiter.gif')}}"
 			iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 	.mediaPanel.disableTextSelection
 		.wrapper

@@ -86,7 +86,7 @@ def news(id="all", sort=None):
 	if request.method == "DELETE":
 		news = model.Interface.getNews(id)
 		db.news.remove({"_id":news._id})
-		news.remove()
+		return True
 	else:
 		sort = "date_creation" if sort == "date" else sort
 		news = model.Interface.getNews(id, sort=sort)

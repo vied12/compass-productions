@@ -761,7 +761,6 @@ class portfolio.MediaPlayer extends Widget
 			currentPage     : null
 			isShown         : false
 			currentItem     : null
-			waiterAnimation : null
 		}
 
 	bindUI: (ui) =>
@@ -771,12 +770,6 @@ class portfolio.MediaPlayer extends Widget
 		@uis.close.click(this.hide)
 		@uis.next.click(this.next)
 		@uis.previous.click(this.previous)
-		line = @uis.waiter.find(".line")
-		if line.length > 0
-			@cache.waiterAnimation = setInterval( =>
-				line.addClass "spread"
-				setTimeout( (=> line.removeClass("spread")), 1000)
-			, 2000)
 
 	relayout: =>
 		if @cache.data? and @cache.isShown
@@ -916,8 +909,6 @@ class portfolio.MediaPlayer extends Widget
 		@uis.mediaList.find("li.actual").remove()
 		@uis.next.addClass("hidden")
 		@uis.previous.addClass("hidden")
-		if @cache.waiterAnimation
-			clearInterval(@cache.waiterAnimation)
 
 # -----------------------------------------------------------------------------
 #
@@ -952,7 +943,8 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 		super
 		# set the right video url to the iframe
 		@uis.player.addClass("hidden").attr("src", "").attr("src", "http://player.vimeo.com/video/"+@cache.data[index].media+"?portrait=0&title=0&byline=0&autoplay=1")
-		@uis.waiter.removeClass("hidden")
+		# show the loading animation after a given time
+		setTimeout (=> @uis.waiter.removeClass("hidden")), 750
 		@uis.player.load =>
 			@uis.player.removeClass("hidden")
 			@uis.waiter.addClass("hidden")
@@ -993,7 +985,7 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 		super
 		@UIS = {
 			playerContainer: ".imagePlayer"
-			player         : ".imagePlayer img"
+			player         : ".imagePlayer .wrapper > img"
 			panel          : ".mediaPanel"
 			mediaContainer : ".mediaPanel .mediaContainer"
 			mediaList      : ".mediaPanel .mediaContainer ul"
@@ -1025,7 +1017,7 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 		super
 		img = $("<img/>").attr("src", @cache.data[index].media)
 		@uis.player.addClass("hidden")
-		@uis.waiter.removeClass("hidden")
+		setTimeout (=> @uis.waiter.removeClass("hidden")), 750
 		img.load =>
 			@uis.waiter.addClass("hidden")
 			@uis.player.attr("src", @cache.data[index].media).removeClass("hidden")

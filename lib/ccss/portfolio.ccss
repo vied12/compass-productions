@@ -63,25 +63,7 @@ body:
 
 .waiter:
 	position: relative
-	.line:
-		height : 2px
-		width : 0%
-		background-color : #fff
-		border-radius : 2px
-		max-width : 200px
-		-webkit-transition-property : width, height
-		-moz-transition-property    : width, height
-		-webkit-transition-duration : 8s
-		-moz-transition-duration    : 8s
-		-moz-transition-timing-function     : ease
-		-webkit-transition-timing-function  : ease
-		margin:auto
-		text-align : center
-		z-index : 12
-		&.spread:
-			height: 2px
-			width : 100%
-				
+	text-align : center
 
 .Index:
 	color   : $TEXT_COLOR

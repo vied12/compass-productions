@@ -16,6 +16,7 @@ html lang="en"
 				li.news.template
 					.actions
 						button data-action=remove | remove
+						button data-action=edit   | edit
 					.out.title   | {##}
 					.out.date    | {##}
 					.out.content | {##}
