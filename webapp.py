@@ -71,7 +71,9 @@ def getFlickrSetPhotos(set_id, qualities):
 @app.route('/api/news/<id>',             methods=["DELETE"])
 #FIXME: add count, skip and sort parameters
 def news(id="all", sort=None):
-	if request.method == "POST":
+	if request.method == "POST" or request.method == "DELETE":
+		if not "authenticated" in session:
+			abort(401)
 		# update
 		if request.form.get("_id"):
 			query = extractQuery(request.form)
