@@ -10,6 +10,11 @@ fieldset:
 	width : 700px
 	margin : auto
 
+button, input[type=submit]:
+	&.waiting:
+		background-image:url(../images/loading.gif)
+		background-repeat: no-repeat
+
 input, textarea:
 	display: block
 	width : 90%

@@ -42,7 +42,7 @@ class portfolio_admin.News extends Widget
 		super
 		this.refresh()
 		@uis.addForm.find("input[type=submit]").click (e) =>
-			this.addNews()
+			this.addNews(e.target)
 			e.preventDefault()
 			return false
 
@@ -56,7 +56,7 @@ class portfolio_admin.News extends Widget
 			date = new Date(news.date_creation)
 			nui  = @uis.newsTmpl.cloneTemplate({
 				title   : news.title
-				content : news.content.replace(/\n/g, "<br />")
+				content : if news.content then news.content.replace(/\n/g, "<br />") else news.content
 				date    : date.toDateString()
 			})
 			nui.attr("data-id", news._id.$oid)
@@ -69,7 +69,7 @@ class portfolio_admin.News extends Widget
 			id        = list_item.attr("data-id")
 			switch action
 				when "remove"
-					this.removeNews(id)
+					this.removeNews(id, target)
 				when "edit"
 					news = this.getNews(id)
 					nui  = @uis.newsEditTmpl.cloneTemplate({content : news.content})
@@ -78,7 +78,7 @@ class portfolio_admin.News extends Widget
 					list_item.addClass("hidden")
 					nui.insertAfter(list_item)
 					nui.find("input[data-action=edit]").click (e) =>
-						this.editNews(id)
+						this.editNews(id, e.target)
 						e.preventDefault()
 						return false
 					nui.find("input[data-action=cancel]").click (e) =>
@@ -95,7 +95,8 @@ class portfolio_admin.News extends Widget
 				return news
 		return null
 
-	addNews: =>
+	addNews: (target) =>
+		$(target).addClass("waiting").attr("disabled", "disabled")
 		data = {
 			content : @uis.addForm.find("textarea[name=content]").val()
 			title   : @uis.addForm.find("input[name=title]").val()
@@ -104,8 +105,11 @@ class portfolio_admin.News extends Widget
 			this.refresh()
 			@uis.addForm.find("textarea[name=content]").val("")
 			@uis.addForm.find("input[name=title]").val("")
+			$(target).removeClass("waiting").removeAttr("disabled")
+
 		)})
-	editNews: (id) =>
+	editNews: (id, target) =>
+		$(target).addClass("waiting").attr("disabled", "disabled")
 		data = {
 			_id     : id
 			content : @uis.newsContainer.find("li[data-id="+id+"] textarea[name=content]").val()
@@ -113,11 +117,14 @@ class portfolio_admin.News extends Widget
 		}
 		$.ajax("/api/news", {type:'POST', data:data, dataType:'json', success: (=>
 			this.refresh()
-			@uis.newsContainer.find("li[data-id="+id+"] textarea[name=content]").val("")
-			@uis.newsContainer.find("li[data-id="+id+"] input[name=title]").val("")
+			$(target).removeClass("waiting").removeAttr("disabled")
 		)})
 
-	removeNews: (id) =>
-		$.ajax("/api/news/"+id, {type:'DELETE', dataType:'json', success:this.refresh})
+	removeNews: (id, target) =>
+		$(target).addClass("waiting").attr("disabled", "disabled")
+		$.ajax("/api/news/"+id, {type:'DELETE', dataType:'json', success: (=>
+			this.refresh()
+			$(target).removeClass("waiting").removeAttr("waiting")
+		)})
 
 Widget.bindAll()

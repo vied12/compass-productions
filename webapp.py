@@ -74,6 +74,7 @@ def news(id="all", sort=None):
 	if request.method == "POST" or request.method == "DELETE":
 		if not "authenticated" in session:
 			abort(401)
+	if request.method == "POST":
 		# update
 		if request.form.get("_id"):
 			query = extractQuery(request.form)
