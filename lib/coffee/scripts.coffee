@@ -502,6 +502,7 @@ class portfolio.Contact extends Widget
 			buttonSend  : ".submit"
 			errorMsg    : ".result.error"
 			successMsg  : ".result.success"
+			content     : ".content"
 		}
 
 		@CONFIG = {
@@ -528,11 +529,11 @@ class portfolio.Contact extends Widget
 
 	relayout: =>
 		top_offset = $(".FooterPanel").height() - 80
-		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true,autoReinitialise:true})
 		messageHeight = $(window).height() - @uis.message.offset().top - 190
 		if messageHeight < @CONFIG.minMessageHeight
 			messageHeight = @CONFIG.minMessageHeight
 		@uis.message.css({height:messageHeight})
+		@uis.content.css({height: top_offset}).jScrollPane({hideFocus:true})
 
 	showMain: =>
 		@uis.form.addClass "hidden"
