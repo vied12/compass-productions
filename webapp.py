@@ -145,6 +145,11 @@ def logout():
 	session.pop('authenticated', None)
 	return redirect(url_for('admin'))
 
+
+@app.route('/lab')
+def lab():
+	return render_template('lab.html')
+
 # -----------------------------------------------------------------------------
 #
 # Utils

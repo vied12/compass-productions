@@ -9,6 +9,7 @@ html lang="en"
 
 	body.use-base
 		{% block content %}
+		.logo | {##}
 		.logout
 			a href="logout" | logout
 		.News.widget data-widget=portfolio_admin.News
