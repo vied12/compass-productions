@@ -25,7 +25,9 @@ class portfolio_admin.News extends Widget
 		@UIS = {
 			newsContainer : "ul"
 			newsTmpl      : ".news.template"
+			newsEditTmpl  : ".newsEdit.template"
 			buttons       : ".actions button"
+			addForm       : ".addNews form"
 		}
 
 		@cache = {
@@ -38,9 +40,17 @@ class portfolio_admin.News extends Widget
 
 	bindUI: (ui) =>
 		super
-		$.ajax("/api/news/all", {dataType: 'json', success : this.setData})
+		this.refresh()
+		@uis.addForm.find("input[type=submit]").click (e) =>
+			this.addNews()
+			e.preventDefault()
+			return false
+
+	refresh: =>
+		$.ajax("/api/news/all", {dataType:'json', success:this.setData})
 
 	setData: (data) =>
+		@uis.newsContainer.find(".actual").remove()
 		@cache.data = data
 		for news in data
 			date = new Date(news.date_creation)
@@ -53,14 +63,61 @@ class portfolio_admin.News extends Widget
 			@uis.newsContainer.append(nui)
 		@uis.buttons = @ui.find(@UIS.buttons)
 		@uis.buttons.click (e) =>
-			target = $(e.target)
-			action = target.attr("data-action")
-			id     = target.parents("li:first").attr("data-id")
+			target    = $(e.target)
+			action    = target.attr("data-action")
+			list_item =  target.parents("li:first")
+			id        = list_item.attr("data-id")
 			switch action
 				when "remove"
 					this.removeNews(id)
+				when "edit"
+					news = this.getNews(id)
+					nui  = @uis.newsEditTmpl.cloneTemplate({content : news.content})
+					nui.find(".title.out").attr("value", news.title)
+					nui.attr("data-id", news._id.$oid)
+					list_item.addClass("hidden")
+					nui.insertAfter(list_item)
+					nui.find("input[data-action=edit]").click (e) =>
+						this.editNews(id)
+						e.preventDefault()
+						return false
+					nui.find("input[data-action=cancel]").click (e) =>
+						list_item.removeClass "hidden"
+						nui.remove()
+						e.preventDefault()
+						return false
+			e.preventDefault()
+			return false
+
+	getNews: (id) =>
+		for news in @cache.data
+			if news._id.$oid == id
+				return news
+		return null
+
+	addNews: =>
+		data = {
+			content : @uis.addForm.find("textarea[name=content]").val()
+			title   : @uis.addForm.find("input[name=title]").val()
+		}
+		$.ajax("/api/news", {type:'POST', data:data, dataType:'json', success:(=>
+			this.refresh()
+			@uis.addForm.find("textarea[name=content]").val("")
+			@uis.addForm.find("input[name=title]").val("")
+		)})
+	editNews: (id) =>
+		data = {
+			_id     : id
+			content : @uis.newsContainer.find("li[data-id="+id+"] textarea[name=content]").val()
+			title   : @uis.newsContainer.find("li[data-id="+id+"] input[name=title]").val()
+		}
+		$.ajax("/api/news", {type:'POST', data:data, dataType:'json', success: (=>
+			this.refresh()
+			@uis.newsContainer.find("li[data-id="+id+"] textarea[name=content]").val("")
+			@uis.newsContainer.find("li[data-id="+id+"] input[name=title]").val("")
+		)})
 
 	removeNews: (id) =>
-		$.ajax("/api/news/"+id, {type: 'DELETE', dataType: 'json', success : this.setData})
+		$.ajax("/api/news/"+id, {type:'DELETE', dataType:'json', success:this.refresh})
 
 Widget.bindAll()

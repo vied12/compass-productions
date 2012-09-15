@@ -75,18 +75,18 @@ def news(id="all", sort=None):
 		# update
 		if request.form.get("_id"):
 			query = extractQuery(request.form)
-			news  = db.news.News.from_json(json.dumps(query))
+			news = model.Interface.getNews(request.form.get("_id"))
 		else:
 			news = db.news.News()
-			news['content'] = request.form.get("content")
-			news['title']   = request.form.get("title")
+		news['content'] = request.form.get("content")
+		news['title']   = request.form.get("title")
 		news.save()
 		return "true"
 	#FIXME: not tested
 	if request.method == "DELETE":
 		news = model.Interface.getNews(id)
 		db.news.remove({"_id":news._id})
-		return True
+		return "true"
 	else:
 		sort = "date_creation" if sort == "date" else sort
 		news = model.Interface.getNews(id, sort=sort)
@@ -129,7 +129,6 @@ def admin():
 		return render_template('admin.html')
 	else:
 		return redirect(url_for('authenticate'))
-
 
 @app.route('/authenticate', methods=['GET', 'POST'])
 def authenticate():

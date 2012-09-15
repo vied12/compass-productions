@@ -56,7 +56,7 @@ class Widget
 	set: (field, value) =>
 		#TODO: use an instance variable to declare the fields list
 		# to make selections operations at the begining
-		@ui.find(".out[data-field="+field+"]").html(value)
+		@ui.find(".out[data-field="+field+"]", context).html(value)
 
 	hide: =>
 		@ui.addClass "hidden"
