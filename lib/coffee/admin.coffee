@@ -60,7 +60,7 @@ class portfolio_admin.News extends Widget
 				date    : date.toDateString()
 			})
 			nui.attr("data-id", news._id.$oid)
-			@uis.newsContainer.append(nui)
+			@uis.newsContainer.append(nui.fadeIn(600))
 		@uis.buttons = @ui.find(@UIS.buttons)
 		@uis.buttons.click (e) =>
 			target    = $(e.target)
