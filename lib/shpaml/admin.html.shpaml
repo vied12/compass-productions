@@ -15,14 +15,14 @@ html lang="en"
 			fieldset.addNews
 				legend | Add a news
 				form name=addNews method=post action=#
-					input name=title   | {##}
-					textarea name=content | {##} 
+					input type=text name=title placeholder=Title  | {##}
+					textarea name=content placeholder=Body | {##} 
 					input type=submit value=publish data-action=add | {##}
 			ul
 				li.newsEdit.template
 					form name=addNews method=post action=#
-						input.out.title name=title   | {##}
-						textarea.out.content name=content | {##} 
+						input.out.title name=title placeholder=Title  | {##}
+						textarea.out.content name=content placeholder=Body | {##} 
 						input type=submit value=publish data-action=edit | {##}
 						input type=submit value=cancel data-action=cancel | {##}
 				li.news.template

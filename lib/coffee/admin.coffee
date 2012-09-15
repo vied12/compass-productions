@@ -56,7 +56,7 @@ class portfolio_admin.News extends Widget
 			date = new Date(news.date_creation)
 			nui  = @uis.newsTmpl.cloneTemplate({
 				title   : news.title
-				content : news.content
+				content : news.content.replace(/\n/g, "<br />")
 				date    : date.toDateString()
 			})
 			nui.attr("data-id", news._id.$oid)

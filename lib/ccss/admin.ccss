@@ -1,8 +1,43 @@
+body:
+	width : 720px
+	margin : auto
+	display : block
+
+.logout:
+	margin: 20px 0 
+
+fieldset:
+	width : 700px
+	margin : auto
+
 input, textarea:
 	display: block
+	width : 90%
+	padding : 10px
+	margin : 2px 0
 
+
+textarea:
+	min-height: 80px
+textarea:focus:
+	min-height: 180px
+
+input[type=submit]:
+	width : auto
+	display : inline-block	
+	padding : 2px	
+.title:
+	font-weight : bold
+.actions:
+	float : right
 li.actual:
-	padding-bottom: 10px
-	background-color: gray
+	padding: 10px
+	background-color: #d2d2d2
+	margin : 5px 0 
 	&:nth-child(2n+1):
-		background-color: whiteSmoke
+		background-color:  #dedede
+	&.newsEdit: 
+		background-color: #ffe5ae
+		border : 1px solid #ccc
+		padding : 20px
+
