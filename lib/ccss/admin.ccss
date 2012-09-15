@@ -8,6 +8,7 @@ body:
 	width : 120px
 	height:  120px
 	background : #222 url(/static/images/logo.png) 20px 20px no-repeat
+	margin-bottom : 20px
 .logout:
 	display : block
 	margin: -20px 0 20px 0 
@@ -20,20 +21,17 @@ body:
 
 fieldset:
 	width : 700px
-	margin : 30px auto
-
-button, input[type=submit]:
-	&.waiting:
-		background-image:url(../images/loading.gif)
-		background-repeat: no-repeat	
+	margin : 50px auto 30px 20px
+	border : 0px solid #fff
+	//border-bottom : 1px solid #ccc
+	border-left : 1px solid #111
+	padding:  20px
 	background-color : #fff
 	width : 680px
 	margin : 10px 0 20px 0
-	padding : 20px
-	border-radius : 4px
-	border: 1px solid #ddd
-	legend : 
-		font-size : 1.2em
+	legend :
+		font-size : 1.4em
+
 input, textarea:
 	display: block
 	width : 90%
@@ -48,11 +46,28 @@ textarea:
 	-moz-transition-duration    : "1.4s"
 	-moz-transition-timing-function     : ease
 	-webkit-transition-timing-function  : ease
-	min-height: 70px
-fieldset:hover textarea:
-	min-height: 120px
+	min-height: 50px
+
+fieldset:hover: 
+	height : 100%
+	input, textarea:
+		display : block 
+	textarea:
+		min-height: 100px
 button:
 	border-radius : 4px
+
+button, input[type=submit]:
+	&[disabled]:
+		background-color : #666
+		background-image:url(../images/loading.gif)
+		background-repeat: no-repeat
+		background-position : top left
+		color : #fff
+	&.waiting:
+		background-image:url(../images/loading.gif)
+		background-repeat: no-repeat	
+
 input[type=submit], button:
 	width : auto
 	display : inline-block	
@@ -67,6 +82,7 @@ input[data-action=cancel], button[data-action=remove]:
 	background : #ddd
 	border-color : #999
 	color : #000
+
 .actions:
 	float : right
 li:
@@ -81,7 +97,7 @@ li:
 			background-color: #fff
 			border : 1px solid #ccc
 			padding : 20px
-			margin : 4px 0
+			margin : 4px 0 4px -20px
 			box-shadow : 3px 3px 6px #ccc
 			textarea:
 				min-height : 120px 
