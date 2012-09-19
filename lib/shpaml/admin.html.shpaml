@@ -11,28 +11,29 @@ html lang="en"
 		{% block content %}
 		.logo | {##}
 		.logout
-			a href="logout" | logout
+			a href="logout" | Logout
 		.News.widget data-widget=portfolio_admin.News
 			fieldset.addNews
 				legend | Add a news
 				form name=addNews method=post action=#
 					input type=text name=title placeholder=Title  | {##}
-					textarea name=content placeholder=Body | {##} 
-					input type=submit value=publish data-action=add | {##}
+					textarea name=content placeholder="Your message here !" | {##} 
+					input type=submit value=Publish data-action=add | {##}
 			ul
 				li.newsEdit.template
 					form name=addNews method=post action=#
 						input.out.title name=title placeholder=Title  | {##}
-						textarea.out.content name=content placeholder=Body | {##} 
-						input type=submit value=publish data-action=edit | {##}
-						input type=submit value=cancel data-action=cancel | {##}
+						textarea.out.content name=content placeholder="Your message here !" | {##} 
+						input type=submit value=Publish data-action=edit | {##}
+						input type=submit value=Cancel data-action=cancel | {##}
 				li.news.template
 					.actions
-						button data-action=edit   | edit
-						button data-action=remove | remove
+						button data-action=edit   | Edit
+						button data-action=remove | Remove
 					.out.date    | {##}
 					h2.out.title   | {##}
 					p.out.content | {##}
+
 		{% endblock %}
 
 		script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"              | {# #}

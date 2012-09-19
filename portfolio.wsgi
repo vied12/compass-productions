@@ -1,4 +1,4 @@
-import sys
+ 	import sys
 # virtualenv
 activate_this = "/home/django-projects/portfolio/bin/activate_this.py"
 execfile(activate_this, dict(__file__=activate_this))
