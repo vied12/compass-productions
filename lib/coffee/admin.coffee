@@ -96,29 +96,32 @@ class portfolio_admin.News extends Widget
 		return null
 
 	addNews: (target) =>
-		$(target).addClass("waiting").attr("disabled", "disabled")
 		data = {
 			content : @uis.addForm.find("textarea[name=content]").val()
 			title   : @uis.addForm.find("input[name=title]").val()
 		}
-		$.ajax("/api/news", {type:'POST', data:data, dataType:'json', success:(=>
-			this.refresh()
-			@uis.addForm.find("textarea[name=content]").val("")
-			@uis.addForm.find("input[name=title]").val("")
-			$(target).removeClass("waiting").removeAttr("disabled")
+		if data.content? and data.title?
+			$(target).addClass("waiting").attr("disabled", "disabled")
+			$.ajax("/api/news", {type:'POST', data:data, dataType:'json', success:(=>
+				this.refresh()
+				@uis.addForm.find("textarea[name=content]").val("")
+				@uis.addForm.find("input[name=title]").val("")
+				$(target).removeClass("waiting").removeAttr("disabled")
 
-		)})
+			)})
 	editNews: (id, target) =>
-		$(target).addClass("waiting").attr("disabled", "disabled")
 		data = {
 			_id     : id
 			content : @uis.newsContainer.find("li[data-id="+id+"] textarea[name=content]").val()
 			title   : @uis.newsContainer.find("li[data-id="+id+"] input[name=title]").val()
 		}
-		$.ajax("/api/news", {type:'POST', data:data, dataType:'json', success: (=>
-			this.refresh()
-			$(target).removeClass("waiting").removeAttr("disabled")
-		)})
+		console.log(data)
+		if data.content? and data.title? and data.content != "" and data.title != ""
+			$(target).addClass("waiting").attr("disabled", "disabled")
+			$.ajax("/api/news", {type:'POST', data:data, dataType:'json', success: (=>
+				this.refresh()
+				$(target).removeClass("waiting").removeAttr("disabled")
+			)})
 
 	removeNews: (id, target) =>
 		$(target).addClass("waiting").attr("disabled", "disabled")
