@@ -15,16 +15,16 @@
 					h2 | Joy
 					A new movie
 		.Works.menu.column-template.hidden data-menu="works"
-			.tile.nav data-target="parting"
-				.wrapper | Parting words
+			.tile.nav data-target="joy"
+				.wrapper | Joy
 			.tile.nav data-target="baghdad"
 				.wrapper | Baghdad twist
 			.tile.nav data-target="devil"
 				.wrapper | The devil in the holy water
-			.tile.nav data-target="joy"
-				.wrapper | Joy
 			.tile.nav data-target="nana"
 				.wrapper | Nana, goerge & me
+			.tile.nav data-target="parting"
+				.wrapper | Parting words
 			.tile.nav data-target="longueur"
 				.wrapper | The Length of the Alphabet		
 		.PageMenu.menu.hidden data-menu="page" | {##}

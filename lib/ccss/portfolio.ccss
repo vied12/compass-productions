@@ -99,7 +99,6 @@ body:
 					opacity : 1
 				&.highlighted:
 					clear: both
-					background-color   : $TILE_HIGHLIGHTED_COLOR
 					width              : $TILE_WIDTH * 2 + 5 - 20 // padding: 20 + 2x5
 					height             : $TILE_WIDTH * 2 + 5 - 20
 					padding            : 10px
@@ -313,9 +312,9 @@ body:
 					font-size       : 0.8em
 			&.screenings,&.credits:
 			 	.screening, .credit :
-			 		clear : both			
-			 		margin :  0px 20px 0px 10px
-			 		padding : 0 0
+					clear : both			
+					margin :  0px 20px 0px 10px
+					padding : 0 0
 			 	.screening :
 			 	 	padding : $BASE_PADDING
 				p:
