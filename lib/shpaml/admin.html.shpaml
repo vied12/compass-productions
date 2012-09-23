@@ -10,8 +10,9 @@ html lang="en"
 	body.use-base
 		{% block content %}
 		.logo | {##}
-		.logout
-			a href="logout" | Logout
+		.menu
+			a.gotosite href="/#page=news" target="_blank" | Go to the site
+			a.logout href="logout" | Logout
 		.News.widget data-widget=portfolio_admin.News
 			fieldset.addNews
 				legend | Add a news

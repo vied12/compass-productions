@@ -10,7 +10,7 @@ body:
 	background : #222 url(/static/images/logo.png) 20px 20px no-repeat
 	margin-bottom : 20px
 
-.logout:
+.menu:
 	display : block
 	margin: -20px 0 20px 0 
 	float:right
