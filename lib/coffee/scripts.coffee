@@ -239,13 +239,14 @@ class portfolio.Background extends Widget
 			source.attr("type", "video/#{extension}")
 			newVideo.append(source)
 		if @CACHE.image != null
-		 	newVideo.attr("poster", imageUrl+@CACHE.image)
+		 	newVideo.attr("poster", imageUrl+@CACHE.image)		 	
+		#wait until video is playable before swap with old video
 		newVideo.on("canplaythrough", => 
 			@ui.find('.oldsoon').remove()
 			newVideo.removeClass "hidden"
+			@uis.video.after(newVideo)
 		)
-		@uis.video.after(newVideo)
-
+		
 	image: (filename) =>
 		@ui.find('video.actual').addClass "hidden"
 		@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
@@ -268,6 +269,9 @@ class portfolio.Background extends Widget
 		else
 			$('body').unbind 'mousemove'
 
+	isVideo: () =>
+
+
 # -----------------------------------------------------------------------------
 #
 # Panel
@@ -280,6 +284,7 @@ class portfolio.Panel extends Widget
 
 		@OPTIONS = {
 			panelHeightClosed : 40
+			delay : 3000
 		}
 		@PAGES = ["project", "contact", "news"]
 		@UIS = {
@@ -317,7 +322,10 @@ class portfolio.Panel extends Widget
 		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)).addClass "show"
 		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)+' .content').addClass "active"
 		#open this panel
-		this.open()
+		if page == "project"
+			this.open(delay=true)
+		else
+			this.open()
 		#cache
 		@cache.currentPage = page
 		
@@ -347,12 +355,18 @@ class portfolio.Panel extends Widget
 		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)		
 		@background.darkness(0)
 
-	open: =>
-		@cache.isOpened = true
-		@ui.removeClass "hidden"
-		@uis.wrapper.removeClass "hidden"
-		this.relayout(true)
-		@background.darkness(0.6)
+	open: (delay=false) =>
+		if delay			
+			delay = @OPTIONS.delay
+		else
+			delay = 0
+		setTimeout(=>
+				@cache.isOpened = true
+				@ui.removeClass "hidden"
+				@uis.wrapper.removeClass "hidden"
+				this.relayout(true)
+				@background.darkness(0.6)
+			,delay)
 
 	isOpened: =>
 		@cache.isOpened
