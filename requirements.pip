@@ -1,6 +1,6 @@
-flask
-pymongo==2.2.1
-mongokit
+Flask==0.8
+pymongo==2.3
+mongokit==0.8.1
 clevercss
 flask-mail
 flask-babel
