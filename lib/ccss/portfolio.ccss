@@ -288,6 +288,11 @@ body:
 			padding-top:20px
 		.content:
 			&.synopsis:
+				h2:
+					text-align:center
+					span:
+						font-size : 0.8em
+						display   : block
 				.body:
 					display: none
 					opacity : 0
