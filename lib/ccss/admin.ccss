@@ -9,6 +9,7 @@ body:
 	height:  120px
 	background : #222 url(/static/images/logo.png) 20px 20px no-repeat
 	margin-bottom : 20px
+
 .logout:
 	display : block
 	margin: -20px 0 20px 0 
@@ -23,7 +24,6 @@ fieldset:
 	width : 700px
 	margin : 50px auto 50px 20px
 	border : 0px solid #fff
-	//border-bottom : 1px solid #ccc
 	border-bottom : 0px solid #111
 	padding:  20px
 	background-color : #fff
@@ -84,9 +84,6 @@ input[data-action=cancel], button[data-action=remove]:
 	background : #ddd
 	border-color : #999
 	color : #000
-
-//input[data-action=add]:
-	//-moz-rota
 
 
 .actions:
