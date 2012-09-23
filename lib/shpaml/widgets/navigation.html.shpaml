@@ -6,14 +6,12 @@
 		.Main.menu data-menu="main"
 			.tile.nav data-target="works"
 				.wrapper | Films
-			.tile.nav data-target="news"
-				.wrapper | News
 			.tile.nav data-target="contact"
 				.wrapper | Contact
-			.tile.highlighted data-target="joy"
-				.wrapper 
-					h2 | Joy
-					A new movie
+			.tile.highlighted data-target="news"
+				.wrapper
+					h2 | News
+					Joy, a new movie
 		.Works.menu.column-template.hidden data-menu="works"
 			.tile.nav data-target="joy"
 				.wrapper | Joy

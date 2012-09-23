@@ -10,7 +10,8 @@
 			.close.hidden
 				a href=# | X
 			.previous
-				span | &lt;
+				span
+					> img src="{{url_for('static', filename='images/arrow-left.svg')}}"
 			.mediaContainer
 				ul
 					li.media.template
@@ -18,7 +19,8 @@
 							a.internal
 								div.image | {##}
 			.next
-				span | &gt;
+				span
+					> img src="{{url_for('static', filename='images/arrow-right.svg')}}"
 
 .VideoPlayer.hidden.widget data-widget=portfolio.VideoPlayer
 	.overlay.close | {##}
@@ -32,13 +34,15 @@
 			.close.hidden
 				a href=# | X
 			.previous
-				span | &lt;
+				span
+					> img src="{{url_for('static', filename='images/arrow-left.svg')}}"
 			.mediaContainer
 				ul
 					li.media.template
 						.wrapper
 							a.internal
 								> img.image
-								.overlay | coucou
+								.overlay | {##}
 			.next
-				span | &gt;
+				span
+					> img src="{{url_for('static', filename='images/arrow-right.svg')}}"
