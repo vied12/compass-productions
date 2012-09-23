@@ -11,7 +11,7 @@
 						.wrapper.maxWidth
 							.synopsis.template
 								p.teaser.fat.out | {##}								
-								p.body.out | {##}	
+								p.body.fat.out | {##}	
 								a.readmore.button.out | Read more
 					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
