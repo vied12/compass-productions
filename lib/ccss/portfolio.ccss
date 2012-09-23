@@ -312,6 +312,9 @@ body:
 				a:
 					font-size : 1.2em
 					margin-bottom: 15px
+			&.press:
+				.maxWidth :
+					width : 600px				
 			&.gallery:
 				overflow : auto
 				li:
