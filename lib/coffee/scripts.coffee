@@ -7,7 +7,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 10-Sep-2012
+# Last mod : 23-Sep-2012
 # -----------------------------------------------------------------------------
 window.portfolio = {}
 
@@ -158,8 +158,6 @@ class portfolio.Navigation extends Widget
 					URL.update({page:"project", project:target, menu:null, cat:null})
 				else
 					URL.update({page:target, menu:null, project:null, cat:null})	
-
-			
 
 # -----------------------------------------------------------------------------
 #
@@ -320,8 +318,6 @@ class portfolio.Panel extends Widget
 		this.open()
 		#cache
 		@cache.currentPage = page
-		
-		#@uis.wrapper.find('[data-name='+page+'] .content').addClass "active"
 
 	relayout: (open) =>
 		@cache.isOpened = open
