@@ -31,7 +31,8 @@
 	.Page.links
 		ul
 			li.menuRoot
-				a href=#&menu=main | Menu
+				a href=#&menu=main
+					> img src="/static/images/menu.png"
 			li.works
 				a href=#&menu=works | Films					
 			li.news

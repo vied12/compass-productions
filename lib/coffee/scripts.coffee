@@ -33,6 +33,7 @@ class portfolio.Navigation extends Widget
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
 			pageLinks 		 : ".Page.links"
+			menuRoot         : ".Page.links .menuRoot"
 		}
 
 		@CONFIG = {
@@ -63,6 +64,7 @@ class portfolio.Navigation extends Widget
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		$('body').bind('backToHome', (e) => this.showMenu("main"))
+		$('body').bind('updatePanelMenuRoot', (e,opened) => this.updatePanelMenuRoot(opened))
 		# bind url change
 		URL.onStateChanged(=>
 			if URL.hasChanged("menu")
@@ -91,7 +93,6 @@ class portfolio.Navigation extends Widget
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
 			this.selectPageLink(menu)
-
 		else
 			this.selectPageLink(@cache.currentPage)
 		# show menu
@@ -119,22 +120,23 @@ class portfolio.Navigation extends Widget
 			@uis.pageLinks.removeClass "hidden"
 			@uis.pageLinks.find("li").removeClass "active"
 			@uis.pageLinks.find(".#{tile}").addClass "active"
-			menuRoot=@uis.pageLinks.find('.menuRoot')
-			menuRoot.removeClass "hidden"
+			@uis.menuRoot.removeClass "hidden"
 			if tile != "works"
-				menuRoot.addClass "active"	
-				menuRoot.click (e) =>	
+				@uis.menuRoot.click (e) =>	
 					e.preventDefault()				
-					this.updatePanelMenu()						
+					this.updatePanelMenu()			
 	
 	updatePanelMenu: =>
-		menuRoot=@uis.pageLinks.find('.menuRoot')
-		if not @panelWidget.isOpened() 						
-				menuRoot.addClass "active"	
+		if not @panelWidget.isOpened() 										
 				setTimeout( (=> @panelWidget.open()), 100)
 			else
-				menuRoot.removeClass "active"
 				setTimeout( (=> @panelWidget.hide()), 100)							
+
+	updatePanelMenuRoot: (opened) =>
+		console.log "updatePanelMenuRoot", opened
+		if opened
+			if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
+		else @uis.menuRoot.removeClass "active"
 
 	showPage: (page) =>
 		# set page menu (single tile)
@@ -320,10 +322,7 @@ class portfolio.Panel extends Widget
 		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)).addClass "show"
 		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)+' .content').addClass "active"
 		#open this panel
-		if page == "project"
-			this.open(delay=true)
-		else
-			this.open()
+		this.open(page)
 		#cache
 		@cache.currentPage = page
 
@@ -344,26 +343,24 @@ class portfolio.Panel extends Widget
 
 		setTimeout((=>$('body').trigger("relayoutContent")), 100)
 
-
 	hide: =>
 		@cache.isOpened = false
 		this.relayout(false)
 		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)		
 		@background.darkness(0)
+		$('body').trigger "updatePanelMenuRoot", false
 
-	open: (delay=false) =>
-		if delay			
-			delay = @OPTIONS.delay
-		else
-			delay = 0
-		setTimeout(=>
+	open: (page) =>
+		if page == "project" then delay = @OPTIONS.delay else delay = 0
+		setTimeout(=>				
 				@cache.isOpened = true
 				@ui.removeClass "hidden"
 				@uis.wrapper.removeClass "hidden"
 				this.relayout(true)
 				@background.darkness(0.6)
+				$('body').trigger "updatePanelMenuRoot", true
 			,delay)
-
+	
 	isOpened: =>
 		@cache.isOpened
 

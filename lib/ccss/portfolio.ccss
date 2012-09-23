@@ -133,11 +133,26 @@ body:
 				display 	: inline-block
 				margin 		: 0 10px
 				padding 	: 0
-			a:
-				color 		: $TEXT_COLOR_LIGHT
-				text-decoration 	: none
-			.active a:
-					color 	: $TEXT_COLOR_DARK 
+				a:
+					color 		: $TEXT_COLOR_LIGHT
+					text-decoration 	: none
+				img:
+					margin-bottom : -3px
+					-webkit-transition-property : "all"
+					-moz-transition-property    : "all"
+					-webkit-transition-duration : "0.3s"
+					-moz-transition-duration    : "0.3s"
+					-moz-transition-timing-function     : ease
+					-webkit-transition-timing-function  : ease		
+				&.active:
+					a:
+						color 	: $TEXT_COLOR_DARK 
+					img:
+						transform        : "rotate(-90deg)"
+						-ms-transform    : "rotate(-90deg)"
+						-moz-transform   : "rotate(-90deg)"
+						-webkit-transform: "rotate(-90deg)"
+						-o-transform     : "rotate(-90deg)"
 			&.show:
 				opacity 	: 1
 			&.hide:
