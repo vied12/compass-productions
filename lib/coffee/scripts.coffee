@@ -135,7 +135,8 @@ class portfolio.Navigation extends Widget
 	updatePanelMenuRoot: (opened) =>
 		if opened
 			if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
-		else @uis.menuRoot.removeClass "active"
+		else 
+			@uis.menuRoot.removeClass "active"
 
 	showPage: (page) =>
 		# set page menu (single tile)
@@ -672,7 +673,7 @@ class portfolio.Project extends Widget
 						nui.append(synopsis_nui)
 						readmoreLink = nui.find('.readmore')
 						body_nui=nui.find('.actual .body')	
-						body_nui.html(body_nui.text().replace(/\n/g, "<br />"))					
+						body_nui.html(body_nui.html().replace(/\n/g, "<br />"))					
 						# if teaser is in json, teaser is displayed with readmore link,  
 						if value.teaser?	
 							body_nui.css({

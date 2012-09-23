@@ -11,7 +11,4 @@
 		{% include "widgets/navigation.html" %}
 		{% include "widgets/mediaPlayer.html" %}
 		{% include "widgets/panel.html" %}
-
-	.Bonus.page.use-base
-		{% include "widgets/slider.html" %}
 {% endblock %}
