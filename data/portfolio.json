@@ -4,6 +4,7 @@
             "key"       : "longueur",
             "title"     : "La longueur de l'alphabet",
             "backgroundImage" : "longueur.jpg",
+            "gallery" : "72157631598386933",
             "synopsis"  : 
                 {
                     "body"  : "<strong>The Length of the Alphabet</strong> is a documentary featuring internationally renowned Canadian writer, Naïm Kattan. Born in Baghdad in 1928, he immigrated to Canada in 1954. After settling in Montreal in the early 50s, Kattan became a seminal figure forging change and helping to break down some of the ethnic and linguistic barriers between communities. Kattan is the author of almost forty works and he has won many awards and honours such as: the Order of Québec and the Order of Canada. Naïm Kattan still lives in Montreal and works as a writer, critic and teacher. His friends and associates include many artists, social, and political figures such as: André Gide, René Lévesque, André Laurendeau, Jacques Parizeau, Jacques Godbout and Fernand Ouellette. In addition to interviews, the film incorporates movie and photo archives to capture some of the poetry, nostalgia and dynamism that inspired Kattan after he moved to Québec.Through conversations with Kattan, an exploration of his archives, and interviews with some of his better known friends, we discover the fascinating biography and vision of this writer and living witness of the political and cultural evolution of Québec and Canada in the last century."
@@ -20,8 +21,8 @@
                     "body"  : "Are you ready?\n\nFilmmaker Joe Balass is there - The Devil in the Holy Water is his vibrant document of that moment.\n\nCritical and joyous, entertaining and thought-provoking, The Devil in the Holy Water goes to the epicentre of Catholic culture to get a reading on contemporary sexuality and morality.\n\nWhile the Vatican opposes World Pride, drawing upon its considerable influence to try to stop the event, Italians themselves send a more complex - and ultimately tolerant - message.\n\nThe opening of the monumental holy doors at Saint Peter's inaugurates the Jubilee, while debate rages through the ancient city. Vatican kingmaker, Cardinal Roger Etchegaray, finally concedes to an interview - while Imma Battaglia, a tempestuous Joan of Arc for our times, fearlessly spearheads the fight for gay visibility.\n\nThe music of Domenico Modugno sets the tone, and Balass takes to the streets, framing his interviews with astutely selected archival images - a gay priest speaking publicly at a 1982 demo, the first Italian gay marriage in 1992, and the Pope attacking homosexuals in 1994.\n\nAs the World Pride controversy heats up, the filmmaker encounters practical-minded grandmothers and rigid young neo-fascists, self-effacing nuns and ebullient drag queens. Pilgrims seeking absolution from sins, along with Emiliano and Pier Paolo, a couple of young guys who wander though the proceedings, just looking for a little fun.\n\nThe result is a candid, enlightening and often humorous, feature-length documentary. The Devil in the Holy Water captures two historic events as they intersect, highlighting a city and a culture in dynamic transition.\n\nFilmmaker’s biography\nProducer & director Joe Balass is an independent filmmaker working in both fiction and documentary. He currently resides in Montreal where he operates an independent production company, Compass Productions Inc. In addition, he also freelances as an editor, photographer and cameraman. He was born in Baghdad, Iraq in 1966 and after escaping with his family at the age of four, he eventually settled in Canada. His work has taken him all over Asia, Europe and North America. Balass has produced and directed a number of award-winning films and videos, including Nana, George & Me (1997). He expresses a very spontaneous blend of seriousness and humour in his approach to filmmaking.\nAt present, Joe Balass is working on his first feature-length fiction film as well as a number of documentary projects."
                 }
             ,
-            "gallery"   : "72157627752056060",
-            "videos"    : ["6437816", "43038579", "42615527", "49145513", "47569645", "49025759"],
+            "gallery"   : "72157631597841156",
+            "videos"    : ["49984280", "49984279", "49984278", "49984235", "49984204", "49984203", "49984202", "49984201","49984165"],
             "screenings": [
                 {
                     "title" : "photo of dress Brussels Lesbian & Gay Film Festival",
@@ -248,6 +249,8 @@
             "key"       : "nana", 
             "title"     : "Nana, Goerge and me",
             "backgroundImage" : "bg2.jpg",
+            "gallery" : "72157631598328133",
+            "videos" : ["18519558"],
             "synopsis"  : {
                     "body" : "<h2>NANA, GEORGE & ME <span>a film by Joe Balass</span></h2>\nWhat do you get when you ask your 92 year-old Nana, and a 73 year-old man you've just met, questions you've only dared to dream of and get answers more outrageous than you could have imagined?  You get  <strong>Nana, George & Me</strong>, a funny, intimate, sometimes shocking and always heartwarming look at two Iraqi Jewish lives:  one a traditionally raised woman and the other a completely unconventional gay man.\n\nDuration:  48min\nLanguage:  Arabic, English with e.s.t.\nScreening Format: Beta SP\nYear:  1997\nCountry: Canada"
                 },
@@ -263,6 +266,8 @@
             "title"     : "Joy",
             "backgroundImage" : "joy.png",
             "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogg"],
+            "gallery" : "72157631598336173",
+            "videos":["39779299","47419588","47419589", "47429440","47429436","47429435","47569645","47419591","47429439","47447949","47447948","47447947"],
             "synopsis"  : {
                 "body" : "<h2>Joy!<span>Portrait of a Nun</span></h2>\nSpiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.\n\n In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey.\n\nDirector: Joe Balass\nCanada\n71min\nDigiBeta, HD\nContact: Compass Productions inc.\njoe@compassproductions.ca\n+1-514-842-5324"
             },
@@ -277,6 +282,7 @@
             "key"     : "baghdad",
             "title"   : "Baghdad twist",
             "backgroundImage" : "baghdad.jpg", 
+            "gallery" : "72157631598309773",
             "synopsis": {
                 "body" : "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists."
             },
@@ -291,6 +297,7 @@
             "key"       : "parting",
             "title"     : "Parting Words",
             "backgroundImage" : "bg2.jpg", 
+            "gallery" : "72157631597946580",
             "synopsis": {
                 "body" : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye."
             },
