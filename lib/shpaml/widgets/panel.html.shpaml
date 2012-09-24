@@ -48,6 +48,8 @@
 								a.button href="#" title=links target="_blank" | {#description#}
 					.content.extra data-name="extra" 
 						.maxWidth | {##}
+					.content.distribution data-name="distribution"
+						.wrapper.maxWidth | {##}
 
 			.News.page.widget data-widget=portfolio.News
 				.content

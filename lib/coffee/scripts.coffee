@@ -597,7 +597,7 @@ class portfolio.Project extends Widget
 			footerBarHeight : 0
 			data            : null
 		}
-		@CATEGORIES    = ["synopsis", "screenings", "videos", "extra", "credits", "gallery", "press", "links"]	
+		@CATEGORIES    = ["synopsis", "screenings", "videos", "credits", "gallery", "press", "links","distribution"]	
 		@flickrGallery = null
 		@videoPlayer   = null
 
@@ -745,7 +745,10 @@ class portfolio.Project extends Widget
 							link_nui = nui.find(".template").cloneTemplate(link)
 							link_nui.find('a').html(link.description).attr("href", link.link)
 							nui.append(link_nui)
-
+					when "distribution"
+						nui.empty()
+						nui.append(value.replace(/\n/g, "<br />"))
+						
 	selectTab: (category) =>
 		@uis.tabContent.removeClass "active"
 		@uis.tabContent.removeClass "show"
