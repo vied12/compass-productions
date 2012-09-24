@@ -17,7 +17,6 @@ MAX_WIDTH = 1024px
 
 @font-face:
 	font-family: "Livory"
-	//src: url("Livory-Regular.otf")
 	src: url("242E09_0_0.eot")
 	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)"
 
