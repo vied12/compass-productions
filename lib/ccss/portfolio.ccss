@@ -15,27 +15,11 @@ BIG_FONT_SIZE = 1.8em
 SMALL_FONT_SIZE = 1.2em
 MAX_WIDTH = 1024px
 
-
 @font-face:
 	font-family: "Livory"
-	font-style: normal
-	font-weight: normal
-	src: url("Livory-Regular.otf")
-@font-face:
-	font-family: "Livory"
-	font-style: normal
-	font-weight: bold
-	src: url("Livory-Bold.otf")
-@font-face:
-	font-family: "Livory"
-	font-style: italic
-	font-weight: normal
-	src: url("Livory-RegularItalic.otf")
-@font-face:
-	font-family: "Livory"
-	font-style: italic
-	font-weight: bold
-	src: url("Livory-BoldItalic.otf")
+	//src: url("Livory-Regular.otf")
+	src: url("242E09_0_0.eot")
+	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)"
 
 .page:
 	font-family: "Livory", Verdana, sans-serif	
