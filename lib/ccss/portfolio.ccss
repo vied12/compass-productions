@@ -87,7 +87,8 @@ body:
 					padding            : 10px
 				&.brand:
 					margin : 3px 5px 3px 3px 
-					background : $TILE_COLOR url('/static/images/logo.png') center center no-repeat	
+					background : $TILE_COLOR url('/static/images/CP_logo_white.svg') center center no-repeat
+					background-size : 160px
 		.menu:
 			position : absolute
 			float    : left
