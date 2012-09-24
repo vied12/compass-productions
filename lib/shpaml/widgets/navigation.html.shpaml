@@ -6,9 +6,11 @@
 		.Main.menu data-menu="main"
 			.tile.nav data-target="works"
 				.wrapper | Films
+			.tile.nav data-target="news"
+				.wrapper | News
 			.tile.nav data-target="contact"
 				.wrapper | Contact
-			.tile.highlighted data-target="news"
+			.tile.highlighted.hidden data-target="news"
 				.wrapper
 					h2 | News
 					Joy, a new movie
@@ -28,14 +30,24 @@
 		.PageMenu.menu.hidden data-menu="page" | {##}
 		.clear | {##}
 
+	.promo
+		In theaters soon
+		h2
+			span
+				> img src="/static/images/Joy_logo.svg"
+		a.button href=#page=project&project=joy&cat=videos&item=1
+			span | WATCH THE TRAILER
+
 	.Page.links
 		ul
 			li.menuRoot
-				a href=#&menu=main
+				a href=#
 					> img src="/static/images/menu.png"
-			li.works
+			li
+				a href=#menu=main | Menu
+			li.works.hidden
 				a href=#&menu=works | Films					
-			li.news
+			li.news.hidden
 				a href=#&page=news | News
-			li.contact
+			li.contact.hidden
 				a href=#&page=contact | Contact

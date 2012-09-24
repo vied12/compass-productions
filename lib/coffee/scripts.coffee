@@ -34,6 +34,7 @@ class portfolio.Navigation extends Widget
 			mainTiles        : ".Main .tile"
 			pageLinks 		 : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
+			promo            : ".promo"
 		}
 
 		@CONFIG = {
@@ -54,7 +55,7 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		@background.image("bg1.jpg")
+		@background.image("index_bg.jpg")
 		@background.darkness(0)
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
@@ -89,6 +90,11 @@ class portfolio.Navigation extends Widget
 
 	# show the given menu, hide the previous opened menu
 	showMenu: (menu) =>	
+		if menu == "main"
+			@uis.promo.removeClass "hidden"
+			@background.image("index_bg.jpg")
+		else
+			@uis.promo.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
@@ -483,10 +489,10 @@ class portfolio.News extends Widget
 		for news in data
 			date = new Date(news.date_creation)			
 			nui = @uis.newsTmpl.cloneTemplate({
-				body:news.content.replace(/\n/g, "<br />")
+				body:news.content.en.replace(/\n/g, "<br />")
 				date:date.toDateString()
 			})
-			nui.find(".title").append(news.title)
+			nui.find(".title").append(news.title.en)
 			@uis.newsContainer.append(nui)
 
 # -----------------------------------------------------------------------------
