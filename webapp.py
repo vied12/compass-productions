@@ -96,10 +96,8 @@ def news(id="all", sort=None):
 		sort = "date_creation" if sort == "date" else sort
 		news = model.Interface.getNews(id, sort=sort)
 		if id == "all":
-			# NOTE-WTF: fix the mongkit problem
+			# NOTE: this line bug on first request
 			# see https://github.com/namlook/mongokit/issues/105
-			for n in news:
-				print n
 			return json.dumps([_.to_json_type() for _ in news])
 		else:
 			return news.to_json()
