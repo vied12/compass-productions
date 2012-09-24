@@ -1,5 +1,5 @@
 Flask==0.8
-pymongo==2.3
+pymongo==2.0.1
 mongokit==0.8.1
 clevercss
 flask-mail

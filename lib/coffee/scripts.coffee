@@ -34,6 +34,7 @@ class portfolio.Navigation extends Widget
 			mainTiles        : ".Main .tile"
 			pageLinks 		 : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
+			promo            : ".promo"
 		}
 
 		@CONFIG = {
@@ -89,6 +90,10 @@ class portfolio.Navigation extends Widget
 
 	# show the given menu, hide the previous opened menu
 	showMenu: (menu) =>	
+		if menu == "main"
+			@uis.promo.removeClass "hidden"
+		else
+			@uis.promo.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			

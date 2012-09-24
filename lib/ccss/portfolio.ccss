@@ -112,6 +112,25 @@ body:
 			&.column-template:
 				// two columns = 320px
 				width : 320px
+		.promo:
+			text-align : center
+			position   : relative
+			top        : 81px
+			font-size  : 1.4em
+			h2:
+				position : relative
+				top      : -89px
+				span img:
+					height : 250px
+			a:
+				position        : relative
+				top             : -130px
+				text-decoration : none
+				span:
+					border         : 1px solid white
+					text-transform : uppercase
+					font-size      : 1em
+					padding : 15px $BASE_PADDING + 2
 
 		.Page.links:
 			opacity 		: 1
