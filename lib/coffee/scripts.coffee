@@ -151,10 +151,8 @@ class portfolio.Navigation extends Widget
 		@cache.currentPage = page
 		this.showMenu("page")
 		if URL.get("cat")?
-			console.log "NOCAT ->", URL.get("cat")			
 			$("body").trigger("setDirectPanelPage", page)			
 		else
-			console.log "CAT", URL.get("cat")
 			$("body").trigger("setPanelPage", page)
 			
 			
@@ -330,7 +328,6 @@ class portfolio.Panel extends Widget
 		return this	
 
 	goto: (page, delay=true) =>		
-		console.log "page", page
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
@@ -756,7 +753,6 @@ class portfolio.Project extends Widget
 							nui.append(link_nui)
 					when "distribution"
 						nui.empty()
-						console.log "value", value, category
 						nui.append(value.replace(/\n/g, "<br />"))
 						
 	selectTab: (category) =>
