@@ -255,8 +255,8 @@ class portfolio.Background extends Widget
 		newVideo.on("canplaythrough", => 
 			@ui.find('.oldsoon').remove()
 			newVideo.removeClass "hidden"
-			@uis.video.after(newVideo)
 		)
+		@uis.video.after(newVideo)
 		
 	image: (filename) =>
 		@ui.find('video.actual').addClass "hidden"
