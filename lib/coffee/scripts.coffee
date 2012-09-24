@@ -92,6 +92,7 @@ class portfolio.Navigation extends Widget
 	showMenu: (menu) =>	
 		if menu == "main"
 			@uis.promo.removeClass "hidden"
+			@background.image("index_bg.jpg")
 		else
 			@uis.promo.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
