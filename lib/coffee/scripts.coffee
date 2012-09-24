@@ -150,7 +150,14 @@ class portfolio.Navigation extends Widget
 		@uis.page.html(page_tile.clone())
 		@cache.currentPage = page
 		this.showMenu("page")
-		$("body").trigger("setPanelPage",page)
+		if URL.get("cat")?
+			console.log "NOCAT ->", URL.get("cat")			
+			$("body").trigger("setDirectPanelPage", page)			
+		else
+			console.log "CAT", URL.get("cat")
+			$("body").trigger("setPanelPage", page)
+			
+			
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
@@ -313,6 +320,7 @@ class portfolio.Panel extends Widget
 		@background    = Widget.ensureWidget(".Background")
 		#bind events
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
+		$('body').bind 'setDirectPanelPage', (e, page) => this.goto(page, false)
 		$('body').bind('hidePanel', this.hide)
 		$(window).resize(=>(this.relayout(@cache.isOpened)))		
 		@uis.close.click (e)=>
@@ -321,14 +329,15 @@ class portfolio.Panel extends Widget
 			this.hide()
 		return this	
 
-	goto: (page) =>		
+	goto: (page, delay=true) =>		
+		console.log "page", page
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
 		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)).addClass "show"
 		@uis.wrapper.find('.'+Format.StringFormat.Capitalize(page)+' .content').addClass "active"
 		#open this panel
-		this.open(page)
+		if delay then this.open(page) else this.open()
 		#cache
 		@cache.currentPage = page
 
@@ -747,6 +756,7 @@ class portfolio.Project extends Widget
 							nui.append(link_nui)
 					when "distribution"
 						nui.empty()
+						console.log "value", value, category
 						nui.append(value.replace(/\n/g, "<br />"))
 						
 	selectTab: (category) =>
@@ -904,6 +914,7 @@ class portfolio.MediaPlayer extends Widget
 
 	show: =>
 		super
+		#$('body').trigger "setDirectPanelPage"
 		@uis.playerContainer.removeClass "hidden"
 		@cache.isShown = true
 		$(".FooterPanel").addClass("hidden")
@@ -914,6 +925,7 @@ class portfolio.MediaPlayer extends Widget
 
 	hide: =>
 		super
+		#$('body').trigger "setDirectPanelPage"
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"
 		URL.remove("item", true)
@@ -922,7 +934,7 @@ class portfolio.MediaPlayer extends Widget
 		@cache.currentItem = null
 		$(".Panel").show()
 		$('body').trigger("darkness", 0.3)
-		$("body").trigger("setPanelPage",URL.get("page"))
+		$("body").trigger("setDirectPanelPage",URL.get("page"))
 		@uis.mediaList.find("li.actual").remove()
 		@uis.next.addClass("hidden")
 		@uis.previous.addClass("hidden")
