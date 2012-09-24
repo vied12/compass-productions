@@ -30,7 +30,7 @@
 		.PageMenu.menu.hidden data-menu="page" | {##}
 		.clear | {##}
 
-	.promo
+	.promo.hidden
 		In theaters soon
 		h2
 			span
