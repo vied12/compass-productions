@@ -55,7 +55,7 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		@background.image("bg1.jpg")
+		@background.image("index_bg.jpg")
 		@background.darkness(0)
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
