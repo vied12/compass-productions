@@ -35,7 +35,7 @@
 		h2
 			span
 				> img src="/static/images/Joy_logo.svg"
-		a.button href=#page=project&project=joy&cat=videos&item=1
+		a.button href=#page=project&project=joy&cat=videos&item=0
 			span | WATCH THE TRAILER
 
 	.Page.links
