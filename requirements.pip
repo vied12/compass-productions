@@ -5,3 +5,4 @@ clevercss
 flask-mail
 flask-babel
 fabric
+python-memcached

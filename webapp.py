@@ -25,9 +25,12 @@ app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
 db        = model.Interface.GetConnection()
-cache     = SimpleCache()
 babel     = Babel(app) # i18n
 LANGUAGES = ["en", "fr"] # default in first
+# from werkzeug.contrib.cache import SimpleCache
+from werkzeug.contrib.cache import MemcachedCache
+# cache     = SimpleCache()
+cache = MemcachedCache(['127.0.0.1:11211'])
 
 # -----------------------------------------------------------------------------
 #

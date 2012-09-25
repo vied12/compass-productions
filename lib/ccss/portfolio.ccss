@@ -17,8 +17,8 @@ MAX_WIDTH = 1024px
 
 @font-face:
 	font-family: "Livory"
-	src: url("242E09_0_0.eot")
-	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)"
+	src: url("Livory-Regular.otf")
+	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)", url(Livory-Regular.otf)
 
 .page:
 	font-family: "Livory", Verdana, sans-serif	
@@ -87,8 +87,8 @@ body:
 					padding            : 10px
 				&.brand:
 					margin : 3px 5px 3px 3px 
-					background : $TILE_COLOR url('/static/images/CP_logo_white.svg') center center no-repeat
-					background-size : 160px
+					background : $TILE_COLOR url('/static/images/CP_logo_white.svg') center 25px no-repeat
+					background-size : 137px
 		.menu:
 			position : absolute
 			float    : left
@@ -99,22 +99,22 @@ body:
 		.promo:
 			text-align : center
 			position   : relative
-			top        : 81px
+			top        : 100px
 			font-size  : 1.4em
 			h2:
 				position : relative
-				top      : -89px
+				top      : -64px
 				span img:
 					height : 250px
 			a:
 				position        : relative
-				top             : -130px
+				top             : -96px
 				text-decoration : none
 				span:
 					border         : 1px solid white
 					text-transform : uppercase
 					font-size      : 1em
-					padding : 15px 12px 8px 12px
+					padding : 15px 12px 13px 12px
 
 		.Page.links:
 			opacity 		: 1
@@ -182,6 +182,7 @@ body:
 		a:
 			color 		: $TEXT_COLOR_LIGHT
 			text-decoration 	: none
+			text-transform : uppercase
 
 .FooterPanel:
 	z-index             : 1
