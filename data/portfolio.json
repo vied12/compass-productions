@@ -4,12 +4,11 @@
             "key"       : "longueur",
             "title"     : "La longueur de l'alphabet",
             "backgroundImage" : "longueur.jpg",
-            "gallery" : "72157631598386933",
             "synopsis"  : 
                 {
                     "body"  : "<strong>The Length of the Alphabet</strong> is a documentary featuring internationally renowned Canadian writer, Naïm Kattan. Born in Baghdad in 1928, he immigrated to Canada in 1954. After settling in Montreal in the early 50s, Kattan became a seminal figure forging change and helping to break down some of the ethnic and linguistic barriers between communities. Kattan is the author of almost forty works and he has won many awards and honours such as: the Order of Québec and the Order of Canada. Naïm Kattan still lives in Montreal and works as a writer, critic and teacher. His friends and associates include many artists, social, and political figures such as: André Gide, René Lévesque, André Laurendeau, Jacques Parizeau, Jacques Godbout and Fernand Ouellette. In addition to interviews, the film incorporates movie and photo archives to capture some of the poetry, nostalgia and dynamism that inspired Kattan after he moved to Québec.Through conversations with Kattan, an exploration of his archives, and interviews with some of his better known friends, we discover the fascinating biography and vision of this writer and living witness of the political and cultural evolution of Québec and Canada in the last century."
                 }
-            ,
+            ,            
             "gallery"   : "72157631598386933",
             "distribution" : "Compass Productions\nCompass Productions inc.\n3720, rue Clark #203\nMontréal (Québec)Canada H2X 2S3\nT: 514-842-5324 F: 514-842-7578 info@compassproductions.ca"
         },
@@ -17,6 +16,7 @@
             "key"       : "devil", 
             "title"     : "The devil in the holy water",
             "backgroundImage" : "bg1.jpg",
+            "backgroundVideos" : ["Devilfuck_insect2.webm","Devilfuck_insect2.ogv","Devilfuck_insect2.mp4"],
             "synopsis"  : 
                 {
                     "teaser" : "The time - the outset of a new millennium.\n\nThe place - Rome, the eternal city, sacred and profane.\n\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.",
@@ -250,11 +250,10 @@
             "key"       : "nana", 
             "title"     : "Nana, Goerge and me",
             "backgroundImage" : "bg2.jpg",
-            "gallery" : "72157631598328133",
-            "videos" : ["18519558"],
+            "backgroundVideos" : ["ngm_web_home_george_bath_long.webm","ngm_web_home_george_bath_long.ogv","ngm_web_home_george_bath_long.mp4"],
             "synopsis"  : {
                     "body" : "<h2>NANA, GEORGE & ME <span>a film by Joe Balass</span></h2>\nWhat do you get when you ask your 92 year-old Nana, and a 73 year-old man you've just met, questions you've only dared to dream of and get answers more outrageous than you could have imagined?  You get  <strong>Nana, George & Me</strong>, a funny, intimate, sometimes shocking and always heartwarming look at two Iraqi Jewish lives:  one a traditionally raised woman and the other a completely unconventional gay man.\n\nDuration:  48min\nLanguage:  Arabic, English with e.s.t.\nScreening Format: Beta SP\nYear:  1997\nCountry: Canada"
-                },
+                },            
             "videos"    : ["18519558"],
             "gallery"   : "72157631598328133",
             "credits"   : [
@@ -270,9 +269,7 @@
             "key"       : "joy", 
             "title"     : "Joy",
             "backgroundImage" : "joy.png",
-            "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogg"],
-            "gallery" : "72157631598336173",
-            "videos":["39779299","47419588","47419589", "47429440","47429436","47429435","47569645","47419591","47429439","47447949","47447948","47447947"],
+            "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogv","onSodomRoad.webm"],
             "synopsis"  : {
                 "body" : "<h2>Joy!<span>Portrait of a Nun</span></h2>\nSpiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.\n\n In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey.\n\nDirector: Joe Balass\nCanada\n71min\nDigiBeta, HD\nContact: Compass Productions inc.\njoe@compassproductions.ca\n+1-514-842-5324"
             },
@@ -290,7 +287,7 @@
             "key"     : "baghdad",
             "title"   : "Baghdad twist",
             "backgroundImage" : "baghdad.jpg", 
-            "gallery" : "72157631598309773",
+            "backgroundVideos" : ["baghdad_twist_home_tree.webm","baghdad_twist_home_tree.ogv","baghdad_twist_home_tree.mp4"],
             "synopsis": {
                 "body" : "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists."
             },
@@ -307,6 +304,7 @@
             "key"       : "parting",
             "title"     : "Parting Words",
             "backgroundImage" : "bg2.jpg", 
+            "backgroundVideos" : ["parting_web.webm","parting_web.ogv","parting_web.mp4"],
             "gallery" : "72157631597946580",
             "synopsis": {
                 "body" : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye."

@@ -55,7 +55,7 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		@background.image("index_bg.jpg")
+		@background.image("index_bg.jpg")		
 		@background.darkness(0)
 		#Add Mobile Class if necessary
 		#Commented because bugged, isMobile is imported from widget.coffee
@@ -93,6 +93,8 @@ class portfolio.Navigation extends Widget
 		if menu == "main"
 			@uis.promo.removeClass "hidden"
 			@background.image("index_bg.jpg")
+			$('body').trigger "setNoVideo"
+			$('body').trigger "cancelDelayedPanel"
 		else
 			@uis.promo.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
@@ -247,7 +249,8 @@ class portfolio.Background extends Widget
 		for file in data
 			extension = file.split('.').pop()
 			source=$('<source />').attr("src", @CONFIG.videoUrl+file)
-			source.attr("type", "video/#{extension}")
+			if extension == "ogv" then type ="ogg" else type = extension
+			source.attr("type", "video/#{type}")
 			newVideo.append(source)
 		if @CACHE.image != null
 		 	newVideo.attr("poster", imageUrl+@CACHE.image)		 	
@@ -316,10 +319,12 @@ class portfolio.Panel extends Widget
 	bindUI: (ui) =>
 		super
 		@background    = Widget.ensureWidget(".Background")
+		@cancelDelay=false
 		#bind events
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
 		$('body').bind 'setDirectPanelPage', (e, page) => this.goto(page, false)
 		$('body').bind('hidePanel', this.hide)
+		$('body').bind('cancelDelayedPanel', this.cancelDelayedPanel)
 		$(window).resize(=>(this.relayout(@cache.isOpened)))		
 		@uis.close.click (e)=>
 			e.preventDefault()
@@ -365,14 +370,19 @@ class portfolio.Panel extends Widget
 	open: (page) =>
 		if page == "project" then delay = @OPTIONS.delay else delay = 0
 		setTimeout(=>				
-				@cache.isOpened = true
-				@ui.removeClass "hidden"
-				@uis.wrapper.removeClass "hidden"
-				this.relayout(true)
-				@background.darkness(0.6)
-				$('body').trigger "updatePanelMenuRoot", true
+				if not @cancelDelay
+					@cache.isOpened = true
+					@ui.removeClass "hidden"
+					@uis.wrapper.removeClass "hidden"
+					this.relayout(true)
+					@background.darkness(0.6)
+					$('body').trigger "updatePanelMenuRoot", true
 			,delay)
+		@cancelDelay=false
 	
+	cancelDelayedPanel: =>
+		@cancelDelay=true
+
 	isOpened: =>
 		@cache.isOpened
 
@@ -462,7 +472,7 @@ class portfolio.FlickrGallery extends Widget
 
 # -----------------------------------------------------------------------------
 #
-# NEWS
+# News
 #
 # -----------------------------------------------------------------------------	
 
