@@ -187,7 +187,7 @@ class portfolio.Background extends Widget
 		@UIS = {
 			backgrounds: "> :not(.mask)"
 			image : ".image"
-			video : "video.video"
+			video : ".video"
 			mask: ".mask"
 			darkness : ".darkness"
 			mousemask : ".mousemask"
@@ -207,6 +207,7 @@ class portfolio.Background extends Widget
 		@CACHE = {
 			videoFormat : null 
 			image : null
+			suspended : false
 		}
 		
 	bindUI: (ui) ->
@@ -217,8 +218,8 @@ class portfolio.Background extends Widget
 		$('body').bind("setNoVideo", => this.removeVideo())
 		$('body').bind("setImage", (e, filename) => this.image(filename))
 		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
-		$('body').bind("nobackground", (e, darkness) => this.removeVideo())
-		$('body').bind("background", (e, darkness) => console.log "ok")
+		$('body').bind("suspendBackground", (e) => this.suspend())
+		$('body').bind("restoreBackground", (e) => this.restore())
 		return this	
 
 	relayout: =>
@@ -239,7 +240,17 @@ class portfolio.Background extends Widget
 		else
 			that.height(flexibleSize)
 			that.width($(window).width())
-			
+	
+	suspend: =>
+		@CACHE.suspended = true
+		@uis.image.addClass "hidden"
+		@ui.find('video.actual').addClass "hidden"		
+
+	restore: =>
+		@ui.find('video.actual').removeClass "hidden"
+		@uis.image.removeClass "hidden"		
+		@CACHE.suspended = false
+
 	removeVideo: =>
 		@ui.find('.actual').remove()
 
@@ -259,8 +270,9 @@ class portfolio.Background extends Widget
 		 	newVideo.attr("poster", imageUrl+@CACHE.image)		 	
 		#wait until video is playable before swap with old video
 		newVideo.on("canplaythrough", => 
-			@ui.find('.oldsoon').remove()
-			newVideo.removeClass "hidden"
+			if not @CACHE.suspended
+				@ui.find('.oldsoon').remove()
+				newVideo.removeClass "hidden"
 		)
 		@uis.video.after(newVideo)
 		
@@ -655,7 +667,7 @@ class portfolio.Project extends Widget
 				if URL.get("cat")?
 					this.selectTab(URL.get("cat"))
 			if URL.get("item")?
-				if (URL.get("cat")? and URL.get("cat") == "videos")
+				if (URL.get("cat")? and URL.get("cat") == "videos")					
 					@videoPlayer.setData(this.getProjectByName(URL.get("project")).videos)
 
 	getProjectByName: (name) =>
@@ -922,8 +934,7 @@ class portfolio.MediaPlayer extends Widget
 			this.setPage(new_page)
 
 	show: =>
-		super
-		$('body').trigger "nobackground"
+		super		
 		@uis.playerContainer.removeClass "hidden"
 		@cache.isShown = true
 		$(".FooterPanel").addClass("hidden")
@@ -931,10 +942,11 @@ class portfolio.MediaPlayer extends Widget
 		$('body').trigger("darkness", 0.7)
 		@uis.next.removeClass("hidden")
 		@uis.previous.removeClass("hidden")
+		$('body').trigger "suspendBackground"
 
 	hide: =>
 		super
-		$('body').trigger "background"
+		$('body').trigger "restoreBackground"
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"
 		URL.remove("item", true)
