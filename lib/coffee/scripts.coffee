@@ -1097,7 +1097,7 @@ class portfolio.Language extends Widget
 			this.getLanguage()
 
 	getLanguage: =>
-		$.ajax("/api/getLanguage", {dataType: 'json', success : this.setData})
+		$.ajax("/api/getLanguage", {success : this.setData})
 
 	setData: (data) =>
 		@cache.language = data
@@ -1113,7 +1113,7 @@ class portfolio.Language extends Widget
 	toggle: =>
 		if @cache.language?
 			other_language = window.serious.Utils.clone(@OPTIONS.languages)
-			other_language.splice(other_language.indexOf(@cache.language), 1) 
+			other_language.splice(other_language.indexOf(@cache.language), 1)
 			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
 		else
 			this.getLanguage()

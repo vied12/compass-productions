@@ -7,9 +7,9 @@
 			.tile.nav data-target="works"
 				.wrapper | Films
 			.tile.nav data-target="news"
-				.wrapper | News
+				.wrapper | {{ gettext("News") }}
 			.tile.nav data-target="contact"
-				.wrapper | Contact
+				.wrapper | {{ gettext("Contact") }}
 			.tile.highlighted.hidden data-target="news"
 				.wrapper
 					h2 | News
