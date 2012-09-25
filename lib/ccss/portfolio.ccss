@@ -313,7 +313,7 @@ body:
 					padding-bottom : 41px
 					float          : left
 					width          : 268px // 3 videos per line
-					height         : 210
+					height         : 210px
 					img:
 						height : 150px
 						width  : 268px
