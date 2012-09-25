@@ -9,13 +9,78 @@
 # Last mod : 14-Sep-2012
 # -----------------------------------------------------------------------------
 
+window.serious = {}
+window.serious.Utils  = {}
+
+# -----------------------------------------------------------------------------
+#
+# UTILS
+#
+# -----------------------------------------------------------------------------	
+
+isDefined = (obj) ->
+	return typeof(obj) != 'undefined' and obj != null
+
+jQuery.fn.opacity = (int) ->
+	$(this).css({opacity:int})
+
+window.serious.Utils.clone = (obj) ->
+	if not obj? or typeof obj isnt 'object'
+		return obj
+	if obj instanceof Date
+		return new Date(obj.getTime()) 
+	if obj instanceof RegExp
+		flags = ''
+		flags += 'g' if obj.global?
+		flags += 'i' if obj.ignoreCase?
+		flags += 'm' if obj.multiline?
+		flags += 'y' if obj.sticky?
+		return new RegExp(obj.source, flags) 
+	newInstance = new obj.constructor()
+	for key of obj
+		newInstance[key] = window.serious.Utils.clone obj[key]
+	return newInstance
+
+jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
+	# fields is an optional parameter 
+	# 	Only values from this list of fields are filled
+	# 	If field don't match value in dict, associated template is removed
+	#	Maybe a quicker option to remove all empty fields than select aposteriori all empty elements
+	nui = $(this[0]).clone()
+	nui = nui.removeClass("template hidden").addClass("actual")
+	if typeof(dict) == "object"
+		for klass, value of dict
+			if value != null
+				nui.find(".out."+klass).html(value)
+		if removeUnusedField
+			nui.find(".out").each ->
+				if $(this).html() == ""
+					$(this).remove()
+	return nui
+
+window.serious.Utils.isMobile = 
+	Android: => 
+		return navigator.userAgent.match(/Android/i) ? true : false
+	,
+	BlackBerry: =>
+		return navigator.userAgent.match(/BlackBerry/i) ? true : false
+	,
+	iOS: =>
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false
+	,
+	Windows: =>
+		return navigator.userAgent.match(/IEMobile/i) ? true : false
+	,
+	any: =>
+		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows())
+
 # -----------------------------------------------------------------------------
 #
 # WIDGET
 #
 # -----------------------------------------------------------------------------	
 
-class Widget
+class window.serious.Widget
 
 	@bindAll = ->
 		$(".widget").each(->
@@ -70,14 +135,14 @@ class Widget
 #
 # -----------------------------------------------------------------------------	
 
-class URL
+class window.serious.URL
 
 	constructor: ->
 		@previousHash = []
 		@handlers     = []
 		@hash         = this.fromString(location.hash)
 		$(window).hashchange( =>
-			@previousHash = clone(@hash)
+			@previousHash = window.serious.Utils.clone(@hash)
 			@hash         = this.fromString(location.hash)
 			for handler in @handlers
 				handler()
@@ -93,7 +158,7 @@ class URL
 		@handlers.push(handler)
 
 	set: (fields, silent=false) =>
-		hash = if silent then @hash else clone(@hash)
+		hash = if silent then @hash else window.serious.Utils.clone(@hash)
 		hash = []
 		for key, value of fields
 			if isDefined(value)
@@ -101,7 +166,7 @@ class URL
 		this.updateUrl(hash)
 
 	update: (fields, silent=false) =>
-		hash = if silent then @hash else clone(@hash)
+		hash = if silent then @hash else window.serious.Utils.clone(@hash)
 		for key, value of fields
 			if isDefined(value)
 				hash[key] = value
@@ -110,7 +175,7 @@ class URL
 		this.updateUrl(hash)
 
 	remove: (key, silent=false) =>
-		hash = if silent then @hash else clone(@hash)
+		hash = if silent then @hash else window.serious.Utils.clone(@hash)
 		if hash[key]
 			delete hash[key]
 		this.updateUrl(hash)
@@ -167,76 +232,6 @@ class URL
 		for key, value of hash_list
 			new_hash += "&" + key + "=" + value
 		return new_hash
-
-# -----------------------------------------------------------------------------
-#
-# UTILS
-#
-# -----------------------------------------------------------------------------	
-
-isDefined = (obj) ->
-	return typeof(obj) != 'undefined' and obj != null
-
-jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
-	# fields is an optional parameter 
-	# 	Only values from this list of fields are filled
-	# 	If field don't match value in dict, associated template is removed
-	#	Maybe a quicker option to remove all empty fields than select aposteriori all empty elements
-	nui = $(this[0]).clone()
-	nui = nui.removeClass("template hidden").addClass("actual")
-	if typeof(dict) == "object"
-		for klass, value of dict
-			if value != null
-				nui.find(".out."+klass).html(value)
-		if removeUnusedField
-			nui.find(".out").each ->
-				if $(this).html() == ""
-					$(this).remove()
-	return nui
-
-jQuery.fn.opacity = (int) ->
-	$(this).css({opacity:int})
-
-clone = (obj) ->
-	if not obj? or typeof obj isnt 'object'
-		return obj
-	if obj instanceof Date
-		return new Date(obj.getTime()) 
-	if obj instanceof RegExp
-		flags = ''
-		flags += 'g' if obj.global?
-		flags += 'i' if obj.ignoreCase?
-		flags += 'm' if obj.multiline?
-		flags += 'y' if obj.sticky?
-		return new RegExp(obj.source, flags) 
-	newInstance = new obj.constructor()
-	for key of obj
-		newInstance[key] = clone obj[key]
-	return newInstance
-
-isMobile = 
-    Android: => 
-        return navigator.userAgent.match(/Android/i) ? true : false
-    ,
-    BlackBerry: =>
-        return navigator.userAgent.match(/BlackBerry/i) ? true : false
-    ,
-    iOS: =>
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false
-    ,
-    Windows: =>
-        return navigator.userAgent.match(/IEMobile/i) ? true : false
-    ,
-    any: =>
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows())
-    
-;
-
-window.serious = []
-# register classes to a global variable
-window.serious.Widget = Widget
-window.serious.URL    = URL
-window.serious.isMobile = isMobile
 # EOF
 
 

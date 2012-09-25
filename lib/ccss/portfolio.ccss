@@ -174,7 +174,7 @@ body:
 		margin 		: 0 auto	
 		position 	: relative
 		height      : 40px
-	.language:
+	.Language:
 		padding          : $BASE_PADDING
 		position       : absolute
 		bottom    : 0px
@@ -313,6 +313,7 @@ body:
 					padding-bottom : 41px
 					float          : left
 					width          : 268px // 3 videos per line
+					height         : 210px
 					img:
 						height : 150px
 						width  : 268px

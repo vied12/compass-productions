@@ -14,7 +14,7 @@ window.portfolio = {}
 Widget   = window.serious.Widget
 URL      = new window.serious.URL()
 Format   = window.serious.format
-isMobile = window.serious.isMobile
+Utils    = window.serious.Utils
 # -----------------------------------------------------------------------------
 #
 # Navigation
@@ -1076,6 +1076,59 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 	hide: =>
 		super
 		@uis.player.css("background-image", "")
+
+# -----------------------------------------------------------------------------
+#
+# LANGUAGE
+#
+# -----------------------------------------------------------------------------	
+
+class portfolio.Language extends Widget
+
+	constructor: ->
+		@UIS = {
+			language : "a.language"
+		}
+
+		@OPTIONS = {
+			languages : ['en', 'fr']
+		}
+
+		@cache = {
+			language : null
+		}
+
+	bindUI: (ui) =>
+		super
+		URL.enableLinks(@ui)
+		URL.onStateChanged(this.onURLStateChanged)
+		if URL.get("ln")
+			@cache.language = URL.get("ln")
+			this.toggle()
+		else
+			this.getLanguage()
+
+	getLanguage: =>
+		$.ajax("/api/getLanguage", {success : this.setData})
+
+	setData: (data) =>
+		@cache.language = data
+		this.toggle()
+
+	onURLStateChanged: =>
+		if URL.hasChanged("ln")
+			$.ajax("/api/setLanguage/"+URL.get("ln"), {dataType: 'json', success : this.actualize})
+
+	actualize: =>
+		document.location.reload(true)
+
+	toggle: =>
+		if @cache.language?
+			other_language = window.serious.Utils.clone(@OPTIONS.languages)
+			other_language.splice(other_language.indexOf(@cache.language), 1)
+			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
+		else
+			this.getLanguage()
 
 
 Widget.bindAll()

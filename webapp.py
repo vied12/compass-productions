@@ -9,7 +9,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 23-Sep-2012
+# Last mod : 24-Sep-2012
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
@@ -21,11 +21,13 @@ import sources.vimeo as vimeo
 import os, json, mimetypes, re, collections, flask_mail
 from werkzeug.contrib.cache import SimpleCache
 
-app   = Flask(__name__)
+app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
-mail  = flask_mail.Mail(app)
-db    = model.Interface.GetConnection()
-cache = SimpleCache()
+mail      = flask_mail.Mail(app)
+db        = model.Interface.GetConnection()
+cache     = SimpleCache()
+babel     = Babel(app) # i18n
+LANGUAGES = ["en", "fr"] # default in first
 
 # -----------------------------------------------------------------------------
 #
@@ -35,18 +37,28 @@ cache = SimpleCache()
 
 @app.route('/api/data')
 def data():
-	# FIXME: set cache, set language
-	res = cache.get('data')
+	ln = get_locale()
+	res = cache.get('data-%s' % ln)
 	if res is None:
 		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
 			data = json.load(f, object_pairs_hook=collections.OrderedDict)
+			# translate
+			for work_index, work in enumerate(data.get("works", tuple())):
+				for key in work.keys():
+					# if value is a pair of {en: ..., fr: ...}
+					if type(work[key]) == collections.OrderedDict:
+						if work[key].keys()[0] in LANGUAGES:
+							if ln in work[key].keys():
+								data["works"][work_index][key] = work[key][ln]
+							else:
+								data["works"][work_index][key] = work[key][LANGUAGES[0]]
 			# add some infos for videos
 			for work_index, work in enumerate(data.get("works", tuple())):
 				for video_index, video in enumerate(work.get("videos", tuple())):
 					info = vimeo.Vimeo.getInfo(video)
 					data["works"][work_index]["videos"][video_index] = info
 			res = json.dumps(data)
-			cache.set('data', res, timeout=60 * 60 * 24)
+			cache.set('data-%s' % ln, res, timeout=60 * 60 * 24)
 	return res
 
 @app.route('/api/slider')
@@ -114,11 +126,19 @@ def contact():
 		abort(500)
 	return "true"
 
-@app.route('/static/videos/<video>', methods=['GET'])
-def video(video):
-	"""serv videos as partial content"""
-	path = os.path.join(app.static_folder, "videos", video)
-	return send_file_partial(path)
+
+@app.route('/api/setLanguage/<ln>', methods=['GET'])
+def setLanguage(ln):
+	"""Change current language in session"""
+	# FIXME: check ln value
+	session["language"] = ln
+	return "true"
+
+@babel.localeselector
+@app.route('/api/getLanguage', methods=['GET'])
+def get_locale():
+	ln = session.get("language") or request.accept_languages.best_match(['fr', 'en'])
+	return ln
 
 # -----------------------------------------------------------------------------
 #
@@ -154,12 +174,18 @@ def logout():
 def lab():
 	return render_template('lab.html')
 
+@app.route('/static/videos/<video>', methods=['GET'])
+def video(video):
+	"""serv videos as partial content"""
+	path = os.path.join(app.static_folder, "videos", video)
+	return send_file_partial(path)
+
 # -----------------------------------------------------------------------------
 #
 # Utils
 #
 # -----------------------------------------------------------------------------
-import urlparse
+
 def extractQuery(queryDict):
 	res = queryDict.copy()
 	for key, value in res.items():
@@ -220,7 +246,6 @@ if __name__ == '__main__':
 		from fabric.main import execute
 		execute(fabfile.deploy_test)
 	else:
-		babel = Babel(app) # i18n
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
 		preprocessing.preprocess(app, request) 
 		# run application
