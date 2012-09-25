@@ -6,8 +6,8 @@
 	.Index.page.use-base		
 		.FooterBar
 			.wrapper 
-				.language
-					a href="#ln=fr" | Fr
+				.Language.widget data-widget=portfolio.Language
+					a.language.internal href="#+ln=fr" | Fr
 		{% include "widgets/navigation.html" %}
 		{% include "widgets/mediaPlayer.html" %}
 		{% include "widgets/panel.html" %}

@@ -14,9 +14,12 @@ window.serious.format = {}
 
 class serious.format.StringFormat
 	@Capitalize: (str) ->
-		str.replace(/\w\S*/g, (txt) ->
-			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-		)
+		if str? and str != ""
+			str.replace(/\w\S*/g, (txt) ->
+				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+			)
+		else
+			return null
 
 class serious.format.NumberFormat
 	@SecondToString: (seconds) ->

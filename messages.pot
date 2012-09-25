@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-07-31 21:58-0400\n"
+"POT-Creation-Date: 2012-09-25 03:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: lib/shpaml/home.html.shpaml:6
-msgid "hello world"
-msgstr "hello word"
+#: lib/shpaml/widgets/navigation.html.shpaml:19
+msgid "Joy"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:25
+msgid "Nana, goerge & me"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:29
+msgid "The Length of the Alphabet"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:34
+msgid "In theaters soon"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:39
+msgid "WATCH THE TRAILER"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:68
+#: lib/shpaml/widgets/panel.html.shpaml:78
+msgid "Hello there,"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:70
+msgid "Would you like to get in touch with Compass Productions?"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:72
+msgid "You may e reach us at:"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:75
+msgid "or use our contact"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:80
+msgid "Would you like to get in touch with Compass Productions"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:85
+msgid "Write us a few lines..."
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:87
+msgid "Send"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:88
+msgid "Thank you"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:89
+msgid ""
+"There is a problem, please check if your email is correct or retry in a "
+"few moment"
+msgstr ""
 

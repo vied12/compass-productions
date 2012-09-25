@@ -65,27 +65,26 @@
 					.wrapper.maxWidth
 						.main
 							div.fat
-								Hello there,
+								{{ gettext("Hello there,") }}
 								> br
-								Would you like to get in touch with Compass Productions?
+								{{ gettext("Would you like to get in touch with Compass Productions?") }}
 								> br
-								You may e reach us at:
+								{{ gettext("You may e reach us at:") }}
 								.email
 									info@compassproduction.com
-							a.button.toContactForm href="#" | or use our contact 
+							a.button.toContactForm href="#" | {{ gettext("or use our contact") }}
 						.contactForm.hidden
 							p.fat
-								Hello there,
+								{{ gettext("Hello there,") }}
 								> br
-								Would you like to get in touch with Compass
-								Productions
+								{{ gettext("Would you like to get in touch with Compass Productions") }}
 							form method="post" action="/api/contact" name="contact"
 								.formElement
 									input.email.in name="email" type="text" placeholder="Email" | {##} 	
 								.formElement	
-									textarea.message.in name="message" placeholder="Write us a few lines..." | {##}
+									textarea.message.in name="message" placeholder="{{ gettext("Write us a few lines...") }}" | {##}
 								.formElement
-									button.submit.button.in.onRight | Send
-							.result.success.hidden | Thank you
-							.result.error.hidden   | There is a problem, please check if your email is correct or retry in a few moment
+									button.submit.button.in.onRight | {{ gettext("Send") }}
+							.result.success.hidden | {{ gettext("Thank you") }}
+							.result.error.hidden   | {{ gettext("There is a problem, please check if your email is correct or retry in a few moment") }}
 		a.close href="#menu=main" | &nbsp;
