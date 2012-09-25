@@ -17,14 +17,18 @@ html lang="en"
 			fieldset.addNews
 				legend | Add a news
 				form name=addNews method=post action=#
-					input type=text name=title placeholder=Title  | {##}
-					textarea name=content placeholder="Your message here !" | {##} 
+					input type=text name=title_en placeholder=Title  | {##}
+					textarea name=content_en placeholder="Your message here !" | {##} 
+					input type=text name=title_fr placeholder=Titre  | {##}
+					textarea name=content_fr placeholder="Ton message ici!" | {##} 
 					input type=submit value=Publish data-action=add | {##}
 			ul
 				li.newsEdit.template
 					form name=addNews method=post action=#
-						input.out.title name=title placeholder=Title  | {##}
-						textarea.out.content name=content placeholder="Your message here !" | {##} 
+						input.out.title_en name=title_en placeholder=Title  | {##}
+						textarea.out.content_en name=content_en placeholder="Your message here !" | {##}
+						input.out.title_fr name=title_fr placeholder=Titre  | {##}
+						textarea.out.content_fr name=content_fr placeholder="Ton message ici !" | {##}
 						input type=submit value=Publish data-action=edit | {##}
 						input type=submit value=Cancel data-action=cancel | {##}
 				li.news.template
@@ -32,8 +36,12 @@ html lang="en"
 						button data-action=edit   | Edit
 						button data-action=remove | Remove
 					.out.date    | {##}
-					h2.out.title   | {##}
-					p.out.content | {##}
+					English:
+					h2.out.title_en   | {##}
+					p.out.content_en | {##}
+					Français:
+					h2.out.title_fr   | {##}
+					p.out.content_fr | {##}
 
 		{% endblock %}
 

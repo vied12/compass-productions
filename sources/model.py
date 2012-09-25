@@ -8,44 +8,39 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 03-Sep-2012
-# Last mod : 03-Sep-2012
+# Last mod : 23-Sep-2012
 # -----------------------------------------------------------------------------
 import mongokit, datetime
-
+from mongokit import *
 connection = mongokit.Connection()
 
 class Interface:
 	@staticmethod
 	def GetConnection():
-		return connection['portfolio']
+		return connection
 
 	@staticmethod
 	def getNews(id=None,sort=None):
 		if id and id != "all":
-			return Interface.GetConnection().news.News.one({"_id":mongokit.ObjectId(id)})
+			return Interface.GetConnection().News.one({"_id":mongokit.ObjectId(id)})
 		else:
 			sort = sort or "_id"
-			return Interface.GetConnection().news.News.find().sort(sort, -1)
+			return Interface.GetConnection().News.find().sort(sort, -1)
 
 class MongoDBModel(mongokit.Document):
 	pass
 
 @connection.register
 class News(MongoDBModel):
-	__collection__ = 'portfolio_news'
+	__collection__ = 'news'
 	__database__   = 'portfolio'
 	structure = {
 		'title'         : unicode,
 		'content'       : unicode,
 		'date_creation' : datetime.datetime,
 	}
-	# validators = {
-	# 	'name': max_length(50),
-	# 	'email': max_length(120)
-	# }
-	default_values = {
-		'date_creation' : datetime.datetime.utcnow()
-	}
+	i18n             = ['title', 'content']
+	default_values   = {'date_creation' : datetime.datetime.utcnow()}
 	use_dot_notation = True
 	def __repr__(self):
 		return '<News %r>' % (self.title)
