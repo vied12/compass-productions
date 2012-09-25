@@ -216,6 +216,8 @@ class portfolio.Background extends Widget
 		$('body').bind("setNoVideo", => this.removeVideo())
 		$('body').bind("setImage", (e, filename) => this.image(filename))
 		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
+		$('body').bind("nobackground", (e, darkness) => this.removeVideo())
+		$('body').bind("background", (e, darkness) => console.log "ok")
 		return this	
 
 	relayout: =>
@@ -920,7 +922,7 @@ class portfolio.MediaPlayer extends Widget
 
 	show: =>
 		super
-		#$('body').trigger "setDirectPanelPage"
+		$('body').trigger "nobackground"
 		@uis.playerContainer.removeClass "hidden"
 		@cache.isShown = true
 		$(".FooterPanel").addClass("hidden")
@@ -931,7 +933,7 @@ class portfolio.MediaPlayer extends Widget
 
 	hide: =>
 		super
-		#$('body').trigger "setDirectPanelPage"
+		$('body').trigger "background"
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"
 		URL.remove("item", true)
