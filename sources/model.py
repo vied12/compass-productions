@@ -11,7 +11,6 @@
 # Last mod : 23-Sep-2012
 # -----------------------------------------------------------------------------
 import mongokit, datetime
-from mongokit import *
 connection = mongokit.Connection()
 
 class Interface:
@@ -42,5 +41,5 @@ class News(MongoDBModel):
 	i18n             = ['title', 'content']
 	default_values   = {'date_creation' : datetime.datetime.utcnow()}
 	use_dot_notation = True
-	def __repr__(self):
-		return '<News %r>' % (self.title)
+	# def __repr__(self):
+	# 	return '<News %r>' % (self.title)

@@ -19,15 +19,17 @@ import sources.flickr as flickr
 import sources.model as model
 import sources.vimeo as vimeo
 import os, json, mimetypes, re, collections, flask_mail
-from werkzeug.contrib.cache import SimpleCache
 
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
 db        = model.Interface.GetConnection()
-cache     = SimpleCache()
 babel     = Babel(app) # i18n
-LANGUAGES = ["en", "fr"] # default in first
+LANGUAGES = set(["en", "fr"])# default in first
+# from werkzeug.contrib.cache import SimpleCache
+# cache     = SimpleCache()
+from werkzeug.contrib.cache import MemcachedCache
+cache = MemcachedCache(['127.0.0.1:11211'])
 
 # -----------------------------------------------------------------------------
 #
@@ -37,7 +39,7 @@ LANGUAGES = ["en", "fr"] # default in first
 
 @app.route('/api/data')
 def data():
-	ln = get_locale()
+	ln = getLanguage()
 	res = cache.get('data-%s' % ln)
 	if res is None:
 		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
@@ -51,7 +53,7 @@ def data():
 							if ln in work[key].keys():
 								data["works"][work_index][key] = work[key][ln]
 							else:
-								data["works"][work_index][key] = work[key][LANGUAGES[0]]
+								data["works"][work_index][key] = work[key]["en"]
 			# add some infos for videos
 			for work_index, work in enumerate(data.get("works", tuple())):
 				for video_index, video in enumerate(work.get("videos", tuple())):
@@ -110,7 +112,10 @@ def news(id="all", sort=None):
 		if id == "all":
 			# NOTE: this line bug on first request
 			# see https://github.com/namlook/mongokit/issues/105
-			return json.dumps([_.to_json_type() for _ in news])
+			res = translate(news, getLanguage())
+			# print type(res[0])
+			# res = json.dumps([_.to_json() for _ in res])
+			return res
 		else:
 			return news.to_json()
 
@@ -136,7 +141,7 @@ def setLanguage(ln):
 
 @babel.localeselector
 @app.route('/api/getLanguage', methods=['GET'])
-def get_locale():
+def getLanguage():
 	ln = session.get("language") or request.accept_languages.best_match(['fr', 'en'])
 	return ln
 
@@ -226,6 +231,20 @@ def send_file_partial(path):
 		direct_passthrough=True)
 	rv.headers.add('Content-Range', 'bytes {0}-{1}/{2}'.format(byte1, byte1 + length - 1, size))
 	return rv
+
+def translate(obj, ln):
+	l = list(obj)
+	for idx, item in enumerate(l):
+		for key, value in item.items():
+			if hasattr(value, "keys"):
+				keys = set(value.keys())
+				# this is a dict of different language
+				if len(LANGUAGES.intersection(keys)) == len(keys):
+					if ln in keys:
+						l[idx][key] = l[idx][key][ln]
+					else:
+						l[idx][key] = l[idx][key]["en"]
+	return l
 
 # -----------------------------------------------------------------------------
 #
