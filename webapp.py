@@ -9,7 +9,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 24-Sep-2012
+# Last mod : 25-Sep-2012
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
@@ -90,19 +90,17 @@ def news(id="all", sort=None):
 		# update
 		if request.form.get("_id"):
 			query = extractQuery(request.form)
-			news  = model.Interface.getNews(request.form.get("_id"))
+			news = model.Interface.getNews(request.form.get("_id"))
 		else:
-			news = db.News()
-		news.content = request.form.get("content_en")
-		news.title   = request.form.get("title_en")
-		news.set_lang('fr')
-		news.content = request.form.get("content_fr")
-		news.title   = request.form.get("title_fr")
+			news = db.news.News()
+		news['content'] = request.form.get("content")
+		news['title']   = request.form.get("title")
 		news.save()
 		return "true"
+	#FIXME: not tested
 	if request.method == "DELETE":
 		news = model.Interface.getNews(id)
-		db.portfolio.news.remove({"_id":news._id})
+		db.news.remove({"_id":news._id})
 		return "true"
 	else:
 		sort = "date_creation" if sort == "date" else sort

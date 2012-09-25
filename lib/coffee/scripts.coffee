@@ -141,6 +141,7 @@ class portfolio.Navigation extends Widget
 				setTimeout( (=> @panelWidget.hide()), 100)							
 
 	updatePanelMenuRoot: (opened) =>
+		console.log "updatePanelMenuRoot", opened
 		if opened
 			if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
 		else 
@@ -507,10 +508,10 @@ class portfolio.News extends Widget
 		for news in data
 			date = new Date(news.date_creation)			
 			nui = @uis.newsTmpl.cloneTemplate({
-				body:news.content.en.replace(/\n/g, "<br />")
+				body:news.content.replace(/\n/g, "<br />")
 				date:date.toDateString()
 			})
-			nui.find(".title").append(news.title.en)
+			nui.find(".title").append(news.title)
 			@uis.newsContainer.append(nui)
 
 # -----------------------------------------------------------------------------
