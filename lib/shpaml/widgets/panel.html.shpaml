@@ -4,8 +4,25 @@
 		.pages	
 			.Project.page.widget data-widget=portfolio.Project
 				ul.tabs.disableTextSelection
-					li.template
-						a.internal | {##}
+					li.synopsis.hidden
+						a.internal href="#+cat=synopsis" data-name=synopsis | {{ gettext("synopsis") }}
+					li.videos.hidden
+						a.internal href="#+cat=videos" data-name=videos | {{ gettext("videos") }}
+					{# special case for Nana G. & me #}
+					li.videosNana.hidden
+						a.internal href="#page=project&project=nana&cat=videos&item=0" data-name=videos | {{ gettext("view entire film") }}
+					li.gallery.hidden
+						a.internal href="#+cat=gallery" data-name=gallery | {{ gettext("gallery") }}
+					li.screenings.hidden
+						a.internal href="#+cat=screenings" data-name=screenings | {{ gettext("screenings") }}
+					li.credits.hidden
+						a.internal href="#+cat=credits" data-name=credits | {{ gettext("credits") }}
+					li.press.hidden
+						a.internal href="#+cat=press" data-name=press | {{ gettext("press") }}
+					li.links.hidden
+						a.internal href="#+cat=links" data-name=links | {{ gettext("links") }}
+					li.distribution.hidden
+						a.internal href="#+cat=distribution" data-name=distribution | {{ gettext("distribution") }}
 				.contents
 					.content.synopsis  data-name="synopsis"
 						.wrapper.maxWidth
