@@ -87,8 +87,8 @@ body:
 					padding            : 10px
 				&.brand:
 					margin : 3px 5px 3px 3px 
-					background : $TILE_COLOR url('/static/images/CP_logo_white.svg') center 25px no-repeat
-					background-size : 137px
+					background : $TILE_COLOR url('/static/images/CP_logo_white.svg') center 33px no-repeat
+					background-size : 111px
 		.menu:
 			position : absolute
 			float    : left
@@ -114,7 +114,11 @@ body:
 					border         : 1px solid white
 					text-transform : uppercase
 					font-size      : 1em
-					padding : 15px 12px 13px 12px
+					padding        : 15px 12px 13px 12px
+		.creditPhoto:
+			position:absolute
+			bottom: 47px
+			right : 20px
 
 		.Page.links:
 			opacity 		: 1
@@ -335,17 +339,16 @@ body:
 					width : 600px				
 			&.gallery:
 				overflow : auto
-				li:
+				li.photo:
 					display		: inline-block
 					margin		: 5px
 					cursor      : pointer
-				.show_more:
-					background 		: "rgba(10,10,10,0.7)"
-					vertical-align  : top
-					width 			: 130px 
-					height          : 130px 
-					padding 		: $BASE_PADDING
-					font-size       : 0.8em
+					.image:
+						// fix to prevent white margin on flick'r image
+						background-size     : 105%
+						background-position : center center
+						width               : 150px
+						height              : 150px
 			&.screenings,&.credits:
 			 	.screening, .credit :
 					clear : both			

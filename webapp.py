@@ -13,24 +13,18 @@
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
-from flaskext.babel import Babel
+import os, json, mimetypes, re, collections, flask_mail, werkzeug.contrib.cache, flaskext.babel
 import sources.preprocessing as preprocessing
-import sources.flickr as flickr
-import sources.model as model
-import sources.vimeo as vimeo
-import os, json, mimetypes, re, collections, flask_mail
-from werkzeug.contrib.cache import SimpleCache
+import sources.flickr        as flickr
+import sources.model         as model
+import sources.vimeo         as vimeo
 
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
 db        = model.Interface.GetConnection()
-babel     = Babel(app) # i18n
-LANGUAGES = ["en", "fr"] # default in first
-# from werkzeug.contrib.cache import SimpleCache
-from werkzeug.contrib.cache import MemcachedCache
-# cache     = SimpleCache()
-cache = MemcachedCache(['127.0.0.1:11211'])
+babel     = flaskext.babel.Babel(app) # i18n
+cache     = werkzeug.contrib.cache.MemcachedCache(['127.0.0.1:11211'], key_prefix="portfolio")
 
 # -----------------------------------------------------------------------------
 #
@@ -50,11 +44,11 @@ def data():
 				for key in work.keys():
 					# if value is a pair of {en: ..., fr: ...}
 					if type(work[key]) == collections.OrderedDict:
-						if work[key].keys()[0] in LANGUAGES:
+						if work[key].keys()[0] in app.config["LANGUAGES"]:
 							if ln in work[key].keys():
 								data["works"][work_index][key] = work[key][ln]
 							else:
-								data["works"][work_index][key] = work[key][LANGUAGES[0]]
+								data["works"][work_index][key] = work[key][app.config["LANGUAGES"][0]]
 			# add some infos for videos
 			for work_index, work in enumerate(data.get("works", tuple())):
 				for video_index, video in enumerate(work.get("videos", tuple())):
@@ -93,7 +87,7 @@ def news(id="all", sort=None):
 		# update
 		if request.form.get("_id"):
 			query = extractQuery(request.form)
-			news = model.Interface.getNews(request.form.get("_id"))
+			news  = model.Interface.getNews(request.form.get("_id"))
 		else:
 			news = db.news.News()
 		news['content'] = request.form.get("content")
@@ -131,14 +125,20 @@ def contact():
 @app.route('/api/setLanguage/<ln>', methods=['GET'])
 def setLanguage(ln):
 	"""Change current language in session"""
-	# FIXME: check ln value
-	session["language"] = ln
-	return "true"
+	session["language"] = None
+	if ln in app.config["LANGUAGES"]:
+		session["language"] = ln
+		return "true"
+	else:
+		return "false"
 
 @babel.localeselector
 @app.route('/api/getLanguage', methods=['GET'])
 def get_locale():
-	ln = session.get("language") or request.accept_languages.best_match(['fr', 'en'])
+	if session.get("language") and session.get("language") != "undefined":
+		ln = session.get("language")
+	else:
+		ln = request.accept_languages.best_match(['fr', 'en'])
 	return ln
 
 # -----------------------------------------------------------------------------
@@ -249,6 +249,8 @@ if __name__ == '__main__':
 	else:
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
 		preprocessing.preprocess(app, request) 
+		# set FileSystemCache instead of Memcache
+		cache = werkzeug.contrib.cache.FileSystemCache(os.path.join(app.root_path, "cache"))
 		# run application
 		app.run()
 # EOF

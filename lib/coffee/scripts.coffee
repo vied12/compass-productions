@@ -28,15 +28,14 @@ class portfolio.Navigation extends Widget
 			brandTile        : ".brand.tile"
 			main             : ".Main"
 			works            : ".Works"
-			page             :  ".PageMenu"
+			page             : ".PageMenu"
 			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
 			pageLinks 		 : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
-			# panelOpenedText  : "..menuRoot .panelOpenedText"
-			# panelHiddenText  : "..menuRoot .panelHiddenText"
 			promo            : ".promo"
+			creditPhoto      : ".creditPhoto"
 		}
 
 		@CONFIG = {
@@ -101,7 +100,12 @@ class portfolio.Navigation extends Widget
 			$('body').trigger "setNoVideo"
 			$('body').trigger "cancelDelayedPanel"
 		else
-			@uis.promo.addClass "hidden"
+			@uis.promo.addClass "hidden"		
+		# Hide/Show credit photos
+		if menu == "main" or menu == "works"
+			@uis.creditPhoto.removeClass "hidden"
+		else
+			@uis.creditPhoto.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
@@ -146,7 +150,6 @@ class portfolio.Navigation extends Widget
 				setTimeout( (=> @panelWidget.hide()), 100)							
 
 	updatePanelMenuRoot: (opened) =>
-		console.log "updatePanelMenuRoot", opened
 		if opened
 			if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
 
@@ -163,8 +166,6 @@ class portfolio.Navigation extends Widget
 			$("body").trigger("setDirectPanelPage", page)			
 		else
 			$("body").trigger("setPanelPage", page)
-			
-			
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
@@ -416,21 +417,14 @@ class portfolio.Panel extends Widget
 class portfolio.FlickrGallery extends Widget
 
 	constructor: ->
-		@OPTIONS = {
-			initial_quantity   : 10
-			show_more_quantity : 10
-			show_more_text     : "More"
-		}
 
 		@UIS = {
-			list        : ".photos"
-			listItems   : ".photos li"
-			showMore    : ".show_more.template"
+			list      : ".photos"
+			photoTmpl : "li.photo.template" 
 		}
 
 		@cache = {
-			data        : null
-			photo_index : null
+			data : null
 		}
 
 		@imagePlayer = null
@@ -444,15 +438,10 @@ class portfolio.FlickrGallery extends Widget
 	getPhotoSet: => return @cache.data
 
 	_makePhotoTile: (photoData, index) =>
-		li    = $('<li></li>')
-		image = $('<img />').attr('src', photoData.q)
-		link  = $('<a></a>').attr({href:"#+item="+index, class:"internal"})
-		link.append image
-		li.append link
-		@uis.list.append li
-		#put show more tile at the end:
-		if @uis.list.find(".show_more")
-			@uis.list.find(".show_more").appendTo @uis.list
+		nui = @uis.photoTmpl.cloneTemplate()
+		nui.find(".image").css("background-image", "url("+photoData.q+")")
+		nui.find("a").attr("href", "#+item="+index)
+		@uis.list.append(nui)
 
 	setData: (data) =>
 		#clean old gallery
@@ -460,36 +449,17 @@ class portfolio.FlickrGallery extends Widget
 		#update	cache data	
 		@cache.data = data
 		#make the first tiles 
-		for photo, index in data[0..@OPTIONS.initial_quantity]
+		for photo, index in data
 			this._makePhotoTile(photo, index)
-		URL.enableLinks(@uis.list)
-		#show_more tile when more tile to show
-		if data.length >= @OPTIONS.initial_quantity
-			showMoreTile = @ui.find(".show_more.template").cloneTemplate()	
-			showMoreTile.append @OPTIONS.show_more_text
-			@uis.list.append(showMoreTile)
-			showMoreTile.click => this.showMore()
-			#update cache index
-			@cache.photo_index = @OPTIONS.initial_quantity
-		params = URL.get()
 		# show media player if item params exists in URL hash
+		URL.enableLinks(@uis.list)
+		params = URL.get()
 		if params.item and URL.get("cat") == "gallery"
 			@imagePlayer.setData(this.getPhotoSet())
 		URL.onStateChanged =>
 			if URL.get("item")
 				if URL.get("cat")? and URL.get("cat") == "gallery"
 					@imagePlayer.setData(this.getPhotoSet())
-
-	showMore: =>
-		next_index = @cache.photo_index+@OPTIONS.initial_quantity
-		if next_index >= @cache.data.length
-			next_index = @cache.data.length	
-			@ui.find(".show_more").addClass "hidden"
-		for photo,index in @cache.data[@cache.photo_index+1..next_index]
-			this._makePhotoTile(photo, @cache.photo_index + 1 + index)
-		URL.enableLinks(@uis.list)
-		@cache.photo_index = next_index
-		$('body').trigger "relayoutContent"
 
 # -----------------------------------------------------------------------------
 #
@@ -1153,7 +1123,6 @@ class portfolio.Language extends Widget
 			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
 		else
 			this.getLanguage()
-
 
 Widget.bindAll()
 
