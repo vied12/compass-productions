@@ -628,7 +628,7 @@ class portfolio.Project extends Widget
 			footerBarHeight : 0
 			data            : null
 		}
-		@CATEGORIES    = ["synopsis", "screenings", "videos", "credits", "gallery", "press", "links","distribution"]	
+		@CATEGORIES    = ["synopsis", "videos", "gallery", "screenings", "credits", "press", "links", "distribution"]	
 		@flickrGallery = null
 		@videoPlayer   = null
 
@@ -690,8 +690,8 @@ class portfolio.Project extends Widget
 	setMenu: (project) =>
 		@uis.tabs.find('li:not(.template)').remove()
 		system_keys = ["key", "email", "title"]
-		for category, value of project
-			if category in @CATEGORIES
+		for category in @CATEGORIES
+			if project[category]?
 				nui = @uis.tabTmpl.cloneTemplate()
 				nui.find("a").text(category).attr("href", "#+cat="+category).attr("data-target", category)
 				nui.attr("data-name", category)
