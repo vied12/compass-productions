@@ -147,15 +147,23 @@ body:
 					-moz-transition-duration    : "0.3s"
 					-moz-transition-timing-function     : ease
 					-webkit-transition-timing-function  : ease		
-				&.active:
-					a:
-						color 	: $TEXT_COLOR_DARK 
-					img:
-						transform        : "rotate(-90deg)"
-						-ms-transform    : "rotate(-90deg)"
-						-moz-transform   : "rotate(-90deg)"
-						-webkit-transform: "rotate(-90deg)"
-						-o-transform     : "rotate(-90deg)"
+					margin-right: 5px
+				&.menuRoot:					
+					.panelHiddenText:
+						display : none
+					.panelOpenText:
+						display : inline-block	
+					&.active:
+						.panelHiddenText:
+							display : inline-block
+						.panelOpenedText:
+							display : none					
+						img:
+							transform        : "rotate(-90deg)"
+							-ms-transform    : "rotate(-90deg)"
+							-moz-transform   : "rotate(-90deg)"
+							-webkit-transform: "rotate(-90deg)"
+							-o-transform     : "rotate(-90deg)"
 			&.show:
 				opacity 	: 1
 			&.hide:

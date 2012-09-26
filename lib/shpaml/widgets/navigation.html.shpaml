@@ -43,6 +43,8 @@
 			li.menuRoot
 				a href=#
 					> img src="/static/images/menu.png"
+					span.panelOpenedText | Open tab
+					span.panelHiddenText | Close tab
 			li
 				a href=#menu=main | Menu
 			li.works.hidden

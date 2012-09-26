@@ -34,6 +34,8 @@ class portfolio.Navigation extends Widget
 			mainTiles        : ".Main .tile"
 			pageLinks 		 : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
+			# panelOpenedText  : "..menuRoot .panelOpenedText"
+			# panelHiddenText  : "..menuRoot .panelHiddenText"
 			promo            : ".promo"
 		}
 
@@ -144,6 +146,7 @@ class portfolio.Navigation extends Widget
 		console.log "updatePanelMenuRoot", opened
 		if opened
 			if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
+
 		else 
 			@uis.menuRoot.removeClass "active"
 
