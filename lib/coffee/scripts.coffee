@@ -28,7 +28,7 @@ class portfolio.Navigation extends Widget
 			brandTile        : ".brand.tile"
 			main             : ".Main"
 			works            : ".Works"
-			page             :  ".PageMenu"
+			page             : ".PageMenu"
 			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
@@ -1128,7 +1128,6 @@ class portfolio.Language extends Widget
 			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
 		else
 			this.getLanguage()
-
 
 Widget.bindAll()
 
