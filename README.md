@@ -60,7 +60,7 @@ This will use the mapping from the ``babel.cfg`` file and store the
 generated template in ``messages.pot``.  Now we can create the first
 translation.  For example to translate to German use this command::
 
-    $ pybabel init -i messages.pot -d translations -l de
+    $ pybabel init -i messages.pot -d translations -l fr
 
 ``-d translations`` tells pybabel to store the translations in this
 folder.  This is where Flask-Babel will look for translations.  Put it

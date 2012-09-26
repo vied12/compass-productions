@@ -21,7 +21,7 @@
 			.tile.nav data-target="devil"
 				.wrapper | The devil in the holy water
 			.tile.nav data-target="nana"
-				.wrapper | {{ gettext("Nana, goerge & me") }}
+				.wrapper | {{ gettext("Nana, George & me") }}
 			.tile.nav data-target="parting"
 				.wrapper | Parting words
 			.tile.nav data-target="longueur"
@@ -37,6 +37,9 @@
 		a.button href=#page=project&project=joy&cat=videos&item=0
 			span | {{ gettext("WATCH THE TRAILER") }}
 
+	.creditPhoto.hidden
+		span
+			{{ gettext("photo by") }} Nina Glaser
 	.Page.links
 		ul
 			li.menuRoot

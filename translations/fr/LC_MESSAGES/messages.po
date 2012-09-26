@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-26 13:00+0200\n"
+"POT-Creation-Date: 2012-09-26 17:56+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -17,77 +17,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:10
-#: lib/shpaml/widgets/navigation.html.shpaml:53
+#: lib/shpaml/widgets/navigation.html.shpaml:9
+#: lib/shpaml/widgets/navigation.html.shpaml:55
 msgid "News"
 msgstr "Nouveautés"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:12
+#: lib/shpaml/widgets/navigation.html.shpaml:11
 msgid "Contact"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:19
+#: lib/shpaml/widgets/navigation.html.shpaml:18
 msgid "Joy"
 msgstr "Joie"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:25
-msgid "Nana, goerge & me"
-msgstr "Nana, Goerge et MOI"
+#: lib/shpaml/widgets/navigation.html.shpaml:24
+msgid "Nana, George & me"
+msgstr "Nana, George et MOI"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:29
+#: lib/shpaml/widgets/navigation.html.shpaml:28
 msgid "The Length of the Alphabet"
 msgstr "La longueur de l’alphabet"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:34
+#: lib/shpaml/widgets/navigation.html.shpaml:33
 msgid "In theaters soon"
 msgstr "Bientôt en salle"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:39
+#: lib/shpaml/widgets/navigation.html.shpaml:38
 msgid "WATCH THE TRAILER"
 msgstr "REGARDE LA BANDE ANNONCE"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:46
+#: lib/shpaml/widgets/navigation.html.shpaml:42
+msgid "photo by"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:48
 msgid "Open"
 msgstr "Ouvrir"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:47
+#: lib/shpaml/widgets/navigation.html.shpaml:49
 msgid "Close"
 msgstr "Fermer"
 
-#: lib/shpaml/widgets/panel.html.shpaml:68
-#: lib/shpaml/widgets/panel.html.shpaml:78
+#: lib/shpaml/widgets/panel.html.shpaml:69
+#: lib/shpaml/widgets/panel.html.shpaml:79
 msgid "Hello there,"
 msgstr "Salut,"
 
-#: lib/shpaml/widgets/panel.html.shpaml:70
+#: lib/shpaml/widgets/panel.html.shpaml:71
 msgid "Would you like to get in touch with Compass Productions?"
 msgstr "Vous voulez prendre contact avec Compass Productions?"
 
-#: lib/shpaml/widgets/panel.html.shpaml:72
-msgid "You may e reach us at:"
+#: lib/shpaml/widgets/panel.html.shpaml:73
+msgid "You may reach us at:"
 msgstr "Vous pouvez nous joindre sur:"
 
-#: lib/shpaml/widgets/panel.html.shpaml:75
+#: lib/shpaml/widgets/panel.html.shpaml:76
 msgid "or use our contact"
 msgstr "ou utiliser notre formulaire de contact"
 
-#: lib/shpaml/widgets/panel.html.shpaml:80
+#: lib/shpaml/widgets/panel.html.shpaml:81
 msgid "Would you like to get in touch with Compass Productions"
 msgstr "Vous voulez prendre contact avec Compass Productions"
 
-#: lib/shpaml/widgets/panel.html.shpaml:85
+#: lib/shpaml/widgets/panel.html.shpaml:86
 msgid "Write us a few lines..."
 msgstr "Ecrivez nous ici quelques lignes..."
 
-#: lib/shpaml/widgets/panel.html.shpaml:87
+#: lib/shpaml/widgets/panel.html.shpaml:88
 msgid "Send"
 msgstr "Envoyer"
 
-#: lib/shpaml/widgets/panel.html.shpaml:88
+#: lib/shpaml/widgets/panel.html.shpaml:89
 msgid "Thank you"
 msgstr "Merci"
 
-#: lib/shpaml/widgets/panel.html.shpaml:89
+#: lib/shpaml/widgets/panel.html.shpaml:90
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"

@@ -16,8 +16,9 @@
 					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
 							ul.photos.mediaGallery
-								li.photo     | {##}
-								li.show_more.template | {##}	
+								li.photo.template
+									a.internal href=#
+										div.image | {##}
 					.content.videos data-name="videos"
 						.wrapper.maxWidth
 							ul
@@ -69,7 +70,7 @@
 								> br
 								{{ gettext("Would you like to get in touch with Compass Productions?") }}
 								> br
-								{{ gettext("You may e reach us at:") }}
+								{{ gettext("You may reach us at:") }}
 								.email
 									info@compassproduction.com
 							a.button.toContactForm href="#" | {{ gettext("or use our contact") }}
