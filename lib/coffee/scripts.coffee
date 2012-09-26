@@ -34,8 +34,6 @@ class portfolio.Navigation extends Widget
 			mainTiles        : ".Main .tile"
 			pageLinks 		 : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
-			# panelOpenedText  : "..menuRoot .panelOpenedText"
-			# panelHiddenText  : "..menuRoot .panelHiddenText"
 			promo            : ".promo"
 		}
 
@@ -143,7 +141,6 @@ class portfolio.Navigation extends Widget
 				setTimeout( (=> @panelWidget.hide()), 100)							
 
 	updatePanelMenuRoot: (opened) =>
-		console.log "updatePanelMenuRoot", opened
 		if opened
 			if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
 
@@ -160,8 +157,6 @@ class portfolio.Navigation extends Widget
 			$("body").trigger("setDirectPanelPage", page)			
 		else
 			$("body").trigger("setPanelPage", page)
-			
-			
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)

@@ -93,7 +93,7 @@ def news(id="all", sort=None):
 		# update
 		if request.form.get("_id"):
 			query = extractQuery(request.form)
-			news = model.Interface.getNews(request.form.get("_id"))
+			news  = model.Interface.getNews(request.form.get("_id"))
 		else:
 			news = db.news.News()
 		news['content'] = request.form.get("content")
@@ -131,14 +131,20 @@ def contact():
 @app.route('/api/setLanguage/<ln>', methods=['GET'])
 def setLanguage(ln):
 	"""Change current language in session"""
-	# FIXME: check ln value
-	session["language"] = ln
-	return "true"
+	session["language"] = None
+	if ln in LANGUAGES:
+		session["language"] = ln
+		return "true"
+	else:
+		return "false"
 
 @babel.localeselector
 @app.route('/api/getLanguage', methods=['GET'])
 def get_locale():
-	ln = session.get("language") or request.accept_languages.best_match(['fr', 'en'])
+	if session.get("language") and session.get("language") != "undefined":
+		ln = session.get("language")
+	else:
+		ln = request.accept_languages.best_match(['fr', 'en'])
 	return ln
 
 # -----------------------------------------------------------------------------

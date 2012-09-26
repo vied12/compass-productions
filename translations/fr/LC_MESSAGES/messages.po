@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-25 03:53+0200\n"
+"POT-Creation-Date: 2012-09-26 13:00+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Generated-By: Babel 0.9.6\n"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:10
+#: lib/shpaml/widgets/navigation.html.shpaml:53
 msgid "News"
 msgstr "Nouveautés"
 
@@ -44,6 +45,14 @@ msgstr "Bientôt en salle"
 #: lib/shpaml/widgets/navigation.html.shpaml:39
 msgid "WATCH THE TRAILER"
 msgstr "REGARDE LA BANDE ANNONCE"
+
+#: lib/shpaml/widgets/navigation.html.shpaml:46
+msgid "Open"
+msgstr "Ouvrir"
+
+#: lib/shpaml/widgets/navigation.html.shpaml:47
+msgid "Close"
+msgstr "Fermer"
 
 #: lib/shpaml/widgets/panel.html.shpaml:68
 #: lib/shpaml/widgets/panel.html.shpaml:78

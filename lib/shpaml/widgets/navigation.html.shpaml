@@ -1,4 +1,3 @@
-{# TODO: generate tile dynamicaly through the json #}
 .Navigation.disableTextSelection.widget data-widget=portfolio.Navigation
 	.tiles
 		.brand.tile.show data-target="main"
@@ -43,13 +42,13 @@
 			li.menuRoot
 				a href=#
 					> img src="/static/images/menu.png"
-					span.panelOpenedText | Open tab
-					span.panelHiddenText | Close tab
+					span.panelOpenedText | {{ gettext("Open") }}
+					span.panelHiddenText | {{ gettext("Close") }}
 			li
 				a href=#menu=main | Menu
 			li.works.hidden
 				a href=#&menu=works | Films					
 			li.news.hidden
-				a href=#&page=news | News
+				a href=#&page=news | {{ gettext("News") }}
 			li.contact.hidden
 				a href=#&page=contact | Contact
