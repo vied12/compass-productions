@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-26 17:56+0200\n"
+"POT-Creation-Date: 2012-09-26 19:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,40 +58,76 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:69
-#: lib/shpaml/widgets/panel.html.shpaml:79
-msgid "Hello there,"
+#: lib/shpaml/widgets/panel.html.shpaml:8
+msgid "synopsis"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:71
-msgid "Would you like to get in touch with Compass Productions?"
+#: lib/shpaml/widgets/panel.html.shpaml:10
+msgid "videos"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:73
-msgid "You may reach us at:"
+#: lib/shpaml/widgets/panel.html.shpaml:12
+msgid "gallery"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:76
-msgid "or use our contact"
+#: lib/shpaml/widgets/panel.html.shpaml:14
+msgid "screenings"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:81
-msgid "Would you like to get in touch with Compass Productions"
+#: lib/shpaml/widgets/panel.html.shpaml:16
+msgid "credits"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:18
+msgid "press"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:20
+msgid "links"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:22
+msgid "distribution"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:25
+msgid "view entire film"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:86
-msgid "Write us a few lines..."
+#: lib/shpaml/widgets/panel.html.shpaml:96
+msgid "Hello there,"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:88
-msgid "Send"
-msgstr ""
-
-#: lib/shpaml/widgets/panel.html.shpaml:89
-msgid "Thank you"
+msgid "Would you like to get in touch with Compass Productions?"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:90
+msgid "You may reach us at:"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:93
+msgid "or use our contact"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:98
+msgid "Would you like to get in touch with Compass Productions"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:103
+msgid "Write us a few lines..."
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:105
+msgid "Send"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:106
+msgid "Thank you"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:107
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"

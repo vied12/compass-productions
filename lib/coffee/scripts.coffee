@@ -598,7 +598,7 @@ class portfolio.Project extends Widget
 			tabs        : ".tabs"
 			tabContent  : ".content"
 			tabContents : ".contents"
-			tabTmpl     : ".tabs > li.template"		
+			tabList     : ".tabs li"
 		}
 		@cache = {
 			footerBarHeight : 0
@@ -656,7 +656,6 @@ class portfolio.Project extends Widget
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
-
 		if project_obj.backgroundVideos
 			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
 		else if project_obj.backgroundImage
@@ -665,24 +664,25 @@ class portfolio.Project extends Widget
 			$('body').trigger("setNoVideo")
 
 	setMenu: (project) =>
-		@uis.tabs.find('li:not(.template)').remove()
-		system_keys = ["key", "email", "title"]
+		@uis.tabList.addClass "hidden"
 		for category in @CATEGORIES
 			if project[category]?
-				nui = @uis.tabTmpl.cloneTemplate()
-				nui.find("a").text(category).attr("href", "#+cat="+category).attr("data-target", category)
-				nui.attr("data-name", category)
-				@uis.tabs.append(nui)
+				# special case for Nana G. and Me
+				if project.key == "nana" and category == "videos"
+					@uis.tabs.find("."+category+"Nana").removeClass("hidden")
+				else
+					@uis.tabs.find("."+category).removeClass("hidden")
+		# special case for Bagdad film, the video is on an external web site
 		if project.videos?
 			if project.videos.length == 0
 				@cache.externalVideo = true
-				@ui.find("[data-target=videos]").bind("click.external", (e) =>
+				@ui.find("[data-name=videos]").bind("click.external", (e) =>
 						e.preventDefault()
 						window.open('http://www.nfb.ca/film/baghdad_twist','_blank')
 					)
 			else
 				@cache.externalVideo = false
-				@ui.find("[data-target=videos]").unbind("click.external")
+				@ui.find("[data-name=videos]").unbind("click.external")
 		# update dynamic links
 		URL.enableLinks(@uis.tabs)
 
