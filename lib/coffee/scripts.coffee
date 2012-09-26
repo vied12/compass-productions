@@ -68,6 +68,9 @@ class portfolio.Navigation extends Widget
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		$('body').bind('backToHome', (e) => this.showMenu("main"))
 		$('body').bind('updatePanelMenuRoot', (e,opened) => this.updatePanelMenuRoot(opened))
+		$('body').bind('desactivatelPanelToggler', (e,opened) => @uis.menuRoot.addClass "hidden")
+		$('body').bind('activatelPanelToggler', (e,opened) => @uis.menuRoot.removeClass "hidden")
+		
 		# bind url change
 		URL.onStateChanged(=>
 			if URL.hasChanged("menu")
@@ -630,6 +633,7 @@ class portfolio.Project extends Widget
 		@cache = {
 			footerBarHeight : 0
 			data            : null
+			externalVideo : false
 		}
 		@CATEGORIES    = ["synopsis", "videos", "gallery", "screenings", "credits", "press", "links", "distribution"]	
 		@flickrGallery = null
@@ -699,6 +703,16 @@ class portfolio.Project extends Widget
 				nui.find("a").text(category).attr("href", "#+cat="+category).attr("data-target", category)
 				nui.attr("data-name", category)
 				@uis.tabs.append(nui)
+		if project.videos?
+			if project.videos.length == 0
+				@cache.externalVideo = true
+				@ui.find("[data-target=videos]").bind("click.external", (e) =>
+						e.preventDefault()
+						window.open('http://www.nfb.ca/film/baghdad_twist','_blank')
+					)
+			else
+				@cache.externalVideo = false
+				@ui.find("[data-target=videos]").unbind("click.external")
 		# update dynamic links
 		URL.enableLinks(@uis.tabs)
 
@@ -783,17 +797,21 @@ class portfolio.Project extends Widget
 						nui.empty()
 						nui.append(value.replace(/\n/g, "<br />"))
 						
-	selectTab: (category) =>
-		@uis.tabContent.removeClass "active"
-		@uis.tabContent.removeClass "show"
-		@uis.tabContent.addClass "hidden"		
-		tabs_nui = @uis.tabs.find("li").removeClass "active"
-		tabs_nui.filter("[data-name="+category+"]").addClass "active"
-		tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
-		tab_nui.removeClass "hidden"		
-		setTimeout((=>tab_nui.addClass "active"), 100)
-		$('body').trigger "readmore.init"
-		this.relayout()
+	selectTab: (category) =>	
+		if not (@cache.externalVideo and category=="videos")
+			@uis.tabContent.removeClass "active"
+			@uis.tabContent.removeClass "show"
+			@uis.tabContent.addClass "hidden"		
+			tabs_nui = @uis.tabs.find("li").removeClass "active"
+			tabs_nui.filter("[data-name="+category+"]").addClass "active"
+			tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
+			tab_nui.removeClass "hidden"		
+			setTimeout((=>tab_nui.addClass "active"), 100)
+			$('body').trigger "readmore.init"
+			this.relayout()
+
+
+
 # -----------------------------------------------------------------------------
 # MEDIA PLAYER
 #
@@ -946,6 +964,7 @@ class portfolio.MediaPlayer extends Widget
 		@uis.next.removeClass("hidden")
 		@uis.previous.removeClass("hidden")
 		$('body').trigger "suspendBackground"
+		$('body').trigger "desactivatelPanelToggler"
 
 	hide: =>
 		super
@@ -962,6 +981,7 @@ class portfolio.MediaPlayer extends Widget
 		@uis.mediaList.find("li.actual").remove()
 		@uis.next.addClass("hidden")
 		@uis.previous.addClass("hidden")
+		$('body').trigger "activatelPanelToggler"
 
 # -----------------------------------------------------------------------------
 #
