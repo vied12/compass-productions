@@ -7,7 +7,7 @@ body:
 .logo: 
 	width : 120px
 	height:  120px
-	background : #222 url(/static/images/logo.png) 20px 20px no-repeat
+	background : #222 url(../images/logo.png) 20px 20px no-repeat
 	margin-bottom : 20px
 
 .menu:

@@ -87,7 +87,7 @@ body:
 					padding            : 10px
 				&.brand:
 					margin : 3px 5px 3px 3px 
-					background : $TILE_COLOR url('/static/images/CP_logo_white.svg') center 33px no-repeat
+					background : $TILE_COLOR url('../images/CP_logo_white.svg') center 33px no-repeat
 					background-size : 111px
 		.menu:
 			position : absolute
@@ -273,7 +273,7 @@ body:
 			position    : absolute
 			right       : 30px
 			top         : 30px
-			background-image    : url('/static/images/close.png')
+			background-image    : url('../images/close.png')
 			background-color    : transparent
 			background-repeat   : no-repeat
 			background-position : top left
@@ -431,7 +431,7 @@ body:
 		top    : 0
 		z-index   : 2
 		&:hover:
-			cursor : url('/static/images/close.png'), pointer
+			cursor : url('../images/close.png'), pointer
 
 	.player:
 		margin    : 0 auto
@@ -557,7 +557,7 @@ body:
 	.hidden:
 		display 		: none
 	.mask:
-		background 		: url('/static/images/Pixel_Pattern.gif') repeat
+		background 		: url('../images/Pixel_Pattern.gif') repeat
 		z-index			: 1
 	.darkness:
 		background-color : black
@@ -565,11 +565,11 @@ body:
 		z-index : 1
 	.mousemask:	
 		opacity : 1	
-		//background-image : url('/static/images/mousemask'.png)
+		//background-image : url('../images/mousemask'.png)
 		//background-image : `-moz-linear-gradient(left center, transparent, white)`		
 		//background-image : `-webkit-linear-gradient(left center, transparent, white)`
 		//background 	->
-			//image : url('/static/images/Pixel_Pattern.gif')
+			//image : url('../images/Pixel_Pattern.gif')
 			//-webkit-mask-image: `-webkit-gradient(radial, 50% 50%, 30, 50% 50%, 90, from(#fff), to(rgba(0,0,0,0)))` 
 			//image : `-webkit-linear-gradient(left center, transparent, white)`
 			//repeat : no-repeat 
@@ -620,7 +620,7 @@ body:
 			.image :
 				background ->
 					repeat : no-repeat
-					image :  url('/static/images/logo.png')
+					image :  url('../images/logo.png')
 					position : top left		
 
 
