@@ -193,62 +193,49 @@ class portfolio.Background extends Widget
 
 	constructor: ->
 		@UIS = {
-			backgrounds: "> :not(.mask)"
-			image : ".image"
-			video : ".video"
-			mask: ".mask"
-			darkness : ".darkness"
+			image     : ".image"
+			video     : ".video"
+			mask      : ".mask"
+			darkness  : ".darkness"
 			mousemask : ".mousemask"
 		}
 
 		@CONFIG = {
 			imageUrl : "/static/images/"
 			videoUrl : "/static/videos/"
-			formats : {
-				"mp4" : "avc1.4D401E, mp4a.40.2"
-				"ogg" : "theora, vorbis"
-				"webm" : "vp8.0, vorbis"
-			}
-
 		}
 
 		@CACHE = {
-			videoFormat : null 
-			image : null
-			suspended : false
+			image       : null
+			suspended   : false
 		}
-		
+
 	bindUI: (ui) ->
 		super	
 		$(window).resize(=>(this.relayout()))		
-		$('body').bind "setVideos", (e, data) =>
-				this.video(data.split(","))	
-		$('body').bind("setNoVideo", => this.removeVideo())
-		$('body').bind("setImage", (e, filename) => this.image(filename))
-		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
-		$('body').bind("suspendBackground", (e) => this.suspend())
-		$('body').bind("restoreBackground", (e) => this.restore())
-		return this	
+		$('body').bind "setVideos",    (e, data) => console.log("this.video"); this.video(data.split(","))	
+		$('body').bind("setNoVideo",             => console.log("this.removeVideo"); this.removeVideo())
+		$('body').bind("setImage", (e, filename) => console.log("this.image"); this.image(filename))
+		$('body').bind("darkness", (e, darkness) => console.log("this.darkness"); this.darkness(darkness))
+		$('body').bind("suspendBackground",  (e) => console.log("this.suspend"); this.suspend())
+		$('body').bind("restoreBackground",  (e) => console.log("this.restore"); this.restore())
 
 	relayout: =>
-		this.resize(@uis.image, "full")
-		#crazy, video resizing seems to work properly without any help !
-		#this.resize(@ui.find("video.actual"), "auto")
-		this.resize(@uis.mask, "full")
+		resize = (that, flexibleSize) ->
+			if flexibleSize == "full"
+			 	flexibleSize = "100%"
+			aspectRatio = that.height() / that.width()
+			#ratio compliant
+			windowRatio = $(window).height() / $(window).width()
+			if windowRatio > aspectRatio
+				that.height($(window).height())
+				that.width(flexibleSize)
+			else
+				that.height(flexibleSize)
+				that.width($(window).width())
+		resize(@uis.image, "full")
+		resize(@uis.mask, "full")
 
-	resize: (that, flexibleSize) =>	
-		if flexibleSize == "full"
-		 	flexibleSize="100%"
-		aspectRatio = that.height() / that.width()
-		#ratio compliant
-		windowRatio = $(window).height() / $(window).width()
-		if windowRatio > aspectRatio
-			that.height($(window).height())
-			that.width(flexibleSize)
-		else
-			that.height(flexibleSize)
-			that.width($(window).width())
-	
 	suspend: =>
 		@CACHE.suspended = true
 		@uis.image.addClass "hidden"
@@ -264,25 +251,26 @@ class portfolio.Background extends Widget
 
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
-		#use image's widget give better control on relayoupropting than poster attribute of <video>		
-		@ui.find('.actual').addClass('.oldsoon')
-		newVideo = @uis.video.cloneTemplate().addClass "hidden"
-		newVideo.prop('muted', true)
+		#use image's tag give better control on relayoupropting than poster attribute of <video>		
+		old_nui  = @ui.find('.actual')
+		nui      = @uis.video.cloneTemplate().addClass "hidden"
+		nui.prop('muted', true)
 		for file in data
 			extension = file.split('.').pop()
 			source=$('<source />').attr("src", @CONFIG.videoUrl+file)
 			if extension == "ogv" then type ="ogg" else type = extension
 			source.attr("type", "video/#{type}")
-			newVideo.append(source)
+			nui.append(source)
 		if @CACHE.image != null
-		 	newVideo.attr("poster", imageUrl+@CACHE.image)		 	
+		 	nui.attr("poster", imageUrl+@CACHE.image)		 	
 		#wait until video is playable before swap with old video
-		newVideo.on("canplaythrough", => 
+		nui.on("canplay", =>
+			console.log("is suspended", @CACHE.suspended)
 			if not @CACHE.suspended
-				@ui.find('.oldsoon').remove()
-				newVideo.removeClass "hidden"
+				old_nui.remove()
+				nui.removeClass "hidden"
 		)
-		@uis.video.after(newVideo)
+		@uis.video.after(nui)
 		
 	image: (filename) =>
 		@ui.find('video.actual').addClass "hidden"
@@ -305,9 +293,6 @@ class portfolio.Background extends Widget
 			)
 		else
 			$('body').unbind 'mousemove'
-
-	isVideo: () =>
-
 
 # -----------------------------------------------------------------------------
 #
