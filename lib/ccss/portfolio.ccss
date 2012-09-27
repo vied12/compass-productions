@@ -137,7 +137,7 @@ body:
 				width 			: 400px	
 
 			li:
-				display 	: inline-block
+				display 	: block
 				margin 		: 0 10px
 				padding 	: 0
 				a:
@@ -152,7 +152,8 @@ body:
 					-moz-transition-timing-function     : ease
 					-webkit-transition-timing-function  : ease		
 					margin-right: 5px
-				&.menuRoot:					
+				&.menuRoot:		
+					position : absolute 			
 					.panelHiddenText:
 						display : none
 					.panelOpenText:
@@ -170,8 +171,8 @@ body:
 							-o-transform     : "rotate(-90deg)"
 				&.home:
 					left: 805px
-					position: absolute
-					width: 110px
+					position: relative
+					width: 114px
 			&.show:
 				opacity 	: 1
 			&.hide:
@@ -242,6 +243,7 @@ body:
 				font-size : $BIG_FONT_SIZE
 				line-height : $BIG_LINE_HEIGHT	
 				margin-top : -10px
+				padding: 10px 0
 			&.active,&.show:					
 				opacity : 1			
 		.page:

@@ -101,17 +101,18 @@ class portfolio.Navigation extends Widget
 			$('body').trigger "cancelDelayedPanel"
 		else
 			@uis.promo.addClass "hidden"		
-		# Hide/Show credit photos
-		if menu == "main" or menu == "works"
-			@uis.creditPhoto.removeClass "hidden"
-		else
-			@uis.creditPhoto.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
 			this.selectPageLink(menu)
 		else
 			this.selectPageLink(@cache.currentPage)
+		# Hide/Show credit photos
+		if menu == "main" or menu == "works"
+			@uis.creditPhoto.removeClass "hidden"
+			@uis.menuRoot.addClass "hidden"
+		else
+			@uis.creditPhoto.addClass "hidden"			
 		# show menu
 		menu = @ui.find "[data-menu="+menu+"]"
 		if not menu.length > 0
