@@ -168,6 +168,10 @@ body:
 							-moz-transform   : "rotate(-90deg)"
 							-webkit-transform: "rotate(-90deg)"
 							-o-transform     : "rotate(-90deg)"
+				&.home:
+					left: 805px
+					position: absolute
+					width: 110px
 			&.show:
 				opacity 	: 1
 			&.hide:

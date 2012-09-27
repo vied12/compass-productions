@@ -47,11 +47,5 @@
 					> img src="/static/images/menu.png"
 					span.panelOpenedText | {{ gettext("Open") }}
 					span.panelHiddenText | {{ gettext("Close") }}
-			li
-				a href=#menu=main | Menu
-			li.works.hidden
-				a href=#&menu=works | Films					
-			li.news.hidden
-				a href=#&page=news | {{ gettext("News") }}
-			li.contact.hidden
-				a href=#&page=contact | Contact
+			li.home
+				a href=#menu=main | {{ gettext("Home Compass") }}
