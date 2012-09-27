@@ -213,12 +213,12 @@ class portfolio.Background extends Widget
 	bindUI: (ui) ->
 		super	
 		$(window).resize(=>(this.relayout()))		
-		$('body').bind "setVideos",    (e, data) => console.log("this.video"); this.video(data.split(","))	
-		$('body').bind("setNoVideo",             => console.log("this.removeVideo"); this.removeVideo())
-		$('body').bind("setImage", (e, filename) => console.log("this.image"); this.image(filename))
-		$('body').bind("darkness", (e, darkness) => console.log("this.darkness"); this.darkness(darkness))
-		$('body').bind("suspendBackground",  (e) => console.log("this.suspend"); this.suspend())
-		$('body').bind("restoreBackground",  (e) => console.log("this.restore"); this.restore())
+		$('body').bind "setVideos",    (e, data) => this.video(data.split(","))	
+		$('body').bind("setNoVideo",             => this.removeVideo())
+		$('body').bind("setImage", (e, filename) => this.image(filename))
+		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
+		$('body').bind("suspendBackground",  (e) => this.suspend())
+		$('body').bind("restoreBackground",  (e) => this.restore())
 
 	relayout: =>
 		resize = (that, flexibleSize) ->
@@ -265,7 +265,6 @@ class portfolio.Background extends Widget
 		 	nui.attr("poster", imageUrl+@CACHE.image)		 	
 		#wait until video is playable before swap with old video
 		nui.on("canplay", =>
-			console.log("is suspended", @CACHE.suspended)
 			if not @CACHE.suspended
 				old_nui.remove()
 				nui.removeClass "hidden"
