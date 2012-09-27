@@ -138,7 +138,7 @@ def get_locale():
 	if session.get("language") and session.get("language") != "undefined":
 		ln = session.get("language")
 	else:
-		ln = request.accept_languages.best_match(['fr', 'en'])
+		ln = request.accept_languages.best_match(app.config["LANGUAGES"]) or "en"
 	return ln
 
 # -----------------------------------------------------------------------------
