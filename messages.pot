@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-26 19:18+0200\n"
+"POT-Creation-Date: 2012-09-27 02:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,6 @@ msgstr ""
 "Generated-By: Babel 0.9.6\n"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:9
-#: lib/shpaml/widgets/navigation.html.shpaml:55
 msgid "News"
 msgstr ""
 
@@ -58,6 +57,10 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+#: lib/shpaml/widgets/navigation.html.shpaml:51
+msgid "Home_Compass"
+msgstr ""
+
 #: lib/shpaml/widgets/panel.html.shpaml:8
 msgid "synopsis"
 msgstr ""
@@ -66,32 +69,32 @@ msgstr ""
 msgid "videos"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:12
+#: lib/shpaml/widgets/panel.html.shpaml:13
+msgid "view entire film"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:15
 msgid "gallery"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:14
+#: lib/shpaml/widgets/panel.html.shpaml:17
 msgid "screenings"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:16
+#: lib/shpaml/widgets/panel.html.shpaml:19
 msgid "credits"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:18
+#: lib/shpaml/widgets/panel.html.shpaml:21
 msgid "press"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:20
+#: lib/shpaml/widgets/panel.html.shpaml:23
 msgid "links"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:22
-msgid "distribution"
-msgstr ""
-
 #: lib/shpaml/widgets/panel.html.shpaml:25
-msgid "view entire film"
+msgid "distribution"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:86
