@@ -264,8 +264,8 @@ body:
 					text-decoration : none
 					color   : $TEXT_COLOR_DARK
 					text-transform : capitalize
-				&.active a:
-					color   : $TEXT_COLOR_LIGHT		
+					&.active:
+						color   : $TEXT_COLOR_LIGHT		
 
 		.close:
 			text-decoration: none

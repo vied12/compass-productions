@@ -571,7 +571,7 @@ class portfolio.Contact extends Widget
 
 # -----------------------------------------------------------------------------
 #
-# Project
+# PROJECT
 #
 # -----------------------------------------------------------------------------	 
 
@@ -756,18 +756,17 @@ class portfolio.Project extends Widget
 		if not (@cache.externalVideo and category=="videos")
 			@uis.tabContent.removeClass "active"
 			@uis.tabContent.removeClass "show"
-			@uis.tabContent.addClass "hidden"		
-			tabs_nui = @uis.tabs.find("li").removeClass "active"
-			tabs_nui.filter("[data-name="+category+"]").addClass "active"
+			@uis.tabContent.addClass "hidden"
+			@uis.tabList.find("a").removeClass "active"
+			@uis.tabList.find("[data-name="+category+"]").addClass "active"
 			tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
 			tab_nui.removeClass "hidden"		
 			setTimeout((=>tab_nui.addClass "active"), 100)
 			$('body').trigger "readmore.init"
 			this.relayout()
 
-
-
 # -----------------------------------------------------------------------------
+#
 # MEDIA PLAYER
 #
 # -----------------------------------------------------------------------------	
