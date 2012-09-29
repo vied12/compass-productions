@@ -35,7 +35,6 @@ class portfolio.Navigation extends Widget
 			pageLinks 		 : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
 			promo            : ".promo"
-			creditPhoto      : ".creditPhoto"
 		}
 
 		@CONFIG = {
@@ -107,13 +106,9 @@ class portfolio.Navigation extends Widget
 			this.selectPageLink(menu)
 		else
 			this.selectPageLink(@cache.currentPage)
-		# Hide/Show credit photos
+		# hide the arrow
 		if menu == "main" or menu == "works"
-			@uis.creditPhoto.removeClass "hidden"
 			@uis.menuRoot.addClass "hidden"
-		else
-			@uis.creditPhoto.addClass "hidden"			
-		# show menu
 		menu = @ui.find "[data-menu="+menu+"]"
 		if not menu.length > 0
 			return false

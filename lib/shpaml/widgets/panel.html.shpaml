@@ -12,7 +12,7 @@
 					li.videosNana.hidden
 						a.internal href="#page=project&project=nana&cat=videos&item=0" data-name=videos | {{ gettext("view entire film") }}
 					li.gallery.hidden
-						a.internal href="#+cat=gallery" data-name=gallery | {{ gettext("gallery") }}
+						a.internal href="#+cat=gallery" data-name=gallery | {{ gettext("photos") }}
 					li.screenings.hidden
 						a.internal href="#+cat=screenings" data-name=screenings | {{ gettext("screenings") }}
 					li.credits.hidden

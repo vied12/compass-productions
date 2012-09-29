@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-27 02:30+0200\n"
+"POT-Creation-Date: 2012-09-29 12:20+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:9
 msgid "News"
-msgstr "Nouveautés"
+msgstr "Nouvelles"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:11
 msgid "Contact"
@@ -39,11 +39,11 @@ msgstr "La longueur de l’alphabet"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:33
 msgid "In theaters soon"
-msgstr "Bientôt en salle"
+msgstr "Bientôt à l'affiche"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:38
 msgid "WATCH THE TRAILER"
-msgstr "REGARDE LA BANDE ANNONCE"
+msgstr "BANDE-ANNONCE"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:42
 msgid "photo by"
@@ -74,8 +74,8 @@ msgid "view entire film"
 msgstr "voir le film"
 
 #: lib/shpaml/widgets/panel.html.shpaml:15
-msgid "gallery"
-msgstr "gallerie"
+msgid "photos"
+msgstr "photos"
 
 #: lib/shpaml/widgets/panel.html.shpaml:17
 msgid "screenings"
@@ -83,7 +83,7 @@ msgstr "projections"
 
 #: lib/shpaml/widgets/panel.html.shpaml:19
 msgid "credits"
-msgstr "crédits"
+msgstr "génériques"
 
 #: lib/shpaml/widgets/panel.html.shpaml:21
 msgid "press"
@@ -95,7 +95,7 @@ msgstr "liens"
 
 #: lib/shpaml/widgets/panel.html.shpaml:25
 msgid "distribution"
-msgstr "distributeur"
+msgstr "distribution"
 
 #: lib/shpaml/widgets/panel.html.shpaml:86
 #: lib/shpaml/widgets/panel.html.shpaml:96
@@ -137,4 +137,7 @@ msgid ""
 msgstr ""
 "Il y a eu un problème, vérifiez si l'email donné est bien correct ou "
 "réessayez dans un petit moment"
+
+#~ msgid "gallery"
+#~ msgstr "gallerie"
 

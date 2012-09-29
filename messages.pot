@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-27 02:30+0200\n"
+"POT-Creation-Date: 2012-09-29 12:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgid "Close"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:51
-msgid "Home_Compass"
+msgid "Home Compass"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:8
@@ -74,7 +74,7 @@ msgid "view entire film"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:15
-msgid "gallery"
+msgid "photos"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:17

@@ -36,10 +36,6 @@
 				> img src="/static/images/Joy_logo.svg"
 		a.button href=#page=project&project=joy&cat=videos&item=0
 			span | {{ gettext("WATCH THE TRAILER") }}
-
-	.creditPhoto.hidden
-		span
-			{{ gettext("photo by") }} Nina Glaser
 	.Page.links
 		ul
 			li.menuRoot
