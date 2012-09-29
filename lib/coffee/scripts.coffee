@@ -1086,6 +1086,7 @@ class portfolio.Language extends Widget
 
 	setData: (data) =>
 		@cache.language = data
+		console.log("language:", data)
 		this.toggle()
 
 	onURLStateChanged: =>
@@ -1097,8 +1098,9 @@ class portfolio.Language extends Widget
 
 	toggle: =>
 		if @cache.language?
-			other_language = window.serious.Utils.clone(@OPTIONS.languages)
+			other_language = Utils.clone(@OPTIONS.languages)
 			other_language.splice(other_language.indexOf(@cache.language), 1)
+			console.log(@cache.language, "set ln", other_language)
 			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
 		else
 			this.getLanguage()
