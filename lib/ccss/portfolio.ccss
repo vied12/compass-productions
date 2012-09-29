@@ -99,8 +99,10 @@ body:
 		.promo:
 			text-align : center
 			position   : relative
-			top        : 100px
+			top        : 40px
 			font-size  : 1.4em
+			left       : 60px
+			width      : 330px
 			h2:
 				position : relative
 				top      : -64px

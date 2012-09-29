@@ -424,352 +424,677 @@
             },
             "videos"    : ["39779299", "47419588", "47419589", "47429440", "47429436", "47429435", "47569645", "47419591", "47429439", "47447949", "47447948", "47447947"],
             "gallery"   : "72157631598336173",
-            "credits"   : [
-                {
-                    "title" : "Compass Productions presents"
-                },
-                {
-                    "title" : "a film by Joe Balass"
-                },
-                {
-                    "title" : "JOY!"
-                },
-                {
-                    "title" : "Portrait of a Nun"
-                },
-                {
-                    "title" : "With the generous participation of\nSister Missionary P. Delight\naka Sister Iamosama DeLite the Sodomite/Soami"
-                },
-                {
-                    "title" : "Written, Produced & Directed by",
-                    "body"  : "Joe Balass"
-                },
-                {
-                    "title" : "Editor",
-                    "body"  : "Annie Jean"
-                },
-                {
-                    "title" : "Sound Design",
-                    "body"  : "Claude Beaugrand"
-                },
-                {
-                    "title" : "Also Featuring",
-                    "body"  : "Sister Hysterectoria aka Agnes de Garron\nSister Clara Cum Passionata\n\nGabby Haze\nRazzle Dazzle\nCrazy Owl\nBuck Erikson\nGreg Swift\n(creeper)"
-                },
-                {
-                    "title" : "This film was made possible with the financial participation of :",
-                    "body"  : "SODEC\nSociété de développement des entreprises culturelles – Québec\n\nThe Canada Council for the Arts, Media Arts Program (logo)\n\nQUÉBEC (logo)\nCrédit d’impôt cinéma et télévision – Gestion SODEC\nProgramme du crédit d’impot du Gouvernement du Québec \n\nConseil des arts et des lettres du Québec (logo) \n\nThe Canadian Independent Film & Video Fund (logo)\n\nThe Canadian Government Film or Video Tax Credit Program (logo)"
-                },
-                {
-                    "title" : "Additional support for this film provided by:",
-                    "body"  : "The National Film Board\nAide au cinéma indépendants du Canada (ACIC) logo"
-                },
-                {
-                    "title" : "Camera",
-                    "body"  : "Joe Balass"
-                },
-                {
-                    "title" : "Additional Camera",
-                    "body"  : "Giampaolo Marzi\nEve Lamont\nMaria Michails"
-                },
-                {
-                    "title" : "Animation Camera",
-                    "body"  : "Mélanie Bouchard"
-                },
-                {
-                    "title" : "Additional Editing",
-                    "body"  : "Joe Balass\nMichel Giroux"
-                },
-                {
-                    "title" : "Dialogue Editor",
-                    "body"  : "Francine Poirier"
-                },
-                {
-                    "title" : "Mix",
-                    "body"  : "Luc Boudrias"
-                },
-                {
-                    "title" : "Mix Coordination",
-                    "body"  : "Marcelle Cadieux"
-                },
-                {
-                    "title" : "Studio",
-                    "body"  : "Vision Globale"
-                },
-                {
-                    "title" : "Post Production Advisor",
-                    "body"  : "Giampaolo Marzi"
-                },
-                {
-                    "title" : "Foley",
-                    "body"  : "Lise Wedlock"
-                },
-                {
-                    "title" : "Foley Recording",
-                    "body"  : "Luc Leger (NFB)"
-                },
-                {
-                    "title" : "Digital EditingTechnician (NFB)",
-                    "body"  : "Pierre Dupont"
-                },
-                {
-                    "title" : "On Line Editor (NFB)",
-                    "body"  : "Denis Pilon"
-                },
-                {
-                    "title" : "Titles (NFB)",
-                    "body"  : "Gaspard Gaudreau\nMélanie Bouchard"
-                },
-                {
-                    "title" : "Coordinator (NFB)",
-                    "body"  : "Marie-Christine Guité"
-                },
-                {
-                    "title" : "Producer (NFB-ACIC)",
-                    "body"  : "Johanne Bergeron"
-                },
-                {
-                    "title" : "Story Advisor",
-                    "body"  : "Giampaolo Marzi\nRolland Pollack"
-                },
-                {
-                    "title" : "Associate Producer",
-                    "body"  : "Patricia Diaz"
-                },
-                {
-                    "title" : "Legal Consultant",
-                    "body"  : "Remy Khouzam\nLussier & Khouzam"
-                },
-                {
-                    "title" : "French Translation",
-                    "body"  : "Normand Boucher"
-                },
-                {
-                    "title" : "Archival Footage"
-                },
-                {
-                    "title" : "Altered Habits",
-                    "body"  : "Excerpt featuring Sr. Missionary Position, Sr. Homo Fellatio, Reverend Mother, Sr. Helen Damnation, St. Thomas Bernina\n& Father Mother\nDirector: Marjorie Newman\nUsed with permission of Marjorie Newman"
-                },
-                {
-                    "title" : "Sisters in the Convent",
-                    "body"  : "Excerpt featuring Reverend Mother, Agnes de Garron & Sr. Loganberry Frost\nDirector/Field Producer: Vincent Casalaina\nUsed with permission of Fabrice Florin and Videowest.us"
-                },
-                {
-                    "title" : "Butt Hole Babies",
-                    "body"  : "Excerpt featuring Agnes de Garron & Sr. Loganberry Frost\nCamera: Peter Kesselman\nUsed with permission of Janie Kesselman"
-                },
-                {
-                    "title" : "Additional footage provided by the Archives of the Sisters of Perpetual Indulgence inc.",
-                    "body"  : "Used with permission of Sr. Vicious Power Hungry Bitch & the Sisters of Perpetual Indulgence inc."
-                },
-                {
-                    "title" : "Packer Corners Farm Maypole Ceremony ",
-                    "body"  : "Used with permission of Footage Farm"
-                },
-                {
-                    "title" : "Photographs"
-                },
-                {
-                    "title" : "Selection of photographs by Jean-Baptiste Carhaix",
-                    "body"  : "Used with permission of Jean-Baptiste Carhaix"
-                },
-                {
-                    "title" : "Selection of photographs by Nina Glaser",
-                    "body"  : "Used with permission of Nina Glaser"
-                },
-                {
-                    "title" : "Selection of photographs by Greg Day",
-                    "body"  : "Used with permission of Greg Day"
-                },
-                {
-                    "title" : "Selection of photographs provided by Sister SoAmI ",
-                    "body"  : "used with permission of Sister SoAmI and the SoAmI Archives"
-                },
-                {
-                    "title" : "Selection of photographs by Agnes de Garron",
-                    "body"  : "Used with permission of Agnes de Garron"
-                },
-                {
-                    "title" : "Harmodius and Hoti",
-                    "body"  : "Castro Street Fair August, 1975, by Daniel Nicoletta\nUsed with permission of Daniel Nicoletta"
-                },
-                {
-                    "title" : "RFD Collective by Robert Giard",
-                    "body"  : "© Jonathan Silin\nUsed with permission of Jonathan Silin"
-                },
-                {
-                    "title" : "Assunta by Marshall Rheiner",
-                    "body"  : "Used with permission of Arthur Evans and the SoAmI Archives"
-                },
-                {
-                    "title" : "Additional photographs provided by the Archives of the Sisters of Perpetual Indulgence inc.",
-                    "body"  : "Used with permission of Alan Oakley, Sr. Mary Juanita High\nand the Sisters of Perpetual Indulgence inc."
-                },
-                {
-                    "title" : "Excerpts"
-                },
-                {
-                    "title" : "Walking on the Waters of Babylon by Harry Kelley",
-                    "body"  : "Used with permission of Harry Kelley"
-                },
-                {
-                    "title" : "James Broughton’s Credo",
-                    "body"  : "Used with permission of Joel Singer"
-                },
-                {
-                    "title" : "Music"
-                },
-                {
-                    "title" : "Original Music",
-                    "body"  : "Written and performed by Tim Rideout"
-                },
-                {
-                    "title" : "Original Music Supervisor",
-                    "body"  : "Michael McCann"
-                },
-                {
-                    "title" : "Pillow Mind",
-                    "body"  : "Written and performed by Courtney Wing"
-                },
-                {
-                    "title" : "The Vatican Rag",
-                    "body"  : "Written and performed by Tom Lehrer\nReproduced by permission of Tom Lehrer"
-                },
-                {
-                    "title" : "Library Improvisation",
-                    "body"  : "Performed by Lady Rizo, Cyrus Baty, Mountaine Jonas, Dane Terry"
-                },
-                {
-                    "title" : "Spirit Walker ",
-                    "body"  : "Performed by Leopard Zeppard\nWritten by Andrew J. Williamson\nWoodroot Music ©1999"
-                },
-                {
-                    "title" : "Miracle",
-                    "body"  : "Performed by Cyrus Baty & Angelo Michael Tursi"
-                },
-                {
-                    "title" : "Also appearing in the film:"
-                },
-                {
-                    "title" : "Sister Vicious Power Hungy Bitch",
-                    "body"  : "Reverend Mother"
-                },
-                {
-                    "title" : "Sister Mary Mekko",
-                    "body"  : "Sister Loganberry Frost"
-                },
-                {
-                    "title" : "Sister Merry Peter",
-                    "body"  : "Sister Right Sarong"
-                },
-                {
-                    "title" : "Sister Enya Face",
-                    "body"  : "Sister Constellation"
-                },
-                {
-                    "title" : "Sister Sharin’ Dipity",
-                    "body"  : "Sister Lily White"
-                },
-                {
-                    "title" : "Sister Bella de Ball",
-                    "body"  : "Sister Lolita Me Into Temptation"
-                },
-                {
-                    "title" : "Sister Dawna Matrix",
-                    "body"  : "Sister Chastity Boner"
-                },
-                {
-                    "title" : "Sister Constance Craving",
-                    "body"  : "Sister Dixie Wrecked"
-                },
-                {
-                    "title" : "Sister Peg Ann Holiday",
-                    "body"  : "Sister Frances A. Sissy"
-                },
-                {
-                    "title" : "Sister Barbie",
-                    "body"  : "Siter Tilly Comes Again"
-                },
-                {
-                    "title" : "Postulant Uma Gawd",
-                    "body"  : "Sister Vixxen"
-                },
-                {
-                    "title" : "Sister Sparkle Plenty",
-                    "body"  : "Sister Mary Margaret X-plosion"
-                },
-                {
-                    "title" : "Sister Shock T",
-                    "body"  : "Sister Semi Semitica"
-                },
-                {
-                    "title" : "Sister Shawnti Fey ",
-                    "body"  : "Sister Carmen Cider"
-                },
-                {
-                    "title" : "Sister Bambie Dextrous",
-                    "body"  : "Sister Homo Fellatio"
-                },
-                {
-                    "title" : "Sister Succuba",
-                    "body"  : "Sister Sensible Shoes"
-                },
-                {
-                    "title" : "Sister Marie Ever-Ready",
-                    "body"  : "Sister Boom Boom"
-                },
-                {
-                    "title" : "Sister Searching For Men",
-                    "body"  : "Sister Lida Dog’s Life"
-                },
-                {
-                    "title" : "Sister Krishna Kosher",
-                    "body"  : "Sister Sun-Nun-Moon"
-                },
-                {
-                    "title" : "Sister Roz Erection",
-                    "body"  : "Sister Rosetta Stoned"
-                },
-                {
-                    "title" : "Sister Gazza Gum Drops",
-                    "body"  : "Sister Sleaze du Jour"
-                },
-                {
-                    "title" : "Sister Helen Wheels",
-                    "body"  : "Sister Unity Harmony"
-                },
-                {
-                    "title" : "Sister Theresa Stigmata",
-                    "body"  : "Sister Folsome Delight"
-                },
-                {
-                    "title" : "Sister Kaye Sera",
-                    "body"  : "Sister Flora Bundtcake"
-                },
-                {
-                    "title" : "Sister Roma",
-                    "body"  : "Sister Candy Cide"
-                },
-                {
-                    "title" : "Sister Rosanna Hosanna Fella Bella"
-                },
-                {
-                    "title" : "With many special thanks to all the other Sisters of Perpetual Indulgence"
-                },
-                {
-                    "title" : "Another special thanks to all the faeries who participated and contributed to this film:",
-                    "body"  : "Donald Gallagher, Willy Hoff, Jai Sheronda, Leo Pardo, Gonaway Ta Round, Mountaine Mort Jonas, Vyne, Valencia Wombone, Ed Curran, Roman Curran, Mark Middle Hubbard, Jocelyne Bezzi-Batani, Joel Crispin, Dirt Farmer, Thumper, Firefly Rosengren, Albo Jeavons, JoMichael Stoddard, Christopher Bartlett, Weeder, David Anthros, Enya Face, Granite Trudeau, Janell Kapoor,Vermin F. Cockwolf, Dashboard, Sandor Katz, Alwyn de Wally, Ian Ribbon Cabell, Lucky Snowflake, Donald Gallagher, Matt Karol, Link Edge, Tommie Barnas, William Ledsad, Kenneth Long, Ben Mettler, Elwood Charpting, C. Shane, Charming, George Kierstein, Trevor Lohrbeer, Egg Dans, Megan Davis, Christopher Rebagliati, Sébastien Thiriez, Fabrice Houclart, Randy Segaga, Ing, Patrik, Paul Tomlinson, Sebastien Collett, Berianne Bramman, Steven Sheltor, Micheal T. Brice, Jeff Smith, Marcello Lanfranchi, Christopher Hamblin, Steve Kraken, Caley Wheeler, Julian Hockings, Sean O’Sullivan, Douglas Caulkins, Boomer, Mikel Wilson, Don Perryman, Shawn Wright, Evan Malczyk, George Thurow, Matt Woodbury, Eric Glasen, Chris Resciniti, Shanna Todd, Micheal Kell, Christian Beach, Eric Kephart, James Mave, Joshua Lloyd, Antler, Sam Carstens, Elbert Goggin, Daniel Tavell, Figment, Byron Whiting, Leo Wyatt, Thomas Hall, John Greenwich, Garth Hawkins, Brian Bender, Tusk, Lisa Shoemhu, John Stills, Eva Marie, Elyjah Mcleod, Jakob Chmelik, Marie Chmeltokova, David Randy, Dela, D. Bryer, Kyriam Charalambols, Amichai, Hi, Bamboo, Wolfie, Storm, Keer, Tommy Starchild, Hawk, Bunny, Love, Alaska Dave, Phacelia, Elijah, Grace, William Roman, Violet Flame and the other folks from the mountain."
-                },
-                {
-                    "title" : "Additional Thanks to:",
-                    "body"  : "Marlene Millar, Ramona Ramlochand, Denis Langlois, Martin Landry, Christian Medawar, Nelson Henricks, Pierre Beaudoin, Eric Van Hoenacker, Angelo Vacca, Myriam Magassouba, Jules de Niverville, Jean-Michel Dentand, Tom Waugh, Ross Higgins, Val Shamash, George Hargrave,Françoise Jean and the staff at CALQ, Robin Jackson and the staff at CIFVF, Ian Reid, Suzanne Plouffe and the staff at the Canada Council for the Arts, Élaine Dumont, Laurent Gagliardi, Michel St-Pierre and the staff at Sodec, Katharine Setzer, Charlie Boudreau at Image+Nation, Sylvie Roy, Denis Vaillancourt and the staff at Vidéographe, Deborah McInnes, Alexis Landriault, Lucia Fezuoglio, Alexandra Grimanis, Steven Ladouceur, Pierre Luc Gouin and the staff at Main Film, Julie René, Sylvain Cossette, Bruno Bélanger, Amandine Brun, Danielle Leblanc and the staff at PRIM, Anne Paré, Jonathan Davidovics and the staff at Les Films du 3 mars, and all the others who helped make this film possible."
-                },
-                {
-                    "title" : "All rights reserved.",
-                    "body"  : "© Compass Productions Inc. 2012"
-                }
-            ],
+            "credits"   : {
+                "en" : [
+                    {
+                        "title" : "Compass Productions presents"
+                    },
+                    {
+                        "title" : "a film by Joe Balass"
+                    },
+                    {
+                        "title" : "JOY!"
+                    },
+                    {
+                        "title" : "Portrait of a Nun"
+                    },
+                    {
+                        "title" : "With the generous participation of\nSister Missionary P. Delight\naka Sister Iamosama DeLite the Sodomite/Soami"
+                    },
+                    {
+                        "title" : "Written, Produced & Directed by",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Editor",
+                        "body"  : "Annie Jean"
+                    },
+                    {
+                        "title" : "Sound Design",
+                        "body"  : "Claude Beaugrand"
+                    },
+                    {
+                        "title" : "Also Featuring",
+                        "body"  : "Sister Hysterectoria aka Agnes de Garron\nSister Clara Cum Passionata\n\nGabby Haze\nRazzle Dazzle\nCrazy Owl\nBuck Erikson\nGreg Swift\n(creeper)"
+                    },
+                    {
+                        "title" : "This film was made possible with the financial participation of :",
+                        "body"  : "SODEC\nSociété de développement des entreprises culturelles – Québec\n\nThe Canada Council for the Arts, Media Arts Program\n\nQUÉBEC\nCrédit d’impôt cinéma et télévision – Gestion SODEC\nProgramme du crédit d’impot du Gouvernement du Québec \n\nConseil des arts et des lettres du Québec\n\nThe Canadian Independent Film & Video Fund\n\nThe Canadian Government Film or Video Tax Credit Program"
+                    },
+                    {
+                        "title" : "Additional support for this film provided by:",
+                        "body"  : "The National Film Board\nAide au cinéma indépendants du Canada (ACIC)"
+                    },
+                    {
+                        "title" : "Camera",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Additional Camera",
+                        "body"  : "Giampaolo Marzi\nEve Lamont\nMaria Michails"
+                    },
+                    {
+                        "title" : "Animation Camera",
+                        "body"  : "Mélanie Bouchard"
+                    },
+                    {
+                        "title" : "Additional Editing",
+                        "body"  : "Joe Balass\nMichel Giroux"
+                    },
+                    {
+                        "title" : "Dialogue Editor",
+                        "body"  : "Francine Poirier"
+                    },
+                    {
+                        "title" : "Mix",
+                        "body"  : "Luc Boudrias"
+                    },
+                    {
+                        "title" : "Mix Coordination",
+                        "body"  : "Marcelle Cadieux"
+                    },
+                    {
+                        "title" : "Studio",
+                        "body"  : "Vision Globale"
+                    },
+                    {
+                        "title" : "Post Production Advisor",
+                        "body"  : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "Foley",
+                        "body"  : "Lise Wedlock"
+                    },
+                    {
+                        "title" : "Foley Recording",
+                        "body"  : "Luc Leger (NFB)"
+                    },
+                    {
+                        "title" : "Digital EditingTechnician (NFB)",
+                        "body"  : "Pierre Dupont"
+                    },
+                    {
+                        "title" : "On Line Editor (NFB)",
+                        "body"  : "Denis Pilon"
+                    },
+                    {
+                        "title" : "Titles (NFB)",
+                        "body"  : "Gaspard Gaudreau\nMélanie Bouchard"
+                    },
+                    {
+                        "title" : "Coordinator (NFB)",
+                        "body"  : "Marie-Christine Guité"
+                    },
+                    {
+                        "title" : "Producer (NFB-ACIC)",
+                        "body"  : "Johanne Bergeron"
+                    },
+                    {
+                        "title" : "Story Advisor",
+                        "body"  : "Giampaolo Marzi\nRolland Pollack"
+                    },
+                    {
+                        "title" : "Associate Producer",
+                        "body"  : "Patricia Diaz"
+                    },
+                    {
+                        "title" : "Legal Consultant",
+                        "body"  : "Remy Khouzam\nLussier & Khouzam"
+                    },
+                    {
+                        "title" : "French Translation",
+                        "body"  : "Normand Boucher"
+                    },
+                    {
+                        "title" : "Archival Footage"
+                    },
+                    {
+                        "title" : "Altered Habits",
+                        "body"  : "Excerpt featuring Sr. Missionary Position, Sr. Homo Fellatio, Reverend Mother, Sr. Helen Damnation, St. Thomas Bernina\n& Father Mother\nDirector: Marjorie Newman\nUsed with permission of Marjorie Newman"
+                    },
+                    {
+                        "title" : "Sisters in the Convent",
+                        "body"  : "Excerpt featuring Reverend Mother, Agnes de Garron & Sr. Loganberry Frost\nDirector/Field Producer: Vincent Casalaina\nUsed with permission of Fabrice Florin and Videowest.us"
+                    },
+                    {
+                        "title" : "Butt Hole Babies",
+                        "body"  : "Excerpt featuring Agnes de Garron & Sr. Loganberry Frost\nCamera: Peter Kesselman\nUsed with permission of Janie Kesselman"
+                    },
+                    {
+                        "title" : "Additional footage provided by the Archives of the Sisters of Perpetual Indulgence inc.",
+                        "body"  : "Used with permission of Sr. Vicious Power Hungry Bitch & the Sisters of Perpetual Indulgence inc."
+                    },
+                    {
+                        "title" : "Packer Corners Farm Maypole Ceremony ",
+                        "body"  : "Used with permission of Footage Farm"
+                    },
+                    {
+                        "title" : "Photographs"
+                    },
+                    {
+                        "title" : "Selection of photographs by Jean-Baptiste Carhaix",
+                        "body"  : "Used with permission of Jean-Baptiste Carhaix"
+                    },
+                    {
+                        "title" : "Selection of photographs by Nina Glaser",
+                        "body"  : "Used with permission of Nina Glaser"
+                    },
+                    {
+                        "title" : "Selection of photographs by Greg Day",
+                        "body"  : "Used with permission of Greg Day"
+                    },
+                    {
+                        "title" : "Selection of photographs provided by Sister SoAmI ",
+                        "body"  : "used with permission of Sister SoAmI and the SoAmI Archives"
+                    },
+                    {
+                        "title" : "Selection of photographs by Agnes de Garron",
+                        "body"  : "Used with permission of Agnes de Garron"
+                    },
+                    {
+                        "title" : "Harmodius and Hoti",
+                        "body"  : "Castro Street Fair August, 1975, by Daniel Nicoletta\nUsed with permission of Daniel Nicoletta"
+                    },
+                    {
+                        "title" : "RFD Collective by Robert Giard",
+                        "body"  : "© Jonathan Silin\nUsed with permission of Jonathan Silin"
+                    },
+                    {
+                        "title" : "Assunta by Marshall Rheiner",
+                        "body"  : "Used with permission of Arthur Evans and the SoAmI Archives"
+                    },
+                    {
+                        "title" : "Additional photographs provided by the Archives of the Sisters of Perpetual Indulgence inc.",
+                        "body"  : "Used with permission of Alan Oakley, Sr. Mary Juanita High\nand the Sisters of Perpetual Indulgence inc."
+                    },
+                    {
+                        "title" : "Excerpts"
+                    },
+                    {
+                        "title" : "Walking on the Waters of Babylon by Harry Kelley",
+                        "body"  : "Used with permission of Harry Kelley"
+                    },
+                    {
+                        "title" : "James Broughton’s Credo",
+                        "body"  : "Used with permission of Joel Singer"
+                    },
+                    {
+                        "title" : "Music"
+                    },
+                    {
+                        "title" : "Original Music",
+                        "body"  : "Written and performed by Tim Rideout"
+                    },
+                    {
+                        "title" : "Original Music Supervisor",
+                        "body"  : "Michael McCann"
+                    },
+                    {
+                        "title" : "Pillow Mind",
+                        "body"  : "Written and performed by Courtney Wing"
+                    },
+                    {
+                        "title" : "The Vatican Rag",
+                        "body"  : "Written and performed by Tom Lehrer\nReproduced by permission of Tom Lehrer"
+                    },
+                    {
+                        "title" : "Library Improvisation",
+                        "body"  : "Performed by Lady Rizo, Cyrus Baty, Mountaine Jonas, Dane Terry"
+                    },
+                    {
+                        "title" : "Spirit Walker ",
+                        "body"  : "Performed by Leopard Zeppard\nWritten by Andrew J. Williamson\nWoodroot Music ©1999"
+                    },
+                    {
+                        "title" : "Miracle",
+                        "body"  : "Performed by Cyrus Baty & Angelo Michael Tursi"
+                    },
+                    {
+                        "title" : "Also appearing in the film:"
+                    },
+                    {
+                        "title" : "Sister Vicious Power Hungy Bitch",
+                        "body"  : "Reverend Mother"
+                    },
+                    {
+                        "title" : "Sister Mary Mekko",
+                        "body"  : "Sister Loganberry Frost"
+                    },
+                    {
+                        "title" : "Sister Merry Peter",
+                        "body"  : "Sister Right Sarong"
+                    },
+                    {
+                        "title" : "Sister Enya Face",
+                        "body"  : "Sister Constellation"
+                    },
+                    {
+                        "title" : "Sister Sharin’ Dipity",
+                        "body"  : "Sister Lily White"
+                    },
+                    {
+                        "title" : "Sister Bella de Ball",
+                        "body"  : "Sister Lolita Me Into Temptation"
+                    },
+                    {
+                        "title" : "Sister Dawna Matrix",
+                        "body"  : "Sister Chastity Boner"
+                    },
+                    {
+                        "title" : "Sister Constance Craving",
+                        "body"  : "Sister Dixie Wrecked"
+                    },
+                    {
+                        "title" : "Sister Peg Ann Holiday",
+                        "body"  : "Sister Frances A. Sissy"
+                    },
+                    {
+                        "title" : "Sister Barbie",
+                        "body"  : "Siter Tilly Comes Again"
+                    },
+                    {
+                        "title" : "Postulant Uma Gawd",
+                        "body"  : "Sister Vixxen"
+                    },
+                    {
+                        "title" : "Sister Sparkle Plenty",
+                        "body"  : "Sister Mary Margaret X-plosion"
+                    },
+                    {
+                        "title" : "Sister Shock T",
+                        "body"  : "Sister Semi Semitica"
+                    },
+                    {
+                        "title" : "Sister Shawnti Fey ",
+                        "body"  : "Sister Carmen Cider"
+                    },
+                    {
+                        "title" : "Sister Bambie Dextrous",
+                        "body"  : "Sister Homo Fellatio"
+                    },
+                    {
+                        "title" : "Sister Succuba",
+                        "body"  : "Sister Sensible Shoes"
+                    },
+                    {
+                        "title" : "Sister Marie Ever-Ready",
+                        "body"  : "Sister Boom Boom"
+                    },
+                    {
+                        "title" : "Sister Searching For Men",
+                        "body"  : "Sister Lida Dog’s Life"
+                    },
+                    {
+                        "title" : "Sister Krishna Kosher",
+                        "body"  : "Sister Sun-Nun-Moon"
+                    },
+                    {
+                        "title" : "Sister Roz Erection",
+                        "body"  : "Sister Rosetta Stoned"
+                    },
+                    {
+                        "title" : "Sister Gazza Gum Drops",
+                        "body"  : "Sister Sleaze du Jour"
+                    },
+                    {
+                        "title" : "Sister Helen Wheels",
+                        "body"  : "Sister Unity Harmony"
+                    },
+                    {
+                        "title" : "Sister Theresa Stigmata",
+                        "body"  : "Sister Folsome Delight"
+                    },
+                    {
+                        "title" : "Sister Kaye Sera",
+                        "body"  : "Sister Flora Bundtcake"
+                    },
+                    {
+                        "title" : "Sister Roma",
+                        "body"  : "Sister Candy Cide"
+                    },
+                    {
+                        "title" : "Sister Rosanna Hosanna Fella Bella"
+                    },
+                    {
+                        "title" : "With many special thanks to all the other Sisters of Perpetual Indulgence"
+                    },
+                    {
+                        "title" : "Another special thanks to all the faeries who participated and contributed to this film:",
+                        "body"  : "Donald Gallagher, Willy Hoff, Jai Sheronda, Leo Pardo, Gonaway Ta Round, Mountaine Mort Jonas, Vyne, Valencia Wombone, Ed Curran, Roman Curran, Mark Middle Hubbard, Jocelyne Bezzi-Batani, Joel Crispin, Dirt Farmer, Thumper, Firefly Rosengren, Albo Jeavons, JoMichael Stoddard, Christopher Bartlett, Weeder, David Anthros, Enya Face, Granite Trudeau, Janell Kapoor,Vermin F. Cockwolf, Dashboard, Sandor Katz, Alwyn de Wally, Ian Ribbon Cabell, Lucky Snowflake, Donald Gallagher, Matt Karol, Link Edge, Tommie Barnas, William Ledsad, Kenneth Long, Ben Mettler, Elwood Charpting, C. Shane, Charming, George Kierstein, Trevor Lohrbeer, Egg Dans, Megan Davis, Christopher Rebagliati, Sébastien Thiriez, Fabrice Houclart, Randy Segaga, Ing, Patrik, Paul Tomlinson, Sebastien Collett, Berianne Bramman, Steven Sheltor, Micheal T. Brice, Jeff Smith, Marcello Lanfranchi, Christopher Hamblin, Steve Kraken, Caley Wheeler, Julian Hockings, Sean O’Sullivan, Douglas Caulkins, Boomer, Mikel Wilson, Don Perryman, Shawn Wright, Evan Malczyk, George Thurow, Matt Woodbury, Eric Glasen, Chris Resciniti, Shanna Todd, Micheal Kell, Christian Beach, Eric Kephart, James Mave, Joshua Lloyd, Antler, Sam Carstens, Elbert Goggin, Daniel Tavell, Figment, Byron Whiting, Leo Wyatt, Thomas Hall, John Greenwich, Garth Hawkins, Brian Bender, Tusk, Lisa Shoemhu, John Stills, Eva Marie, Elyjah Mcleod, Jakob Chmelik, Marie Chmeltokova, David Randy, Dela, D. Bryer, Kyriam Charalambols, Amichai, Hi, Bamboo, Wolfie, Storm, Keer, Tommy Starchild, Hawk, Bunny, Love, Alaska Dave, Phacelia, Elijah, Grace, William Roman, Violet Flame and the other folks from the mountain."
+                    },
+                    {
+                        "title" : "Additional Thanks to:",
+                        "body"  : "Marlene Millar, Ramona Ramlochand, Denis Langlois, Martin Landry, Christian Medawar, Nelson Henricks, Pierre Beaudoin, Eric Van Hoenacker, Angelo Vacca, Myriam Magassouba, Jules de Niverville, Jean-Michel Dentand, Tom Waugh, Ross Higgins, Val Shamash, George Hargrave,Françoise Jean and the staff at CALQ, Robin Jackson and the staff at CIFVF, Ian Reid, Suzanne Plouffe and the staff at the Canada Council for the Arts, Élaine Dumont, Laurent Gagliardi, Michel St-Pierre and the staff at Sodec, Katharine Setzer, Charlie Boudreau at Image+Nation, Sylvie Roy, Denis Vaillancourt and the staff at Vidéographe, Deborah McInnes, Alexis Landriault, Lucia Fezuoglio, Alexandra Grimanis, Steven Ladouceur, Pierre Luc Gouin and the staff at Main Film, Julie René, Sylvain Cossette, Bruno Bélanger, Amandine Brun, Danielle Leblanc and the staff at PRIM, Anne Paré, Jonathan Davidovics and the staff at Les Films du 3 mars, and all the others who helped make this film possible."
+                    },
+                    {
+                        "title" : "All rights reserved.",
+                        "body"  : "© Compass Productions Inc. 2012"
+                    }
+                ],
+                "fr" : [
+                    {
+                        "title" : "Les productions Compass présentent"
+                    },
+                    {
+                        "title" : "un film de Joe Balass"
+                    },
+                    {
+                        "title" : "JOIE!"
+                    },
+                    {
+                        "title" : "Portrait d’une nonne"
+                    },
+                    {
+                        "title" : "Nous remercions Sœur Missionary P. Delight\nalias Sœur Iamosama DeLite the Sodomite/Soami\npour sa généreuse participation"
+                    },
+                    {
+                        "title" : "Écrit, produit et réalisé par",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Montage",
+                        "body"  : "Annie Jean"
+                    },
+                    {
+                        "title" : "Conception du son",
+                        "body"  : "Claude Beaugrand"
+                    },
+                    {
+                        "title" : "Mettant aussi en vedette",
+                        "body"  : "Sœur Hysterectoria alias Agnes de Garron\nSœur Clara Cum Passionata\nGabby Haze\nRazzle Dazzle\nCrazy Owl\nBuck Erikson\nGreg Swift"
+                    },
+                    {
+                        "title" : "Ce film est produit avec la participation financière de :",
+                        "body"  : "SODEC\nSociété de développement des entreprises culturelles – Québec\nConseil des Arts du Canada, Programme des arts médiatiques\nQUÉBEC\nCrédit d’impôt cinéma et télévision – Gestion SODEC\nProgramme du crédit d’impôt du gouvernement du Québec\nConseil des arts et des lettres du Québec\nFonds canadien du film et de la vidéo indépendants\nProgramme de crédit d'impôt pour production cinématographique ou\nmagnétoscopique canadienne"
+                    },
+                    {
+                        "title" : "Ce film a reçu un appui additionnel de la part de :",
+                        "body"  : "L’Office national du film du Canada\nAide au cinéma indépendant du Canada (ACIC) logo"
+                    },
+                    {
+                        "title" : "Caméra",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Caméra additionnelle",
+                        "body"  : "Giampaolo Marzi\nEve Lamont\nMaria Michails"
+                    },
+                    {
+                        "title" : "Caméra d’animation",
+                        "body"  : "Mélanie Bouchard"
+                    },
+                    {
+                        "title" : "Montage additionnel",
+                        "body"  : "Joe Balass\nMichel Giroux"
+                    },
+                    {
+                        "title" : "Montage du dialogue",
+                        "body"  : "Francine Poirier"
+                    },
+                    {
+                        "title" : "Mixage",
+                        "body"  : "Luc Boudrias"
+                    },
+                    {
+                        "title" : "Coordination du mixage",
+                        "body"  : "Marcelle Cadieux"
+                    },
+                    {
+                        "title" : "Studio",
+                        "body"  : "Vision Globale"
+                    },
+                    {
+                        "title" : "Conseiller à la postproduction",
+                        "body"  : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "Bruitage",
+                        "body"  : "Lise Wedlock"
+                    },
+                    {
+                        "title" : "Enregistrement du bruitage",
+                        "body"  : "Luc Léger (ONF)"
+                    },
+                    {
+                        "title" : "Technicien en montage numérique (ONF)",
+                        "body"  : "Pierre Dupont"
+                    },
+                    {
+                        "title" : "Montage final (ONF)",
+                        "body"  : "Denis Pilon"
+                    },
+                    {
+                        "title" : "Titres (ONF)",
+                        "body"  : "Gaspard Gaudreau\nMélanie Bouchard"
+                    },
+                    {
+                        "title" : "Coordonnatrice (ONF)",
+                        "body"  : "Marie-Christine Guité"
+                    },
+                    {
+                        "title" : "Productrice (ONF-ACIC)",
+                        "body"  : "Johanne Bergeron"
+                    },
+                    {
+                        "title" : "Scénaristes-conseils",
+                        "body"  : "Giampaolo Marzi\nRolland Pollack"
+                    },
+                    {
+                        "title" : "Productrice-adjointe",
+                        "body"  : "Patricia Diaz"
+                    },
+                    {
+                        "title" : "Conseiller juridique",
+                        "body"  : "Remy Khouzam\nLussier & Khouzam"
+                    },  
+                    {
+                        "title" : "Traduction française",
+                        "body"  : "Normand Boucher"
+                    },
+                    {
+                        "title" : "Images d’archives",
+                        "body"  : "Altered Habits\nExtrait contenant Sœur Missionary Position, Sœur Homo, ellatio, Révérende mère, Sœur Helen Damnation, Saint Thomas Bernina et Father Mother\néalisatrice : Marjorie Newman\nUtilisé avec la permission de Marjorie Newman\n\nSisters in the Convent\nExtrait contenant Révérende mère, Agnes de Garron et Sœur Loganberry Frost\nRéalisateur: Vincent Casalaina\nUtilisé avec la permission de Fabrice Florin et de Videowest.us\n\nButt Hole Babies\nExtrait contenant Agnes de Garron et Sœur Loganberry Frost\nCaméra : Peter Kesselman\nUtilisé avec la permission de Janie Kesselman"
+                    },
+                    {
+                        "title" : "Images additionnelles fournies par les Archives des Sœurs de la Perpétuelle Indulgence inc.",
+                        "body"  : "Utilisées avec la permission de Sœur Vicious Power Hungry Bitch\net des Sœurs de la Perpétuelle Indulgence inc.\nPacker Corners Farm Maypole Ceremony\nUtilisé avec la permission de Footage Farm Photographies"
+                    },
+                    {
+                        "title" : "Sélection de photographies de Jean-Baptiste Carhaix",
+                        "body"  : "Utilisées avec la permission de Jean-Baptiste Carhaix"
+                    },
+                    {
+                        "title" : "Sélection de photographies de Nina Glaser",
+                        "body"  : "Utilisées avec la permission de Nina Glaser"
+                    },
+                    {
+                        "title" : "Sélection de photographies de Greg Day",
+                        "body"  : "Utilisées avec la permission de Greg Day"
+                    },
+                    {
+                        "title" : "Sélection de photographies appartenant à Sœur SoAmI",
+                        "body"  : "Utilisées avec la permission de Sœur SoAmI et des Archives SoAmI"
+                    },
+                    {
+                        "title" : "Sélection de photographies d’Agnes de Garron",
+                        "body"  : "Utilisées avec la permission d’Agnes de Garron"
+                    },
+                    {
+                        "title" : "Harmodius et Hoti",
+                        "body"  : "Foire de la rue Castro, août 1975, par Daniel Nicoletta\nUtilisée avec la permission de Daniel Nicoletta"
+                    },
+                    {
+                        "title" : "RFD Collective par Robert Giard © Jonathan Silin",
+                        "body"  : "Utilisée avec la permission de Jonathan Silin"
+                    },
+                    {
+                        "title" : "Assunta par Marshall Rheiner",
+                        "body"  : "Utilisée avec la permission d’Arthur Evans et des Archives SoAmI"
+                    },
+                    {
+                        "title" : "Photographies additionnelles fournies par les Archives des Sœurs de la Perpétuelle Indulgence inc.",
+                        "body"  : "Utilisées avec la permission d’Alan Oakley, de Sœur Mary Juanita\nHigh et des Sœurs de la Perpétuelle Indulgence inc."
+                    },
+                    {
+                        "title" : "Extraits",
+                        "body"  : "Walking on the Waters of Babylon par Harry Kelley\nUtilisé avec la permission de Harry Kelley\nJames Broughton’s Credo\nUtilisé avec la permission de Joel Singer"
+                    },
+                    {
+                        "title" : "Musique"
+                    },
+                    {
+                        "title" : "Musique originale",
+                        "body"  : "Composée et interprétée par Tim Rideout"
+                    },
+                    {
+                        "title" : "Superviseur de la musique originale",
+                        "body"  : "Michael McCann\nPillow Mind"
+                    },
+                    {
+                        "title" : "Composée et interprétée par Courtney Wing",
+                        "body"  : ""
+                    },
+                    {
+                        "title" : "The Vatican Rag",
+                        "body"  : "Composée et interprétée par Tom Lehrer\nReproduite avec la permission de Tom Lehrer"
+                    },
+                    {
+                        "title" : "Library Improvisation",
+                        "body"  : "Interprétée par Lady Rizo, Cyrus Baty, Mountaine Jonas, Dane Terry"
+                    },
+                    {
+                        "title" : "Spirit Walker",
+                        "body"  : "Interprétée par Leopard Zeppard\nComposée par Andrew J. Williamson\nWoodroot Music © 1999"
+                    },
+                    {
+                        "title" : "Miracle",
+                        "body"  : "Interprétée par Cyrus Baty et par Angelo Michael Tursi"
+                    },
+                    {
+                        "title" : "Apparaissent aussi dans le film :"
+                    },
+                    {
+                        "title" : "Révérende mère",
+                        "body"  : "Sœur Vicious Power Hungy Bitch"
+                    },
+                    {
+                        "title" : "Sœur Mary Mekko",
+                        "body"  : "Sœur Loganberry Frost"
+                    },
+                    {
+                        "title" : "Sœur Merry Peter",
+                        "body"  : "Sœur Right Sarong"
+                    },
+                    {
+                        "title" : "Sœur Enya Face",
+                        "body"  : "Sœur Constellation"
+                    },
+                    {
+                        "title" : "Sœur Sharin’ Dipity",
+                        "body"  : "Sœur Lily White"
+                    },
+                    {
+                        "title" : "Sœur Bella de Ball",
+                        "body"  : "Sœur Lolita Me Into Temptation"
+                    },
+                    {
+                        "title" : "Sœur Dawna Matrix",
+                        "body"  : "Sœur Chastity Boner"
+                    },
+                    {
+                        "title" : "Sœur Constance Craving",
+                        "body"  : "Sœur Dixie Wrecked"
+                    },
+                    {
+                        "title" : "Sœur Peg Ann Holiday",
+                        "body"  : "Sœur Frances A. Sissy"
+                    },
+                    {
+                        "title" : "Sœur Barbie",
+                        "body"  : "Sœur Tilly Comes Again"
+                    },
+                    {
+                        "title" : "Postulante Uma Gawd",
+                        "body"  : "Sœur Vixxen"
+                    },
+                    {
+                        "title" : "Sœur Sparkle Plenty",
+                        "body"  : "Sœur Mary Margaret X-plosion"
+                    },
+                    {
+                        "title" : "Sœur Shock T",
+                        "body"  : "Sœur Semi Semitica"
+                    },
+                    {
+                        "title" : "Sœur Shawnti Fey",
+                        "body"  : "Sœur Carmen Cider"
+                    },
+                    {
+                        "title" : "Sœur Bambie Dextrous",
+                        "body"  : "Sœur Homo Fellatio"
+                    },
+                    {
+                        "title" : "Sœur Succuba",
+                        "body"  : "Sœur Sensible Shoes"
+                    },
+                    {
+                        "title" : "Sœur Marie Ever-Ready",
+                        "body"  : "Sœur Boom Boom"
+                    },
+                    {
+                        "title" : "Sœur Searching For Men",
+                        "body"  : "Sœur Lida Dog’s Life"
+                    },
+                    {
+                        "title" : "Sœur Krishna Kosher",
+                        "body"  : "Sœur Sun-Nun-Moon"
+                    },
+                    {
+                        "title" : "Sœur Roz Erection",
+                        "body"  : "Sœur Rosetta Stoned"
+                    },
+                    {
+                        "title" : "Sœur Gazza Gum Drops",
+                        "body"  : "Sœur Sleaze du Jour"
+                    },
+                    {
+                        "title" : "Sœur Helen Wheels",
+                        "body"  : "Sœur Unity Harmony"
+                    },
+                    {
+                        "title" : "Sœur Theresa Stigmata",
+                        "body"  : "Sœur Folsome Delight"
+                    },
+                    {
+                        "title" : "Sœur Kaye Sera",
+                        "body"  : "Sœur Flora Bundtcake"
+                    },
+                    {
+                        "title" : "Sœur Roma",
+                        "body"  : "Sœur Candy Cide"
+                    },
+                    {
+                        "title" : "Sœur Rosanna Hosanna Fella Bella"
+                    },
+                    {
+                        "title" : "Nos remerciements sincères à toute les autres Sœurs de la Perpétuelle Indulgence."
+                    },
+                    {
+                        "title" : "Nous tenons également à remercier toutes les fées qui ont participé au film :",
+                        "body"  : "Donald Gallagher, Willy Hoff, Jai Sheronda, Leo Pardo, Gonaway Ta Round, Mountaine Mort Jonas, Vyne, Valencia Wombone, Ed Curran,\nRoman Curran, Mark Middle Hubbard, Jocelyne Bezzi-Batani, Joel\nCrispin, Dirt Farmer, Thumper, Firefly Rosengren, Albo Jeavons,\nJoMichael Stoddard, Christopher Bartlett, Weeder, David Anthros,\nEnya Face, Granite Trudeau, Janell Kapoor,Vermin F. Cockwolf,\nDashboard, Sandor Katz, Alwyn de Wally, Ian Ribbon Cabell, Lucky\nSnowflake, Donald Gallagher, Matt Karol, Link Edge, Tommie\nBarnas, William Ledsad, Kenneth Long, Ben Mettler, Elwood\nCharpting, C. Shane, Charming, George Kierstein, Trevor Lohrbeer,\nEgg Dans, Megan Davis, Christopher Rebagliati, Sébastien Thiriez,\nFabrice Houclart, Randy Segaga, Ing, Patrik, Paul Tomlinson,\nSebastien Collett, Berianne Bramman, Steven Sheltor, Micheal T.\nBrice, Jeff Smith, Marcello Lanfranchi, Christopher Hamblin, Steve\nKraken, Caley Wheeler, Julian Hockings, Sean O’Sullivan, Douglas\nCaulkins, Boomer, Mikel Wilson, Don Perryman, Shawn Wright, Evan\nMalczyk, George Thurow, Matt Woodbury, Eric Glasen, Chris\nResciniti, Shanna Todd, Micheal Kell, Christian Beach, Eric Kephart,\nJames Mave, Joshua Lloyd, Antler, Sam Carstens, Elbert Goggin,\nDaniel Tavell, Figment, Byron Whiting, Leo Wyatt, Thomas Hall, John\nGreenwich, Garth Hawkins, Brian Bender, Tusk, Lisa Shoemhu, John\nStills, Eva Marie, Elyjah Mcleod, Jakob Chmelik, Marie Chmeltokova,\nDavid Randy, Dela, D. Bryer, Kyriam Charalambols, Amichai, Hi,\nBamboo, Wolfie, Storm, Keer, Tommy Starchild, Hawk, Bunny, Love,\nAlaska Dave, Phacelia, Elijah, Grace, William Roman, Violet Flame et\ntous les autres habitants de la montagne."
+                    },
+                    {
+                        "title" : "Nous remercions également :",
+                        "body"  : "Marlene Millar, Ramona Ramlochand, Denis Langlois, Martin Landry,\nChristian Medawar, Nelson Henricks, Pierre Beaudoin, Eric Van\nHoenacker, Angelo Vacca, Myriam Magassouba, Jules de Niverville,\nJean-Michel Dentand, Tom Waugh, Ross Higgins, Val Shamash,\nFrançoise Jean et le personnel du CALQ, Robin Jackson et le\npersonnel de la CIFVF, Ian Reid et le personnel du Conseil des Arts\ndu Canada, Élaine Dumont, Laurent Gagliardi, Michel Saint-Pierre et\nle personnel de la Sodec, Katharine Setzer, Charlie Boudreau à\nImage+Nation, Sylvie Roy, Denis Vaillancourt et le personnel de\nVidéographe, Deborah, Alexis, Lucia, Alex, Steven et le personnel de\nMain Film, Julie, Sylvain, Bruno, Amandine et Alain chez PRIM, Anne\nParé, Jonathan et le personnel des Films du 3 mars, ainsi que tous\nceux et celles qui ont permis à ce film de voir le jour."
+                    },
+                    {
+                        "title" : "Tous droits réservés."
+                    },
+                    {
+                        "title" : "© Compass Productions Inc. 2012"
+                    }
+                ]
+            },
             "distribution" : {
                 "en" : "LES FILMS DU 3 MARS\n2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M.png'/>",
                 "fr" : "LES FILMS DU 3 MARS\n2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M.png'/>"
