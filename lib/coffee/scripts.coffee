@@ -353,7 +353,7 @@ class portfolio.Panel extends Widget
 			# just under the navigation
 			top_offset = navigation_ui.offset().top + navigation_ui.height() - 6
 			@ui.css({top : top_offset})
-			height = $(window).height() - 236
+			height = $(window).height() - 218
 			if height > 0
 				@ui.css({height : height})
 		else
@@ -500,6 +500,7 @@ class portfolio.Contact extends Widget
 			results     : ".result"
 			toFormLink  : ".toContactForm"
 			buttonSend  : ".submit"
+			buttonCancel: ".cancel"
 			errorMsg    : ".result.error"
 			successMsg  : ".result.success"
 			content     : ".content"
@@ -517,6 +518,11 @@ class portfolio.Contact extends Widget
 		)
 		@uis.buttonSend.click((e) =>
 			this.sendMessage()
+			e.preventDefault()
+			return false
+		)
+		@uis.buttonCancel.click((e) =>
+			this.showMain()
 			e.preventDefault()
 			return false
 		)
@@ -1103,6 +1109,12 @@ class portfolio.Language extends Widget
 		else
 			this.getLanguage()
 
-Widget.bindAll()
+if $.browser.msie and parseInt($.browser.version, 10)<9
+	$("body > .wrap").addClass "hidden"
+	$("body > .for-ie").removeClass "hidden"
+else
+	$("body > .for-ie").addClass "hidden"
+	$("body > .wrap").removeClass "hidden"
+	Widget.bindAll()
 
 # EOF

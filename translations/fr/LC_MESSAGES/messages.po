@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-29 12:20+0200\n"
+"POT-Creation-Date: 2012-10-03 11:45+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -16,6 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
+
+#: lib/shpaml/home.html.shpaml:15
+msgid "Sorry but this Compass web site is incompatible with your navigator."
+msgstr "Ce site est incompatible avec votre navigateur internet"
+
+#: lib/shpaml/home.html.shpaml:17
+msgid ""
+"Please download a real modern navigator like Mozilla Firefox or Google "
+"Chrome"
+msgstr "Merci de télécharger un navigateur moderne comme Mozilla Firefox ou Google Chrome"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:9
 msgid "News"
@@ -45,19 +55,15 @@ msgstr "Bientôt à l'affiche"
 msgid "WATCH THE TRAILER"
 msgstr "BANDE-ANNONCE"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:42
-msgid "photo by"
-msgstr "photo par"
-
-#: lib/shpaml/widgets/navigation.html.shpaml:48
+#: lib/shpaml/widgets/navigation.html.shpaml:44
 msgid "Open"
 msgstr "Ouvrir"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:49
+#: lib/shpaml/widgets/navigation.html.shpaml:45
 msgid "Close"
 msgstr "Fermer"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:51
+#: lib/shpaml/widgets/navigation.html.shpaml:47
 msgid "Home Compass"
 msgstr "Accueil Compass"
 
@@ -111,7 +117,7 @@ msgid "You may reach us at:"
 msgstr "Vous pouvez nous joindre sur:"
 
 #: lib/shpaml/widgets/panel.html.shpaml:93
-msgid "or use our contact"
+msgid "or use our contact form"
 msgstr "ou utiliser notre formulaire de contact"
 
 #: lib/shpaml/widgets/panel.html.shpaml:98
@@ -123,21 +129,22 @@ msgid "Write us a few lines..."
 msgstr "Ecrivez nous ici quelques lignes..."
 
 #: lib/shpaml/widgets/panel.html.shpaml:105
+msgid "Back"
+msgstr "Retour"
+
+#: lib/shpaml/widgets/panel.html.shpaml:106
 msgid "Send"
 msgstr "Envoyer"
 
-#: lib/shpaml/widgets/panel.html.shpaml:106
+#: lib/shpaml/widgets/panel.html.shpaml:107
 msgid "Thank you"
 msgstr "Merci"
 
-#: lib/shpaml/widgets/panel.html.shpaml:107
+#: lib/shpaml/widgets/panel.html.shpaml:108
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"
 msgstr ""
 "Il y a eu un problème, vérifiez si l'email donné est bien correct ou "
 "réessayez dans un petit moment"
-
-#~ msgid "gallery"
-#~ msgstr "gallerie"
 

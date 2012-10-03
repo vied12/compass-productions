@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-29 12:20+0200\n"
+"POT-Creation-Date: 2012-10-03 11:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
+
+#: lib/shpaml/home.html.shpaml:15
+msgid "Sorry but this Compass web site is incompatible with your navigator."
+msgstr ""
+
+#: lib/shpaml/home.html.shpaml:17
+msgid ""
+"Please download a real modern navigator like Mozilla Firefox or Google "
+"Chrome"
+msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:9
 msgid "News"
@@ -45,19 +55,15 @@ msgstr ""
 msgid "WATCH THE TRAILER"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:42
-msgid "photo by"
-msgstr ""
-
-#: lib/shpaml/widgets/navigation.html.shpaml:48
+#: lib/shpaml/widgets/navigation.html.shpaml:44
 msgid "Open"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:49
+#: lib/shpaml/widgets/navigation.html.shpaml:45
 msgid "Close"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:51
+#: lib/shpaml/widgets/navigation.html.shpaml:47
 msgid "Home Compass"
 msgstr ""
 
@@ -111,7 +117,7 @@ msgid "You may reach us at:"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:93
-msgid "or use our contact"
+msgid "or use our contact form"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:98
@@ -123,14 +129,18 @@ msgid "Write us a few lines..."
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:105
-msgid "Send"
+msgid "Back"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:106
-msgid "Thank you"
+msgid "Send"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:107
+msgid "Thank you"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:108
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"

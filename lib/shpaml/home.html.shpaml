@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-.wrap
+.wrap.hidden
 	{% include "widgets/background.html" %}	
-	.Index.page.use-base		
+	.Index.page		
 		.FooterBar
 			.wrapper 
 				.Language.widget data-widget=portfolio.Language
@@ -10,4 +10,11 @@
 		{% include "widgets/navigation.html" %}
 		{% include "widgets/mediaPlayer.html" %}
 		{% include "widgets/panel.html" %}
+.for-ie.hidden
+	.wrap
+		{{gettext("Sorry but this Compass web site is incompatible with your navigator.")}}
+		.link
+			{{gettext("Please download a real modern navigator like Mozilla Firefox or Google Chrome")}}
+		> img src="{{url_for("static", filename="images/CP_logo_gold.svg")}}"
+
 {% endblock %}
