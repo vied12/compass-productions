@@ -90,7 +90,7 @@
 								{{ gettext("You may reach us at:") }}
 								.email
 									info@compassproduction.com
-							a.button.toContactForm href="#" | {{ gettext("or use our contact form") }}
+							a.button.do data-action=showForm href="#" | {{ gettext("or use our contact form") }}
 						.contactForm.hidden
 							p.fat
 								{{ gettext("Hello there,") }}
@@ -102,8 +102,8 @@
 								.formElement	
 									textarea.message.in name="message" placeholder="{{ gettext("Write us a few lines...") }}" | {##}
 								.formElement.onRight
-									button.cancel.button.in | {{ gettext("Back") }}
-									button.submit.button.in | {{ gettext("Send") }}
+									button.button.in.do data-action=showMain | {{ gettext("Back") }}
+									button.button.in.do data-action=sendMessage | {{ gettext("Send") }}
 							.result.success.hidden | {{ gettext("Thank you") }}
 							.result.error.hidden   | {{ gettext("There is a problem, please check if your email is correct or retry in a few moment") }}
 		.close

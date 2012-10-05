@@ -498,9 +498,6 @@ class portfolio.Contact extends Widget
 			email       : ".email"
 			message     : ".message"
 			results     : ".result"
-			toFormLink  : ".toContactForm"
-			buttonSend  : ".submit"
-			buttonCancel: ".cancel"
 			errorMsg    : ".result.error"
 			successMsg  : ".result.success"
 			content     : ".content"
@@ -510,22 +507,10 @@ class portfolio.Contact extends Widget
 			minMessageHeight : 200
 		}
 
+		@ACTIONS = ["showForm", "showMain", "sendMessage"]
+
 	bindUI: (ui) =>
 		super
-		@uis.toFormLink.click((e) =>
-			this.showForm()
-			e.preventDefault()
-		)
-		@uis.buttonSend.click((e) =>
-			this.sendMessage()
-			e.preventDefault()
-			return false
-		)
-		@uis.buttonCancel.click((e) =>
-			this.showMain()
-			e.preventDefault()
-			return false
-		)
 		$('body').bind('currentPage',(e,page) => 
 			if page=="contact"
 				this.showMain()
@@ -787,13 +772,12 @@ class portfolio.MediaPlayer extends Widget
 			currentItem     : null
 		}
 
+		@ACTIONS = ["hide", "next", "previous"]
+
 	bindUI: (ui) =>
 		super
 		URL.onStateChanged(this.onURLStateChanged)
 		$(window).resize(this.relayout)
-		@uis.close.click(this.hide)
-		@uis.next.click(this.next)
-		@uis.previous.click(this.previous)
 
 	relayout: =>
 		if @cache.data? and @cache.isShown
@@ -805,8 +789,8 @@ class portfolio.MediaPlayer extends Widget
 					return this.relayout()
 			else
 				player_width_max  = $(window).width() - 100
-				player_height = @uis.panel.offset().top - 50
-				player_width  = player_height * ratio
+				player_height     = @uis.panel.offset().top - 50
+				player_width      = player_height * ratio
 				if player_width > player_width_max
 					player_width  = player_width_max
 					player_height = player_width / ratio
