@@ -103,14 +103,10 @@ body:
 			left       : 10px
 			width      : 330px
 			h2:
-				position : relative
-				top      : -64px
-				left     : -36px
-				span img:
-					height : 200px
+				padding: 50px 0px
+				span:
+					font-size: 2.4em
 			a:
-				position        : relative
-				top             : -96px
 				text-decoration : none
 				color           : #fff
 				span:

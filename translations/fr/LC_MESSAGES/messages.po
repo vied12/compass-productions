@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-03 11:45+0200\n"
+"POT-Creation-Date: 2012-10-06 10:37+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -25,7 +25,9 @@ msgstr "Ce site est incompatible avec votre navigateur internet"
 msgid ""
 "Please download a real modern navigator like Mozilla Firefox or Google "
 "Chrome"
-msgstr "Merci de télécharger un navigateur moderne comme Mozilla Firefox ou Google Chrome"
+msgstr ""
+"Merci de télécharger un navigateur moderne comme Mozilla Firefox ou "
+"Google Chrome"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:9
 msgid "News"
@@ -36,8 +38,8 @@ msgid "Contact"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:18
-msgid "Joy"
-msgstr "Joie"
+msgid "JOY!"
+msgstr "JOIE!"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:24
 msgid "Nana, George & me"
@@ -148,3 +150,5 @@ msgstr ""
 "Il y a eu un problème, vérifiez si l'email donné est bien correct ou "
 "réessayez dans un petit moment"
 
+#~ msgid "Joy"
+#~ msgstr "Joie"

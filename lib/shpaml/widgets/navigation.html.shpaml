@@ -15,7 +15,7 @@
 					Joy, a new movie
 		.Works.menu.column-template.hidden data-menu="works"
 			.tile.nav data-target="joy"
-				.wrapper | {{ gettext("Joy") }}
+				.wrapper | {{ gettext("JOY!") }}
 			.tile.nav data-target="baghdad"
 				.wrapper | Baghdad twist
 			.tile.nav data-target="devil"
@@ -32,8 +32,7 @@
 	.promo.hidden
 		{{ gettext("In theaters soon") }}
 		h2
-			span
-				> img src="/static/images/Joy_logo.svg"
+			span | {{ gettext("JOY!") }}
 		a.button href=#page=project&project=joy&cat=videos&item=0
 			span | {{ gettext("WATCH THE TRAILER") }}
 	.Page.links
