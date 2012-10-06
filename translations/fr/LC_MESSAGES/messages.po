@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-06 10:37+0200\n"
+"POT-Creation-Date: 2012-10-06 10:55+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -38,12 +38,25 @@ msgid "Contact"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:18
+#: lib/shpaml/widgets/navigation.html.shpaml:35
 msgid "JOY!"
 msgstr "JOIE!"
 
+#: lib/shpaml/widgets/navigation.html.shpaml:20
+msgid "Baghdad twist"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:22
+msgid "The devil in the holy water"
+msgstr "Le diable dans l'eau bénite"
+
 #: lib/shpaml/widgets/navigation.html.shpaml:24
 msgid "Nana, George & me"
-msgstr "Nana, George et MOI"
+msgstr "Nana, George et moi"
+
+#: lib/shpaml/widgets/navigation.html.shpaml:26
+msgid "Parting words"
+msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:28
 msgid "The Length of the Alphabet"
@@ -53,19 +66,19 @@ msgstr "La longueur de l’alphabet"
 msgid "In theaters soon"
 msgstr "Bientôt à l'affiche"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:38
+#: lib/shpaml/widgets/navigation.html.shpaml:37
 msgid "WATCH THE TRAILER"
 msgstr "BANDE-ANNONCE"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:44
+#: lib/shpaml/widgets/navigation.html.shpaml:43
 msgid "Open"
 msgstr "Ouvrir"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:45
+#: lib/shpaml/widgets/navigation.html.shpaml:44
 msgid "Close"
 msgstr "Fermer"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:47
+#: lib/shpaml/widgets/navigation.html.shpaml:46
 msgid "Home Compass"
 msgstr "Accueil Compass"
 
@@ -150,5 +163,3 @@ msgstr ""
 "Il y a eu un problème, vérifiez si l'email donné est bien correct ou "
 "réessayez dans un petit moment"
 
-#~ msgid "Joy"
-#~ msgstr "Joie"

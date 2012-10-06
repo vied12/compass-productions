@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-06 10:37+0200\n"
+"POT-Creation-Date: 2012-10-06 10:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,11 +36,24 @@ msgid "Contact"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:18
+#: lib/shpaml/widgets/navigation.html.shpaml:35
 msgid "JOY!"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:20
+msgid "Baghdad twist"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:22
+msgid "The devil in the holy water"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:24
 msgid "Nana, George & me"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:26
+msgid "Parting words"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:28
@@ -51,19 +64,19 @@ msgstr ""
 msgid "In theaters soon"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:38
+#: lib/shpaml/widgets/navigation.html.shpaml:37
 msgid "WATCH THE TRAILER"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:44
+#: lib/shpaml/widgets/navigation.html.shpaml:43
 msgid "Open"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:45
+#: lib/shpaml/widgets/navigation.html.shpaml:44
 msgid "Close"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:47
+#: lib/shpaml/widgets/navigation.html.shpaml:46
 msgid "Home Compass"
 msgstr ""
 
