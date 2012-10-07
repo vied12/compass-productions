@@ -246,6 +246,11 @@ if __name__ == '__main__':
 		import fabfile
 		from fabric.main import execute
 		execute(fabfile.deploy_test)
+	elif len(sys.argv) > 1 and sys.argv[1] == "clear":
+		for path, subdirs, filenames in os.walk(os.path.join(app.root_path, "cache")):
+			for filename in filenames:
+				if not filename.startswith("."):
+					os.remove(os.path.join(path, filename))
 	else:
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
 		preprocessing.preprocess(app, request) 
