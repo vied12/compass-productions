@@ -715,9 +715,15 @@ class portfolio.Project extends Widget
 						@flickrGallery.setPhotoSet(project.gallery)
 					when "press"
 						nui.find(".actual").remove()
-						for press in value
+						for press in value.press
 							press_nui = nui.find('.template').cloneTemplate(press)
 							nui.append(press_nui)
+						presskit = nui.find(".presskit")
+						if value.presskit?
+							presskit.removeClass("hidden")
+							presskit.find("a").attr("href", value.presskit.link)
+						else
+							presskit.addClass("hidden")
 					when "credits"
 						nui.find(".actual").remove()
 						for credit in value
@@ -737,7 +743,7 @@ class portfolio.Project extends Widget
 					when "distribution"
 						nui.empty()
 						nui.append(value.replace(/\n/g, "<br />"))
-						
+
 	selectTab: (category) =>	
 		if not (@cache.externalVideo and category=="videos")
 			@uis.tabContent.removeClass "active"
