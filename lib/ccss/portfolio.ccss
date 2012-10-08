@@ -30,7 +30,7 @@ ALTERNATE_FONT = "Raleway", Verdana, sans-serif
 @font-face:
     font-family: "Raleway"
     font-weight: bold
-    src: url('Raleway/Raleway-Bold.ttf')
+    src: url('Raleway/Raleway-SemiBold.ttf')
 
 .page:
 	font-family: "Livory", Verdana, sans-serif
@@ -139,7 +139,8 @@ body:
 			z-index 		: 3
 			text-transform  : uppercase
 			font-family: $ALTERNATE_FONT
-
+			font-weight : bold
+			font-size :  0.8em
 			.wrapper:
 				max-width : $MAX_WIDTH
 				left 			: 16px
@@ -192,14 +193,13 @@ body:
 			&.hide:
 				opacity 	: 0
 
-.FooterBar:
-	font-family: $ALTERNATE_FONT
+.FooterBar:	
 	position         : absolute
 	bottom           : 1px
 	height           : 40px
 	width 			: 100%
 	z-index          : 2
-	text-transform : uppercase
+
 
 	.wrapper:
 		background-color : $PANEL_COLOR_DARK
@@ -215,7 +215,6 @@ body:
 		left     : 20px
 		a:
 			text-decoration 	: none
-			text-transform : uppercase
 
 .FooterPanel:
 	z-index             : 1
@@ -268,9 +267,7 @@ body:
 			&.show:
 				display : block
 		.tabs:
-			font-family: "Raleway", Verdana, sans-serif	
-			padding   	: $BASE_PADDING * 3 0 
-			font-size 	: 0.8em
+			padding   	: $BASE_PADDING * 3 0 			
 			margin-top 	: -28px
 			li:
 				cursor  : pointer
@@ -285,11 +282,13 @@ body:
 						color   : $TEXT_BLUE
 
 		.close:
+			font-family: $ALTERNATE_FONT
+			font-size 	: 0.8em
+			font-weight : bold
 			position            : absolute
 			right               : 30px
 			top                 : 21px
 			a:
-				font-family         : Arial
 				text-decoration     : none
 				div:
 					height              : 16px
@@ -297,8 +296,9 @@ body:
 					background-image    : url('../images/close.png')
 					background-color    : transparent
 					background-repeat   : no-repeat
-					background-position : center
+					background-position : bottom
 					background-size     : 10px 10px
+					display : inline-block
 
 		//-------------------------- PANEL FORM class ------------------	
 		.in:
@@ -654,3 +654,9 @@ body:
 			padding : 80px 0
 			li:
 				margin : 0px 5px
+
+.alternate_text:
+	font-family: $ALTERNATE_FONT
+	text-transform : uppercase	
+	font-weight : bold
+	font-size :  0.9em

@@ -3,7 +3,7 @@
 	.wrapper.hidden
 		.pages	
 			.Project.page.widget data-widget=portfolio.Project
-				ul.tabs.disableTextSelection
+				ul.tabs.disableTextSelection.alternate_text
 					li.synopsis.hidden
 						a.internal href="#+cat=synopsis" data-name=synopsis | {{ gettext("synopsis") }}
 					li.videos.hidden
@@ -106,6 +106,7 @@
 									button.button.in.do data-action=sendMessage | {{ gettext("Send") }}
 							.result.success.hidden | {{ gettext("Thank you") }}
 							.result.error.hidden   | {{ gettext("There is a problem, please check if your email is correct or retry in a few moment") }}
-		.close
+		.close.alternate_text
 			a href="#menu=main"
+				{{ gettext("Close") }}
 				div | {##}

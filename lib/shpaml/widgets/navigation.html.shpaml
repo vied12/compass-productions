@@ -35,7 +35,7 @@
 			span | {{ gettext("JOY!") }}
 		a.button href=#page=project&project=joy&cat=videos&item=0
 			span | {{ gettext("WATCH THE TRAILER") }}
-	.Page.links
+	.Page.links.alternate_text
 		ul
 			li.menuRoot
 				a href=#					

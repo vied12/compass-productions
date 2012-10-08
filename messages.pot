@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-08 15:11+0200\n"
+"POT-Creation-Date: 2012-10-08 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,11 +68,12 @@ msgstr ""
 msgid "WATCH THE TRAILER"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:43
+#: lib/shpaml/widgets/navigation.html.shpaml:42
 msgid "Open"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:44
+#: lib/shpaml/widgets/navigation.html.shpaml:43
+#: lib/shpaml/widgets/panel.html.shpaml:111
 msgid "Close"
 msgstr ""
 
