@@ -9,7 +9,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 25-Sep-2012
+# Last mod : 07-Oct-2012
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
@@ -34,7 +34,7 @@ cache     = werkzeug.contrib.cache.MemcachedCache(['127.0.0.1:11211'], key_prefi
 
 @app.route('/api/data')
 def data():
-	ln = get_locale()
+	ln  = get_locale()
 	res = cache.get('data-%s' % ln)
 	if res is None:
 		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
@@ -54,6 +54,11 @@ def data():
 				for video_index, video in enumerate(work.get("videos", tuple())):
 					info = vimeo.Vimeo.getInfo(video)
 					data["works"][work_index]["videos"][video_index] = info
+			# remove passwords from presskit
+			for work_index, work in enumerate(data.get("works", tuple())):
+				press = work.get("press")
+				if press and press.get("presskit"):
+					data["works"][work_index]["press"]["presskit"] = True
 			res = json.dumps(data)
 			cache.set('data-%s' % ln, res, timeout=60 * 60 * 24)
 	return res
@@ -121,10 +126,9 @@ def contact():
 		abort(500)
 	return "true"
 
-
 @app.route('/api/setLanguage/<ln>', methods=['GET'])
 def setLanguage(ln):
-	"""Change current language in session"""
+	""" Change current language in session """
 	session["language"] = None
 	if ln in app.config["LANGUAGES"]:
 		session["language"] = ln
@@ -135,12 +139,30 @@ def setLanguage(ln):
 @babel.localeselector
 @app.route('/api/getLanguage', methods=['GET'])
 def get_locale():
+	""" return the cached local or find the best local from request or return "en" """
 	if session.get("language") and session.get("language") != "undefined":
 		ln = session.get("language")
 	else:
 		ln = request.accept_languages.best_match(app.config["LANGUAGES"]) or "en"
 	return ln
 
+@app.route('/api/download', methods=["POST"])
+def download():
+	down_dict = cache.get('download')
+	if down_dict is None:
+		down_dict = {}
+		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
+			data = json.load(f, object_pairs_hook=collections.OrderedDict)
+			for work_index, work in enumerate(data.get("works", tuple())):
+					press = work.get("press")
+					if press and press.get("presskit"):
+						presskit = press.get("presskit")
+						down_dict[presskit.get("password")] = presskit.get("link")
+		cache.set('download', down_dict)
+	res = down_dict.get(request.form["password"])
+	if not res:
+		abort(401)
+	return res
 # -----------------------------------------------------------------------------
 #
 # Site's pages
@@ -169,7 +191,6 @@ def authenticate():
 def logout():
 	session.pop('authenticated', None)
 	return redirect(url_for('admin'))
-
 
 @app.route('/lab')
 def lab():
@@ -246,6 +267,11 @@ if __name__ == '__main__':
 		import fabfile
 		from fabric.main import execute
 		execute(fabfile.deploy_test)
+	elif len(sys.argv) > 1 and sys.argv[1] == "clear":
+		for path, subdirs, filenames in os.walk(os.path.join(app.root_path, "cache")):
+			for filename in filenames:
+				if not filename.startswith("."):
+					os.remove(os.path.join(path, filename))
 	else:
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
 		preprocessing.preprocess(app, request) 

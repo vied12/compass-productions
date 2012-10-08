@@ -7,7 +7,7 @@
 			> img
 	.mediaPanel.disableTextSelection
 		.wrapper
-			.close.do data-action=hide
+			.close.do.hidden data-action=hide
 				a href=# | X
 			.previous.do data-action=previous
 				span

@@ -154,48 +154,54 @@
                     "date"  : "Monday June 16, 2003 at 9pm\nTuesday June 24, 2003 at 12pm\nSaturday June 28, 2003 at 3pm"
                 }
             ],
-            "press"     : [
-                {
-                    "article" : "Balass' film is an intriguing and enlightening look at a city trying to reconcile religious identity and bravado with tolerant, unified attitudes. The Devil in the Holy Water is a film to be celebrated and embraced as its themes and nuances address issues relevant to many.",
-                    "title"   : "Sarah Petrescu, Nexus The Victoria Scene, February 12 2002"
+            "press"     : {
+                "presskit" : {
+                    "link"     : "http://FIXME.zip",
+                    "password" : "tomboy"
                 },
-                {
-                    "article" : "Joe Balass avait marqué le festival Image + Nation de 1998 avec Nana, George et moi mettant en vedette Nana, la grand-mère juive irakienne du réalisateur et un homosexuel anglais âgé, également d'origine juive irakienne, dans une savoureuse et tendre confrontation. De ce regard porté par Joe Balass sur ses propres origines émergeait la curiosité du cinéaste pour les frontières religieuses, sociales, nationales, linguistiques et culturelles. Avec Le diable dans l'eau bénite, Joe Balass a planté sa caméra au cœur de deux événements qui ont soulevé les passions italiennes en l'an 2000…Ni pamphlet anti-catholique ni manifeste pro-gai, Le diable dans l'eau bénite joue de miroir entre les deux événements à travers plusieurs témoignages. Sans forcer le trait, Joe Balass nous laisse entrevoir que la ligne de fracture entre l'Eglise et l'homosexualité n'est pas une ligne droite, bien au contraire.",
-                    "title"   : "Denis-Daniel Boullé, Fugues, mars 2002"
-                },
-                {
-                    "article" : "Ripensandoci, fare il WorldPride Roma durante l'anno santo è stato geniale. Ce lo ricorda ora il film di Joe Balass, riproponendo la ressadi giornalisti, fotografi e telecamere che si spintonava all'inaugurazione ufficiale, con Maria Grazia Cucinotta che taglia un nastro colorato contornata da Vladimir Luxuria e Imma Battaglia. È stato come l'uovo di Colombo pubblicitario del movimento gay italiano, che in pochi mesi, grazie la formidabile traino dell'indignazione vaticana, è riuscito a guadagnare più punti che in tanti anni di onesta militanza.\nGiubileo cattolico e Worldpride sono i fili conduttori paralleli del raconto di Balass, narrati attraverso le imprese di due filmaker-giornalisti (lo stesso Balass e il suo compagno Giampaolo Marzi) che decidono di girare un documentario su quanto sta succedendo a Roma in quello strano 2000. Si appostano quindi in Piazza San Pietro e dintorni e cominciano a filmare le adunate dei fedeli, il papa che parla con la voce tremolante dal balcone, le porte sante che riaprono il Giubileo. Intanto, poco distante da lì, gli omosessuali tramano per guastare la sacra festa. Tappa dopo tappa, Il diavolo nell'acqua santa ripercorre gli eventi che hanno prodotto il miracolo del Worldpride nella Roma giubilare, dedicando molto spazio allo scontro che oppose la Chiesa agli omosessuali… Ben scelta, ai fini della resa emotiva, anche la colonna sonora, che spazia da Domenico Modugno alla Petite Messe Solennelle di Rossini.",
-                    "title"   : "Gianni Rossi Barilli, Pride, marzo 2002"
-                },
-                {
-                    "article" : "Premier long métrage de Joe Balass, le passionant documentaire The Devil in the Holy Water relate avec originalité les faits et suit pas à pas les gais, les lesbiennes et les organisateurs du World Pride qui, quelques mois avant la tenue de l'événement jusqu'à sa réalisation, brandissent à qui veut entendre \" Diversité ! Respect ! Liberté ! \".",
-                    "title"   : "Pierre Ranger, Séquences mars/avril 2002"
-                },
-                {
-                    "article" : "Holy finocchio! Italian gays and conservative Catholics face off in Joe Balass's doc The Devil in the Holy Water \"Open signs of gay affection between men or women is not rare, and people aren't anxious about it there. When driving, people run through red lights all the time. There's a different attitude about life.\"",
-                    "title"   : "Matthew Hays, Montreal Mirror, March 14 2002"
-                },
-                {
-                    "article" : "Le Diable dans l'eau bénite ressemble à son réalisateur: poli et têtu, diplomate et persévérant, louvoyant pour arriver à ses fins. Il faut le voir interviewer monseigneur Etchegaray, organisateur du Jubilé, et porte-parole à la langue de bois; ou filmer l'organisatrice en chef du World Pride, avec sa blonde, sur le bord de la rupture. Jamais voyeur, il aborde les choses en douceur, mais de front, sans jamais porter de jugement à l'emporte-pièce, laissant le président d'une association étudiante catholique, inquisiteur à peine pubère, se couler lui-même, mais filmant une religieuse qui l'aide spontanément à regonfler le pneu crevé de son vélo.",
-                    "title"   : "Eric Fourlanty, Voir, 14 mars 2002"
-                },
-                {
-                    "article" : "Le film de Balass est très dynamique, tant les contrastes y sont nombreux. Un couple d'homosexuels se promène avec un sourire en coin, des groupes néofascistes dénoncent le défilé gay, des Italiens, qui en ont vu d'autres, haussent les épaules de leur côté… C'est le point de vue rétrograde de l'Eglise qui se dessine en creux, avec un refus d'ouverture à tout ce qui n'est pas la famille traditionnelle. Le film est une vraie rencontre entre le passé et la modernité.",
-                    "title"   : "Odile Tremblay, Le Devoir, 16 mars 2002"
-                },
-                {
-                    "article" : "Il viaggio nell'Italia giubilare approda in Piazza San Pietro. Orde di accoliti festeggiano, pacificati con se stessi e con le alte sfere ecclesiatiche, il giubileo dei bambini, dei motociclisti, dei panettieri e fors'anche dei carcerati, tutti insieme in un ecumenismo quanto meno sospetto. E i gay? Provocatori, inopportuni, indecenti, osceni e volgari, costretti a sfogliare l'intera Costituzione italiana per rivendicare il diritto a manifestare. La telecamera li fotografa nella loro realtà, come decin e di servizi giornalistici non sono riusciti a fare, intenti solo e soltanto a mostrare la faccia baraccona e sguaiata dell'infinita fiumana. Chi quel giorno ha camminato, ballato, urlato e pianto per le strade della capitale sa che e' compito ingrato immortalare nei fotogrammi quell'autentico stato di grazia. Joe Balass ha consegnato un documento che ci appartiene e che parla non solo al nostro cuore, ma anche alla testa, perché nessuno dimentichi cos'ha significato per i gay italiani l'estate del 2000.",
-                    "title"   : "Tony Aventino, Guidemagazine, marzo 2002"
-                },
-                {
-                    "article" : "Joe Balass réussit avec Le diable dans l'eau bénite à donner la parole tant aux activistes et membres de la communauté gaie qu'aux ecclésiastiques, religieuses, et catholiques intégristes. Pourtant tout les oppose : d'un côté, l'humour et l'enthousiasme de tous les participants de la World Gay Pride, un rassemblement festif et coloré; de l'autre, la froideur toute vaticane, le refus de s'exprimer sur la question des homosexuels, et le côté majestueux, voire pompeux, des cérémonies religieuses à St-Pierre de Rome.",
-                    "title"   : "Véronique Bouvier, La Presse, 16 mars 2002"
-                },
-                {
-                    "article" : "Good-natured docu -- sure to get good positioning at gay fests and wherever first-person nonfiction is favored -- narrows question of Catholic acceptance of homosexuality down to two \"competing\" events: a World Gay Pride Day being held in Rome and the Vatican's Jubilee. As the simultaneous occasions approach, Montreal-based helmer Joe Balass roams Rome's streets, asking tourists, clerics and interested parties for their opinions… as insightful for depiction of Vatican protocol and rituals -- including public weeping when the Pope utters his scripted pronouncements -- as for what anyone says. With the nuns and priests Balass stops on the street or interviews in their offices, an elaborately polite \"love the sinner, hate the sin\" stonewalling prevails, although there is some vituperation from a few killer-fruit types the helmer hones in on. Most direct are the Pride Day participants, including articulate lesbian activist Imma Battaglia, who demands her place in heaven alongside all the other Catholics.",
-                    "title"   : "Ken Eisner, Variety, May 21, 2002"
-                }
-            ],
+                "press" : [
+                    {
+                        "article" : "Balass' film is an intriguing and enlightening look at a city trying to reconcile religious identity and bravado with tolerant, unified attitudes. The Devil in the Holy Water is a film to be celebrated and embraced as its themes and nuances address issues relevant to many.",
+                        "title"   : "Sarah Petrescu, Nexus The Victoria Scene, February 12 2002"
+                    },
+                    {
+                        "article" : "Joe Balass avait marqué le festival Image + Nation de 1998 avec Nana, George et moi mettant en vedette Nana, la grand-mère juive irakienne du réalisateur et un homosexuel anglais âgé, également d'origine juive irakienne, dans une savoureuse et tendre confrontation. De ce regard porté par Joe Balass sur ses propres origines émergeait la curiosité du cinéaste pour les frontières religieuses, sociales, nationales, linguistiques et culturelles. Avec Le diable dans l'eau bénite, Joe Balass a planté sa caméra au cœur de deux événements qui ont soulevé les passions italiennes en l'an 2000…Ni pamphlet anti-catholique ni manifeste pro-gai, Le diable dans l'eau bénite joue de miroir entre les deux événements à travers plusieurs témoignages. Sans forcer le trait, Joe Balass nous laisse entrevoir que la ligne de fracture entre l'Eglise et l'homosexualité n'est pas une ligne droite, bien au contraire.",
+                        "title"   : "Denis-Daniel Boullé, Fugues, mars 2002"
+                    },
+                    {
+                        "article" : "Ripensandoci, fare il WorldPride Roma durante l'anno santo è stato geniale. Ce lo ricorda ora il film di Joe Balass, riproponendo la ressadi giornalisti, fotografi e telecamere che si spintonava all'inaugurazione ufficiale, con Maria Grazia Cucinotta che taglia un nastro colorato contornata da Vladimir Luxuria e Imma Battaglia. È stato come l'uovo di Colombo pubblicitario del movimento gay italiano, che in pochi mesi, grazie la formidabile traino dell'indignazione vaticana, è riuscito a guadagnare più punti che in tanti anni di onesta militanza.\nGiubileo cattolico e Worldpride sono i fili conduttori paralleli del raconto di Balass, narrati attraverso le imprese di due filmaker-giornalisti (lo stesso Balass e il suo compagno Giampaolo Marzi) che decidono di girare un documentario su quanto sta succedendo a Roma in quello strano 2000. Si appostano quindi in Piazza San Pietro e dintorni e cominciano a filmare le adunate dei fedeli, il papa che parla con la voce tremolante dal balcone, le porte sante che riaprono il Giubileo. Intanto, poco distante da lì, gli omosessuali tramano per guastare la sacra festa. Tappa dopo tappa, Il diavolo nell'acqua santa ripercorre gli eventi che hanno prodotto il miracolo del Worldpride nella Roma giubilare, dedicando molto spazio allo scontro che oppose la Chiesa agli omosessuali… Ben scelta, ai fini della resa emotiva, anche la colonna sonora, che spazia da Domenico Modugno alla Petite Messe Solennelle di Rossini.",
+                        "title"   : "Gianni Rossi Barilli, Pride, marzo 2002"
+                    },
+                    {
+                        "article" : "Premier long métrage de Joe Balass, le passionant documentaire The Devil in the Holy Water relate avec originalité les faits et suit pas à pas les gais, les lesbiennes et les organisateurs du World Pride qui, quelques mois avant la tenue de l'événement jusqu'à sa réalisation, brandissent à qui veut entendre \" Diversité ! Respect ! Liberté ! \".",
+                        "title"   : "Pierre Ranger, Séquences mars/avril 2002"
+                    },
+                    {
+                        "article" : "Holy finocchio! Italian gays and conservative Catholics face off in Joe Balass's doc The Devil in the Holy Water \"Open signs of gay affection between men or women is not rare, and people aren't anxious about it there. When driving, people run through red lights all the time. There's a different attitude about life.\"",
+                        "title"   : "Matthew Hays, Montreal Mirror, March 14 2002"
+                    },
+                    {
+                        "article" : "Le Diable dans l'eau bénite ressemble à son réalisateur: poli et têtu, diplomate et persévérant, louvoyant pour arriver à ses fins. Il faut le voir interviewer monseigneur Etchegaray, organisateur du Jubilé, et porte-parole à la langue de bois; ou filmer l'organisatrice en chef du World Pride, avec sa blonde, sur le bord de la rupture. Jamais voyeur, il aborde les choses en douceur, mais de front, sans jamais porter de jugement à l'emporte-pièce, laissant le président d'une association étudiante catholique, inquisiteur à peine pubère, se couler lui-même, mais filmant une religieuse qui l'aide spontanément à regonfler le pneu crevé de son vélo.",
+                        "title"   : "Eric Fourlanty, Voir, 14 mars 2002"
+                    },
+                    {
+                        "article" : "Le film de Balass est très dynamique, tant les contrastes y sont nombreux. Un couple d'homosexuels se promène avec un sourire en coin, des groupes néofascistes dénoncent le défilé gay, des Italiens, qui en ont vu d'autres, haussent les épaules de leur côté… C'est le point de vue rétrograde de l'Eglise qui se dessine en creux, avec un refus d'ouverture à tout ce qui n'est pas la famille traditionnelle. Le film est une vraie rencontre entre le passé et la modernité.",
+                        "title"   : "Odile Tremblay, Le Devoir, 16 mars 2002"
+                    },
+                    {
+                        "article" : "Il viaggio nell'Italia giubilare approda in Piazza San Pietro. Orde di accoliti festeggiano, pacificati con se stessi e con le alte sfere ecclesiatiche, il giubileo dei bambini, dei motociclisti, dei panettieri e fors'anche dei carcerati, tutti insieme in un ecumenismo quanto meno sospetto. E i gay? Provocatori, inopportuni, indecenti, osceni e volgari, costretti a sfogliare l'intera Costituzione italiana per rivendicare il diritto a manifestare. La telecamera li fotografa nella loro realtà, come decin e di servizi giornalistici non sono riusciti a fare, intenti solo e soltanto a mostrare la faccia baraccona e sguaiata dell'infinita fiumana. Chi quel giorno ha camminato, ballato, urlato e pianto per le strade della capitale sa che e' compito ingrato immortalare nei fotogrammi quell'autentico stato di grazia. Joe Balass ha consegnato un documento che ci appartiene e che parla non solo al nostro cuore, ma anche alla testa, perché nessuno dimentichi cos'ha significato per i gay italiani l'estate del 2000.",
+                        "title"   : "Tony Aventino, Guidemagazine, marzo 2002"
+                    },
+                    {
+                        "article" : "Joe Balass réussit avec Le diable dans l'eau bénite à donner la parole tant aux activistes et membres de la communauté gaie qu'aux ecclésiastiques, religieuses, et catholiques intégristes. Pourtant tout les oppose : d'un côté, l'humour et l'enthousiasme de tous les participants de la World Gay Pride, un rassemblement festif et coloré; de l'autre, la froideur toute vaticane, le refus de s'exprimer sur la question des homosexuels, et le côté majestueux, voire pompeux, des cérémonies religieuses à St-Pierre de Rome.",
+                        "title"   : "Véronique Bouvier, La Presse, 16 mars 2002"
+                    },
+                    {
+                        "article" : "Good-natured docu -- sure to get good positioning at gay fests and wherever first-person nonfiction is favored -- narrows question of Catholic acceptance of homosexuality down to two \"competing\" events: a World Gay Pride Day being held in Rome and the Vatican's Jubilee. As the simultaneous occasions approach, Montreal-based helmer Joe Balass roams Rome's streets, asking tourists, clerics and interested parties for their opinions… as insightful for depiction of Vatican protocol and rituals -- including public weeping when the Pope utters his scripted pronouncements -- as for what anyone says. With the nuns and priests Balass stops on the street or interviews in their offices, an elaborately polite \"love the sinner, hate the sin\" stonewalling prevails, although there is some vituperation from a few killer-fruit types the helmer hones in on. Most direct are the Pride Day participants, including articulate lesbian activist Imma Battaglia, who demands her place in heaven alongside all the other Catholics.",
+                        "title"   : "Ken Eisner, Variety, May 21, 2002"
+                    }
+                ]
+            },
             "links"     : [
                 {
                     "link"        : "http://www.worldpride2000.com/",
@@ -390,7 +396,7 @@
             "key"       : "nana", 
             "title"     : "Nana, George and me",
             "backgroundImage" : "bg2.jpg",
-            "backgroundVideos" : ["ngm_web_home_george_bath_long.webm","ngm_web_home_george_bath_long.ogv","ngm_web_home_george_bath_long.mp4"],
+            "backgroundVideos" : ["ngm_web_home.webm","ngm_web_home.ogv","ngm_web_home.mp4"],
             "synopsis"  : {
                     "en" : {
                         "body" : "What do you get when you ask your 92 year-old Nana, and a 73 year-old man you've just met, questions you've only dared to dream of and get answers more outrageous than you could have imagined?  You get  <strong>Nana, George & Me</strong>, a funny, intimate, sometimes shocking and always heartwarming look at two Iraqi Jewish lives:  one a traditionally raised woman and the other a completely unconventional gay man.\n\nDuration:  48min\nLanguage:  Arabic, English with e.s.t.\nScreening Format: Beta SP\nYear:  1997\nCountry: Canada"
@@ -419,7 +425,7 @@
                     "body" : "Spiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.\n\n In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey.\n\nDirector: Joe Balass\nCanada\n71min\nDigiBeta, HD\nContact: Compass Productions inc.\njoe@compassproductions.ca"
                 },
                 "fr" : {
-                    "body" : "Un monde mystique où se confondent sexualité, spiritualité et activisme. Unenonne à barbe. Dans un cadre intimiste, ce long-métrage documentaire nousemmène sur les pas de Sœur Missionary P. Delight, membre fondatrice desSœurs de la Perpétuelle Indulgence. JOIE! met en lumière un groupe d’invidusfascinants, composé pour la plupart de Fées radicales vivant entre San Francisco et le Sud profond des États-Unis, qui ont apporté une contributioninestimable à la communauté queer et au mouvement de libération sexuelle.\n\nCe documentaire brosse le portrait de Sœur Missionary Position Delight, une desmères fondatrices des Sœurs de la Perpétuelle Indulgence. En 1979, Mish,comme le surnomment affectueusement ses amis, a mis sur pied un ordrereligieux fait d’hommes gais habillés en sœurs et ayant pour mission depromouvoir la joie universelle et d’expier la culpabilité. Depuis, Mish et sacongrégation ont fait beaucoup de chemin. Aujourd’hui, les Sœurs sont activesaux quatre coins du monde, et Mish vit au fin fond du Tennessee, dans unecommunauté de Fées radicales. Les Fées sont un groupe excentrique etdiversifié composé en grande partie de gais et de lesbiennes dont les intérêtsvariés vont de la culture biologique à l’édification sexuelle et spirituelle. JOIE! suitle cheminement de Mish durant sept ans, au cours desquels on en apprenddavantage sur la genèse de ce mouvement inusité et sur les tribulations de sonparcours personnel. On découvre également comment les Sœurs et les Féestentent de toucher le clown et l’enfant espiègle qui sommeillent en chacun denous, comment elles surmontent leurs craintes et leurs sentiments de culpabilité,comment elles intégrent la sexualité comme un élément naturel de la vie et,enfin, comment elles bâtissent et nourrissent leur communauté."
+                    "body" : "Un monde mystique où se confondent sexualité, spiritualité et activisme. Une nonne à barbe. Dans un cadre intimiste, ce long-métrage documentaire nous emmène sur les pas de Sœur Missionary P. Delight, membre fondatrice des Sœurs de la Perpétuelle Indulgence. JOIE! met en lumière un groupe d’invidus fascinants, composé pour la plupart de Fées radicales vivant entre San Francisco et le Sud profond des États-Unis, qui ont apporté une contribution inestimable à la communauté queer et au mouvement de libération sexuelle.\n\nCe documentaire brosse le portrait de Sœur Missionary Position Delight, une des mères fondatrices des Sœurs de la Perpétuelle Indulgence. En 1979, Mish,comme le surnomment affectueusement ses amis, a mis sur pied un ordre religieux fait d’hommes gais habillés en sœurs et ayant pour mission de promouvoir la joie universelle et d’expier la culpabilité. Depuis, Mish et sa congrégation ont fait beaucoup de chemin. Aujourd’hui, les Sœurs sont actives aux quatre coins du monde, et Mish vit au fin fond du Tennessee, dans une communauté de Fées radicales. Les Fées sont un groupe excentrique et diversifié composé en grande partie de gais et de lesbiennes dont les intérêts variés vont de la culture biologique à l’édification sexuelle et spirituelle. JOIE! suitle cheminement de Mish durant sept ans, au cours desquels on en apprend davantage sur la genèse de ce mouvement inusité et sur les tribulations de son parcours personnel. On découvre également comment les Sœurs et les Fées tentent de toucher le clown et l’enfant espiègle qui sommeillent en chacun de nous, comment elles surmontent leurs craintes et leurs sentiments de culpabilité, comment elles intégrent la sexualité comme un élément naturel de la vie et, enfin, comment elles bâtissent et nourrissent leur communauté."
                 }
             },
             "videos"    : {
@@ -1099,8 +1105,8 @@
                 ]
             },
             "distribution" : {
-                "en" : "LES FILMS DU 3 MARS\n2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M.png'/>",
-                "fr" : "LES FILMS DU 3 MARS\n2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M.png'/>"
+                "en" : "LES FILMS DU 3 MARS\n2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>",
+                "fr" : "LES FILMS DU 3 MARS\n2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>"
             }
         },
         {

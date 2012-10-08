@@ -57,6 +57,8 @@
 								p.article.out | {##}
 					.content.press data-name="press"
 						.wrapper.maxWidth
+							.presskit.hidden
+								a.button | {{ gettext("press kit") }}
 							.press.template
 								p.title.out | {##}
 								p.article.out | {##}
