@@ -8,21 +8,34 @@ TILE_COLOR              = "rgba(10,12,6,0.7)"
 TILE_HIGHLIGHTED_COLOR  = "rgba(51,51,77,0.7)"
 PANEL_COLOR_DARK        = "rgba(10,12,6,0.7)"
 PANEL_COLOR_BLUE	    = "rgba(51,51,77,0.7)"
+TEXT_BLUE = #A2DAE6
+TEXT_BLUE_DARK = #77999E
 BASE_PADDING = 10px
 BIG_LINE_HEIGHT = 1.5em
 SMALL_LINE_HEIGHT = 1.5em
 BIG_FONT_SIZE = 1.8em
 SMALL_FONT_SIZE = 1.2em
 MAX_WIDTH = 1024px
+ALTERNATE_FONT = "Raleway", Verdana, sans-serif	
 
 @font-face:
 	font-family: "Livory"
 	src: url("Livory-Regular.otf")
 	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)", url(Livory-Regular.otf)
 
+@font-face:
+	font-family: "Raleway"
+	src: url("Raleway/Raleway-Regular.ttf")
+
+@font-face:
+    font-family: "Raleway"
+    font-weight: bold
+    src: url('Raleway/Raleway-SemiBold.ttf')
+
 .page:
-	font-family: "Livory", Verdana, sans-serif	
+	font-family: "Livory", Verdana, sans-serif
 	line-height: $SMALL_LINE_HEIGHT
+
 body:
 	background-color 	: black
 	background-size 	: cover
@@ -128,6 +141,10 @@ body:
 			position        : absolute		
 			bottom 			: 8px
 			z-index 		: 3
+			text-transform  : uppercase
+			font-family: $ALTERNATE_FONT
+			font-weight : bold
+			font-size :  0.8em
 			.wrapper:
 				max-width : $MAX_WIDTH
 				left 			: 16px
@@ -137,7 +154,6 @@ body:
 				bottom           : 3px
 				left            : 40px
 				padding 		: 0
-				width 			: 400px	
 
 			li:
 				display 	: block
@@ -155,7 +171,9 @@ body:
 					-webkit-transition-timing-function  : ease		
 					margin-right: 5px
 				&.menuRoot:		
-					position : absolute 			
+					position : absolute 	
+					left: 905px	
+					width : 200px	
 					.panelHiddenText:
 						display : none
 					.panelOpenText:
@@ -172,20 +190,21 @@ body:
 							-webkit-transform: "rotate(-90deg)"
 							-o-transform     : "rotate(-90deg)"
 				&.home:
-					left: 805px
+					left: 40px
 					position: relative
-					width: 114px
 			&.show:
 				opacity 	: 1
 			&.hide:
 				opacity 	: 0
 
-.FooterBar:
+.FooterBar:	
 	position         : absolute
-	bottom           : 0
+	bottom           : 1px
 	height           : 40px
 	width 			: 100%
-	z-index          : 2	
+	z-index          : 2
+
+
 	.wrapper:
 		background-color : $PANEL_COLOR_DARK
 		width 	: $MAX_WIDTH
@@ -197,10 +216,9 @@ body:
 		padding          : $BASE_PADDING
 		position       : absolute
 		bottom    : 0px
-		right     : 32px
+		left     : 20px
 		a:
 			text-decoration 	: none
-			text-transform : uppercase
 
 .FooterPanel:
 	z-index             : 1
@@ -214,7 +232,7 @@ body:
 	-webkit-transition-property : top
 	-moz-transition-property    : top
 	-webkit-transition-duration : 0.50s
-	-moz-transition-duration    : 0.50s
+	-moz-transition-duration    : 0.50s	
 	top : 100%
 	> .wrapper:
 		height : 100%
@@ -253,27 +271,28 @@ body:
 			&.show:
 				display : block
 		.tabs:
-			padding   	: $BASE_PADDING * 3 0 
-			font-size 	: $SMALL_FONT_SIZE
-			color 		: $TEXT_COLOR_DARK
+			padding   	: $BASE_PADDING * 3 0 			
 			margin-top 	: -28px
 			li:
 				cursor  : pointer
 				display : inline-block
-				padding : 0 $BASE_PADDING
+				padding : 0 32px 0 0
 				a:
 					text-decoration : none
-					color   : #98B2C6
-					text-transform : capitalize
+					color   : $TEXT_BLUE_DARK
+					text-transform : uppercase
 					&.active:
-						color   : $TEXT_COLOR_LIGHT		
+						font-weight : bold
+						color   : $TEXT_BLUE
 
 		.close:
+			font-family: $ALTERNATE_FONT
+			font-size 	: 0.8em
+			font-weight : bold
 			position            : absolute
 			right               : 30px
 			top                 : 21px
 			a:
-				font-family         : Arial
 				text-decoration     : none
 				div:
 					height              : 16px
@@ -281,8 +300,9 @@ body:
 					background-image    : url('../images/close.png')
 					background-color    : transparent
 					background-repeat   : no-repeat
-					background-position : center
+					background-position : bottom
 					background-size     : 10px 10px
+					display : inline-block
 
 		//-------------------------- PANEL FORM class ------------------	
 		.in:
@@ -663,3 +683,9 @@ body:
 			padding : 80px 0
 			li:
 				margin : 0px 5px
+
+.alternate_text:
+	font-family: $ALTERNATE_FONT
+	text-transform : uppercase	
+	font-weight : bold
+	font-size :  0.9em

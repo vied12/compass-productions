@@ -4,7 +4,7 @@
 	{% include "widgets/background.html" %}	
 	.Index.page		
 		.FooterBar
-			.wrapper 
+			.wrapper.alternate_text 
 				.Language.widget data-widget=portfolio.Language
 					a.language.internal href="#+ln=fr" | Fr
 		{% include "widgets/navigation.html"  %}
