@@ -38,9 +38,9 @@
 	.Page.links
 		ul
 			li.menuRoot
-				a href=#
-					> img src="/static/images/menu.png"
+				a href=#					
 					span.panelOpenedText | {{ gettext("Open") }}
 					span.panelHiddenText | {{ gettext("Close") }}
+					> img src="/static/images/menu.png"
 			li.home
-				a href=#menu=main | {{ gettext("Home Compass") }}
+				a href=#menu=main | {{ gettext("Home") }}

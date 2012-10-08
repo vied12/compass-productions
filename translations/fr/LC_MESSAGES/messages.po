@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-06 10:55+0200\n"
+"POT-Creation-Date: 2012-10-08 15:11+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -79,9 +79,9 @@ msgid "Close"
 msgstr "Fermer"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:46
-msgid "Home Compass"
-msgstr "Accueil Compass"
-
+msgid "Home"
+msgstr "Accueil"
+Home
 #: lib/shpaml/widgets/panel.html.shpaml:8
 msgid "synopsis"
 msgstr ""
@@ -162,4 +162,7 @@ msgid ""
 msgstr ""
 "Il y a eu un problème, vérifiez si l'email donné est bien correct ou "
 "réessayez dans un petit moment"
+
+#~ msgid "Home Compass"
+#~ msgstr "Accueil Compass"
 
