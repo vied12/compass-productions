@@ -145,6 +145,7 @@ body:
 			font-family: $ALTERNATE_FONT
 			font-weight : bold
 			font-size :  0.8em
+		
 			.wrapper:
 				max-width : $MAX_WIDTH
 				left 			: 16px
@@ -203,7 +204,6 @@ body:
 	height           : 40px
 	width 			: 100%
 	z-index          : 2
-
 
 	.wrapper:
 		background-color : $PANEL_COLOR_DARK
@@ -287,7 +287,6 @@ body:
 
 		.close:
 			font-family: $ALTERNATE_FONT
-			font-size 	: 0.8em
 			font-weight : bold
 			position            : absolute
 			right               : 30px
@@ -689,3 +688,4 @@ body:
 	text-transform : uppercase	
 	font-weight : bold
 	font-size :  0.9em
+	color : $TEXT_BLUE
