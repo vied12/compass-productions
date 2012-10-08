@@ -123,7 +123,7 @@ class window.serious.Widget
 			for action in @ACTIONS
 				@ui.find(".do[data-action=#{action}]").click (e) =>
 					# TODO: Prevent overwriting
-					action = $(e.target).attr("data-action")
+					action = $(e.currentTarget).attr("data-action")
 					this[action]()
 					e.preventDefault()
 
