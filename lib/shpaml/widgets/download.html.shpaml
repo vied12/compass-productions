@@ -1,0 +1,10 @@
+.Download.hidden.widget data-widget=portfolio.Download
+	.overlay.do data-action=hide | {##}
+	.box
+		.wrapper
+			form method="post" action="/api/download" name="download"
+				label | {{gettext("Please enter the magic password")}}
+				> br
+				> input type=password name=kit_password placeholder="{{ gettext("password") }}"
+				> input.do type=submit value="{{gettext("download")}}" data-action=getFile
+				.error.hidden | {{gettext("Sorry, we don't know this password, try again") }}

@@ -579,6 +579,7 @@ class portfolio.Project extends Widget
 		@CATEGORIES    = ["synopsis", "videos", "gallery", "screenings", "credits", "press", "links", "distribution"]	
 		@flickrGallery = null
 		@videoPlayer   = null
+		@downloader    = null
 
 	bindUI: (ui) =>
 		super
@@ -588,6 +589,8 @@ class portfolio.Project extends Widget
 		# enable dynamic links (#+cat=...)
 		URL.enableLinks(@ui)
 		$("body").bind("relayoutContent", this.relayout)
+		@downloader    = Widget.ensureWidget(".Download")
+		@ui.find(".presskit").click((=> @downloader.show()))
 
 	relayout: =>
 		top_offset = $('.FooterPanel').height() - 100
@@ -1098,6 +1101,47 @@ class portfolio.Language extends Widget
 			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
 		else
 			this.getLanguage()
+
+# -----------------------------------------------------------------------------
+#
+# DOWNLOAD
+#
+# -----------------------------------------------------------------------------	
+
+class portfolio.Download extends Widget
+
+	constructor: ->
+
+		@UIS = {
+			box      : ".box"
+			password : "input[type=password]"
+			error    : ".error"
+		}
+
+		@ACTIONS = ["getFile", "hide"]
+
+	bindUI: (ui) =>
+		super
+		this.relayout()
+
+	relayout: =>
+		window_height = $(window).height()
+		box_height    = @uis.box.height()
+		@uis.box.css({top:window_height/2 - box_height/2})
+
+	getFile: =>
+		kit_password = @uis.password.val()
+		$.ajax("/api/download", {
+			type     : "POST"
+			data     : {password: kit_password}
+			success  : this.sendFile
+			error    : ((msg) => @uis.error.removeClass "hidden" )
+		})
+
+	sendFile: (data) =>
+		@uis.error.addClass "hidden"
+		this.hide()
+		window.open(data,'Download')
 
 if $.browser.msie and parseInt($.browser.version, 10)<9
 	$("body > .wrap").addClass "hidden"

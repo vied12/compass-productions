@@ -7,9 +7,10 @@
 			.wrapper 
 				.Language.widget data-widget=portfolio.Language
 					a.language.internal href="#+ln=fr" | Fr
-		{% include "widgets/navigation.html" %}
+		{% include "widgets/navigation.html"  %}
 		{% include "widgets/mediaPlayer.html" %}
-		{% include "widgets/panel.html" %}
+		{% include "widgets/panel.html"       %}
+		{% include "widgets/download.html"    %}
 .for-ie.hidden
 	.wrap
 		{{gettext("Sorry but this Compass web site is incompatible with your navigator.")}}

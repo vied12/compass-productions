@@ -121,7 +121,7 @@ class window.serious.Widget
 		# ACTIONS
 		if (typeof(@ACTIONS) != "undefined")
 			for action in @ACTIONS
-				$(".do[data-action=#{action}]").click (e) =>
+				@ui.find(".do[data-action=#{action}]").click (e) =>
 					# TODO: Prevent overwriting
 					action = $(e.target).attr("data-action")
 					this[action]()

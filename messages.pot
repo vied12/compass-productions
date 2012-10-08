@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-06 10:55+0200\n"
+"POT-Creation-Date: 2012-10-08 14:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: lib/shpaml/home.html.shpaml:15
+#: lib/shpaml/home.html.shpaml:16
 msgid "Sorry but this Compass web site is incompatible with your navigator."
 msgstr ""
 
-#: lib/shpaml/home.html.shpaml:17
+#: lib/shpaml/home.html.shpaml:18
 msgid ""
 "Please download a real modern navigator like Mozilla Firefox or Google "
 "Chrome"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:6
+msgid "Please enter the magic password"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:8
+msgid "password"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:9
+msgid "download"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:10
+msgid "Sorry, we don't know this password, try again"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:9
@@ -116,44 +132,48 @@ msgstr ""
 msgid "distribution"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:86
-#: lib/shpaml/widgets/panel.html.shpaml:96
-msgid "Hello there,"
+#: lib/shpaml/widgets/panel.html.shpaml:61
+msgid "press kit"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:88
-msgid "Would you like to get in touch with Compass Productions?"
+#: lib/shpaml/widgets/panel.html.shpaml:98
+msgid "Hello there,"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:90
+msgid "Would you like to get in touch with Compass Productions?"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:92
 msgid "You may reach us at:"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:93
+#: lib/shpaml/widgets/panel.html.shpaml:95
 msgid "or use our contact form"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:98
+#: lib/shpaml/widgets/panel.html.shpaml:100
 msgid "Would you like to get in touch with Compass Productions"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:103
+#: lib/shpaml/widgets/panel.html.shpaml:105
 msgid "Write us a few lines..."
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:105
+#: lib/shpaml/widgets/panel.html.shpaml:107
 msgid "Back"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:106
+#: lib/shpaml/widgets/panel.html.shpaml:108
 msgid "Send"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:107
+#: lib/shpaml/widgets/panel.html.shpaml:109
 msgid "Thank you"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:108
+#: lib/shpaml/widgets/panel.html.shpaml:110
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"
