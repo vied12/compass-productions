@@ -57,10 +57,6 @@ class portfolio.Navigation extends Widget
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("index_bg.jpg")		
 		@background.darkness(0)
-		#Add Mobile Class if necessary
-		#Commented because bugged, isMobile is imported from widget.coffee
-		#if isMobile.any()
-		#	$('body').addClass "mobile"
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
