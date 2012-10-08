@@ -1105,8 +1105,8 @@
                 ]
             },
             "distribution" : {
-                "en" : "LES FILMS DU 3 MARS\n2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M.png'/>",
-                "fr" : "LES FILMS DU 3 MARS\n2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M.png'/>"
+                "en" : "LES FILMS DU 3 MARS\n2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>",
+                "fr" : "LES FILMS DU 3 MARS\n2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>"
             }
         },
         {
