@@ -476,7 +476,7 @@ class portfolio.News extends Widget
 	setData: (data) =>
 		@cache.data = data
 		for news in data
-			date = new Date(news.date_creation)			
+			date = new Date(news.date_creation)
 			nui = @uis.newsTmpl.cloneTemplate({
 				body:news.content.replace(/\n/g, "<br />")
 				date:date.toDateString()
@@ -1124,6 +1124,7 @@ class portfolio.Download extends Widget
 
 	bindUI: (ui) =>
 		super
+		$(window).resize(this.relayout)
 		this.relayout()
 
 	relayout: =>
