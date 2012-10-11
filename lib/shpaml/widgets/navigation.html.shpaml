@@ -9,10 +9,6 @@
 				.wrapper | {{ gettext("News") }}
 			.tile.nav data-target="contact"
 				.wrapper | {{ gettext("Contact") }}
-			.tile.highlighted.hidden data-target="news"
-				.wrapper
-					h2 | News
-					Joy, a new movie
 		.Works.menu.column-template.hidden data-menu="works"
 			.tile.nav data-target="joy"
 				.wrapper | {{ gettext("JOY!") }}

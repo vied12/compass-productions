@@ -32,5 +32,7 @@ class serious.format.NumberFormat
 			minutes = "0"+minutes
 		if seconds < 10
 			seconds = "0"+seconds
-		return hours+":"+minutes+":"+seconds
-
+		if hours == "00"
+			return minutes+":"+seconds
+		else
+			return hours+":"+minutes+":"+seconds
