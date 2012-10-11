@@ -145,20 +145,20 @@ body:
 		
 			.wrapper:
 				max-width : $MAX_WIDTH
-				left 			: 16px
-				z-index 		: 10			
+				left      : 16px
+				z-index   : 10
 			ul:
-				position         : absolute
-				bottom           : 3px
-				left            : 40px
-				padding 		: 0
+				position  : absolute
+				bottom    : 3px
+				left      : 70px
+				padding   : 0
 
 			li:
-				display 	: block
-				margin 		: 0 10px
-				padding 	: 0
+				display     : block
+				margin      : 0 10px
+				padding     : 0
 				a:
-					text-decoration 	: none
+					text-decoration : none
 				img:
 					margin-bottom : -3px
 					-webkit-transition-property : "all"
@@ -166,40 +166,37 @@ body:
 					-webkit-transition-duration : "0.3s"
 					-moz-transition-duration    : "0.3s"
 					-moz-transition-timing-function     : ease
-					-webkit-transition-timing-function  : ease		
+					-webkit-transition-timing-function  : ease
 					margin-right: 5px
-				&.menuRoot:		
-					position : absolute 	
+				&.menuRoot:
+					position : absolute
 					left: 905px	
-					width : 200px	
+					width : 200px
 					.panelHiddenText:
 						display : none
 					.panelOpenText:
-						display : inline-block	
+						display : inline-block
 					&.active:
 						.panelHiddenText:
 							display : inline-block
 						.panelOpenedText:
-							display : none					
+							display : none
 						img:
 							transform        : "rotate(-90deg)"
 							-ms-transform    : "rotate(-90deg)"
 							-moz-transform   : "rotate(-90deg)"
 							-webkit-transform: "rotate(-90deg)"
 							-o-transform     : "rotate(-90deg)"
-				&.home:
-					left: 40px
-					position: relative
 			&.show:
-				opacity 	: 1
+				opacity : 1
 			&.hide:
-				opacity 	: 0
+				opacity : 0
 
 .FooterBar:	
 	position         : absolute
 	bottom           : 1px
 	height           : 40px
-	width 			: 100%
+	width            : 100%
 	z-index          : 2
 
 	.wrapper:
