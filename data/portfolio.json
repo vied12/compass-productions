@@ -423,7 +423,7 @@
             "synopsis"  : {
                 "en" : {
                     "teaser" : "Spiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.",
-                    "body" : "In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey.\n\nDirector: Joe Balass\nCanada\n71min\nDigiBeta, HD\nContact: Compass Productions inc.\njoe@compassproductions.ca"
+                    "body" : "In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey."
                 },
                 "fr" : {
                     "teaser" : "Un monde mystique où se confondent sexualité, spiritualité et activisme. Une nonne à barbe. Dans un cadre intimiste, ce long-métrage documentaire nous emmène sur les pas de Sœur Missionary P. Delight, membre fondatrice des Sœurs de la Perpétuelle Indulgence.",
@@ -1107,8 +1107,8 @@
                 ]
             },
             "distribution" : {
-                "en" : "LES FILMS DU 3 MARS\n2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>",
-                "fr" : "LES FILMS DU 3 MARS\n2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>"
+                "en" : "<h2>LES FILMS DU 3 MARS</h2>2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>",
+                "fr" : "<h2>LES FILMS DU 3 MARS</h2>2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>"
             }
         },
         {

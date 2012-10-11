@@ -32,7 +32,7 @@ class portfolio.Navigation extends Widget
 			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
-			pageLinks 		 : ".Page.links"
+			pageLinks        : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
 			promo            : ".promo"
 		}
@@ -55,7 +55,7 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		@background.image("index_bg.jpg")		
+		@background.image("index_bg.jpg")
 		@background.darkness(0)
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -64,27 +64,29 @@ class portfolio.Navigation extends Widget
 		$('body').bind('updatePanelMenuRoot', (e,opened) => this.updatePanelMenuRoot(opened))
 		$('body').bind('desactivatelPanelToggler', (e,opened) => @uis.menuRoot.addClass "hidden")
 		$('body').bind('activatelPanelToggler', (e,opened) => @uis.menuRoot.removeClass "hidden")
-		
 		# bind url change
-		URL.onStateChanged(=>
+		URL.onStateChanged =>
 			if URL.hasChanged("menu")
 				menu = URL.get("menu")
 				if menu
 					this.showMenu(menu)
-			if URL.hasChanged("page")				
-				page = URL.get("page")				
+			if URL.hasChanged("page")
+				page = URL.get("page")
 				if page
 					this.showPage(page)
 					$('body').trigger("currentPage", page)
-		)
 		# init from url
 		params = URL.get()
 		if params.page?
-			this.showPage(params.page)		
+			this.showPage(params.page)
 		else if params.menu?
 			this.showMenu(params.menu)
 		else
 			this.showMenu("main")
+		# hover effect
+		@uis.tilesList.mouseover((e) =>
+			@uis.tilesList.addClass("highlighted").filter(e.currentTarget).removeClass "highlighted"
+		).mouseout (e) => @uis.tilesList.removeClass "highlighted"
 		return this
 
 	# show the given menu, hide the previous opened menu
@@ -1090,7 +1092,7 @@ class portfolio.Language extends Widget
 		this.toggle()
 
 	onURLStateChanged: =>
-		if URL.hasChanged("ln")
+		if URL.hasChanged("ln") and URL.get("ln")
 			$.ajax("/api/setLanguage/"+URL.get("ln"), {dataType: 'json', success : this.actualize})
 
 	actualize: =>

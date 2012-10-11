@@ -84,8 +84,8 @@ body:
 				opacity            : 0
 				font-size 			: 1.2em
 				cursor  			: pointer
-				-webkit-transition-property : "opacity"
-				-moz-transition-property    : "opacity"
+				-webkit-transition-property : "opacity,background-color"
+				-moz-transition-property    : "opacity,background-color"
 				-webkit-transition-duration : "0.5s"
 				-moz-transition-duration    : "0.5s"
 				-moz-transition-timing-function     : linear
@@ -98,10 +98,7 @@ body:
 				&.show:
 					opacity : 1
 				&.highlighted:
-					clear: both
-					width              : $TILE_WIDTH * 2 + 5 - 20 // padding: 20 + 2x5
-					height             : $TILE_WIDTH * 2 + 5 - 20
-					padding            : 10px
+					background-color: $TILE_HIGHLIGHTED_COLOR
 				&.brand:
 					margin : 3px 5px 3px 3px 
 					background : $TILE_COLOR url('../images/CP_logo_white.svg') center 33px no-repeat
@@ -148,20 +145,20 @@ body:
 		
 			.wrapper:
 				max-width : $MAX_WIDTH
-				left 			: 16px
-				z-index 		: 10			
+				left      : 16px
+				z-index   : 10
 			ul:
-				position         : absolute
-				bottom           : 3px
-				left            : 40px
-				padding 		: 0
+				position  : absolute
+				bottom    : 3px
+				left      : 70px
+				padding   : 0
 
 			li:
-				display 	: block
-				margin 		: 0 10px
-				padding 	: 0
+				display     : block
+				margin      : 0 10px
+				padding     : 0
 				a:
-					text-decoration 	: none
+					text-decoration : none
 				img:
 					margin-bottom : -3px
 					-webkit-transition-property : "all"
@@ -169,40 +166,37 @@ body:
 					-webkit-transition-duration : "0.3s"
 					-moz-transition-duration    : "0.3s"
 					-moz-transition-timing-function     : ease
-					-webkit-transition-timing-function  : ease		
+					-webkit-transition-timing-function  : ease
 					margin-right: 5px
-				&.menuRoot:		
-					position : absolute 	
+				&.menuRoot:
+					position : absolute
 					left: 905px	
-					width : 200px	
+					width : 200px
 					.panelHiddenText:
 						display : none
 					.panelOpenText:
-						display : inline-block	
+						display : inline-block
 					&.active:
 						.panelHiddenText:
 							display : inline-block
 						.panelOpenedText:
-							display : none					
+							display : none
 						img:
 							transform        : "rotate(-90deg)"
 							-ms-transform    : "rotate(-90deg)"
 							-moz-transform   : "rotate(-90deg)"
 							-webkit-transform: "rotate(-90deg)"
 							-o-transform     : "rotate(-90deg)"
-				&.home:
-					left: 40px
-					position: relative
 			&.show:
-				opacity 	: 1
+				opacity : 1
 			&.hide:
-				opacity 	: 0
+				opacity : 0
 
 .FooterBar:	
 	position         : absolute
 	bottom           : 1px
 	height           : 40px
-	width 			: 100%
+	width            : 100%
 	z-index          : 2
 
 	.wrapper:
@@ -262,15 +256,15 @@ body:
 				line-height : $BIG_LINE_HEIGHT	
 				margin-top : -10px
 				padding: 10px 0
-			&.active,&.show:					
-				opacity : 1			
+			&.active,&.show:
+				opacity : 1
 		.page:
 			display : none
-			padding: $BASE_PADDING * 5  $BASE_PADDING *2	
+			padding: $BASE_PADDING * 5  $BASE_PADDING *2
 			&.show:
 				display : block
 		.tabs:
-			padding   	: $BASE_PADDING * 3 0 			
+			padding   	: $BASE_PADDING * 3 0
 			margin-top 	: -28px
 			li:
 				cursor  : pointer
@@ -281,13 +275,13 @@ body:
 					color   : $TEXT_BLUE_DARK
 					text-transform : uppercase
 					letter-spacing : 0.2em
-					&.active:
+					&.active,&:hover:
 						font-weight : bold
 						color   : $TEXT_BLUE
 
 		.close:
-			font-family: $ALTERNATE_FONT
-			font-weight : bold
+			font-family         : $ALTERNATE_FONT
+			font-weight         : bold
 			position            : absolute
 			right               : 30px
 			top                 : 21px
@@ -303,7 +297,7 @@ body:
 					background-size     : 10px 10px
 					display : inline-block
 
-		//-------------------------- PANEL FORM class ------------------	
+		//-------------------------- PANEL FORM class ------------------
 		.in:
 			display : block
 			padding : $BASE_PADDING
@@ -317,14 +311,14 @@ body:
 			background-color : transparent
 			border-width : 1px
 			border-style : solid
-			border-color : #fff 
+			border-color : #fff
 			color : #fff
 		textarea::-webkit-input-placeholder, textarea::-webkit-input-placeholder:fovus:
 			color:	#fff
 		-moz-placeholder:
 			color:	#fff
 		-ms-input-placeholder:
-			color:	#fff		
+			color:	#fff
 
 	.Project:
 		&.page:
@@ -346,7 +340,7 @@ body:
 					-moz-transition-timing-function     : ease
 					-webkit-transition-timing-function  : ease	
 					&.readmoreFx:
-						opacity :1		
+						opacity :1
 			&.videos:
 				li.video.actual:
 					padding-right  : 10px
@@ -357,6 +351,8 @@ body:
 					img:
 						height : 150px
 						width  : 268px
+					.duration:
+						font-size : 0.8em
 			&.links:
 				a:
 					font-size : 1.2em
@@ -368,7 +364,7 @@ body:
 				overflow : auto
 				li.photo:
 					display		: inline-block
-					margin		: 4px
+					margin		: 4px 6px
 					cursor      : pointer
 					.image:
 						// fix to prevent white margin on flick'r image
@@ -376,6 +372,10 @@ body:
 						background-position : center center
 						width               : 150px
 						height              : 150px
+			&.distribution:
+				h2:
+					font-size : 1.3em
+					margin    : 0px
 			&.screenings,&.credits:
 			 	.screening, .credit :
 					clear : both			
@@ -387,10 +387,11 @@ body:
 					display: inline-block
 					vertical-align : top
 					&.title:
-						width : auto
+						text-transform : uppercase	
+						width : 50%
 					&.body:
 						margin-left : 10px
-						width : 70%
+						width : 47%
 						float : right
 					&.date:
 						float : left
@@ -424,12 +425,16 @@ body:
 	.News:
 		.title: 
 			font-weight : normal
+			font-variant: small-caps
 			margin 		: 0
 		.date:
 			display 	: block
 		.body:
 			font-size : $BIG_FONT_SIZE
 			line-height : $BIG_LINE_HEIGHT
+			.button:
+				line-height : 1em
+				font-size   : 0.5em
 		li:
 			margin-bottom : 50px
 
