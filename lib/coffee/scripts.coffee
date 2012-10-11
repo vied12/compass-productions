@@ -1092,7 +1092,7 @@ class portfolio.Language extends Widget
 		this.toggle()
 
 	onURLStateChanged: =>
-		if URL.hasChanged("ln")
+		if URL.hasChanged("ln") and URL.get("ln")
 			$.ajax("/api/setLanguage/"+URL.get("ln"), {dataType: 'json', success : this.actualize})
 
 	actualize: =>

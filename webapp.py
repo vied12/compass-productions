@@ -144,6 +144,7 @@ def get_locale():
 		ln = session.get("language")
 	else:
 		ln = request.accept_languages.best_match(app.config["LANGUAGES"]) or "en"
+		session["language"] = ln
 	return ln
 
 @app.route('/api/download', methods=["POST"])
