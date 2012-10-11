@@ -244,7 +244,6 @@ body:
 			position : relative
 			font-size : $SMALL_FONT_SIZE
 			line-height : $SMALL_LINE_HEIGHT
-			margin-left: $BASE_PADDING	
 			overflow : auto
 			opacity : 0
 			-webkit-transition-property : "opacity"
@@ -281,6 +280,7 @@ body:
 					text-decoration : none
 					color   : $TEXT_BLUE_DARK
 					text-transform : uppercase
+					letter-spacing : 0.2em
 					&.active:
 						font-weight : bold
 						color   : $TEXT_BLUE
@@ -396,7 +396,7 @@ body:
 						float : left
 						width : 30%
 						margin : 10px 20px 10px 10px
-						//border-right : 1px solid #fff<
+						//border-right : 1px solid #fff
 						padding: 4px 20px 4px 0
 
 	.Contact:
