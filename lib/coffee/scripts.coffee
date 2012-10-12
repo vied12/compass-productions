@@ -578,7 +578,7 @@ class portfolio.Project extends Widget
 		@cache = {
 			footerBarHeight : 0
 			data            : null
-			externalVideo : false
+			externalVideo   : false
 		}
 		@CATEGORIES    = ["synopsis", "videos", "gallery", "screenings", "credits", "press", "links", "distribution"]	
 		@flickrGallery = null
@@ -594,7 +594,7 @@ class portfolio.Project extends Widget
 		URL.enableLinks(@ui)
 		$("body").bind("relayoutContent", this.relayout)
 		@downloader    = Widget.ensureWidget(".Download")
-		@ui.find(".presskit").click((=> @downloader.show()))
+		@ui.find(".presskit a").click((=> @downloader.show()))
 
 	relayout: =>
 		top_offset = $('.FooterPanel').height() - 100

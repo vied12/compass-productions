@@ -92,7 +92,8 @@
 								{{ gettext("You may reach us at:") }}
 								.email
 									info@compassproduction.com
-							a.button.do data-action=showForm href="#" | {{ gettext("or use our contact form") }}
+							a.button.do data-action=showForm href="#"
+								span | {{ gettext("or use our contact form") }}
 						.contactForm.hidden
 							p.fat
 								{{ gettext("Hello there,") }}

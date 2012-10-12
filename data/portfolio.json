@@ -18,7 +18,7 @@
                 }
             ,            
             "gallery"   : "72157631598386933",
-            "distribution" : "Compass Productions\nCompass Productions inc.\ninfo@compassproductions.ca"
+            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
             "key"       : "devil", 
@@ -390,7 +390,7 @@
                     "title" : "© Compass Productions Inc. 2002"
                 }
             ],
-            "distribution" : "Compass Productions\nCompass Productions inc.\ninfo@compassproductions.ca"
+            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
             "key"       : "nana", 
@@ -413,7 +413,7 @@
                     "body"  : "Joe Balass"
                 }
             ],
-            "distribution" : "Compass Productions\nCompass Productions inc.\ninfo@compassproductions.ca"
+            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
             "key"       : "joy", 
@@ -1127,7 +1127,7 @@
                     "body"  : "Joe Balass"
                 }
             ],
-            "distribution" : "NFB-ONF\nNational Film Board of Canada/Office national du film du Canada\nm.keigher@nfb.ca\n<a href='http://www2.nfb.ca/boutique/XXNFBibeWelcome.jsp?lr_ecode=collection&go=item&language=US&formatid=53083'>online store</a>"   
+            "distribution" : "<h2>NFB-ONF</h2>National Film Board of Canada/Office national du film du Canada\nm.keigher@nfb.ca\n<a href='http://www2.nfb.ca/boutique/XXNFBibeWelcome.jsp?lr_ecode=collection&go=item&language=US&formatid=53083'>online store</a>"   
         },
         {
             "key"       : "parting",
@@ -1405,7 +1405,7 @@
                     "body" : "Tous les personnages, noms et événements de ce film sont fictifs.\nToute ressemblance avec des événements et / ou des personnes réels\nne serait que pure coïncidence ou l’effet du hasard.\n\n© Les productions Compass inc. 2006\n\nTous droits réservés/All rights reserved."
                 }
             ],
-            "distribution" : "Vidéographe\nDenis Vaillancourt\nChargé de projets / Distribution\n\nVIDÉOGRAPHE\ndenisvaillancourt@videographe.qc.ca\n<a href='www.videographe.qc.ca' target='_blank'>www.videographe.qc.ca</a>\n<a href='www.vitheque.com' target='_blank'>www.vitheque.com</a>"
+            "distribution" : "<h2>Vidéographe</h2>Denis Vaillancourt\nChargé de projets / Distribution\n\nVIDÉOGRAPHE\ndenisvaillancourt@videographe.qc.ca\n<a href='www.videographe.qc.ca' target='_blank'>www.videographe.qc.ca</a>\n<a href='www.vitheque.com' target='_blank'>www.vitheque.com</a>"
         }
     ]
 }
