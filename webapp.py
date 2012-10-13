@@ -122,7 +122,6 @@ def news(id="all", sort=None):
 				#translate
 				if not admin:
 					for key in n.keys():
-						print ln, n[key], type(n[key])
 						if type(n[key]) is dict and n[key].keys()[0] in app.config["LANGUAGES"]:
 							if ln in n[key].keys():
 								n[key] = n[key][ln]
