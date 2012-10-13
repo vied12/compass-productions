@@ -9,27 +9,23 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 24-Sep-2012
+# Last mod : 13-Oct-2012
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
-from flaskext.babel import Babel
+import os, json, mimetypes, re, collections, flask_mail, werkzeug.contrib.cache, flaskext.babel
 import sources.preprocessing as preprocessing
-import sources.flickr as flickr
-import sources.model as model
-import sources.vimeo as vimeo
-import os, json, mimetypes, re, collections, flask_mail
+import sources.flickr        as flickr
+import sources.model         as model
+import sources.vimeo         as vimeo
 
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
 db        = model.Interface.GetConnection()
-babel     = Babel(app) # i18n
-LANGUAGES = set(["en", "fr"])# default in first
-# from werkzeug.contrib.cache import SimpleCache
-# cache     = SimpleCache()
-from werkzeug.contrib.cache import MemcachedCache
-cache = MemcachedCache(['127.0.0.1:11211'])
+
+babel     = flaskext.babel.Babel(app) # i18n
+cache     = werkzeug.contrib.cache.MemcachedCache(['127.0.0.1:11211'], key_prefix="portfolio")
 
 # -----------------------------------------------------------------------------
 #
@@ -39,7 +35,7 @@ cache = MemcachedCache(['127.0.0.1:11211'])
 
 @app.route('/api/data')
 def data():
-	ln = getLanguage()
+	ln  = get_locale()
 	res = cache.get('data-%s' % ln)
 	if res is None:
 		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
@@ -49,16 +45,21 @@ def data():
 				for key in work.keys():
 					# if value is a pair of {en: ..., fr: ...}
 					if type(work[key]) == collections.OrderedDict:
-						if work[key].keys()[0] in LANGUAGES:
+						if work[key].keys()[0] in app.config["LANGUAGES"]:
 							if ln in work[key].keys():
 								data["works"][work_index][key] = work[key][ln]
 							else:
-								data["works"][work_index][key] = work[key]["en"]
+								data["works"][work_index][key] = work[key][app.config["LANGUAGES"][0]]
 			# add some infos for videos
 			for work_index, work in enumerate(data.get("works", tuple())):
 				for video_index, video in enumerate(work.get("videos", tuple())):
 					info = vimeo.Vimeo.getInfo(video)
 					data["works"][work_index]["videos"][video_index] = info
+			# remove passwords from presskit
+			for work_index, work in enumerate(data.get("works", tuple())):
+				press = work.get("press")
+				if press and press.get("presskit"):
+					data["works"][work_index]["press"]["presskit"] = True
 			res = json.dumps(data)
 			cache.set('data-%s' % ln, res, timeout=60 * 60 * 24)
 	return res
@@ -109,13 +110,22 @@ def news(id="all", sort=None):
 	else:
 		sort = "date_creation" if sort == "date" else sort
 		news = model.Interface.getNews(id, sort=sort)
+		res  = []
+		ln   = get_locale()
 		if id == "all":
-			# NOTE: this line bug on first request
-			# see https://github.com/namlook/mongokit/issues/105
-			res = translate(news, getLanguage())
-			# print type(res[0])
-			# res = json.dumps([_.to_json() for _ in res])
-			return res
+			for n in news:
+				n = n.to_json()
+				#translate
+				n = json.loads(n)
+				for key in n.keys():
+					print ln, n[key], type(n[key])
+					if type(n[key]) is dict and n[key].keys()[0] in app.config["LANGUAGES"]:
+						if ln in n[key].keys():
+							n[key] = n[key][ln]
+						else:
+							n[key] = n[key]["en"]
+				res.append(n)
+			return json.dumps(res)
 		else:
 			return news.to_json()
 
@@ -131,20 +141,44 @@ def contact():
 		abort(500)
 	return "true"
 
-
 @app.route('/api/setLanguage/<ln>', methods=['GET'])
 def setLanguage(ln):
-	"""Change current language in session"""
-	# FIXME: check ln value
-	session["language"] = ln
-	return "true"
+	""" Change current language in session """
+	session["language"] = None
+	if ln in app.config["LANGUAGES"]:
+		session["language"] = ln
+		return "true"
+	else:
+		return "false"
 
 @babel.localeselector
 @app.route('/api/getLanguage', methods=['GET'])
-def getLanguage():
-	ln = session.get("language") or request.accept_languages.best_match(['fr', 'en'])
+def get_locale():
+	""" return the cached local or find the best local from request or return "en" """
+	if session.get("language") and session.get("language") != "undefined":
+		ln = session.get("language")
+	else:
+		ln = request.accept_languages.best_match(app.config["LANGUAGES"]) or "en"
+		session["language"] = ln
 	return ln
 
+@app.route('/api/download', methods=["POST"])
+def download():
+	down_dict = cache.get('download')
+	if down_dict is None:
+		down_dict = {}
+		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
+			data = json.load(f, object_pairs_hook=collections.OrderedDict)
+			for work_index, work in enumerate(data.get("works", tuple())):
+					press = work.get("press")
+					if press and press.get("presskit"):
+						presskit = press.get("presskit")
+						down_dict[presskit.get("password")] = presskit.get("link")
+		cache.set('download', down_dict)
+	res = down_dict.get(request.form["password"])
+	if not res:
+		abort(401)
+	return res
 # -----------------------------------------------------------------------------
 #
 # Site's pages
@@ -173,7 +207,6 @@ def authenticate():
 def logout():
 	session.pop('authenticated', None)
 	return redirect(url_for('admin'))
-
 
 @app.route('/lab')
 def lab():
@@ -232,20 +265,6 @@ def send_file_partial(path):
 	rv.headers.add('Content-Range', 'bytes {0}-{1}/{2}'.format(byte1, byte1 + length - 1, size))
 	return rv
 
-def translate(obj, ln):
-	l = list(obj)
-	for idx, item in enumerate(l):
-		for key, value in item.items():
-			if hasattr(value, "keys"):
-				keys = set(value.keys())
-				# this is a dict of different language
-				if len(LANGUAGES.intersection(keys)) == len(keys):
-					if ln in keys:
-						l[idx][key] = l[idx][key][ln]
-					else:
-						l[idx][key] = l[idx][key]["en"]
-	return l
-
 # -----------------------------------------------------------------------------
 #
 # Main
@@ -264,9 +283,16 @@ if __name__ == '__main__':
 		import fabfile
 		from fabric.main import execute
 		execute(fabfile.deploy_test)
+	elif len(sys.argv) > 1 and sys.argv[1] == "clear":
+		for path, subdirs, filenames in os.walk(os.path.join(app.root_path, "cache")):
+			for filename in filenames:
+				if not filename.startswith("."):
+					os.remove(os.path.join(path, filename))
 	else:
 		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
 		preprocessing.preprocess(app, request) 
+		# set FileSystemCache instead of Memcache
+		cache = werkzeug.contrib.cache.FileSystemCache(os.path.join(app.root_path, "cache"))
 		# run application
 		app.run()
 # EOF

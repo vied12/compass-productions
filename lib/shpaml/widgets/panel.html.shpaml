@@ -3,9 +3,26 @@
 	.wrapper.hidden
 		.pages	
 			.Project.page.widget data-widget=portfolio.Project
-				ul.tabs.disableTextSelection
-					li.template
-						a.internal | {##}
+				ul.tabs.disableTextSelection.alternate_text
+					li.synopsis.hidden
+						a.internal href="#+cat=synopsis" data-name=synopsis | {{ gettext("synopsis") }}
+					li.videos.hidden
+						a.internal href="#+cat=videos" data-name=videos | {{ gettext("videos") }}
+					{# special case for Nana G. & me #}
+					li.videosNana.hidden
+						a.internal href="#page=project&project=nana&cat=videos&item=0" data-name=videos | {{ gettext("view entire film") }}
+					li.gallery.hidden
+						a.internal href="#+cat=gallery" data-name=gallery | {{ gettext("photos") }}
+					li.screenings.hidden
+						a.internal href="#+cat=screenings" data-name=screenings | {{ gettext("screenings") }}
+					li.credits.hidden
+						a.internal href="#+cat=credits" data-name=credits | {{ gettext("credits") }}
+					li.press.hidden
+						a.internal href="#+cat=press" data-name=press | {{ gettext("press") }}
+					li.links.hidden
+						a.internal href="#+cat=links" data-name=links | {{ gettext("links") }}
+					li.distribution.hidden
+						a.internal href="#+cat=distribution" data-name=distribution | {{ gettext("distribution") }}
 				.contents
 					.content.synopsis  data-name="synopsis"
 						.wrapper.maxWidth
@@ -16,8 +33,9 @@
 					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
 							ul.photos.mediaGallery
-								li.photo     | {##}
-								li.show_more.template | {##}	
+								li.photo.template
+									a.internal href=#
+										div.image | {##}
 					.content.videos data-name="videos"
 						.wrapper.maxWidth
 							ul
@@ -39,6 +57,8 @@
 								p.article.out | {##}
 					.content.press data-name="press"
 						.wrapper.maxWidth
+							.presskit.hidden
+								a.button | {{ gettext("press kit") }}
 							.press.template
 								p.title.out | {##}
 								p.article.out | {##}
@@ -69,10 +89,11 @@
 								> br
 								{{ gettext("Would you like to get in touch with Compass Productions?") }}
 								> br
-								{{ gettext("You may e reach us at:") }}
+								{{ gettext("You may reach us at:") }}
 								.email
 									info@compassproduction.com
-							a.button.toContactForm href="#" | {{ gettext("or use our contact") }}
+							a.button.do data-action=showForm href="#"
+								span | {{ gettext("or use our contact form") }}
 						.contactForm.hidden
 							p.fat
 								{{ gettext("Hello there,") }}
@@ -83,8 +104,12 @@
 									input.email.in name="email" type="text" placeholder="Email" | {##} 	
 								.formElement	
 									textarea.message.in name="message" placeholder="{{ gettext("Write us a few lines...") }}" | {##}
-								.formElement
-									button.submit.button.in.onRight | {{ gettext("Send") }}
+								.formElement.onRight
+									button.button.in.do data-action=showMain | {{ gettext("Back") }}
+									button.button.in.do data-action=sendMessage | {{ gettext("Send") }}
 							.result.success.hidden | {{ gettext("Thank you") }}
 							.result.error.hidden   | {{ gettext("There is a problem, please check if your email is correct or retry in a few moment") }}
-		a.close href="#menu=main" | &nbsp;
+		.close.alternate_text
+			a href="#menu=main"
+				{{ gettext("Close") }}
+				div | {##}

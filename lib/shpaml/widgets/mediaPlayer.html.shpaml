@@ -1,5 +1,5 @@
 .ImagePlayer.hidden.widget data-widget=portfolio.ImagePlayer
-	.overlay.close | {##}
+	.overlay.close.do data-action=hide | {##}
 	.imagePlayer.player.hidden
 		.wrapper
 			.waiter
@@ -7,9 +7,9 @@
 			> img
 	.mediaPanel.disableTextSelection
 		.wrapper
-			.close.hidden
+			.close.do.hidden data-action=hide
 				a href=# | X
-			.previous
+			.previous.do data-action=previous
 				span
 					> img src="{{url_for('static', filename='images/arrow-left.svg')}}"
 			.mediaContainer
@@ -18,12 +18,12 @@
 						.wrapper
 							a.internal
 								div.image | {##}
-			.next
+			.next.do data-action=next
 				span
 					> img src="{{url_for('static', filename='images/arrow-right.svg')}}"
 
 .VideoPlayer.hidden.widget data-widget=portfolio.VideoPlayer
-	.overlay.close | {##}
+	.overlay.close.do data-action=hide | {##}
 	.videoPlayer.player.hidden
 		.wrapper
 			.waiter
@@ -31,9 +31,9 @@
 			iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen | {##}
 	.mediaPanel.disableTextSelection
 		.wrapper
-			.close.hidden
+			.close.do.hidden data-action=hide
 				a href=# | X
-			.previous
+			.previous.do data-action=previous
 				span
 					> img src="{{url_for('static', filename='images/arrow-left.svg')}}"
 			.mediaContainer
@@ -43,6 +43,6 @@
 							a.internal
 								> img.image
 								.overlay | {##}
-			.next
+			.next.do data-action=next
 				span
 					> img src="{{url_for('static', filename='images/arrow-right.svg')}}"

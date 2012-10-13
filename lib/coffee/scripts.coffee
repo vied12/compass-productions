@@ -28,11 +28,11 @@ class portfolio.Navigation extends Widget
 			brandTile        : ".brand.tile"
 			main             : ".Main"
 			works            : ".Works"
-			page             :  ".PageMenu"
+			page             : ".PageMenu"
 			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
-			pageLinks 		 : ".Page.links"
+			pageLinks        : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
 			promo            : ".promo"
 		}
@@ -55,37 +55,38 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		@background.image("index_bg.jpg")		
+		@background.image("index_bg.jpg")
 		@background.darkness(0)
-		#Add Mobile Class if necessary
-		#Commented because bugged, isMobile is imported from widget.coffee
-		#if isMobile.any()
-		#	$('body').addClass "mobile"
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		$('body').bind('backToHome', (e) => this.showMenu("main"))
 		$('body').bind('updatePanelMenuRoot', (e,opened) => this.updatePanelMenuRoot(opened))
+		$('body').bind('desactivatelPanelToggler', (e,opened) => @uis.menuRoot.addClass "hidden")
+		$('body').bind('activatelPanelToggler', (e,opened) => @uis.menuRoot.removeClass "hidden")
 		# bind url change
-		URL.onStateChanged(=>
+		URL.onStateChanged =>
 			if URL.hasChanged("menu")
 				menu = URL.get("menu")
 				if menu
 					this.showMenu(menu)
-			if URL.hasChanged("page")				
-				page = URL.get("page")				
+			if URL.hasChanged("page")
+				page = URL.get("page")
 				if page
 					this.showPage(page)
 					$('body').trigger("currentPage", page)
-		)
 		# init from url
 		params = URL.get()
 		if params.page?
-			this.showPage(params.page)		
+			this.showPage(params.page)
 		else if params.menu?
 			this.showMenu(params.menu)
 		else
 			this.showMenu("main")
+		# hover effect
+		@uis.tilesList.mouseover((e) =>
+			@uis.tilesList.addClass("highlighted").filter(e.currentTarget).removeClass "highlighted"
+		).mouseout (e) => @uis.tilesList.removeClass "highlighted"
 		return this
 
 	# show the given menu, hide the previous opened menu
@@ -96,14 +97,16 @@ class portfolio.Navigation extends Widget
 			$('body').trigger "setNoVideo"
 			$('body').trigger "cancelDelayedPanel"
 		else
-			@uis.promo.addClass "hidden"
+			@uis.promo.addClass "hidden"		
 		# hide panel if menu is not a page (i.e: work and main)
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
 			this.selectPageLink(menu)
 		else
 			this.selectPageLink(@cache.currentPage)
-		# show menu
+		# hide the arrow
+		if menu == "main" or menu == "works"
+			@uis.menuRoot.addClass "hidden"
 		menu = @ui.find "[data-menu="+menu+"]"
 		if not menu.length > 0
 			return false
@@ -142,9 +145,12 @@ class portfolio.Navigation extends Widget
 
 	updatePanelMenuRoot: (opened) =>
 		if opened
-			if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
+			@uis.menuRoot.addClass "hidden" 
+			if not @uis.menuRoot.hasClass "active"				
+				@uis.menuRoot.addClass "active" 
 		else 
-			@uis.menuRoot.removeClass "active"
+			@uis.menuRoot.removeClass "hidden" 
+			@uis.menuRoot.removeClass "active"		
 
 	showPage: (page) =>
 		# set page menu (single tile)
@@ -156,8 +162,6 @@ class portfolio.Navigation extends Widget
 			$("body").trigger("setDirectPanelPage", page)			
 		else
 			$("body").trigger("setPanelPage", page)
-			
-			
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
@@ -184,62 +188,49 @@ class portfolio.Background extends Widget
 
 	constructor: ->
 		@UIS = {
-			backgrounds: "> :not(.mask)"
-			image : ".image"
-			video : ".video"
-			mask: ".mask"
-			darkness : ".darkness"
+			image     : ".image"
+			video     : ".video"
+			mask      : ".mask"
+			darkness  : ".darkness"
 			mousemask : ".mousemask"
 		}
 
 		@CONFIG = {
 			imageUrl : "/static/images/"
 			videoUrl : "/static/videos/"
-			formats : {
-				"mp4" : "avc1.4D401E, mp4a.40.2"
-				"ogg" : "theora, vorbis"
-				"webm" : "vp8.0, vorbis"
-			}
-
 		}
 
 		@CACHE = {
-			videoFormat : null 
-			image : null
-			suspended : false
+			image       : null
+			suspended   : false
 		}
-		
+
 	bindUI: (ui) ->
 		super	
 		$(window).resize(=>(this.relayout()))		
-		$('body').bind "setVideos", (e, data) =>
-				this.video(data.split(","))	
-		$('body').bind("setNoVideo", => this.removeVideo())
+		$('body').bind "setVideos",    (e, data) => this.video(data.split(","))	
+		$('body').bind("setNoVideo",             => this.removeVideo())
 		$('body').bind("setImage", (e, filename) => this.image(filename))
 		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
-		$('body').bind("suspendBackground", (e) => this.suspend())
-		$('body').bind("restoreBackground", (e) => this.restore())
-		return this	
+		$('body').bind("suspendBackground",  (e) => this.suspend())
+		$('body').bind("restoreBackground",  (e) => this.restore())
 
 	relayout: =>
-		this.resize(@uis.image, "full")
-		#crazy, video resizing seems to work properly without any help !
-		#this.resize(@ui.find("video.actual"), "auto")
-		this.resize(@uis.mask, "full")
+		resize = (that, flexibleSize) ->
+			if flexibleSize == "full"
+			 	flexibleSize = "100%"
+			aspectRatio = that.height() / that.width()
+			#ratio compliant
+			windowRatio = $(window).height() / $(window).width()
+			if windowRatio > aspectRatio
+				that.height($(window).height())
+				that.width(flexibleSize)
+			else
+				that.height(flexibleSize)
+				that.width($(window).width())
+		resize(@uis.image, "full")
+		resize(@uis.mask, "full")
 
-	resize: (that, flexibleSize) =>	
-		if flexibleSize == "full"
-		 	flexibleSize="100%"
-		aspectRatio = that.height() / that.width()
-		#ratio compliant
-		windowRatio = $(window).height() / $(window).width()
-		if windowRatio > aspectRatio
-			that.height($(window).height())
-			that.width(flexibleSize)
-		else
-			that.height(flexibleSize)
-			that.width($(window).width())
-	
 	suspend: =>
 		@CACHE.suspended = true
 		@uis.image.addClass "hidden"
@@ -255,25 +246,25 @@ class portfolio.Background extends Widget
 
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
-		#use image's widget give better control on relayoupropting than poster attribute of <video>		
-		@ui.find('.actual').addClass('.oldsoon')
-		newVideo = @uis.video.cloneTemplate().addClass "hidden"
-		newVideo.prop('muted', true)
+		#use image's tag give better control on relayoupropting than poster attribute of <video>		
+		old_nui  = @ui.find('.actual')
+		nui      = @uis.video.cloneTemplate().addClass "hidden"
+		nui.prop('muted', true)
 		for file in data
 			extension = file.split('.').pop()
 			source=$('<source />').attr("src", @CONFIG.videoUrl+file)
 			if extension == "ogv" then type ="ogg" else type = extension
 			source.attr("type", "video/#{type}")
-			newVideo.append(source)
+			nui.append(source)
 		if @CACHE.image != null
-		 	newVideo.attr("poster", imageUrl+@CACHE.image)		 	
+		 	nui.attr("poster", imageUrl+@CACHE.image)		 	
 		#wait until video is playable before swap with old video
-		newVideo.on("canplaythrough", => 
+		nui.on("canplay", =>
 			if not @CACHE.suspended
-				@ui.find('.oldsoon').remove()
-				newVideo.removeClass "hidden"
+				old_nui.remove()
+				nui.removeClass "hidden"
 		)
-		@uis.video.after(newVideo)
+		@uis.video.after(nui)
 		
 	image: (filename) =>
 		@ui.find('video.actual').addClass "hidden"
@@ -296,9 +287,6 @@ class portfolio.Background extends Widget
 			)
 		else
 			$('body').unbind 'mousemove'
-
-	isVideo: () =>
-
 
 # -----------------------------------------------------------------------------
 #
@@ -409,21 +397,14 @@ class portfolio.Panel extends Widget
 class portfolio.FlickrGallery extends Widget
 
 	constructor: ->
-		@OPTIONS = {
-			initial_quantity   : 10
-			show_more_quantity : 10
-			show_more_text     : "More"
-		}
 
 		@UIS = {
-			list        : ".photos"
-			listItems   : ".photos li"
-			showMore    : ".show_more.template"
+			list      : ".photos"
+			photoTmpl : "li.photo.template" 
 		}
 
 		@cache = {
-			data        : null
-			photo_index : null
+			data : null
 		}
 
 		@imagePlayer = null
@@ -437,15 +418,10 @@ class portfolio.FlickrGallery extends Widget
 	getPhotoSet: => return @cache.data
 
 	_makePhotoTile: (photoData, index) =>
-		li    = $('<li></li>')
-		image = $('<img />').attr('src', photoData.q)
-		link  = $('<a></a>').attr({href:"#+item="+index, class:"internal"})
-		link.append image
-		li.append link
-		@uis.list.append li
-		#put show more tile at the end:
-		if @uis.list.find(".show_more")
-			@uis.list.find(".show_more").appendTo @uis.list
+		nui = @uis.photoTmpl.cloneTemplate()
+		nui.find(".image").css("background-image", "url("+photoData.q+")")
+		nui.find("a").attr("href", "#+item="+index)
+		@uis.list.append(nui)
 
 	setData: (data) =>
 		#clean old gallery
@@ -453,36 +429,17 @@ class portfolio.FlickrGallery extends Widget
 		#update	cache data	
 		@cache.data = data
 		#make the first tiles 
-		for photo, index in data[0..@OPTIONS.initial_quantity]
+		for photo, index in data
 			this._makePhotoTile(photo, index)
-		URL.enableLinks(@uis.list)
-		#show_more tile when more tile to show
-		if data.length >= @OPTIONS.initial_quantity
-			showMoreTile = @ui.find(".show_more.template").cloneTemplate()	
-			showMoreTile.append @OPTIONS.show_more_text
-			@uis.list.append(showMoreTile)
-			showMoreTile.click => this.showMore()
-			#update cache index
-			@cache.photo_index = @OPTIONS.initial_quantity
-		params = URL.get()
 		# show media player if item params exists in URL hash
+		URL.enableLinks(@uis.list)
+		params = URL.get()
 		if params.item and URL.get("cat") == "gallery"
 			@imagePlayer.setData(this.getPhotoSet())
 		URL.onStateChanged =>
 			if URL.get("item")
 				if URL.get("cat")? and URL.get("cat") == "gallery"
 					@imagePlayer.setData(this.getPhotoSet())
-
-	showMore: =>
-		next_index = @cache.photo_index+@OPTIONS.initial_quantity
-		if next_index >= @cache.data.length
-			next_index = @cache.data.length	
-			@ui.find(".show_more").addClass "hidden"
-		for photo,index in @cache.data[@cache.photo_index+1..next_index]
-			this._makePhotoTile(photo, @cache.photo_index + 1 + index)
-		URL.enableLinks(@uis.list)
-		@cache.photo_index = next_index
-		$('body').trigger "relayoutContent"
 
 # -----------------------------------------------------------------------------
 #
@@ -517,12 +474,12 @@ class portfolio.News extends Widget
 	setData: (data) =>
 		@cache.data = data
 		for news in data
-			date = new Date(news.date_creation)			
+			date = new Date(news.date_creation)
 			nui = @uis.newsTmpl.cloneTemplate({
-				body:news.content.en.replace(/\n/g, "<br />")
+				body:news.content.replace(/\n/g, "<br />")
 				date:date.toDateString()
 			})
-			nui.find(".title").append(news.title.en)
+			nui.find(".title").append(news.title)
 			@uis.newsContainer.append(nui)
 
 # -----------------------------------------------------------------------------
@@ -541,8 +498,6 @@ class portfolio.Contact extends Widget
 			email       : ".email"
 			message     : ".message"
 			results     : ".result"
-			toFormLink  : ".toContactForm"
-			buttonSend  : ".submit"
 			errorMsg    : ".result.error"
 			successMsg  : ".result.success"
 			content     : ".content"
@@ -552,17 +507,10 @@ class portfolio.Contact extends Widget
 			minMessageHeight : 200
 		}
 
+		@ACTIONS = ["showForm", "showMain", "sendMessage"]
+
 	bindUI: (ui) =>
 		super
-		@uis.toFormLink.click((e) =>
-			this.showForm()
-			e.preventDefault()
-		)
-		@uis.buttonSend.click((e) =>
-			this.sendMessage()
-			e.preventDefault()
-			return false
-		)
 		$('body').bind('currentPage',(e,page) => 
 			if page=="contact"
 				this.showMain()
@@ -609,7 +557,7 @@ class portfolio.Contact extends Widget
 
 # -----------------------------------------------------------------------------
 #
-# Project
+# PROJECT
 #
 # -----------------------------------------------------------------------------	 
 
@@ -621,15 +569,17 @@ class portfolio.Project extends Widget
 			tabs        : ".tabs"
 			tabContent  : ".content"
 			tabContents : ".contents"
-			tabTmpl     : ".tabs > li.template"		
+			tabList     : ".tabs li"
 		}
 		@cache = {
 			footerBarHeight : 0
 			data            : null
+			externalVideo   : false
 		}
-		@CATEGORIES    = ["synopsis", "screenings", "videos", "credits", "gallery", "press", "links","distribution"]	
+		@CATEGORIES    = ["synopsis", "videos", "gallery", "screenings", "credits", "press", "links", "distribution"]	
 		@flickrGallery = null
 		@videoPlayer   = null
+		@downloader    = null
 
 	bindUI: (ui) =>
 		super
@@ -639,6 +589,8 @@ class portfolio.Project extends Widget
 		# enable dynamic links (#+cat=...)
 		URL.enableLinks(@ui)
 		$("body").bind("relayoutContent", this.relayout)
+		@downloader    = Widget.ensureWidget(".Download")
+		@ui.find(".presskit a").click((=> @downloader.show()))
 
 	relayout: =>
 		top_offset = $('.FooterPanel').height() - 100
@@ -678,7 +630,6 @@ class portfolio.Project extends Widget
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
-
 		if project_obj.backgroundVideos
 			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
 		else if project_obj.backgroundImage
@@ -687,14 +638,25 @@ class portfolio.Project extends Widget
 			$('body').trigger("setNoVideo")
 
 	setMenu: (project) =>
-		@uis.tabs.find('li:not(.template)').remove()
-		system_keys = ["key", "email", "title"]
-		for category, value of project
-			if category in @CATEGORIES
-				nui = @uis.tabTmpl.cloneTemplate()
-				nui.find("a").text(category).attr("href", "#+cat="+category).attr("data-target", category)
-				nui.attr("data-name", category)
-				@uis.tabs.append(nui)
+		@uis.tabList.addClass "hidden"
+		for category in @CATEGORIES
+			if project[category]?
+				# special case for Nana G. and Me
+				if project.key == "nana" and category == "videos"
+					@uis.tabs.find("."+category+"Nana").removeClass("hidden")
+				else
+					@uis.tabs.find("."+category).removeClass("hidden")
+		# special case for Bagdad film, the video is on an external web site
+		if project.videos?
+			if project.videos.length == 0
+				@cache.externalVideo = true
+				@ui.find("[data-name=videos]").bind("click.external", (e) =>
+						e.preventDefault()
+						window.open('http://www.nfb.ca/film/baghdad_twist','_blank')
+					)
+			else
+				@cache.externalVideo = false
+				@ui.find("[data-name=videos]").unbind("click.external")
 		# update dynamic links
 		URL.enableLinks(@uis.tabs)
 
@@ -756,9 +718,15 @@ class portfolio.Project extends Widget
 						@flickrGallery.setPhotoSet(project.gallery)
 					when "press"
 						nui.find(".actual").remove()
-						for press in value
+						for press in value.press
 							press_nui = nui.find('.template').cloneTemplate(press)
 							nui.append(press_nui)
+						presskit = nui.find(".presskit")
+						if value.presskit?
+							presskit.removeClass("hidden")
+							presskit.find("a").attr("href", value.presskit.link)
+						else
+							presskit.addClass("hidden")
 					when "credits"
 						nui.find(".actual").remove()
 						for credit in value
@@ -778,19 +746,22 @@ class portfolio.Project extends Widget
 					when "distribution"
 						nui.empty()
 						nui.append(value.replace(/\n/g, "<br />"))
-						
-	selectTab: (category) =>
-		@uis.tabContent.removeClass "active"
-		@uis.tabContent.removeClass "show"
-		@uis.tabContent.addClass "hidden"		
-		tabs_nui = @uis.tabs.find("li").removeClass "active"
-		tabs_nui.filter("[data-name="+category+"]").addClass "active"
-		tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
-		tab_nui.removeClass "hidden"		
-		setTimeout((=>tab_nui.addClass "active"), 100)
-		$('body').trigger "readmore.init"
-		this.relayout()
+
+	selectTab: (category) =>	
+		if not (@cache.externalVideo and category=="videos")
+			@uis.tabContent.removeClass "active"
+			@uis.tabContent.removeClass "show"
+			@uis.tabContent.addClass "hidden"
+			@uis.tabList.find("a").removeClass "active"
+			@uis.tabList.find("[data-name="+category+"]").addClass "active"
+			tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
+			tab_nui.removeClass "hidden"		
+			setTimeout((=>tab_nui.addClass "active"), 100)
+			$('body').trigger "readmore.init"
+			this.relayout()
+
 # -----------------------------------------------------------------------------
+#
 # MEDIA PLAYER
 #
 # -----------------------------------------------------------------------------	
@@ -810,13 +781,12 @@ class portfolio.MediaPlayer extends Widget
 			currentItem     : null
 		}
 
+		@ACTIONS = ["hide", "next", "previous"]
+
 	bindUI: (ui) =>
 		super
 		URL.onStateChanged(this.onURLStateChanged)
 		$(window).resize(this.relayout)
-		@uis.close.click(this.hide)
-		@uis.next.click(this.next)
-		@uis.previous.click(this.previous)
 
 	relayout: =>
 		if @cache.data? and @cache.isShown
@@ -828,8 +798,8 @@ class portfolio.MediaPlayer extends Widget
 					return this.relayout()
 			else
 				player_width_max  = $(window).width() - 100
-				player_height = @uis.panel.offset().top - 50
-				player_width  = player_height * ratio
+				player_height     = @uis.panel.offset().top - 50
+				player_width      = player_height * ratio
 				if player_width > player_width_max
 					player_width  = player_width_max
 					player_height = player_width / ratio
@@ -942,6 +912,7 @@ class portfolio.MediaPlayer extends Widget
 		@uis.next.removeClass("hidden")
 		@uis.previous.removeClass("hidden")
 		$('body').trigger "suspendBackground"
+		$('body').trigger "desactivatelPanelToggler"
 
 	hide: =>
 		super
@@ -958,6 +929,7 @@ class portfolio.MediaPlayer extends Widget
 		@uis.mediaList.find("li.actual").remove()
 		@uis.next.addClass("hidden")
 		@uis.previous.addClass("hidden")
+		$('body').trigger "activatelPanelToggler"
 
 # -----------------------------------------------------------------------------
 #
@@ -1116,7 +1088,7 @@ class portfolio.Language extends Widget
 		this.toggle()
 
 	onURLStateChanged: =>
-		if URL.hasChanged("ln")
+		if URL.hasChanged("ln") and URL.get("ln")
 			$.ajax("/api/setLanguage/"+URL.get("ln"), {dataType: 'json', success : this.actualize})
 
 	actualize: =>
@@ -1124,13 +1096,60 @@ class portfolio.Language extends Widget
 
 	toggle: =>
 		if @cache.language?
-			other_language = window.serious.Utils.clone(@OPTIONS.languages)
+			other_language = Utils.clone(@OPTIONS.languages)
 			other_language.splice(other_language.indexOf(@cache.language), 1)
 			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
 		else
 			this.getLanguage()
 
+# -----------------------------------------------------------------------------
+#
+# DOWNLOAD
+#
+# -----------------------------------------------------------------------------	
 
-Widget.bindAll()
+class portfolio.Download extends Widget
+
+	constructor: ->
+
+		@UIS = {
+			box      : ".box"
+			password : "input[type=password]"
+			error    : ".error"
+		}
+
+		@ACTIONS = ["getFile", "hide"]
+
+	bindUI: (ui) =>
+		super
+		$(window).resize(this.relayout)
+		this.relayout()
+
+	relayout: =>
+		window_height = $(window).height()
+		box_height    = @uis.box.height()
+		@uis.box.css({top:window_height/2 - box_height/2})
+
+	getFile: =>
+		kit_password = @uis.password.val()
+		$.ajax("/api/download", {
+			type     : "POST"
+			data     : {password: kit_password}
+			success  : this.sendFile
+			error    : ((msg) => @uis.error.removeClass "hidden" )
+		})
+
+	sendFile: (data) =>
+		@uis.error.addClass "hidden"
+		this.hide()
+		window.open(data,'Download')
+
+if $.browser.msie and parseInt($.browser.version, 10)<9
+	$("body > .wrap").addClass "hidden"
+	$("body > .for-ie").removeClass "hidden"
+else
+	$("body > .for-ie").addClass "hidden"
+	$("body > .wrap").removeClass "hidden"
+	Widget.bindAll()
 
 # EOF

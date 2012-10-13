@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 html lang="en"
 	head
-		title | Portfolio
+		title | Compass Production
+		> link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}" type="image/x-icon"
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jquery.jscrollpane.css')}}" media="all"	
-		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css')     }}" media="all"
+		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}" media="all"
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" media="all"
-		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"                 | {# #}		
+		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}" | {# #}		
 
-	body
+	body.use-base
 		{% block content %}{% endblock %}
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.jscrollpane.min.js')  }}"  | {# #}
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery.mousewheel.js')  }}"       | {# #}

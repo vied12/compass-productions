@@ -18,13 +18,13 @@
                 }
             ,            
             "gallery"   : "72157631598386933",
-            "distribution" : "Compass Productions\nCompass Productions inc.\n3720, rue Clark #203\nMontréal (Québec)Canada H2X 2S3\nT: 514-842-5324 F: 514-842-7578 info@compassproductions.ca"
+            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
             "key"       : "devil", 
             "title"     : "The devil in the holy water",
             "backgroundImage" : "bg1.jpg",
-            "backgroundVideos" : ["Devilfuck_insect2.webm","Devilfuck_insect2.ogv","Devilfuck_insect2.mp4"],
+            "backgroundVideos" : ["Devilfuck_insect2.mp4","Devilfuck_insect2.webm","Devilfuck_insect2.ogv"],
             "synopsis"  : 
                 {
                     "teaser" : "The time - the outset of a new millennium.\n\nThe place - Rome, the eternal city, sacred and profane.\n\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.",
@@ -154,48 +154,54 @@
                     "date"  : "Monday June 16, 2003 at 9pm\nTuesday June 24, 2003 at 12pm\nSaturday June 28, 2003 at 3pm"
                 }
             ],
-            "press"     : [
-                {
-                    "article" : "Balass' film is an intriguing and enlightening look at a city trying to reconcile religious identity and bravado with tolerant, unified attitudes. The Devil in the Holy Water is a film to be celebrated and embraced as its themes and nuances address issues relevant to many.",
-                    "title"   : "Sarah Petrescu, Nexus The Victoria Scene, February 12 2002"
+            "press"     : {
+                "presskit" : {
+                    "link"     : "http://FIXME.zip",
+                    "password" : "tomboy"
                 },
-                {
-                    "article" : "Joe Balass avait marqué le festival Image + Nation de 1998 avec Nana, George et moi mettant en vedette Nana, la grand-mère juive irakienne du réalisateur et un homosexuel anglais âgé, également d'origine juive irakienne, dans une savoureuse et tendre confrontation. De ce regard porté par Joe Balass sur ses propres origines émergeait la curiosité du cinéaste pour les frontières religieuses, sociales, nationales, linguistiques et culturelles. Avec Le diable dans l'eau bénite, Joe Balass a planté sa caméra au cœur de deux événements qui ont soulevé les passions italiennes en l'an 2000…Ni pamphlet anti-catholique ni manifeste pro-gai, Le diable dans l'eau bénite joue de miroir entre les deux événements à travers plusieurs témoignages. Sans forcer le trait, Joe Balass nous laisse entrevoir que la ligne de fracture entre l'Eglise et l'homosexualité n'est pas une ligne droite, bien au contraire.",
-                    "title"   : "Denis-Daniel Boullé, Fugues, mars 2002"
-                },
-                {
-                    "article" : "Ripensandoci, fare il WorldPride Roma durante l'anno santo è stato geniale. Ce lo ricorda ora il film di Joe Balass, riproponendo la ressadi giornalisti, fotografi e telecamere che si spintonava all'inaugurazione ufficiale, con Maria Grazia Cucinotta che taglia un nastro colorato contornata da Vladimir Luxuria e Imma Battaglia. È stato come l'uovo di Colombo pubblicitario del movimento gay italiano, che in pochi mesi, grazie la formidabile traino dell'indignazione vaticana, è riuscito a guadagnare più punti che in tanti anni di onesta militanza.\nGiubileo cattolico e Worldpride sono i fili conduttori paralleli del raconto di Balass, narrati attraverso le imprese di due filmaker-giornalisti (lo stesso Balass e il suo compagno Giampaolo Marzi) che decidono di girare un documentario su quanto sta succedendo a Roma in quello strano 2000. Si appostano quindi in Piazza San Pietro e dintorni e cominciano a filmare le adunate dei fedeli, il papa che parla con la voce tremolante dal balcone, le porte sante che riaprono il Giubileo. Intanto, poco distante da lì, gli omosessuali tramano per guastare la sacra festa. Tappa dopo tappa, Il diavolo nell'acqua santa ripercorre gli eventi che hanno prodotto il miracolo del Worldpride nella Roma giubilare, dedicando molto spazio allo scontro che oppose la Chiesa agli omosessuali… Ben scelta, ai fini della resa emotiva, anche la colonna sonora, che spazia da Domenico Modugno alla Petite Messe Solennelle di Rossini.",
-                    "title"   : "Gianni Rossi Barilli, Pride, marzo 2002"
-                },
-                {
-                    "article" : "Premier long métrage de Joe Balass, le passionant documentaire The Devil in the Holy Water relate avec originalité les faits et suit pas à pas les gais, les lesbiennes et les organisateurs du World Pride qui, quelques mois avant la tenue de l'événement jusqu'à sa réalisation, brandissent à qui veut entendre \" Diversité ! Respect ! Liberté ! \".",
-                    "title"   : "Pierre Ranger, Séquences mars/avril 2002"
-                },
-                {
-                    "article" : "Holy finocchio! Italian gays and conservative Catholics face off in Joe Balass's doc The Devil in the Holy Water \"Open signs of gay affection between men or women is not rare, and people aren't anxious about it there. When driving, people run through red lights all the time. There's a different attitude about life.\"",
-                    "title"   : "Matthew Hays, Montreal Mirror, March 14 2002"
-                },
-                {
-                    "article" : "Le Diable dans l'eau bénite ressemble à son réalisateur: poli et têtu, diplomate et persévérant, louvoyant pour arriver à ses fins. Il faut le voir interviewer monseigneur Etchegaray, organisateur du Jubilé, et porte-parole à la langue de bois; ou filmer l'organisatrice en chef du World Pride, avec sa blonde, sur le bord de la rupture. Jamais voyeur, il aborde les choses en douceur, mais de front, sans jamais porter de jugement à l'emporte-pièce, laissant le président d'une association étudiante catholique, inquisiteur à peine pubère, se couler lui-même, mais filmant une religieuse qui l'aide spontanément à regonfler le pneu crevé de son vélo.",
-                    "title"   : "Eric Fourlanty, Voir, 14 mars 2002"
-                },
-                {
-                    "article" : "Le film de Balass est très dynamique, tant les contrastes y sont nombreux. Un couple d'homosexuels se promène avec un sourire en coin, des groupes néofascistes dénoncent le défilé gay, des Italiens, qui en ont vu d'autres, haussent les épaules de leur côté… C'est le point de vue rétrograde de l'Eglise qui se dessine en creux, avec un refus d'ouverture à tout ce qui n'est pas la famille traditionnelle. Le film est une vraie rencontre entre le passé et la modernité.",
-                    "title"   : "Odile Tremblay, Le Devoir, 16 mars 2002"
-                },
-                {
-                    "article" : "Il viaggio nell'Italia giubilare approda in Piazza San Pietro. Orde di accoliti festeggiano, pacificati con se stessi e con le alte sfere ecclesiatiche, il giubileo dei bambini, dei motociclisti, dei panettieri e fors'anche dei carcerati, tutti insieme in un ecumenismo quanto meno sospetto. E i gay? Provocatori, inopportuni, indecenti, osceni e volgari, costretti a sfogliare l'intera Costituzione italiana per rivendicare il diritto a manifestare. La telecamera li fotografa nella loro realtà, come decin e di servizi giornalistici non sono riusciti a fare, intenti solo e soltanto a mostrare la faccia baraccona e sguaiata dell'infinita fiumana. Chi quel giorno ha camminato, ballato, urlato e pianto per le strade della capitale sa che e' compito ingrato immortalare nei fotogrammi quell'autentico stato di grazia. Joe Balass ha consegnato un documento che ci appartiene e che parla non solo al nostro cuore, ma anche alla testa, perché nessuno dimentichi cos'ha significato per i gay italiani l'estate del 2000.",
-                    "title"   : "Tony Aventino, Guidemagazine, marzo 2002"
-                },
-                {
-                    "article" : "Joe Balass réussit avec Le diable dans l'eau bénite à donner la parole tant aux activistes et membres de la communauté gaie qu'aux ecclésiastiques, religieuses, et catholiques intégristes. Pourtant tout les oppose : d'un côté, l'humour et l'enthousiasme de tous les participants de la World Gay Pride, un rassemblement festif et coloré; de l'autre, la froideur toute vaticane, le refus de s'exprimer sur la question des homosexuels, et le côté majestueux, voire pompeux, des cérémonies religieuses à St-Pierre de Rome.",
-                    "title"   : "Véronique Bouvier, La Presse, 16 mars 2002"
-                },
-                {
-                    "article" : "Good-natured docu -- sure to get good positioning at gay fests and wherever first-person nonfiction is favored -- narrows question of Catholic acceptance of homosexuality down to two \"competing\" events: a World Gay Pride Day being held in Rome and the Vatican's Jubilee. As the simultaneous occasions approach, Montreal-based helmer Joe Balass roams Rome's streets, asking tourists, clerics and interested parties for their opinions… as insightful for depiction of Vatican protocol and rituals -- including public weeping when the Pope utters his scripted pronouncements -- as for what anyone says. With the nuns and priests Balass stops on the street or interviews in their offices, an elaborately polite \"love the sinner, hate the sin\" stonewalling prevails, although there is some vituperation from a few killer-fruit types the helmer hones in on. Most direct are the Pride Day participants, including articulate lesbian activist Imma Battaglia, who demands her place in heaven alongside all the other Catholics.",
-                    "title"   : "Ken Eisner, Variety, May 21, 2002"
-                }
-            ],
+                "press" : [
+                    {
+                        "article" : "Balass' film is an intriguing and enlightening look at a city trying to reconcile religious identity and bravado with tolerant, unified attitudes. The Devil in the Holy Water is a film to be celebrated and embraced as its themes and nuances address issues relevant to many.",
+                        "title"   : "Sarah Petrescu, Nexus The Victoria Scene, February 12 2002"
+                    },
+                    {
+                        "article" : "Joe Balass avait marqué le festival Image + Nation de 1998 avec Nana, George et moi mettant en vedette Nana, la grand-mère juive irakienne du réalisateur et un homosexuel anglais âgé, également d'origine juive irakienne, dans une savoureuse et tendre confrontation. De ce regard porté par Joe Balass sur ses propres origines émergeait la curiosité du cinéaste pour les frontières religieuses, sociales, nationales, linguistiques et culturelles. Avec Le diable dans l'eau bénite, Joe Balass a planté sa caméra au cœur de deux événements qui ont soulevé les passions italiennes en l'an 2000…Ni pamphlet anti-catholique ni manifeste pro-gai, Le diable dans l'eau bénite joue de miroir entre les deux événements à travers plusieurs témoignages. Sans forcer le trait, Joe Balass nous laisse entrevoir que la ligne de fracture entre l'Eglise et l'homosexualité n'est pas une ligne droite, bien au contraire.",
+                        "title"   : "Denis-Daniel Boullé, Fugues, mars 2002"
+                    },
+                    {
+                        "article" : "Ripensandoci, fare il WorldPride Roma durante l'anno santo è stato geniale. Ce lo ricorda ora il film di Joe Balass, riproponendo la ressadi giornalisti, fotografi e telecamere che si spintonava all'inaugurazione ufficiale, con Maria Grazia Cucinotta che taglia un nastro colorato contornata da Vladimir Luxuria e Imma Battaglia. È stato come l'uovo di Colombo pubblicitario del movimento gay italiano, che in pochi mesi, grazie la formidabile traino dell'indignazione vaticana, è riuscito a guadagnare più punti che in tanti anni di onesta militanza.\nGiubileo cattolico e Worldpride sono i fili conduttori paralleli del raconto di Balass, narrati attraverso le imprese di due filmaker-giornalisti (lo stesso Balass e il suo compagno Giampaolo Marzi) che decidono di girare un documentario su quanto sta succedendo a Roma in quello strano 2000. Si appostano quindi in Piazza San Pietro e dintorni e cominciano a filmare le adunate dei fedeli, il papa che parla con la voce tremolante dal balcone, le porte sante che riaprono il Giubileo. Intanto, poco distante da lì, gli omosessuali tramano per guastare la sacra festa. Tappa dopo tappa, Il diavolo nell'acqua santa ripercorre gli eventi che hanno prodotto il miracolo del Worldpride nella Roma giubilare, dedicando molto spazio allo scontro che oppose la Chiesa agli omosessuali… Ben scelta, ai fini della resa emotiva, anche la colonna sonora, che spazia da Domenico Modugno alla Petite Messe Solennelle di Rossini.",
+                        "title"   : "Gianni Rossi Barilli, Pride, marzo 2002"
+                    },
+                    {
+                        "article" : "Premier long métrage de Joe Balass, le passionant documentaire The Devil in the Holy Water relate avec originalité les faits et suit pas à pas les gais, les lesbiennes et les organisateurs du World Pride qui, quelques mois avant la tenue de l'événement jusqu'à sa réalisation, brandissent à qui veut entendre \" Diversité ! Respect ! Liberté ! \".",
+                        "title"   : "Pierre Ranger, Séquences mars/avril 2002"
+                    },
+                    {
+                        "article" : "Holy finocchio! Italian gays and conservative Catholics face off in Joe Balass's doc The Devil in the Holy Water \"Open signs of gay affection between men or women is not rare, and people aren't anxious about it there. When driving, people run through red lights all the time. There's a different attitude about life.\"",
+                        "title"   : "Matthew Hays, Montreal Mirror, March 14 2002"
+                    },
+                    {
+                        "article" : "Le Diable dans l'eau bénite ressemble à son réalisateur: poli et têtu, diplomate et persévérant, louvoyant pour arriver à ses fins. Il faut le voir interviewer monseigneur Etchegaray, organisateur du Jubilé, et porte-parole à la langue de bois; ou filmer l'organisatrice en chef du World Pride, avec sa blonde, sur le bord de la rupture. Jamais voyeur, il aborde les choses en douceur, mais de front, sans jamais porter de jugement à l'emporte-pièce, laissant le président d'une association étudiante catholique, inquisiteur à peine pubère, se couler lui-même, mais filmant une religieuse qui l'aide spontanément à regonfler le pneu crevé de son vélo.",
+                        "title"   : "Eric Fourlanty, Voir, 14 mars 2002"
+                    },
+                    {
+                        "article" : "Le film de Balass est très dynamique, tant les contrastes y sont nombreux. Un couple d'homosexuels se promène avec un sourire en coin, des groupes néofascistes dénoncent le défilé gay, des Italiens, qui en ont vu d'autres, haussent les épaules de leur côté… C'est le point de vue rétrograde de l'Eglise qui se dessine en creux, avec un refus d'ouverture à tout ce qui n'est pas la famille traditionnelle. Le film est une vraie rencontre entre le passé et la modernité.",
+                        "title"   : "Odile Tremblay, Le Devoir, 16 mars 2002"
+                    },
+                    {
+                        "article" : "Il viaggio nell'Italia giubilare approda in Piazza San Pietro. Orde di accoliti festeggiano, pacificati con se stessi e con le alte sfere ecclesiatiche, il giubileo dei bambini, dei motociclisti, dei panettieri e fors'anche dei carcerati, tutti insieme in un ecumenismo quanto meno sospetto. E i gay? Provocatori, inopportuni, indecenti, osceni e volgari, costretti a sfogliare l'intera Costituzione italiana per rivendicare il diritto a manifestare. La telecamera li fotografa nella loro realtà, come decin e di servizi giornalistici non sono riusciti a fare, intenti solo e soltanto a mostrare la faccia baraccona e sguaiata dell'infinita fiumana. Chi quel giorno ha camminato, ballato, urlato e pianto per le strade della capitale sa che e' compito ingrato immortalare nei fotogrammi quell'autentico stato di grazia. Joe Balass ha consegnato un documento che ci appartiene e che parla non solo al nostro cuore, ma anche alla testa, perché nessuno dimentichi cos'ha significato per i gay italiani l'estate del 2000.",
+                        "title"   : "Tony Aventino, Guidemagazine, marzo 2002"
+                    },
+                    {
+                        "article" : "Joe Balass réussit avec Le diable dans l'eau bénite à donner la parole tant aux activistes et membres de la communauté gaie qu'aux ecclésiastiques, religieuses, et catholiques intégristes. Pourtant tout les oppose : d'un côté, l'humour et l'enthousiasme de tous les participants de la World Gay Pride, un rassemblement festif et coloré; de l'autre, la froideur toute vaticane, le refus de s'exprimer sur la question des homosexuels, et le côté majestueux, voire pompeux, des cérémonies religieuses à St-Pierre de Rome.",
+                        "title"   : "Véronique Bouvier, La Presse, 16 mars 2002"
+                    },
+                    {
+                        "article" : "Good-natured docu -- sure to get good positioning at gay fests and wherever first-person nonfiction is favored -- narrows question of Catholic acceptance of homosexuality down to two \"competing\" events: a World Gay Pride Day being held in Rome and the Vatican's Jubilee. As the simultaneous occasions approach, Montreal-based helmer Joe Balass roams Rome's streets, asking tourists, clerics and interested parties for their opinions… as insightful for depiction of Vatican protocol and rituals -- including public weeping when the Pope utters his scripted pronouncements -- as for what anyone says. With the nuns and priests Balass stops on the street or interviews in their offices, an elaborately polite \"love the sinner, hate the sin\" stonewalling prevails, although there is some vituperation from a few killer-fruit types the helmer hones in on. Most direct are the Pride Day participants, including articulate lesbian activist Imma Battaglia, who demands her place in heaven alongside all the other Catholics.",
+                        "title"   : "Ken Eisner, Variety, May 21, 2002"
+                    }
+                ]
+            },
             "links"     : [
                 {
                     "link"        : "http://www.worldpride2000.com/",
@@ -216,55 +222,187 @@
             ],
             "credits"   : [
                 {
-                    "title" : "Writer, Producer, Director:",
-                    "body"  : "Joe Balass"
+                    "title" : "Compass Productions"
+                },
+                {
+                    "title" : "presents"    
+                },
+                {
+                    "title" : "a film by Joe Balass"
+                },
+                {
+                    "title" : "The Devil\nin the\nHoly Water"
+                },
+                {
+                    "title" : "Written, Produced & Directed by Joe Balass"
+                },
+                {
+                    "title" : "Tail Credits:"
                 },
                 {
                     "title" : "Creative Consultant:",
-                    "body"  : "Giampaolo Marzi"
+                    "body" : "Giampaolo Marzi"
                 },
                 {
                     "title" : "Camera:",
-                    "body"  : "Joe Balass\nAndrei Khabad\nMarjo Ferwerda\nGiampaolo Marzi"
+                    "body" : "Joe Balass\nAndrei Khabad\nMarjo Ferwerda\nGiampaolo Marzi"
                 },
                 {
                     "title" : "Sound:",
-                    "body"  : "David Ballard\nMarjo Ferwerda"
+                    "body" : "David Ballard\nMarjo Ferwerda"
                 },
                 {
                     "title" : "Editor:",
-                    "body"  : "Joe Balass"
+                    "body" : "Joe Balass"
                 },
                 {
                     "title" : "Editing Consultant:",
-                    "body"  : "Rolland Pollack"
+                    "body" : "Rolland Pollack"
                 },
                 {
-                    "title" : "Additional Editing & Online:",
-                    "body"  : "Dennis Day"
+                    "title" : "Additional Editing & Online",
+                    "body" : "Dennis Day"
                 },
                 {
-                    "title" : "Sound Editor:",
-                    "body"  : "Martin Hurtubise"
+                    "title" : "Sound Editor: ",
+                    "body" : "Martin Hurtubise"
                 },
                 {
                     "title" : "Assistant Director/Interpretor:",
-                    "body"  : "Giampaolo Marzi"
+                    "body" : "Giampaolo Marzi"
+                },
+                {
+                    "title" : "With the generous participation of:",
+                    "body" : "Imma Battaglia\nAlberto Corteggiani\nGiovanni Dall’Orto\nGianni Delle Foglie\nIvan Dragoni\nCardinal Roger Etchegaray\nBishop Jacques Gaillot\nVladimir Luxuria\nSonia Mangello\nSilvano Moffa\nElisabeth Ohlson\nEmiliano Placchi\nFather Gino Rigoldi\nPier Paolo Torri"
+                },
+                {
+                    "title" : "A special thanks to Katia Bellillo, Ivan Cattaneo, Maria Grazia Cuccinotta, Mauro Malinverno, Mario D’Onofrio, Eleonora Dall’Ovo, Andrea Ferrari, Sister Roberta Giudici, Giovanni Mappelli, Andrea Marnoni, Claudia Mauti, Massimo Mazzotta, Leone Passerman, Daniele Del Pozzo, Pecoraro Scanio, Monica Stambrini, Claudia Torresan, Patrizia Zappa Mulas and to the many other people who agreed to be interviewed for this film."
+                },
+                {
+                    "title" : "Images & music from the exhibition Ecce Homo, held in Forte Prenestino – Roma, used with the generous permission of Elisabeth Ohlson."
+                },
+                {
+                    "title" : "Additional Music:\n"
+                },
+                {
+                    "title" : "Pasqualino Maragia and Tu si’ na cosa grande\nPerformed by Domenico Modugno"
+                },
+                {
+                    "title" : "Publisher:",
+                    "body" : "Italcanto Canada Ltd./ Intermède Media Inc."
+                },
+                {
+                    "title" : "Recording:",
+                    "body" : "Courtesy of WEA International Inc."
+                },
+                {
+                    "title" : "Petite Messe Solennelle –  Cum Sancto Spiritu"
+                },
+                {
+                    "title" : "Artists:",
+                    "body" : "Bulgarian Television & Radio Mixed Choir with Mihail Milkov"
+                },
+                {
+                    "title" : "Writer:",
+                    "body" : "Gioachino Rossini"
+                },
+                {
+                    "title" : "Publisher:",
+                    "body" : "Intermède Media Inc."
+                },
+                {
+                    "title" : "Recording:",
+                    "body" : "Courtesy of Forlane/Intermède Media Inc.<br /><br />"
+                },
+                {
+                    "title" : "Graphic Concept:",
+                    "body" : "Yudi Sewraj"
+                },
+                {
+                    "title" : "Web design:",
+                    "body" : "Etherworks"
+                },
+                {
+                    "title" : "Avid Consultants:",
+                    "body" : "Paola Freddi\nMarlene Millar"
+                },
+                {
+                    "title" : "Additional Camera:",
+                    "body" : "Monica Stambrini\nMarco Tani\nEmanuele"
+                },
+                {
+                    "title" : "Thanks to the actors and musicians in the performance of Laudes grido a tutta gente under the direction of Gigi Dall’aglio."
+                },
+                {
+                    "title" : "Production Accountant:",
+                    "body" : "Rickie Rosenbaum"
+                },
+                {
+                    "title" : "Production Assistants:",
+                    "body" : "Valere Poulin, Andrea Marnoni, Nilton Dos Santos Almeida, Maria Michails, Stephane Drolet"
+                },
+                {
+                    "title" : "Additional Thanks to:",
+                    "body" : "Roberta Angellili, Celine Bissonnette, Normand Boucher, Aldo Cassano, Memmo Caporilli,  Danielle Charlebois, Giorgio Codibue, Massimo Cortesi, Francesca Davello, Ettorina, Lubomir Fabcin, Adrian Gonzalez, Ingo, Grant Innes, Daniele Iucolano,  Yves Lafontaine, Bertrand Lachance, Denis Langlois, Antonello Lauriola, Philip Lewis, Marco Lupi, Pascal Maeder, Luigi Manconi, Monica Margrande, Raffaella Marzi, Marlene Millar, Christina Nati, Ludovico Pace, Allesandra di Pietro, Marie Potvin, Ramona Ramlochand, Rinaldo Rocco, Nicola Russo, Vivian Sallei, Rob Wilson Smith, Roberto Spagnol, Monica Stambrini, Yudi Sewraj, Carla Traversi, Tom Waugh, Margaret Wong; the staff and press office of the Baci factory; Elena Solari and the staff of the Canadian Embassy in Rome; Marcella Damiani, Roberto Bernardi and the staff of the Canadian  Embassy in Vatican City; Claude Forget, Michel Gelinas and the staff of Cinéma Libre; Angèle Cyr, Youssef El Jai, Sylvain Cossette and Line Bodiguel at PRIM; the staff of the Forte Prenestino; the organisers & staff of the Romei e giubillei exhibit at the Palazzo Venezia; Christina Spina and the staff of the the Teatri Stabili dell’Umbria in Perugia; Marjorie Weeke and the staff of the Vatican Press Office, the Mario Mieli Association staff and organisers of WorldPride 2000, and everybody else who helped make this project happen."
+                },
+                {
+                    "title" : "News and archival footage provided by  arrangement with RAITrade."
+                },
+                {
+                    "title" : "This film was made possible through the generous financial participation of :",
+                    "body" : "The Canada Council for the Arts\nThe Millennium Fund\nMedia Arts Program"
+
+                },
+                {
+                    "title" : "SODEC –  Programme d’aide aux jeunes créateurs"
+                },
+                {
+                    "title" : "Programme du crédit d’impot du Gouvernement du Québec"
+                },
+                {
+                    "title" : "Conseil des arts et des lettres du Québec"
+                },
+                {
+                    "title" : "The Canadian Independent Film & Video Fund"
+                },
+                {
+                    "title" : "Additional support for this film provided by:"
+                },
+                {
+                    "title" : "PRIM\n"
+                },
+                {
+                    "title" : "Centre d’art médiatiques"
+                },
+                {
+                    "title" : "The National Film Board – Filmmakers’ Assistance Program"
+                },
+                {
+                    "title" : "Cinéma Libre Distribution"
+                },
+                {
+                    "title" : "www.compassproductions.ca/devil"
+                },
+                {
+                    "title" : "All rights reserved."
+                },
+                {
+                    "title" : "© Compass Productions Inc. 2002"
                 }
             ],
-            "distribution" : "Compass Productions\nCompass Productions inc.\n3720, rue Clark #203\nMontréal (Québec)Canada H2X 2S3\nT: 514-842-5324 F: 514-842-7578 info@compassproductions.ca"
+            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
             "key"       : "nana", 
-            "title"     : "Nana, Goerge and me",
+            "title"     : "Nana, George and me",
             "backgroundImage" : "bg2.jpg",
-            "backgroundVideos" : ["ngm_web_home_george_bath_long.webm","ngm_web_home_george_bath_long.ogv","ngm_web_home_george_bath_long.mp4"],
+            "backgroundVideos" : ["ngm_web_home.webm","ngm_web_home.ogv","ngm_web_home.mp4"],
             "synopsis"  : {
                     "en" : {
-                        "body" : "<h2>NANA, GEORGE & ME <span>a film by Joe Balass</span></h2>\nWhat do you get when you ask your 92 year-old Nana, and a 73 year-old man you've just met, questions you've only dared to dream of and get answers more outrageous than you could have imagined?  You get  <strong>Nana, George & Me</strong>, a funny, intimate, sometimes shocking and always heartwarming look at two Iraqi Jewish lives:  one a traditionally raised woman and the other a completely unconventional gay man.\n\nDuration:  48min\nLanguage:  Arabic, English with e.s.t.\nScreening Format: Beta SP\nYear:  1997\nCountry: Canada"
+                        "body" : "What do you get when you ask your 92 year-old Nana, and a 73 year-old man you've just met, questions you've only dared to dream of and get answers more outrageous than you could have imagined?  You get  <strong>Nana, George & Me</strong>, a funny, intimate, sometimes shocking and always heartwarming look at two Iraqi Jewish lives:  one a traditionally raised woman and the other a completely unconventional gay man.\n\nDuration:  48min\nLanguage:  Arabic, English with e.s.t.\nScreening Format: Beta SP\nYear:  1997\nCountry: Canada"
                     },
                     "fr" : {
-                        "body" : "<h2>NANA, GEORGE et MOI <span>un film de Joe Balass</span></h2>\nQu'arrive-t-il quand on interview sa grand-mère de 92 ans et un homme de 73 ans que l'on vient tout juste de rencontrer; quand surgissent des questions plus inattendues les unes que les autres et que, par-dessus tout, les réponses sont encore plus déconcertantes?  Eh bien, on obtient un doux regard, parfois choquant parfois réconfortant, sur la vie de deux juifs Irakiens: la première, une femme issue d'un milieu traditionnel et le deuxième, un homme gai complètement non-conventionnel."
+                        "body" : "Qu'arrive-t-il quand on interview sa grand-mère de 92 ans et un homme de 73 ans que l'on vient tout juste de rencontrer; quand surgissent des questions plus inattendues les unes que les autres et que, par-dessus tout, les réponses sont encore plus déconcertantes?  Eh bien, on obtient un doux regard, parfois choquant parfois réconfortant, sur la vie de deux juifs Irakiens: la première, une femme issue d'un milieu traditionnel et le deuxième, un homme gai complètement non-conventionnel."
                     }
                 },            
             "videos"    : ["18519558"],
@@ -275,7 +413,7 @@
                     "body"  : "Joe Balass"
                 }
             ],
-            "distribution" : "Compass Productions\nCompass Productions inc.\n3720, rue Clark #203\nMontréal (Québec)Canada H2X 2S3\nT: 514-842-5324 F: 514-842-7578 info@compassproductions.ca"
+            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
             "key"       : "joy", 
@@ -284,21 +422,694 @@
             "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogv","onSodomRoad.webm"],
             "synopsis"  : {
                 "en" : {
-                    "body" : "<h2>Joy!<span>Portrait of a Nun</span></h2>\nSpiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.\n\n In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey.\n\nDirector: Joe Balass\nCanada\n71min\nDigiBeta, HD\nContact: Compass Productions inc.\njoe@compassproductions.ca\n+1-514-842-5324"
+                    "teaser" : "Spiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.",
+                    "body" : "In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey."
                 },
                 "fr" : {
-                    "body" : "<h2>Joie!<span>Portrait d'une nonne</span></h2>\nUn monde mystique où se confondent sexualité, spiritualité et activisme. Unenonne à barbe. Dans un cadre intimiste, ce long-métrage documentaire nousemmène sur les pas de Sœur Missionary P. Delight, membre fondatrice desSœurs de la Perpétuelle Indulgence. JOIE! met en lumière un groupe d’invidusfascinants, composé pour la plupart de Fées radicales vivant entre San Francisco et le Sud profond des États-Unis, qui ont apporté une contributioninestimable à la communauté queer et au mouvement de libération sexuelle.\n\nCe documentaire brosse le portrait de Sœur Missionary Position Delight, une desmères fondatrices des Sœurs de la Perpétuelle Indulgence. En 1979, Mish,comme le surnomment affectueusement ses amis, a mis sur pied un ordrereligieux fait d’hommes gais habillés en sœurs et ayant pour mission depromouvoir la joie universelle et d’expier la culpabilité. Depuis, Mish et sacongrégation ont fait beaucoup de chemin. Aujourd’hui, les Sœurs sont activesaux quatre coins du monde, et Mish vit au fin fond du Tennessee, dans unecommunauté de Fées radicales. Les Fées sont un groupe excentrique etdiversifié composé en grande partie de gais et de lesbiennes dont les intérêtsvariés vont de la culture biologique à l’édification sexuelle et spirituelle. JOIE! suitle cheminement de Mish durant sept ans, au cours desquels on en apprenddavantage sur la genèse de ce mouvement inusité et sur les tribulations de sonparcours personnel. On découvre également comment les Sœurs et les Féestentent de toucher le clown et l’enfant espiègle qui sommeillent en chacun denous, comment elles surmontent leurs craintes et leurs sentiments de culpabilité,comment elles intégrent la sexualité comme un élément naturel de la vie et,enfin, comment elles bâtissent et nourrissent leur communauté."
+                    "teaser" : "Un monde mystique où se confondent sexualité, spiritualité et activisme. Une nonne à barbe. Dans un cadre intimiste, ce long-métrage documentaire nous emmène sur les pas de Sœur Missionary P. Delight, membre fondatrice des Sœurs de la Perpétuelle Indulgence.",
+                    "body" : "JOIE! met en lumière un groupe d’invidus fascinants, composé pour la plupart de Fées radicales vivant entre San Francisco et le Sud profond des États-Unis, qui ont apporté une contribution inestimable à la communauté queer et au mouvement de libération sexuelle.\n\nCe documentaire brosse le portrait de Sœur Missionary Position Delight, une des mères fondatrices des Sœurs de la Perpétuelle Indulgence. En 1979, Mish,comme le surnomment affectueusement ses amis, a mis sur pied un ordre religieux fait d’hommes gais habillés en sœurs et ayant pour mission de promouvoir la joie universelle et d’expier la culpabilité. Depuis, Mish et sa congrégation ont fait beaucoup de chemin. Aujourd’hui, les Sœurs sont actives aux quatre coins du monde, et Mish vit au fin fond du Tennessee, dans une communauté de Fées radicales. Les Fées sont un groupe excentrique et diversifié composé en grande partie de gais et de lesbiennes dont les intérêts variés vont de la culture biologique à l’édification sexuelle et spirituelle. JOIE! suitle cheminement de Mish durant sept ans, au cours desquels on en apprend davantage sur la genèse de ce mouvement inusité et sur les tribulations de son parcours personnel. On découvre également comment les Sœurs et les Fées tentent de toucher le clown et l’enfant espiègle qui sommeillent en chacun de nous, comment elles surmontent leurs craintes et leurs sentiments de culpabilité, comment elles intégrent la sexualité comme un élément naturel de la vie et, enfin, comment elles bâtissent et nourrissent leur communauté."
                 }
             },
-            "videos"    : ["39779299", "47419588", "47419589", "47429440", "47429436", "47429435", "47569645", "47419591", "47429439", "47447949", "47447948", "47447947"],
+            "videos"    : {
+                "en" : ["39779299", "47419588", "47419589", "47429440", "47429436", "47429435", "47569645", "47419591", "47429439", "47447949", "47447948", "47447947"],
+                "fr" : ["50637613", "47419588", "47419589", "47429440", "47429436", "47429435", "47569645", "47419591", "47429439", "47447949", "47447948", "47447947"]
+            },
             "gallery"   : "72157631598336173",
-            "credits"   : [
-                {
-                    "title" : "Writer, Producer, Director",
-                    "body"  : "Joe Balass"
-                }
-            ],
-            "distribution" : "LES FILMS DU 3 MARS\n2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Télécopieur (514) 523-1291\ncoordination@f3m.ca"
+            "credits"   : {
+                "en" : [
+                    {
+                        "title" : "Compass Productions presents"
+                    },
+                    {
+                        "title" : "a film by Joe Balass"
+                    },
+                    {
+                        "title" : "JOY!"
+                    },
+                    {
+                        "title" : "Portrait of a Nun"
+                    },
+                    {
+                        "title" : "With the generous participation of\nSister Missionary P. Delight\naka Sister Iamosama DeLite the Sodomite/Soami"
+                    },
+                    {
+                        "title" : "Written, Produced & Directed by",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Editor",
+                        "body"  : "Annie Jean"
+                    },
+                    {
+                        "title" : "Sound Design",
+                        "body"  : "Claude Beaugrand"
+                    },
+                    {
+                        "title" : "Also Featuring",
+                        "body"  : "Sister Hysterectoria aka Agnes de Garron\nSister Clara Cum Passionata\n\nGabby Haze\nRazzle Dazzle\nCrazy Owl\nBuck Erikson\nGreg Swift\n(creeper)"
+                    },
+                    {
+                        "title" : "This film was made possible with the financial participation of :",
+                        "body"  : "SODEC\nSociété de développement des entreprises culturelles – Québec\n\nThe Canada Council for the Arts, Media Arts Program\n\nQUÉBEC\nCrédit d’impôt cinéma et télévision – Gestion SODEC\nProgramme du crédit d’impot du Gouvernement du Québec \n\nConseil des arts et des lettres du Québec\n\nThe Canadian Independent Film & Video Fund\n\nThe Canadian Government Film or Video Tax Credit Program"
+                    },
+                    {
+                        "title" : "Additional support for this film provided by:",
+                        "body"  : "The National Film Board\nAide au cinéma indépendants du Canada (ACIC)"
+                    },
+                    {
+                        "title" : "Camera",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Additional Camera",
+                        "body"  : "Giampaolo Marzi\nEve Lamont\nMaria Michails"
+                    },
+                    {
+                        "title" : "Animation Camera",
+                        "body"  : "Mélanie Bouchard"
+                    },
+                    {
+                        "title" : "Additional Editing",
+                        "body"  : "Joe Balass\nMichel Giroux"
+                    },
+                    {
+                        "title" : "Dialogue Editor",
+                        "body"  : "Francine Poirier"
+                    },
+                    {
+                        "title" : "Mix",
+                        "body"  : "Luc Boudrias"
+                    },
+                    {
+                        "title" : "Mix Coordination",
+                        "body"  : "Marcelle Cadieux"
+                    },
+                    {
+                        "title" : "Studio",
+                        "body"  : "Vision Globale"
+                    },
+                    {
+                        "title" : "Post Production Advisor",
+                        "body"  : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "Foley",
+                        "body"  : "Lise Wedlock"
+                    },
+                    {
+                        "title" : "Foley Recording",
+                        "body"  : "Luc Leger (NFB)"
+                    },
+                    {
+                        "title" : "Digital EditingTechnician (NFB)",
+                        "body"  : "Pierre Dupont"
+                    },
+                    {
+                        "title" : "On Line Editor (NFB)",
+                        "body"  : "Denis Pilon"
+                    },
+                    {
+                        "title" : "Titles (NFB)",
+                        "body"  : "Gaspard Gaudreau\nMélanie Bouchard"
+                    },
+                    {
+                        "title" : "Coordinator (NFB)",
+                        "body"  : "Marie-Christine Guité"
+                    },
+                    {
+                        "title" : "Producer (NFB-ACIC)",
+                        "body"  : "Johanne Bergeron"
+                    },
+                    {
+                        "title" : "Story Advisor",
+                        "body"  : "Giampaolo Marzi\nRolland Pollack"
+                    },
+                    {
+                        "title" : "Associate Producer",
+                        "body"  : "Patricia Diaz"
+                    },
+                    {
+                        "title" : "Legal Consultant",
+                        "body"  : "Remy Khouzam\nLussier & Khouzam"
+                    },
+                    {
+                        "title" : "French Translation",
+                        "body"  : "Normand Boucher"
+                    },
+                    {
+                        "title" : "Archival Footage"
+                    },
+                    {
+                        "title" : "Altered Habits",
+                        "body"  : "Excerpt featuring Sr. Missionary Position, Sr. Homo Fellatio, Reverend Mother, Sr. Helen Damnation, St. Thomas Bernina\n& Father Mother\nDirector: Marjorie Newman\nUsed with permission of Marjorie Newman"
+                    },
+                    {
+                        "title" : "Sisters in the Convent",
+                        "body"  : "Excerpt featuring Reverend Mother, Agnes de Garron & Sr. Loganberry Frost\nDirector/Field Producer: Vincent Casalaina\nUsed with permission of Fabrice Florin and Videowest.us"
+                    },
+                    {
+                        "title" : "Butt Hole Babies",
+                        "body"  : "Excerpt featuring Agnes de Garron & Sr. Loganberry Frost\nCamera: Peter Kesselman\nUsed with permission of Janie Kesselman"
+                    },
+                    {
+                        "title" : "Additional footage provided by the Archives of the Sisters of Perpetual Indulgence inc.",
+                        "body"  : "Used with permission of Sr. Vicious Power Hungry Bitch & the Sisters of Perpetual Indulgence inc."
+                    },
+                    {
+                        "title" : "Packer Corners Farm Maypole Ceremony ",
+                        "body"  : "Used with permission of Footage Farm"
+                    },
+                    {
+                        "title" : "Photographs"
+                    },
+                    {
+                        "title" : "Selection of photographs by Jean-Baptiste Carhaix",
+                        "body"  : "Used with permission of Jean-Baptiste Carhaix"
+                    },
+                    {
+                        "title" : "Selection of photographs by Nina Glaser",
+                        "body"  : "Used with permission of Nina Glaser"
+                    },
+                    {
+                        "title" : "Selection of photographs by Greg Day",
+                        "body"  : "Used with permission of Greg Day"
+                    },
+                    {
+                        "title" : "Selection of photographs provided by Sister SoAmI ",
+                        "body"  : "used with permission of Sister SoAmI and the SoAmI Archives"
+                    },
+                    {
+                        "title" : "Selection of photographs by Agnes de Garron",
+                        "body"  : "Used with permission of Agnes de Garron"
+                    },
+                    {
+                        "title" : "Harmodius and Hoti",
+                        "body"  : "Castro Street Fair August, 1975, by Daniel Nicoletta\nUsed with permission of Daniel Nicoletta"
+                    },
+                    {
+                        "title" : "RFD Collective by Robert Giard",
+                        "body"  : "© Jonathan Silin\nUsed with permission of Jonathan Silin"
+                    },
+                    {
+                        "title" : "Assunta by Marshall Rheiner",
+                        "body"  : "Used with permission of Arthur Evans and the SoAmI Archives"
+                    },
+                    {
+                        "title" : "Additional photographs provided by the Archives of the Sisters of Perpetual Indulgence inc.",
+                        "body"  : "Used with permission of Alan Oakley, Sr. Mary Juanita High\nand the Sisters of Perpetual Indulgence inc."
+                    },
+                    {
+                        "title" : "Excerpts"
+                    },
+                    {
+                        "title" : "Walking on the Waters of Babylon by Harry Kelley",
+                        "body"  : "Used with permission of Harry Kelley"
+                    },
+                    {
+                        "title" : "James Broughton’s Credo",
+                        "body"  : "Used with permission of Joel Singer"
+                    },
+                    {
+                        "title" : "Music"
+                    },
+                    {
+                        "title" : "Original Music",
+                        "body"  : "Written and performed by Tim Rideout"
+                    },
+                    {
+                        "title" : "Original Music Supervisor",
+                        "body"  : "Michael McCann"
+                    },
+                    {
+                        "title" : "Pillow Mind",
+                        "body"  : "Written and performed by Courtney Wing"
+                    },
+                    {
+                        "title" : "The Vatican Rag",
+                        "body"  : "Written and performed by Tom Lehrer\nReproduced by permission of Tom Lehrer"
+                    },
+                    {
+                        "title" : "Library Improvisation",
+                        "body"  : "Performed by Lady Rizo, Cyrus Baty, Mountaine Jonas, Dane Terry"
+                    },
+                    {
+                        "title" : "Spirit Walker ",
+                        "body"  : "Performed by Leopard Zeppard\nWritten by Andrew J. Williamson\nWoodroot Music ©1999"
+                    },
+                    {
+                        "title" : "Miracle",
+                        "body"  : "Performed by Cyrus Baty & Angelo Michael Tursi"
+                    },
+                    {
+                        "title" : "Also appearing in the film:"
+                    },
+                    {
+                        "title" : "Sister Vicious Power Hungy Bitch",
+                        "body"  : "Reverend Mother"
+                    },
+                    {
+                        "title" : "Sister Mary Mekko",
+                        "body"  : "Sister Loganberry Frost"
+                    },
+                    {
+                        "title" : "Sister Merry Peter",
+                        "body"  : "Sister Right Sarong"
+                    },
+                    {
+                        "title" : "Sister Enya Face",
+                        "body"  : "Sister Constellation"
+                    },
+                    {
+                        "title" : "Sister Sharin’ Dipity",
+                        "body"  : "Sister Lily White"
+                    },
+                    {
+                        "title" : "Sister Bella de Ball",
+                        "body"  : "Sister Lolita Me Into Temptation"
+                    },
+                    {
+                        "title" : "Sister Dawna Matrix",
+                        "body"  : "Sister Chastity Boner"
+                    },
+                    {
+                        "title" : "Sister Constance Craving",
+                        "body"  : "Sister Dixie Wrecked"
+                    },
+                    {
+                        "title" : "Sister Peg Ann Holiday",
+                        "body"  : "Sister Frances A. Sissy"
+                    },
+                    {
+                        "title" : "Sister Barbie",
+                        "body"  : "Siter Tilly Comes Again"
+                    },
+                    {
+                        "title" : "Postulant Uma Gawd",
+                        "body"  : "Sister Vixxen"
+                    },
+                    {
+                        "title" : "Sister Sparkle Plenty",
+                        "body"  : "Sister Mary Margaret X-plosion"
+                    },
+                    {
+                        "title" : "Sister Shock T",
+                        "body"  : "Sister Semi Semitica"
+                    },
+                    {
+                        "title" : "Sister Shawnti Fey ",
+                        "body"  : "Sister Carmen Cider"
+                    },
+                    {
+                        "title" : "Sister Bambie Dextrous",
+                        "body"  : "Sister Homo Fellatio"
+                    },
+                    {
+                        "title" : "Sister Succuba",
+                        "body"  : "Sister Sensible Shoes"
+                    },
+                    {
+                        "title" : "Sister Marie Ever-Ready",
+                        "body"  : "Sister Boom Boom"
+                    },
+                    {
+                        "title" : "Sister Searching For Men",
+                        "body"  : "Sister Lida Dog’s Life"
+                    },
+                    {
+                        "title" : "Sister Krishna Kosher",
+                        "body"  : "Sister Sun-Nun-Moon"
+                    },
+                    {
+                        "title" : "Sister Roz Erection",
+                        "body"  : "Sister Rosetta Stoned"
+                    },
+                    {
+                        "title" : "Sister Gazza Gum Drops",
+                        "body"  : "Sister Sleaze du Jour"
+                    },
+                    {
+                        "title" : "Sister Helen Wheels",
+                        "body"  : "Sister Unity Harmony"
+                    },
+                    {
+                        "title" : "Sister Theresa Stigmata",
+                        "body"  : "Sister Folsome Delight"
+                    },
+                    {
+                        "title" : "Sister Kaye Sera",
+                        "body"  : "Sister Flora Bundtcake"
+                    },
+                    {
+                        "title" : "Sister Roma",
+                        "body"  : "Sister Candy Cide"
+                    },
+                    {
+                        "title" : "Sister Rosanna Hosanna Fella Bella"
+                    },
+                    {
+                        "title" : "With many special thanks to all the other Sisters of Perpetual Indulgence"
+                    },
+                    {
+                        "title" : "Another special thanks to all the faeries who participated and contributed to this film:",
+                        "body"  : "Donald Gallagher, Willy Hoff, Jai Sheronda, Leo Pardo, Gonaway Ta Round, Mountaine Mort Jonas, Vyne, Valencia Wombone, Ed Curran, Roman Curran, Mark Middle Hubbard, Jocelyne Bezzi-Batani, Joel Crispin, Dirt Farmer, Thumper, Firefly Rosengren, Albo Jeavons, JoMichael Stoddard, Christopher Bartlett, Weeder, David Anthros, Enya Face, Granite Trudeau, Janell Kapoor,Vermin F. Cockwolf, Dashboard, Sandor Katz, Alwyn de Wally, Ian Ribbon Cabell, Lucky Snowflake, Donald Gallagher, Matt Karol, Link Edge, Tommie Barnas, William Ledsad, Kenneth Long, Ben Mettler, Elwood Charpting, C. Shane, Charming, George Kierstein, Trevor Lohrbeer, Egg Dans, Megan Davis, Christopher Rebagliati, Sébastien Thiriez, Fabrice Houclart, Randy Segaga, Ing, Patrik, Paul Tomlinson, Sebastien Collett, Berianne Bramman, Steven Sheltor, Micheal T. Brice, Jeff Smith, Marcello Lanfranchi, Christopher Hamblin, Steve Kraken, Caley Wheeler, Julian Hockings, Sean O’Sullivan, Douglas Caulkins, Boomer, Mikel Wilson, Don Perryman, Shawn Wright, Evan Malczyk, George Thurow, Matt Woodbury, Eric Glasen, Chris Resciniti, Shanna Todd, Micheal Kell, Christian Beach, Eric Kephart, James Mave, Joshua Lloyd, Antler, Sam Carstens, Elbert Goggin, Daniel Tavell, Figment, Byron Whiting, Leo Wyatt, Thomas Hall, John Greenwich, Garth Hawkins, Brian Bender, Tusk, Lisa Shoemhu, John Stills, Eva Marie, Elyjah Mcleod, Jakob Chmelik, Marie Chmeltokova, David Randy, Dela, D. Bryer, Kyriam Charalambols, Amichai, Hi, Bamboo, Wolfie, Storm, Keer, Tommy Starchild, Hawk, Bunny, Love, Alaska Dave, Phacelia, Elijah, Grace, William Roman, Violet Flame and the other folks from the mountain."
+                    },
+                    {
+                        "title" : "Additional Thanks to:",
+                        "body"  : "Marlene Millar, Ramona Ramlochand, Denis Langlois, Martin Landry, Christian Medawar, Nelson Henricks, Pierre Beaudoin, Eric Van Hoenacker, Angelo Vacca, Myriam Magassouba, Jules de Niverville, Jean-Michel Dentand, Tom Waugh, Ross Higgins, Val Shamash, George Hargrave,Françoise Jean and the staff at CALQ, Robin Jackson and the staff at CIFVF, Ian Reid, Suzanne Plouffe and the staff at the Canada Council for the Arts, Élaine Dumont, Laurent Gagliardi, Michel St-Pierre and the staff at Sodec, Katharine Setzer, Charlie Boudreau at Image+Nation, Sylvie Roy, Denis Vaillancourt and the staff at Vidéographe, Deborah McInnes, Alexis Landriault, Lucia Fezuoglio, Alexandra Grimanis, Steven Ladouceur, Pierre Luc Gouin and the staff at Main Film, Julie René, Sylvain Cossette, Bruno Bélanger, Amandine Brun, Danielle Leblanc and the staff at PRIM, Anne Paré, Jonathan Davidovics and the staff at Les Films du 3 mars, and all the others who helped make this film possible."
+                    },
+                    {
+                        "title" : "All rights reserved.",
+                        "body"  : "© Compass Productions Inc. 2012"
+                    }
+                ],
+                "fr" : [
+                    {
+                        "title" : "Les productions Compass présentent"
+                    },
+                    {
+                        "title" : "un film de Joe Balass"
+                    },
+                    {
+                        "title" : "JOIE!"
+                    },
+                    {
+                        "title" : "Portrait d’une nonne"
+                    },
+                    {
+                        "title" : "Nous remercions Sœur Missionary P. Delight\nalias Sœur Iamosama DeLite the Sodomite/Soami\npour sa généreuse participation"
+                    },
+                    {
+                        "title" : "Écrit, produit et réalisé par",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Montage",
+                        "body"  : "Annie Jean"
+                    },
+                    {
+                        "title" : "Conception du son",
+                        "body"  : "Claude Beaugrand"
+                    },
+                    {
+                        "title" : "Mettant aussi en vedette",
+                        "body"  : "Sœur Hysterectoria alias Agnes de Garron\nSœur Clara Cum Passionata\nGabby Haze\nRazzle Dazzle\nCrazy Owl\nBuck Erikson\nGreg Swift"
+                    },
+                    {
+                        "title" : "Ce film est produit avec la participation financière de :",
+                        "body"  : "SODEC\nSociété de développement des entreprises culturelles – Québec\nConseil des Arts du Canada, Programme des arts médiatiques\nQUÉBEC\nCrédit d’impôt cinéma et télévision – Gestion SODEC\nProgramme du crédit d’impôt du gouvernement du Québec\nConseil des arts et des lettres du Québec\nFonds canadien du film et de la vidéo indépendants\nProgramme de crédit d'impôt pour production cinématographique ou\nmagnétoscopique canadienne"
+                    },
+                    {
+                        "title" : "Ce film a reçu un appui additionnel de la part de :",
+                        "body"  : "L’Office national du film du Canada\nAide au cinéma indépendant du Canada (ACIC) logo"
+                    },
+                    {
+                        "title" : "Caméra",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Caméra additionnelle",
+                        "body"  : "Giampaolo Marzi\nEve Lamont\nMaria Michails"
+                    },
+                    {
+                        "title" : "Caméra d’animation",
+                        "body"  : "Mélanie Bouchard"
+                    },
+                    {
+                        "title" : "Montage additionnel",
+                        "body"  : "Joe Balass\nMichel Giroux"
+                    },
+                    {
+                        "title" : "Montage du dialogue",
+                        "body"  : "Francine Poirier"
+                    },
+                    {
+                        "title" : "Mixage",
+                        "body"  : "Luc Boudrias"
+                    },
+                    {
+                        "title" : "Coordination du mixage",
+                        "body"  : "Marcelle Cadieux"
+                    },
+                    {
+                        "title" : "Studio",
+                        "body"  : "Vision Globale"
+                    },
+                    {
+                        "title" : "Conseiller à la postproduction",
+                        "body"  : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "Bruitage",
+                        "body"  : "Lise Wedlock"
+                    },
+                    {
+                        "title" : "Enregistrement du bruitage",
+                        "body"  : "Luc Léger (ONF)"
+                    },
+                    {
+                        "title" : "Technicien en montage numérique (ONF)",
+                        "body"  : "Pierre Dupont"
+                    },
+                    {
+                        "title" : "Montage final (ONF)",
+                        "body"  : "Denis Pilon"
+                    },
+                    {
+                        "title" : "Titres (ONF)",
+                        "body"  : "Gaspard Gaudreau\nMélanie Bouchard"
+                    },
+                    {
+                        "title" : "Coordonnatrice (ONF)",
+                        "body"  : "Marie-Christine Guité"
+                    },
+                    {
+                        "title" : "Productrice (ONF-ACIC)",
+                        "body"  : "Johanne Bergeron"
+                    },
+                    {
+                        "title" : "Scénaristes-conseils",
+                        "body"  : "Giampaolo Marzi\nRolland Pollack"
+                    },
+                    {
+                        "title" : "Productrice-adjointe",
+                        "body"  : "Patricia Diaz"
+                    },
+                    {
+                        "title" : "Conseiller juridique",
+                        "body"  : "Remy Khouzam\nLussier & Khouzam"
+                    },  
+                    {
+                        "title" : "Traduction française",
+                        "body"  : "Normand Boucher"
+                    },
+                    {
+                        "title" : "Images d’archives",
+                        "body"  : "Altered Habits\nExtrait contenant Sœur Missionary Position, Sœur Homo, ellatio, Révérende mère, Sœur Helen Damnation, Saint Thomas Bernina et Father Mother\néalisatrice : Marjorie Newman\nUtilisé avec la permission de Marjorie Newman\n\nSisters in the Convent\nExtrait contenant Révérende mère, Agnes de Garron et Sœur Loganberry Frost\nRéalisateur: Vincent Casalaina\nUtilisé avec la permission de Fabrice Florin et de Videowest.us\n\nButt Hole Babies\nExtrait contenant Agnes de Garron et Sœur Loganberry Frost\nCaméra : Peter Kesselman\nUtilisé avec la permission de Janie Kesselman"
+                    },
+                    {
+                        "title" : "Images additionnelles fournies par les Archives des Sœurs de la Perpétuelle Indulgence inc.",
+                        "body"  : "Utilisées avec la permission de Sœur Vicious Power Hungry Bitch\net des Sœurs de la Perpétuelle Indulgence inc.\nPacker Corners Farm Maypole Ceremony\nUtilisé avec la permission de Footage Farm Photographies"
+                    },
+                    {
+                        "title" : "Sélection de photographies de Jean-Baptiste Carhaix",
+                        "body"  : "Utilisées avec la permission de Jean-Baptiste Carhaix"
+                    },
+                    {
+                        "title" : "Sélection de photographies de Nina Glaser",
+                        "body"  : "Utilisées avec la permission de Nina Glaser"
+                    },
+                    {
+                        "title" : "Sélection de photographies de Greg Day",
+                        "body"  : "Utilisées avec la permission de Greg Day"
+                    },
+                    {
+                        "title" : "Sélection de photographies appartenant à Sœur SoAmI",
+                        "body"  : "Utilisées avec la permission de Sœur SoAmI et des Archives SoAmI"
+                    },
+                    {
+                        "title" : "Sélection de photographies d’Agnes de Garron",
+                        "body"  : "Utilisées avec la permission d’Agnes de Garron"
+                    },
+                    {
+                        "title" : "Harmodius et Hoti",
+                        "body"  : "Foire de la rue Castro, août 1975, par Daniel Nicoletta\nUtilisée avec la permission de Daniel Nicoletta"
+                    },
+                    {
+                        "title" : "RFD Collective par Robert Giard © Jonathan Silin",
+                        "body"  : "Utilisée avec la permission de Jonathan Silin"
+                    },
+                    {
+                        "title" : "Assunta par Marshall Rheiner",
+                        "body"  : "Utilisée avec la permission d’Arthur Evans et des Archives SoAmI"
+                    },
+                    {
+                        "title" : "Photographies additionnelles fournies par les Archives des Sœurs de la Perpétuelle Indulgence inc.",
+                        "body"  : "Utilisées avec la permission d’Alan Oakley, de Sœur Mary Juanita\nHigh et des Sœurs de la Perpétuelle Indulgence inc."
+                    },
+                    {
+                        "title" : "Extraits",
+                        "body"  : "Walking on the Waters of Babylon par Harry Kelley\nUtilisé avec la permission de Harry Kelley\nJames Broughton’s Credo\nUtilisé avec la permission de Joel Singer"
+                    },
+                    {
+                        "title" : "Musique"
+                    },
+                    {
+                        "title" : "Musique originale",
+                        "body"  : "Composée et interprétée par Tim Rideout"
+                    },
+                    {
+                        "title" : "Superviseur de la musique originale",
+                        "body"  : "Michael McCann\nPillow Mind"
+                    },
+                    {
+                        "title" : "Composée et interprétée par Courtney Wing",
+                        "body"  : ""
+                    },
+                    {
+                        "title" : "The Vatican Rag",
+                        "body"  : "Composée et interprétée par Tom Lehrer\nReproduite avec la permission de Tom Lehrer"
+                    },
+                    {
+                        "title" : "Library Improvisation",
+                        "body"  : "Interprétée par Lady Rizo, Cyrus Baty, Mountaine Jonas, Dane Terry"
+                    },
+                    {
+                        "title" : "Spirit Walker",
+                        "body"  : "Interprétée par Leopard Zeppard\nComposée par Andrew J. Williamson\nWoodroot Music © 1999"
+                    },
+                    {
+                        "title" : "Miracle",
+                        "body"  : "Interprétée par Cyrus Baty et par Angelo Michael Tursi"
+                    },
+                    {
+                        "title" : "Apparaissent aussi dans le film :"
+                    },
+                    {
+                        "title" : "Révérende mère",
+                        "body"  : "Sœur Vicious Power Hungy Bitch"
+                    },
+                    {
+                        "title" : "Sœur Mary Mekko",
+                        "body"  : "Sœur Loganberry Frost"
+                    },
+                    {
+                        "title" : "Sœur Merry Peter",
+                        "body"  : "Sœur Right Sarong"
+                    },
+                    {
+                        "title" : "Sœur Enya Face",
+                        "body"  : "Sœur Constellation"
+                    },
+                    {
+                        "title" : "Sœur Sharin’ Dipity",
+                        "body"  : "Sœur Lily White"
+                    },
+                    {
+                        "title" : "Sœur Bella de Ball",
+                        "body"  : "Sœur Lolita Me Into Temptation"
+                    },
+                    {
+                        "title" : "Sœur Dawna Matrix",
+                        "body"  : "Sœur Chastity Boner"
+                    },
+                    {
+                        "title" : "Sœur Constance Craving",
+                        "body"  : "Sœur Dixie Wrecked"
+                    },
+                    {
+                        "title" : "Sœur Peg Ann Holiday",
+                        "body"  : "Sœur Frances A. Sissy"
+                    },
+                    {
+                        "title" : "Sœur Barbie",
+                        "body"  : "Sœur Tilly Comes Again"
+                    },
+                    {
+                        "title" : "Postulante Uma Gawd",
+                        "body"  : "Sœur Vixxen"
+                    },
+                    {
+                        "title" : "Sœur Sparkle Plenty",
+                        "body"  : "Sœur Mary Margaret X-plosion"
+                    },
+                    {
+                        "title" : "Sœur Shock T",
+                        "body"  : "Sœur Semi Semitica"
+                    },
+                    {
+                        "title" : "Sœur Shawnti Fey",
+                        "body"  : "Sœur Carmen Cider"
+                    },
+                    {
+                        "title" : "Sœur Bambie Dextrous",
+                        "body"  : "Sœur Homo Fellatio"
+                    },
+                    {
+                        "title" : "Sœur Succuba",
+                        "body"  : "Sœur Sensible Shoes"
+                    },
+                    {
+                        "title" : "Sœur Marie Ever-Ready",
+                        "body"  : "Sœur Boom Boom"
+                    },
+                    {
+                        "title" : "Sœur Searching For Men",
+                        "body"  : "Sœur Lida Dog’s Life"
+                    },
+                    {
+                        "title" : "Sœur Krishna Kosher",
+                        "body"  : "Sœur Sun-Nun-Moon"
+                    },
+                    {
+                        "title" : "Sœur Roz Erection",
+                        "body"  : "Sœur Rosetta Stoned"
+                    },
+                    {
+                        "title" : "Sœur Gazza Gum Drops",
+                        "body"  : "Sœur Sleaze du Jour"
+                    },
+                    {
+                        "title" : "Sœur Helen Wheels",
+                        "body"  : "Sœur Unity Harmony"
+                    },
+                    {
+                        "title" : "Sœur Theresa Stigmata",
+                        "body"  : "Sœur Folsome Delight"
+                    },
+                    {
+                        "title" : "Sœur Kaye Sera",
+                        "body"  : "Sœur Flora Bundtcake"
+                    },
+                    {
+                        "title" : "Sœur Roma",
+                        "body"  : "Sœur Candy Cide"
+                    },
+                    {
+                        "title" : "Sœur Rosanna Hosanna Fella Bella"
+                    },
+                    {
+                        "title" : "Nos remerciements sincères à toute les autres Sœurs de la Perpétuelle Indulgence."
+                    },
+                    {
+                        "title" : "Nous tenons également à remercier toutes les fées qui ont participé au film :",
+                        "body"  : "Donald Gallagher, Willy Hoff, Jai Sheronda, Leo Pardo, Gonaway Ta Round, Mountaine Mort Jonas, Vyne, Valencia Wombone, Ed Curran,\nRoman Curran, Mark Middle Hubbard, Jocelyne Bezzi-Batani, Joel\nCrispin, Dirt Farmer, Thumper, Firefly Rosengren, Albo Jeavons,\nJoMichael Stoddard, Christopher Bartlett, Weeder, David Anthros,\nEnya Face, Granite Trudeau, Janell Kapoor,Vermin F. Cockwolf,\nDashboard, Sandor Katz, Alwyn de Wally, Ian Ribbon Cabell, Lucky\nSnowflake, Donald Gallagher, Matt Karol, Link Edge, Tommie\nBarnas, William Ledsad, Kenneth Long, Ben Mettler, Elwood\nCharpting, C. Shane, Charming, George Kierstein, Trevor Lohrbeer,\nEgg Dans, Megan Davis, Christopher Rebagliati, Sébastien Thiriez,\nFabrice Houclart, Randy Segaga, Ing, Patrik, Paul Tomlinson,\nSebastien Collett, Berianne Bramman, Steven Sheltor, Micheal T.\nBrice, Jeff Smith, Marcello Lanfranchi, Christopher Hamblin, Steve\nKraken, Caley Wheeler, Julian Hockings, Sean O’Sullivan, Douglas\nCaulkins, Boomer, Mikel Wilson, Don Perryman, Shawn Wright, Evan\nMalczyk, George Thurow, Matt Woodbury, Eric Glasen, Chris\nResciniti, Shanna Todd, Micheal Kell, Christian Beach, Eric Kephart,\nJames Mave, Joshua Lloyd, Antler, Sam Carstens, Elbert Goggin,\nDaniel Tavell, Figment, Byron Whiting, Leo Wyatt, Thomas Hall, John\nGreenwich, Garth Hawkins, Brian Bender, Tusk, Lisa Shoemhu, John\nStills, Eva Marie, Elyjah Mcleod, Jakob Chmelik, Marie Chmeltokova,\nDavid Randy, Dela, D. Bryer, Kyriam Charalambols, Amichai, Hi,\nBamboo, Wolfie, Storm, Keer, Tommy Starchild, Hawk, Bunny, Love,\nAlaska Dave, Phacelia, Elijah, Grace, William Roman, Violet Flame et\ntous les autres habitants de la montagne."
+                    },
+                    {
+                        "title" : "Nous remercions également :",
+                        "body"  : "Marlene Millar, Ramona Ramlochand, Denis Langlois, Martin Landry,\nChristian Medawar, Nelson Henricks, Pierre Beaudoin, Eric Van\nHoenacker, Angelo Vacca, Myriam Magassouba, Jules de Niverville,\nJean-Michel Dentand, Tom Waugh, Ross Higgins, Val Shamash,\nFrançoise Jean et le personnel du CALQ, Robin Jackson et le\npersonnel de la CIFVF, Ian Reid et le personnel du Conseil des Arts\ndu Canada, Élaine Dumont, Laurent Gagliardi, Michel Saint-Pierre et\nle personnel de la Sodec, Katharine Setzer, Charlie Boudreau à\nImage+Nation, Sylvie Roy, Denis Vaillancourt et le personnel de\nVidéographe, Deborah, Alexis, Lucia, Alex, Steven et le personnel de\nMain Film, Julie, Sylvain, Bruno, Amandine et Alain chez PRIM, Anne\nParé, Jonathan et le personnel des Films du 3 mars, ainsi que tous\nceux et celles qui ont permis à ce film de voir le jour."
+                    },
+                    {
+                        "title" : "Tous droits réservés."
+                    },
+                    {
+                        "title" : "© Compass Productions Inc. 2012"
+                    }
+                ]
+            },
+            "distribution" : {
+                "en" : "<h2>LES FILMS DU 3 MARS</h2>2065 Parthenais, office #277\nMontréal (Québec) H2K 3T1\nTel.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>",
+                "fr" : "<h2>LES FILMS DU 3 MARS</h2>2065 Parthenais, bureau #277\nMontréal (Québec) H2K 3T1\nTél.: (514) 523-8530 / Fax: (514) 523-1291\ncoordination@f3m.ca|www.f3m.ca\n<img src='/static/images/F3M_LOGO_white.svg'/>"
+            }
         },
         {
             "key"     : "baghdad",
@@ -316,7 +1127,7 @@
                     "body"  : "Joe Balass"
                 }
             ],
-            "distribution" : "NFB-ONF\nNational Film Board of Canada/Office national du film du Canada\n3155 Chemin de la Côte-de-Liesse, Montréal, QC, H4N 2N4\nT: 514-283-9000 m.keigher@nfb.ca\n<a href='http://www2.nfb.ca/boutique/XXNFBibeWelcome.jsp?lr_ecode=collection&go=item&language=US&formatid=53083'>online store</a>"   
+            "distribution" : "<h2>NFB-ONF</h2>National Film Board of Canada/Office national du film du Canada\nm.keigher@nfb.ca\n<a href='http://www2.nfb.ca/boutique/XXNFBibeWelcome.jsp?lr_ecode=collection&go=item&language=US&formatid=53083'>online store</a>"   
         },
         {
             "key"       : "parting",
@@ -594,7 +1405,7 @@
                     "body" : "Tous les personnages, noms et événements de ce film sont fictifs.\nToute ressemblance avec des événements et / ou des personnes réels\nne serait que pure coïncidence ou l’effet du hasard.\n\n© Les productions Compass inc. 2006\n\nTous droits réservés/All rights reserved."
                 }
             ],
-            "distribution" : "Vidéographe\nDenis Vaillancourt\nChargé de projets / Distribution\n\nVIDÉOGRAPHE\n4550, rue Garnier\nMontréal (Québec) CANADA  H2J 3S7\nT: 514 521 2116, poste 224\nF: 514 521 1676\ndenisvaillancourt@videographe.qc.ca\n<a href='www.videographe.qc.ca' target='_blank'>www.videographe.qc.ca</a>\n<a href='www.vitheque.com' target='_blank'>www.vitheque.com</a>"
+            "distribution" : "<h2>Vidéographe</h2>Denis Vaillancourt\nChargé de projets / Distribution\n\nVIDÉOGRAPHE\ndenisvaillancourt@videographe.qc.ca\n<a href='www.videographe.qc.ca' target='_blank'>www.videographe.qc.ca</a>\n<a href='www.vitheque.com' target='_blank'>www.vitheque.com</a>"
         }
     ]
 }

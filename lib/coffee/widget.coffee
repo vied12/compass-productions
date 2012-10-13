@@ -6,7 +6,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 14-Sep-2012
+# Last mod : 05-Oct-2012
 # -----------------------------------------------------------------------------
 
 window.serious = {}
@@ -58,22 +58,6 @@ jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
 					$(this).remove()
 	return nui
 
-window.serious.Utils.isMobile = 
-	Android: => 
-		return navigator.userAgent.match(/Android/i) ? true : false
-	,
-	BlackBerry: =>
-		return navigator.userAgent.match(/BlackBerry/i) ? true : false
-	,
-	iOS: =>
-		return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false
-	,
-	Windows: =>
-		return navigator.userAgent.match(/IEMobile/i) ? true : false
-	,
-	any: =>
-		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows())
-
 # -----------------------------------------------------------------------------
 #
 # WIDGET
@@ -111,12 +95,21 @@ class window.serious.Widget
 			delete @ui[0]._widget
 		@ui[0]._widget = this # set widget in selector for ensureWidget
 		@uis = {}
+		# UIS
 		if (typeof(@UIS) != "undefined")
 			for key, value of @UIS
 				nui = @ui.find(value)
 				if nui.length < 1
 					console.warn("uis", key, "not found in", ui)
 				@uis[key] = nui
+		# ACTIONS
+		if (typeof(@ACTIONS) != "undefined")
+			for action in @ACTIONS
+				@ui.find(".do[data-action=#{action}]").click (e) =>
+					# TODO: Prevent overwriting
+					action = $(e.currentTarget).attr("data-action")
+					this[action]()
+					e.preventDefault()
 
 	set: (field, value) =>
 		#TODO: use an instance variable to declare the fields list

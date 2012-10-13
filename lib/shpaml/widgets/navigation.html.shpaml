@@ -1,4 +1,3 @@
-{# TODO: generate tile dynamicaly through the json #}
 .Navigation.disableTextSelection.widget data-widget=portfolio.Navigation
 	.tiles
 		.brand.tile.show data-target="main"
@@ -10,21 +9,17 @@
 				.wrapper | {{ gettext("News") }}
 			.tile.nav data-target="contact"
 				.wrapper | {{ gettext("Contact") }}
-			.tile.highlighted.hidden data-target="news"
-				.wrapper
-					h2 | News
-					Joy, a new movie
 		.Works.menu.column-template.hidden data-menu="works"
 			.tile.nav data-target="joy"
-				.wrapper | {{ gettext("Joy") }}
+				.wrapper | {{ gettext("JOY!") }}
 			.tile.nav data-target="baghdad"
-				.wrapper | Baghdad twist
+				.wrapper | {{ gettext("Baghdad twist") }}
 			.tile.nav data-target="devil"
-				.wrapper | The devil in the holy water
+				.wrapper | {{ gettext("The devil in the holy water") }}
 			.tile.nav data-target="nana"
-				.wrapper | {{ gettext("Nana, goerge & me") }}
+				.wrapper | {{ gettext("Nana, George & me") }}
 			.tile.nav data-target="parting"
-				.wrapper | Parting words
+				.wrapper | {{ gettext("Parting words") }}
 			.tile.nav data-target="longueur"
 				.wrapper | {{ gettext("The Length of the Alphabet") }}		
 		.PageMenu.menu.hidden data-menu="page" | {##}
@@ -33,21 +28,15 @@
 	.promo.hidden
 		{{ gettext("In theaters soon") }}
 		h2
-			span
-				> img src="/static/images/Joy_logo.svg"
+			span | {{ gettext("JOY!") }}
 		a.button href=#page=project&project=joy&cat=videos&item=0
 			span | {{ gettext("WATCH THE TRAILER") }}
-
-	.Page.links
+	.Page.links.alternate_text
 		ul
 			li.menuRoot
-				a href=#
+				a href=#					
+					span.panelOpenedText | {{ gettext("Open") }}
+					span.panelHiddenText | {{ gettext("Close") }}
 					> img src="/static/images/menu.png"
-			li
-				a href=#menu=main | Menu
-			li.works.hidden
-				a href=#&menu=works | Films					
-			li.news.hidden
-				a href=#&page=news | News
-			li.contact.hidden
-				a href=#&page=contact | Contact
+			li.home
+				a href=#menu=main | {{ gettext("Home") }}

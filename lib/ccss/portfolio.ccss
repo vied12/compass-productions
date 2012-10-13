@@ -5,24 +5,37 @@ TEXT_COLOR_DARK  = #919191
 TILE_WIDTH  = 150px
 TILE_HEIGHT = 150px
 TILE_COLOR              = "rgba(10,12,6,0.7)"
-TILE_HIGHLIGHTED_COLOR  = "rgba(51,51,77,0.7)"
+TILE_HIGHLIGHTED_COLOR  = "rgba(10,12,6,0.3)"
 PANEL_COLOR_DARK        = "rgba(10,12,6,0.7)"
 PANEL_COLOR_BLUE	    = "rgba(51,51,77,0.7)"
+TEXT_BLUE = #abe7f4
+TEXT_BLUE_DARK = #658890
 BASE_PADDING = 10px
 BIG_LINE_HEIGHT = 1.5em
 SMALL_LINE_HEIGHT = 1.5em
 BIG_FONT_SIZE = 1.8em
 SMALL_FONT_SIZE = 1.2em
 MAX_WIDTH = 1024px
+ALTERNATE_FONT = "Raleway", Verdana, sans-serif	
 
 @font-face:
 	font-family: "Livory"
-	src: url("242E09_0_0.eot")
-	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)"
+	src: url("Livory-Regular.otf")
+	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)", url(Livory-Regular.otf)
+
+@font-face:
+	font-family: "Raleway"
+	src: url("Raleway/Raleway-Regular.ttf")
+
+@font-face:
+    font-family: "Raleway"
+    font-weight: bold
+    src: url('Raleway/Raleway-SemiBold.ttf')
 
 .page:
-	font-family: "Livory", Verdana, sans-serif	
+	font-family: "Livory", Verdana, sans-serif
 	line-height: $SMALL_LINE_HEIGHT
+
 body:
 	background-color 	: black
 	background-size 	: cover
@@ -36,13 +49,17 @@ body:
 		-webkit-font-feature-setting : "liga=1,clig=1,dlig=1,hlig=1,rlig=1";
 
 	a: 
-		color 	: $TEXT_COLOR_LIGHT
+		color 	: #98B2C6
 
 	.disableTextSelection:
 		-webkit-user-select 	: none
 		-moz-user-select 		: none  
 		-ms-user-select 		: none      
 		user-select 			: none
+
+.error:
+	color:#A10000
+	font-weight : bold
 
 .waiter:
 	position: relative
@@ -67,8 +84,8 @@ body:
 				opacity            : 0
 				font-size 			: 1.2em
 				cursor  			: pointer
-				-webkit-transition-property : "opacity"
-				-moz-transition-property    : "opacity"
+				-webkit-transition-property : "opacity,background-color"
+				-moz-transition-property    : "opacity,background-color"
 				-webkit-transition-duration : "0.5s"
 				-moz-transition-duration    : "0.5s"
 				-moz-transition-timing-function     : linear
@@ -81,14 +98,11 @@ body:
 				&.show:
 					opacity : 1
 				&.highlighted:
-					clear: both
-					width              : $TILE_WIDTH * 2 + 5 - 20 // padding: 20 + 2x5
-					height             : $TILE_WIDTH * 2 + 5 - 20
-					padding            : 10px
+					background-color: $TILE_HIGHLIGHTED_COLOR
 				&.brand:
 					margin : 3px 5px 3px 3px 
-					background : $TILE_COLOR url('/static/images/CP_logo_white.svg') center center no-repeat
-					background-size : 160px
+					background : $TILE_COLOR url('../images/CP_logo_white.svg') center 33px no-repeat
+					background-size : 111px
 		.menu:
 			position : absolute
 			float    : left
@@ -97,76 +111,95 @@ body:
 				// two columns = 320px
 				width : 320px
 		.promo:
-			text-align : center
 			position   : relative
-			top        : 81px
+			top        : 40px
 			font-size  : 1.4em
+			left       : 10px
+			width      : 330px
 			h2:
-				position : relative
-				top      : -89px
-				span img:
-					height : 250px
+				padding: 50px 0px
+				span:
+					font-size: 2.4em
 			a:
-				position        : relative
-				top             : -130px
 				text-decoration : none
+				color           : #fff
 				span:
 					border         : 1px solid white
 					text-transform : uppercase
 					font-size      : 1em
-					padding : 15px 12px 8px 12px
+					padding        : 15px 12px 13px 12px
+		.creditPhoto:
+			position:absolute
+			bottom: 47px
+			right : 20px
 
 		.Page.links:
 			opacity 		: 1
 			position        : absolute		
 			bottom 			: 8px
 			z-index 		: 3
+			text-transform  : uppercase
+			font-family: $ALTERNATE_FONT
+			font-weight : bold
+			font-size :  0.9em
+		
 			.wrapper:
 				max-width : $MAX_WIDTH
-				left 			: 16px
-				z-index 		: 10			
+				left      : 16px
+				z-index   : 10
 			ul:
-				position         : absolute
-				bottom           : 3px
-				left            : 40px
-				padding 		: 0
-				width 			: 400px	
+				position  : absolute
+				bottom    : 3px
+				left      : 70px
+				padding   : 0
 
 			li:
-				display 	: inline-block
-				margin 		: 0 10px
-				padding 	: 0
+				display     : block
+				margin      : 0 10px
+				padding     : 0
 				a:
-					color 		: $TEXT_COLOR_LIGHT
-					text-decoration 	: none
+					text-decoration : none
 				img:
-					margin-bottom : -3px
+					width : 12px
+					margin-bottom : -1px
 					-webkit-transition-property : "all"
 					-moz-transition-property    : "all"
 					-webkit-transition-duration : "0.3s"
 					-moz-transition-duration    : "0.3s"
 					-moz-transition-timing-function     : ease
-					-webkit-transition-timing-function  : ease		
-				&.active:
-					a:
-						color 	: $TEXT_COLOR_DARK 
-					img:
-						transform        : "rotate(-90deg)"
-						-ms-transform    : "rotate(-90deg)"
-						-moz-transform   : "rotate(-90deg)"
-						-webkit-transform: "rotate(-90deg)"
-						-o-transform     : "rotate(-90deg)"
+					-webkit-transition-timing-function  : ease
+					margin-right: 5px
+				&.menuRoot:
+					position : absolute
+					left: 887px	
+					width : 200px
+					.panelHiddenText:
+						display : none
+					.panelOpenText:
+						display : inline-block
+					&.active:
+						.panelHiddenText:
+							display : inline-block
+						.panelOpenedText:
+							display : none
+						img:
+							transform        : "rotate(-90deg)"
+							-ms-transform    : "rotate(-90deg)"
+							-moz-transform   : "rotate(-90deg)"
+							-webkit-transform: "rotate(-90deg)"
+							-o-transform     : "rotate(-90deg)"
 			&.show:
-				opacity 	: 1
+				opacity : 1
 			&.hide:
-				opacity 	: 0
+				opacity : 0
 
-.FooterBar:
+.FooterBar:	
 	position         : absolute
-	bottom           : 0
+	bottom           : 1px
 	height           : 40px
-	width 			: 100%
-	z-index          : 2	
+	width            : 100%
+	z-index          : 2
+
 	.wrapper:
 		background-color : $PANEL_COLOR_DARK
 		width 	: $MAX_WIDTH
@@ -178,9 +211,8 @@ body:
 		padding          : $BASE_PADDING
 		position       : absolute
 		bottom    : 0px
-		right     : 32px
+		left     : 20px
 		a:
-			color 		: $TEXT_COLOR_LIGHT
 			text-decoration 	: none
 
 .FooterPanel:
@@ -195,7 +227,7 @@ body:
 	-webkit-transition-property : top
 	-moz-transition-property    : top
 	-webkit-transition-duration : 0.50s
-	-moz-transition-duration    : 0.50s
+	-moz-transition-duration    : 0.50s	
 	top : 100%
 	> .wrapper:
 		height : 100%
@@ -207,7 +239,6 @@ body:
 			position : relative
 			font-size : $SMALL_FONT_SIZE
 			line-height : $SMALL_LINE_HEIGHT
-			margin-left: $BASE_PADDING	
 			overflow : auto
 			opacity : 0
 			-webkit-transition-property : "opacity"
@@ -225,49 +256,54 @@ body:
 				font-size : $BIG_FONT_SIZE
 				line-height : $BIG_LINE_HEIGHT	
 				margin-top : -10px
-			&.active,&.show:					
-				opacity : 1			
+				padding: 10px 0
+			&.active,&.show:
+				opacity : 1
 		.page:
 			display : none
-			padding: $BASE_PADDING * 5  $BASE_PADDING *2	
+			padding: $BASE_PADDING * 5  $BASE_PADDING *2
 			&.show:
 				display : block
 		.tabs:
-			padding   	: $BASE_PADDING * 3 0 
-			font-size 	: $SMALL_FONT_SIZE
-			color 		: $TEXT_COLOR_DARK
+			padding   	: $BASE_PADDING * 3 0
 			margin-top 	: -28px
 			li:
 				cursor  : pointer
 				display : inline-block
-				padding : 0 $BASE_PADDING
+				padding : 0 32px 0 0
 				a:
 					text-decoration : none
-					color   : $TEXT_COLOR_DARK
-					text-transform : capitalize
-				&.active a:
-					color   : $TEXT_COLOR_LIGHT		
+					color   : $TEXT_BLUE_DARK
+					text-transform : uppercase
+					letter-spacing : 0.2em
+					&.active,&:hover:
+						font-weight : bold
+						color   : $TEXT_BLUE
 
 		.close:
-			text-decoration: none
-			font-family : Arial
-			position    : absolute
-			right       : 30px
-			top         : 30px
-			background-image    : url('/static/images/close.png')
-			background-color    : transparent
-			background-repeat   : no-repeat
-			background-position : top left
-			background-size : 10px 10px
-			width   : 13px
-			height  : 13px
-			cursor      : pointer
+			font-family         : $ALTERNATE_FONT
+			font-weight         : bold
+			position            : absolute
+			right               : 30px
+			top                 : 21px
+			a:
+				text-decoration     : none
+				div:
+					height              : 16px
+					width               : 16px
+					background-image    : url('../images/close.png')
+					background-color    : transparent
+					background-repeat   : no-repeat
+					background-position : bottom
+					background-size     : 10px 10px
+					display : inline-block
 
-		//-------------------------- PANEL FORM class ------------------	
+		//-------------------------- PANEL FORM class ------------------
 		.in:
 			display : block
 			padding : $BASE_PADDING
 		.button:
+			font-family: Raleway
 			text-transform : uppercase
 			font-size : 0.8em
 			text-decoration : none
@@ -277,14 +313,14 @@ body:
 			background-color : transparent
 			border-width : 1px
 			border-style : solid
-			border-color : #fff 
+			border-color : #fff
 			color : #fff
 		textarea::-webkit-input-placeholder, textarea::-webkit-input-placeholder:fovus:
 			color:	#fff
 		-moz-placeholder:
 			color:	#fff
 		-ms-input-placeholder:
-			color:	#fff		
+			color:	#fff
 
 	.Project:
 		&.page:
@@ -306,7 +342,7 @@ body:
 					-moz-transition-timing-function     : ease
 					-webkit-transition-timing-function  : ease	
 					&.readmoreFx:
-						opacity :1		
+						opacity :1
 			&.videos:
 				li.video.actual:
 					padding-right  : 10px
@@ -317,47 +353,56 @@ body:
 					img:
 						height : 150px
 						width  : 268px
+					.duration:
+						font-size : 0.8em
 			&.links:
 				a:
 					font-size : 1.2em
 					margin-bottom: 15px
 			&.press:
+				a:
+					margin-bottom: 20px
 				.maxWidth :
 					width : 600px				
 			&.gallery:
 				overflow : auto
-				li:
+				li.photo:
 					display		: inline-block
-					margin		: 5px
+					margin		: 4px 6px
 					cursor      : pointer
-				.show_more:
-					background 		: "rgba(10,10,10,0.7)"
-					vertical-align  : top
-					width 			: 130px 
-					height          : 130px 
-					padding 		: $BASE_PADDING
-					font-size       : 0.8em
+					.image:
+						// fix to prevent white margin on flick'r image
+						background-size     : 105%
+						background-position : center center
+						width               : 150px
+						height              : 150px
+			&.distribution:
+				h2:
+					font-size : 1.3em
+					margin    : 0px
 			&.screenings,&.credits:
 			 	.screening, .credit :
-					clear : both			
-					margin :  0px 20px 0px 10px
-					padding : 0 0
+					clear       : both			
+					margin      :  0px 20px 0px 10px
+					padding-top : 14px
 			 	.screening :
 			 	 	padding : $BASE_PADDING
 				p:
+					margin: 0
 					display: inline-block
 					vertical-align : top
 					&.title:
-						width : auto
+						font-variant : small-caps
+						width : 50%
 					&.body:
 						margin-left : 10px
-						width : 70%
+						width : 47%
 						float : right
 					&.date:
 						float : left
 						width : 30%
 						margin : 10px 20px 10px 10px
-						//border-right : 1px solid #fff<
+						//border-right : 1px solid #fff
 						padding: 4px 20px 4px 0
 
 	.Contact:
@@ -379,20 +424,22 @@ body:
 			textarea:
 				height  : 90px			
 			.onRight:
-				float 	: right
-				// Weirdly, negative value is not well compiled
-				// This margin compense fields padding
-				margin 	: 10px "-21px" 0 0
+				text-align : right
+				left       : 22px
 
 	.News:
 		.title: 
 			font-weight : normal
+			font-variant: small-caps
 			margin 		: 0
 		.date:
 			display 	: block
 		.body:
 			font-size : $BIG_FONT_SIZE
 			line-height : $BIG_LINE_HEIGHT
+			.button:
+				line-height : 1em
+				font-size   : 0.5em
 		li:
 			margin-bottom : 50px
 
@@ -413,7 +460,7 @@ body:
 		top    : 0
 		z-index   : 2
 		&:hover:
-			cursor : url('/static/images/close.png'), pointer
+			cursor : url('../images/close.png'), pointer
 
 	.player:
 		margin    : 0 auto
@@ -461,7 +508,8 @@ body:
 				height    : 99px
 				width     : 20px
 				margin-top: 4px
-				background-color : #232323
+				background-color : transparent
+				padding: 1px 5px
 				opacity   : 0
 				-webkit-transition-property : "background-color,opacity"
 				-webkit-transition-duration : "1.25s"
@@ -511,8 +559,33 @@ body:
 			background-size : covers
 			background-position : center center
 
-
-
+.Download:
+	position : absolute
+	top    : 0
+	bottom : 0
+	left   : 0
+	right  : 0 
+	z-index : 3
+	.overlay:
+		position : absolute
+		background-color : $TILE_COLOR
+		width  : 100%
+		height : 100%
+	.box :
+		width    : 400px
+		background-color : "rgba(180,180,180,0.6)"
+		position : relative
+		padding  : 20px
+		z-index  : 4
+		margin : auto
+		-webkit-border-radius : 12px
+		-moz-border-radius    : 12px
+		border-radius         : 12px
+	input:
+		height: 30px
+	input[type="password"]:
+		width:285px
+		font-size : 1.3em
 //-------------------------- Background --------------------------------
 
 .Background, .Background > div:
@@ -539,7 +612,7 @@ body:
 	.hidden:
 		display 		: none
 	.mask:
-		background 		: url('/static/images/Pixel_Pattern.gif') repeat
+		background 		: url('../images/Pixel_Pattern.gif') repeat
 		z-index			: 1
 	.darkness:
 		background-color : black
@@ -547,11 +620,11 @@ body:
 		z-index : 1
 	.mousemask:	
 		opacity : 1	
-		//background-image : url('/static/images/mousemask'.png)
+		//background-image : url('../images/mousemask'.png)
 		//background-image : `-moz-linear-gradient(left center, transparent, white)`		
 		//background-image : `-webkit-linear-gradient(left center, transparent, white)`
 		//background 	->
-			//image : url('/static/images/Pixel_Pattern.gif')
+			//image : url('../images/Pixel_Pattern.gif')
 			//-webkit-mask-image: `-webkit-gradient(radial, 50% 50%, 30, 50% 50%, 90, from(#fff), to(rgba(0,0,0,0)))` 
 			//image : `-webkit-linear-gradient(left center, transparent, white)`
 			//repeat : no-repeat 
@@ -602,9 +675,16 @@ body:
 			.image :
 				background ->
 					repeat : no-repeat
-					image :  url('/static/images/logo.png')
+					image :  url('../images/logo.png')
 					position : top left		
 
+.for-ie:
+	width      : 800px
+	margin     : 50px auto
+	text-align : center
+	font-size  : 1.5em
+	line-height: 2em
+	color      : #fff
 
 .mobile:
 	.wrapper:
@@ -613,3 +693,10 @@ body:
 			padding : 80px 0
 			li:
 				margin : 0px 5px
+
+.alternate_text:
+	font-family: $ALTERNATE_FONT
+	text-transform : uppercase	
+	font-weight : bold
+	font-size :  0.9em
+	color : $TEXT_BLUE

@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-25 03:53+0200\n"
+<<<<<<< HEAD
+"POT-Creation-Date: 2012-10-08 16:41+0200\n"
+=======
+"POT-Creation-Date: 2012-10-08 14:19+0200\n"
+>>>>>>> 037251893a45e4d57a715f8eb3222350d708ed78
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,68 +21,164 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:10
+#: lib/shpaml/home.html.shpaml:16
+msgid "Sorry but this Compass web site is incompatible with your navigator."
+msgstr ""
+
+#: lib/shpaml/home.html.shpaml:18
+msgid ""
+"Please download a real modern navigator like Mozilla Firefox or Google "
+"Chrome"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:6
+msgid "Please enter the magic password"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:8
+msgid "password"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:9
+msgid "download"
+msgstr ""
+
+#: lib/shpaml/widgets/download.html.shpaml:10
+msgid "Sorry, we don't know this password, try again"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:9
 msgid "News"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:12
+#: lib/shpaml/widgets/navigation.html.shpaml:11
 msgid "Contact"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:19
-msgid "Joy"
+#: lib/shpaml/widgets/navigation.html.shpaml:18
+#: lib/shpaml/widgets/navigation.html.shpaml:35
+msgid "JOY!"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:25
-msgid "Nana, goerge & me"
+#: lib/shpaml/widgets/navigation.html.shpaml:20
+msgid "Baghdad twist"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:29
+#: lib/shpaml/widgets/navigation.html.shpaml:22
+msgid "The devil in the holy water"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:24
+msgid "Nana, George & me"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:26
+msgid "Parting words"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:28
 msgid "The Length of the Alphabet"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:34
+#: lib/shpaml/widgets/navigation.html.shpaml:33
 msgid "In theaters soon"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:39
+#: lib/shpaml/widgets/navigation.html.shpaml:37
 msgid "WATCH THE TRAILER"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:68
-#: lib/shpaml/widgets/panel.html.shpaml:78
-msgid "Hello there,"
+#: lib/shpaml/widgets/navigation.html.shpaml:42
+msgid "Open"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:70
-msgid "Would you like to get in touch with Compass Productions?"
+#: lib/shpaml/widgets/navigation.html.shpaml:43
+#: lib/shpaml/widgets/panel.html.shpaml:111
+msgid "Close"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:72
-msgid "You may e reach us at:"
+#: lib/shpaml/widgets/navigation.html.shpaml:46
+msgid "Home"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:75
-msgid "or use our contact"
+#: lib/shpaml/widgets/panel.html.shpaml:8
+msgid "synopsis"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:80
-msgid "Would you like to get in touch with Compass Productions"
+#: lib/shpaml/widgets/panel.html.shpaml:10
+msgid "videos"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:85
-msgid "Write us a few lines..."
+#: lib/shpaml/widgets/panel.html.shpaml:13
+msgid "view entire film"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:87
-msgid "Send"
+#: lib/shpaml/widgets/panel.html.shpaml:15
+msgid "photos"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:17
+msgid "screenings"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:19
+msgid "credits"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:21
+msgid "press"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:23
+msgid "links"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:25
+msgid "distribution"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:61
+msgid "press kit"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:88
+#: lib/shpaml/widgets/panel.html.shpaml:98
+msgid "Hello there,"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:90
+msgid "Would you like to get in touch with Compass Productions?"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:92
+msgid "You may reach us at:"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:95
+msgid "or use our contact form"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:100
+msgid "Would you like to get in touch with Compass Productions"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:105
+msgid "Write us a few lines..."
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:107
+msgid "Back"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:108
+msgid "Send"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:109
 msgid "Thank you"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:89
+#: lib/shpaml/widgets/panel.html.shpaml:110
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"
