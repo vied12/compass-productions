@@ -359,7 +359,9 @@ class portfolio.Panel extends Widget
 		else
 			top_offset = $(window).height()
 			@ui.css({top : top_offset})
-
+		# FIXME: ugly, to center the footer bar links
+		offset_left = parseInt($(".FooterBar .wrapper:first").offset().left) + 60
+		$(".Page.links").css({left:offset_left})
 		setTimeout((=>$('body').trigger("relayoutContent")), 100)
 
 	hide: =>
@@ -923,7 +925,7 @@ class portfolio.MediaPlayer extends Widget
 
 	hide: =>
 		super
-		$(".Page.links .back").removeClass("hidden")
+		$(".Page.links .back").addClass("hidden")
 		$('body').trigger "restoreBackground"
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"
