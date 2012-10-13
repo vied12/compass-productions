@@ -508,7 +508,7 @@
         {
             "key"       : "nana", 
             "title"     : "Nana, George and me",
-            "backgroundImage" : "ngm_web_home.jpeg",
+            "backgroundImage" : "bg-ngm.jpg",
             "backgroundVideos" : ["ngm_web_home.webm","ngm_web_home.ogv","ngm_web_home.mp4"],
             "synopsis"  : {
                     "en" : {
@@ -525,7 +525,7 @@
         {
             "key"       : "joy", 
             "title"     : "Joy",
-            "backgroundImage" : "joy.png",
+            "backgroundImage" : "bg-joy.jpg",
             "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogv","onSodomRoad.webm"],
             "facebook"  : "http://www.facebook.com/joy.portrait.of.a.nun",
             "synopsis"  : {
@@ -1228,7 +1228,7 @@
         {
             "key"     : "baghdad",
             "title"   : "Baghdad twist",
-            "backgroundImage" : "baghdad.jpg", 
+            "backgroundImage" : "bg-bt.jpg", 
             "backgroundVideos" : ["baghdad_twist_home_tree.webm","baghdad_twist_home_tree.ogv","baghdad_twist_home_tree.mp4"],
             "synopsis": {
                 "en" : {
@@ -1376,7 +1376,7 @@
         {
             "key"       : "parting",
             "title"     : "Parting Words",
-            "backgroundImage" : "partingweb.jpeg", 
+            "backgroundImage" : "bg-pw.jpg", 
             "backgroundVideos" : ["parting_web.webm","parting_web.ogv","parting_web.mp4"],
             "gallery" : "72157631597946580",
             "synopsis": {

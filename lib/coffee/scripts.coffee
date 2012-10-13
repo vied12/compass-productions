@@ -915,9 +915,9 @@ class portfolio.MediaPlayer extends Widget
 		@cache.isShown = true
 		$(".FooterPanel").addClass("hidden")
 		# back button
-		$(".Page.links .back").removeClass("hidden").click (e) =>
+		$(".Page.links .back").removeClass("hidden").click((e) =>
 			this.hide()
-			e.preventDefault()
+			e.preventDefault()).find("a").html($(".PageMenu .tile .wrapper").html())
 		$("body").trigger("hidePanel")
 		$('body').trigger("darkness", 0.7)
 		@uis.next.removeClass("hidden")
