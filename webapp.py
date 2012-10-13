@@ -9,7 +9,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 07-Oct-2012
+# Last mod : 13-Oct-2012
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
@@ -23,6 +23,7 @@ app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
 db        = model.Interface.GetConnection()
+
 babel     = flaskext.babel.Babel(app) # i18n
 cache     = werkzeug.contrib.cache.MemcachedCache(['127.0.0.1:11211'], key_prefix="portfolio")
 
@@ -94,23 +95,41 @@ def news(id="all", sort=None):
 			query = extractQuery(request.form)
 			news  = model.Interface.getNews(request.form.get("_id"))
 		else:
-			news = db.news.News()
-		news['content'] = request.form.get("content")
-		news['title']   = request.form.get("title")
+			news = db.News()
+		news.content = request.form.get("content_en")
+		news.title   = request.form.get("title_en")
+		news.set_lang('fr')
+		news.content = request.form.get("content_fr")
+		news.title   = request.form.get("title_fr")
 		news.save()
 		return "true"
-	#FIXME: not tested
 	if request.method == "DELETE":
 		news = model.Interface.getNews(id)
-		db.news.remove({"_id":news._id})
+		db.portfolio.news.remove({"_id":news._id})
 		return "true"
 	else:
+		admin = id == "admin"
+		id    = "all" if admin else id
 		sort = "date_creation" if sort == "date" else sort
 		news = model.Interface.getNews(id, sort=sort)
+		res  = []
+		ln   = get_locale()
+		# don't translate when admin is asking
 		if id == "all":
-			# NOTE: this line bug on first request
-			# see https://github.com/namlook/mongokit/issues/105
-			return json.dumps([_.to_json_type() for _ in news])
+			for n in news:
+				n = n.to_json()
+				n = json.loads(n)
+				#translate
+				if not admin:
+					for key in n.keys():
+						print ln, n[key], type(n[key])
+						if type(n[key]) is dict and n[key].keys()[0] in app.config["LANGUAGES"]:
+							if ln in n[key].keys():
+								n[key] = n[key][ln]
+							else:
+								n[key] = n[key]["en"]
+				res.append(n)
+			return json.dumps(res)
 		else:
 			return news.to_json()
 

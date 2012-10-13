@@ -144,10 +144,6 @@ class portfolio.Navigation extends Widget
 				setTimeout( (=> @panelWidget.hide()), 100)							
 
 	updatePanelMenuRoot: (opened) =>
-		# if opened
-		# 	if not @uis.menuRoot.hasClass "active" then @uis.menuRoot.addClass "active" 
-		# else 
-		# 	@uis.menuRoot.removeClass "active"
 		if opened
 			@uis.menuRoot.addClass "hidden" 
 			if not @uis.menuRoot.hasClass "active"				

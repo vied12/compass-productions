@@ -22,7 +22,7 @@ class Vimeo:
 			filehandle = urllib.urlopen("%s/%s.json" % (Vimeo.URL, id))
 			return json.load(filehandle)[0]
 		except Exception as e:
-			print "Vimeo sucks", e
+			print "Vimeo sucks", e, id
 			# FIXME: implement a log tracking system
 			return None
 			
