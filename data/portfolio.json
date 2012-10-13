@@ -25,12 +25,16 @@
             "title"     : "The devil in the holy water",
             "backgroundImage" : "bg1.jpg",
             "backgroundVideos" : ["Devilfuck_insect2.mp4","Devilfuck_insect2.webm","Devilfuck_insect2.ogv"],
-            "synopsis"  : 
-                {
-                    "teaser" : "The time - the outset of a new millennium.\n\nThe place - Rome, the eternal city, sacred and profane.\n\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.",
-                    "body"  : "Are you ready?\n\nFilmmaker Joe Balass is there - The Devil in the Holy Water is his vibrant document of that moment.\n\nCritical and joyous, entertaining and thought-provoking, The Devil in the Holy Water goes to the epicentre of Catholic culture to get a reading on contemporary sexuality and morality.\n\nWhile the Vatican opposes World Pride, drawing upon its considerable influence to try to stop the event, Italians themselves send a more complex - and ultimately tolerant - message.\n\nThe opening of the monumental holy doors at Saint Peter's inaugurates the Jubilee, while debate rages through the ancient city. Vatican kingmaker, Cardinal Roger Etchegaray, finally concedes to an interview - while Imma Battaglia, a tempestuous Joan of Arc for our times, fearlessly spearheads the fight for gay visibility.\n\nThe music of Domenico Modugno sets the tone, and Balass takes to the streets, framing his interviews with astutely selected archival images - a gay priest speaking publicly at a 1982 demo, the first Italian gay marriage in 1992, and the Pope attacking homosexuals in 1994.\n\nAs the World Pride controversy heats up, the filmmaker encounters practical-minded grandmothers and rigid young neo-fascists, self-effacing nuns and ebullient drag queens. Pilgrims seeking absolution from sins, along with Emiliano and Pier Paolo, a couple of young guys who wander though the proceedings, just looking for a little fun.\n\nThe result is a candid, enlightening and often humorous, feature-length documentary. The Devil in the Holy Water captures two historic events as they intersect, highlighting a city and a culture in dynamic transition.\n\nFilmmaker’s biography\nProducer & director Joe Balass is an independent filmmaker working in both fiction and documentary. He currently resides in Montreal where he operates an independent production company, Compass Productions Inc. In addition, he also freelances as an editor, photographer and cameraman. He was born in Baghdad, Iraq in 1966 and after escaping with his family at the age of four, he eventually settled in Canada. His work has taken him all over Asia, Europe and North America. Balass has produced and directed a number of award-winning films and videos, including Nana, George & Me (1997). He expresses a very spontaneous blend of seriousness and humour in his approach to filmmaking.\nAt present, Joe Balass is working on his first feature-length fiction film as well as a number of documentary projects."
+            "synopsis"  : {
+                "en" : {
+                    "teaser" : "The time - the outset of a new millennium.\nThe place - Rome, the eternal city, sacred and profane.\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.",
+                    "body"  : "Are you ready?\nFilmmaker Joe Balass is there - The Devil in the Holy Water is his vibrant document of that moment.\nCritical and joyous, entertaining and thought-provoking, The Devil in the Holy Water goes to the epicentre of Catholic culture to get a reading on contemporary sexuality and morality.\nWhile the Vatican opposes World Pride, drawing upon its considerable influence to try to stop the event, Italians themselves send a more complex - and ultimately tolerant - message.\nThe opening of the monumental holy doors at Saint Peter's inaugurates the Jubilee, while debate rages through the ancient city. Vatican kingmaker, Cardinal Roger Etchegaray, finally concedes to an interview - while Imma Battaglia, a tempestuous Joan of Arc for our times, fearlessly spearheads the fight for gay visibility.\nThe music of Domenico Modugno sets the tone, and Balass takes to the streets, framing his interviews with astutely selected archival images - a gay priest speaking publicly at a 1982 demo, the first Italian gay marriage in 1992, and the Pope attacking homosexuals in 1994.\nAs the World Pride controversy heats up, the filmmaker encounters practical-minded grandmothers and rigid young neo-fascists, self-effacing nuns and ebullient drag queens. Pilgrims seeking absolution from sins, along with Emiliano and Pier Paolo, a couple of young guys who wander though the proceedings, just looking for a little fun.\nThe result is a candid, enlightening and often humorous, feature-length documentary. The Devil in the Holy Water captures two historic events as they intersect, highlighting a city and a culture in dynamic transition.\nFilmmaker’s biography\nProducer & director Joe Balass is an independent filmmaker working in both fiction and documentary. He currently resides in Montreal where he operates an independent production company, Compass Productions Inc. In addition, he also freelances as an editor, photographer and cameraman. He was born in Baghdad, Iraq in 1966 and after escaping with his family at the age of four, he eventually settled in Canada. His work has taken him all over Asia, Europe and North America. Balass has produced and directed a number of award-winning films and videos, including Nana, George & Me (1997). He expresses a very spontaneous blend of seriousness and humour in his approach to filmmaking.\nAt present, Joe Balass is working on his first feature-length fiction film as well as a number of documentary projects."
+                },
+                "fr" :  {
+                    "teaser" : "L’époque — le début du nouveau millénaire.\nLe lieu — Rome, la ville éternelle, sacrée et profane.\n\nDeux événements entrent en collision. Tandis que la communauté catholique internationale se rallie à Rome pour le Jubilé, le plus important pélerinage chrétien des temps modernes, des milliers de gais et de lesbiennes du monde entier se réunissent pour le World Pride, la première célébration mondiale de la fierté gaie.  Êtes-vous prêt pour la suite ?",
+                    "body" : "Le Diable dans l’eau bénite nous amène à l’épicentre de la culture catholique pour prendre le pouls des mœurs contemporaines en matière de sexualité et de moralité.  Pendant que la controverse s’enflamme et que les autorités civiles s’en mêlent, le cinéaste rencontre de souriantes grands-mères, des néo-fascistes, des religieuses et d’exubérants travestis. Et puis, au milieu des pélerins qui recherchent l’absolution, on apprend à découvrir deux jeunes hommes qui flânent à travers la ville, tentant de comprendre tout ce qui se passe et cherchant surtout à s’amuser un peu.\nLe résultat est un film qui pose avec finesse un regard critique mais plein d’humour sur des enjeux d’importance capitale. Au cœur d’une ville en ébullition et d’une société en pleine transition, Le Diable dans l’eau bénite capte la rencontre de deux moments historiques à la croisée des chemins."
                 }
-            ,
+            },
             "gallery"   : "72157631597841156",
             "videos"    : ["49984280", "49984279", "49984278", "49984235", "49984204", "49984203", "49984202", "49984201","49984165"],
             "screenings": [
@@ -155,10 +159,6 @@
                 }
             ],
             "press"     : {
-                "presskit" : {
-                    "link"     : "http://FIXME.zip",
-                    "password" : "tomboy"
-                },
                 "press" : [
                     {
                         "article" : "Balass' film is an intriguing and enlightening look at a city trying to reconcile religious identity and bravado with tolerant, unified attitudes. The Devil in the Holy Water is a film to be celebrated and embraced as its themes and nuances address issues relevant to many.",
@@ -220,7 +220,8 @@
                     "description" : "Nana, George & Me"
                 }
             ],
-            "credits"   : [
+            "credits"   : {
+                "en" :[
                 {
                     "title" : "Compass Productions"
                 },
@@ -389,7 +390,119 @@
                 {
                     "title" : "© Compass Productions Inc. 2002"
                 }
-            ],
+                ],
+                "fr" : [
+                    {
+                        "title" : "Scénarisé, produit et réalisé par Joe Balass"
+                    },
+                    {
+                        "title" : "Caméra",
+                        "body"  : "Joe Balass\nMarjo Ferwerda\nAndrei Khabad\nGiampaolo Marzi"
+                    },
+                    {
+                        "title" : "Son",
+                        "body"  : "David Ballard\nMarjo Ferwerda"
+                    },
+                    {
+                        "title" : "Montage",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "Consultant au montage",
+                        "body"  : "Rolland Pollack"
+                    },
+                    {
+                        "title" : "Montage additionnel et  Montage en ligne",
+                        "body"  : "Dennis Day"
+                    },
+                    {
+                        "title" : "Montage sonore",
+                        "body"  : "Martin Hurtubise"
+                    },
+                    {
+                        "title" : "Assistant réalisateur / Interprète",
+                        "body"  : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "Musique",
+                        "body"  : "Simon Carpentier"
+                    },
+                    {
+                        "title" : "Avec la généreuse participation de",
+                        "body"  : "Imma Battaglia\nAlberto Corteggiani\nGiovanni Dall’Orto\nGianni Delle Foglie\nIvan Dragoni\nCardinal Roger Etchegaray\nEvêque Jacques Gaillot\nVladimir Luxuria\nSonia Mangello\nSilvano Moffa\nElisabeth Ohlson\nEmiliano Placchi\nFather Gino Rigoldi\nPier Paolo Torri"
+                    },
+                    {
+                        "title" : "Un grand merci à",
+                        "body"  : "Katia Bellillo, Ivan Cattaneo, Maria Grazia Cuccinotta, Mauro Malinverno, Mario D’Onofrio, Eleonora Dall’Ovo, Andrea Ferrari, Sister Roberta Giudici, Giovanni Mappelli, Andrea Marnoni, Claudia Mauti, Massimo Mazzotta, Leone Passerman, Daniele Del Pozzo, Alfonso Pecoraro Scanio, Monica Stambrini, Claudia Torresan, Patrizia Zappa Mulas Et aux nombreuses autres personnes qui ont accepté d’être interviewées pour ce film. "
+                    },
+                    {
+                        "title" : "Images & musique de l’exposition \"Ecce Homo\", au Forte Prenestino – Roma, sont utilisées grâce à la généreuse autorisation de Elisabeth Ohlson."
+                    },
+                    {
+                        "title" : "Consultants Avid",
+                        "body"  : "Paola Freddi\nMarlene Millar"
+                    },
+                    {
+                        "title" : "Caméra additionnelle",
+                        "body"  : "Monica Stambrini\nMarco Tani\nEmanuele"
+                    },
+                    {
+                        "title" : "Musique additionnelle"
+                    },
+                    {
+                        "title" : "Pasqualino Maragia and Tu si’ na cosa grande",
+                        "body"  : "de Domenico Modugno\nItalcanto Canada Ltd. Intermède Media Inc.\nCourtoisie de WEA International Inc."
+                    },
+                    {
+                        "title" : "Petite Messe Solennelle –  Cum Sancto Spiritu",
+                        "body"  : "Bulgarian Television & Radio Mixed Choir with Mihail Milkov\nGioachino Rossini\nIntermède Media Inc.\nCourtoisie de Forlane/ Intermède Media Inc."
+                    },
+                    {
+                        "title" : "Graphics",
+                        "body"  : "Yudi Sewraj"
+                    },
+                    {
+                        "title" : "Web",
+                        "body"  : "Etherworks"
+                    },
+                    {
+                        "title" : "Comptabilité",
+                        "body"  : "Rickie Rosenbaum"
+                    },
+                    {
+                        "title" : "Assistants à la production",
+                        "body"  : "Valere Poulin, Andrea Marnoni, Nilton Dos Santos Almeida, Maria Michails, Stephane Drolet"
+                    },
+                    {
+                        "title" : "Traduction française",
+                        "body"  : "Margaux Ouimet"
+                    },
+                    {
+                        "title" : "Merci aux acteurs et musiciens dans le spectacle \"Laudes grido a tutta gente\" sous la direction de Gigi Dall’aglio."
+                    },
+                    {
+                        "title" : "Merci additionnel à",
+                        "body"  : "Roberta Angellili, Celine Bissonnette, Normand Boucher, Aldo Cassano, Memmo Caporilli,  Danielle Charlebois, Giorgio Codibue, Massimo Cortesi, Francesca Davello, Ettorina, Lubomir Fabcin, Adrian Gonzalez, Ingo, Grant Innes, Daniele Iucolano,  Yves Lafontaine, Antonello Lauriola, Philip Lewis, Marco Lupi, Pascal Maeder, Luigi Manconi, Monica Margrande, Raffaella Marzi, Marlene Millar, Christina Nati, Ludovico Pace, Allesandra di Pietro, Marie Potvin, Ramona Ramlochand, Rinaldo Rocco, Nicola Russo, Vivian Sallei, Rob Wilson Smith, Roberto Spagnol, Monica Stambrini, Carla Traversi, Tom Waugh, Margaret Wong; the staff and press office of the Baci factory; Elena Solari and the staff of the Canadian Embassy in Rome; Marcella Damiani, Roberto Bernardi and the staff of the Canadian  Embassy in Vatican City; Claude Forget, Michel Gelinas and the staff of Cinéma Libre; Angèle Cyr, Youssef El Jai, Sylvain Cossette and Line Bodiguel at PRIM; the staff of the Forte Prenestino; the organisers & staff of the Romei e giubillei exhibit at the Palazzo Venezia; Christina Spina and the staff of the the Teatri Stabili dell’Umbria in Perugia; Marjorie Weeke and the staff of the Vatican Press Office, Mario Mieli Association staff et les organisateurs du WorldPride 2000."
+                    },
+                    {
+                        "title" : "Séquences d’archives fournies par RAITrade."
+                    },
+                    {
+                        "title" : "Ce film a été possible grâce à la généreuse participation financière de",
+                        "body"  : "The Canada Council for the Arts\nThe Millennium Fund\nMedia Arts Program\n\n\nSODEC –  Programme d’aide aux jeunes créateurs\n\n\nProgramme du crédit d’impot du Gouvernement du Québec\n\n\nConseil des arts et des lettres du Québec\n\n\nThe Canadian Independent Film & Video Fund"
+                    },
+                    {
+                        "title" : "Ce film a été possible grâce au soutien additionnel de",
+                        "body"  : "PRIM\nCentre d’art médiatiques\n\nThe National Film Board – Filmmakers’ Assistance Program\n\nCinéma Libre Distribution"
+                    },
+                    {
+                        "title" : "Tous droits réservés."
+                    },
+                    {
+                        "title" : "© Les Productions Compass Inc. 2002"
+                    }
+                ]
+            },
             "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
@@ -420,6 +533,7 @@
             "title"     : "Joy",
             "backgroundImage" : "joy.png",
             "backgroundVideos" : ["onSodomRoad.mp4","onSodomRoad.ogv","onSodomRoad.webm"],
+            "facebook"  : "http://www.facebook.com/joy.portrait.of.a.nun",
             "synopsis"  : {
                 "en" : {
                     "teaser" : "Spiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.",
@@ -433,6 +547,12 @@
             "videos"    : {
                 "en" : ["39779299", "47419588", "47419589", "47429440", "47429436", "47429435", "47569645", "47419591", "47429439", "47447949", "47447948", "47447947"],
                 "fr" : ["50637613", "47419588", "47419589", "47429440", "47429436", "47429435", "47569645", "47419591", "47429439", "47447949", "47447948", "47447947"]
+            },
+            "press"     : {
+                "presskit" : {
+                    "link"     : "/static/download/pressKitJOY.zip",
+                    "password" : "tomboy"
+                }
             },
             "gallery"   : "72157631598336173",
             "credits"   : {
@@ -1117,14 +1237,144 @@
             "backgroundImage" : "baghdad.jpg", 
             "backgroundVideos" : ["baghdad_twist_home_tree.webm","baghdad_twist_home_tree.ogv","baghdad_twist_home_tree.mp4"],
             "synopsis": {
-                "body" : "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists."
+                "en" : {
+                    "body"   : "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists."
+                },
+                "fr" : {
+                    "teaser" : "Cela pourrait se passer n'importe où. Une réception de mariage filmée en Super-8 au milieu des années 1960 : cravates étroites, coiffures bouffantes, images scintillantes d'un couple réjoui et d'invités souriants. Un groupe de musiciens joue et on se rassemble sur la piste pour exécuter la dernière danse à la mode : le twist.",
+                    "body"   : "Mais cela se passe à Bagdad. Et pour la communauté juive de la ville, cette soirée constitue un court moment de joie durant  une longue période de persécution. En l'espace de quelques années, la plupart des invités qui figurent dans le film auront quitté la ville pour ne jamais y revenir. En moins de dix ans, les membres de cette communauté qui existe depuis l'époque de Babylone seront presque tous partis.\n\nLe cinéaste Joe Balass et sa mère Valentine se remémorent ce souvenir, le partagent, le recollent à l'aide des fragments restants.  Le film porte à l'écran une collection inédite d'images d'archives, de films et de photographies de famille provenant de Bagdad. Il lève le voile sur la communauté juive d'Irak autrefois florissante, sur ses dernières et périlleuses années dans ce pays et sur sa capacité remarquable à trouver le réconfort dans l'ombre de la peur."
+                }
             },
             "gallery"   : "72157631598309773",
             "videos" : [],
             "credits"   : [
                 {
-                    "title" : "Writer, Producer, Director",
+                    "title" : "The National Film Board of Canada presents"
+                },
+                {
+                    "title" : "a film by Joe Balass"
+                },
+                {
+                    "title" : "BAGHDAD TWIST"
+                },
+                {
+                    "title" : "With the generous participation of",
+                    "body"  : "Valentine Balass"
+                },
+                {
+                    "title" : "Director",
                     "body"  : "Joe Balass"
+                },
+                {
+                    "title" : "Producer",
+                    "body"  : "Germaine Ying Gee Wong"
+                },
+                {
+                    "title" : "Editor",
+                    "body"  : "Annie Jean"
+                },
+                {
+                    "title" : "Associate Producer",
+                    "body"  : "Aisling Chin-Yee"
+                },
+                {
+                    "title" : "8mm wedding footage courtesy of",
+                    "body"  : "Ferial and Sami Balass"
+                },
+                {
+                    "title" : "Photo Animation",
+                    "body"  : "Philippe Raymond\nJean Marc Brosseau\nStephan Gaudreault"
+                },
+                {
+                    "title" : "Sound Recording",
+                    "body"  : "David Ballard"
+                },
+                {
+                    "title" : "Sound Editing",
+                    "body"  : "Don Ayer"
+                },
+                {
+                    "title" : "Music recording",
+                    "body"  : "Detour Sound"
+                },
+                {
+                    "title" : "Re-recording",
+                    "body"  : "Serge Boivin\nGeoffrey Mitchell"
+                },
+                {
+                    "title" : "Music by",
+                    "body"  : "Dino Giancola and Janet Lumb\nWhispers :\nChloé Wong Mersereau"
+                },
+                {
+                    "title" : "Titles",
+                    "body"  : "Philippe Raymond\nSerge-Gaspard Gaudreau\nStephan Gaudreault"
+                },
+                {
+                    "title" : "On Line Editor",
+                    "body"  : "Denis Oxilia"
+                },
+                {
+                    "title" : "Photo scanning",
+                    "body"  : "Louise Overy\nStephan Gaudreault"
+                },
+                {
+                    "title" : "Post Production Coordinator",
+                    "body"  : "Linda Payette\nSteve Hallé\nPierre Ferlatte"
+                },
+
+                {
+                    "title" : "Digital Editing Technicians",
+                    "body"  : "Ochelle Greenidge\nAriel Santana\nPierre Dupont\nIsabelle Painchaud\nDanielle Raymond"
+                },
+                {
+                    "title" : "Production Administration Assistants",
+                    "body"  : "Sia Koukoulas\nMiya Kondo"
+                },
+                {
+                    "title" : "Program Administrators",
+                    "body"  : "Dan Emery\nMarie Tonto-Donati\nNickie Merulla"
+                },
+                {
+                    "title" : "Marketing Manager",
+                    "body"  : "Moira Keigher"
+                },
+                {
+                    "title" : "Research",
+                    "body"  : "Joe Balass"
+                },
+                {
+                    "title" : "Archival Footage:",
+                    "body"  : "WPA ETC\n\nFOOTAGE FARM \n\nITN \n\nNFB "
+                },
+                {
+                    "title" : "With thanks to",
+                    "body"  : "Victor Balass, Charlie Balass, Ralph Balass, Linda Balass, Sion Balass, Giampaolo Marzi, Anthony Kinik, Caroline Martel, René-Daniel Dubois, Philippe Baylauq, Martine Chartrand, Marlene Millar, Penny Pattison, Martin Landry, Sally Bochner, Marquise Tessier, Rob Lutes, Anne Marcotte – Aéroports de Montréal"
+                },
+                {
+                    "title" : "Research Cinematography",
+                    "body"  : "Claudine Sauvé\nBill Kerrigan\nAlain Julfayan\nMarlene Millar"
+                },
+                {
+                    "title" : "Assistant Camera",
+                    "body"  : "Eric Bensoussan"
+                },
+                {
+                    "title" : "A very special thanks to ",
+                    "body"  : "Ferial Balass"
+                },
+                {
+                    "title" : "Executive Producer",
+                    "body"  : "Ravida Din"
+                },
+                {
+                    "title" : "A National Film Board of Canada"
+                },
+                {
+                    "title" : "Production",
+                    "body"  : "www.nfb.ca"
+                },
+                {
+                    "title" : "(c) 2007 National Film Board of Canada"
                 }
             ],
             "distribution" : "<h2>NFB-ONF</h2>National Film Board of Canada/Office national du film du Canada\nm.keigher@nfb.ca\n<a href='http://www2.nfb.ca/boutique/XXNFBibeWelcome.jsp?lr_ecode=collection&go=item&language=US&formatid=53083'>online store</a>"   
@@ -1136,8 +1386,13 @@
             "backgroundVideos" : ["parting_web.webm","parting_web.ogv","parting_web.mp4"],
             "gallery" : "72157631597946580",
             "synopsis": {
-                "body" : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye."
-            },            
+                "en" : {
+                    "body" : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye."
+                },
+                "fr" : {
+                    "body" : "Un jeune se fait accompagner en ambulance par ses amis. Malgré son état critique, il est attiré par l’ambulancier et essaye de le séduire à la  grande surprise de tout le monde. Mais une fois à l’hôpital tous réalisent qu’ils ont risqué de manquer le moment de se dire adieu."
+                }
+            },
             "credits"   : [
                 {
                     "title" : "Writer, Producer, Director",
@@ -1213,198 +1468,406 @@
             ],
             "extra"     : "",
             "library"   : "",
-            "credits"   : [
-                {
-                    "title" : "a film by / un film de",
-                    "body"  : "Joe Balass"
-                },
-                {
-                    "title" : "with / avec",
-                    "body"  : "Ariel Ifergan\nBenoit St-Hilaire\nGeneviève Alarie\nYann Vallières\nAnka Rouleau\nFred-Eric Salvail"
-                },
-                {
-                    "title" : "Directrice photo",
-                    "body"  : "Claudine Sauvé"
-                },
-                {
-                    "title" : "Directrice artistique",
-                    "body"  : "Mélanie Truchon"
-                },
-                {
-                    "title" : "Costumes",
-                    "body"  : "Lou Beauchesne"
-                },
-                {
-                    "title" : "Montage",
-                    "body"  : "Marlene Millar\nJoe Balass"
-                },
-                {
-                    "title" : "Conception sonore",
-                    "body"  : "Martin Hurtubise"
-                },
-                {
-                    "title" : "Producteur délégué",
-                    "body"  : "Nicolas Comeau"
-                },
-                {
-                    "title" : "Scénariste/réalisateur/producteur",
-                    "body"  : "Joe Balass"
-                },
-                {
-                    "title" : "produit avec la participation ",
-                    "body"  : "financière de\nSODEC\n\nSociété de développement des entreprises culturelles – Québec\n\nQUÉBEC\n\nCrédit d’impôt cinéma et télévision – Gestion SODEC"
-                },
-                {
-                    "title" : "avec l'aide de",
-                    "body"  : "Aide à la production indépendante (ACIC) – Office national du film du Canada (ONF-NFB)\n\nCrédit d'impôt pour production cinématographique ou magnétoscopique canadienne\n\nCANADA"
-                },
-                {
-                    "title" : "Consultant créatif",
-                    "body"  : "Giampaolo Marzi"
-                },
-                {
-                    "title" : "1er Assistant réalisateurs",
-                    "body"  : "Sébastien Pelland\n\nRobert Morais"
-                },
-                {
-                    "title" : "3e Assistant réalisateur",
-                    "body"  : "Ariane Côté-Chénier"
-                },
-                {
-                    "title" : "Scripte",
-                    "body"  : "Fanny Bellavance"
-                },
-                {
-                    "title" : "1er Assistant Caméra",
-                    "body"  : "Eric Bensoussan"
-                },
-                {
-                    "title" : "Photographe de plateau",
-                    "body"  : "Jules de Niverville"
-                },
-                {
-                    "title" : "Régisseur",
-                    "body"  : "Michel Pelletier"
-                },
-                {
-                    "title" : "Assistants de production",
-                    "body"  : "Maxime Bélanger-Rhéaume\nMartin Bouchard"
-                },
-                {
-                    "title" : "Chauffeur",
-                    "body"  : "Jonathan Giroux"
-                },
-                {
-                    "title" : "Décoratrice",
-                    "body"  : "Ina Lopez"
-                },
-                {
-                    "title" : "Maquilleuses",
-                    "body"  : "Marie-Claude Langevin\nMarie-Eve F.Fleurant"
-                },
-                {
-                    "title" : "Coiffeur",
-                    "body"  : "Philippe Athlan"
-                },
-                {
-                    "title" : "Best boy électriciens",
-                    "body"  : "Yves Arseneau\nChristophe Taets"
-                },
-                {
-                    "title" : "Électricien",
-                    "body"  : "Dany Bourque"
-                },
-                {
-                    "title" : "Chef machiniste",
-                    "body"  : "Patrice Dagenais"
-                },
-                {
-                    "title" : "Best boy machiniste",
-                    "body"  : "Jocelyn Beaulac"
-                },
-                {
-                    "title" : "Preneur de son",
-                    "body"  : "Juan Gutierra"
-                },
-                {
-                    "title" : "Perchiste",
-                    "body"  : "Philippe Lavigne"
-                },
-                {
-                    "title" : "Cantinier",
-                    "body"  : "Victoire Bessette"
-                },
-                {
-                    "title" : "Traductions",
-                    "body"  : "Normand Boucher"
-                },
-                {
-                    "title" : "Merci spécial à:",
-                    "body"  : "Marie-Alexandre Kérouac\nPaul Gillot\nVéronique Duquette\nColin Lavigne\nDaniel Vachon\nDavid Hatin\nGuillaume Couture"
-                },
-                {
-                    "title" : "Générique",
-                    "body"  : "Vincent Scotti"
-                },
-                {
-                    "title" : "Online",
-                    "body"  : "Denis Gathelier"
-                },
-                {
-                    "title" : "Mixeur",
-                    "body"  : "Shelley Craig"
-                },
-                {
-                    "title" : "Anwar: Ariel Ifergan"
-                },
-                {
-                    "title" : "Marc: Benoit St-Hilaire"
-                },
-                {
-                    "title" : "Paula: Geneviève Alarie"
-                },
-                {
-                    "title" : "Ambulancier: Yann Vallières"
-                },
-                {
-                    "title" : "Docteure:  Anka Rouleau"
-                },
-                {
-                    "title" : "2e Ambulancier:  Fred-Eric Salvail"
-                },
-                {
-                    "title" : "Infirmières: Cora  Lebuis"
-                },
-                {
-                    "title" : "Geneviève Sabourin"
-                },
-                {
-                    "title" : "Patients, visiteurs et préposes:",
-                    "body"  : "Hazgary Colin, Dominic Lorange, Jason Van Asten, Isabelle D. Thompson, Holden Wong, Sylvain Lavoie, Yan Galarneau, Gisèle Poirier, Robert Robitaille, Denis Martel, Sophie Bergeron, Catherine Servedio, Martin Beausoleil, Julie Bergamin, Mario Geoffrey,\nDuy Tan Vo Van, Garry S. Mailloux, Céline Jacques, Réal Martin, Lina Champagne"
-                },
-                {
-                    "title" : "Consultants médical",
-                    "body"  : "Erick Hovington\nSerge Veilleux"
-                },
-                {
-                    "title" : "Un grand merci à:",
-                    "body"  : "Céline Sénéchal, Laurent Gagliardi, Pierre Lapointe, Marie-Christine Guite,\nClaude Chevalier, Pascal Maeder, Denis Langlois, Bertrand Lachance, Rodrigue Jean,\nMartin Landry, Etienne Desrosiers, Carl Trahan, Joe Antaki, Ramona Ramlochand,\nFrancois Delisle, Marc Gadoury, Jeffrey Hall, Micheal Weiss, Christine Falco,\nMathieu Bourguet, Isabelle Côté, Benoit Gauthier, 1976 productions,\nAgence François Legault, Agence Laurence Ross,\nAgence Jean-Jacques Desjardins, Agence artistique Marie-Hélène Bibeau,\nCast of Thousands, Agence  Ginette Achim Inc., Adam St-Coeur agent d'artistes,\nAgence Chaplin, Agence Scoop, La fabrique d’image, Centre du Sud de Lanaudière, Ambulances 0911 INC.. Atelier Alain Cadieux, Boscus, Cinépool, Kodak, PRIM, ATOPIA"
-                },
-                {
-                    "title" : "Musique",
-                    "body"  : "Starlite Walk\nde Christopher Goze\nIntermède Pik Musik"
-                },
-                {
-                    "title" : "AQTISMembre de l’APFTQUnion des Artistes"
-                },
-                {
-                    "title" : "DOLBY\nDIGITAL",
-                    "body"  : "Dans certaines salles"
-                },
-                {
-                    "body" : "Tous les personnages, noms et événements de ce film sont fictifs.\nToute ressemblance avec des événements et / ou des personnes réels\nne serait que pure coïncidence ou l’effet du hasard.\n\n© Les productions Compass inc. 2006\n\nTous droits réservés/All rights reserved."
-                }
-            ],
+            "credits"   : {
+                "en" : [
+                    {
+                        "title" : "a film by / un film de",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "with / avec",
+                        "body"  : "Ariel Ifergan\nBenoit St-Hilaire\nGeneviève Alarie\nYann Vallières\nAnka Rouleau\nFred-Eric Salvail"
+                    },
+                    {
+                        "title" : "Directrice photo",
+                        "body"  : "Claudine Sauvé"
+                    },
+                    {
+                        "title" : "Directrice artistique",
+                        "body"  : "Mélanie Truchon"
+                    },
+                    {
+                        "title" : "Costumes",
+                        "body"  : "Lou Beauchesne"
+                    },
+                    {
+                        "title" : "Montage",
+                        "body"  : "Marlene Millar\nJoe Balass"
+                    },
+                    {
+                        "title" : "Conception sonore",
+                        "body"  : "Martin Hurtubise"
+                    },
+                    {
+                        "title" : "Producteur délégué",
+                        "body"  : "Nicolas Comeau"
+                    },
+                    {
+                        "title" : "Scénariste/réalisateur/producteur",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "produit avec la participation ",
+                        "body"  : "financière de\nSODEC\n\nSociété de développement des entreprises culturelles – Québec\n\nQUÉBEC\n\nCrédit d’impôt cinéma et télévision – Gestion SODEC"
+                    },
+                    {
+                        "title" : "avec l'aide de",
+                        "body"  : "Aide à la production indépendante (ACIC) – Office national du film du Canada (ONF-NFB)\n\nCrédit d'impôt pour production cinématographique ou magnétoscopique canadienne\n\nCANADA"
+                    },
+                    {
+                        "title" : "Consultant créatif",
+                        "body"  : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "1er Assistant réalisateurs",
+                        "body"  : "Sébastien Pelland\n\nRobert Morais"
+                    },
+                    {
+                        "title" : "3e Assistant réalisateur",
+                        "body"  : "Ariane Côté-Chénier"
+                    },
+                    {
+                        "title" : "Scripte",
+                        "body"  : "Fanny Bellavance"
+                    },
+                    {
+                        "title" : "1er Assistant Caméra",
+                        "body"  : "Eric Bensoussan"
+                    },
+                    {
+                        "title" : "Photographe de plateau",
+                        "body"  : "Jules de Niverville"
+                    },
+                    {
+                        "title" : "Régisseur",
+                        "body"  : "Michel Pelletier"
+                    },
+                    {
+                        "title" : "Assistants de production",
+                        "body"  : "Maxime Bélanger-Rhéaume\nMartin Bouchard"
+                    },
+                    {
+                        "title" : "Chauffeur",
+                        "body"  : "Jonathan Giroux"
+                    },
+                    {
+                        "title" : "Décoratrice",
+                        "body"  : "Ina Lopez"
+                    },
+                    {
+                        "title" : "Maquilleuses",
+                        "body"  : "Marie-Claude Langevin\nMarie-Eve F.Fleurant"
+                    },
+                    {
+                        "title" : "Coiffeur",
+                        "body"  : "Philippe Athlan"
+                    },
+                    {
+                        "title" : "Best boy électriciens",
+                        "body"  : "Yves Arseneau\nChristophe Taets"
+                    },
+                    {
+                        "title" : "Électricien",
+                        "body"  : "Dany Bourque"
+                    },
+                    {
+                        "title" : "Chef machiniste",
+                        "body"  : "Patrice Dagenais"
+                    },
+                    {
+                        "title" : "Best boy machiniste",
+                        "body"  : "Jocelyn Beaulac"
+                    },
+                    {
+                        "title" : "Preneur de son",
+                        "body"  : "Juan Gutierra"
+                    },
+                    {
+                        "title" : "Perchiste",
+                        "body"  : "Philippe Lavigne"
+                    },
+                    {
+                        "title" : "Cantinier",
+                        "body"  : "Victoire Bessette"
+                    },
+                    {
+                        "title" : "Traductions",
+                        "body"  : "Normand Boucher"
+                    },
+                    {
+                        "title" : "Merci spécial à:",
+                        "body"  : "Marie-Alexandre Kérouac\nPaul Gillot\nVéronique Duquette\nColin Lavigne\nDaniel Vachon\nDavid Hatin\nGuillaume Couture"
+                    },
+                    {
+                        "title" : "Générique",
+                        "body"  : "Vincent Scotti"
+                    },
+                    {
+                        "title" : "Online",
+                        "body"  : "Denis Gathelier"
+                    },
+                    {
+                        "title" : "Mixeur",
+                        "body"  : "Shelley Craig"
+                    },
+                    {
+                        "title" : "Anwar: Ariel Ifergan"
+                    },
+                    {
+                        "title" : "Marc: Benoit St-Hilaire"
+                    },
+                    {
+                        "title" : "Paula: Geneviève Alarie"
+                    },
+                    {
+                        "title" : "Ambulancier: Yann Vallières"
+                    },
+                    {
+                        "title" : "Docteure:  Anka Rouleau"
+                    },
+                    {
+                        "title" : "2e Ambulancier:  Fred-Eric Salvail"
+                    },
+                    {
+                        "title" : "Infirmières: Cora  Lebuis"
+                    },
+                    {
+                        "title" : "Geneviève Sabourin"
+                    },
+                    {
+                        "title" : "Patients, visiteurs et préposes:",
+                        "body"  : "Hazgary Colin, Dominic Lorange, Jason Van Asten, Isabelle D. Thompson, Holden Wong, Sylvain Lavoie, Yan Galarneau, Gisèle Poirier, Robert Robitaille, Denis Martel, Sophie Bergeron, Catherine Servedio, Martin Beausoleil, Julie Bergamin, Mario Geoffrey,\nDuy Tan Vo Van, Garry S. Mailloux, Céline Jacques, Réal Martin, Lina Champagne"
+                    },
+                    {
+                        "title" : "Consultants médical",
+                        "body"  : "Erick Hovington\nSerge Veilleux"
+                    },
+                    {
+                        "title" : "Un grand merci à:",
+                        "body"  : "Céline Sénéchal, Laurent Gagliardi, Pierre Lapointe, Marie-Christine Guite,\nClaude Chevalier, Pascal Maeder, Denis Langlois, Bertrand Lachance, Rodrigue Jean,\nMartin Landry, Etienne Desrosiers, Carl Trahan, Joe Antaki, Ramona Ramlochand,\nFrancois Delisle, Marc Gadoury, Jeffrey Hall, Micheal Weiss, Christine Falco,\nMathieu Bourguet, Isabelle Côté, Benoit Gauthier, 1976 productions,\nAgence François Legault, Agence Laurence Ross,\nAgence Jean-Jacques Desjardins, Agence artistique Marie-Hélène Bibeau,\nCast of Thousands, Agence  Ginette Achim Inc., Adam St-Coeur agent d'artistes,\nAgence Chaplin, Agence Scoop, La fabrique d’image, Centre du Sud de Lanaudière, Ambulances 0911 INC.. Atelier Alain Cadieux, Boscus, Cinépool, Kodak, PRIM, ATOPIA"
+                    },
+                    {
+                        "title" : "Musique",
+                        "body"  : "Starlite Walk\nde Christopher Goze\nIntermède Pik Musik"
+                    },
+                    {
+                        "title" : "AQTISMembre de l’APFTQUnion des Artistes"
+                    },
+                    {
+                        "title" : "DOLBY\nDIGITAL",
+                        "body"  : "Dans certaines salles"
+                    },
+                    {
+                        "body" : "Tous les personnages, noms et événements de ce film sont fictifs.\nToute ressemblance avec des événements et / ou des personnes réels\nne serait que pure coïncidence ou l’effet du hasard.\n\n© Les productions Compass inc. 2006\n\nTous droits réservés/All rights reserved."
+                    }
+                ],
+                "fr" : [
+                    {
+                        "title" : "Les productions Compass présente"
+                    },
+                    {
+                        "title" : "Derniers mots"
+                    },
+                    {
+                        "title" : "un film de Joe Balass"
+                    },
+                    {
+                        "title" : "avec",
+                        "body"  : "Ariel Ifergan\nBenoit St-Hilaire\nGeneviève Alarie\nYann Vallières\nAnka Rouleau\nFred-Eric Salvail"
+                    },
+                    {
+                        "title" : "Directrice photo",
+                        "body"  : "Claudine Sauvé"
+                    },
+                    {
+                        "title" : "Directrice artistique",
+                        "body"  : "Mélanie Truchon"
+                    },
+                    {
+                        "title" : "Costumes",
+                        "body"  : "Lou Beauchesne"
+                    },
+                    {
+                        "title" : "Montage",
+                        "body"  : "Marlene Millar\nJoe Balass"
+                    },
+                    {
+                        "title" : "Conception sonore",
+                        "body"  : "Martin Hurtubise"
+                    },
+                    {
+                        "title" : "Producteur délégué",
+                        "body"  : "Nicolas Comeau"
+                    },
+                    {
+                        "title" : "Scénariste/réalisateur/producteur",
+                        "body"  : "Joe Balass"
+                    },
+                    {
+                        "title" : "produit avec la participation financière de",
+                        "body"  : "SODEC\nSociété de développement des entreprises culturelles – Québec\n\nQUÉBEC\nCrédit d’impôt cinéma et télévision – Gestion SODEC"
+                    },
+                    {
+                        "title" : "avec l'aide de",
+                        "body"  : "Aide à la production indépendante (ACIC) – Office national du film du Canada (ONF-NFB)\n\nCrédit d'impôt pour production cinématographique ou magnétoscopique canadienne\n\nCANADA"
+                    },
+                    {
+                        "title" : "Consultant créatif",
+                        "body"  : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "1er Assistant réalisateurs",
+                        "body"  : "Sébastien Pelland\nRobert Morais"
+                    },
+                    {
+                        "title" : "3e Assistant réalisateur",
+                        "body"  : "Ariane Côté-Chénier"
+                    },
+                    {
+                        "title" : "Scripte",
+                        "body"  : "Fanny Bellavance"
+                    },
+                    {
+                        "title" : "1er Assistant Caméra",
+                        "body"  : "Eric Bensoussan"
+                    },
+                    {
+                        "title" : "Photographe de plateau",
+                        "body"  : "Jules de Niverville"
+                    },
+                    {
+                        "title" : "Régisseur",
+                        "body"  : "Michel Pelletier"
+                    },
+                    {
+                        "title" : "Assistants de production",
+                        "body"  : "Maxime Bélanger-Rhéaume\nMartin Bouchard"
+                    },
+                    {
+                        "title" : "Chauffeur",
+                        "body"  : "Jonathan Giroux"
+                    },
+                    {
+                        "title" : "Décoratrice",
+                        "body"  : "Ina Lopez"
+                    },
+                    {
+                        "title" : "Maquilleuses",
+                        "body"  : "Marie-Claude Langevin\nMarie-Eve F.Fleurant"
+                    },
+                    {
+                        "title" : "Coiffeur",
+                        "body"  : "Philippe Athlan"
+                    },
+                    {
+                        "title" : "Best boy électriciens",
+                        "body"  : "Yves Arseneau\nChristophe Taets"
+                    },
+                    {
+                        "title" : "Électricien",
+                        "body"  : "Dany Bourque"
+                    },
+                    {
+                        "title" : "Chef machiniste",
+                        "body"  : "Patrice Dagenais"
+                    },
+                    {
+                        "title" : "Best boy machiniste",
+                        "body"  : "Jocelyn Beaulac"
+                    },
+                    {
+                        "title" : "Preneur de son",
+                        "body"  : "Juan Gutierra"
+                    },
+                    {
+                        "title" : "Perchiste",
+                        "body"  : "Philippe Lavigne"
+                    },
+                    {
+                        "title" : "Cantinier",
+                        "body"  : "Victoire Bessette"
+                    },
+                    {
+                        "title" : "Traductions",
+                        "body"  : "Normand Boucher"
+                    },
+                    {
+                        "title" : "Merci spécial à:",
+                        "body"  : "Marie-Alexandre Kérouac\nPaul Gillot\nVéronique Duquette\nColin Lavigne\nDaniel Vachon\nDavid Hatin\nGuillaume Couture"
+                    },
+                    {
+                        "title" : "Anwar",
+                        "body"  : "Ariel Ifergan"
+                    },
+                    {
+                        "title" : "Marc",
+                        "body"  : "Benoit St-Hilaire"
+                    },
+                    {
+                        "title" : "Paula",
+                        "body"  : "Geneviève Alarie"
+                    },
+                    {
+                        "title" : "Ambulancier",
+                        "body"  : "Yann Vallières"
+                    },
+                    {
+                        "title" : "Docteure",
+                        "body"  : "Anka Rouleau"
+                    },
+                    {
+                        "title" : "2e Ambulancier",
+                        "body"  : "Fred-Eric Salvail"
+                    },
+                    {
+                        "title" : "Infirmières",
+                        "body"  : "Cora  Lebuis\nGeneviève Sabourin"
+                    },
+                    {
+                        "title" : "Patients, visiteurs et préposes:",
+                        "body"  : "Hazgary Colin, Dominic Lorange, Jason Van Asten, Isabelle D. Thompson, Holden Wong, Sylvain Lavoie, Yan Galarneau, Gisèle Poirier, Robert Robitaille, Denis Martel, Sophie Bergeron, Catherine Servedio, Martin Beausoleil, Julie Bergamin, Mario Geoffrey, Duy Tan Vo Van, Garry S. Mailloux, Céline Jacques, Réal Martin, Lina Champagne"
+                    },
+                    {
+                        "title" : "Consultants médical",
+                        "body"  : "Erick Hovington\nSerge  Veilleux"
+                    },
+                    {
+                        "title" : "Un grand merci à:",
+                        "body"  : "Céline Sénéchal, Laurent Gagliardi, Pierre Lapointe, Marie-Christine Guite, Claude Chevalier, Pascal Maeder, Denis Langlois, Bertrand Lachance, Rodrigue Jean, Vincent Scotti, \nMartin Landry, Etienne Desrosiers, Carl Trahan, Joe Antaki, Ramona Ramlochand, Francois Delisle, Marc Gadoury, Jeffrey Hall, Micheal Weiss, Christine Falco, Mathieu Bourguet, Isabelle Côté, Benoit Gauthier, 1976 productions, Agence François Legault, Agence Laurence Ross, \nAgence Jean-Jacques Desjardins, Agence artistique Marie-Hélène Bibeau, Cast of Thousands, Agence  Ginette Achim Inc., Adam St-Coeur agent d'artistes, Agence Chaplin, Agence Scoop, La fabrique d’image, Centre du Sud de Lanaudière, Ambulances 0911 INC.. \nAtelier Alain Cadieux, Boscus, Cinépool, Kodak, PRIM"
+                    },
+                    {
+                        "title" : "Musique",
+                        "body"  : "Starlite Walk\nde Christopher Goze\nAbaco /Intermède Media Inc."
+                    },
+                    {
+                        "title" : "AQTIS"
+                    },
+                    {
+                        "title" : "Membre de l’APFTQ"
+                    },
+                    {
+                        "title" : "Union des Artistes"
+                    },
+                    {
+                        "title" : "DOLBY DIGITAL dans certaines salles"
+                    },
+                    {
+                        "title" : "ATOPIA DISTRIBUTION"
+                    },
+                    {
+                        "title" : "Tous les personnages, noms et événements de ce film sont fictifs.\nToute ressemblance avec des événements et / ou des personnes réels \nne serait que pure coïncidence ou l’effet du hasard."
+                    },
+                    {
+                        "title" : "© Les productions Compass inc. 2006"
+                    },
+                    {
+                        "title" : "Tous droits réservés."
+                    },
+                    {
+                        "title" : "www.compassproductions.ca"
+                    }
+                ]
+            },
             "distribution" : "<h2>Vidéographe</h2>Denis Vaillancourt\nChargé de projets / Distribution\n\nVIDÉOGRAPHE\ndenisvaillancourt@videographe.qc.ca\n<a href='www.videographe.qc.ca' target='_blank'>www.videographe.qc.ca</a>\n<a href='www.vitheque.com' target='_blank'>www.vitheque.com</a>"
         }
     ]

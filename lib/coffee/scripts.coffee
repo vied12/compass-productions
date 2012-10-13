@@ -580,7 +580,7 @@ class portfolio.Project extends Widget
 			data            : null
 			externalVideo   : false
 		}
-		@CATEGORIES    = ["synopsis", "videos", "gallery", "screenings", "credits", "press", "links", "distribution"]	
+		@CATEGORIES    = ["synopsis", "videos", "gallery", "screenings", "credits", "press", "links", "distribution", "facebook"]
 		@flickrGallery = null
 		@videoPlayer   = null
 		@downloader    = null
@@ -675,12 +675,14 @@ class portfolio.Project extends Widget
 						nui.append(synopsis_nui)
 						readmoreLink = nui.find('.readmore')
 						body_nui=nui.find('.actual .body')	
-						body_nui.html(body_nui.html().replace(/\n/g, "<br />"))					
+						body_nui.html(body_nui.html().replace(/\n/g, "<br />"))
 						# if teaser is in json, teaser is displayed with readmore link,  
-						if value.teaser?	
+						if value.teaser?
 							body_nui.css({
 								display:'none',	
-							})				
+							})
+							teaser = nui.find(".actual .teaser")
+							teaser.html(teaser.html().replace(/\n/g, "<br />"))
 							readmoreLink.removeClass "hidden"	
 							body_nui.removeClass "readmoreFx"
 							$('body').bind('readmore.init', => 
@@ -722,9 +724,10 @@ class portfolio.Project extends Widget
 						@flickrGallery.setPhotoSet(project.gallery)
 					when "press"
 						nui.find(".actual").remove()
-						for press in value.press
-							press_nui = nui.find('.template').cloneTemplate(press)
-							nui.append(press_nui)
+						if value.press?
+							for press in value.press
+								press_nui = nui.find('.template').cloneTemplate(press)
+								nui.append(press_nui)
 						presskit = nui.find(".presskit")
 						if value.presskit?
 							presskit.removeClass("hidden")
@@ -911,6 +914,10 @@ class portfolio.MediaPlayer extends Widget
 		@uis.playerContainer.removeClass "hidden"
 		@cache.isShown = true
 		$(".FooterPanel").addClass("hidden")
+		# back button
+		$(".Page.links .back").removeClass("hidden").click (e) =>
+			this.hide()
+			e.preventDefault()
 		$("body").trigger("hidePanel")
 		$('body').trigger("darkness", 0.7)
 		@uis.next.removeClass("hidden")
@@ -920,6 +927,7 @@ class portfolio.MediaPlayer extends Widget
 
 	hide: =>
 		super
+		$(".Page.links .back").removeClass("hidden")
 		$('body').trigger "restoreBackground"
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"

@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2012-10-08 16:41+0200\n"
-=======
-"POT-Creation-Date: 2012-10-08 14:19+0200\n"
->>>>>>> 037251893a45e4d57a715f8eb3222350d708ed78
+"POT-Creation-Date: 2012-10-13 13:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,50 +51,55 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:18
-#: lib/shpaml/widgets/navigation.html.shpaml:35
+#: lib/shpaml/widgets/navigation.html.shpaml:14
+#: lib/shpaml/widgets/navigation.html.shpaml:31
 msgid "JOY!"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:20
+#: lib/shpaml/widgets/navigation.html.shpaml:16
 msgid "Baghdad twist"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:22
+#: lib/shpaml/widgets/navigation.html.shpaml:18
 msgid "The devil in the holy water"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:24
+#: lib/shpaml/widgets/navigation.html.shpaml:20
 msgid "Nana, George & me"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:26
+#: lib/shpaml/widgets/navigation.html.shpaml:22
 msgid "Parting words"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:28
+#: lib/shpaml/widgets/navigation.html.shpaml:24
 msgid "The Length of the Alphabet"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:33
+#: lib/shpaml/widgets/navigation.html.shpaml:29
 msgid "In theaters soon"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:37
+#: lib/shpaml/widgets/navigation.html.shpaml:33
 msgid "WATCH THE TRAILER"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:42
+#: lib/shpaml/widgets/navigation.html.shpaml:38
 msgid "Open"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:43
-#: lib/shpaml/widgets/panel.html.shpaml:111
+#: lib/shpaml/widgets/navigation.html.shpaml:39
+#: lib/shpaml/widgets/panel.html.shpaml:117
 msgid "Close"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:46
+#: lib/shpaml/widgets/navigation.html.shpaml:42
 msgid "Home"
+msgstr ""
+
+#: lib/shpaml/widgets/navigation.html.shpaml:44
+#: lib/shpaml/widgets/panel.html.shpaml:111
+msgid "Back"
 msgstr ""
 
 #: lib/shpaml/widgets/panel.html.shpaml:8
@@ -137,48 +138,52 @@ msgstr ""
 msgid "distribution"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:61
+#: lib/shpaml/widgets/panel.html.shpaml:28
+msgid "facebook"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:35
+msgid "Read more"
+msgstr ""
+
+#: lib/shpaml/widgets/panel.html.shpaml:64
 msgid "press kit"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:88
-#: lib/shpaml/widgets/panel.html.shpaml:98
+#: lib/shpaml/widgets/panel.html.shpaml:91
+#: lib/shpaml/widgets/panel.html.shpaml:102
 msgid "Hello there,"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:90
+#: lib/shpaml/widgets/panel.html.shpaml:93
 msgid "Would you like to get in touch with Compass Productions?"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:92
+#: lib/shpaml/widgets/panel.html.shpaml:95
 msgid "You may reach us at:"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:95
+#: lib/shpaml/widgets/panel.html.shpaml:99
 msgid "or use our contact form"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:100
+#: lib/shpaml/widgets/panel.html.shpaml:104
 msgid "Would you like to get in touch with Compass Productions"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:105
+#: lib/shpaml/widgets/panel.html.shpaml:109
 msgid "Write us a few lines..."
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:107
-msgid "Back"
-msgstr ""
-
-#: lib/shpaml/widgets/panel.html.shpaml:108
+#: lib/shpaml/widgets/panel.html.shpaml:112
 msgid "Send"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:109
+#: lib/shpaml/widgets/panel.html.shpaml:113
 msgid "Thank you"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:110
+#: lib/shpaml/widgets/panel.html.shpaml:114
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"

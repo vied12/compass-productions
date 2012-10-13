@@ -23,13 +23,16 @@
 						a.internal href="#+cat=links" data-name=links | {{ gettext("links") }}
 					li.distribution.hidden
 						a.internal href="#+cat=distribution" data-name=distribution | {{ gettext("distribution") }}
+					li.facebook.hidden
+						{# FIXME: hard coded #}
+						a href="http://www.facebook.com/joy.portrait.of.a.nun" data-name=facebook | {{ gettext("facebook") }}
 				.contents
 					.content.synopsis  data-name="synopsis"
 						.wrapper.maxWidth
 							.synopsis.template
 								p.teaser.fat.out | {##}								
 								p.body.fat.out | {##}	
-								a.readmore.button.out | Read more
+								a.readmore.button.out | {{ gettext("Read more") }}
 					.content.gallery.widget data-name="gallery" data-widget=portfolio.FlickrGallery
 						.wrapper
 							ul.photos.mediaGallery

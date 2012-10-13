@@ -40,3 +40,5 @@
 					> img src="/static/images/menu.png"
 			li.home
 				a href=#menu=main | {{ gettext("Home") }}
+			li.back.hidden
+				a href=# | {{ gettext("Back") }}

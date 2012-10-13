@@ -142,19 +142,19 @@ body:
 			font-family: $ALTERNATE_FONT
 			font-weight : bold
 			font-size :  0.9em
+			left: 63px
 		
 			.wrapper:
 				max-width : $MAX_WIDTH
 				left      : 16px
 				z-index   : 10
 			ul:
-				position  : absolute
+				position  : relative
 				bottom    : 3px
-				left      : 70px
 				padding   : 0
 
 			li:
-				display     : block
+				display     : inline-block
 				margin      : 0 10px
 				padding     : 0
 				a:
