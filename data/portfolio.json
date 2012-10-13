@@ -23,7 +23,7 @@
         {
             "key"       : "devil", 
             "title"     : "The devil in the holy water",
-            "backgroundImage" : "bg1.jpg",
+            "backgroundImage" : "Devil_fuck_insect.jpeg",
             "backgroundVideos" : ["Devilfuck_insect2.mp4","Devilfuck_insect2.webm","Devilfuck_insect2.ogv"],
             "synopsis"  : {
                 "en" : {
@@ -508,7 +508,7 @@
         {
             "key"       : "nana", 
             "title"     : "Nana, George and me",
-            "backgroundImage" : "bg2.jpg",
+            "backgroundImage" : "ngm_web_home.jpeg",
             "backgroundVideos" : ["ngm_web_home.webm","ngm_web_home.ogv","ngm_web_home.mp4"],
             "synopsis"  : {
                     "en" : {
@@ -1376,7 +1376,7 @@
         {
             "key"       : "parting",
             "title"     : "Parting Words",
-            "backgroundImage" : "bg2.jpg", 
+            "backgroundImage" : "partingweb.jpeg", 
             "backgroundVideos" : ["parting_web.webm","parting_web.ogv","parting_web.mp4"],
             "gallery" : "72157631597946580",
             "synopsis": {

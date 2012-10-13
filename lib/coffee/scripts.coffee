@@ -257,7 +257,7 @@ class portfolio.Background extends Widget
 			source.attr("type", "video/#{type}")
 			nui.append(source)
 		if @CACHE.image != null
-		 	nui.attr("poster", imageUrl+@CACHE.image)		 	
+		 	nui.attr("poster", @CONFIG.imageUrl+@CACHE.image)		 	
 		#wait until video is playable before swap with old video
 		nui.on("canplay", =>
 			if not @CACHE.suspended
@@ -270,6 +270,7 @@ class portfolio.Background extends Widget
 		@ui.find('video.actual').addClass "hidden"
 		@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
 		@uis.image.removeClass "hidden"
+		@CACHE.image=filename
 		this.relayout(@uis.image)
 
 	darkness : (darklevel)=>
@@ -633,6 +634,7 @@ class portfolio.Project extends Widget
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
 		if project_obj.backgroundVideos
+			$('body').trigger("setImage", project_obj.backgroundImage)				
 			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
 		else if project_obj.backgroundImage
 			$('body').trigger("setImage", project_obj.backgroundImage)				
