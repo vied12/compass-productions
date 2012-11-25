@@ -115,7 +115,6 @@ body:
 			top        : 40px
 			font-size  : 1.4em
 			left       : 10px
-			width      : 330px
 			h2:
 				padding: 50px 0px
 				span:

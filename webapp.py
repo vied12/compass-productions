@@ -9,7 +9,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 30-Jun-2012
-# Last mod : 13-Oct-2012
+# Last mod : 25-Nov-2012
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
@@ -52,9 +52,13 @@ def data():
 								data["works"][work_index][key] = work[key][app.config["LANGUAGES"][0]]
 			# add some infos for videos
 			for work_index, work in enumerate(data.get("works", tuple())):
-				for video_index, video in enumerate(work.get("videos", tuple())):
+				videos = work.get("videos", tuple())
+				if videos:
+					data["works"][work_index]["videos"] = []
+				for video in videos:
 					info = vimeo.Vimeo.getInfo(video)
-					data["works"][work_index]["videos"][video_index] = info
+					if info:
+						data["works"][work_index]["videos"].append(info)
 			# remove passwords from presskit
 			for work_index, work in enumerate(data.get("works", tuple())):
 				press = work.get("press")

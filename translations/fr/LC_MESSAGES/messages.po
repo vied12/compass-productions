@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-10-13 13:30+0200\n"
+"POT-Creation-Date: 2012-11-25 23:35+0100\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -79,8 +79,8 @@ msgid "The Length of the Alphabet"
 msgstr "La longueur de l’alphabet"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:29
-msgid "In theaters soon"
-msgstr "Bientôt à l'affiche"
+msgid "STARTING DECEMBER 14 - CINÉMA EXCENTRIS"
+msgstr "DÈS LE 14 DÉCEMBRE - CINÉMA EXCENTRIS"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:33
 msgid "WATCH THE TRAILER"
@@ -192,4 +192,7 @@ msgid ""
 msgstr ""
 "Il y a eu un problème, vérifiez si l'email donné est bien correct ou "
 "réessayez dans un petit moment"
+
+#~ msgid "In theaters soon"
+#~ msgstr "Bientôt à l'affiche"
 

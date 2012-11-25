@@ -786,6 +786,7 @@ class portfolio.MediaPlayer extends Widget
 			currentPage     : null
 			isShown         : false
 			currentItem     : null
+			isTrailer       : null
 		}
 
 		@ACTIONS = ["hide", "next", "previous"]
@@ -826,7 +827,12 @@ class portfolio.MediaPlayer extends Widget
 	setMedia: (index) =>
 		@cache.currentItem = parseInt(index)
 		URL.update({item:index}, true)
-		this.relayout()		
+		this.relayout()
+		if URL.get("trailer") == "true"
+			@uis.panel.opacity(0).css("z-index": 0)
+		else
+			@uis.panel.opacity(1).css("z-index": 11)
+
 
 	setData: (data) =>
 		params = URL.get()
@@ -942,6 +948,8 @@ class portfolio.MediaPlayer extends Widget
 		@uis.next.addClass("hidden")
 		@uis.previous.addClass("hidden")
 		$('body').trigger "activatelPanelToggler"
+		if URL.get("trailer") == "true"
+			URL.update({trailer:null, cat:"synopsis"})
 
 # -----------------------------------------------------------------------------
 #

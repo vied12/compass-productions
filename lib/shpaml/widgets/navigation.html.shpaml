@@ -26,10 +26,10 @@
 		.clear | {##}
 
 	.promo.hidden
-		{{ gettext("In theaters soon") }}
+		{{ gettext("STARTING DECEMBER 14 - CINÉMA EXCENTRIS") }}
 		h2
 			span | {{ gettext("JOY!") }}
-		a.button href=#page=project&project=joy&cat=videos&item=0
+		a.button href=#page=project&project=joy&cat=videos&item=0&trailer=true
 			span | {{ gettext("WATCH THE TRAILER") }}
 	.Page.links.alternate_text
 		ul
