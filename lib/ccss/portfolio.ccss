@@ -237,7 +237,7 @@ body:
 		.content:
 			position : relative
 			font-size : $SMALL_FONT_SIZE
-			line-height : $SMALL_LINE_HEIGHT
+			line-height : 1.7em
 			overflow : auto
 			opacity : 0
 			-webkit-transition-property : "opacity"
@@ -264,8 +264,9 @@ body:
 			&.show:
 				display : block
 		.tabs:
-			padding   	: $BASE_PADDING * 3 0
-			margin-top 	: -28px
+			padding   	 : $BASE_PADDING * 3 0
+			margin-top   : -27px
+			margin-right : 46px
 			li:
 				cursor  : pointer
 				display : inline-block
