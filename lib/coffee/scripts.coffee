@@ -57,7 +57,11 @@ class portfolio.Navigation extends Widget
 		@background    = Widget.ensureWidget(".Background")
 		
 		@background.darkness(0)
-		setTimeout(	(=> @background.image("index_bg.jpg")), 300)
+		@background.image("index_bg.jpg")
+		setTimeout(	(=> 
+			@background.image("")
+			@background.image("index_bg.jpg")			
+			), 1000)
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
