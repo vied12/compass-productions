@@ -56,7 +56,6 @@ class portfolio.Navigation extends Widget
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
 		@background.image("index_bg.jpg")
-		@background.darkness(0)
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
