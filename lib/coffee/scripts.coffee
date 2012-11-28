@@ -58,10 +58,12 @@ class portfolio.Navigation extends Widget
 		
 		@background.darkness(0)
 		@background.image("index_bg.jpg")
+		#little fix for  this bug : tiles showing background image under them, rest is black
 		setTimeout(	(=> 
 			@background.image("")
 			@background.image("index_bg.jpg")			
 			), 1000)
+		
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
