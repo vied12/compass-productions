@@ -681,14 +681,15 @@ class portfolio.Project extends Widget
 						synopsis_nui = nui.find('.template').cloneTemplate(value)						
 						nui.append(synopsis_nui)
 						readmoreLink = nui.find('.readmore')
-						body_nui=nui.find('.actual .body')	
+						body_nui     = nui.find('.actual .body')	
 						body_nui.html(body_nui.html().replace(/\n/g, "<br />"))
 						# if teaser is in json, teaser is displayed with readmore link,  
+						teaser = nui.find(".actual .teaser")
 						if value.teaser?
+							teaser.removeClass "hidden"
 							body_nui.css({
 								display:'none',	
 							})
-							teaser = nui.find(".actual .teaser")
 							teaser.html(teaser.html().replace(/\n/g, "<br />"))
 							readmoreLink.removeClass "hidden"	
 							body_nui.removeClass "readmoreFx"
@@ -708,7 +709,9 @@ class portfolio.Project extends Widget
 							)
 						# else body is displayed alone		
 						else
+							teaser.addClass 'hidden'
 							readmoreLink.addClass "hidden"
+
 							body_nui.css({
 								display:'block',	
 								opacity:1
@@ -1127,10 +1130,13 @@ class portfolio.Language extends Widget
 	toggle: =>
 		if @cache.language?
 			other_languages = Utils.clone(@OPTIONS.languages)
-			other_languages.splice(other_languages.indexOf(@cache.language), 1)
 			# exception for devil wich is in italian too
 			if URL.get('project') != 'devil'
 				other_languages.splice(other_languages.indexOf('it'), 1)
+				if URL.get('ln') == 'it'
+					URL.update({ln: 'en'}, true)
+					@cache.language = 'en'
+			other_languages.splice(other_languages.indexOf(@cache.language), 1)
 			@ui.find('.actual').remove()
 			for other_language in other_languages
 				nui = @uis.languageTmpl.cloneTemplate()
