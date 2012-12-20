@@ -657,8 +657,8 @@
             },
             "press"     : {
                 "presskit" : {
-                    "link"     : "/static/download/pressKitJOY.zip",
-                    "password" : "tomboy"
+                    "link"     : "/static/presskit-JOY.zip",
+                    "password" : "joy2012"
                 }
             },
             "gallery"   : "72157631598336173",
