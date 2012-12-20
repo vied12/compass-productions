@@ -213,6 +213,7 @@ body:
 		left     : 20px
 		a:
 			text-decoration 	: none
+			padding-right: 5px;
 
 .FooterPanel:
 	z-index             : 1

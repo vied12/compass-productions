@@ -1086,11 +1086,11 @@ class portfolio.Language extends Widget
 
 	constructor: ->
 		@UIS = {
-			language : "a.language"
+			languageTmpl : ".language.template"
 		}
 
 		@OPTIONS = {
-			languages : ['en', 'fr']
+			languages : ['en', 'fr', 'it']
 		}
 
 		@cache = {
@@ -1111,21 +1111,33 @@ class portfolio.Language extends Widget
 		$.ajax("/api/getLanguage", {success : this.setData})
 
 	setData: (data) =>
+
 		@cache.language = data
 		this.toggle()
 
 	onURLStateChanged: =>
 		if URL.hasChanged("ln") and URL.get("ln")
 			$.ajax("/api/setLanguage/"+URL.get("ln"), {dataType: 'json', success : this.actualize})
+		else
+			this.toggle()
 
 	actualize: =>
 		document.location.reload(true)
 
 	toggle: =>
 		if @cache.language?
-			other_language = Utils.clone(@OPTIONS.languages)
-			other_language.splice(other_language.indexOf(@cache.language), 1)
-			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
+			other_languages = Utils.clone(@OPTIONS.languages)
+			other_languages.splice(other_languages.indexOf(@cache.language), 1)
+			# exception for devil wich is in italian too
+			if URL.get('project') != 'devil'
+				other_languages.splice(other_languages.indexOf('it'), 1)
+			@ui.find('.actual').remove()
+			for other_language in other_languages
+				nui = @uis.languageTmpl.cloneTemplate()
+				nui.attr("href", "#+ln="+other_language)
+				nui.text(other_language)
+				@ui.append(nui)
+			URL.enableLinks(@ui)
 		else
 			this.getLanguage()
 
