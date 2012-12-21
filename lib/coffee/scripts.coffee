@@ -1134,7 +1134,7 @@ class portfolio.Language extends Widget
 			if URL.get('project') != 'devil'
 				other_languages.splice(other_languages.indexOf('it'), 1)
 				if URL.get('ln') == 'it'
-					URL.update({ln: 'en'}, true)
+					URL.update({ln: 'en'})
 					@cache.language = 'en'
 			other_languages.splice(other_languages.indexOf(@cache.language), 1)
 			@ui.find('.actual').remove()
