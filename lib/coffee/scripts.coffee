@@ -312,7 +312,7 @@ class portfolio.Background extends Widget
 		else
 			$('body').unbind 'mousemove'
 	resetClass: =>
-		@ui.removeClass
+		@ui.removeClass()
 		@ui.addClass "Background widget"
 
 
