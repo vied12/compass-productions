@@ -10,10 +10,10 @@
             "synopsis"  : 
                 {
                     "en" : {
-                        "body"  : "<strong>The Length of the Alphabet</strong> is a documentary featuring internationally renowned Canadian writer, Naïm Kattan. Born in Baghdad in 1928, he immigrated to Canada in 1954. After settling in Montreal in the early 50s, Kattan became a seminal figure forging change and helping to break down some of the ethnic and linguistic barriers between communities. Kattan is the author of almost forty works and he has won many awards and honours such as: the Order of Québec and the Order of Canada. Naïm Kattan still lives in Montreal and works as a writer, critic and teacher. His friends and associates include many artists, social, and political figures such as: André Gide, René Lévesque, André Laurendeau, Jacques Parizeau, Jacques Godbout and Fernand Ouellette. In addition to interviews, the film incorporates movie and photo archives to capture some of the poetry, nostalgia and dynamism that inspired Kattan after he moved to Québec.Through conversations with Kattan, an exploration of his archives, and interviews with some of his better known friends, we discover the fascinating biography and vision of this writer and living witness of the political and cultural evolution of Québec and Canada in the last century.\n\nA film by Joe Balass."
+                        "body"  : "<center>The Length of the Alphabet\na film by Joe Balass</center>\n<strong>The Length of the Alphabet</strong> is a documentary featuring internationally renowned Canadian writer, Naïm Kattan. Born in Baghdad in 1928, he immigrated to Canada in 1954. After settling in Montreal in the early 50s, Kattan became a seminal figure forging change and helping to break down some of the ethnic and linguistic barriers between communities. Kattan is the author of almost forty works and he has won many awards and honours such as: the Order of Québec and the Order of Canada. Naïm Kattan still lives in Montreal and works as a writer, critic and teacher. His friends and associates include many artists, social, and political figures such as: André Gide, René Lévesque, André Laurendeau, Jacques Parizeau, Jacques Godbout and Fernand Ouellette. In addition to interviews, the film incorporates movie and photo archives to capture some of the poetry, nostalgia and dynamism that inspired Kattan after he moved to Québec.Through conversations with Kattan, an exploration of his archives, and interviews with some of his better known friends, we discover the fascinating biography and vision of this writer and living witness of the political and cultural evolution of Québec and Canada in the last century."
                     },
                     "fr" : {
-                        "body"  : "<strong>La longueur de l’alphabet</strong> est un documentaire consacré à l’écrivain québécois de renommée internationale, Naïm Kattan. Né à Bagdad en 1928, M. Kattan a immigré au Canada en 1954. Il a signé presque 40 œuvres et reçu de nombreuses distinctions, notamment l’Ordre du Québec et l’Ordre du Canada. Naïm Kattan a côtoyé des artistes et personnalités comme André Gide, René Lévesque, André Laurendeau, Jacques Parizeau, Jacques Godbout et Fernand Ouellette. Plus qu’un portrait, ce documentaire propose un regard unique sur l’histoire contemporaine. Par le biais de conversations avec lui et la présentation d’archives et d’entrevues avec plusieurs de ses amis célèbres, on découvre l’histoire fascinante ainsi que la vision de cet écrivain, témoin vivant de notre mémoire collective.\n\nUn film de Joe Balass."
+                        "body"  : "<center>La longueur de l'alphabet\nun film de Joe Balass</center>\n<strong>La longueur de l’alphabet</strong> est un documentaire consacré à l’écrivain québécois de renommée internationale, Naïm Kattan. Né à Bagdad en 1928, M. Kattan a immigré au Canada en 1954. Il a signé presque 40 œuvres et reçu de nombreuses distinctions, notamment l’Ordre du Québec et l’Ordre du Canada. Naïm Kattan a côtoyé des artistes et personnalités comme André Gide, René Lévesque, André Laurendeau, Jacques Parizeau, Jacques Godbout et Fernand Ouellette. Plus qu’un portrait, ce documentaire propose un regard unique sur l’histoire contemporaine. Par le biais de conversations avec lui et la présentation d’archives et d’entrevues avec plusieurs de ses amis célèbres, on découvre l’histoire fascinante ainsi que la vision de cet écrivain, témoin vivant de notre mémoire collective."
                     }
                 }
             ,            
@@ -22,17 +22,25 @@
         },
         {
             "key"       : "devil", 
-            "title"     : "The devil in the holy water",
+            "title"     : {
+                "en" : "The devil in the holy water",
+                "fr" : "Le Diable dans l’eau bénite",
+                "it" : "Il Diavolo nell’Acqua Santa"
+                },
             "backgroundImage" : "Devil_fuck_insect.jpeg",
             "backgroundVideos" : ["Devilfuck_insect2.mp4","Devilfuck_insect2.webm","Devilfuck_insect2.ogv"],
             "synopsis"  : {
                 "en" : {
-                    "teaser" : "The time - the outset of a new millennium.\nThe place - Rome, the eternal city, sacred and profane.\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.",
-                    "body"  : "Are you ready?\nFilmmaker Joe Balass is there - The Devil in the Holy Water is his vibrant document of that moment.\nCritical and joyous, entertaining and thought-provoking, The Devil in the Holy Water goes to the epicentre of Catholic culture to get a reading on contemporary sexuality and morality.\nWhile the Vatican opposes World Pride, drawing upon its considerable influence to try to stop the event, Italians themselves send a more complex - and ultimately tolerant - message.\nThe opening of the monumental holy doors at Saint Peter's inaugurates the Jubilee, while debate rages through the ancient city. Vatican kingmaker, Cardinal Roger Etchegaray, finally concedes to an interview - while Imma Battaglia, a tempestuous Joan of Arc for our times, fearlessly spearheads the fight for gay visibility.\nThe music of Domenico Modugno sets the tone, and Balass takes to the streets, framing his interviews with astutely selected archival images - a gay priest speaking publicly at a 1982 demo, the first Italian gay marriage in 1992, and the Pope attacking homosexuals in 1994.\nAs the World Pride controversy heats up, the filmmaker encounters practical-minded grandmothers and rigid young neo-fascists, self-effacing nuns and ebullient drag queens. Pilgrims seeking absolution from sins, along with Emiliano and Pier Paolo, a couple of young guys who wander though the proceedings, just looking for a little fun.\nThe result is a candid, enlightening and often humorous, feature-length documentary. The Devil in the Holy Water captures two historic events as they intersect, highlighting a city and a culture in dynamic transition.\nFilmmaker’s biography\nProducer & director Joe Balass is an independent filmmaker working in both fiction and documentary. He currently resides in Montreal where he operates an independent production company, Compass Productions Inc. In addition, he also freelances as an editor, photographer and cameraman. He was born in Baghdad, Iraq in 1966 and after escaping with his family at the age of four, he eventually settled in Canada. His work has taken him all over Asia, Europe and North America. Balass has produced and directed a number of award-winning films and videos, including Nana, George & Me (1997). He expresses a very spontaneous blend of seriousness and humour in his approach to filmmaking.\nAt present, Joe Balass is working on his first feature-length fiction film as well as a number of documentary projects.\n\nA film by Joe Balass."
+                    "teaser" : "<center>The devil in the holy water\na film by Joe Balass</center>\nThe time - the outset of a new millennium.\nThe place - Rome, the eternal city, sacred and profane.\nTwo events collide. While Catholics converge for the Jubilee, the most important Church pilgrimage in modern times, thousands of gays and lesbians from around the planet gather for the first international Gay Pride Celebration.",
+                    "body"  : "Are you ready?\nFilmmaker Joe Balass is there - The Devil in the Holy Water is his vibrant document of that moment.\nCritical and joyous, entertaining and thought-provoking, The Devil in the Holy Water goes to the epicentre of Catholic culture to get a reading on contemporary sexuality and morality.\nWhile the Vatican opposes World Pride, drawing upon its considerable influence to try to stop the event, Italians themselves send a more complex - and ultimately tolerant - message.\nThe opening of the monumental holy doors at Saint Peter's inaugurates the Jubilee, while debate rages through the ancient city. Vatican kingmaker, Cardinal Roger Etchegaray, finally concedes to an interview - while Imma Battaglia, a tempestuous Joan of Arc for our times, fearlessly spearheads the fight for gay visibility.\nThe music of Domenico Modugno sets the tone, and Balass takes to the streets, framing his interviews with astutely selected archival images - a gay priest speaking publicly at a 1982 demo, the first Italian gay marriage in 1992, and the Pope attacking homosexuals in 1994.\nAs the World Pride controversy heats up, the filmmaker encounters practical-minded grandmothers and rigid young neo-fascists, self-effacing nuns and ebullient drag queens. Pilgrims seeking absolution from sins, along with Emiliano and Pier Paolo, a couple of young guys who wander though the proceedings, just looking for a little fun.\nThe result is a candid, enlightening and often humorous, feature-length documentary. The Devil in the Holy Water captures two historic events as they intersect, highlighting a city and a culture in dynamic transition.\nFilmmaker’s biography\nProducer & director Joe Balass is an independent filmmaker working in both fiction and documentary. He currently resides in Montreal where he operates an independent production company, Compass Productions Inc. In addition, he also freelances as an editor, photographer and cameraman. He was born in Baghdad, Iraq in 1966 and after escaping with his family at the age of four, he eventually settled in Canada. His work has taken him all over Asia, Europe and North America. Balass has produced and directed a number of award-winning films and videos, including Nana, George & Me (1997). He expresses a very spontaneous blend of seriousness and humour in his approach to filmmaking.\nAt present, Joe Balass is working on his first feature-length fiction film as well as a number of documentary projects."
                 },
                 "fr" :  {
-                    "teaser" : "L’époque — le début du nouveau millénaire.\nLe lieu — Rome, la ville éternelle, sacrée et profane.\n\nDeux événements entrent en collision. Tandis que la communauté catholique internationale se rallie à Rome pour le Jubilé, le plus important pélerinage chrétien des temps modernes, des milliers de gais et de lesbiennes du monde entier se réunissent pour le World Pride, la première célébration mondiale de la fierté gaie.  Êtes-vous prêt pour la suite ?",
-                    "body" : "Le Diable dans l’eau bénite nous amène à l’épicentre de la culture catholique pour prendre le pouls des mœurs contemporaines en matière de sexualité et de moralité.  Pendant que la controverse s’enflamme et que les autorités civiles s’en mêlent, le cinéaste rencontre de souriantes grands-mères, des néo-fascistes, des religieuses et d’exubérants travestis. Et puis, au milieu des pélerins qui recherchent l’absolution, on apprend à découvrir deux jeunes hommes qui flânent à travers la ville, tentant de comprendre tout ce qui se passe et cherchant surtout à s’amuser un peu.\nLe résultat est un film qui pose avec finesse un regard critique mais plein d’humour sur des enjeux d’importance capitale. Au cœur d’une ville en ébullition et d’une société en pleine transition, Le Diable dans l’eau bénite capte la rencontre de deux moments historiques à la croisée des chemins.\n\nUn film de Joe Balass."
+                    "teaser" : "<center>Le Diable dans l’eau bénite\nun film de Joe Balass</center>\nL’époque — le début du nouveau millénaire.\nLe lieu — Rome, la ville éternelle, sacrée et profane.\n\nDeux événements entrent en collision. Tandis que la communauté catholique internationale se rallie à Rome pour le Jubilé, le plus important pélerinage chrétien des temps modernes, des milliers de gais et de lesbiennes du monde entier se réunissent pour le World Pride, la première célébration mondiale de la fierté gaie.  Êtes-vous prêt pour la suite ?",
+                    "body" : "Le Diable dans l’eau bénite nous amène à l’épicentre de la culture catholique pour prendre le pouls des mœurs contemporaines en matière de sexualité et de moralité.  Pendant que la controverse s’enflamme et que les autorités civiles s’en mêlent, le cinéaste rencontre de souriantes grands-mères, des néo-fascistes, des religieuses et d’exubérants travestis. Et puis, au milieu des pélerins qui recherchent l’absolution, on apprend à découvrir deux jeunes hommes qui flânent à travers la ville, tentant de comprendre tout ce qui se passe et cherchant surtout à s’amuser un peu.\nLe résultat est un film qui pose avec finesse un regard critique mais plein d’humour sur des enjeux d’importance capitale. Au cœur d’une ville en ébullition et d’une société en pleine transition, Le Diable dans l’eau bénite capte la rencontre de deux moments historiques à la croisée des chemins."
+                },
+                "it" :  {
+                    "teaser" : "<center>Il Diavolo nell’Acqua Santa\nun film di Joe Balass</center>\nRoma: la citta’ sacra e profana all’inizio del nuovo millennio.\n\nDue eventi storici si confrontano. Mentre i cattolici convergono per il Giubileo, il piu’ importante pellegrinaggio dei tempi moderni, migliaia di gay e lesbiche da tutto il mondo si incontrano per celebrare il primo Gay Pride Internazionale.",
+                    "body"   : "Dove eravate in quei giorni?\n\nIl regista canadese Joe Balass era li’, fin dall’apertura della Porta Santa e Il Diavolo nell’Acqua Santa e’ la sua intensa e dettagliata documentazione di quei momenti. Critico e divertente, spensierato e provocatorio, Il Diavolo nell’Acqua Santa ci porta nell’epicentro della cultura cattolica, per un’insolita rilettura del rapporto tra sessualita’ e moralita’ contemporanea.\n\nMentre il Vaticano si oppone al World Pride con forza, puntando sulla sua considerevole influenza politica e cercando di impedire lo svolgimento della manifestazione, gli Italiani si interrogano e rielaborano un messaggio molto piu’ complesso e di profonda, sorprendente tolleranza.\n\nL’apertura della monumentale Porta Santa di San Pietro inaugura il Giubileo, mentre Imma Battaglia, nelle vesti di una contemporanea Giovanna D’Arco, porta avanti imperterrita la sua lotta per la visibilita’. Il dibattito infiamma il paese. Tra le altre voci anche quella del Cardinale Roger Etchegaray, presidente del Comitato per il Grande Giubileo 2000, che finalmente accetta di essere intervistato.\n\nLe musiche di Domenico Modugno ci accompagnano nel viaggio che Balass compie attraverso l’Italia giubilare, con interviste di strada che si alternano all’inedito e raro materiale televisivo d’archivio. Dal 1982, quando un prete apertamente gay parla pubblicamente in una manifestazione romana, al 1992, con le immagini dei matrimoni gay di Piazza Scala a Milano, fino al 1994, con l’attacco del Papa agli omosessuali e contro la risoluzione di Strasburgo.\n\nMentre la controversia sul World Pride accende il confronto, Balass incontra nonne italiane, sagge e pragmatiche, rigidi neofascisti, umili suore ed esubesuberanti drag queens. E ancora: pellegrini alla ricerca dell’indulgenza per i peccati, molte giovani coppie, tra cui due simpatici, innamorati e spensierati milanesi: Emiliano e Pier Paolo.\n\nIl Diavolo nell’Acqua Santa e’ un documentario candido, spesso divertente e illuminante, che insieme al regista ci rende partecipi e testimoni di due irripetibili eventi storici.\n\nCanada, 2002, 94min."
                 }
             },
             "gallery"   : "72157631597841156",
@@ -222,174 +230,174 @@
             ],
             "credits"   : {
                 "en" :[
-                {
-                    "title" : "Compass Productions"
-                },
-                {
-                    "title" : "presents"    
-                },
-                {
-                    "title" : "a film by Joe Balass"
-                },
-                {
-                    "title" : "The Devil\nin the\nHoly Water"
-                },
-                {
-                    "title" : "Written, Produced & Directed by Joe Balass"
-                },
-                {
-                    "title" : "Tail Credits:"
-                },
-                {
-                    "title" : "Creative Consultant:",
-                    "body" : "Giampaolo Marzi"
-                },
-                {
-                    "title" : "Camera:",
-                    "body" : "Joe Balass\nAndrei Khabad\nMarjo Ferwerda\nGiampaolo Marzi"
-                },
-                {
-                    "title" : "Sound:",
-                    "body" : "David Ballard\nMarjo Ferwerda"
-                },
-                {
-                    "title" : "Editor:",
-                    "body" : "Joe Balass"
-                },
-                {
-                    "title" : "Editing Consultant:",
-                    "body" : "Rolland Pollack"
-                },
-                {
-                    "title" : "Additional Editing & Online",
-                    "body" : "Dennis Day"
-                },
-                {
-                    "title" : "Sound Editor: ",
-                    "body" : "Martin Hurtubise"
-                },
-                {
-                    "title" : "Assistant Director/Interpretor:",
-                    "body" : "Giampaolo Marzi"
-                },
-                {
-                    "title" : "With the generous participation of:",
-                    "body" : "Imma Battaglia\nAlberto Corteggiani\nGiovanni Dall’Orto\nGianni Delle Foglie\nIvan Dragoni\nCardinal Roger Etchegaray\nBishop Jacques Gaillot\nVladimir Luxuria\nSonia Mangello\nSilvano Moffa\nElisabeth Ohlson\nEmiliano Placchi\nFather Gino Rigoldi\nPier Paolo Torri"
-                },
-                {
-                    "title" : "A special thanks to Katia Bellillo, Ivan Cattaneo, Maria Grazia Cuccinotta, Mauro Malinverno, Mario D’Onofrio, Eleonora Dall’Ovo, Andrea Ferrari, Sister Roberta Giudici, Giovanni Mappelli, Andrea Marnoni, Claudia Mauti, Massimo Mazzotta, Leone Passerman, Daniele Del Pozzo, Pecoraro Scanio, Monica Stambrini, Claudia Torresan, Patrizia Zappa Mulas and to the many other people who agreed to be interviewed for this film."
-                },
-                {
-                    "title" : "Images & music from the exhibition Ecce Homo, held in Forte Prenestino – Roma, used with the generous permission of Elisabeth Ohlson."
-                },
-                {
-                    "title" : "Additional Music:\n"
-                },
-                {
-                    "title" : "Pasqualino Maragia and Tu si’ na cosa grande\nPerformed by Domenico Modugno"
-                },
-                {
-                    "title" : "Publisher:",
-                    "body" : "Italcanto Canada Ltd./ Intermède Media Inc."
-                },
-                {
-                    "title" : "Recording:",
-                    "body" : "Courtesy of WEA International Inc."
-                },
-                {
-                    "title" : "Petite Messe Solennelle –  Cum Sancto Spiritu"
-                },
-                {
-                    "title" : "Artists:",
-                    "body" : "Bulgarian Television & Radio Mixed Choir with Mihail Milkov"
-                },
-                {
-                    "title" : "Writer:",
-                    "body" : "Gioachino Rossini"
-                },
-                {
-                    "title" : "Publisher:",
-                    "body" : "Intermède Media Inc."
-                },
-                {
-                    "title" : "Recording:",
-                    "body" : "Courtesy of Forlane/Intermède Media Inc.<br /><br />"
-                },
-                {
-                    "title" : "Graphic Concept:",
-                    "body" : "Yudi Sewraj"
-                },
-                {
-                    "title" : "Web design:",
-                    "body" : "Etherworks"
-                },
-                {
-                    "title" : "Avid Consultants:",
-                    "body" : "Paola Freddi\nMarlene Millar"
-                },
-                {
-                    "title" : "Additional Camera:",
-                    "body" : "Monica Stambrini\nMarco Tani\nEmanuele"
-                },
-                {
-                    "title" : "Thanks to the actors and musicians in the performance of Laudes grido a tutta gente under the direction of Gigi Dall’aglio."
-                },
-                {
-                    "title" : "Production Accountant:",
-                    "body" : "Rickie Rosenbaum"
-                },
-                {
-                    "title" : "Production Assistants:",
-                    "body" : "Valere Poulin, Andrea Marnoni, Nilton Dos Santos Almeida, Maria Michails, Stephane Drolet"
-                },
-                {
-                    "title" : "Additional Thanks to:",
-                    "body" : "Roberta Angellili, Celine Bissonnette, Normand Boucher, Aldo Cassano, Memmo Caporilli,  Danielle Charlebois, Giorgio Codibue, Massimo Cortesi, Francesca Davello, Ettorina, Lubomir Fabcin, Adrian Gonzalez, Ingo, Grant Innes, Daniele Iucolano,  Yves Lafontaine, Bertrand Lachance, Denis Langlois, Antonello Lauriola, Philip Lewis, Marco Lupi, Pascal Maeder, Luigi Manconi, Monica Margrande, Raffaella Marzi, Marlene Millar, Christina Nati, Ludovico Pace, Allesandra di Pietro, Marie Potvin, Ramona Ramlochand, Rinaldo Rocco, Nicola Russo, Vivian Sallei, Rob Wilson Smith, Roberto Spagnol, Monica Stambrini, Yudi Sewraj, Carla Traversi, Tom Waugh, Margaret Wong; the staff and press office of the Baci factory; Elena Solari and the staff of the Canadian Embassy in Rome; Marcella Damiani, Roberto Bernardi and the staff of the Canadian  Embassy in Vatican City; Claude Forget, Michel Gelinas and the staff of Cinéma Libre; Angèle Cyr, Youssef El Jai, Sylvain Cossette and Line Bodiguel at PRIM; the staff of the Forte Prenestino; the organisers & staff of the Romei e giubillei exhibit at the Palazzo Venezia; Christina Spina and the staff of the the Teatri Stabili dell’Umbria in Perugia; Marjorie Weeke and the staff of the Vatican Press Office, the Mario Mieli Association staff and organisers of WorldPride 2000, and everybody else who helped make this project happen."
-                },
-                {
-                    "title" : "News and archival footage provided by  arrangement with RAITrade."
-                },
-                {
-                    "title" : "This film was made possible through the generous financial participation of :",
-                    "body" : "The Canada Council for the Arts\nThe Millennium Fund\nMedia Arts Program"
+                    {
+                        "title" : "Compass Productions"
+                    },
+                    {
+                        "title" : "presents"    
+                    },
+                    {
+                        "title" : "a film by Joe Balass"
+                    },
+                    {
+                        "title" : "The Devil\nin the\nHoly Water"
+                    },
+                    {
+                        "title" : "Written, Produced & Directed by Joe Balass"
+                    },
+                    {
+                        "title" : "Tail Credits:"
+                    },
+                    {
+                        "title" : "Creative Consultant:",
+                        "body" : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "Camera:",
+                        "body" : "Joe Balass\nAndrei Khabad\nMarjo Ferwerda\nGiampaolo Marzi"
+                    },
+                    {
+                        "title" : "Sound:",
+                        "body" : "David Ballard\nMarjo Ferwerda"
+                    },
+                    {
+                        "title" : "Editor:",
+                        "body" : "Joe Balass"
+                    },
+                    {
+                        "title" : "Editing Consultant:",
+                        "body" : "Rolland Pollack"
+                    },
+                    {
+                        "title" : "Additional Editing & Online",
+                        "body" : "Dennis Day"
+                    },
+                    {
+                        "title" : "Sound Editor: ",
+                        "body" : "Martin Hurtubise"
+                    },
+                    {
+                        "title" : "Assistant Director/Interpretor:",
+                        "body" : "Giampaolo Marzi"
+                    },
+                    {
+                        "title" : "With the generous participation of:",
+                        "body" : "Imma Battaglia\nAlberto Corteggiani\nGiovanni Dall’Orto\nGianni Delle Foglie\nIvan Dragoni\nCardinal Roger Etchegaray\nBishop Jacques Gaillot\nVladimir Luxuria\nSonia Mangello\nSilvano Moffa\nElisabeth Ohlson\nEmiliano Placchi\nFather Gino Rigoldi\nPier Paolo Torri"
+                    },
+                    {
+                        "title" : "A special thanks to Katia Bellillo, Ivan Cattaneo, Maria Grazia Cuccinotta, Mauro Malinverno, Mario D’Onofrio, Eleonora Dall’Ovo, Andrea Ferrari, Sister Roberta Giudici, Giovanni Mappelli, Andrea Marnoni, Claudia Mauti, Massimo Mazzotta, Leone Passerman, Daniele Del Pozzo, Pecoraro Scanio, Monica Stambrini, Claudia Torresan, Patrizia Zappa Mulas and to the many other people who agreed to be interviewed for this film."
+                    },
+                    {
+                        "title" : "Images & music from the exhibition Ecce Homo, held in Forte Prenestino – Roma, used with the generous permission of Elisabeth Ohlson."
+                    },
+                    {
+                        "title" : "Additional Music:\n"
+                    },
+                    {
+                        "title" : "Pasqualino Maragia and Tu si’ na cosa grande\nPerformed by Domenico Modugno"
+                    },
+                    {
+                        "title" : "Publisher:",
+                        "body" : "Italcanto Canada Ltd./ Intermède Media Inc."
+                    },
+                    {
+                        "title" : "Recording:",
+                        "body" : "Courtesy of WEA International Inc."
+                    },
+                    {
+                        "title" : "Petite Messe Solennelle –  Cum Sancto Spiritu"
+                    },
+                    {
+                        "title" : "Artists:",
+                        "body" : "Bulgarian Television & Radio Mixed Choir with Mihail Milkov"
+                    },
+                    {
+                        "title" : "Writer:",
+                        "body" : "Gioachino Rossini"
+                    },
+                    {
+                        "title" : "Publisher:",
+                        "body" : "Intermède Media Inc."
+                    },
+                    {
+                        "title" : "Recording:",
+                        "body" : "Courtesy of Forlane/Intermède Media Inc.<br /><br />"
+                    },
+                    {
+                        "title" : "Graphic Concept:",
+                        "body" : "Yudi Sewraj"
+                    },
+                    {
+                        "title" : "Web design:",
+                        "body" : "Etherworks"
+                    },
+                    {
+                        "title" : "Avid Consultants:",
+                        "body" : "Paola Freddi\nMarlene Millar"
+                    },
+                    {
+                        "title" : "Additional Camera:",
+                        "body" : "Monica Stambrini\nMarco Tani\nEmanuele"
+                    },
+                    {
+                        "title" : "Thanks to the actors and musicians in the performance of Laudes grido a tutta gente under the direction of Gigi Dall’aglio."
+                    },
+                    {
+                        "title" : "Production Accountant:",
+                        "body" : "Rickie Rosenbaum"
+                    },
+                    {
+                        "title" : "Production Assistants:",
+                        "body" : "Valere Poulin, Andrea Marnoni, Nilton Dos Santos Almeida, Maria Michails, Stephane Drolet"
+                    },
+                    {
+                        "title" : "Additional Thanks to:",
+                        "body" : "Roberta Angellili, Celine Bissonnette, Normand Boucher, Aldo Cassano, Memmo Caporilli,  Danielle Charlebois, Giorgio Codibue, Massimo Cortesi, Francesca Davello, Ettorina, Lubomir Fabcin, Adrian Gonzalez, Ingo, Grant Innes, Daniele Iucolano,  Yves Lafontaine, Bertrand Lachance, Denis Langlois, Antonello Lauriola, Philip Lewis, Marco Lupi, Pascal Maeder, Luigi Manconi, Monica Margrande, Raffaella Marzi, Marlene Millar, Christina Nati, Ludovico Pace, Allesandra di Pietro, Marie Potvin, Ramona Ramlochand, Rinaldo Rocco, Nicola Russo, Vivian Sallei, Rob Wilson Smith, Roberto Spagnol, Monica Stambrini, Yudi Sewraj, Carla Traversi, Tom Waugh, Margaret Wong; the staff and press office of the Baci factory; Elena Solari and the staff of the Canadian Embassy in Rome; Marcella Damiani, Roberto Bernardi and the staff of the Canadian  Embassy in Vatican City; Claude Forget, Michel Gelinas and the staff of Cinéma Libre; Angèle Cyr, Youssef El Jai, Sylvain Cossette and Line Bodiguel at PRIM; the staff of the Forte Prenestino; the organisers & staff of the Romei e giubillei exhibit at the Palazzo Venezia; Christina Spina and the staff of the the Teatri Stabili dell’Umbria in Perugia; Marjorie Weeke and the staff of the Vatican Press Office, the Mario Mieli Association staff and organisers of WorldPride 2000, and everybody else who helped make this project happen."
+                    },
+                    {
+                        "title" : "News and archival footage provided by  arrangement with RAITrade."
+                    },
+                    {
+                        "title" : "This film was made possible through the generous financial participation of :",
+                        "body" : "The Canada Council for the Arts\nThe Millennium Fund\nMedia Arts Program"
 
-                },
-                {
-                    "title" : "SODEC –  Programme d’aide aux jeunes créateurs"
-                },
-                {
-                    "title" : "Programme du crédit d’impot du Gouvernement du Québec"
-                },
-                {
-                    "title" : "Conseil des arts et des lettres du Québec"
-                },
-                {
-                    "title" : "The Canadian Independent Film & Video Fund"
-                },
-                {
-                    "title" : "Additional support for this film provided by:"
-                },
-                {
-                    "title" : "PRIM\n"
-                },
-                {
-                    "title" : "Centre d’art médiatiques"
-                },
-                {
-                    "title" : "The National Film Board – Filmmakers’ Assistance Program"
-                },
-                {
-                    "title" : "Cinéma Libre Distribution"
-                },
-                {
-                    "title" : "www.compassproductions.ca/devil"
-                },
-                {
-                    "title" : "All rights reserved."
-                },
-                {
-                    "title" : "© Compass Productions Inc. 2002"
-                }
+                    },
+                    {
+                        "title" : "SODEC –  Programme d’aide aux jeunes créateurs"
+                    },
+                    {
+                        "title" : "Programme du crédit d’impot du Gouvernement du Québec"
+                    },
+                    {
+                        "title" : "Conseil des arts et des lettres du Québec"
+                    },
+                    {
+                        "title" : "The Canadian Independent Film & Video Fund"
+                    },
+                    {
+                        "title" : "Additional support for this film provided by:"
+                    },
+                    {
+                        "title" : "PRIM\n"
+                    },
+                    {
+                        "title" : "Centre d’art médiatiques"
+                    },
+                    {
+                        "title" : "The National Film Board – Filmmakers’ Assistance Program"
+                    },
+                    {
+                        "title" : "Cinéma Libre Distribution"
+                    },
+                    {
+                        "title" : "www.compassproductions.ca/devil"
+                    },
+                    {
+                        "title" : "All rights reserved."
+                    },
+                    {
+                        "title" : "© Compass Productions Inc. 2002"
+                    }
                 ],
                 "fr" : [
                     {
@@ -501,6 +509,112 @@
                     {
                         "title" : "© Les Productions Compass Inc. 2002"
                     }
+                ],
+                "it" : [
+                    {
+                        "title": "Scritto, prodotto e diretto da Joe Balass",
+                        "body" : "Joe Balass"
+                    },
+                    {
+                        "title": "Consulente creativo",
+                        "body" : "Giampaolo Marzi"
+                    },
+                    {
+                        "title": "Riprese",
+                        "body" : "Joe Balass\nAndrei Khabad\nMarjo Ferwerda\nGiampaolo Marzi"
+                    },
+                    {
+                        "title": "Suono",
+                        "body" : "David Ballard\nMarjo Ferwerda"
+                    },
+                    {
+                        "title": "Montaggio",
+                        "body" : "Joe Balass"
+                    },
+                    {
+                        "title": "Consulente al Montaggio",
+                        "body" : "Rolland Pollack"
+                    },
+                    {
+                        "title": "Montatore aggiunto e Online",
+                        "body" : "Dennis Day"
+                    },
+                    {
+                        "title": "Montaggio del Suono",
+                        "body" : "Martin Hurtubise"
+                    },
+                    {
+                        "title": "Assistante alla regia/ Interprete",
+                        "body" : "Giampaolo Marzi"
+                    },
+                    {
+                        "title": "Musiche",
+                        "body" : "Simon Carpentier"
+                    },
+                    {
+                        "title": "Con la generosa partecipazione di ",
+                        "body" : "Imma Battaglia\nAlberto Corteggiani\nGiovanni Dall'Orto\nGianni Delle Foglie\nIvan Dragoni\nCardinal Roger Etchegaray\nBishop Jacques Gaillot\nVladimir Luxuria\nSonia Mangello\nSilvano Moffa\nElisabeth Ohlson\nEmiliano Placchi\nFather Gino Rigoldi\nPier Paolo Torri"
+                    },
+                    {
+                        "title": "Un ringraziamento speciale a Roberta Angellili, Katia Bellillo, Ivan Cattaneo, Maria Grazia Cucinotta, Mauro Malinverno, Mario D'Onofrio, Eleonora Dall'Ovo, Andrea Ferrari, Suor Roberta Giudici, Giovanni Mappelli, Andrea Marnoni, Claudia Mauti, Massimo Mazzotta, Leone Passerman, Daniele Del Pozzo, Alfonso Pecoraro Scanio, Monica Stambrini, Claudia Torresani, Patrizia Zappa Mulas e a tutte le altre persone che hanno accettato di essere intervistate per questo film."
+                    },
+                    {
+                        "title": "Immagini & musica dalla mostra fotografica Ecce Homo, allestita presso il Forte Prenestino - Roma, per gentile concessione di Elisabeth Ohlson."
+                    },
+                    {
+                        "title": "Grafica",
+                        "body" : "Yudi Sewraj"
+                    },
+                    {
+                        "title": "Web",
+                        "body" : "Etherworks"
+                    },
+                    {
+                        "title": "Un ringraziamento a tutti gli attori e musicisti dello spettacolo Laudes grido a tutta gente diretti da Gigi Dall'Aglio."
+                    },
+                    {
+                        "title": "Grazie a Celine Bissonnette, Normand Boucher, Aldo Cassano, Memmo Caporilli, Giorgio Codibue, Massimo Cortesi, Francesca Davello, Ettorina, Lubomir Fabcin, Ingo, Daniele Iucolano, Antonello Lauriola, Marco Lupi, Luigi Manconi, Monica Margrande, Raffaella Marzi, Marlene Millar, Christina Nati, Ludovico Pace, Allesandra di Pietro, Marie Potvin, Ramona Ramlochand, Rinaldo Rocco, Nicola Russo, Roberto Spagnol, Monica Stambrini, Yudi Sewraj, Carla Traversi, Tom Waugh, Margaret Wong; lo staff e l'ufficio stampa della fabbrica dei Baci Perugina; Elena Solari e lo staff dell'Ambasciata del Canada di Roma; Marcella Damiani, Roberto Bernardi e lo staff dell'Ambasciata del Canada della Città del Vaticano; Claude Forget, Michel Gelinas e lo staff di Cinéma Libre; Angèle Cyr, Youssef El Jai, Sylvain Cossette e Line Bodiguel presso PRIM; lo staff del Forte Prenestino; Monica Margrande presso Rai Trade; gli organizzatori & lo staff della mostra \"Romei e giubilei\" presso Palazzo Venezia; Christina Spina e lo staff dei Teatri Stabili dell'Umbria di Perugia; Marjorie Weeke e lo staff dell'Ufficio Stampa del Vaticano, il Circolo Mario Mieli, staff e organizzatori del WorldPride 2000."
+                    },
+                    {
+                        "title": "E con le musiche di",
+                        "body" : "Pasqualino Maragia and Tu si' na cosa grande\nde Domenico Modugno\nItalcanto Canada Ltd./ Intermède Media Inc.\nPer gentile concessione di WEA International Inc."
+                    },
+                    {
+                        "title": "Petite Messe Solennelle - Cum Sancto Spiritu\nBulgarian Television & Radio Mixed Choir with Mihail Milkov\nGioachino Rossini\nIntermède Media Inc.\nPer gentile concessione di Forlane/ Intermède Media Inc."
+                    },
+                    {
+                        "title": "Consulenti Avid",
+                        "body" : "Paola Freddi\nMarlene Millar"
+                    },
+                    {
+                        "title": "Riprese aggiuntive",
+                        "body" : "Monica Stambrini\nMarco Tani\nEmanuele"
+                    },
+                    {
+                        "title": "Assistenti di produzione",
+                        "body" : "Valere Poulin, Andrea Marnoni, Nilton Dos Santos Almeida, Maria Michails, Stephane Drolet"
+                    },
+                    {
+                        "title": "Materiali d'archivio forniti dalla Videoteca della RAI-RAITrade."
+                    },
+                    {
+                        "title": "Traduzione italiana",
+                        "body" : "Giampaolo Marzi, Claudia Mauti, Joe Balass"
+                    },
+                    {
+                        "title": "Questo film è stato realizzato grazie alla generosa partecipazione finanziaria di",
+                        "body" : "The Canada Council for the Arts\nThe Millennium Fund\nMedia Arts Program\n\nSODEC - Programme d'aide aux jeunes créateurs\n\nProgramme du crédit d'impot du Gouvernement du Québec\n\nConseil des arts et des lettres du Québec\n\nThe Canadian Independent Film & Video Fund\n\nThe Canadian Government Tax Credit Program"
+                    },
+                    {
+                        "title": "E con l'ulteriore collaborazione di",
+                        "body" : "PRIM\nCentre d'art médiatiques\n\nThe National Film Board - FAPS\n\nCinéma Libre Distribution"
+                    },
+                    {
+                        "title": "Tutti i diritti riservati."
+                    },
+                    {
+                        "title": "© Compass Productions Inc. 2002"
+                    }
                 ]
             },
             "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
@@ -512,10 +626,10 @@
             "backgroundVideos" : ["ngm_web_home.webm","ngm_web_home.ogv","ngm_web_home.mp4"],
             "synopsis"  : {
                     "en" : {
-                        "body" : "What do you get when you ask your 92 year-old Nana, and a 73 year-old man you've just met, questions you've only dared to dream of and get answers more outrageous than you could have imagined?  You get  <strong>Nana, George & Me</strong>, a funny, intimate, sometimes shocking and always heartwarming look at two Iraqi Jewish lives:  one a traditionally raised woman and the other a completely unconventional gay man.\n\nDuration:  48min\nLanguage:  Arabic, English with e.s.t.\nScreening Format: Beta SP\nYear:  1997\nCountry: Canada\n\nA film by Joe Balass."
+                        "body" : "<center>Nana, George and me\na film by Joe Balass</center>What do you get when you ask your 92 year-old Nana, and a 73 year-old man you've just met, questions you've only dared to dream of and get answers more outrageous than you could have imagined?  You get  <strong>Nana, George & Me</strong>, a funny, intimate, sometimes shocking and always heartwarming look at two Iraqi Jewish lives:  one a traditionally raised woman and the other a completely unconventional gay man.\n\nDuration:  48min\nLanguage:  Arabic, English with e.s.t.\nScreening Format: Beta SP\nYear:  1997\nCountry: Canada"
                     },
                     "fr" : {
-                        "body" : "Qu'arrive-t-il quand on interview sa grand-mère de 92 ans et un homme de 73 ans que l'on vient tout juste de rencontrer; quand surgissent des questions plus inattendues les unes que les autres et que, par-dessus tout, les réponses sont encore plus déconcertantes?  Eh bien, on obtient un doux regard, parfois choquant parfois réconfortant, sur la vie de deux juifs Irakiens: la première, une femme issue d'un milieu traditionnel et le deuxième, un homme gai complètement non-conventionnel.\n\nUn film de Joe Balass."
+                        "body" : "<center>Nana, George et moi\nun film de Joe Balass</center>Qu'arrive-t-il quand on interview sa grand-mère de 92 ans et un homme de 73 ans que l'on vient tout juste de rencontrer; quand surgissent des questions plus inattendues les unes que les autres et que, par-dessus tout, les réponses sont encore plus déconcertantes?  Eh bien, on obtient un doux regard, parfois choquant parfois réconfortant, sur la vie de deux juifs Irakiens: la première, une femme issue d'un milieu traditionnel et le deuxième, un homme gai complètement non-conventionnel."
                     }
                 },            
             "videos"    : ["18519558"],
@@ -529,12 +643,12 @@
             "facebook"  : "http://www.facebook.com/joy.portrait.of.a.nun",
             "synopsis"  : {
                 "en" : {
-                    "teaser" : "Spiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.",
-                    "body" : "In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey.\n\nA film by Joe Balass."
+                    "teaser" : "<center>JOY!\na film by Joe Balass</center>Spiritual sanctuary, sex, sisterhood and a gathering of faeries. A bearded nun. Through an intimate lens, this feature documentary takes us on a journey with Sister Missionary P. Delight, one of the founders of the Sisters of Perpetual Indulgence.",
+                    "body" : "In 1979, Mish, as he is affectionately known by his friends, created an Order of gay male nuns to promote a philosophy of promulgating universal joy and expiating guilt. Both he and the Order have come a long way since then. Today, the Sisters are spread out across the globe, and Mish lives in the middle of the woods of the Deep South, in a community of Radical Faeries. JOY! follows Mish and his community over a seven year period, along the way we discover the history of the movement and the highs and lows of his own personal journey."
                 },
                 "fr" : {
-                    "teaser" : "Un monde mystique où se confondent sexualité, spiritualité et activisme. Une nonne à barbe. Dans un cadre intimiste, ce long-métrage documentaire nous emmène sur les pas de Sœur Missionary P. Delight, membre fondatrice des Sœurs de la Perpétuelle Indulgence.",
-                    "body" : "JOIE! met en lumière un groupe d’invidus fascinants, composé pour la plupart de Fées radicales vivant entre San Francisco et le Sud profond des États-Unis, qui ont apporté une contribution inestimable à la communauté queer et au mouvement de libération sexuelle.\n\nCe documentaire brosse le portrait de Sœur Missionary Position Delight, une des mères fondatrices des Sœurs de la Perpétuelle Indulgence. En 1979, Mish,comme le surnomment affectueusement ses amis, a mis sur pied un ordre religieux fait d’hommes gais habillés en sœurs et ayant pour mission de promouvoir la joie universelle et d’expier la culpabilité. Depuis, Mish et sa congrégation ont fait beaucoup de chemin. Aujourd’hui, les Sœurs sont actives aux quatre coins du monde, et Mish vit au fin fond du Tennessee, dans une communauté de Fées radicales. Les Fées sont un groupe excentrique et diversifié composé en grande partie de gais et de lesbiennes dont les intérêts variés vont de la culture biologique à l’édification sexuelle et spirituelle. JOIE! suitle cheminement de Mish durant sept ans, au cours desquels on en apprend davantage sur la genèse de ce mouvement inusité et sur les tribulations de son parcours personnel. On découvre également comment les Sœurs et les Fées tentent de toucher le clown et l’enfant espiègle qui sommeillent en chacun de nous, comment elles surmontent leurs craintes et leurs sentiments de culpabilité, comment elles intégrent la sexualité comme un élément naturel de la vie et, enfin, comment elles bâtissent et nourrissent leur communauté.\n\nUn film de Joe Balass."
+                    "teaser" : "<center>JOIE!\nun film de Joe Balass</center>Un monde mystique où se confondent sexualité, spiritualité et activisme. Une nonne à barbe. Dans un cadre intimiste, ce long-métrage documentaire nous emmène sur les pas de Sœur Missionary P. Delight, membre fondatrice des Sœurs de la Perpétuelle Indulgence.",
+                    "body" : "JOIE! met en lumière un groupe d’invidus fascinants, composé pour la plupart de Fées radicales vivant entre San Francisco et le Sud profond des États-Unis, qui ont apporté une contribution inestimable à la communauté queer et au mouvement de libération sexuelle.\n\nCe documentaire brosse le portrait de Sœur Missionary Position Delight, une des mères fondatrices des Sœurs de la Perpétuelle Indulgence. En 1979, Mish,comme le surnomment affectueusement ses amis, a mis sur pied un ordre religieux fait d’hommes gais habillés en sœurs et ayant pour mission de promouvoir la joie universelle et d’expier la culpabilité. Depuis, Mish et sa congrégation ont fait beaucoup de chemin. Aujourd’hui, les Sœurs sont actives aux quatre coins du monde, et Mish vit au fin fond du Tennessee, dans une communauté de Fées radicales. Les Fées sont un groupe excentrique et diversifié composé en grande partie de gais et de lesbiennes dont les intérêts variés vont de la culture biologique à l’édification sexuelle et spirituelle. JOIE! suitle cheminement de Mish durant sept ans, au cours desquels on en apprend davantage sur la genèse de ce mouvement inusité et sur les tribulations de son parcours personnel. On découvre également comment les Sœurs et les Fées tentent de toucher le clown et l’enfant espiègle qui sommeillent en chacun de nous, comment elles surmontent leurs craintes et leurs sentiments de culpabilité, comment elles intégrent la sexualité comme un élément naturel de la vie et, enfin, comment elles bâtissent et nourrissent leur communauté."
                 }
             },
             "videos"    : {
@@ -543,8 +657,8 @@
             },
             "press"     : {
                 "presskit" : {
-                    "link"     : "/static/download/pressKitJOY.zip",
-                    "password" : "tomboy"
+                    "link"     : "/static/presskit-JOY.zip",
+                    "password" : "joy2012"
                 }
             },
             "gallery"   : "72157631598336173",
@@ -1231,11 +1345,11 @@
             "backgroundVideos" : ["baghdad_twist_home_tree.webm","baghdad_twist_home_tree.ogv","baghdad_twist_home_tree.mp4"],
             "synopsis": {
                 "en" : {
-                    "body"   : "Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists.\n\nA film by Joe Balass."
+                    "body"   : "<center>Baghdad twist\na film by Joe Balass</center>Featuring a unique collection of archival images, home movies and family photographs from Iraq, Baghdad Twist is a short film that pulls back the curtain on Iraq's once thriving Jewish community. Baghdad-born filmmaker Joe Balass takes us on a journey through the fragmented memories of an Arab exile. This powerful collage forms a portrait of a time and place that no longer exists."
                 },
                 "fr" : {
-                    "teaser" : "Cela pourrait se passer n'importe où. Une réception de mariage filmée en Super-8 au milieu des années 1960 : cravates étroites, coiffures bouffantes, images scintillantes d'un couple réjoui et d'invités souriants. Un groupe de musiciens joue et on se rassemble sur la piste pour exécuter la dernière danse à la mode : le twist.",
-                    "body"   : "Mais cela se passe à Bagdad. Et pour la communauté juive de la ville, cette soirée constitue un court moment de joie durant  une longue période de persécution. En l'espace de quelques années, la plupart des invités qui figurent dans le film auront quitté la ville pour ne jamais y revenir. En moins de dix ans, les membres de cette communauté qui existe depuis l'époque de Babylone seront presque tous partis.\n\nLe cinéaste Joe Balass et sa mère Valentine se remémorent ce souvenir, le partagent, le recollent à l'aide des fragments restants.  Le film porte à l'écran une collection inédite d'images d'archives, de films et de photographies de famille provenant de Bagdad. Il lève le voile sur la communauté juive d'Irak autrefois florissante, sur ses dernières et périlleuses années dans ce pays et sur sa capacité remarquable à trouver le réconfort dans l'ombre de la peur.\n\nUn film de Joe Balass."
+                    "teaser" : "<center>Baghdad twist\nun film de Joe Balass</center>Cela pourrait se passer n'importe où. Une réception de mariage filmée en Super-8 au milieu des années 1960 : cravates étroites, coiffures bouffantes, images scintillantes d'un couple réjoui et d'invités souriants. Un groupe de musiciens joue et on se rassemble sur la piste pour exécuter la dernière danse à la mode : le twist.",
+                    "body"   : "Mais cela se passe à Bagdad. Et pour la communauté juive de la ville, cette soirée constitue un court moment de joie durant  une longue période de persécution. En l'espace de quelques années, la plupart des invités qui figurent dans le film auront quitté la ville pour ne jamais y revenir. En moins de dix ans, les membres de cette communauté qui existe depuis l'époque de Babylone seront presque tous partis.\n\nLe cinéaste Joe Balass et sa mère Valentine se remémorent ce souvenir, le partagent, le recollent à l'aide des fragments restants.  Le film porte à l'écran une collection inédite d'images d'archives, de films et de photographies de famille provenant de Bagdad. Il lève le voile sur la communauté juive d'Irak autrefois florissante, sur ses dernières et périlleuses années dans ce pays et sur sa capacité remarquable à trouver le réconfort dans l'ombre de la peur."
                 }
             },
             "gallery"   : "72157631598309773",
@@ -1380,10 +1494,10 @@
             "gallery" : "72157631597946580",
             "synopsis": {
                 "en" : {
-                    "body" : "A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye.\n\nA film by Joe Balass."
+                    "body" : "<center>Parting words\na film by Joe Balass</center>A young man is accompanied by his friends in an ambulance on the way to the hospital.  The good looks of the paramedic distract them from the tension and awkwardness of not knowing what to say.   As they arrive at the hospital, everyone is reminded that this may be their last goodbye."
                 },
                 "fr" : {
-                    "body" : "Un jeune se fait accompagner en ambulance par ses amis. Malgré son état critique, il est attiré par l’ambulancier et essaye de le séduire à la  grande surprise de tout le monde. Mais une fois à l’hôpital tous réalisent qu’ils ont risqué de manquer le moment de se dire adieu.\n\nUn film de Joe Balass."
+                    "body" : "<center>Derniers mots\nun film de Joe Balass</center>Un jeune se fait accompagner en ambulance par ses amis. Malgré son état critique, il est attiré par l’ambulancier et essaye de le séduire à la  grande surprise de tout le monde. Mais une fois à l’hôpital tous réalisent qu’ils ont risqué de manquer le moment de se dire adieu."
                 }
             },
             "credits"   : [

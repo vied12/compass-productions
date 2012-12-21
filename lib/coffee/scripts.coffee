@@ -699,14 +699,15 @@ class portfolio.Project extends Widget
 						synopsis_nui = nui.find('.template').cloneTemplate(value)						
 						nui.append(synopsis_nui)
 						readmoreLink = nui.find('.readmore')
-						body_nui=nui.find('.actual .body')	
+						body_nui     = nui.find('.actual .body')	
 						body_nui.html(body_nui.html().replace(/\n/g, "<br />"))
 						# if teaser is in json, teaser is displayed with readmore link,  
+						teaser = nui.find(".actual .teaser")
 						if value.teaser?
+							teaser.removeClass "hidden"
 							body_nui.css({
 								display:'none',	
 							})
-							teaser = nui.find(".actual .teaser")
 							teaser.html(teaser.html().replace(/\n/g, "<br />"))
 							readmoreLink.removeClass "hidden"	
 							body_nui.removeClass "readmoreFx"
@@ -726,7 +727,9 @@ class portfolio.Project extends Widget
 							)
 						# else body is displayed alone		
 						else
+							teaser.addClass 'hidden'
 							readmoreLink.addClass "hidden"
+
 							body_nui.css({
 								display:'block',	
 								opacity:1
@@ -1104,11 +1107,11 @@ class portfolio.Language extends Widget
 
 	constructor: ->
 		@UIS = {
-			language : "a.language"
+			languageTmpl : ".language.template"
 		}
 
 		@OPTIONS = {
-			languages : ['en', 'fr']
+			languages : ['en', 'fr', 'it']
 		}
 
 		@cache = {
@@ -1129,21 +1132,36 @@ class portfolio.Language extends Widget
 		$.ajax("/api/getLanguage", {success : this.setData})
 
 	setData: (data) =>
+
 		@cache.language = data
 		this.toggle()
 
 	onURLStateChanged: =>
 		if URL.hasChanged("ln") and URL.get("ln")
 			$.ajax("/api/setLanguage/"+URL.get("ln"), {dataType: 'json', success : this.actualize})
+		else
+			this.toggle()
 
 	actualize: =>
 		document.location.reload(true)
 
 	toggle: =>
 		if @cache.language?
-			other_language = Utils.clone(@OPTIONS.languages)
-			other_language.splice(other_language.indexOf(@cache.language), 1)
-			@uis.language.text(other_language[0]).attr("href", "#+ln="+other_language[0])
+			other_languages = Utils.clone(@OPTIONS.languages)
+			# exception for devil wich is in italian too
+			if URL.get('project') != 'devil'
+				other_languages.splice(other_languages.indexOf('it'), 1)
+				if URL.get('ln') == 'it'
+					URL.update({ln: 'en'})
+					@cache.language = 'en'
+			other_languages.splice(other_languages.indexOf(@cache.language), 1)
+			@ui.find('.actual').remove()
+			for other_language in other_languages
+				nui = @uis.languageTmpl.cloneTemplate()
+				nui.attr("href", "#+ln="+other_language)
+				nui.text(other_language)
+				@ui.append(nui)
+			URL.enableLinks(@ui)
 		else
 			this.getLanguage()
 

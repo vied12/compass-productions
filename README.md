@@ -3,10 +3,7 @@ Portfolio
 
 In progress, no stress.
 
-A Serious Toolkit
-=================
-
-Preprocessor and static files collection
+To know: Preprocessor and static files collection
 ----------------------------------------
 You must never add manually files in `static` and `templates`.
 
@@ -19,6 +16,28 @@ Others static files should be collected with the command
 `python webapp.py collectstatic`
 
 then  all files in `lib/images`, `lib/js` and `lib/css` are copied in `static`
+
+Install
+-------
+
+to install, you need:
+
+* mongodb
+* coffee-script
+* python
+* pip
+
+on ubuntu:
+
+	$ sudo apt-get install mongodb python-dev python-pip
+
+now install python dependences:
+
+	$ pip install -r requirements.pip
+
+collect static files. It will copy files and compile coffee-script, cleaverCSS and shpaml.
+
+	$ python webapp.py collectstatic
 
 Run application
 ---------------
