@@ -2,3 +2,4 @@
 venv
 .env
 archive.tar
+lib/videos/*
