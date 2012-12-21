@@ -94,6 +94,7 @@ class portfolio.Navigation extends Widget
 		if menu == "main"
 			@background.darkness(0)
 			@uis.promo.removeClass "hidden"
+			@background.resetClass()			
 			@background.image("index_bg.jpg")
 			#little fix for  this bug : tiles showing background image under them, rest is black
 			setTimeout(	(=> 
@@ -241,8 +242,7 @@ class portfolio.Background extends Widget
 		resize(@uis.mask, "full")
 
 	setProject: (project_obj) =>
-		@ui.removeClass
-		@ui.addClass "Background widget"
+		this.resetClass()
 		@ui.addClass project_obj.key		
 		if project_obj.backgroundVideos
 			$('body').trigger("setImage", project_obj.backgroundImage)				
@@ -311,6 +311,10 @@ class portfolio.Background extends Widget
 			)
 		else
 			$('body').unbind 'mousemove'
+	resetClass: =>
+		@ui.removeClass
+		@ui.addClass "Background widget"
+
 
 # -----------------------------------------------------------------------------
 #
