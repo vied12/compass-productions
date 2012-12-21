@@ -56,14 +56,7 @@ class portfolio.Navigation extends Widget
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
 		
-		@background.darkness(0)
-		@background.image("index_bg.jpg")
-		#little fix for  this bug : tiles showing background image under them, rest is black
-		setTimeout(	(=> 
-			@background.image("")
-			@background.image("index_bg.jpg")			
-			), 1000)
-		
+
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -88,7 +81,7 @@ class portfolio.Navigation extends Widget
 			this.showPage(params.page)
 		else if params.menu?
 			this.showMenu(params.menu)
-		else
+		else			
 			this.showMenu("main")
 		# hover effect
 		@uis.tilesList.mouseover((e) =>
@@ -99,8 +92,14 @@ class portfolio.Navigation extends Widget
 	# show the given menu, hide the previous opened menu
 	showMenu: (menu) =>	
 		if menu == "main"
+			@background.darkness(0)
 			@uis.promo.removeClass "hidden"
 			@background.image("index_bg.jpg")
+			#little fix for  this bug : tiles showing background image under them, rest is black
+			setTimeout(	(=> 
+				@background.image("")
+				@background.image("index_bg.jpg")			
+			), 1000)					
 			$('body').trigger "setNoVideo"
 			$('body').trigger "cancelDelayedPanel"
 		else
@@ -221,6 +220,9 @@ class portfolio.Background extends Widget
 		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
 		$('body').bind("suspendBackground",  (e) => this.suspend())
 		$('body').bind("restoreBackground",  (e) => this.restore())
+		$('body').bind("setBackground",  (e, project) => this.setProject(project))
+		
+
 
 	relayout: =>
 		resize = (that, flexibleSize) ->
@@ -238,6 +240,18 @@ class portfolio.Background extends Widget
 		resize(@uis.image, "full")
 		resize(@uis.mask, "full")
 
+	setProject: (project_obj) =>
+		@ui.removeClass
+		@ui.addClass "Background widget"
+		@ui.addClass project_obj.key		
+		if project_obj.backgroundVideos
+			$('body').trigger("setImage", project_obj.backgroundImage)				
+			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
+		else if project_obj.backgroundImage
+			$('body').trigger("setImage", project_obj.backgroundImage)				
+		else
+			$('body').trigger("setNoVideo")
+	
 	suspend: =>
 		@CACHE.suspended = true
 		@uis.image.addClass "hidden"
@@ -251,6 +265,7 @@ class portfolio.Background extends Widget
 	removeVideo: =>
 		@ui.find('.actual').remove()
 
+
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
 		#use image's tag give better control on relayoupropting than poster attribute of <video>		
@@ -260,7 +275,8 @@ class portfolio.Background extends Widget
 		for file in data
 			extension = file.split('.').pop()
 			source=$('<source />').attr("src", @CONFIG.videoUrl+file)
-			if extension == "ogv" then type ="ogg" else type = extension
+			type = extension
+			if extension == "ogv" then type = "ogg"
 			source.attr("type", "video/#{type}")
 			nui.append(source)
 		if @CACHE.image != null
@@ -640,13 +656,15 @@ class portfolio.Project extends Widget
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
-		if project_obj.backgroundVideos
+		$('body').trigger("setBackground", project_obj) 
+		###		if project_obj.backgroundVideos
 			$('body').trigger("setImage", project_obj.backgroundImage)				
 			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
 		else if project_obj.backgroundImage
 			$('body').trigger("setImage", project_obj.backgroundImage)				
 		else
 			$('body').trigger("setNoVideo")
+		###
 
 	setMenu: (project) =>
 		@uis.tabList.addClass "hidden"
