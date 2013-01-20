@@ -207,13 +207,13 @@ body:
 		position 	: relative
 		height      : 40px
 	.Language:
-		padding          : $BASE_PADDING
-		position       : absolute
-		bottom    : 0px
+		padding  : $BASE_PADDING
+		position : absolute
+		bottom   : 0px
 		left     : 20px
 		a:
-			text-decoration 	: none
-			padding-right: 5px;
+			text-decoration : none
+			padding-right   : 8px
 
 .FooterPanel:
 	z-index             : 1
