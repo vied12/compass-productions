@@ -18,6 +18,7 @@ import sources.preprocessing as preprocessing
 import sources.flickr        as flickr
 import sources.model         as model
 import sources.vimeo         as vimeo
+import datetime
 
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
@@ -105,6 +106,7 @@ def news(id="all", sort=None):
 		news.set_lang('fr')
 		news.content = request.form.get("content_fr")
 		news.title   = request.form.get("title_fr")
+		news.date_creation = datetime.datetime.now()
 		news.save()
 		return "true"
 	if request.method == "DELETE":
