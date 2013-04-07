@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2012 ORGANIZATION
+# Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-11-25 23:35+0100\n"
+"POT-Creation-Date: 2013-04-07 16:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,16 +52,15 @@ msgid "Contact"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:14
-#: lib/shpaml/widgets/navigation.html.shpaml:31
 msgid "JOY!"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:16
-msgid "Baghdad twist"
+msgid "Baghdad Twist"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:18
-msgid "The devil in the holy water"
+msgid "The Devil in the Holy Water"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:20
@@ -69,36 +68,28 @@ msgid "Nana, George & me"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:22
-msgid "Parting words"
+msgid "Parting Words"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:24
 msgid "The Length of the Alphabet"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:29
-msgid "STARTING DECEMBER 14 - CINÉMA EXCENTRIS"
-msgstr ""
-
-#: lib/shpaml/widgets/navigation.html.shpaml:33
-msgid "WATCH THE TRAILER"
-msgstr ""
-
-#: lib/shpaml/widgets/navigation.html.shpaml:38
+#: lib/shpaml/widgets/navigation.html.shpaml:34
 msgid "Open"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:39
-#: lib/shpaml/widgets/panel.html.shpaml:117
+#: lib/shpaml/widgets/navigation.html.shpaml:35
+#: lib/shpaml/widgets/panel.html.shpaml:116
 msgid "Close"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:42
+#: lib/shpaml/widgets/navigation.html.shpaml:38
 msgid "Home"
 msgstr ""
 
-#: lib/shpaml/widgets/navigation.html.shpaml:44
-#: lib/shpaml/widgets/panel.html.shpaml:111
+#: lib/shpaml/widgets/navigation.html.shpaml:40
+#: lib/shpaml/widgets/panel.html.shpaml:110
 msgid "Back"
 msgstr ""
 
@@ -138,52 +129,52 @@ msgstr ""
 msgid "distribution"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:28
+#: lib/shpaml/widgets/panel.html.shpaml:27
 msgid "facebook"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:35
+#: lib/shpaml/widgets/panel.html.shpaml:34
 msgid "Read more"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:64
+#: lib/shpaml/widgets/panel.html.shpaml:63
 msgid "press kit"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:91
-#: lib/shpaml/widgets/panel.html.shpaml:102
+#: lib/shpaml/widgets/panel.html.shpaml:90
+#: lib/shpaml/widgets/panel.html.shpaml:101
 msgid "Hello there,"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:93
+#: lib/shpaml/widgets/panel.html.shpaml:92
 msgid "Would you like to get in touch with Compass Productions?"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:95
+#: lib/shpaml/widgets/panel.html.shpaml:94
 msgid "You may reach us at:"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:99
+#: lib/shpaml/widgets/panel.html.shpaml:98
 msgid "or use our contact form"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:104
+#: lib/shpaml/widgets/panel.html.shpaml:103
 msgid "Would you like to get in touch with Compass Productions"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:109
+#: lib/shpaml/widgets/panel.html.shpaml:108
 msgid "Write us a few lines..."
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:112
+#: lib/shpaml/widgets/panel.html.shpaml:111
 msgid "Send"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:113
+#: lib/shpaml/widgets/panel.html.shpaml:112
 msgid "Thank you"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:114
+#: lib/shpaml/widgets/panel.html.shpaml:113
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"

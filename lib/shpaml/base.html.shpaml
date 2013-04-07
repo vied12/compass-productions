@@ -8,9 +8,9 @@ html lang="en"
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/portfolio.css')}}" media="all"
 		script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}" | {# #}	
 
-		> meta name="description" content="Joe Balass, Joy, Joie, JOY!, Portrait of a nun, JOY! Portrait of a Nun, JOIE! Portrait d'une nonne, Naïm Kattan, La longueur de l'alphabet,The Length of the Alphabet, George Hayim, Nana, George &amp; me, le Prix Tremplin pour le monde Artv, FIFA, Festival International du Film sur l'art de Montréal, Springboard to the World Award, iraq, jew, iraqi jew, Baghdad Twist, The Devil in the Holy water, il diavolo nell'acqua santa, Montreal filmmaker, Derniers mots, Parting Words, compass films, compass, world pride, balass, documentary, gay, film, pope, jubillee, roman catholic, holy year, sisters of perpetual indulgence, sister missionary position, radical faeries, queer, fairy, faery, Naim Kattan film"
+		> meta name="description" content="Joe Balass, Joy, Joie, JOY!, Portrait of a nun, JOY! Portrait of a Nun, JOIE! Portrait d'une nonne, Naïm Kattan, La longueur de l'alphabet,The Length of the Alphabet, George Hayim, Nana, George &amp; me, le Prix Tremplin pour le monde Artv, FIFA, Festival International du Film sur l'art de Montréal, Springboard to the World Award, iraq, jew, iraqi jew, Baghdad Twist, The Devil in the Holy Water, il diavolo nell'acqua santa, Montreal filmmaker, Derniers mots, Parting Words, compass films, compass, world pride, balass, documentary, gay, film, pope, jubillee, roman catholic, holy year, sisters of perpetual indulgence, sister missionary position, radical faeries, queer, fairy, faery, Naim Kattan film"
 
-		> meta name="keywords" content="Joe Balass, Joy, Joie, JOY!, Portrait of a nun, JOY! Portrait of a Nun, JOIE! Portrait d'une nonne, Naïm Kattan, La longueur de l'alphabet,The Length of the Alphabet, George Hayim, Nana, George &amp; me, le Prix Tremplin pour le monde Artv, FIFA, Festival International du Film sur l'art de Montréal, Springboard to the World Award, iraq, jew, iraqi jew, Baghdad Twist, The Devil in the Holy water, il diavolo nell'acqua santa, Montreal filmmaker, Derniers mots, Parting Words, compass films, compass, world pride, balass, documentary, gay, film, pope, jubillee, roman catholic, holy year, sisters of perpetual indulgence, sister missionary position, radical faeries, queer, fairy, faery, Naim Kattan film"
+		> meta name="keywords" content="Joe Balass, Joy, Joie, JOY!, Portrait of a nun, JOY! Portrait of a Nun, JOIE! Portrait d'une nonne, Naïm Kattan, La longueur de l'alphabet,The Length of the Alphabet, George Hayim, Nana, George &amp; me, le Prix Tremplin pour le monde Artv, FIFA, Festival International du Film sur l'art de Montréal, Springboard to the World Award, iraq, jew, iraqi jew, Baghdad Twist, The Devil in the Holy Water, il diavolo nell'acqua santa, Montreal filmmaker, Derniers mots, Parting Words, compass films, compass, world pride, balass, documentary, gay, film, pope, jubillee, roman catholic, holy year, sisters of perpetual indulgence, sister missionary position, radical faeries, queer, fairy, faery, Naim Kattan film"
 
 	body.use-base
 		{# referencement #}
@@ -39,7 +39,7 @@ html lang="en"
 				li | jew
 				li | iraqi jew
 				li | Baghdad Twist
-				li | The Devil in the Holy water
+				li | The Devil in the Holy Water
 				li | il diavolo nell'acqua santa
 				li | Montreal filmmaker
 				li | Derniers mots

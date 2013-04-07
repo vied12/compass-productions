@@ -13,13 +13,13 @@
 			.tile.nav data-target="joy"
 				.wrapper | {{ gettext("JOY!") }}
 			.tile.nav data-target="baghdad"
-				.wrapper | {{ gettext("Baghdad twist") }}
+				.wrapper | {{ gettext("Baghdad Twist") }}
 			.tile.nav data-target="devil"
-				.wrapper | {{ gettext("The devil in the holy water") }}
+				.wrapper | {{ gettext("The Devil in the Holy Water") }}
 			.tile.nav data-target="nana"
 				.wrapper | {{ gettext("Nana, George & me") }}
 			.tile.nav data-target="parting"
-				.wrapper | {{ gettext("Parting words") }}
+				.wrapper | {{ gettext("Parting Words") }}
 			.tile.nav data-target="longueur"
 				.wrapper | {{ gettext("The Length of the Alphabet") }}		
 		.PageMenu.menu.hidden data-menu="page" | {##}

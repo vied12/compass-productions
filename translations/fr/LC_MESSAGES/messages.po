@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-11-25 23:35+0100\n"
+"POT-Creation-Date: 2013-04-07 16:24+0200\n"
 "PO-Revision-Date: 2012-09-25 01:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -54,16 +54,15 @@ msgid "Contact"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:14
-#: lib/shpaml/widgets/navigation.html.shpaml:31
 msgid "JOY!"
 msgstr "JOIE!"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:16
-msgid "Baghdad twist"
+msgid "Baghdad Twist"
 msgstr ""
 
 #: lib/shpaml/widgets/navigation.html.shpaml:18
-msgid "The devil in the holy water"
+msgid "The Devil in the Holy Water"
 msgstr "Le diable dans l'eau bénite"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:20
@@ -71,36 +70,28 @@ msgid "Nana, George & me"
 msgstr "Nana, George et moi"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:22
-msgid "Parting words"
+msgid "Parting Words"
 msgstr "Derniers mots"
 
 #: lib/shpaml/widgets/navigation.html.shpaml:24
 msgid "The Length of the Alphabet"
 msgstr "La longueur de l’alphabet"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:29
-msgid "STARTING DECEMBER 14 - CINÉMA EXCENTRIS"
-msgstr "DÈS LE 14 DÉCEMBRE - CINÉMA EXCENTRIS"
-
-#: lib/shpaml/widgets/navigation.html.shpaml:33
-msgid "WATCH THE TRAILER"
-msgstr "BANDE-ANNONCE"
-
-#: lib/shpaml/widgets/navigation.html.shpaml:38
+#: lib/shpaml/widgets/navigation.html.shpaml:34
 msgid "Open"
 msgstr "Ouvrir"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:39
-#: lib/shpaml/widgets/panel.html.shpaml:117
+#: lib/shpaml/widgets/navigation.html.shpaml:35
+#: lib/shpaml/widgets/panel.html.shpaml:116
 msgid "Close"
 msgstr "Fermer"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:42
+#: lib/shpaml/widgets/navigation.html.shpaml:38
 msgid "Home"
 msgstr "Accueil"
 
-#: lib/shpaml/widgets/navigation.html.shpaml:44
-#: lib/shpaml/widgets/panel.html.shpaml:111
+#: lib/shpaml/widgets/navigation.html.shpaml:40
+#: lib/shpaml/widgets/panel.html.shpaml:110
 msgid "Back"
 msgstr "Retour"
 
@@ -140,52 +131,52 @@ msgstr "liens"
 msgid "distribution"
 msgstr "distribution"
 
-#: lib/shpaml/widgets/panel.html.shpaml:28
+#: lib/shpaml/widgets/panel.html.shpaml:27
 msgid "facebook"
 msgstr ""
 
-#: lib/shpaml/widgets/panel.html.shpaml:35
+#: lib/shpaml/widgets/panel.html.shpaml:34
 msgid "Read more"
 msgstr "Plus d'infos"
 
-#: lib/shpaml/widgets/panel.html.shpaml:64
+#: lib/shpaml/widgets/panel.html.shpaml:63
 msgid "press kit"
 msgstr "kit de presse"
 
-#: lib/shpaml/widgets/panel.html.shpaml:91
-#: lib/shpaml/widgets/panel.html.shpaml:102
+#: lib/shpaml/widgets/panel.html.shpaml:90
+#: lib/shpaml/widgets/panel.html.shpaml:101
 msgid "Hello there,"
 msgstr "Salut,"
 
-#: lib/shpaml/widgets/panel.html.shpaml:93
+#: lib/shpaml/widgets/panel.html.shpaml:92
 msgid "Would you like to get in touch with Compass Productions?"
 msgstr "Vous voulez prendre contact avec Compass Productions?"
 
-#: lib/shpaml/widgets/panel.html.shpaml:95
+#: lib/shpaml/widgets/panel.html.shpaml:94
 msgid "You may reach us at:"
 msgstr "Vous pouvez nous joindre sur:"
 
-#: lib/shpaml/widgets/panel.html.shpaml:99
+#: lib/shpaml/widgets/panel.html.shpaml:98
 msgid "or use our contact form"
 msgstr "ou utiliser notre formulaire de contact"
 
-#: lib/shpaml/widgets/panel.html.shpaml:104
+#: lib/shpaml/widgets/panel.html.shpaml:103
 msgid "Would you like to get in touch with Compass Productions"
 msgstr "Vous voulez prendre contact avec Compass Productions"
 
-#: lib/shpaml/widgets/panel.html.shpaml:109
+#: lib/shpaml/widgets/panel.html.shpaml:108
 msgid "Write us a few lines..."
 msgstr "Ecrivez nous ici quelques lignes..."
 
-#: lib/shpaml/widgets/panel.html.shpaml:112
+#: lib/shpaml/widgets/panel.html.shpaml:111
 msgid "Send"
 msgstr "Envoyer"
 
-#: lib/shpaml/widgets/panel.html.shpaml:113
+#: lib/shpaml/widgets/panel.html.shpaml:112
 msgid "Thank you"
 msgstr "Merci"
 
-#: lib/shpaml/widgets/panel.html.shpaml:114
+#: lib/shpaml/widgets/panel.html.shpaml:113
 msgid ""
 "There is a problem, please check if your email is correct or retry in a "
 "few moment"
@@ -193,6 +184,9 @@ msgstr ""
 "Il y a eu un problème, vérifiez si l'email donné est bien correct ou "
 "réessayez dans un petit moment"
 
-#~ msgid "In theaters soon"
-#~ msgstr "Bientôt à l'affiche"
+#~ msgid "STARTING DECEMBER 14 - CINÉMA EXCENTRIS"
+#~ msgstr "DÈS LE 14 DÉCEMBRE - CINÉMA EXCENTRIS"
+
+#~ msgid "WATCH THE TRAILER"
+#~ msgstr "BANDE-ANNONCE"
 
