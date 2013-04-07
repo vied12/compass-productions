@@ -680,6 +680,8 @@ class portfolio.Project extends Widget
 				else
 					@uis.tabs.find("."+category).removeClass("hidden")
 		# special case for Bagdad film, the video is on an external web site
+		if project.facebook?
+			@ui.find("[data-name=facebook]").attr('href', project.facebook)
 		if project.videos?
 			if project.videos.length == 0
 				@cache.externalVideo = true
