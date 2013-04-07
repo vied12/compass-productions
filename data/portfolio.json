@@ -16,6 +16,10 @@
                 }
             ,            
             "gallery"   : "72157631598386933",
+            "videos"    : {
+                "en" : ["62917355"],
+                "fr" : ["61067165"]
+            },
             "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
         },
         {
