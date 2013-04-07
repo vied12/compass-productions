@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 html lang="en"
 	head
-		title | Compass Production
+		title | Compass Productions
 		> link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}" type="image/x-icon"
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jquery.jscrollpane.css')}}" media="all"	
 		> link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}" media="all"

@@ -143,7 +143,7 @@ def contact():
 	try:
 		message = request.form['message']
 		sender  = request.form['email']
-		msg     = flask_mail.Message("compass Production - contact page", body=message, sender=sender, reply_to=sender, recipients=app.config["EMAILS"])
+		msg     = flask_mail.Message("compass Productions - contact page", body=message, sender=sender, reply_to=sender, recipients=app.config["EMAILS"])
 		mail.send(msg)
 	except Exception as e:
 		print e
