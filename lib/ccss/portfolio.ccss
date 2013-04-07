@@ -436,8 +436,8 @@ body:
 		.date:
 			display 	: block
 		.body:
-			font-size : $BIG_FONT_SIZE
-			line-height : $BIG_LINE_HEIGHT
+			font-size : $SMALL_FONT_SIZE
+			line-height : $SMALL_LINE_HEIGHT
 			.button:
 				line-height : 1em
 				font-size   : 0.5em
