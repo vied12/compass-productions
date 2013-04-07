@@ -2,10 +2,7 @@
     "works": [
         {
             "key"       : "longueur",
-            "title"     : {
-                    "fr" : "La longueur de l'alphabet",
-                    "en" : "The Length of the Alphabet"
-            },
+            "title"     : "The Length of the Alphabet",
             "backgroundImage" : "longueur.jpg",
             "synopsis"  : 
                 {
@@ -22,11 +19,7 @@
         },
         {
             "key"       : "devil", 
-            "title"     : {
-                "en" : "The devil in the holy water",
-                "fr" : "Le Diable dans l’eau bénite",
-                "it" : "Il Diavolo nell’Acqua Santa"
-                },
+            "title"     : "The devil in the holy water",
             "backgroundImage" : "Devil_fuck_insect.jpeg",
             "backgroundVideos" : ["Devilfuck_insect2.mp4","Devilfuck_insect2.webm","Devilfuck_insect2.ogv"],
             "synopsis"  : {
