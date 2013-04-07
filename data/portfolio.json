@@ -20,7 +20,23 @@
                 "en" : ["62917355"],
                 "fr" : ["61067165"]
             },
-            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca"
+            "distribution" : "<h2>Compass Productions</h2>Compass Productions inc.\ninfo@compassproductions.ca",
+            "press"     : {
+                "press" : [
+                    {
+                        "article" : "Et dans ce film qui se promène entre images d’archives du Bagdad d’hier tissé de quartiers ethniques, du Paris éternel et du Montréal sous toutes ses coutures, à travers des témoignages, et les paroles de Kattan, c’est un esprit curieux et un constructeur de ponts qui s’ouvre à nous en éclairant un pan de l’Histoire.",
+                        "title"   : "Odile Tremblay - Le Devoir"
+                    },
+                    {
+                        "article" : "Créer des ponts entre les cultures peut être le fait de certains artistes et La Longueur de l’alphabet de Joe Balass est un portrait juste et amical d’un de ces passeurs de l’inter-culturalisme, Naïm Kattan, juif de Bagdad devenu écrivain québécois et directeur pendant vingt-cinq ans du Conseil des Arts du Canada.",
+                        "title"   : "Luc Chaput- Séquences"
+                    },
+                    {
+                        "article" : "Après Nana, George et moi et Bagdad twist, le réalisateur Joe Balass complète avec son portrait de Naïm Kattan, La longueur de l'alphabet, une trilogie consacrée à son pays d'origine.",
+                        "title"   : "Dominique Poirier - Médium large"
+                    }
+                ]
+            }
         },
         {
             "key"       : "devil", 
@@ -657,7 +673,29 @@
                 "presskit" : {
                     "link"     : "/static/presskit-JOY.zip",
                     "password" : "joy2012"
-                }
+                },
+                "press" : [
+                    {
+                        "article" : "Balass captures the spirit and shaministic spirituality of the Sisters of Perpetual Indulgence in his meditative film.",
+                        "title"   : "Richard Burnett - The Gazette"
+                    },
+                    {
+                        "article" : "An unusually quiet and moving documentary, Joy! Portrait of a Nun lifts us up, drops us into this community, makes us privy to Sister Mish's life and rituals and we come away, perhaps, with a feeling of having been exposed more to a session of queer faerie meditation...",
+                        "title"   : "Jason B. Crawford, 2B magazine)"
+                    },
+                    {
+                        "article" : "The doc is an eye-opener on every level. Mish, as Sister Missionary Position Delight prefers to be called, is a nun who doesn't fit the classic mould... And Mish's Sisters of Perpetual Indulgence live by a mantra that most can easily accept: \"Spread universal joy and expiate stigmatic guilt!\"",
+                        "title"   : "Bill Brownstein - The Gazette"
+                    },
+                    {
+                        "article" : "les soeurs flyées… Excentriques, mystiques, coquines... Les Soeurs de la Perpétuelle Indulgence forment probablement la congrégation religieuse la plus funky de la planète.",
+                        "title"   : "Sylvie St-Jacques - La Presse"
+                    },
+                    {
+                        "article" : "Il a davantage l'air d'un hippie, d'un brocanteur que… d'une religieuse. Et pourtant, Mish a pris le voile en 1979 au sein de la congrégation des Soeurs de la perpétuelle indulgence... prêchant la bonne nouvelle avec beaucoup de maquillage !",
+                        "title"   : "André Lavoie, Le Devoir"
+                    }
+                ]
             },
             "gallery"   : "72157631598336173",
             "credits"   : {
