@@ -704,3 +704,6 @@ body:
 	font-weight : bold
 	font-size :  0.9em
 	color : $TEXT_BLUE
+
+.ns:
+	display: none
