@@ -1,0 +1,10 @@
+http://compassproductions.ca/#!menu=main
+http://compassproductions.ca/#!page=contact
+http://compassproductions.ca/#!menu=works
+http://compassproductions.ca/#!page=news
+http://compassproductions.ca/#!page=project&project=joy
+http://compassproductions.ca/#!page=project&project=baghdad
+http://compassproductions.ca/#!page=project&project=devil
+http://compassproductions.ca/#!page=project&project=nana
+http://compassproductions.ca/#!page=project&project=parting
+http://compassproductions.ca/#!page=project&project=longueur
