@@ -58,6 +58,12 @@ jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
 					$(this).remove()
 	return nui
 
+Object.size = (obj) ->
+	size = 0
+	for key of obj
+		if obj.hasOwnProperty(key)
+			size++
+	return size
 # -----------------------------------------------------------------------------
 #
 # WIDGET
@@ -103,7 +109,7 @@ class window.serious.Widget
 					console.warn("uis", key, "not found in", ui)
 				@uis[key] = nui
 		# ACTIONS
-		if (typeof(@ACTIONS) != "undefined")
+		if @ACTIONS?
 			for action in @ACTIONS
 				@ui.find(".do[data-action=#{action}]").click (e) =>
 					# TODO: Prevent overwriting
@@ -176,7 +182,7 @@ class window.serious.URL
 	hasChanged: (key) =>
 		if @hash[key]?
 			if @previousHash[key]?
-				return @hash[key] != @previousHash[key]
+				return @hash[key].toString() != @previousHash[key].toString()
 			else
 				return true
 		else
@@ -189,7 +195,10 @@ class window.serious.URL
 
 	# update the hash of url with the @hash variable content
 	updateUrl: (hash=null) =>
-		location.hash = this.toString(hash)
+		if not hash or Object.size(hash) == 0
+			location.hash = '_'
+		else
+			location.hash = this.toString(hash)
 
 	enableLinks: (context=null) =>
 		$("a.internal[href]",context).click (e) =>
@@ -206,10 +215,11 @@ class window.serious.URL
 			return false
 
 	fromString: (value) =>
-		value = value or location.hash
-		hash  = []
-		value = value.split("&")
-		for item in value
+		value     = value or location.hash
+		hash      = {}
+		value     = value.replace('!', '')
+		hash_list = value.split("&")
+		for item in hash_list
 			if item?
 				key_value = item.split("=")
 				# TODO: handle case length = 1
@@ -221,10 +231,11 @@ class window.serious.URL
 
 	toString: (hash_list=null) =>
 		hash_list = hash_list or @hash
-		new_hash = ""
+		new_hash = "!"
+		i = 0
 		for key, value of hash_list
-			new_hash += "&" + key + "=" + value
+			new_hash += "&" if i > 0
+			new_hash += key + "=" + value
+			i++
 		return new_hash
 # EOF
-
-
