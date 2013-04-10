@@ -8,9 +8,13 @@
 # Creation : 04-Aug-2012
 # Last mod : 05-Oct-2012
 # -----------------------------------------------------------------------------
+# >  A Serious Toolkit for Serious Projects.
+# >  Helps to integrate some structured code into the web.
+# >  
+# >  Inspired by Sébastien Pierre's work <http://github.com/sebastien>
 
-window.serious = {}
-window.serious.Utils  = {}
+window.serious       = {}
+window.serious.Utils = {}
 
 # -----------------------------------------------------------------------------
 #

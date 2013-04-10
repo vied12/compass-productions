@@ -245,7 +245,7 @@ class portfolio.Background extends Widget
 		this.resetClass()
 		@ui.addClass project_obj.key		
 		if project_obj.backgroundVideos
-			$('body').trigger("setImage", project_obj.backgroundImage)				
+			# $('body').trigger("setImage", project_obj.backgroundImage)				
 			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
 		else if project_obj.backgroundImage
 			$('body').trigger("setImage", project_obj.backgroundImage)				
@@ -282,7 +282,7 @@ class portfolio.Background extends Widget
 		if @CACHE.image != null
 		 	nui.attr("poster", @CONFIG.imageUrl+@CACHE.image)		 	
 		#wait until video is playable before swap with old video
-		nui.on("canplay", =>
+		nui.on("canplay canplaythrough", =>
 			if not @CACHE.suspended
 				old_nui.remove()
 				nui.removeClass "hidden"
@@ -292,25 +292,18 @@ class portfolio.Background extends Widget
 	image: (filename) =>
 		@ui.find('video.actual').addClass "hidden"
 		@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
-		@uis.image.removeClass "hidden"
 		@CACHE.image=filename
 		this.relayout(@uis.image)
+
+		console.log('pouet1', @uis.image)
+		$("<img/>").attr('src', #{@CONFIG.imageUrl}#{filename}).load(=> 
+			console.log('pouet')
+			@uis.image.removeClass "hidden"
+		)
 
 	darkness : (darklevel)=>
 		@uis.darkness.css("opacity", darklevel)
 
-	followMouse : (activate=true) =>	
-		if(activate)
-			$('body').bind('mousemove', (e) =>
-				bgx = e.pageX - 50
-				bgy = e.pageY - 50
-				maskImage = "-webkit-gradient(radial, #{bgx}px #{bgy}px, 30,  #{bgx}px #{bgy}px, 90, from(#000), to(rgba(0,0,0,0)))"
-				@uis.mousemask.css({
-			    	background : maskImage
-			    })
-			)
-		else
-			$('body').unbind 'mousemove'
 	resetClass: =>
 		@ui.removeClass()
 		@ui.addClass "Background widget"

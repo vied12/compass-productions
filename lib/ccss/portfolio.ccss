@@ -611,10 +611,30 @@ body:
 		width 			: auto
 		height 			: auto
 		z-index 		: -1
+		opacity : 1 !important
+		&.hidden:
+			opacity : 0 !important
+			display: block !important
+		-webkit-transition-property : "opacity,background-color"
+		-moz-transition-property    : "opacity,background-color"
+		-webkit-transition-duration : "0.2s"
+		-moz-transition-duration    : "0.2s"
+		-moz-transition-timing-function     : linear
+		-webkit-transition-timing-function  : linear
 	.image: 
 		background-size: cover
 		background-repeat : no-repeat
 		background-position : top left
+		opacity : 1 !important
+		&.hidden:
+			opacity : 0 !important
+			display: block !important
+		-webkit-transition-property : "opacity,background-color"
+		-moz-transition-property    : "opacity,background-color"
+		-webkit-transition-duration : "0.2s"
+		-moz-transition-duration    : "0.2s"
+		-moz-transition-timing-function     : linear
+		-webkit-transition-timing-function  : linear
 	.hidden:
 		display 		: none
 	.mask:
@@ -624,6 +644,12 @@ body:
 		background-color : black
 		opacity : 0
 		z-index : 1
+		-webkit-transition-property : "opacity"
+		-moz-transition-property    : "opacity"
+		-webkit-transition-duration : "0.5s"
+		-moz-transition-duration    : "0.5s"
+		-moz-transition-timing-function     : linear
+		-webkit-transition-timing-function  : linear
 	.mousemask:	
 		opacity : 1	
 		//background-image : url('../images/mousemask'.png)
