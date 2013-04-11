@@ -198,7 +198,7 @@ body:
 
 .FooterBar:	
 	position         : absolute
-	bottom           : 1px
+	bottom           : 0px
 	height           : 40px
 	width            : 100%
 	z-index          : 2
@@ -228,11 +228,11 @@ body:
 	width 			: 100%		
 	height : auto
 	bottom : 40px
-	-webkit-transition-property : top
-	-moz-transition-property    : top
+	-webkit-transition-property : bottom
+	-moz-transition-property    : bottom
 	-webkit-transition-duration : 0.50s
 	-moz-transition-duration    : 0.50s	
-	top : 100%
+	//top : 100%
 	> .wrapper:
 		height : 100%
 		position : 	relative

@@ -382,16 +382,13 @@ class portfolio.Panel extends Widget
 		@cache.isOpened = open
 		if @cache.isOpened
 			window_height = $(window).height()
-			navigation_ui = $(".Navigation")
-			# just under the navigation
-			top_offset = navigation_ui.offset().top + navigation_ui.height() - 6
-			@ui.css({top : top_offset})
 			height = $(window).height() - 218
 			if height > 0
 				@ui.css({height : height})
+			# just under the navigation
+			@ui.css({bottom : $(".FooterBar").height()})
 		else
-			top_offset = $(window).height()
-			@ui.css({top : top_offset})
+			@ui.css({bottom : 0 - @ui.height()})
 		# FIXME: ugly, to center the footer bar links
 		offset_left = parseInt($(".FooterBar .wrapper:first").offset().left) + 60
 		$(".Page.links").css({left:offset_left})
