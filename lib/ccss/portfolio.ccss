@@ -232,7 +232,6 @@ body:
 	-moz-transition-property    : bottom
 	-webkit-transition-duration : 0.50s
 	-moz-transition-duration    : 0.50s	
-	//top : 100%
 	> .wrapper:
 		height : 100%
 		position : 	relative
@@ -680,7 +679,7 @@ body:
 		float 				: left
 		padding 			: 10px
 		background 			: #fff
-.Background.longueur div.image:
+.Background.longueur div.image.actual:
 	background-position : center left
 	-webkit-transition-property : opacity
 	-moz-transition-property    : opacity
