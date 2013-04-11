@@ -1,5 +1,5 @@
 .Background.widget data-widget=portfolio.Background
-	.image.hidden | {##}
+	.image.template.pasla | {##}
 	video.video.template.hidden preload=none autoplay="autoplay" loop="loop" | {##}
 	.mask | {##}
 	.darkness | {##}

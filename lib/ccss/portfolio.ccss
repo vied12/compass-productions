@@ -615,8 +615,8 @@ body:
 		&.hidden:
 			opacity : 0 !important
 			display: block !important
-		-webkit-transition-property : "opacity,background-color"
-		-moz-transition-property    : "opacity,background-color"
+		-webkit-transition-property : "opacity"
+		-moz-transition-property    : "opacity"
 		-webkit-transition-duration : "0.2s"
 		-moz-transition-duration    : "0.2s"
 		-moz-transition-timing-function     : linear
@@ -625,16 +625,17 @@ body:
 		background-size: cover
 		background-repeat : no-repeat
 		background-position : top left
-		opacity : 1 !important
-		&.hidden:
-			opacity : 0 !important
+		opacity : 1
+		&.pasla:
+			opacity : 0
+		&.template:
 			display: block !important
-		-webkit-transition-property : "opacity,background-color"
-		-moz-transition-property    : "opacity,background-color"
-		-webkit-transition-duration : "0.2s"
-		-moz-transition-duration    : "0.2s"
-		-moz-transition-timing-function     : linear
-		-webkit-transition-timing-function  : linear
+		-webkit-transition-property : "opacty"
+		-moz-transition-property    : "opacty"
+		-webkit-transition-duration : "0.5s"
+		-moz-transition-duration    : "0.5s"
+		-moz-transition-timing-function     : ease-in-out
+		-webkit-transition-timing-function  : ease-in-out
 	.hidden:
 		display 		: none
 	.mask:
@@ -681,6 +682,12 @@ body:
 		background 			: #fff
 .Background.longueur div.image:
 	background-position : center left
+	-webkit-transition-property : opacity
+	-moz-transition-property    : opacity
+	-webkit-transition-duration : "0.5s"
+	-moz-transition-duration    : "0.5s"
+	-moz-transition-timing-function     : linear
+	-webkit-transition-timing-function  : linear
 
 .Bonus:
 	display : none

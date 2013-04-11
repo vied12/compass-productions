@@ -95,12 +95,12 @@ class portfolio.Navigation extends Widget
 			@background.darkness(0)
 			@uis.promo.removeClass "hidden"
 			@background.resetClass()			
-			@background.image("index_bg.jpg")
-			#little fix for  this bug : tiles showing background image under them, rest is black
-			setTimeout(	(=> 
-				@background.image("")
-				@background.image("index_bg.jpg")			
-			), 1000)					
+			@background.image("index_bg.jpg", true)
+			# #little fix for  this bug : tiles showing background image under them, rest is black
+			# setTimeout(	(=> 
+			# 	@background.image("")
+			# 	@background.image("index_bg.jpg")			
+			# ), 1000)					
 			$('body').trigger "setNoVideo"
 			$('body').trigger "cancelDelayedPanel"
 		else
@@ -195,7 +195,7 @@ class portfolio.Background extends Widget
 
 	constructor: ->
 		@UIS = {
-			image     : ".image"
+			image     : ".image.template"
 			video     : ".video"
 			mask      : ".mask"
 			darkness  : ".darkness"
@@ -222,8 +222,6 @@ class portfolio.Background extends Widget
 		$('body').bind("suspendBackground",  (e) => this.suspend())
 		$('body').bind("restoreBackground",  (e) => this.restore())
 		$('body').bind("setBackground",  (e, project) => this.setProject(project))
-		
-
 
 	relayout: =>
 		resize = (that, flexibleSize) ->
@@ -243,10 +241,12 @@ class portfolio.Background extends Widget
 
 	setProject: (project_obj) =>
 		this.resetClass()
-		@ui.addClass project_obj.key		
+		setTimeout((=> @ui.addClass project_obj.key), 0.20)
 		if project_obj.backgroundVideos
-			# $('body').trigger("setImage", project_obj.backgroundImage)				
-			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
+			if Modernizr.video
+				$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
+			else
+				$('body').trigger("setImage", project_obj.backgroundImage)				
 		else if project_obj.backgroundImage
 			$('body').trigger("setImage", project_obj.backgroundImage)				
 		else
@@ -254,23 +254,24 @@ class portfolio.Background extends Widget
 	
 	suspend: =>
 		@CACHE.suspended = true
-		@uis.image.addClass "hidden"
+		@uis.image.addClass "pasla"
 		@ui.find('video.actual').addClass "hidden"		
 
 	restore: =>
 		@ui.find('video.actual').removeClass "hidden"
-		@uis.image.removeClass "hidden"		
+		@uis.image.removeClass "pasla"		
 		@CACHE.suspended = false
 
 	removeVideo: =>
-		@ui.find('.actual').remove()
+		@ui.find('video.actual').remove()
 
 
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
 		#use image's tag give better control on relayoupropting than poster attribute of <video>		
-		old_nui  = @ui.find('.actual')
+		old_nui  = @ui.find('video.actual')
 		nui      = @uis.video.cloneTemplate().addClass "hidden"
+		@uis.image.addClass "pasla"
 		nui.prop('muted', true)
 		for file in data
 			extension = file.split('.').pop()
@@ -289,16 +290,27 @@ class portfolio.Background extends Widget
 		)
 		@uis.video.after(nui)
 		
-	image: (filename) =>
-		@ui.find('video.actual').addClass "hidden"
-		@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
-		@CACHE.image=filename
+	image: (filename, is_default=false) =>
+		old_nui = @ui.find('.image.actual')
+		old_nui.addClass "pasla"
+		if is_default
+			@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})").removeClass('pasla')
+			setTimeout((=> old_nui.remove()), 1000)
+			return
+
+		@uis.image.addClass "pasla"
+
+		nui = @uis.image.cloneTemplate().addClass("pasla").css("background-image", "")
+
+		@uis.video.before(nui)
 		this.relayout(@uis.image)
 
-		console.log('pouet1', @uis.image)
-		$("<img/>").attr('src', #{@CONFIG.imageUrl}#{filename}).load(=> 
-			console.log('pouet')
-			@uis.image.removeClass "hidden"
+		@CACHE.image=filename
+		
+		$("<img/>").attr('src', "#{@CONFIG.imageUrl}#{filename}").load(=>
+			nui.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
+			nui.removeClass "pasla"
+			setTimeout((=> old_nui.remove()), 1000)
 		)
 
 	darkness : (darklevel)=>
@@ -321,7 +333,7 @@ class portfolio.Panel extends Widget
 
 		@OPTIONS = {
 			panelHeightClosed : 40
-			delay : 3000
+			delay : 0
 		}
 		@PAGES = ["project", "contact", "news"]
 		@UIS = {
