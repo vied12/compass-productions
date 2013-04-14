@@ -1224,6 +1224,6 @@ $(window).load ()->
 	else
 		$("body > .for-ie").addClass "hidden"
 		$("body > .wrap").removeClass "hidden"
-		Widget.bindAll()
+	Widget.bindAll()
 
 # EOF
