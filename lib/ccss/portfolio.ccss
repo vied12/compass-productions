@@ -631,8 +631,8 @@ body:
 			display: block !important
 		-webkit-transition-property : "opacty"
 		-moz-transition-property    : "opacty"
-		-webkit-transition-duration : "0.5s"
-		-moz-transition-duration    : "0.5s"
+		-webkit-transition-duration : "1s"
+		-moz-transition-duration    : "1s"
 		-moz-transition-timing-function     : ease-in-out
 		-webkit-transition-timing-function  : ease-in-out
 	.hidden:

@@ -294,8 +294,10 @@ class portfolio.Background extends Widget
 		old_nui = @ui.find('.image.actual')
 		old_nui.addClass "pasla"
 		if is_default
-			@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})").removeClass('pasla')
-			setTimeout((=> old_nui.remove()), 1000)
+			$("<img/>").attr('src', "#{@CONFIG.imageUrl}#{filename}").load =>
+				@uis.image.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
+				@uis.image.removeClass "pasla"
+				setTimeout((=> old_nui.remove()), 1000)
 			return
 
 		@uis.image.addClass "pasla"
