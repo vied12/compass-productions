@@ -1217,12 +1217,13 @@ class portfolio.Download extends Widget
 		this.hide()
 		window.open(data,'Download')
 
-if $.browser.msie and parseInt($.browser.version, 10)<9
-	$("body > .wrap").addClass "hidden"
-	$("body > .for-ie").removeClass "hidden"
-else
-	$("body > .for-ie").addClass "hidden"
-	$("body > .wrap").removeClass "hidden"
-	Widget.bindAll()
+$(window).load ()->
+	if $.browser.msie and parseInt($.browser.version, 10)<9
+		$("body > .wrap").addClass "hidden"
+		$("body > .for-ie").removeClass "hidden"
+	else
+		$("body > .for-ie").addClass "hidden"
+		$("body > .wrap").removeClass "hidden"
+		Widget.bindAll()
 
 # EOF
