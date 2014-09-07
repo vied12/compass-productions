@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="wrap hidden">
+	{% include "widgets/background.html" %}
+	<div class="Index page">
+		<div class="FooterBar">
+			<div class="wrapper alternate_text">
+				<div data-widget="portfolio.Language" class="Language widget">
+					<a href="#+ln=fr" class="language internal template">Fr</a>
+				</div>
+			</div>
+		</div>
+		{% include "widgets/navigation.html"  %}
+		{% include "widgets/mediaPlayer.html" %}
+		{% include "widgets/panel.html"       %}
+		{% include "widgets/download.html"    %}
+	</div>
+</div>
+<div class="for-ie hidden">
+	<div class="wrap">
+		{{gettext("Sorry but this Compass web site is incompatible with your navigator.")}}
+		<div class="link">
+			{{gettext("Please download a real modern navigator like Mozilla Firefox or Google Chrome")}}
+		</div>
+		<img src="{{url_for("static", filename="images/CP_logo_gold.svg")}}" />
+	</div>
+</div>
+
+{% endblock %}

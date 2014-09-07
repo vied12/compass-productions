@@ -1,0 +1,10 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<div class="Auth">
+	<form name="auth" method="post" action="authenticate">
+		<input name="password" type="password" placeholder="password">{##}</input>
+		<input type="submit" value="log in">{##}</input>
+	</form>
+</div>
+{% endblock %}

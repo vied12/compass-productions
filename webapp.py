@@ -13,20 +13,25 @@
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
-import os, json, mimetypes, re, collections, flask_mail, werkzeug.contrib.cache, flaskext.babel
-import sources.preprocessing as preprocessing
+import os, json, mimetypes, re, collections, flask_mail
 import sources.flickr        as flickr
 import sources.model         as model
 import sources.vimeo         as vimeo
 import datetime
+from flask.ext.babel import Babel
+from flask.ext.assets import Environment, YAMLLoader
+from werkzeug.contrib.cache import SimpleCache
 
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
 db        = model.Interface.GetConnection()
-
-babel     = flaskext.babel.Babel(app) # i18n
-cache     = werkzeug.contrib.cache.MemcachedCache(['127.0.0.1:11211'], key_prefix="portfolio")
+# assets
+assets  = Environment(app)
+bundles = YAMLLoader("assets.yaml").load_bundles()
+assets.register(bundles)
+babel     = Babel(app) # i18n
+cache = SimpleCache()
 
 # -----------------------------------------------------------------------------
 #
@@ -274,6 +279,12 @@ def send_file_partial(path):
 	rv.headers.add('Content-Range', 'bytes {0}-{1}/{2}'.format(byte1, byte1 + length - 1, size))
 	return rv
 
+@app.template_filter('relative_url')
+def relative_url_filter(s):
+	if s.startswith(app.static_url_path):
+		return s[1:]
+	return s
+
 # -----------------------------------------------------------------------------
 #
 # Main
@@ -281,27 +292,6 @@ def send_file_partial(path):
 # -----------------------------------------------------------------------------
 
 if __name__ == '__main__':
-	import sys
-	if len(sys.argv) > 1 and sys.argv[1] == "collectstatic":
-		preprocessing._collect_static(app)
-	elif len(sys.argv) > 1 and sys.argv[1] == "release":
-		import fabfile
-		from fabric.main import execute
-		execute(fabfile.deploy)
-	elif len(sys.argv) > 1 and sys.argv[1] == "demo":
-		import fabfile
-		from fabric.main import execute
-		execute(fabfile.deploy_test)
-	elif len(sys.argv) > 1 and sys.argv[1] == "clear":
-		for path, subdirs, filenames in os.walk(os.path.join(app.root_path, "cache")):
-			for filename in filenames:
-				if not filename.startswith("."):
-					os.remove(os.path.join(path, filename))
-	else:
-		# render ccss, coffeescript and shpaml in 'templates' and 'static' dirs
-		preprocessing.preprocess(app, request) 
-		# set FileSystemCache instead of Memcache
-		cache = werkzeug.contrib.cache.FileSystemCache(os.path.join(app.root_path, "cache"))
-		# run application
-		app.run()
+	app.run(extra_files=("assets.yaml",), host="0.0.0.0")
+
 # EOF

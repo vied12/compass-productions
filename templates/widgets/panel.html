@@ -1,0 +1,182 @@
+
+<div data-widget="portfolio.Panel" class="FooterPanel hidden widget">
+	<div class="wrapper hidden">
+		<div class="pages">
+			<div data-widget="portfolio.Project" class="Project page widget">
+				<ul class="tabs disableTextSelection alternate_text">
+					<li class="synopsis hidden">
+						<a href="#+cat=synopsis" data-name="synopsis" class="internal">{{ gettext("synopsis") }}</a>
+					</li>
+					<li class="videos hidden">
+						<a href="#+cat=videos" data-name="videos" class="internal">{{ gettext("videos") }}</a>
+					</li>
+					{# special case for Nana G. & me #}
+					<li class="videosNana hidden">
+						<a href="#page=project&project=nana&cat=videos&item=0" data-name="videos" class="internal">{{ gettext("view entire film") }}</a>
+					</li>
+					<li class="gallery hidden">
+						<a href="#+cat=gallery" data-name="gallery" class="internal">{{ gettext("photos") }}</a>
+					</li>
+					<li class="screenings hidden">
+						<a href="#+cat=screenings" data-name="screenings" class="internal">{{ gettext("screenings") }}</a>
+					</li>
+					<li class="credits hidden">
+						<a href="#+cat=credits" data-name="credits" class="internal">{{ gettext("credits") }}</a>
+					</li>
+					<li class="press hidden">
+						<a href="#+cat=press" data-name="press" class="internal">{{ gettext("press") }}</a>
+					</li>
+					<li class="links hidden">
+						<a href="#+cat=links" data-name="links" class="internal">{{ gettext("links") }}</a>
+					</li>
+					<li class="distribution hidden">
+						<a href="#+cat=distribution" data-name="distribution" class="internal">{{ gettext("distribution") }}</a>
+					</li>
+					<li class="facebook hidden">
+						<a href="" data-name="facebook" target="_blank">{{ gettext("facebook") }}</a>
+					</li>
+				</ul>
+				<div class="contents">
+					<div  data-name="synopsis" class="content synopsis">
+						<div class="wrapper maxWidth">
+							<div class="synopsis template">
+								<p class="teaser fat out">{##}</p>
+								<p class="body fat out">{##}</p>
+								<a class="readmore button out">{{ gettext("Read more") }}</a>
+							</div>
+						</div>
+					</div>
+					<div data-name="gallery" data-widget="portfolio.FlickrGallery" class="content gallery widget">
+						<div class="wrapper">
+							<ul class="photos mediaGallery">
+								<li class="photo template">
+									<a href="#" class="internal">
+										<div class="image">{##}</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div data-name="videos" class="content videos">
+						<div class="wrapper maxWidth">
+							<ul>
+								<li class="video template">
+									<a href="#" class="internal">
+										<img class="videoThumb" />
+									</a>
+									<div class="title out">{##}</div>
+									<div class="duration out">{##}</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div data-name="screenings" | {##} class="content screenings condensed">
+						<div class="wrapper maxWidth">
+							<div class="screening template">
+								<p class="title out">{##}</p>
+								<p class="date out">{##}</p>
+							</div>
+						</div>
+					</div>
+					<div data-name="credits" class="content credits condensed">
+						<div class="wrapper maxWidth">
+							<div class="credit template">
+								<p   class="title out">{##}</p>
+								<p    class="body out">{##}</p>
+								<p class="article out">{##}</p>
+							</div>
+						</div>
+					</div>
+					<div data-name="press" class="content press">
+						<div class="wrapper maxWidth">
+							<div class="presskit hidden">
+								<a class="button">{{ gettext("press kit") }}</a>
+							</div>
+							<div class="press template">
+								<p class="title out">{##}</p>
+								<p class="article out">{##}</p>
+							</div>
+						</div>
+					</div>
+					<div data-name="links" class="content links">
+						<div class="wrapper maxWidth">
+							<div class="link template out">
+								<a href="#" title="links" target="_blank" class="button">{#description#}</a>
+							</div>
+						</div>
+					</div>
+					<div data-name="extra" class="content extra">
+						<div class="maxWidth">{##}</div>
+					</div>
+					<div data-name="distribution" class="content distribution">
+						<div class="wrapper maxWidth">{##}</div>
+					</div>
+				</div>
+			</div>
+
+			<div data-widget="portfolio.News" class="News page widget">
+				<div class="content">
+					<div class="maxWidth">
+						<ul>
+							<li class="template">
+								<h2 class="title out">
+									<span class="date out">{##}</span>
+								</h2>
+								<p class="body out">{##}</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div data-widget="portfolio.Contact" class="Contact page widget">
+				<div class="content">
+					<div class="wrapper maxWidth">
+						<div class="main">
+							<div class="fat">
+								{{ gettext("Hello there,") }}
+								<br />
+								{{ gettext("Would you like to get in touch with Compass Productions?") }}
+								<br />
+								{{ gettext("You may reach us at:") }}
+								<div class="email">
+									info@compassproduction.com
+								</div>
+							</div>
+							<a data-action="showForm" href="#" class="button do">
+								<span>{{ gettext("or use our contact form") }}</span>
+							</a>
+						</div>
+						<div class="contactForm hidden">
+							<p class="fat">
+								{{ gettext("Hello there,") }}
+								<br />
+								{{ gettext("Would you like to get in touch with Compass Productions") }}
+							</p>
+							<form method="post" action="/api/contact" name="contact">
+								<div class="formElement">
+									<input name="email" type="text" placeholder="Email" class="email in">{##}</input>
+								</div>
+								<div class="formElement">
+									<textarea name="message" placeholder="{{ gettext("Write us a few lines...") }}" class="message in">{##}</textarea>
+								</div>
+								<div class="formElement onRight">
+									<button data-action="showMain" class="button in do">{{ gettext("Back") }}</button>
+									<button data-action="sendMessage" class="button in do">{{ gettext("Send") }}</button>
+								</div>
+							</form>
+							<div class="result success hidden">{{ gettext("Thank you") }}</div>
+							<div   class="result error hidden">{{ gettext("There is a problem, please check if your email is correct or retry in a few moment") }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="close alternate_text">
+			<a href="#menu=main">
+				{{ gettext("Close") }}
+				<div>{##}</div>
+			</a>
+		</div>
+	</div>
+</div>

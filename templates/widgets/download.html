@@ -1,0 +1,14 @@
+<div data-widget="portfolio.Download" class="Download hidden widget">
+	<div data-action="hide" class="overlay do">{##}</div>
+	<div class="box">
+		<div class="wrapper">
+			<form method="post" action="/api/download" name="download">
+				<label>{{gettext("Please enter the magic password")}}</label>
+				<br />
+				<input type="password" name="kit_password" placeholder="{{ gettext("password") }}" />
+				<input type="submit" value="{{gettext("download")}}" data-action="getFile" class="do" />
+				<div class="error hidden">{{gettext("Sorry, we don't know this password, try again") }}</div>
+			</form>
+		</div>
+	</div>
+</div>

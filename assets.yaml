@@ -1,0 +1,37 @@
+---
+css_all: 
+  output: gen/style.css
+  filters: cssmin
+  contents:
+    - "../static/css/jquery.jscrollpane.css"
+    # - contents:
+    #   - "../assets/less/base.less"
+    #   filters: less
+    #   depends: "../assets/**/*.less"
+    #   output: gen/less.css
+    - contents:
+      - "../lib/ccss/base.ccss"
+      - "../lib/ccss/portfolio.ccss"
+      filters: clevercss
+      depends: "../lib/**/*.ccss"
+      output: gen/clever.css
+      debug : false
+js_all:
+  output: gen/scripts.js
+  filters: jsmin
+  contents:
+    - "../static/js/jquery172-mini.js"
+    - "../static/js/jquery.jscrollpane.min.js"
+    - "../static/js/jquery.mousewheel.js"
+    - "../static/js/hashchange.js"
+    - "../static/js/jquery.preload.js"
+    - "../static/js/modernizr.js"
+    - "../static/js/analytics.js"
+    - contents:
+      - "../lib/coffee/widget.coffee"
+      - "../lib/coffee/formatting.coffee"
+      - "../lib/coffee/scripts.coffee"
+      output: gen/coffee.js
+      filters: coffeescript
+
+# EOF

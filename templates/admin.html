@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Portfolio</title>
+		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jquery.jscrollpane.css')}}" media="all" />
+		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css') }}" media="all" />
+		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}" media="all" />
+		<script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"                >{# #}</script>
+	</head>
+
+	<body class="use-base">
+		{% block content %}
+		<div class="logo">{##}</div>
+		<div class="menu">
+			<a href="/#page=news" target="_blank" class="gotosite">Go to the site</a>
+			<a href="logout" class="logout">Logout</a>
+		</div>
+		<div data-widget="portfolio_admin.News" class="News widget">
+			<fieldset class="addNews">
+				<legend>Add a news</legend>
+				<form name="addNews" method="post" action="#">
+					<input type="text" name="title_en" placeholder="Title" >{##}</input>
+					<textarea name="content_en" placeholder="Your message here !">{##}</textarea>
+					<input type="text" name="title_fr" placeholder="Titre" >{##}</input>
+					<textarea name="content_fr" placeholder="Ton message ici!">{##}</textarea>
+					<input type="submit" value="Publish" data-action="add">{##}</input>
+				</form>
+			</fieldset>
+			<ul>
+				<li class="newsEdit template">
+					<form name="addNews" method="post" action="#">
+						<input name="title_en" placeholder="Title"  class="out title_en">{##}</input>
+						<textarea name="content_en" placeholder="Your message here !" class="out content_en">{##}</textarea>
+						<input name="title_fr" placeholder="Titre"  class="out title_fr">{##}</input>
+						<textarea name="content_fr" placeholder="Ton message ici !" class="out content_fr">{##}</textarea>
+						<input type="submit" value="Publish" data-action="edit">{##}</input>
+						<input type="submit" value="Cancel" data-action="cancel">{##}</input>
+					</form>
+				</li>
+				<li class="news template">
+					<div class="actions">
+						<button data-action="edit"  >Edit</button>
+						<button data-action="remove">Remove</button>
+					</div>
+					<div    class="out date">{##}</div>
+					English:
+					<h2   class="out title_en">{##}</h2>
+					<p class="out content_en">{##}</p>
+					Français:
+					<h2   class="out title_fr">{##}</h2>
+					<p class="out content_fr">{##}</p>
+				</li>
+			</ul>
+		</div>
+
+		{% endblock %}
+
+		<script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"             >{# #}</script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/widget.js')   }}"                >{# #}</script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/formatting.js')  }}"             >{# #}</script>
+		<script type="text/javascript" src="{{url_for('static', filename='js/admin.js')  }}"                  >{# #}</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<div data-widget="portfolio.ImagePlayer" class="ImagePlayer hidden widget">
+	<div data-action="hide" class="overlay close do">{##}</div>
+	<div class="imagePlayer player hidden">
+		<div class="wrapper">
+			<div class="waiter">
+				<img src="{{url_for('static', filename='images/waiter.gif')}}" />
+			</div>
+			<img />
+		</div>
+	</div>
+	<div class="mediaPanel disableTextSelection">
+		<div class="wrapper">
+			<div data-action="hide" class="close do hidden">
+				<a href="#">X</a>
+			</div>
+			<div data-action="previous" class="previous do">
+				<span>
+					<img src="{{url_for('static', filename='images/arrow-left.svg')}}" />
+				</span>
+			</div>
+			<div class="mediaContainer">
+				<ul>
+					<li class="media template">
+						<div class="wrapper">
+							<a class="internal">
+								<div class="image">{##}</div>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div data-action="next" class="next do">
+				<span>
+					<img src="{{url_for('static', filename='images/arrow-right.svg')}}" />
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div data-widget="portfolio.VideoPlayer" class="VideoPlayer hidden widget">
+	<div data-action="hide" class="overlay close do">{##}</div>
+	<div class="videoPlayer player hidden">
+		<div class="wrapper">
+			<div class="waiter">
+				<img src="{{url_for('static', filename='images/waiter.gif')}}" />
+			</div>
+			<iframe src="" width="500" height="313" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>{##}</iframe>
+		</div>
+	</div>
+	<div class="mediaPanel disableTextSelection">
+		<div class="wrapper">
+			<div data-action="hide" class="close do hidden">
+				<a href="#">X</a>
+			</div>
+			<div data-action="previous" class="previous do">
+				<span>
+					<img src="{{url_for('static', filename='images/arrow-left.svg')}}" />
+				</span>
+			</div>
+			<div class="mediaContainer">
+				<ul>
+					<li class="media template">
+						<div class="wrapper">
+							<a class="internal">
+								<img class="image" />
+								<div class="overlay">{##}</div>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div data-action="next" class="next do">
+				<span>
+					<img src="{{url_for('static', filename='images/arrow-right.svg')}}" />
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

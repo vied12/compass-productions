@@ -18,7 +18,7 @@ import urllib, json
 
 class Flickr:
 
-	URL          = 'http://api.flickr.com/services/rest'
+	URL          = 'https://api.flickr.com/services/rest'
 	API_KEY      = "9f9b2bab6a28a524511619e703560d62"
 	FORMAT_PHOTO = "http://farm%(farm)s.staticflickr.com/%(server)s/%(id)s_%(secret)s_%(quality)s.jpg"
 

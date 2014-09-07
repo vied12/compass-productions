@@ -22,17 +22,17 @@ ALTERNATE_FONT = "Raleway", Verdana, sans-serif
 
 @font-face:
 	font-family: "Livory"
-	src: url("Livory-Regular.otf")
-	src: url(242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(242E09_0_0.woff) "format(woff)",url(242E09_0_0.ttf) "format(truetype)", url(Livory-Regular.otf)
+	src: url("../css/Livory-Regular.otf")
+	src: url(../css/242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(../css/242E09_0_0.woff) "format(woff)",url(../css/242E09_0_0.ttf) "format(truetype)", url(../css/Livory-Regular.otf)
 
 @font-face:
 	font-family: "Raleway"
-	src: url("Raleway/Raleway-Regular.ttf")
+	src: url("../css/Raleway/Raleway-Regular.ttf")
 
 @font-face:
     font-family: "Raleway"
     font-weight: bold
-    src: url('Raleway/Raleway-SemiBold.ttf')
+    src: url('../css/Raleway/Raleway-SemiBold.ttf')
 
 .page:
 	font-family: "Livory", Verdana, sans-serif

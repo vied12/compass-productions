@@ -1,0 +1,60 @@
+<div data-widget="portfolio.Navigation" class="Navigation disableTextSelection widget">
+	<div class="tiles">
+		<div data-target="main" class="brand tile show">
+			<div class="wrapper">{##}</div>
+		</div>
+		<div data-menu="main" class="Main menu">
+			<div data-target="works" class="tile nav">
+				<div class="wrapper">Films</div>
+			</div>
+			<div data-target="news" class="tile nav">
+				<div class="wrapper">{{ gettext("News") }}</div>
+			</div>
+			<div data-target="contact" class="tile nav">
+				<div class="wrapper">{{ gettext("Contact") }}</div>
+			</div>
+		</div>
+		<div data-menu="works" class="Works menu column-template hidden">
+			<div data-target="joy" class="tile nav">
+				<div class="wrapper">{{ gettext("JOY!") }}</div>
+			</div>
+			<div data-target="baghdad" class="tile nav">
+				<div class="wrapper">{{ gettext("Baghdad Twist") }}</div>
+			</div>
+			<div data-target="devil" class="tile nav">
+				<div class="wrapper">{{ gettext("The Devil in the Holy Water") }}</div>
+			</div>
+			<div data-target="nana" class="tile nav">
+				<div class="wrapper">{{ gettext("Nana, George & me") }}</div>
+			</div>
+			<div data-target="parting" class="tile nav">
+				<div class="wrapper">{{ gettext("Parting Words") }}</div>
+			</div>
+			<div data-target="longueur" class="tile nav">
+				<div class="wrapper">{{ gettext("The Length of the Alphabet") }}</div>
+			</div>
+		</div>
+		<div data-menu="page" class="PageMenu menu hidden">{##}</div>
+		<div class="clear">{##}</div>
+	</div>
+
+	<div class="promo hidden">{##}</div>
+
+	<div class="Page links alternate_text">
+		<ul>
+			<li class="menuRoot">
+				<a href="#">
+					<span class="panelOpenedText">{{ gettext("Open") }}</span>
+					<span class="panelHiddenText">{{ gettext("Close") }}</span>
+					<img src="/static/images/menu.png" />
+				</a>
+			</li>
+			<li class="home">
+				<a href="#menu=main">{{ gettext("Home") }}</a>
+			</li>
+			<li class="back hidden">
+				<a href="#">{{ gettext("Back") }}</a>
+			</li>
+		</ul>
+	</div>
+</div>
