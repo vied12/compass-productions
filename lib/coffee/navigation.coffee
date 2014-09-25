@@ -372,8 +372,8 @@ class portfolio.Panel extends Widget
 				@ui.css({height : height})
 			# just under the navigation
 			@ui.css({bottom : $(".FooterBar").height()})
-		# else
-		# 	@ui.css({bottom : 0 - @ui.height()})
+		else
+			@ui.css({bottom : 0 - @ui.height()})
 		# FIXME: ugly, to center the footer bar links
 		offset_left = parseInt($(".FooterBar .wrapper:first").offset().left) + 60
 		$(".Page.links").css({left:offset_left})
