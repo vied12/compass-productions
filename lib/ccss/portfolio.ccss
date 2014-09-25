@@ -107,13 +107,14 @@ body:
 					margin : 3px 5px 3px 3px 
 					background : $TILE_BRAND_COLOR url('../images/CP_logo_white.svg') center 33px no-repeat
 					background-size : 111px
+
 		.menu:
 			position : absolute
 			float    : left
 			left     : 156px
 			&.column-template:
 				// two columns = 320px
-				width : 320px
+				width : 630px
 		.promo:
 			position   : relative
 			top        : 40px

@@ -91,10 +91,11 @@ class portfolio.Navigation extends Widget
 
 	# show the given menu, hide the previous opened menu
 	showMenu: (menu) =>	
+		@background.image("index_bg.jpg", true)
 		if menu == "main"
 			@background.darkness(0)
 			@uis.promo.removeClass "hidden"
-			@background.resetClass()			
+			@background.resetClass()	
 			@background.image("index_bg.jpg", true)
 			# #little fix for  this bug : tiles showing background image under them, rest is black
 			# setTimeout(	(=> 
@@ -369,7 +370,7 @@ class portfolio.Panel extends Widget
 			this.hide()
 		return this	
 
-	goto: (page, delay=true) =>		
+	goto: (page, delay=true) =>
 		#close all pages
 		@uis.wrapper.find('.page').removeClass "show"
 		#show the one
@@ -389,8 +390,8 @@ class portfolio.Panel extends Widget
 				@ui.css({height : height})
 			# just under the navigation
 			@ui.css({bottom : $(".FooterBar").height()})
-		else
-			@ui.css({bottom : 0 - @ui.height()})
+		# else
+		# 	@ui.css({bottom : 0 - @ui.height()})
 		# FIXME: ugly, to center the footer bar links
 		offset_left = parseInt($(".FooterBar .wrapper:first").offset().left) + 60
 		$(".Page.links").css({left:offset_left})
@@ -661,6 +662,7 @@ class portfolio.Project extends Widget
 				return project
 
 	setProject: (project) =>
+		console.log "setProject", project, project_obj
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)

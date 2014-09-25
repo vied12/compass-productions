@@ -3,3 +3,4 @@ venv
 archive.tar
 static/videos/*
 static/.webassets-cache/
+static/gen/

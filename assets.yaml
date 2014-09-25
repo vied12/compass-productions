@@ -30,7 +30,7 @@ js_all:
     - contents:
       - "../lib/coffee/widget.coffee"
       - "../lib/coffee/formatting.coffee"
-      - "../lib/coffee/scripts.coffee"
+      - "../lib/coffee/navigation.coffee"
       output: gen/coffee.js
       filters: coffeescript
 
