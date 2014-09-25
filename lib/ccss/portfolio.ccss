@@ -7,7 +7,6 @@ TILE_HEIGHT = 150px
 TILE_BRAND_COLOR        = "rgba(10,12,6,0.7)"
 TILE_COLOR              = "rgba(10,12,6,0.5)"
 TILE_COLOR_HOVER        = "rgba(10,12,30,0.7)"
-TILE_HIGHLIGHTED_COLOR  = "rgba(10,12,6,0.5)"
 PANEL_COLOR_DARK        = "rgba(10,12,6,0.7)"
 PANEL_COLOR_BLUE	    = "rgba(51,51,77,0.7)"
 TEXT_BLUE = #abe7f4
@@ -101,8 +100,6 @@ body:
 					opacity : 1
 				&:hover :
 					background-color   : $TILE_COLOR_HOVER
-				&.highlighted:
-					background-color: $TILE_HIGHLIGHTED_COLOR
 				&.brand:
 					margin : 3px 5px 3px 3px 
 					background : $TILE_BRAND_COLOR url('../images/CP_logo_white.svg') center 33px no-repeat

@@ -1,6 +1,20 @@
 {
     "works": [
         {
+            "key"       : "venus",
+            "title"     : "VENUS",
+            "backgroundImage" : "cover_fb_Venus.jpg",
+            "facebook"  : null,
+            "synopsis"  : {
+                "en" : {
+                    "body"  : "blah"
+                },
+                "fr" : {
+                    "body"  : "blah"
+                }
+            }
+        },
+        {
             "key"       : "longueur",
             "title"     : "The Length of the Alphabet",
             "backgroundImage" : "longueur.jpg",

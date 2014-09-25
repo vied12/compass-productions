@@ -24,7 +24,7 @@ class portfolio.Navigation extends Widget
 
 	constructor: ->
 		@UIS = {
-			tilesList        : ".Main .tile, .Works .tile"
+			tilesList        : ".Main .tile, .Works .tile, .InDevelopment .tile"
 			brandTile        : ".brand.tile"
 			main             : ".Main"
 			works            : ".Works"
@@ -55,8 +55,6 @@ class portfolio.Navigation extends Widget
 		@panelWidget   = Widget.ensureWidget(".FooterPanel")
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
-		
-
 		# binds events
 		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -83,10 +81,6 @@ class portfolio.Navigation extends Widget
 			this.showMenu(params.menu)
 		else			
 			this.showMenu("main")
-		# hover effect
-		@uis.tilesList.mouseover((e) =>
-			@uis.tilesList.addClass("highlighted").filter(e.currentTarget).removeClass "highlighted"
-		).mouseout (e) => @uis.tilesList.removeClass "highlighted"
 		return this
 
 	# show the given menu, hide the previous opened menu
@@ -96,7 +90,6 @@ class portfolio.Navigation extends Widget
 			@background.darkness(0)
 			@uis.promo.removeClass "hidden"
 			@background.resetClass()
-			@background.image("index_bg.jpg", true)
 			@background.removeVideo()
 			$('body').trigger "cancelDelayedPanel"
 		else
