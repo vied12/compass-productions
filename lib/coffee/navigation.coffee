@@ -95,14 +95,9 @@ class portfolio.Navigation extends Widget
 		if menu == "main"
 			@background.darkness(0)
 			@uis.promo.removeClass "hidden"
-			@background.resetClass()	
+			@background.resetClass()
 			@background.image("index_bg.jpg", true)
-			# #little fix for  this bug : tiles showing background image under them, rest is black
-			# setTimeout(	(=> 
-			# 	@background.image("")
-			# 	@background.image("index_bg.jpg")			
-			# ), 1000)					
-			$('body').trigger "setNoVideo"
+			@background.removeVideo()
 			$('body').trigger "cancelDelayedPanel"
 		else
 			@uis.promo.addClass "hidden"		
@@ -191,7 +186,6 @@ class portfolio.Navigation extends Widget
 # Background
 #
 # -----------------------------------------------------------------------------
-
 class portfolio.Background extends Widget
 
 	constructor: ->
@@ -214,15 +208,9 @@ class portfolio.Background extends Widget
 		}
 
 	bindUI: (ui) ->
-		super	
-		$(window).resize(=>(this.relayout()))		
-		$('body').bind "setVideos",    (e, data) => this.video(data.split(","))	
-		$('body').bind("setNoVideo",             => this.removeVideo())
-		$('body').bind("setImage", (e, filename) => this.image(filename))
+		super
+		$(window).resize(=>(this.relayout()))
 		$('body').bind("darkness", (e, darkness) => this.darkness(darkness))
-		$('body').bind("suspendBackground",  (e) => this.suspend())
-		$('body').bind("restoreBackground",  (e) => this.restore())
-		$('body').bind("setBackground",  (e, project) => this.setProject(project))
 
 	relayout: =>
 		resize = (that, flexibleSize) ->
@@ -245,13 +233,13 @@ class portfolio.Background extends Widget
 		setTimeout((=> @ui.addClass project_obj.key), 0.20)
 		if project_obj.backgroundVideos
 			if Modernizr.video
-				$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
-			else
-				$('body').trigger("setImage", project_obj.backgroundImage)				
+				@video(project_obj.backgroundVideos)
+			else			
+				@image(project_obj.backgroundImage)
 		else if project_obj.backgroundImage
-			$('body').trigger("setImage", project_obj.backgroundImage)				
+			@image(project_obj.backgroundImage)
 		else
-			$('body').trigger("setNoVideo")
+			@removeVideo()
 	
 	suspend: =>
 		@CACHE.suspended = true
@@ -265,7 +253,6 @@ class portfolio.Background extends Widget
 
 	removeVideo: =>
 		@ui.find('video.actual').remove()
-
 
 	video: (data) =>
 		#swap on image if playing video is not supported for format, 
@@ -300,16 +287,11 @@ class portfolio.Background extends Widget
 				@uis.image.removeClass "pasla"
 				setTimeout((=> old_nui.remove()), 1000)
 			return
-
 		@uis.image.addClass "pasla"
-
 		nui = @uis.image.cloneTemplate().addClass("pasla").css("background-image", "")
-
 		@uis.video.before(nui)
 		this.relayout(@uis.image)
-
 		@CACHE.image=filename
-		
 		$("<img/>").attr('src', "#{@CONFIG.imageUrl}#{filename}").load(=>
 			nui.css("background-image", "url(#{@CONFIG.imageUrl}#{filename})")
 			nui.removeClass "pasla"
@@ -620,6 +602,7 @@ class portfolio.Project extends Widget
 		super
 		@flickrGallery = Widget.ensureWidget(".content.gallery")
 		@videoPlayer   = Widget.ensureWidget(".VideoPlayer")
+		@background    = Widget.ensureWidget(".Background")
 		$.ajax("/api/data", {dataType: 'json', success : this.setData})
 		# enable dynamic links (#+cat=...)
 		URL.enableLinks(@ui)
@@ -662,19 +645,10 @@ class portfolio.Project extends Widget
 				return project
 
 	setProject: (project) =>
-		console.log "setProject", project, project_obj
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
-		$('body').trigger("setBackground", project_obj) 
-		###		if project_obj.backgroundVideos
-			$('body').trigger("setImage", project_obj.backgroundImage)				
-			$('body').trigger("setVideos", ""+project_obj.backgroundVideos)
-		else if project_obj.backgroundImage
-			$('body').trigger("setImage", project_obj.backgroundImage)				
-		else
-			$('body').trigger("setNoVideo")
-		###
+		@background.setProject(project_obj)
 
 	setMenu: (project) =>
 		@uis.tabList.addClass "hidden"
@@ -833,6 +807,7 @@ class portfolio.MediaPlayer extends Widget
 
 	bindUI: (ui) =>
 		super
+		@background = Widget.ensureWidget(".Background")
 		URL.onStateChanged(this.onURLStateChanged)
 		$(window).resize(this.relayout)
 
@@ -968,13 +943,13 @@ class portfolio.MediaPlayer extends Widget
 		$('body').trigger("darkness", 0.7)
 		@uis.next.removeClass("hidden")
 		@uis.previous.removeClass("hidden")
-		$('body').trigger "suspendBackground"
+		@background.suspend()
 		$('body').trigger "desactivatelPanelToggler"
 
 	hide: =>
 		super
 		$(".Page.links .back").addClass("hidden")
-		$('body').trigger "restoreBackground"
+		@background.restore()
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"
 		URL.remove("item", true)
