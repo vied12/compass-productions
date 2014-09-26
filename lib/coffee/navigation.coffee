@@ -596,7 +596,7 @@ class portfolio.Project extends Widget
 		@flickrGallery = Widget.ensureWidget(".content.gallery")
 		@videoPlayer   = Widget.ensureWidget(".VideoPlayer")
 		@background    = Widget.ensureWidget(".Background")
-		$.ajax("/api/data", {dataType: 'json', success : this.setData})
+		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
 		# enable dynamic links (#+cat=...)
 		URL.enableLinks(@ui)
 		$("body").bind("relayoutContent", this.relayout)

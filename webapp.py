@@ -39,7 +39,7 @@ cache = SimpleCache()
 #
 # -----------------------------------------------------------------------------
 
-@app.route('/api/data')
+@app.route('/api/data.json')
 def data():
 	ln  = get_locale()
 	res = cache.get('data-%s' % ln)
