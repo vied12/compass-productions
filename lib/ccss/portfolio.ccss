@@ -741,3 +741,26 @@ body:
 
 .ns:
 	display: none
+
+.venus:
+	&__synopsys:
+		text-align: center
+		&__present:
+			font-family: "Lucida Grande"
+			font-weight: bold
+			font-size: 9px
+		&__punchline, &__by:
+			font-family: "Times New Roman", Times, serif
+			font-size: 12px
+			font-style: italic
+		&__title, &__subtitle:
+			color: #FF2879
+		&__title:
+			font-family: "Gill Sans"
+			line-height: 2em
+			font-size: 70px
+		&__subtitle:
+			font-family: "Euphemia UCAS"
+			font-size: 64px
+			text-transform: uppercase
+			opacity: .58

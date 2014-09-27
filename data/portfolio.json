@@ -3,14 +3,14 @@
         {
             "key"       : "venus",
             "title"     : "VENUS",
-            "backgroundImage" : "cover_fb_Venus.jpg",
+            "backgroundImage" : "venus.jpg",
             "facebook"  : null,
             "synopsis"  : {
                 "en" : {
-                    "body"  : "blah"
+                    "body"  : "<div class=\"venus__synopsys\"><div class=\"venus__synopsys__present\">Compass Productions inc. presents</div><div class=\"venus__synopsys__punchline\">forever fe/male</div><div class=\"venus__synopsys__by\">a film by Eisha Marjara</div><div class=\"venus__synopsys__title\">VENUS</div><div class=\"venus__synopsys__subtitle\">A FEATURE FILM</div></div>"
                 },
                 "fr" : {
-                    "body"  : "blah"
+                    "body"  : "<div class=\"venus__synopsys\"><div class=\"venus__synopsys__present\">Compass Productions inc. presents</div><div class=\"venus__synopsys__punchline\">forever fe/male</div><div class=\"venus__synopsys__by\">a film by Eisha Marjara</div><div class=\"venus__synopsys__title\">VENUS</div><div class=\"venus__synopsys__subtitle\">A FEATURE FILM</div></div>"
                 }
             }
         },
