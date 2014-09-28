@@ -74,8 +74,8 @@ class portfolio.Navigation extends Widget
 		@projectWidget.setData(data)
 		# bind url change
 		URL.onStateChanged =>
+			# hide single page widget if needed
 			@singlePageWidget.hide() unless URL.get("page") == "single-page"
-
 			if URL.hasChanged("menu")
 				menu = URL.get("menu")
 				if menu
@@ -100,12 +100,12 @@ class portfolio.Navigation extends Widget
 				return project
 
 	showMenu: (menu) =>
-		"""
-		show the given menu, hide the previous opened menu
+		# """
+		# show the given menu, hide the previous opened menu
 
-		"""
+		# """
 		# default background for menus
-		@backgroundWidget.image("index_bg.jpg", true) unless menu == "page"
+		@backgroundWidget.image("index_bg.jpg", true) unless menu in ["page", "single-page"]
 		if menu == "main"
 			@backgroundWidget.darkness(0)
 			@uis.promo.removeClass "hidden"
@@ -115,13 +115,13 @@ class portfolio.Navigation extends Widget
 		else
 			@uis.promo.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
-		if not (menu == "page")
-			$("body").trigger("hidePanel")			
+		if not (menu in "page")
+			$("body").trigger("hidePanel")	
 			this.selectPageLink(menu)
 		else
 			this.selectPageLink(@cache.currentPage)
 		# hide the arrow
-		if menu == "main" or menu == "works"
+		if menu in ["main", "works", "single-page", "in-development"]
 			@uis.menuRoot.addClass "hidden"
 		menu = @ui.find "[data-menu="+menu+"]"
 		if not menu.length > 0
@@ -137,7 +137,7 @@ class portfolio.Navigation extends Widget
 			i += 1
 			if i == tiles.length
 				clearInterval(interval)
-		, 50) # time between each iteration		
+		, 50) # time between each iteration
 		@cache.currentMenu = menu
 
 	selectPageLink: (tile) =>
@@ -149,24 +149,23 @@ class portfolio.Navigation extends Widget
 			@uis.pageLinks.find(".#{tile}").addClass "active"
 			@uis.menuRoot.removeClass "hidden"
 			if tile != "works"
-				@uis.menuRoot.click (e) =>	
-					e.preventDefault()				
-					this.updatePanelMenu()			
+				@uis.menuRoot.click (e) =>
+					e.preventDefault()
+					this.updatePanelMenu()
 	
 	updatePanelMenu: =>
-		if not @panelWidget.isOpened() 										
+		if not @panelWidget.isOpened()
 				setTimeout( (=> @panelWidget.open()), 100)
 			else
-				setTimeout( (=> @panelWidget.hide()), 100)							
+				setTimeout( (=> @panelWidget.hide()), 100)
 
 	updatePanelMenuRoot: (opened) =>
 		if opened
-			@uis.menuRoot.addClass "hidden" 
-			if not @uis.menuRoot.hasClass "active"				
-				@uis.menuRoot.addClass "active" 
+			@uis.menuRoot.addClass "hidden"
+			@uis.menuRoot.addClass "active"
 		else 
-			@uis.menuRoot.removeClass "hidden" 
-			@uis.menuRoot.removeClass "active"	
+			@uis.menuRoot.removeClass "hidden"
+			@uis.menuRoot.removeClass "active"
 
 	showPage: (page) =>
 		# set page menu (single tile)
