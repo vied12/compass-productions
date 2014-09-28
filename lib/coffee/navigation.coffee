@@ -176,7 +176,6 @@ class portfolio.Navigation extends Widget
 		if URL.get("project") and page_tile.length < 1
 			page_tile = @ui.find(".nav[data-target='#{page}:#{URL.get("project")}']:first")
 		@uis.page.html(page_tile.clone())
-		console.log "clone", page_tile, page, URL.get("project")
 		@cache.currentPage = page
 		this.showMenu("page")
 		if page == "single-page"
@@ -345,14 +344,29 @@ class portfolio.SinglePage extends Widget
 
 	constructor: ->
 		@UIS =
-			title : ".SinglePage__title"
-			cover : ".SinglePage__cover"
-			body  : ".SinglePage__body"
+			title   : ".SinglePage__title"
+			cover   : ".SinglePage__cover"
+			body    : ".SinglePage__body"
+			wrapper : ".SinglePage__wrapper"
+
+	bindUI:(ui) =>
+		super
+		$("body").bind("relayoutContent", this.relayout)
+		return this
+
 
 	setProject: (project) =>
 		@uis.title.html(project.title)
 		@uis.cover.html($("<img />").attr("src", "static/images/#{project.cover}"))
 		@uis.body.html(project.synopsis.body)
+		@relayout()
+
+	relayout: =>
+		setTimeout(=>
+			height = $(window).height() - (@ui.offset().top + 40*2)
+			@uis.wrapper.css({height: height})
+				.jScrollPane({hideFocus:true})
+		, 100)
 
 # -----------------------------------------------------------------------------
 #

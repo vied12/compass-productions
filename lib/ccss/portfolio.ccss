@@ -742,14 +742,22 @@ body:
 .ns:
 	display: none
 
+MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 .SinglePage:
-	padding-top: $BASE_PADDING*2
+	position       : relative
+	max-width      : $MAX_WIDTH
+	margin         : 0 auto
+	font-size      : 1.2em
+	padding-top    : $BASE_PADDING*2
+	&__wrapper:
+		position:relative
 	&__title, &__body:
-		padding-left: 300px+$BASE_PADDING + 4
+		padding-left: $MAX_SINGLE_PAGE_COVER_WIDTH + $BASE_PADDING*4
 	&__title:
 		font-size      : 1.6em
 		padding-bottom : $BASE_PADDING
 	&__body:
+		max-width: 600px
 		.details__subtitle:
 			font-size   : 1.2em
 			padding-top : $BASE_PADDING
@@ -758,7 +766,7 @@ body:
 		position : absolute
 		left     : $BASE_PADDING + 4
 		img :
-			max-width: 300px
+			max-width: $MAX_SINGLE_PAGE_COVER_WIDTH
 
 // .venus:
 //	&__synopsys:
