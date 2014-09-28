@@ -107,7 +107,7 @@ def news(id="all", sort=None):
 			query = extractQuery(request.form)
 			news  = interface.get_news(request.form.get("_id"))
 		else:
-			news = interface.News()
+			news = db.News()
 		news.content = request.form.get("content_en")
 		news.title   = request.form.get("title_en")
 		news.set_lang('fr')
