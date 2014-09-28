@@ -56,8 +56,8 @@ class portfolio.Navigation extends Widget
 		@projectWidget = Widget.ensureWidget(".Project")
 		@background    = Widget.ensureWidget(".Background")
 		# binds events
-		@uis.tilesList.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
-		@uis.brandTile.live("click", (e) => this.tileSelected(e.currentTarget or e.srcElement))
+		@uis.tilesList.click((e) => this.tileSelected(e.currentTarget or e.srcElement))
+		@uis.brandTile.click((e) => this.tileSelected(e.currentTarget or e.srcElement))
 		$('body').bind('backToHome', (e) => this.showMenu("main"))
 		$('body').bind('updatePanelMenuRoot', (e,opened) => this.updatePanelMenuRoot(opened))
 		$('body').bind('desactivatelPanelToggler', (e,opened) => @uis.menuRoot.addClass "hidden")
