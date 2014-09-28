@@ -4,11 +4,6 @@ css_all:
   filters: cssmin
   contents:
     - "../static/css/jquery.jscrollpane.css"
-    # - contents:
-    #   - "../assets/less/base.less"
-    #   filters: less
-    #   depends: "../assets/**/*.less"
-    #   output: gen/less.css
     - contents:
       - "../lib/ccss/base.ccss"
       - "../lib/ccss/portfolio.ccss"
@@ -16,6 +11,7 @@ css_all:
       depends: "../lib/**/*.ccss"
       output: gen/clever.css
       debug : false
+
 js_all:
   output: gen/scripts.js
   filters: jsmin
@@ -32,6 +28,32 @@ js_all:
       - "../lib/coffee/formatting.coffee"
       - "../lib/coffee/navigation.coffee"
       output: gen/coffee.js
+      filters: coffeescript
+
+css_admin: 
+  output: gen/style.css
+  filters: cssmin
+  contents:
+    - "../static/css/jquery.jscrollpane.css"
+    - contents:
+      - "../lib/ccss/base.ccss"
+      - "../lib/ccss/admin.ccss"
+      filters: clevercss
+      depends: "../lib/**/*.ccss"
+      output: gen/admin.css
+      debug : false
+
+js_admin:
+  output: gen/admin.js
+  filters: jsmin
+  contents:
+    - "../static/js/jquery172-mini.js"
+    - "../static/js/hashchange.js"
+    - contents:
+      - "../lib/coffee/widget.coffee"
+      - "../lib/coffee/formatting.coffee"
+      - "../lib/coffee/admin.coffee"
+      output: gen/admin-coffee.js
       filters: coffeescript
 
 # EOF

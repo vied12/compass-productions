@@ -2,10 +2,9 @@
 <html lang="en">
 	<head>
 		<title>Portfolio</title>
-		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/jquery.jscrollpane.css')}}" media="all" />
-		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/base.css') }}" media="all" />
-		<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}" media="all" />
-		<script type="text/javascript" src="{{url_for('static', filename='js/jquery172.js')}}"                >{# #}</script>
+		{% assets "css_admin" %}
+		<link rel='stylesheet' href='{{ ASSET_URL | relative_url }}' type='text/css' />
+		{% endassets %}
 	</head>
 
 	<body class="use-base">
@@ -54,10 +53,8 @@
 		</div>
 
 		{% endblock %}
-
-		<script type="text/javascript" src="{{url_for('static', filename='js/hashchange.js')  }}"             >{# #}</script>
-		<script type="text/javascript" src="{{url_for('static', filename='js/widget.js')   }}"                >{# #}</script>
-		<script type="text/javascript" src="{{url_for('static', filename='js/formatting.js')  }}"             >{# #}</script>
-		<script type="text/javascript" src="{{url_for('static', filename='js/admin.js')  }}"                  >{# #}</script>
+		{% assets "js_admin" %}
+		<script type='text/javascript' src='{{ ASSET_URL  | relative_url }}'></script>
+		{% endassets %}
 	</body>
 </html>
