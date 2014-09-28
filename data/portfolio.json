@@ -4,13 +4,14 @@
             "key"       : "venus",
             "title"     : "VENUS",
             "backgroundImage" : "venus.jpg",
+            "cover"     : "venus_cover.jpg",
             "facebook"  : null,
             "synopsis"  : {
                 "en" : {
-                    "body"  : "<div class=\"venus__synopsys\"><div class=\"venus__synopsys__present\">Compass Productions inc. presents</div><div class=\"venus__synopsys__punchline\">forever fe/male</div><div class=\"venus__synopsys__by\">a film by Eisha Marjara</div><div class=\"venus__synopsys__title\">VENUS</div><div class=\"venus__synopsys__subtitle\">A FEATURE FILM</div></div>"
+                    "body"  : "<div class=\"details\"><div class=\"details__subtitle\">GENRE</div>\nDrama\n\n<div class=\"details__subtitle\">LOGLINE</div>\nA man transitioning into a woman discovers he is the father to\na 13 year old boy.\n\n<div class=\"details__subtitle\">SYNOPSIS</div>\n\nSID JAVED is an upstanding well respected professional.\nHe is also a man carrying a painful secret. Sid is transgender;\na closeted transsexual who has secretly cross-dressed all his\nlife. At 33, he decides to come out and transition into a woman.\nWhen a young stranger shows up at his door claiming to be his\nson, Sid is forced to confront the truth about himself and who\nhe really is.\n<p>VENUS is a gender bending drama about the true meaning of\nlove, when othersʼ expectations of who you are clash with who\nyou want to be.</p>\n\n<div class=\"details__subtitle\">CANADA</div>\n103 minutes, colour\n\n<p>Written and directed by Eisha Marjara<br/>\nProduced by Joe Balass</p></div>"
                 },
                 "fr" : {
-                    "body"  : "<div class=\"venus__synopsys\"><div class=\"venus__synopsys__present\">Compass Productions inc. presents</div><div class=\"venus__synopsys__punchline\">forever fe/male</div><div class=\"venus__synopsys__by\">a film by Eisha Marjara</div><div class=\"venus__synopsys__title\">VENUS</div><div class=\"venus__synopsys__subtitle\">A FEATURE FILM</div></div>"
+                    "body"  : "<div class=\"details\"><div class=\"details__subtitle\">GENRE</div>\nDrama\n\n<div class=\"details__subtitle\">LOGLINE</div>\nA man transitioning into a woman discovers he is the father to\na 13 year old boy.\n\n<div class=\"details__subtitle\">SYNOPSIS</div>\n\nSID JAVED is an upstanding well respected professional.\nHe is also a man carrying a painful secret. Sid is transgender;\na closeted transsexual who has secretly cross-dressed all his\nlife. At 33, he decides to come out and transition into a woman.\nWhen a young stranger shows up at his door claiming to be his\nson, Sid is forced to confront the truth about himself and who\nhe really is.\n<p>VENUS is a gender bending drama about the true meaning of\nlove, when othersʼ expectations of who you are clash with who\nyou want to be.</p>\n\n<div class=\"details__subtitle\">CANADA</div>\n103 minutes, colour\n\n<p>Written and directed by Eisha Marjara<br/>\nProduced by Joe Balass</p></div>"
                 }
             }
         },

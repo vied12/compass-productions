@@ -67,8 +67,15 @@ class portfolio.Navigation extends Widget
 		$('body').bind('updatePanelMenuRoot', (e,opened) => this.updatePanelMenuRoot(opened))
 		$('body').bind('desactivatelPanelToggler', (e,opened) => @uis.menuRoot.addClass "hidden")
 		$('body').bind('activatelPanelToggler', (e,opened) => @uis.menuRoot.removeClass "hidden")
+		return this
+
+	setData: (data) =>
+		@cache.data = data
+		@projectWidget.setData(data)
 		# bind url change
 		URL.onStateChanged =>
+			@singlePageWidget.hide() unless URL.get("page") == "single-page"
+
 			if URL.hasChanged("menu")
 				menu = URL.get("menu")
 				if menu
@@ -77,7 +84,7 @@ class portfolio.Navigation extends Widget
 				page = URL.get("page")
 				if page
 					this.showPage(page)
-					$('body').trigger("currentPage", page)
+					$('body').trigger("pageChanged", page)
 		# init from url
 		params = URL.get()
 		if params.page?
@@ -86,20 +93,19 @@ class portfolio.Navigation extends Widget
 			this.showMenu(params.menu)
 		else			
 			this.showMenu("main")
-		return this
-
-	setData: (data) =>
-		@cache.data = data
-		@projectWidget.setData(data)
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works
 			if project.key == name
 				return project
 
-	# show the given menu, hide the previous opened menu
-	showMenu: (menu) =>	
-		@backgroundWidget.image("index_bg.jpg", true)
+	showMenu: (menu) =>
+		"""
+		show the given menu, hide the previous opened menu
+
+		"""
+		# default background for menus
+		@backgroundWidget.image("index_bg.jpg", true) unless menu == "page"
 		if menu == "main"
 			@backgroundWidget.darkness(0)
 			@uis.promo.removeClass "hidden"
@@ -107,7 +113,7 @@ class portfolio.Navigation extends Widget
 			@backgroundWidget.removeVideo()
 			$('body').trigger "cancelDelayedPanel"
 		else
-			@uis.promo.addClass "hidden"		
+			@uis.promo.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
 		if not (menu == "page")
 			$("body").trigger("hidePanel")			
@@ -160,16 +166,22 @@ class portfolio.Navigation extends Widget
 				@uis.menuRoot.addClass "active" 
 		else 
 			@uis.menuRoot.removeClass "hidden" 
-			@uis.menuRoot.removeClass "active"		
+			@uis.menuRoot.removeClass "active"	
 
 	showPage: (page) =>
 		# set page menu (single tile)
+		target_to_find = URL.get("project") or page
 		page_tile = @ui.find(".nav[data-target="+(URL.get("project") or page)+"]:first")
+		# if no result, retry with the new notation "single-page:<project_name>"
+		if URL.get("project") and page_tile.length < 1
+			page_tile = @ui.find(".nav[data-target='#{page}:#{URL.get("project")}']:first")
 		@uis.page.html(page_tile.clone())
+		console.log "clone", page_tile, page, URL.get("project")
 		@cache.currentPage = page
 		this.showMenu("page")
 		if page == "single-page"
-			@singlePageWidget.setProject(page)
+			params = URL.get()
+			@singlePageWidget.setProject(@getProjectByName(params.project))
 			@singlePageWidget.show()
 		else
 			@singlePageWidget.hide()
@@ -179,6 +191,10 @@ class portfolio.Navigation extends Widget
 				$("body").trigger("setPanelPage", page)
 
 	tileSelected: (tile_selected_ui) =>
+		"""
+		update the url, depending the selected tile
+
+		"""
 		tile_selected_ui = $(tile_selected_ui)
 		if tile_selected_ui.hasClass "tile"
 			target = tile_selected_ui.attr "data-target"
@@ -329,10 +345,14 @@ class portfolio.SinglePage extends Widget
 
 	constructor: ->
 		@UIS =
-			body : ".SinglePage__body"
+			title : ".SinglePage__title"
+			cover : ".SinglePage__cover"
+			body  : ".SinglePage__body"
 
 	setProject: (project) =>
-		@uis.body.html(project)
+		@uis.title.html(project.title)
+		@uis.cover.html($("<img />").attr("src", "static/images/#{project.cover}"))
+		@uis.body.html(project.synopsis.body)
 
 # -----------------------------------------------------------------------------
 #
@@ -557,7 +577,7 @@ class portfolio.Contact extends Widget
 	bindUI: (ui) =>
 		super
 		# reset when arriving
-		$('body').bind('currentPage', (e,page) => this.showMain() if page == "contact")
+		$('body').bind('pageChanged', (e,page) => this.showMain() if page == "contact")
 		$('body').bind('relayoutContent', this.relayout)
 		return this
 
