@@ -25,7 +25,7 @@ from werkzeug.contrib.cache import SimpleCache
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
-interface = model.Interface( host = app.config["MONGODB_HOST"], 
+interface = model.Interface(host = app.config["MONGODB_HOST"], 
                             port = app.config["MONGODB_PORT"], 
                             db   = app.config["MONGODB_DB"]  )
 db = interface.get_database()
