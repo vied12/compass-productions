@@ -11,35 +11,48 @@
 # Last mod : 23-Sep-2012
 # -----------------------------------------------------------------------------
 import mongokit, datetime
-connection = mongokit.Connection()
+
+# connection = mongokit.Connection()
 
 class Interface:
-	@staticmethod
-	def GetConnection():
-		return connection
 
-	@staticmethod
-	def getNews(id=None,sort=None):
+	def __init__(self, db, port=27017, host="localhost"):
+		self.db         = db
+		self.host       = host
+		self.port       = port
+		self.connection = mongokit.Connection(self.host, self.port)
+		self.connection.register([Interface.News])
+
+	# @staticmethod
+	def get_connection(self):
+		return self.connection
+
+	def get_database(self, database=None):
+		database = database or self.db
+		return self.get_connection()[database]
+
+	# @staticmethod
+	def get_news(self, id=None,sort=None):
 		if id and id != "all":
-			return Interface.GetConnection().News.one({"_id":mongokit.ObjectId(id)})
+			return self.get_database().News.one({"_id":mongokit.ObjectId(id)})
 		else:
 			sort = sort or "_id"
-			return Interface.GetConnection().News.find().sort(sort, -1)
+			return self.get_database().News.find().sort(sort, -1)
 
-class MongoDBModel(mongokit.Document):
-	pass
+	class MongoDBModel(mongokit.Document):
+		pass
 
-@connection.register
-class News(MongoDBModel):
-	__collection__ = 'news'
-	__database__   = 'portfolio'
-	structure = {
-		'title'         : unicode,
-		'content'       : unicode,
-		'date_creation' : datetime.datetime,
-	}
-	i18n             = ['title', 'content']
-	default_values   = {'date_creation' : datetime.datetime.utcnow()}
-	use_dot_notation = True
-	# def __repr__(self):
-	# 	return '<News %r>' % (self.title)
+	class News(MongoDBModel):
+		__collection__ = 'news'
+		# __database__   = self.
+		structure = {
+			'title'         : unicode,
+			'content'       : unicode,
+			'date_creation' : datetime.datetime,
+		}
+		i18n             = ['title', 'content']
+		default_values   = {'date_creation' : datetime.datetime.utcnow()}
+		use_dot_notation = True
+
+
+# EOF

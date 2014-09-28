@@ -25,13 +25,16 @@ from werkzeug.contrib.cache import SimpleCache
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
 mail      = flask_mail.Mail(app)
-db        = model.Interface.GetConnection()
+interface = model.Interface( host = app.config["MONGODB_HOST"], 
+                            port = app.config["MONGODB_PORT"], 
+                            db   = app.config["MONGODB_DB"]  )
+db = interface.get_database()
 # assets
 assets  = Environment(app)
 bundles = YAMLLoader("assets.yaml").load_bundles()
 assets.register(bundles)
-babel     = Babel(app) # i18n
-cache = SimpleCache()
+babel   = Babel(app) # i18n
+cache   = SimpleCache()
 
 # -----------------------------------------------------------------------------
 #
@@ -103,9 +106,9 @@ def news(id="all", sort=None):
 		# update
 		if request.form.get("_id"):
 			query = extractQuery(request.form)
-			news  = model.Interface.getNews(request.form.get("_id"))
+			news  = interface.get_news(request.form.get("_id"))
 		else:
-			news = db.News()
+			news = interface.News()
 		news.content = request.form.get("content_en")
 		news.title   = request.form.get("title_en")
 		news.set_lang('fr')
@@ -115,14 +118,14 @@ def news(id="all", sort=None):
 		news.save()
 		return "true"
 	if request.method == "DELETE":
-		news = model.Interface.getNews(id)
-		db.portfolio.news.remove({"_id":news._id})
+		news = interface.get_news(id)
+		db.news.remove({"_id":news._id})
 		return "true"
 	else:
 		admin = id == "admin"
 		id    = "all" if admin else id
 		sort = "date_creation" if sort == "date" else sort
-		news = model.Interface.getNews(id, sort=sort)
+		news = interface.get_news(id, sort=sort)
 		res  = []
 		ln   = get_locale()
 		# don't translate when admin is asking
