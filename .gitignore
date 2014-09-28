@@ -5,3 +5,4 @@ static/videos/*
 static/.webassets-cache/
 static/gen/
 fabfile.py
+node_modules/
