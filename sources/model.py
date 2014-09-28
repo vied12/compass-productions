@@ -8,7 +8,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 03-Sep-2012
-# Last mod : 23-Sep-2012
+# Last mod : 28-Sep-2014
 # -----------------------------------------------------------------------------
 import mongokit, datetime
 
@@ -16,11 +16,10 @@ import mongokit, datetime
 
 class Interface:
 
-	def __init__(self, db, port=27017, host="localhost"):
+	def __init__(self, db, host):
 		self.db         = db
 		self.host       = host
-		self.port       = port
-		self.connection = mongokit.Connection(self.host, self.port)
+		self.connection = mongokit.Connection(self.host)
 		self.connection.register([Interface.News])
 
 	# @staticmethod
@@ -44,7 +43,6 @@ class Interface:
 
 	class News(MongoDBModel):
 		__collection__ = 'news'
-		# __database__   = self.
 		structure = {
 			'title'         : unicode,
 			'content'       : unicode,
