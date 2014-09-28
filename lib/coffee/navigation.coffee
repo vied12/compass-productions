@@ -15,6 +15,7 @@ Widget   = window.serious.Widget
 URL      = new window.serious.URL()
 Format   = window.serious.format
 Utils    = window.serious.Utils
+
 # -----------------------------------------------------------------------------
 #
 # Navigation
@@ -39,12 +40,13 @@ class portfolio.Navigation extends Widget
 
 		@CONFIG = {
 			tileMargin : 4
-			pages      : ["project", "contact", "news"]
+			pages      : ["project", "contact", "news", "page", "single-page"]
 		}
 
 		@cache = {
 			currentMenu    : null
 			currentPage    : null
+			data           : null
 		}
 		@panelWidget   = null
 		@projectWidget = null
@@ -52,9 +54,12 @@ class portfolio.Navigation extends Widget
 
 	bindUI: (ui) =>
 		super
-		@panelWidget   = Widget.ensureWidget(".FooterPanel")
-		@projectWidget = Widget.ensureWidget(".Project")
-		@background    = Widget.ensureWidget(".Background")
+		@panelWidget      = Widget.ensureWidget(".FooterPanel")
+		@projectWidget    = Widget.ensureWidget(".Project")
+		@backgroundWidget = Widget.ensureWidget(".Background")
+		@singlePageWidget = Widget.ensureWidget(".SinglePage")
+		# download data
+		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
 		# binds events
 		@uis.tilesList.click((e) => this.tileSelected(e.currentTarget or e.srcElement))
 		@uis.brandTile.click((e) => this.tileSelected(e.currentTarget or e.srcElement))
@@ -83,14 +88,23 @@ class portfolio.Navigation extends Widget
 			this.showMenu("main")
 		return this
 
+	setData: (data) =>
+		@cache.data = data
+		@projectWidget.setData(data)
+
+	getProjectByName: (name) =>
+		for project in @cache.data.works
+			if project.key == name
+				return project
+
 	# show the given menu, hide the previous opened menu
 	showMenu: (menu) =>	
-		@background.image("index_bg.jpg", true)
+		@backgroundWidget.image("index_bg.jpg", true)
 		if menu == "main"
-			@background.darkness(0)
+			@backgroundWidget.darkness(0)
 			@uis.promo.removeClass "hidden"
-			@background.resetClass()
-			@background.removeVideo()
+			@backgroundWidget.resetClass()
+			@backgroundWidget.removeVideo()
 			$('body').trigger "cancelDelayedPanel"
 		else
 			@uis.promo.addClass "hidden"		
@@ -154,25 +168,32 @@ class portfolio.Navigation extends Widget
 		@uis.page.html(page_tile.clone())
 		@cache.currentPage = page
 		this.showMenu("page")
-		if URL.get("cat")?
-			$("body").trigger("setDirectPanelPage", page)			
+		if page == "single-page"
+			@singlePageWidget.setProject(page)
+			@singlePageWidget.show()
 		else
-			$("body").trigger("setPanelPage", page)
+			@singlePageWidget.hide()
+			if URL.get("cat")?
+				$("body").trigger("setDirectPanelPage", page)			
+			else
+				$("body").trigger("setPanelPage", page)
 
 	tileSelected: (tile_selected_ui) =>
 		tile_selected_ui = $(tile_selected_ui)
 		if tile_selected_ui.hasClass "tile"
 			target = tile_selected_ui.attr "data-target"
 			# check if there is a menu for the current target
-			if @ui.find("[data-menu="+target+"]").length > 0
+			if @ui.find("[data-menu='"+target+"']").length > 0
 				# FIXME: should not be here, cat and project are not on this widget
 				URL.update({menu:target, page:null, project:null, cat:null})
 			else # the target is a page
-				if not (target in @CONFIG.pages)
+				target_root = target.split(":")[0]
+				if target_root in @CONFIG.pages
+					project = target.split(":")[1] or null
+					URL.update({page:target_root, menu:null, project:project, cat:null})	
+				else
 					# project selected
 					URL.update({page:"project", project:target, menu:null, cat:null})
-				else
-					URL.update({page:target, menu:null, project:null, cat:null})	
 
 # -----------------------------------------------------------------------------
 #
@@ -301,6 +322,20 @@ class portfolio.Background extends Widget
 
 # -----------------------------------------------------------------------------
 #
+# Single Page / without panel
+#
+# -----------------------------------------------------------------------------
+class portfolio.SinglePage extends Widget
+
+	constructor: ->
+		@UIS =
+			body : ".SinglePage__body"
+
+	setProject: (project) =>
+		@uis.body.html(project)
+
+# -----------------------------------------------------------------------------
+#
 # Panel
 #
 # -----------------------------------------------------------------------------
@@ -331,7 +366,7 @@ class portfolio.Panel extends Widget
 
 	bindUI: (ui) =>
 		super
-		@background    = Widget.ensureWidget(".Background")
+		@backgroundWidget    = Widget.ensureWidget(".Background")
 		@cancelDelay=false
 		#bind events
 		$('body').bind 'setPanelPage', (e, page) => this.goto page
@@ -376,7 +411,7 @@ class portfolio.Panel extends Widget
 		@cache.isOpened = false
 		this.relayout(false)
 		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)		
-		@background.darkness(0)
+		@backgroundWidget.darkness(0)
 		$('body').trigger "updatePanelMenuRoot", false
 
 	open: (page) =>
@@ -387,7 +422,7 @@ class portfolio.Panel extends Widget
 					@ui.removeClass "hidden"
 					@uis.wrapper.removeClass "hidden"
 					this.relayout(true)
-					@background.darkness(0.6)
+					@backgroundWidget.darkness(0.6)
 					$('body').trigger "updatePanelMenuRoot", true
 			,delay)
 		@cancelDelay=false
@@ -521,10 +556,8 @@ class portfolio.Contact extends Widget
 
 	bindUI: (ui) =>
 		super
-		$('body').bind('currentPage',(e,page) => 
-			if page=="contact"
-				this.showMain()
-		)
+		# reset when arriving
+		$('body').bind('currentPage', (e,page) => this.showMain() if page == "contact")
 		$('body').bind('relayoutContent', this.relayout)
 		return this
 
@@ -593,10 +626,10 @@ class portfolio.Project extends Widget
 
 	bindUI: (ui) =>
 		super
-		@flickrGallery = Widget.ensureWidget(".content.gallery")
-		@videoPlayer   = Widget.ensureWidget(".VideoPlayer")
-		@background    = Widget.ensureWidget(".Background")
-		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
+		@navigationWidget = Widget.ensureWidget(".Navigation")
+		@flickrGallery    = Widget.ensureWidget(".content.gallery")
+		@videoPlayer      = Widget.ensureWidget(".VideoPlayer")
+		@backgroundWidget = Widget.ensureWidget(".Background")
 		# enable dynamic links (#+cat=...)
 		URL.enableLinks(@ui)
 		$("body").bind("relayoutContent", this.relayout)
@@ -633,15 +666,13 @@ class portfolio.Project extends Widget
 					@videoPlayer.setData(this.getProjectByName(URL.get("project")).videos)
 
 	getProjectByName: (name) =>
-		for project in @cache.data.works
-			if project.key == name
-				return project
+		@navigationWidget.getProjectByName(name)
 
 	setProject: (project) =>
 		project_obj = this.getProjectByName(project)
 		this.setMenu(project_obj)
 		this.setContent(project_obj)
-		@background.setProject(project_obj)
+		@backgroundWidget.setProject(project_obj)
 
 	setMenu: (project) =>
 		@uis.tabList.addClass "hidden"
@@ -800,7 +831,7 @@ class portfolio.MediaPlayer extends Widget
 
 	bindUI: (ui) =>
 		super
-		@background = Widget.ensureWidget(".Background")
+		@backgroundWidget = Widget.ensureWidget(".Background")
 		URL.onStateChanged(this.onURLStateChanged)
 		$(window).resize(this.relayout)
 
@@ -936,13 +967,13 @@ class portfolio.MediaPlayer extends Widget
 		$('body').trigger("darkness", 0.7)
 		@uis.next.removeClass("hidden")
 		@uis.previous.removeClass("hidden")
-		@background.suspend()
+		@backgroundWidget.suspend()
 		$('body').trigger "desactivatelPanelToggler"
 
 	hide: =>
 		super
 		$(".Page.links .back").addClass("hidden")
-		@background.restore()
+		@backgroundWidget.restore()
 		@ui.find(".player").addClass "hidden"
 		@uis.playerContainer.addClass "hidden"
 		URL.remove("item", true)
