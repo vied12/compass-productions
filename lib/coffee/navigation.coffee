@@ -341,8 +341,10 @@ class portfolio.SinglePage extends Widget
 
 
 	setProject: (project) =>
+		@ui.attr("class", "SinglePage widget #{project.key}")
 		@uis.title.html(project.title)
-		@uis.cover.html($("<img />").attr("src", "static/images/#{project.cover}"))
+		# NOTE: thumbnail disabled
+		# @uis.cover.html($("<img />").attr("src", "static/images/#{project.cover}"))
 		@uis.body.html(project.synopsis.body)
 		@relayout()
 

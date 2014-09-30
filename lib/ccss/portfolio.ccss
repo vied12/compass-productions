@@ -749,10 +749,11 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 	margin         : 0 auto
 	font-size      : 1.2em
 	padding-top    : $BASE_PADDING*2
+	padding-left:16px
 	&__wrapper:
 		position:relative
-	&__title, &__body:
-		padding-left: $MAX_SINGLE_PAGE_COVER_WIDTH + $BASE_PADDING*4
+	// &__title, &__body:
+	//	padding-left: $MAX_SINGLE_PAGE_COVER_WIDTH + $BASE_PADDING*4
 	&__title:
 		font-size      : 1.6em
 		padding-bottom : $BASE_PADDING
@@ -767,6 +768,36 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 		left     : $BASE_PADDING + 4
 		img :
 			max-width: $MAX_SINGLE_PAGE_COVER_WIDTH
+
+.venus:
+	.SinglePage:
+		&__title:
+			font-family: Helvetica, Arial, Sans-Serif
+			line-height: 1em
+			font-size: 70px
+			color: #FF2879
+		&__body:
+			font-family: "Times New Roman", Times, serif
+			font-size: 1.2em
+			line-height: 1.2em
+			font-weight: bold
+			.details__subtitle:
+				font-family: Helvetica, Arial, Sans-Serif
+.button:
+	font-family: Raleway
+	text-transform : uppercase
+	font-size : 0.8em
+	text-decoration : none
+	padding : 4px $BASE_PADDING + 2
+	display : inline-block
+.in, .button:
+	background-color : transparent
+	border-width : 1px
+	border-style : solid
+	border-color : #fff
+	color : #fff
+	margin-left: $BASE_PADDING
+
 
 // .venus:
 //	&__synopsys:
