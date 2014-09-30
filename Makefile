@@ -21,6 +21,7 @@
 PROJECT_NAME = "compass-portfolio"
 PYC          = $(wildcard *.pyc */*.pyc sources/*/*.pyc sources/*/*/*.pyc sources/*/*/*/*.pyc sources/*/*/*/*/*.pyc scripts/*.pyc)
 CACHE        = $(wildcard static/.webassets-cache static/gen)
+LOGS         = $(wildcard mongo.log*)
 WEBAPP       = $(wildcard webapp.py)
 RM           = rm -fr
 MV           = mv -f
@@ -37,12 +38,16 @@ ifndef BASE_URL
 	BASE_URL = $(HOST)
 endif
 
-run: clean
+run: clean startdb
 	. `pwd`/.env ; export DEBUG=$(DEBUG) ; python $(WEBAPP)
+
+startdb:
+	-mongod --fork --logpath mongo.log
 
 clean:
 	$(RM) $(PYC)
 	$(RM) $(CACHE)
+	$(RM) $(LOGS)
 
 install:
 	virtualenv venv --no-site-packages --distribute --prompt=$(PROJECT_NAME)
