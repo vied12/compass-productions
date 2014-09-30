@@ -91,7 +91,7 @@ class portfolio.Navigation extends Widget
 			this.showPage(params.page)
 		else if params.menu?
 			this.showMenu(params.menu)
-		else			
+		else
 			this.showMenu("main")
 
 	getProjectByName: (name) =>
@@ -100,10 +100,10 @@ class portfolio.Navigation extends Widget
 				return project
 
 	showMenu: (menu) =>
-		# """
-		# show the given menu, hide the previous opened menu
+		###
+		show the given menu, hide the previous opened menu
 
-		# """
+		###
 		# default background for menus
 		@backgroundWidget.image("index_bg.jpg", true) unless menu in ["page", "single-page"]
 		if menu == "main"
@@ -115,8 +115,8 @@ class portfolio.Navigation extends Widget
 		else
 			@uis.promo.addClass "hidden"
 		# hide panel if menu is not a page (i.e: work and main)
-		if not (menu in "page")
-			$("body").trigger("hidePanel")	
+		if not (menu in ["page"])
+			$("body").trigger("hidePanel")
 			this.selectPageLink(menu)
 		else
 			this.selectPageLink(@cache.currentPage)
@@ -141,7 +141,7 @@ class portfolio.Navigation extends Widget
 		@cache.currentMenu = menu
 
 	selectPageLink: (tile) =>
-		if tile == "main" 
+		if tile == "main"
 			@uis.pageLinks.addClass "hidden"
 		else
 			@uis.pageLinks.removeClass "hidden"
@@ -152,7 +152,7 @@ class portfolio.Navigation extends Widget
 				@uis.menuRoot.click (e) =>
 					e.preventDefault()
 					this.updatePanelMenu()
-	
+
 	updatePanelMenu: =>
 		if not @panelWidget.isOpened()
 				setTimeout( (=> @panelWidget.open()), 100)
@@ -163,12 +163,12 @@ class portfolio.Navigation extends Widget
 		if opened
 			@uis.menuRoot.addClass "hidden"
 			@uis.menuRoot.addClass "active"
-		else 
+		else
 			@uis.menuRoot.removeClass "hidden"
 			@uis.menuRoot.removeClass "active"
 
 	showPage: (page) =>
-		# set page menu (single tile)
+		### set page menu (single tile) ###
 		target_to_find = URL.get("project") or page
 		page_tile = @ui.find(".nav[data-target="+(URL.get("project") or page)+"]:first")
 		# if no result, retry with the new notation "single-page:<project_name>"
@@ -184,15 +184,15 @@ class portfolio.Navigation extends Widget
 		else
 			@singlePageWidget.hide()
 			if URL.get("cat")?
-				$("body").trigger("setDirectPanelPage", page)			
+				$("body").trigger("setDirectPanelPage", page)
 			else
 				$("body").trigger("setPanelPage", page)
 
 	tileSelected: (tile_selected_ui) =>
-		"""
+		###
 		update the url, depending the selected tile
 
-		"""
+		###
 		tile_selected_ui = $(tile_selected_ui)
 		if tile_selected_ui.hasClass "tile"
 			target = tile_selected_ui.attr "data-target"
@@ -204,7 +204,7 @@ class portfolio.Navigation extends Widget
 				target_root = target.split(":")[0]
 				if target_root in @CONFIG.pages
 					project = target.split(":")[1] or null
-					URL.update({page:target_root, menu:null, project:project, cat:null})	
+					URL.update({page:target_root, menu:null, project:project, cat:null})
 				else
 					# project selected
 					URL.update({page:"project", project:target, menu:null, cat:null})
@@ -262,29 +262,29 @@ class portfolio.Background extends Widget
 		if project_obj.backgroundVideos
 			if Modernizr.video
 				@video(project_obj.backgroundVideos)
-			else			
+			else
 				@image(project_obj.backgroundImage)
 		else if project_obj.backgroundImage
 			@image(project_obj.backgroundImage)
 		else
 			@removeVideo()
-	
+
 	suspend: =>
 		@CACHE.suspended = true
 		@uis.image.addClass "pasla"
-		@ui.find('video.actual').addClass "hidden"		
+		@ui.find('video.actual').addClass "hidden"
 
 	restore: =>
 		@ui.find('video.actual').removeClass "hidden"
-		@uis.image.removeClass "pasla"		
+		@uis.image.removeClass "pasla"
 		@CACHE.suspended = false
 
 	removeVideo: =>
 		@ui.find('video.actual').remove()
 
 	video: (data) =>
-		#swap on image if playing video is not supported for format, 
-		#use image's tag give better control on relayoupropting than poster attribute of <video>		
+		#swap on image if playing video is not supported for format,
+		#use image's tag give better control on relayoupropting than poster attribute of <video>
 		old_nui  = @ui.find('video.actual')
 		nui      = @uis.video.cloneTemplate().addClass "hidden"
 		@uis.image.addClass "pasla"
@@ -297,7 +297,7 @@ class portfolio.Background extends Widget
 			source.attr("type", "video/#{type}")
 			nui.append(source)
 		if @CACHE.image != null
-		 	nui.attr("poster", @CONFIG.imageUrl+@CACHE.image)		 	
+		 	nui.attr("poster", @CONFIG.imageUrl+@CACHE.image)
 		#wait until video is playable before swap with old video
 		nui.on("canplay canplaythrough", =>
 			if not @CACHE.suspended
@@ -305,7 +305,7 @@ class portfolio.Background extends Widget
 				nui.removeClass "hidden"
 		)
 		@uis.video.after(nui)
-		
+
 	image: (filename, is_default=false) =>
 		old_nui = @ui.find('.image.actual')
 		old_nui.addClass "pasla"
@@ -372,7 +372,7 @@ class portfolio.SinglePage extends Widget
 # Panel
 #
 # -----------------------------------------------------------------------------
-    	
+
 class portfolio.Panel extends Widget
 
 	constructor: ->
@@ -383,7 +383,7 @@ class portfolio.Panel extends Widget
 		}
 		@PAGES = ["project", "contact", "news"]
 		@UIS = {
-			wrapper     : ".wrapper:first"	
+			wrapper     : ".wrapper:first"
 			pages 		: ".pages"
 			close       : ".close"
 			contents 	: ".content"
@@ -406,12 +406,12 @@ class portfolio.Panel extends Widget
 		$('body').bind 'setDirectPanelPage', (e, page) => this.goto(page, false)
 		$('body').bind('hidePanel', this.hide)
 		$('body').bind('cancelDelayedPanel', this.cancelDelayedPanel)
-		$(window).resize(=>(this.relayout(@cache.isOpened)))		
+		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		@uis.close.click (e)=>
 			e.preventDefault()
-			Widget.ensureWidget(".Navigation").updatePanelMenu()			
+			Widget.ensureWidget(".Navigation").updatePanelMenu()
 			this.hide()
-		return this	
+		return this
 
 	goto: (page, delay=true) =>
 		#close all pages
@@ -443,13 +443,13 @@ class portfolio.Panel extends Widget
 	hide: =>
 		@cache.isOpened = false
 		this.relayout(false)
-		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)		
+		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)
 		@backgroundWidget.darkness(0)
 		$('body').trigger "updatePanelMenuRoot", false
 
 	open: (page) =>
 		if page == "project" then delay = @OPTIONS.delay else delay = 0
-		setTimeout(=>				
+		setTimeout(=>
 				if not @cancelDelay
 					@cache.isOpened = true
 					@ui.removeClass "hidden"
@@ -459,7 +459,7 @@ class portfolio.Panel extends Widget
 					$('body').trigger "updatePanelMenuRoot", true
 			,delay)
 		@cancelDelay=false
-	
+
 	cancelDelayedPanel: =>
 		@cancelDelay=true
 
@@ -478,7 +478,7 @@ class portfolio.FlickrGallery extends Widget
 
 		@UIS = {
 			list      : ".photos"
-			photoTmpl : "li.photo.template" 
+			photoTmpl : "li.photo.template"
 		}
 
 		@cache = {
@@ -489,9 +489,9 @@ class portfolio.FlickrGallery extends Widget
 
 	bindUI: (ui) =>
 		super
-		@imagePlayer = Widget.ensureWidget(".ImagePlayer")		
+		@imagePlayer = Widget.ensureWidget(".ImagePlayer")
 		return this
-		
+
 	setPhotoSet: (set_id) => $.ajax("/api/flickr/photosSet/"+set_id+"/qualities/q,z", {dataType: 'json', success : this.setData})
 	getPhotoSet: => return @cache.data
 
@@ -504,9 +504,9 @@ class portfolio.FlickrGallery extends Widget
 	setData: (data) =>
 		#clean old gallery
 		@uis.list.find('li:not(.template)').remove()
-		#update	cache data	
+		#update	cache data
 		@cache.data = data
-		#make the first tiles 
+		#make the first tiles
 		for photo, index in data
 			this._makePhotoTile(photo, index)
 		# show media player if item params exists in URL hash
@@ -523,7 +523,7 @@ class portfolio.FlickrGallery extends Widget
 #
 # News
 #
-# -----------------------------------------------------------------------------	
+# -----------------------------------------------------------------------------
 
 class portfolio.News extends Widget
 
@@ -548,7 +548,7 @@ class portfolio.News extends Widget
 	relayout: =>
 		top_offset = $('.FooterPanel').height() - 80
 		@ui.find(".content").css({height: top_offset}).jScrollPane({hideFocus:true})
-		
+
 	setData: (data) =>
 		@cache.data = data
 		for news in data
@@ -635,7 +635,7 @@ class portfolio.Contact extends Widget
 #
 # PROJECT
 #
-# -----------------------------------------------------------------------------	 
+# -----------------------------------------------------------------------------
 
 class portfolio.Project extends Widget
 
@@ -695,7 +695,7 @@ class portfolio.Project extends Widget
 				if URL.get("cat")?
 					this.selectTab(URL.get("cat"))
 			if URL.get("item")?
-				if (URL.get("cat")? and URL.get("cat") == "videos")					
+				if (URL.get("cat")? and URL.get("cat") == "videos")
 					@videoPlayer.setData(this.getProjectByName(URL.get("project")).videos)
 
 	getProjectByName: (name) =>
@@ -739,42 +739,42 @@ class portfolio.Project extends Widget
 				switch category
 					when "synopsis"
 						nui.find(".actual").remove()
-						synopsis_nui = nui.find('.template').cloneTemplate(value)						
+						synopsis_nui = nui.find('.template').cloneTemplate(value)
 						nui.append(synopsis_nui)
 						readmoreLink = nui.find('.readmore')
-						body_nui     = nui.find('.actual .body')	
+						body_nui     = nui.find('.actual .body')
 						body_nui.html(body_nui.html().replace(/\n/g, "<br />"))
-						# if teaser is in json, teaser is displayed with readmore link,  
+						# if teaser is in json, teaser is displayed with readmore link,
 						teaser = nui.find(".actual .teaser")
 						if value.teaser?
 							teaser.removeClass "hidden"
 							body_nui.css({
-								display:'none',	
+								display:'none',
 							})
 							teaser.html(teaser.html().replace(/\n/g, "<br />"))
-							readmoreLink.removeClass "hidden"	
+							readmoreLink.removeClass "hidden"
 							body_nui.removeClass "readmoreFx"
-							$('body').bind('readmore.init', => 
+							$('body').bind('readmore.init', =>
 								body_nui.css("display":"none")
 								readmoreLink.removeClass "hidden"
-							)					
+							)
 							readmoreLink.click((e) =>
-								e.preventDefault()			
-								body_nui.removeClass "hidden"							
-								body_nui.css({display:'block'})											
+								e.preventDefault()
+								body_nui.removeClass "hidden"
+								body_nui.css({display:'block'})
 								readmoreLink.addClass "hidden"
-								setTimeout((=> 
+								setTimeout((=>
 									body_nui.addClass "readmoreFx"
 									this.relayout()
-									), 200)	
+									), 200)
 							)
-						# else body is displayed alone		
+						# else body is displayed alone
 						else
 							teaser.addClass 'hidden'
 							readmoreLink.addClass "hidden"
 
 							body_nui.css({
-								display:'block',	
+								display:'block',
 								opacity:1
 							})
 					when "videos"
@@ -810,7 +810,7 @@ class portfolio.Project extends Widget
 						for credit in value
 							credit_nui = nui.find('.template').cloneTemplate(credit,true)
 							nui.append(credit_nui)
-					when "screenings" 
+					when "screenings"
 						nui.find(".actual").remove()
 						for screening in value
 							screening_nui = nui.find('.template').cloneTemplate(screening, true)
@@ -825,15 +825,15 @@ class portfolio.Project extends Widget
 						nui.empty()
 						nui.append(value.replace(/\n/g, "<br />"))
 
-	selectTab: (category) =>	
+	selectTab: (category) =>
 		if not (@cache.externalVideo and category=="videos")
 			@uis.tabContent.removeClass "active"
 			@uis.tabContent.removeClass "show"
 			@uis.tabContent.addClass "hidden"
 			@uis.tabList.find("a").removeClass "active"
 			@uis.tabList.find("[data-name="+category+"]").addClass "active"
-			tab_nui = @uis.tabContents.find("[data-name="+category+"]")				
-			tab_nui.removeClass "hidden"		
+			tab_nui = @uis.tabContents.find("[data-name="+category+"]")
+			tab_nui.removeClass "hidden"
 			setTimeout((=>tab_nui.addClass "active"), 100)
 			$('body').trigger "readmore.init"
 			this.relayout()
@@ -842,7 +842,7 @@ class portfolio.Project extends Widget
 #
 # MEDIA PLAYER
 #
-# -----------------------------------------------------------------------------	
+# -----------------------------------------------------------------------------
 
 class portfolio.MediaPlayer extends Widget
 
@@ -966,7 +966,7 @@ class portfolio.MediaPlayer extends Widget
 						setTimeout((=> this.toggleNavigation()), 250)
 						clearInterval(interval)
 				), 200 # time before each tile render
-	
+
 	setThumbnail: (index_in_page, nui, thumbnail_url) =>
 		image = nui.find(".image")
 		if this.setCurrentTileForVideo?
@@ -988,7 +988,7 @@ class portfolio.MediaPlayer extends Widget
 			this.setPage(new_page)
 
 	show: =>
-		super		
+		super
 		@uis.playerContainer.removeClass "hidden"
 		@cache.isShown = true
 		$(".FooterPanel").addClass("hidden")
@@ -1027,7 +1027,7 @@ class portfolio.MediaPlayer extends Widget
 #
 # VIDEO PLAYER
 #
-# -----------------------------------------------------------------------------	
+# -----------------------------------------------------------------------------
 
 class portfolio.VideoPlayer extends portfolio.MediaPlayer
 
@@ -1091,7 +1091,7 @@ class portfolio.VideoPlayer extends portfolio.MediaPlayer
 #
 # IMAGE PLAYER
 #
-# -----------------------------------------------------------------------------	
+# -----------------------------------------------------------------------------
 
 class portfolio.ImagePlayer extends portfolio.MediaPlayer
 
@@ -1145,7 +1145,7 @@ class portfolio.ImagePlayer extends portfolio.MediaPlayer
 #
 # LANGUAGE
 #
-# -----------------------------------------------------------------------------	
+# -----------------------------------------------------------------------------
 
 class portfolio.Language extends Widget
 
@@ -1213,7 +1213,7 @@ class portfolio.Language extends Widget
 #
 # DOWNLOAD
 #
-# -----------------------------------------------------------------------------	
+# -----------------------------------------------------------------------------
 
 class portfolio.Download extends Widget
 
