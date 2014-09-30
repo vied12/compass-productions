@@ -29,13 +29,12 @@ class portfolio.Navigation extends Widget
 			brandTile        : ".brand.tile"
 			main             : ".Main"
 			works            : ".Works"
-			page             : ".PageMenu"
+			pageMenu         : ".PageMenu"
 			menus            : ".menu"
 			worksTiles       : ".Works .tile"
 			mainTiles        : ".Main .tile"
 			pageLinks        : ".Page.links"
 			menuRoot         : ".Page.links .menuRoot"
-			promo            : ".promo"
 		}
 
 		@CONFIG = {
@@ -44,7 +43,6 @@ class portfolio.Navigation extends Widget
 		}
 
 		@cache = {
-			currentMenu    : null
 			currentPage    : null
 			data           : null
 		}
@@ -59,32 +57,35 @@ class portfolio.Navigation extends Widget
 		@backgroundWidget = Widget.ensureWidget(".Background")
 		@singlePageWidget = Widget.ensureWidget(".SinglePage")
 		# download data
-		$.ajax("/api/data.json", {dataType: 'json', success : this.setData})
+		$.ajax("/api/data.json", {dataType: 'json', success : @setData})
 		# binds events
-		@uis.tilesList.click((e) => this.tileSelected(e.currentTarget or e.srcElement))
-		@uis.brandTile.click((e) => this.tileSelected(e.currentTarget or e.srcElement))
-		$('body').bind('backToHome', (e) => this.showMenu("main"))
-		$('body').bind('updatePanelMenuRoot', (e,opened) => this.updatePanelMenuRoot(opened))
-		$('body').bind('desactivatelPanelToggler', (e,opened) => @uis.menuRoot.addClass "hidden")
-		$('body').bind('activatelPanelToggler', (e,opened) => @uis.menuRoot.removeClass "hidden")
+		@uis.tilesList.click((e) => @tileSelected(e.currentTarget or e.srcElement))
+		@uis.brandTile.click((e) => @tileSelected(e.currentTarget or e.srcElement))
+		@uis.menuRoot .click((e) => e.preventDefault(); @togglePanelMenu())
+		$('body').bind('backToHome'           , (e)        => @showMenu("main"))
+		$('body').bind('updateOpenPanelButton', (e,opened) => @updateOpenPanelButton(opened))
+		$('body').bind('hidePanelToggler'     , (e,opened) => @uis.menuRoot.addClass "hidden")
+		$('body').bind('showPanelToggler'     , (e,opened) => @uis.menuRoot.removeClass "hidden")
 		return this
+
+	onUrlChange: =>
+		# hide single page widget if needed
+		@cache.currentPage = null
+		@singlePageWidget.hide() unless URL.get("page") == "single-page"
+		if URL.hasChanged("menu")
+			menu = URL.get("menu")
+			if menu
+				this.showMenu(menu)
+		if URL.hasChanged("page")
+			@cache.currentPage = null
+			page = URL.get("page")
+			if page
+				this.showPage(page)
+				$('body').trigger("pageChanged", page)
 
 	setData: (data) =>
 		@cache.data = data
 		@projectWidget.setData(data)
-		# bind url change
-		URL.onStateChanged =>
-			# hide single page widget if needed
-			@singlePageWidget.hide() unless URL.get("page") == "single-page"
-			if URL.hasChanged("menu")
-				menu = URL.get("menu")
-				if menu
-					this.showMenu(menu)
-			if URL.hasChanged("page")
-				page = URL.get("page")
-				if page
-					this.showPage(page)
-					$('body').trigger("pageChanged", page)
 		# init from url
 		params = URL.get()
 		if params.page?
@@ -93,6 +94,8 @@ class portfolio.Navigation extends Widget
 			this.showMenu(params.menu)
 		else
 			this.showMenu("main")
+		# bind url change
+		URL.onStateChanged(@onUrlChange)
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works
@@ -105,31 +108,25 @@ class portfolio.Navigation extends Widget
 
 		###
 		# default background for menus
-		@backgroundWidget.image("index_bg.jpg", true) unless menu in ["page", "single-page"]
+		@backgroundWidget.image("index_bg.jpg", true) unless menu is "page"
 		if menu == "main"
 			@backgroundWidget.darkness(0)
-			@uis.promo.removeClass "hidden"
 			@backgroundWidget.resetClass()
 			@backgroundWidget.removeVideo()
-			$('body').trigger "cancelDelayedPanel"
-		else
-			@uis.promo.addClass "hidden"
+			# $('body').trigger "cancelDelayedPanel"
 		# hide panel if menu is not a page (i.e: work and main)
-		if not (menu in ["page"])
-			$("body").trigger("hidePanel")
-			this.selectPageLink(menu)
-		else
-			this.selectPageLink(@cache.currentPage)
-		# hide the arrow
-		if menu in ["main", "works", "single-page", "in-development"]
-			@uis.menuRoot.addClass "hidden"
-		menu = @ui.find "[data-menu="+menu+"]"
-		if not menu.length > 0
+		$("body").trigger("hidePanel") if menu not in ["page"]
+		@updateGoBackLink(menu)
+		@updateOpenPanelButton()
+		# show tiles of selected menu
+		menu_ui = @ui.find "[data-menu="+menu+"]"
+		if not menu_ui.length > 0
+			console.error("WHY?", menu_ui)
 			return false
 		@uis.menus.addClass "hidden"
-		tiles = menu.find(".tile")
+		tiles = menu_ui.find(".tile")
 		tiles.addClass("no-animation").removeClass("show")
-		menu.removeClass "hidden"
+		menu_ui.removeClass "hidden"
 		# Animation, one by one, fadding effect
 		i     = 0
 		interval = setInterval(=>
@@ -137,35 +134,25 @@ class portfolio.Navigation extends Widget
 			i += 1
 			if i == tiles.length
 				clearInterval(interval)
-		, 50) # time between each iteration
-		@cache.currentMenu = menu
+		, 100) # time between each iteration
 
-	selectPageLink: (tile) =>
-		if tile == "main"
-			@uis.pageLinks.addClass "hidden"
-		else
-			@uis.pageLinks.removeClass "hidden"
-			@uis.pageLinks.find("li").removeClass "active"
-			@uis.pageLinks.find(".#{tile}").addClass "active"
-			@uis.menuRoot.removeClass "hidden"
-			if tile != "works"
-				@uis.menuRoot.click (e) =>
-					e.preventDefault()
-					this.updatePanelMenu()
+	updateGoBackLink: (menu_to_go) =>
+		###
+		Show the go back home link
+		###
+		@uis.pageLinks.toggleClass("hidden", menu_to_go is "main")
 
-	updatePanelMenu: =>
+	togglePanelMenu: =>
 		if not @panelWidget.isOpened()
 				setTimeout( (=> @panelWidget.open()), 100)
 			else
 				setTimeout( (=> @panelWidget.hide()), 100)
 
-	updatePanelMenuRoot: (opened) =>
-		if opened
-			@uis.menuRoot.addClass "hidden"
-			@uis.menuRoot.addClass "active"
-		else
+	updateOpenPanelButton: (is_open=true) =>
+		if @cache.currentPage? and not is_open
 			@uis.menuRoot.removeClass "hidden"
-			@uis.menuRoot.removeClass "active"
+		else
+			@uis.menuRoot.addClass "hidden"
 
 	showPage: (page) =>
 		### set page menu (single tile) ###
@@ -174,7 +161,7 @@ class portfolio.Navigation extends Widget
 		# if no result, retry with the new notation "single-page:<project_name>"
 		if URL.get("project") and page_tile.length < 1
 			page_tile = @ui.find(".nav[data-target='#{page}:#{URL.get("project")}']:first")
-		@uis.page.html(page_tile.clone())
+		@uis.pageMenu.html(page_tile.clone())
 		@cache.currentPage = page
 		this.showMenu("page")
 		if page == "single-page"
@@ -182,7 +169,6 @@ class portfolio.Navigation extends Widget
 			@singlePageWidget.setProject(@getProjectByName(params.project))
 			@singlePageWidget.show()
 		else
-			@singlePageWidget.hide()
 			if URL.get("cat")?
 				$("body").trigger("setDirectPanelPage", page)
 			else
@@ -399,18 +385,19 @@ class portfolio.Panel extends Widget
 
 	bindUI: (ui) =>
 		super
-		@backgroundWidget    = Widget.ensureWidget(".Background")
+		@backgroundWidget = Widget.ensureWidget(".Background")
 		@cancelDelay=false
 		#bind events
-		$('body').bind 'setPanelPage', (e, page) => this.goto page
+		$('body').bind 'setPanelPage'      , (e, page) => this.goto page
 		$('body').bind 'setDirectPanelPage', (e, page) => this.goto(page, false)
-		$('body').bind('hidePanel', this.hide)
-		$('body').bind('cancelDelayedPanel', this.cancelDelayedPanel)
+		$('body').bind 'hidePanel'         , this.hide
+		$('body').bind 'cancelDelayedPanel', this.cancelDelayedPanel
 		$(window).resize(=>(this.relayout(@cache.isOpened)))
 		@uis.close.click (e)=>
 			e.preventDefault()
-			Widget.ensureWidget(".Navigation").updatePanelMenu()
+			Widget.ensureWidget(".Navigation").togglePanelMenu()
 			this.hide()
+		@relayout()
 		return this
 
 	goto: (page, delay=true) =>
@@ -445,20 +432,20 @@ class portfolio.Panel extends Widget
 		this.relayout(false)
 		setTimeout((=> @uis.wrapper.addClass "hidden"), 100)
 		@backgroundWidget.darkness(0)
-		$('body').trigger "updatePanelMenuRoot", false
+		$('body').trigger "updateOpenPanelButton", false
 
 	open: (page) =>
 		if page == "project" then delay = @OPTIONS.delay else delay = 0
 		setTimeout(=>
-				if not @cancelDelay
-					@cache.isOpened = true
-					@ui.removeClass "hidden"
-					@uis.wrapper.removeClass "hidden"
-					this.relayout(true)
-					@backgroundWidget.darkness(0.6)
-					$('body').trigger "updatePanelMenuRoot", true
-			,delay)
-		@cancelDelay=false
+			if not @cancelDelay
+				@cache.isOpened = true
+				@ui.removeClass "hidden"
+				@uis.wrapper.removeClass "hidden"
+				this.relayout(true)
+				@backgroundWidget.darkness(0.6)
+				$('body').trigger "updateOpenPanelButton", true
+				@cancelDelay=false
+		,delay)
 
 	cancelDelayedPanel: =>
 		@cancelDelay=true
@@ -1001,7 +988,7 @@ class portfolio.MediaPlayer extends Widget
 		@uis.next.removeClass("hidden")
 		@uis.previous.removeClass("hidden")
 		@backgroundWidget.suspend()
-		$('body').trigger "desactivatelPanelToggler"
+		$('body').trigger "hidePanelToggler"
 
 	hide: =>
 		super
@@ -1019,7 +1006,7 @@ class portfolio.MediaPlayer extends Widget
 		@uis.mediaList.find("li.actual").remove()
 		@uis.next.addClass("hidden")
 		@uis.previous.addClass("hidden")
-		$('body').trigger "activatelPanelToggler"
+		$('body').trigger "showPanelToggler"
 		if URL.get("trailer") == "true"
 			URL.update({trailer:null, cat:"synopsis"})
 
