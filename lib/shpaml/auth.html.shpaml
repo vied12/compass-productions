@@ -1,8 +1,0 @@
-{% extends 'admin.html' %}
-
-{% block content %}
-.Auth
-	form name=auth method=post action=authenticate
-		input name=password type=password placeholder=password | {##}
-		input type=submit value="log in" | {##}
-{% endblock %}

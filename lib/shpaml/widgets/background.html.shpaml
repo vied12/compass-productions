@@ -1,7 +1,0 @@
-.Background.widget data-widget=portfolio.Background
-	.image.template.pasla | {##}
-	video.video.template.hidden preload=none autoplay="autoplay" loop="loop" | {##}
-	.mask | {##}
-	.darkness | {##}
-	.mousemask | {##}
-
