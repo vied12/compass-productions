@@ -13,20 +13,21 @@
 # -----------------------------------------------------------------------------
 
 from flask import Flask, render_template, request, send_file, Response, abort, session, redirect, url_for
-import os, json, mimetypes, re, collections, flask_mail
+import os, json, mimetypes, re, collections
+from flask.ext.babel import Babel
+from flask.ext.assets import Environment, YAMLLoader
+from werkzeug.contrib.cache import SimpleCache
+from flask.ext.mandrill import Mandrill
 import sources.flickr        as flickr
 import sources.model         as model
 import sources.vimeo         as vimeo
 import datetime
-from flask.ext.babel import Babel
-from flask.ext.assets import Environment, YAMLLoader
-from werkzeug.contrib.cache import SimpleCache
 
 app       = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
-mail      = flask_mail.Mail(app)
+mail      = Mandrill(app)
 interface = model.Interface(host = app.config["MONGODB_HOST"], 
-                            db   = app.config["MONGODB_DB"]  )
+							db   = app.config["MONGODB_DB"]  )
 db = interface.get_database()
 # assets
 assets  = Environment(app)
@@ -150,8 +151,13 @@ def contact():
 	try:
 		message = request.form['message']
 		sender  = request.form['email']
-		msg     = flask_mail.Message("compass Productions - contact page", body=message, sender=sender, reply_to=sender, recipients=app.config["EMAILS"])
-		mail.send(msg)
+		mail.send_email(
+			from_email = sender,
+			to         = [{"email":email} for email in app.config["EMAILS"]],
+			subject    = "compass Productions - Contact Page",
+			text       = message,
+			# https://mandrillapp.com/api/docs/messages.JSON.html#method=send
+		)
 	except Exception as e:
 		print e
 		abort(500)
