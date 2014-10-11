@@ -748,7 +748,7 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 	max-width      : $MAX_WIDTH
 	margin         : 0 auto
 	font-size      : 1.2em
-	padding-top    : $BASE_PADDING*2
+	margin-top    : $BASE_PADDING*6
 	padding-left:16px
 	&__wrapper:
 		position:relative
@@ -777,12 +777,11 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 			font-size: 70px
 			color: #FF2879
 		&__body:
-			font-family: "Times New Roman", Times, serif
+			font-family: Helvetica, Arial, Sans-Serif
 			font-size: 1.2em
 			line-height: 1.2em
 			font-weight: bold
-			.details__subtitle:
-				font-family: Helvetica, Arial, Sans-Serif
+
 .button:
 	font-family: Raleway
 	text-transform : uppercase
