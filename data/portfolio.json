@@ -4,14 +4,25 @@
             "key"       : "venus",
             "title"     : "VENUS",
             "backgroundImage" : "venus.jpg",
-            "cover"     : "venus_cover.jpg",
-            "facebook"  : null,
             "synopsis"  : {
                 "en" : {
                     "url" : "partials/venus-en.html"
                 },
                 "fr" : {
                     "url" : "partials/venus-fr.html"
+                }
+            }
+        },
+        {
+            "key"       : "akram",
+            "title"     : "AKRAM LE SURRÉALISTE",
+            "backgroundImage" : "akram/akram-bg.jpg",
+            "synopsis"  : {
+                "en" : {
+                    "url" : "partials/akram-en.html"
+                },
+                "fr" : {
+                    "url" : "partials/akram-fr.html"
                 }
             }
         },

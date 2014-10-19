@@ -20,6 +20,10 @@ MAX_WIDTH = 1024px
 ALTERNATE_FONT = "Raleway", Verdana, sans-serif	
 
 @font-face:
+	font-family: "Blair"
+	src: url('../images/akram/BlairMdITC-TT-Medium.ttf')
+
+@font-face:
 	font-family: "Livory"
 	src: url("../css/Livory-Regular.otf")
 	src: url(../css/242E09_0_0.eot?#iefix) "format(embedded-opentype)",url(../css/242E09_0_0.woff) "format(woff)",url(../css/242E09_0_0.ttf) "format(truetype)", url(../css/Livory-Regular.otf)
@@ -29,9 +33,9 @@ ALTERNATE_FONT = "Raleway", Verdana, sans-serif
 	src: url("../css/Raleway/Raleway-Regular.ttf")
 
 @font-face:
-    font-family: "Raleway"
-    font-weight: bold
-    src: url('../css/Raleway/Raleway-SemiBold.ttf')
+	font-family: "Raleway"
+	font-weight: bold
+	src: url('../css/Raleway/Raleway-SemiBold.ttf')
 
 .page:
 	font-family: "Livory", Verdana, sans-serif
@@ -383,12 +387,12 @@ body:
 					font-size : 1.3em
 					margin    : 0px
 			&.screenings,&.credits:
-			 	.screening, .credit :
+				.screening, .credit :
 					clear       : both			
 					margin      :  0px 20px 0px 10px
 					padding-top : 14px
-			 	.screening :
-			 	 	padding : $BASE_PADDING
+				.screening :
+					padding : $BASE_PADDING
 				p:
 					margin: 0
 					display: inline-block
@@ -662,7 +666,7 @@ body:
 			//size : 100px 100px
 			//color: #F00FFF
 
- 	.ui-video-background: 
+	.ui-video-background: 
 		position			: absolute
 		top 				: 95px
 		z-index				: 3
@@ -757,6 +761,8 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 	&__title:
 		font-size      : 1.6em
 		padding-bottom : $BASE_PADDING
+		line-height: 1em
+
 	&__body:
 		max-width: 530px
 		padding-right: 20px
@@ -769,6 +775,12 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 		left     : $BASE_PADDING + 4
 		img :
 			max-width: $MAX_SINGLE_PAGE_COVER_WIDTH
+
+.akram:
+	.SinglePage:
+		&__title:
+			font-family: Blair
+			color : black
 
 .venus:
 	.SinglePage:
