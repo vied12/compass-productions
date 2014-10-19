@@ -345,7 +345,10 @@ class portfolio.SinglePage extends Widget
 		@uis.title.html(project.title)
 		# NOTE: thumbnail disabled
 		# @uis.cover.html($("<img />").attr("src", "static/images/#{project.cover}"))
-		@uis.body.html(project.synopsis.body)
+		if project.synopsis.body?
+			@uis.body.html(project.synopsis.body)
+		else if project.synopsis.url?
+			@uis.body.load("static/#{project.synopsis.url}?timestamp=#{new Date().getTime()}")
 		@relayout()
 
 	relayout: =>

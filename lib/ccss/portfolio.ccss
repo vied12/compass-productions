@@ -758,7 +758,8 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 		font-size      : 1.6em
 		padding-bottom : $BASE_PADDING
 	&__body:
-		max-width: 600px
+		max-width: 530px
+		padding-right: 20px
 		.details__subtitle:
 			font-size   : 1.2em
 			padding-top : $BASE_PADDING
