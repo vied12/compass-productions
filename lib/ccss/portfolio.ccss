@@ -751,7 +751,8 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 	position       : relative
 	max-width      : $MAX_WIDTH
 	margin         : 0 auto
-	font-size      : 1.2em
+	font-size      : 1.4em
+	line-height    : 2em
 	margin-top    : $BASE_PADDING*6
 	padding-left:16px
 	&__wrapper:
@@ -791,8 +792,8 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 			color: #FF2879
 		&__body:
 			font-family: Helvetica, Arial, Sans-Serif
-			font-size: 1.2em
-			line-height: 1.2em
+			//font-size: 1.2em
+			//line-height: 1.2em
 			font-weight: bold
 
 .button:
