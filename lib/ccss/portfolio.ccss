@@ -781,7 +781,6 @@ MAX_SINGLE_PAGE_COVER_WIDTH = 300px
 	.SinglePage:
 		&__title:
 			font-family: Blair
-			color : black
 
 .venus:
 	.SinglePage:
