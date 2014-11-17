@@ -86,6 +86,8 @@ class portfolio.Navigation extends Widget
 	setData: (data) =>
 		@cache.data = data
 		@projectWidget.setData(data)
+		# update view
+		@setTitles()
 		# init from url
 		params = URL.get()
 		if params.page?
@@ -96,6 +98,12 @@ class portfolio.Navigation extends Widget
 			this.showMenu("main")
 		# bind url change
 		URL.onStateChanged(@onUrlChange)
+
+	setTitles: =>
+		that = this
+		@uis.tilesList.filter("[data-title]").each ->
+			element = $(this)
+			element.find(".wrapper").html(that.getProjectByName(element.data("title")).title)
 
 	getProjectByName: (name) =>
 		for project in @cache.data.works

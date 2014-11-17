@@ -15,7 +15,10 @@
         },
         {
             "key"       : "akram",
-            "title"     : "AKRAM LE SURRÉALISTE",
+            "title"     : {
+                "fr" : "Akram le surréaliste",
+                "en" : "Akram the Surrealist"
+            },
             "backgroundImage" : "akram/akram-bg.jpg",
             "synopsis"  : {
                 "en" : {
