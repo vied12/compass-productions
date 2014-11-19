@@ -356,8 +356,7 @@ class portfolio.SinglePage extends Widget
 		if project.synopsis.body?
 			@uis.body.html(project.synopsis.body)
 		else if project.synopsis.url?
-			@uis.body.load("static/#{project.synopsis.url}?timestamp=#{new Date().getTime()}")
-		@relayout()
+			@uis.body.load "static/#{project.synopsis.url}?timestamp=#{new Date().getTime()}", @relayout
 
 	relayout: =>
 		setTimeout(=>
