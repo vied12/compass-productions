@@ -181,16 +181,21 @@ def get_project_by_name(name):
 @app.route('/')
 def index():
 	_escaped_fragment_ = request.args.get("_escaped_fragment_")
+	url = None
 	project = None
 	if _escaped_fragment_:
 		params = parse_qs(_escaped_fragment_)
+		url = "!"
+		for k, v in params.items():
+			if len(v) > 0:
+				url += "%s=%s&" % (k, v[0])
 		_project = params.get("project")
 		_ln = params.get("ln")
 		if _ln:
 			setLanguage(_ln[0])
 		if _project:
 			project = get_project_by_name(_project[0])
-	return render_template('home.html', project=project)
+	return render_template('home.html', project=project, url=url)
 
 @app.route('/admin', methods=['GET'])
 def admin():
