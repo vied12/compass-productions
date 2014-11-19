@@ -18,6 +18,7 @@ from flask.ext.babel import Babel
 from flask.ext.assets import Environment, YAMLLoader
 from werkzeug.contrib.cache import SimpleCache
 from flask.ext.mandrill import Mandrill
+from urlparse import urlsplit, urlunsplit, parse_qs
 import sources.flickr        as flickr
 import sources.model         as model
 import sources.vimeo         as vimeo
@@ -43,38 +44,12 @@ cache   = SimpleCache()
 # -----------------------------------------------------------------------------
 
 @app.route('/api/data.json')
-def data():
+def data_json():
 	ln  = get_locale()
-	res = cache.get('data-%s' % ln)
+	res = cache.get('data_json-%s' % ln)
 	if res is None:
-		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
-			data = json.load(f, object_pairs_hook=collections.OrderedDict)
-			# translate
-			for work_index, work in enumerate(data.get("works", tuple())):
-				for key in work.keys():
-					# if value is a pair of {en: ..., fr: ...}
-					if type(work[key]) == collections.OrderedDict:
-						if work[key].keys()[0] in app.config["LANGUAGES"]:
-							if ln in work[key].keys():
-								data["works"][work_index][key] = work[key][ln]
-							else:
-								data["works"][work_index][key] = work[key][app.config["LANGUAGES"][0]]
-			# add some infos for videos
-			for work_index, work in enumerate(data.get("works", tuple())):
-				videos = work.get("videos", tuple())
-				if videos:
-					data["works"][work_index]["videos"] = []
-				for video in videos:
-					info = vimeo.Vimeo.getInfo(video)
-					if info:
-						data["works"][work_index]["videos"].append(info)
-			# remove passwords from presskit
-			for work_index, work in enumerate(data.get("works", tuple())):
-				press = work.get("press")
-				if press and press.get("presskit"):
-					data["works"][work_index]["press"]["presskit"] = True
-			res = json.dumps(data)
-			cache.set('data-%s' % ln, res, timeout=60 * 60 * 24)
+		res = json.dumps(data())
+		cache.set('data_json-%s' % ln, res, timeout=60 * 60 * 24)
 	return res
 
 @app.route('/api/flickr/photosSet/<set_id>/qualities/<qualities>')
@@ -197,9 +172,25 @@ def download():
 #
 # -----------------------------------------------------------------------------
 
+def get_project_by_name(name):
+	for project in data()["works"]:
+		if project["key"] == name:
+			return project
+	return None
+
 @app.route('/')
 def index():
-	return render_template('home.html')
+	_escaped_fragment_ = request.args.get("_escaped_fragment_")
+	project = None
+	if _escaped_fragment_:
+		params = parse_qs(_escaped_fragment_)
+		_project = params.get("project")
+		_ln = params.get("ln")
+		if _ln:
+			setLanguage(_ln[0])
+		if _project:
+			project = get_project_by_name(_project[0])
+	return render_template('home.html', project=project)
 
 @app.route('/admin', methods=['GET'])
 def admin():
@@ -231,6 +222,39 @@ def video(video):
 # Utils
 #
 # -----------------------------------------------------------------------------
+def data():
+	ln  = get_locale()
+	res = cache.get('data-%s' % ln)
+	if res is None:
+		with open(os.path.join(app.root_path, "data", 'portfolio.json')) as f:
+			data = json.load(f, object_pairs_hook=collections.OrderedDict)
+			# translate
+			for work_index, work in enumerate(data.get("works", tuple())):
+				for key in work.keys():
+					# if value is a pair of {en: ..., fr: ...}
+					if type(work[key]) == collections.OrderedDict:
+						if work[key].keys()[0] in app.config["LANGUAGES"]:
+							if ln in work[key].keys():
+								data["works"][work_index][key] = work[key][ln]
+							else:
+								data["works"][work_index][key] = work[key][app.config["LANGUAGES"][0]]
+			# add some infos for videos
+			# for work_index, work in enumerate(data.get("works", tuple())):
+			# 	videos = work.get("videos", tuple())
+			# 	if videos:
+			# 		data["works"][work_index]["videos"] = []
+			# 	for video in videos:
+			# 		info = vimeo.Vimeo.getInfo(video)
+			# 		if info:
+			# 			data["works"][work_index]["videos"].append(info)
+			# remove passwords from presskit
+			for work_index, work in enumerate(data.get("works", tuple())):
+				press = work.get("press")
+				if press and press.get("presskit"):
+					data["works"][work_index]["press"]["presskit"] = True
+			res = data
+			cache.set('data-%s' % ln, data, timeout=60 * 60 * 24)
+	return res
 
 def extractQuery(queryDict):
 	res = queryDict.copy()
