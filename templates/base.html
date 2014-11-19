@@ -4,15 +4,12 @@
 		<title>Compass Productions</title>
 		<link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}" type="image/x-icon" />
 		{% include "css.html" %}
-		<meta name="description" content="Joe Balass, Joy, Joie, JOY!, Portrait of a nun, JOY! Portrait of a Nun, JOIE! Portrait d'une nonne, Naïm Kattan, La longueur de l'alphabet,The Length of the Alphabet, George Hayim, Nana, George &amp; me, le Prix Tremplin pour le monde Artv, FIFA, Festival International du Film sur l'art de Montréal, Springboard to the World Award, iraq, jew, iraqi jew, Baghdad Twist, The Devil in the Holy Water, il diavolo nell'acqua santa, Montreal filmmaker, Derniers mots, Parting Words, compass films, compass, world pride, balass, documentary, gay, film, pope, jubillee, roman catholic, holy year, sisters of perpetual indulgence, sister missionary position, radical faeries, queer, fairy, faery, Naim Kattan film, Eisha Marjara, Venus, Akram, Akram le surréaliste, Akram the Surrealist" />
-
-		<meta name="keywords" content="Joe Balass, Joy, Joie, JOY!, Portrait of a nun, JOY! Portrait of a Nun, JOIE! Portrait d'une nonne, Naïm Kattan, La longueur de l'alphabet,The Length of the Alphabet, George Hayim, Nana, George &amp; me, le Prix Tremplin pour le monde Artv, FIFA, Festival International du Film sur l'art de Montréal, Springboard to the World Award, iraq, jew, iraqi jew, Baghdad Twist, The Devil in the Holy Water, il diavolo nell'acqua santa, Montreal filmmaker, Derniers mots, Parting Words, compass films, compass, world pride, balass, documentary, gay, film, pope, jubillee, roman catholic, holy year, sisters of perpetual indulgence, sister missionary position, radical faeries, queer, fairy, faery, Naim Kattan film, Eisha Marjara, Venus, Akram, Akram le surréaliste, Akram the Surrealist" />
 
 		<meta name="google-site-verification" content="OUUoigsR6AMZnJFYQro7PJs7yHCVCWOm5TJXc6f_Qwc" />
 		<meta property="og:site_name" content="Compass Productions" />
 		{% if project %}
 			{% if project.title %}
-			<meta property="og:title" content="{{ project.title}}" />
+			<meta property="og:title" content="Compass Productions" />
 			{% endif %}
 			{% if project.description %}
 			<meta property="og:description" content="{{ project.description}}" />
