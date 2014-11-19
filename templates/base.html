@@ -19,9 +19,6 @@
 			{% if project.backgroundImage %}
 			<meta property="og:image" content="{{url_for('static', filename='images/'+project.backgroundImage, _external=True)}}" />
 			{% endif %}
-			{% if url %}
-			<meta property="og:url" content="{{url_for('index', _external=True)}}#{{url|safe}}" />
-			{% endif %}
 		{% endif %}
 		{% if url %}
 		<script type="text/javascript">
