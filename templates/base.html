@@ -14,6 +14,11 @@
 			{% if project.title %}
 			<meta property="og:title" content="{{ project.title}}" />
 			{% endif %}
+			{% if project.description %}
+			<meta property="og:description" content="{{ project.description}}" />
+			{% else %}
+			<meta property="og:description" content="{{ project.title}}" />
+			{% endif %}
 			{% if project.backgroundImage %}
 			<meta property="og:image" content="{{url_for('static', filename='images/'+project.backgroundImage, _external=True)}}" />
 			{% endif %}
