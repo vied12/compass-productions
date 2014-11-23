@@ -244,14 +244,14 @@ def data():
 							else:
 								data["works"][work_index][key] = work[key][app.config["LANGUAGES"][0]]
 			# add some infos for videos
-			# for work_index, work in enumerate(data.get("works", tuple())):
-			# 	videos = work.get("videos", tuple())
-			# 	if videos:
-			# 		data["works"][work_index]["videos"] = []
-			# 	for video in videos:
-			# 		info = vimeo.Vimeo.getInfo(video)
-			# 		if info:
-			# 			data["works"][work_index]["videos"].append(info)
+			for work_index, work in enumerate(data.get("works", tuple())):
+				videos = work.get("videos", tuple())
+				if videos:
+					data["works"][work_index]["videos"] = []
+				for video in videos:
+					info = vimeo.Vimeo.getInfo(video)
+					if info:
+						data["works"][work_index]["videos"].append(info)
 			# remove passwords from presskit
 			for work_index, work in enumerate(data.get("works", tuple())):
 				press = work.get("press")

@@ -7,10 +7,8 @@
 
 		<meta name="google-site-verification" content="OUUoigsR6AMZnJFYQro7PJs7yHCVCWOm5TJXc6f_Qwc" />
 		<meta property="og:site_name" content="Compass Productions" />
+		<meta property="og:title" content="Compass Productions" />
 		{% if project %}
-			{% if project.title %}
-			<meta property="og:title" content="Compass Productions" />
-			{% endif %}
 			{% if project.description %}
 			<meta property="og:description" content="{{ project.description}}" />
 			{% else %}
@@ -31,7 +29,10 @@
 		{# referencement #}
 		<div class="ns">
 			<h1>Compass Productions</h1>
-			<h2>Joe Balass</h2>
+			{% if project %}
+			<h2>{{ project.title }}</h2>
+			{% endif %}
+			<h3>Joe Balass</h3>
 			<ul>
 				<li>Joe Balass</li>
 				<li>Joy</li>
